@@ -153,31 +153,27 @@ new1 <- merge(full_data,
          dayofyear=yday(date))
 
 # join APSIM library-generated data
-new2 <- left_join(new1[,c("date","year","month","day","dayofyear",
+new2 <- right_join(new1[,c("date","year","month","day","dayofyear",
                           "radn","maxt","mint","rain","meanw_ms")],
                   new_met_df,by=c("date","year","dayofyear","month","day"))
 new2[is.na(new2$radn.x),"radn.x"] <- new2[is.na(new2$radn.x),"radn.y"]
 new2[is.na(new2$maxt.x),"maxt.x"] <- new2[is.na(new2$maxt.x),"maxt.y"]
 new2[is.na(new2$mint.x),"mint.x"] <- new2[is.na(new2$mint.x),"mint.y"]
 new2[is.na(new2$rain.x),"rain.x"] <- new2[is.na(new2$rain.x),"rain.y"]
-new2[is.na(new2$meanw_ms),"meanw_ms"] <- new2[is.na(new2$meanw_ms),"windspeed"]
+new2[is.na(new2$meanw_ms.x),"meanw_ms.x"] <- new2[is.na(new2$meanw_ms.x),"meanw_ms.y"]
 
 # find any columns with NA cells
 na_find_col <- names(which(colSums(is.na(new2))>0))
-na_find_row <- new[is.na(new$year),]
+na_find_row <- new2[is.na(new2$year),]
 
 # clean up and add more unit conversions
 new3 <- new2[,c("date","year","month","day","dayofyear",
-                      "radn.x","maxt.x","mint.x","rain.x","meanw_ms")]
+                      "radn.x","maxt.x","mint.x","rain.x","meanw_ms.x")]
 colnames(new3) <- c("date","year","month","day","dayofyear",
                     "radn","maxt","mint","rain","meanw_ms")
 
-# add in dates after site's experimental period to end of study's experimental 
-# period (2021)
-new_dat <- rbind(new3,new_met_df[new_met_df$year>2010,c("date","year","month",
-                                                        "day","dayofyear","radn",
-                                                        "maxt","mint","rain",
-                                                        "meanw_ms")]) %>%
+# add in unit conversions, then reorder
+new_dat <- new3 %>%
   mutate(tavg = (maxt + mint)/2,
          radn_MJm2 = radn,
          radn_Wm2 = radn_MJm2*11.57407407, # convert from MJ/m^2/day to W/m^2/day
@@ -186,7 +182,8 @@ new_dat <- rbind(new3,new_met_df[new_met_df$year>2010,c("date","year","month",
          mint_C = mint, # deg C
          rain_mm = rain, # mm/day
          rain_cm = rain_mm/10 # cm/day
-  )
+  ) %>%
+  arrange(year,month,day)
 
 #**********************************************************************
 ##### Future weather

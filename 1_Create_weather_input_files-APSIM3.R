@@ -1,22 +1,18 @@
 #######################################
-# Script: 1_Create_weather_input_files-APSIM2.R
+# Script: 1_Create_weather_input_files-APSIM.R
 # Author: Ellen Maas
 # Date: July 11, 2022
-# Output: Function doesn't return any data, hence the "p" (procedure) naming
-# convention. It creates files in the appropriate folder for each model.
-# Description: "This procedure generates weather input files for every model in the 
-# format needed by each. There are some gaps of missing data on various days, so 
-# it fills in those values with NASA Power data (which includes radiation data). 
-# Calls custom nasapower_download function."
+# Output: It creates files in the appropriate folder for each model.
+# Description: This takes the prepared weather data from the setup script
+#              and formats it specifically for APSIM.
+#######################################
+# Called by:
+# 1_Create_weather_input_files.R
 #######################################
 # Audit Log:
 # 2022: Created script.
 # 1/31/2023: Modified to use .met files for APSIM Classic.
 #######################################
-
-
-
-
 
 suppressMessages({
   

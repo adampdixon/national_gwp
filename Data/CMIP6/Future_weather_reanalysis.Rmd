@@ -37,13 +37,18 @@ library(dplyr)
 
 ```{r constants}
 #
-site_name <- "KBS"
+# site_name <- "KBS"
+# experiment_start_year <- 1989
+# experiment_end_year <- 2021
+# experiment_start_date <- "1989-01-01"
+# experiment_end_date <- "2021-12-31"
+site_name <- "LRF"
+experiment_start_year <- 2003
+experiment_end_year <- 2010
+experiment_start_date <- "2003-01-01"
+experiment_end_date <- "2010-12-31"
 fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
 daycent_path <- paste0("Daycent/",site_name,"/")
-experiment_start_year <- 1989
-experiment_end_year <- 2021
-experiment_start_date <- "1989-01-01"
-experiment_end_date <- "2021-12-31"
 end_fut_period_year <- 2100
 end_exp_period_year <- 2021
 
