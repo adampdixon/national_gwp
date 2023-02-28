@@ -211,7 +211,7 @@ Day_soiln_all <- rbind(Day_base_soiln,Day_exp_soiln,Day_fut_soiln) %>%
 #**********************************************************************
 
 
-### future .lis contains all data from year 1 in equilibrium through 2100
+### future .lis contains all data from year 1 in equilibrium through end of future simulation
 lis_output <- read.table(paste0(daycent_path,paste0("sched_fut_",scenario_name,".lis")),
 #lis_output <- read.table(paste0(daycent_path,paste0("sched_exp_",scenario_name,".lis")),
                                                   col.names = c("time","somsc_gm2","somtc","somte(1)",
@@ -232,10 +232,10 @@ lis_output <- read.table(paste0(daycent_path,paste0("sched_fut_",scenario_name,"
                          skip=45)
 
 ## need to remove duplicate years where phases join (base-exp, exp-fut)
-## and 2100
+## and end of future simulation
 DayC_Mgha <- lis_output[!((lis_output$cinput == 0 & 
                            (lis_output$time == experiment_start_year | lis_output$time == experiment_end_year+1)) |
-                          lis_output$time == 2100),c("time","somsc_gm2")] %>%  
+                          lis_output$time == end_fut_period_year),c("time","somsc_gm2")] %>%  
   mutate(year=floor(time),
          base=round(somsc_gm2/100,1)
   )
@@ -293,14 +293,14 @@ DayPltCN <- Day_harvest[substr(Day_harvest$crpval,2,5)!="CLVC" &
 
 DayCI_gm2yr <- lis_output[!((lis_output$cinput == 0 & 
                                (lis_output$time == experiment_start_year | lis_output$time == experiment_end_year+1)) |
-                              lis_output$time == 2100),c("time","clitad.2.")] %>%  
+                              lis_output$time == end_fut_period_year),c("time","clitad.2.")] %>%  
   mutate(year=floor(time),
          base=`clitad.2.`
   )
   
 DayNI_gm2yr <- lis_output[!((lis_output$cinput == 0 & 
                                (lis_output$time == experiment_start_year | lis_output$time == experiment_end_year+1)) |
-                              lis_output$time == 2100),c("time","elitad.2.1.")] %>%  
+                              lis_output$time == end_fut_period_year),c("time","elitad.2.1.")] %>%  
   mutate(year=floor(time),
          base=`elitad.2.1.`
   )
@@ -543,3 +543,14 @@ stoverCN <- merge(stoverC_gm2,
 stoverCN_piv <- pivot_longer(stoverCN, c(-year,-crop),
                             names_to = "source",
                             values_to = "stoverCN_val")
+
+#**********************************************************************
+
+# calculate mean differences between observed and modeled results
+
+Maize_obsmod_diff_Mgha <- sum(MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed),"Observed"] -
+                                MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed),"Daycent"])
+Soybean_obsmod_diff_Mgha <- sum(SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed),"Observed"] -
+                                  SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed),"Daycent"])
+Wheat_obsmod_diff_Mgha <- sum(WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed),"Observed"] -
+                                WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed),"Daycent"])
