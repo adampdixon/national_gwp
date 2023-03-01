@@ -18,7 +18,8 @@ library(broom)
 
 #**********************************************************************
 
-# import Daycent modeled points
+# import Daycent modeled points -------------------------------------------
+
 
 ### most output files (*.out) are limited in time to the specific phase
 ### they are run from, so they need to be concatenated together in order
@@ -110,7 +111,9 @@ DayM_V <- rbind(Day_exp_vswc,Day_fut_vswc) %>%
          layer5_pct=layer5*100,
          layer6_pct=layer6*100,
          layer7_pct=layer7*100,
-         layer8_pct=layer8*100)
+         layer8_pct=layer8*100,
+         mean_20cm=(layer1*0.1)+(layer2*0.15)+(layer3*0.25)+(layer4*0.5)
+  )
 
 DayM_V_all <- rbind(Day_base_vswc,Day_exp_vswc,Day_fut_vswc) %>%
   mutate(year=floor(time),
@@ -202,7 +205,11 @@ Day_fut_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_fut_",scenario_name,
 
 Day_soiln <- rbind(Day_base_soiln,Day_exp_soiln) %>%
   mutate(year=floor(time),
-         NO3_ppm=NO3_ppm0+NO3_ppm1+NO3_ppm2+NO3_ppm3)
+         NO3_ppm=NO3_ppm0+NO3_ppm1+NO3_ppm2+NO3_ppm3,
+         #NO3_kgha=(weight of soil in kg/ha, using bulk density)*ppm which = mg/kg
+         #          then divide by 1000000 mg/kg conversion factor
+         NO3_kgha=((0.20*10000*ObsBD$mean_BD*1000)*NO3_ppm)/1000000, 
+         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
   
 Day_soiln_all <- rbind(Day_base_soiln,Day_exp_soiln,Day_fut_soiln) %>%
   mutate(year=floor(time),
@@ -414,7 +421,7 @@ SoilTemp_C_piv <- pivot_longer(SoilTemp_C, c(-date),
 
 ##
 SoilMoist_VSM <- merge(ObsVSM[,c("date","year","mean_VSM")],
-                       DayM_V[,c("date","year","layer4_pct")],
+                       DayM_V[,c("date","year","mean_20cm")],
                        by=c("date","year"),
                        all=TRUE)
 colnames(SoilMoist_VSM) <- c("date","year","Observed","Daycent")

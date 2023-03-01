@@ -561,6 +561,33 @@ gNO3 <- Day_soiln[Day_soiln$year <= experiment_end_year,] %>%
 
 gNO3
 
+# explain N2O emissions with SAT, DUL, sw, NO3 and N2O
+transform_factor <- 200
+
+gN2O_expl <- ggplot() +
+  geom_hline(aes(yintercept=0.26, color=cbPalette9[6]), linewidth=1) + # DUL, from APSIM surface layer 0-20 cm
+  geom_line(data=Day_soiln[Day_soiln$year %in% 2010:2015,],
+            aes(x=date,y=NO3_kgha/transform_factor, color=cbPalette9[4]), linewidth=1) +
+  geom_line(data=N2O_ghaday[year(N2O_ghaday$date) %in% 2010:2015,],
+            aes(x=date, y=Daycent/1000, color=cbPalette9[8]), linewidth=1) +
+  geom_line(data=SoilMoist_VSM[SoilMoist_VSM$year %in% 2010:2015,],
+            aes(x=date, y=Daycent, color=cbPalette9[2]), linewidth=1) +
+  ylab(expression('Volumetric Water Content, Field Capacity')) +
+  scale_y_continuous(
+    sec.axis = sec_axis(trans = ~ .x * transform_factor,
+                        name = expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*'), NO'[3]*' (ppm)'))
+  ) +
+  scale_color_manual(name=NULL,
+                     labels=c("Soil Water","NO3 (kg/ha)","Field Capacity","N2O (kg/ha)"),
+                     values=cbPalette9[c(2,4,6,8)]) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+  
+gN2O_expl
+
 ggsave(filename=paste0(results_path,"calib_Maize_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gMY)
 ggsave(filename=paste0(results_path,"calib_Maize_hist_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gMhY)
 ggsave(filename=paste0(results_path,"calib_Soybean_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gSY)
