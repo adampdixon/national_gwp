@@ -45,7 +45,8 @@ ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
 gC2 
 
 
-ggsave(filename=paste0(results_path,"SOC_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_RothC.jpg"),plot=gC2)
+ggsave(filename=paste0(results_path,"SOC_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_RothC.jpg"),
+       plot=gC2, width=9, height=6, dpi=300)
 
 
 }) # end suppressMessages

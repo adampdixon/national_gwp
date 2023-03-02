@@ -27,7 +27,7 @@ print("Starting 9_Results_APSIM-setup.R")
 
 if(mgmt_scenario_grp!=3) {
 APSIM_out <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4,
-                      widths = c(15,15,22,20,20,15,15,24,22,22,15,15,15,14,
+                      widths = c(15,15,22,20,20,15,15,24,22,22,15,15,15,15,
                                  20,20,20,20,20,19,19,19,19,19),
                       col.names = c("Date","BulkDensity_gcc(1)","SoyYield_kgha",
                                     "WheatYield_kgha","MaizeYield_kgha",
@@ -295,9 +295,23 @@ N2O_ghayr_piv <- pivot_longer(N2O_ghayr, c(-year),
 
 # calculate mean differences between observed and modeled results
 
-Maize_obsmod_diff_Mgha <- sum(MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed),"Observed"] -
-                                MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed),"APSIM"])
-Soybean_obsmod_diff_Mgha <- sum(SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed),"Observed"] -
-                                  SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed),"APSIM"])
-Wheat_obsmod_diff_Mgha <- sum(WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed),"Observed"] -
-                                WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed),"APSIM"])
+Maize_obsmod_diff_Mgha <- sum(MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed) &
+                                              !is.na(MaizeYld_Mgha$APSIM),"Observed"] -
+                                MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed) &
+                                                !is.na(MaizeYld_Mgha$APSIM),"APSIM"])
+Soybean_obsmod_diff_Mgha <- sum(SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed &
+                                                     SoyYld_Mgha$APSIM),"Observed"] -
+                                  SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed &
+                                                       SoyYld_Mgha$APSIM),"APSIM"])
+Wheat_obsmod_diff_Mgha <- sum(WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed &
+                                                     WheatYld_Mgha$APSIM),"Observed"] -
+                                WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed &
+                                                       WheatYld_Mgha$APSIM),"APSIM"])
+SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
+                                                     Cstock_Mgha$APSIM),"Observed"] -
+                                Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
+                                                       Cstock_Mgha$APSIM),"APSIM"])
+N2O_obsmod_diff_gha <- sum(N2O_ghaday[!is.na(N2O_ghaday$Observed) &
+                                         !is.na(N2O_ghaday$APSIM),"Observed"] -
+                              N2O_ghaday[!is.na(N2O_ghaday$Observed) &
+                                           !is.na(N2O_ghaday$APSIM),"APSIM"])

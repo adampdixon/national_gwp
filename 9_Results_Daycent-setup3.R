@@ -555,9 +555,23 @@ stoverCN_piv <- pivot_longer(stoverCN, c(-year,-crop),
 
 # calculate mean differences between observed and modeled results
 
-Maize_obsmod_diff_Mgha <- sum(MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed),"Observed"] -
-                                MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed),"Daycent"])
-Soybean_obsmod_diff_Mgha <- sum(SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed),"Observed"] -
-                                  SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed),"Daycent"])
-Wheat_obsmod_diff_Mgha <- sum(WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed),"Observed"] -
-                                WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed),"Daycent"])
+Maize_obsmod_diff_Mgha <- sum(MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed &
+                                                     MaizeYld_Mgha$Daycent),"Observed"] -
+                                MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed &
+                                                       MaizeYld_Mgha$Daycent),"Daycent"])
+Soybean_obsmod_diff_Mgha <- sum(SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed &
+                                                     SoyYld_Mgha$Daycent),"Observed"] -
+                                  SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed &
+                                                       SoyYld_Mgha$Daycent),"Daycent"])
+Wheat_obsmod_diff_Mgha <- sum(WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed &
+                                                     WheatYld_Mgha$Daycent),"Observed"] -
+                                WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed &
+                                                       WheatYld_Mgha$Daycent),"Daycent"])
+SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
+                                                 Cstock_Mgha$Daycent),"Observed"] -
+                              Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
+                                                   Cstock_Mgha$Daycent),"Daycent"])
+N2O_obsmod_diff_gha <- sum(N2O_ghaday[!is.na(N2O_ghaday$Observed) &
+                                        !is.na(N2O_ghaday$Daycent),"Observed"] -
+                             N2O_ghaday[!is.na(N2O_ghaday$Observed) &
+                                          !is.na(N2O_ghaday$Daycent),"Daycent"])

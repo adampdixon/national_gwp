@@ -288,16 +288,26 @@ suppressMessages({
   
   gNGann
   
-  ggsave(filename=paste0(results_path,"Maize_yield_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),plot=gMY)
-  ggsave(filename=paste0(results_path,"Soybean_yield_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),plot=gSY)
-  ggsave(filename=paste0(results_path,"Wheat_yield_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),plot=gWY)
-  ggsave(filename=paste0(results_path,"SOC_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),plot=gC)
-  ggsave(filename=paste0(results_path,"Soil_Temp_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),plot=gT)
-  ggsave(filename=paste0(results_path,"Soil_Temp_comparison_calib_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),plot=gT_calib)
-  ggsave(filename=paste0(results_path,"Soil_Moist_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),plot=gM)
-  ggsave(filename=paste0(results_path,"Soil_Moist_comparison_calib_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),plot=gM_calib)
-  ggsave(filename=paste0(results_path,"N2O_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),plot=gNG)
-  ggsave(filename=paste0(results_path,"N2O_ann_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),plot=gNGann)
+  ggsave(filename=paste0(results_path,"Maize_yield_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+         plot=gMY, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"Soybean_yield_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+         plot=gSY, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"Wheat_yield_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+         plot=gWY, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"SOC_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+         plot=gC, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"Soil_Temp_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+         plot=gT, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"Soil_Temp_comparison_calib_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+         plot=gT_calib, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"Soil_Moist_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+         plot=gM, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"Soil_Moist_comparison_calib_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+         plot=gM_calib, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"N2O_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+         plot=gNG, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"N2O_ann_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+         plot=gNGann, width=9, height=6, dpi=300)
   
   
 }) # end suppressMessages

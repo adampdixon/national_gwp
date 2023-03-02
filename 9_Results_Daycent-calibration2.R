@@ -13,8 +13,9 @@ library(tidyverse)
 library(graphics)
 library(ggplot2)
 
+  #**********************************************************************
 
-# Temporal graphs
+# Temporal graphs ---------------------------------------------------------
 
 
 # suggested to calibrate in this order:
@@ -572,10 +573,10 @@ gN2O_expl <- ggplot() +
             aes(x=date, y=Daycent/1000, color=cbPalette9[8]), linewidth=1) +
   geom_line(data=SoilMoist_VSM[SoilMoist_VSM$year %in% 2010:2015,],
             aes(x=date, y=Daycent, color=cbPalette9[2]), linewidth=1) +
-  ylab(expression('Volumetric Water Content, Field Capacity')) +
+  ylab(expression('Soil Water, Field Capacity, N'[2]*'O  (kg ha' ^'-1'*' day'^'-1'*')')) +
   scale_y_continuous(
     sec.axis = sec_axis(trans = ~ .x * transform_factor,
-                        name = expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*'), NO'[3]*' (ppm)'))
+                        name = expression('NO'[3]*' (kg ha' ^'-1'*' day'^'-1'*')'))
   ) +
   scale_color_manual(name=NULL,
                      labels=c("Soil Water","NO3 (kg/ha)","Field Capacity","N2O (kg/ha)"),
@@ -588,28 +589,81 @@ gN2O_expl <- ggplot() +
   
 gN2O_expl
 
-ggsave(filename=paste0(results_path,"calib_Maize_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gMY)
-ggsave(filename=paste0(results_path,"calib_Maize_hist_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gMhY)
-ggsave(filename=paste0(results_path,"calib_Soybean_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gSY)
-ggsave(filename=paste0(results_path,"calib_Soybean_hist_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gShY)
-ggsave(filename=paste0(results_path,"calib_Wheat_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gWY)
-ggsave(filename=paste0(results_path,"calib_Wheat_hist_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gWhY)
-ggsave(filename=paste0(results_path,"calib_SOC_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gC)
-ggsave(filename=paste0(results_path,"calib_SOC_comparison_base_",scenario_name,"_Daycent.jpg"),plot=gCb)
-ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gT)
-ggsave(filename=paste0(results_path,"calib_Soil_Moist_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gM)
-ggsave(filename=paste0(results_path,"calib_N2O_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gNG)
-ggsave(filename=paste0(results_path,"calib_CH4_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gMG)
-ggsave(filename=paste0(results_path,"calib_C_input_exp_",scenario_name,"_Daycent.jpg"),plot=gCI)
-ggsave(filename=paste0(results_path,"calib_N_input_exp_",scenario_name,"_Daycent.jpg"),plot=gNI)
-ggsave(filename=paste0(results_path,"calib_NH4_input_exp_",scenario_name,"_Daycent.jpg"),plot=gNH4)
-ggsave(filename=paste0(results_path,"calib_NO3_input_exp_",scenario_name,"_Daycent.jpg"),plot=gNO3)
+gNG_20ghd <- N2O_ghaday_piv[N2O_ghaday_piv$source==model_name &
+                              year(N2O_ghaday_piv$date) %in% year(ObsGas$date),] %>%
+  ggplot(aes(x=date, y=n2o_val, color=source)) +
+  geom_line(show.legend=TRUE) +
+  geom_point(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='Observed'&
+                                   year(N2O_ghaday_piv$date) %in% year(ObsGas$date),],
+             aes(x=date, y=n2o_val, color=source)) +
+  geom_segment(data=Fert[Fert$treatment==treatment & 
+                           Fert$date %in% year(ObsGas$date) &
+                           Fert$n_rate_kg_ha>10,],
+               aes(x = date, y = 200,
+                   xend = date, yend = 175),
+               colour=cbPalette9[7],
+               show.legend=F,
+               lineend = "round",
+               linejoin = "round",
+               arrow = arrow(length = unit(0.3, "cm"))
+               # colour = "black" 
+  ) + 
+  xlab("Year") +
+  ylab(expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')')) +
+  ylim(0,20) +
+  ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions-limited display to 20 g/ha/day"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  scale_color_manual(labels=c(model_name,"Observed","Fertilizer"),
+                     values=cbPalette9[c(8,1,7)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gNG_20ghd
+
+ggsave(filename=paste0(results_path,"calib_Maize_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gMY,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Maize_hist_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gMhY,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Soybean_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gSY,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Soybean_hist_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gShY,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Wheat_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gWY,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Wheat_hist_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gWhY,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_SOC_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gC,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_SOC_comparison_base_",scenario_name,"_Daycent.jpg"),plot=gCb,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gT,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Soil_Moist_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gM,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_N2O_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gNG,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_CH4_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gMG,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_C_input_exp_",scenario_name,"_Daycent.jpg"),plot=gCI,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_N_input_exp_",scenario_name,"_Daycent.jpg"),plot=gNI,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_NH4_input_exp_",scenario_name,"_Daycent.jpg"),plot=gNH4,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_NO3_input_exp_",scenario_name,"_Daycent.jpg"),plot=gNO3,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_N2O_comparison_20ghd_exp_",scenario_name,"_APSIM.jpg"),plot=gNG_20ghd,
+       width=9, height=6, dpi=300)
 
 
 
 #**********************************************************************
 
-# 1:1 graphs
+# 1:1 graphs --------------------------------------------------------------
+
 
 # corn
 MYfit <- lm(Daycent ~ Observed, data = MaizeYld_Mgha)
@@ -984,64 +1038,52 @@ gMG_121
 # 
 # gSCN_121
 
-ggsave(filename=paste0(results_path,"calib_Maize_yield_comparison_1to1_",scenario_name,"_Daycent.jpg"),plot=gMY_121)
-ggsave(filename=paste0(results_path,"calib_Soybean_yield_comparison_1to1_",scenario_name,"_Daycent.jpg"),plot=gSY_121)
-ggsave(filename=paste0(results_path,"calib_Wheat_yield_comparison_1to1_",scenario_name,"_Daycent.jpg"),plot=gWY_121)
-#ggsave(filename=paste0(results_path,"calib_SOC_comparison_1to1_",scenario_name,"_Daycent.jpg"),plot=gC_121)
-ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_1to1_",scenario_name,"_Daycent.jpg"),plot=gT_121)
-ggsave(filename=paste0(results_path,"calib_Soil_Moist_comparison_1to1_",scenario_name,"_Daycent.jpg"),plot=gM_121)
-ggsave(filename=paste0(results_path,"calib_N2O_comparison_1to1_",scenario_name,"_Daycent.jpg"),plot=gNG_121)
-ggsave(filename=paste0(results_path,"calib_CH4_comparison_1to1_",scenario_name,"_Daycent.jpg"),plot=gMG_121)
+ggsave(filename=paste0(results_path,"calib_Maize_yield_comparison_1to1_",scenario_name,"_Daycent.jpg"),
+       plot=gMY_121, width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Soybean_yield_comparison_1to1_",scenario_name,"_Daycent.jpg"),
+       plot=gSY_121, width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Wheat_yield_comparison_1to1_",scenario_name,"_Daycent.jpg"),
+       plot=gWY_121, width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_SOC_comparison_1to1_",scenario_name,"_Daycent.jpg"),
+       plot=gC_121, width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_1to1_",scenario_name,"_Daycent.jpg"),
+       plot=gT_121, width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Soil_Moist_comparison_1to1_",scenario_name,"_Daycent.jpg"),
+       plot=gM_121, width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_N2O_comparison_1to1_",scenario_name,"_Daycent.jpg"),
+       plot=gNG_121, width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_CH4_comparison_1to1_",scenario_name,"_Daycent.jpg"),
+       plot=gMG_121, width=6, height=6, dpi=300)
 
 
 
 #**********************************************************************
-# Write results to log files
+
+# Log results -------------------------------------------------------------
 
 
-# add this run's results to a log file
-calib_log_tab <- cbind(as.character(Sys.time()),
-                       model_name,clim_scenario_num,mgmt_scenario_num, scenario_name,
+# add this run's results to model log file and file collecting all final
+# model runs
+calib_log_tab <- cbind(as.character(Sys.time()),model_name,
+                       clim_scenario_num,mgmt_scenario_num, scenario_name,
+                       scenario_abbrev,
                        MYfit_coef[2], MYfit_coef[1], MYfit_r2, MY_rmse,
+                       Maize_obsmod_diff_Mgha,
                        SYfit_coef[2], SYfit_coef[1], SYfit_r2, SY_rmse,
+                       Soybean_obsmod_diff_Mgha,
                        WYfit_coef[2], WYfit_coef[1], WYfit_r2, WY_rmse,
+                       Wheat_obsmod_diff_Mgha,
                        Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
+                       SOC_obsmod_diff_Mgha,
                        Tfit_coef[2], Tfit_coef[1], Tfit_r2, T_rmse,
                        Mfit_coef[2], Mfit_coef[1], Mfit_r2, M_rmse,
                        Nfit_coef[2], Nfit_coef[1], Nfit_r2, N_rmse,
-                       Hfit_coef[2], Hfit_coef[1], Hfit_r2, H_rmse)
-write.table(calib_log_tab,file=paste0(results_path,"Calibration_log_Daycent.csv"),
-            append=TRUE,row.names=FALSE,col.names=FALSE,sep=",")
-
-# make separate file with column headers (empty table with NA row)
-dummy<-data.frame(matrix(ncol=37))
-colnames(dummy) <- c("Date_time",
-                     "Model","Climate_Scenario","Mgmt_Scenario","Scenario_Name",
-                     "Maize_slope","Maize_yint","Maize_R2","Maize_RMSE",
-                     "Soy_slope","Soy_yint","Soy_R2","Soy_RMSE",
-                     "Wheat_slope","Wheat_yint","Wheat_R2","Wheat_RMSE",
-                     "SOC_slope","SOC_yint","SOC_R2","SOC_RMSE",
-                     "Temp_slope","Temp_yint","Temp_R2","Temp_RMSE",
-                     "Moist_slope","Moist_yint","Moist_R2","Moist_RMSE",
-                     "N2O_slope","N2O_yint","N2O_R2","N2O_RMSE",
-                     "CH4_slope","CH4_yint","CH4_R2","CH4_RMSE")
-write.table(dummy,file=paste0(results_path,"Calibration_log_columns.csv"),
-            append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
+                       N2O_obsmod_diff_gha,
+                       NA, NA, NA, NA,
+                       NA)
 
 
-# add/replace this run's results to a file collecting all final models/runs
-calib_summary_tab <- cbind(as.character(Sys.time()),
-                           model_name,clim_scenario_num,mgmt_scenario_num, scenario_name,
-                           MYfit_coef[2], MYfit_coef[1], MYfit_r2, MY_rmse,
-                           SYfit_coef[2], SYfit_coef[1], SYfit_r2, SY_rmse,
-                           WYfit_coef[2], WYfit_coef[1], WYfit_r2, WY_rmse,
-                           Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
-                           Tfit_coef[2], Tfit_coef[1], Tfit_r2, T_rmse,
-                           Mfit_coef[2], Mfit_coef[1], Mfit_r2, M_rmse,
-                           Nfit_coef[2], Nfit_coef[1], Nfit_r2, N_rmse,
-                           NA, NA, NA, NA)
-## call function to edit the summary output file
 source("p_Edit_calib_file.R")
-p_Edit_calib_file(calib_summary_tab,model_name,scenario_name)
+p_Edit_calib_file(calib_log_tab,model_name,scenario_name)
 
 }) # end suppressMessages

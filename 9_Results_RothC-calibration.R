@@ -29,7 +29,8 @@ library(ggplot2)
 
 #**********************************************************************
 
-# Temporal graphs
+# Temporal graphs ---------------------------------------------------------
+
 
 ## historical-experimental period
 
@@ -66,11 +67,10 @@ gC
 
 ggsave(filename=paste0(results_path,"calib_SOC_comparison_his_",
                               clim_scenario_num,"_",mgmt_scenario_num,"_RothC.jpg"),
-                       plot=gC)
+       plot=gC,
+       width=9, height=6, dpi=300)
 
 
-
-#**********************************************************************
 
 ## experimental period
 
@@ -98,11 +98,12 @@ gC
 
 ggsave(filename=paste0(results_path,"calib_SOC_comparison_exp_",
                        clim_scenario_num,"_",mgmt_scenario_num,"_RothC.jpg"),
-       plot=gC)
+       plot=gC,
+       width=9, height=6, dpi=300)
 
 #**********************************************************************
 
-# 1:1 graph
+# 1:1 graphs --------------------------------------------------------------
 
 ##  SOC
 if(mgmt_scenario_grp==3) {
@@ -152,50 +153,35 @@ gC_121 <- Cstock_Mgha %>%
 
 gC_121
 
+ggsave(filename=paste0(results_path,"calib_SOC_comparison_1to1_",scenario_name,"_RothC.jpg"),
+       plot=gC_121, width=6, height=6, dpi=300)
+
 #**********************************************************************
 
-# add this run's results to a log file
-calib_log_tab <- cbind(as.character(Sys.time()),
-                       model_name,clim_scenario_num,mgmt_scenario_num, scenario_name,
-                       NA, NA, NA, NA,
-                       NA, NA, NA, NA,
-                       NA, NA, NA, NA,
+# Log results -------------------------------------------------------------
+
+
+# add this run's results to model log file and file collecting all final
+# model runs
+calib_log_tab <- cbind(as.character(Sys.time()),model_name,
+                       clim_scenario_num,mgmt_scenario_num, scenario_name,
+                       scenario_abbrev,
+                       MYfit_coef[2], MYfit_coef[1], MYfit_r2, MY_rmse,
+                       Maize_obsmod_diff_Mgha,
+                       SYfit_coef[2], SYfit_coef[1], SYfit_r2, SY_rmse,
+                       Soybean_obsmod_diff_Mgha,
+                       WYfit_coef[2], WYfit_coef[1], WYfit_r2, WY_rmse,
+                       Wheat_obsmod_diff_Mgha,
                        Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
+                       SOC_obsmod_diff_Mgha,
+                       Tfit_coef[2], Tfit_coef[1], Tfit_r2, T_rmse,
+                       Mfit_coef[2], Mfit_coef[1], Mfit_r2, M_rmse,
+                       Nfit_coef[2], Nfit_coef[1], Nfit_r2, N_rmse,
+                       N2O_obsmod_diff_gha,
                        NA, NA, NA, NA,
-                       NA, NA, NA, NA,
-                       NA, NA, NA, NA,
-                       NA, NA, NA, NA)
-write.table(calib_log_tab,file=paste0(results_path,"Calibration_log_RothC.csv"),
-            append=TRUE,row.names=FALSE,col.names=FALSE,sep=",")
-
-# make separate file with column headers (empty table with NA row)
-dummy<-data.frame(matrix(ncol=37))
-colnames(dummy) <- c("Date_time",
-                     "Model","Climate_Scenario","Mgmt_Scenario","Scenario_Name",
-                     "Maize_slope","Maize_yint","Maize_R2","Maize_RMSE",
-                     "Soy_slope","Soy_yint","Soy_R2","Soy_RMSE",
-                     "Wheat_slope","Wheat_yint","Wheat_R2","Wheat_RMSE",
-                     "SOC_slope","SOC_yint","SOC_R2","SOC_RMSE",
-                     "Temp_slope","Temp_yint","Temp_R2","Temp_RMSE",
-                     "Moist_slope","Moist_yint","Moist_R2","Moist_RMSE",
-                     "N2O_slope","N2O_yint","N2O_R2","N2O_RMSE",
-                     "CH4_slope","CH4_yint","CH4_R2","CH4_RMSE")
-write.table(dummy,file=paste0(results_path,"Calibration_log_columns.csv"),
-            append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
+                       NA)
 
 
-# add/replace this run's results to a file collecting all final models/runs
-calib_summary_tab <- cbind(as.character(Sys.time()),
-                           model_name,clim_scenario_num,mgmt_scenario_num, scenario_name,
-                           NA, NA, NA, NA,
-                           NA, NA, NA, NA,
-                           NA, NA, NA, NA,
-                           Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
-                           NA, NA, NA, NA,
-                           NA, NA, NA, NA,
-                           NA, NA, NA, NA,
-                           NA, NA, NA, NA)
-## call function to edit the summary output file
 source("p_Edit_calib_file.R")
 p_Edit_calib_file(calib_summary_tab,model_name,scenario_name)
 

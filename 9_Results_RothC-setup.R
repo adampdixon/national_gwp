@@ -68,3 +68,12 @@ Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year),
                names_to = "source",
                values_to = "C_val")
 
+#**********************************************************************
+
+# calculate mean differences between observed and modeled results
+
+SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
+                                                 Cstock_Mgha$RothC),"Observed"] -
+                              Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
+                                                   Cstock_Mgha$RothC),"RothC"])
+

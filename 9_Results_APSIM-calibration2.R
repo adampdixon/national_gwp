@@ -6,15 +6,17 @@
 
 suppressMessages({
   
-  print("Starting 9_Results_APSIM-calibration.R")
+  print("Starting 9_Results_APSIM-calibration2.R")
   
 library(magrittr)
 library(tidyverse)
 library(graphics)
 library(ggplot2)
 
+  #**********************************************************************
+  
+# Temporal graphs ---------------------------------------------------------
 
-# Temporal graphs
 
 ## experimental period
 
@@ -77,7 +79,7 @@ gSY
 Wheat_this <- WheatYld_Mgha_piv[WheatYld_Mgha_piv$year %in% experiment_year_range,]
 
 WY_rmse_error <- pull(Wheat_this[Wheat_this$source=="Observed",],yield_val)-
-  pull(Wheat_this[Wheat_this$source=="Daycent",],"yield_val")
+  pull(Wheat_this[Wheat_this$source=="APSIM",],"yield_val")
 WY_rmse <- round(sqrt(mean(WY_rmse_error^2,na.rm=TRUE)),2)
 
 gWY <- Wheat_this %>%
@@ -152,27 +154,28 @@ gT <- SoilTemp_C_piv[SoilTemp_C_piv$source=='APSIM'
 
 gT
 
-gT_calib <- SoilTemp_C_piv_calib[SoilTemp_C_piv_calib$source=='APSIM' 
-                                 & SoilTemp_C_piv$year %in% ObsTemp$year,] %>%
-  ggplot(aes(x=date, y=temp_val, color=source, show.legend=TRUE)) +
-  geom_point() +
-  geom_point(data=SoilTemp_C_piv_calib[SoilTemp_C_piv_calib$source=='Observed' 
-                                       & SoilTemp_C_piv$year %in% ObsTemp$year,],
-             aes(x=date, y=temp_val, color=source)) +
-  xlab("Year") +
-  ylab(expression('Soil temperature ( '*degree*C*")")) +
-  ggtitle(paste0(site_name," Soil Temperature with ",soil_temp_bias,
-                 " deg C correction"),
-          paste0("Scenario: ",scenario_descriptor)) +
-  scale_color_manual(labels=c("APSIM","Observed"),
-                     values=cbPalette9[c(8,1)]) +
-  theme_classic(base_family = "serif", base_size = 15) +
-  theme(panel.background = element_blank(),
-        axis.line = element_line(),
-        legend.position = "right",
-        legend.key = element_blank())
-
-gT_calib
+## Not using APSIM for RothC or Millennial, so no longer needed
+# gT_calib <- SoilTemp_C_piv_calib[SoilTemp_C_piv_calib$source=='APSIM' 
+#                                  & SoilTemp_C_piv$year %in% ObsTemp$year,] %>%
+#   ggplot(aes(x=date, y=temp_val, color=source, show.legend=TRUE)) +
+#   geom_point() +
+#   geom_point(data=SoilTemp_C_piv_calib[SoilTemp_C_piv_calib$source=='Observed' 
+#                                        & SoilTemp_C_piv$year %in% ObsTemp$year,],
+#              aes(x=date, y=temp_val, color=source)) +
+#   xlab("Year") +
+#   ylab(expression('Soil temperature ( '*degree*C*")")) +
+#   ggtitle(paste0(site_name," Soil Temperature with ",soil_temp_bias,
+#                  " deg C correction"),
+#           paste0("Scenario: ",scenario_descriptor)) +
+#   scale_color_manual(labels=c("APSIM","Observed"),
+#                      values=cbPalette9[c(8,1)]) +
+#   theme_classic(base_family = "serif", base_size = 15) +
+#   theme(panel.background = element_blank(),
+#         axis.line = element_line(),
+#         legend.position = "right",
+#         legend.key = element_blank())
+# 
+# gT_calib
 
 gM <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='APSIM' 
                         & SoilMoist_VSM_piv$year %in% ObsVSM$year,] %>%
@@ -195,35 +198,38 @@ gM <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='APSIM'
 
 gM
 
-gM_calib <- SoilMoist_VSM_piv_calib[SoilMoist_VSM_piv_calib$source=='APSIM' 
-                                    & SoilMoist_VSM_piv$year %in% ObsVSM$year,] %>%
-  ggplot(aes(x=date, y=h2o_val, color=source, show.legend=TRUE)) +
-  geom_point() +
-  geom_point(data=SoilMoist_VSM_piv_calib[SoilMoist_VSM_piv_calib$source=='Observed' 
-                                          & SoilMoist_VSM_piv$year %in% ObsVSM$year,],
-             aes(x=date, y=h2o_val, color=source)) +
-  xlab("Year") +
-  ylab("Volumetric soil moisture") +
-  ggtitle(paste0(site_name," Volumetric soil moisture with ",soil_moist_bias,"% correction"),
-          paste0("Scenario: ",scenario_descriptor)) +
-  scale_color_manual(labels=c("APSIM","Observed"),
-                     values=cbPalette9[c(8,1)]) +
-  theme_classic(base_family = "serif", base_size = 15) +
-  theme(panel.background = element_blank(),
-        axis.line = element_line(),
-        legend.position = "right",
-        legend.key = element_blank())
-
-gM_calib
+## Not using APSIM for RothC or Millennial, so no longer needed
+# gM_calib <- SoilMoist_VSM_piv_calib[SoilMoist_VSM_piv_calib$source=='APSIM' 
+#                                     & SoilMoist_VSM_piv$year %in% ObsVSM$year,] %>%
+#   ggplot(aes(x=date, y=h2o_val, color=source, show.legend=TRUE)) +
+#   geom_point() +
+#   geom_point(data=SoilMoist_VSM_piv_calib[SoilMoist_VSM_piv_calib$source=='Observed' 
+#                                           & SoilMoist_VSM_piv$year %in% ObsVSM$year,],
+#              aes(x=date, y=h2o_val, color=source)) +
+#   xlab("Year") +
+#   ylab("Volumetric soil moisture") +
+#   ggtitle(paste0(site_name," Volumetric soil moisture with ",soil_moist_bias,"% correction"),
+#           paste0("Scenario: ",scenario_descriptor)) +
+#   scale_color_manual(labels=c("APSIM","Observed"),
+#                      values=cbPalette9[c(8,1)]) +
+#   theme_classic(base_family = "serif", base_size = 15) +
+#   theme(panel.background = element_blank(),
+#         axis.line = element_line(),
+#         legend.position = "right",
+#         legend.key = element_blank())
+# 
+# gM_calib
 
 gNG <- N2O_ghaday_piv[N2O_ghaday_piv$source=='APSIM' &
-                        year(N2O_ghaday_piv$date) %in% experiment_year_range,] %>%
+                        year(N2O_ghaday_piv$date) %in% year(ObsGas$date),] %>%
   ggplot(aes(x=date, y=n2o_val, color=source)) +
   geom_line(show.legend=TRUE) +
   geom_point(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='Observed'&
-                                   year(N2O_ghaday_piv$date) %in% experiment_year_range,],
+                                   year(N2O_ghaday_piv$date) %in% year(ObsGas$date),],
              aes(x=date, y=n2o_val, color=source)) +
-  geom_segment(data=Fert_APSIM[Fert_APSIM$treatment==treatment & Fert_APSIM$n_rate_kg_ha>10,],
+  geom_segment(data=Fert[Fert$treatment==treatment & 
+                           year(Fert$date) %in% year(ObsGas$date) &
+                           Fert$n_rate_kg_ha>10,],
                aes(x = date, y = 200,
                    xend = date, yend = 175),
                colour=cbPalette9[7],
@@ -234,7 +240,7 @@ gNG <- N2O_ghaday_piv[N2O_ghaday_piv$source=='APSIM' &
                # colour = "black" 
   ) + 
   xlab("Year") +
-  ylab(expression('N'^2*'O (g ha' ^'-1'*' day'^'-1'*')')) +
+  ylab(expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')')) +
   ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("APSIM","Observed","Fertilizer"),
@@ -247,20 +253,143 @@ gNG <- N2O_ghaday_piv[N2O_ghaday_piv$source=='APSIM' &
 
 gNG
 
-ggsave(filename=paste0("calib_Maize_yield_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gMY)
-ggsave(filename=paste0("calib_Soybean_yield_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gSY)
-ggsave(filename=paste0("calib_Wheat_yield_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gWY)
-ggsave(filename=paste0("calib_SOC_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gC)
-ggsave(filename=paste0("calib_Soil_Temp_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gT)
-ggsave(filename=paste0("calib_Soil_Temp_comparison_calib_exp_",scenario_name,"_APSIM.jpg"),plot=gT_calib)
-ggsave(filename=paste0("calib_Soil_Moist_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gM)
-ggsave(filename=paste0("calib_Soil_Moist_comparison_calib_exp_",scenario_name,"_APSIM.jpg"),plot=gM_calib)
-ggsave(filename=paste0("calib_N2O_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gNG)
+gNG_rain <- ggplot() +
+  geom_line(data=ObsWth[year(ObsWth$date) %in% year(ObsGas$date) &
+                     ObsWth$rain>0,], aes(x=date, y=rain, color="blue"), linetype=2) +
+  geom_line(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='APSIM' &
+                        year(N2O_ghaday_piv$date) %in% year(ObsGas$date),],
+            aes(x=date, y=n2o_val, color=source)) +
+  geom_point(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='Observed'&
+                                   year(N2O_ghaday_piv$date) %in% year(ObsGas$date),],
+             aes(x=date, y=n2o_val, color=source)) +
+  scale_y_continuous(
+    sec.axis = sec_axis(trans = ~ .x * 2,
+                        name = expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')'))
+  ) +
+  geom_segment(data=Fert[Fert$treatment==treatment & 
+                           year(Fert$date) %in% year(ObsGas$date) &
+                           Fert$n_rate_kg_ha>10,],
+               aes(x = date, y = 200,
+                   xend = date, yend = 175),
+               colour=cbPalette9[7],
+               show.legend=F,
+               lineend = "round",
+               linejoin = "round",
+               arrow = arrow(length = unit(0.3, "cm"))
+               # colour = "black" 
+  ) + 
+  xlab("Year") +
+  ylab("Rain (mm)") +
+  ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  scale_color_manual(labels=c("APSIM","Rain","Observed"),
+                     values=cbPalette9[c(8,4,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gNG_rain
+
+gNG_rain5yr <- ggplot() +
+  geom_line(data=ObsWth[year(ObsWth$date) %in% 2010:2015 &
+                          ObsWth$rain>0,], aes(x=date, y=rain, color="blue"), linetype=2) +
+  geom_line(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='APSIM' &
+                                  year(N2O_ghaday_piv$date) %in% 2010:2015,],
+            aes(x=date, y=n2o_val, color=source)) +
+  # geom_point(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='Observed'&
+  #                                  year(N2O_ghaday_piv$date) %in% 2010:2015,],
+  #            aes(x=date, y=n2o_val, color=source)) +
+  # scale_y_continuous(
+  #   sec.axis = sec_axis(trans = ~ .x * 1,
+  #                       name = expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')'))
+  # ) +
+  geom_segment(data=Fert[Fert$treatment==treatment & year(Fert$date) %in% 2010:2015,],
+               aes(x = date, y = 125,
+                   xend = date, yend = 100),
+               colour=cbPalette9[7],
+               show.legend=F,
+               lineend = "round",
+               linejoin = "round",
+               arrow = arrow(length = unit(0.3, "cm"))
+               # colour = "black"
+  ) +
+  xlab("Year") +
+  ylab(expression('Rain (mm) and N '[2]*'O (g ha' ^'-1'*' day'^'-1'*')')) +
+  ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  scale_color_manual(labels=c("APSIM","Rain","Fertilizer"),
+                     values=cbPalette9[c(8,4,7)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gNG_rain5yr
+
+gNG_20ghd <- N2O_ghaday_piv[N2O_ghaday_piv$source=='APSIM' &
+                        year(N2O_ghaday_piv$date) %in% year(ObsGas$date),] %>%
+  ggplot(aes(x=date, y=n2o_val, color=source)) +
+  geom_line(show.legend=TRUE) +
+  geom_point(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='Observed'&
+                                   year(N2O_ghaday_piv$date) %in% year(ObsGas$date),],
+             aes(x=date, y=n2o_val, color=source)) +
+  geom_segment(data=Fert[Fert$treatment==treatment & 
+                           Fert$date %in% year(ObsGas$date) &
+                           Fert$n_rate_kg_ha>10,],
+               aes(x = date, y = 200,
+                   xend = date, yend = 175),
+               colour=cbPalette9[7],
+               show.legend=F,
+               lineend = "round",
+               linejoin = "round",
+               arrow = arrow(length = unit(0.3, "cm"))
+               # colour = "black" 
+  ) + 
+  xlab("Year") +
+  ylab(expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')')) +
+  ylim(0,20) +
+  ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions-limited display to 20 g/ha/day"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  scale_color_manual(labels=c("APSIM","Observed","Fertilizer"),
+                     values=cbPalette9[c(8,1,7)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gNG_20ghd
+
+
+ggsave(filename=paste0(results_path,"calib_Maize_yield_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gMY,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Soybean_yield_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gSY,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Wheat_yield_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gWY,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_SOC_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gC,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gT,
+       width=9, height=6, dpi=300)
+#ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_calib_exp_",scenario_name,"_APSIM.jpg"),plot=gT_calib)
+ggsave(filename=paste0(results_path,"calib_Soil_Moist_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gM,
+       width=9, height=6, dpi=300)
+#ggsave(filename=paste0(results_path,"calib_Soil_Moist_comparison_calib_exp_",scenario_name,"_APSIM.jpg"),plot=gM_calib)
+ggsave(filename=paste0(results_path,"calib_N2O_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gNG,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_N2O_comparison_rain5yr_exp_",scenario_name,"_APSIM.jpg"),plot=gNG_rain5yr,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_N2O_comparison_20ghd_exp_",scenario_name,"_APSIM.jpg"),plot=gNG_20ghd,
+       width=9, height=6, dpi=300)
 
 
 #**********************************************************************
 
-# 1:1 graphs
+# 1:1 graphs --------------------------------------------------------------
+
 
 MYfit <- lm(APSIM ~ Observed, data = MaizeYld_Mgha)
 MYfit_coef <- coef(MYfit)
@@ -467,44 +596,44 @@ gT_121 <- SoilTemp_C %>%
 
 gT_121
 
-## soil temperature with bias correction
-Tfit_calib <- lm(APSIM ~ Observed, data = SoilTemp_C_calib)
-Tfit_calib_coef <- coef(Tfit_calib)
-Tfit_calib_r2 <- round(summary(Tfit_calib)$r.squared,2)
-
-T_calib_rmse_error <- SoilTemp_C_calib$Observed-SoilTemp_C_calib$APSIM
-T_calib_rmse <- round(sqrt(mean(T_rmse_error^2,na.rm=TRUE)),2)
-
-gT_121_calib <- SoilTemp_C_calib %>%
-  ggplot(aes(x=Observed, y=APSIM,
-             xmin=min(Observed, APSIM, na.rm=T), xmax=max(Observed, APSIM, na.rm=T),
-             ymin=min(Observed, APSIM, na.rm=T), ymax=max(Observed, APSIM, na.rm=T))) +
-  geom_point() +
-  geom_abline() +
-  geom_abline(intercept=Tfit_calib_coef[1], slope=Tfit_calib_coef[2], color="blue") +
-  annotate("text", # line equation
-           x=min(SoilTemp_C_calib$Observed, SoilTemp_C_calib$APSIM, na.rm=T)*1.1,
-           y=max(SoilTemp_C_calib$Observed, SoilTemp_C_calib$APSIM, na.rm=T)*1,
-           hjust=0, family="serif", color="gray31",
-           label=bquote("y =" ~.(round(Tfit_calib_coef[2],4))~"x" ~+ ~.(round(Tfit_calib_coef[1],4)))) +
-  annotate("text", # R^2
-           x=min(SoilTemp_C_calib$Observed, SoilTemp_C_calib$APSIM, na.rm=T)*1.1,
-           y=max(SoilTemp_C_calib$Observed, SoilTemp_C_calib$APSIM, na.rm=T)*0.92,
-           hjust=0, family="serif", color="gray31",
-           label=bquote(R^2 ~"=" ~.(Tfit_calib_r2))) +
-  annotate("text", # RMSE
-           x=min(SoilTemp_C_calib$Observed, SoilTemp_C_calib$APSIM, na.rm=T)*1.1,
-           y=max(SoilTemp_C_calib$Observed, SoilTemp_C_calib$APSIM, na.rm=T)*0.82,
-           hjust=0, family="serif", color="gray31",
-           label=bquote("RMSE =" ~.(T_calib_rmse))) +
-  ggtitle(bquote(.(site_name)~"Soil temperature with"~.(soil_temp_bias)~""*degree*"C correction"),
-                 paste0("Scenario: ",scenario_descriptor)) +
-  theme_classic(base_family = "serif", base_size = 15) +
-  theme(panel.background = element_blank(),
-        axis.ticks.x = element_blank(),
-        axis.line = element_line())
-
-gT_121_calib
+# ## soil temperature with bias correction
+# Tfit_calib <- lm(APSIM ~ Observed, data = SoilTemp_C_calib)
+# Tfit_calib_coef <- coef(Tfit_calib)
+# Tfit_calib_r2 <- round(summary(Tfit_calib)$r.squared,2)
+# 
+# T_calib_rmse_error <- SoilTemp_C_calib$Observed-SoilTemp_C_calib$APSIM
+# T_calib_rmse <- round(sqrt(mean(T_rmse_error^2,na.rm=TRUE)),2)
+# 
+# gT_121_calib <- SoilTemp_C_calib %>%
+#   ggplot(aes(x=Observed, y=APSIM,
+#              xmin=min(Observed, APSIM, na.rm=T), xmax=max(Observed, APSIM, na.rm=T),
+#              ymin=min(Observed, APSIM, na.rm=T), ymax=max(Observed, APSIM, na.rm=T))) +
+#   geom_point() +
+#   geom_abline() +
+#   geom_abline(intercept=Tfit_calib_coef[1], slope=Tfit_calib_coef[2], color="blue") +
+#   annotate("text", # line equation
+#            x=min(SoilTemp_C_calib$Observed, SoilTemp_C_calib$APSIM, na.rm=T)*1.1,
+#            y=max(SoilTemp_C_calib$Observed, SoilTemp_C_calib$APSIM, na.rm=T)*1,
+#            hjust=0, family="serif", color="gray31",
+#            label=bquote("y =" ~.(round(Tfit_calib_coef[2],4))~"x" ~+ ~.(round(Tfit_calib_coef[1],4)))) +
+#   annotate("text", # R^2
+#            x=min(SoilTemp_C_calib$Observed, SoilTemp_C_calib$APSIM, na.rm=T)*1.1,
+#            y=max(SoilTemp_C_calib$Observed, SoilTemp_C_calib$APSIM, na.rm=T)*0.92,
+#            hjust=0, family="serif", color="gray31",
+#            label=bquote(R^2 ~"=" ~.(Tfit_calib_r2))) +
+#   annotate("text", # RMSE
+#            x=min(SoilTemp_C_calib$Observed, SoilTemp_C_calib$APSIM, na.rm=T)*1.1,
+#            y=max(SoilTemp_C_calib$Observed, SoilTemp_C_calib$APSIM, na.rm=T)*0.82,
+#            hjust=0, family="serif", color="gray31",
+#            label=bquote("RMSE =" ~.(T_calib_rmse))) +
+#   ggtitle(bquote(.(site_name)~"Soil temperature with"~.(soil_temp_bias)~""*degree*"C correction"),
+#                  paste0("Scenario: ",scenario_descriptor)) +
+#   theme_classic(base_family = "serif", base_size = 15) +
+#   theme(panel.background = element_blank(),
+#         axis.ticks.x = element_blank(),
+#         axis.line = element_line())
+# 
+# gT_121_calib
 
 ##
 Mfit <- lm(APSIM ~ Observed, data = SoilMoist_VSM)
@@ -545,44 +674,45 @@ gM_121 <- SoilMoist_VSM %>%
 
 gM_121
 
-## soil moisture with bias correction
-Mfit_calib <- lm(APSIM ~ Observed, data = SoilMoist_VSM_calib)
-Mfit_calib_coef <- coef(Mfit_calib)
-Mfit_calib_r2 <- round(summary(Mfit_calib)$r.squared,2)
-
-M_calib_rmse_error <- SoilMoist_VSM_calib$Observed-SoilMoist_VSM_calib$APSIM
-M_calib_rmse <- round(sqrt(mean(M_calib_rmse_error^2,na.rm=TRUE)),2)
-
-gM_121_calib <- SoilMoist_VSM_calib %>%
-  ggplot(aes(x=Observed, y=APSIM, 
-             xmin=min(Observed, APSIM, na.rm=T), xmax=max(Observed, APSIM, na.rm=T), 
-             ymin=min(Observed, APSIM, na.rm=T), ymax=max(Observed, APSIM, na.rm=T))) +
-  geom_point() +
-  geom_abline() +
-  geom_abline(intercept=Mfit_calib_coef[1], slope=Mfit_calib_coef[2], color="blue") +
-  annotate("text", # line equation
-           x=min(SoilMoist_VSM_calib$Observed, SoilMoist_VSM_calib$APSIM, na.rm=T)*1.1,
-           y=max(SoilMoist_VSM_calib$Observed, SoilMoist_VSM_calib$APSIM, na.rm=T)*1,
-           hjust=0, family="serif", color="gray31",
-           label=bquote("y =" ~.(round(Mfit_calib_coef[2],4))~"x" ~+ ~.(round(Mfit_calib_coef[1],4)))) +
-  annotate("text", # R^2
-           x=min(SoilMoist_VSM_calib$Observed, SoilMoist_VSM_calib$APSIM, na.rm=T)*1.1,
-           y=max(SoilMoist_VSM_calib$Observed, SoilMoist_VSM_calib$APSIM, na.rm=T)*0.95,
-           hjust=0, family="serif", color="gray31",
-           label=bquote(R^2 ~"=" ~.(Mfit_calib_r2))) +
-  annotate("text", # RMSE
-           x=min(SoilMoist_VSM_calib$Observed, SoilMoist_VSM_calib$APSIM, na.rm=T)*1.1,
-           y=max(SoilMoist_VSM_calib$Observed, SoilMoist_VSM_calib$APSIM, na.rm=T)*0.89,
-           hjust=0, family="serif", color="gray31",
-           label=bquote("RMSE =" ~.(M_calib_rmse))) +
-  ggtitle(paste0(site_name, " Volumetric soil moisture with ",soil_moist_bias,"% correction"),
-          paste0("Scenario: ",scenario_descriptor)) +
-  theme_classic(base_family = "serif", base_size = 15) +
-  theme(panel.background = element_blank(),
-        axis.ticks.x = element_blank(),
-        axis.line = element_line())
-
-gM_121_calib
+## Not using APSIM for RothC or Millennial, so no longer needed
+# ## soil moisture with bias correction
+# Mfit_calib <- lm(APSIM ~ Observed, data = SoilMoist_VSM_calib)
+# Mfit_calib_coef <- coef(Mfit_calib)
+# Mfit_calib_r2 <- round(summary(Mfit_calib)$r.squared,2)
+# 
+# M_calib_rmse_error <- SoilMoist_VSM_calib$Observed-SoilMoist_VSM_calib$APSIM
+# M_calib_rmse <- round(sqrt(mean(M_calib_rmse_error^2,na.rm=TRUE)),2)
+# 
+# gM_121_calib <- SoilMoist_VSM_calib %>%
+#   ggplot(aes(x=Observed, y=APSIM, 
+#              xmin=min(Observed, APSIM, na.rm=T), xmax=max(Observed, APSIM, na.rm=T), 
+#              ymin=min(Observed, APSIM, na.rm=T), ymax=max(Observed, APSIM, na.rm=T))) +
+#   geom_point() +
+#   geom_abline() +
+#   geom_abline(intercept=Mfit_calib_coef[1], slope=Mfit_calib_coef[2], color="blue") +
+#   annotate("text", # line equation
+#            x=min(SoilMoist_VSM_calib$Observed, SoilMoist_VSM_calib$APSIM, na.rm=T)*1.1,
+#            y=max(SoilMoist_VSM_calib$Observed, SoilMoist_VSM_calib$APSIM, na.rm=T)*1,
+#            hjust=0, family="serif", color="gray31",
+#            label=bquote("y =" ~.(round(Mfit_calib_coef[2],4))~"x" ~+ ~.(round(Mfit_calib_coef[1],4)))) +
+#   annotate("text", # R^2
+#            x=min(SoilMoist_VSM_calib$Observed, SoilMoist_VSM_calib$APSIM, na.rm=T)*1.1,
+#            y=max(SoilMoist_VSM_calib$Observed, SoilMoist_VSM_calib$APSIM, na.rm=T)*0.95,
+#            hjust=0, family="serif", color="gray31",
+#            label=bquote(R^2 ~"=" ~.(Mfit_calib_r2))) +
+#   annotate("text", # RMSE
+#            x=min(SoilMoist_VSM_calib$Observed, SoilMoist_VSM_calib$APSIM, na.rm=T)*1.1,
+#            y=max(SoilMoist_VSM_calib$Observed, SoilMoist_VSM_calib$APSIM, na.rm=T)*0.89,
+#            hjust=0, family="serif", color="gray31",
+#            label=bquote("RMSE =" ~.(M_calib_rmse))) +
+#   ggtitle(paste0(site_name, " Volumetric soil moisture with ",soil_moist_bias,"% correction"),
+#           paste0("Scenario: ",scenario_descriptor)) +
+#   theme_classic(base_family = "serif", base_size = 15) +
+#   theme(panel.background = element_blank(),
+#         axis.ticks.x = element_blank(),
+#         axis.line = element_line())
+# 
+# gM_121_calib
 
 ##
 Nfit <- lm(APSIM ~ Observed, data = N2O_ghaday)
@@ -592,26 +722,30 @@ Nfit_r2 <- round(summary(Nfit)$r.squared,2)
 N_rmse_error <- N2O_ghaday$Observed-N2O_ghaday$APSIM
 N_rmse <- round(sqrt(mean(N_rmse_error^2,na.rm=TRUE)),2)
 
-gNG_121 <- N2O_ghaday[N2O_ghaday$Observed!=0,] %>%
+gNG_121 <- N2O_ghaday[!is.na(N2O_ghaday$Observed),] %>%
   ggplot(aes(x=Observed, y=APSIM,
              xmin=min(Observed, APSIM, na.rm=T), xmax=max(Observed, APSIM, na.rm=T),
              ymin=min(Observed, APSIM, na.rm=T), ymax=max(Observed, APSIM, na.rm=T))) +
+  xlim(min(N2O_ghaday[!is.na(N2O_ghaday$Observed),"Observed"], N2O_ghaday[!is.na(N2O_ghaday$Observed),"APSIM"], na.rm=T), 
+       max(N2O_ghaday[!is.na(N2O_ghaday$Observed),"Observed"], N2O_ghaday[!is.na(N2O_ghaday$Observed),"APSIM"], na.rm=T)) +
+  ylim(min(N2O_ghaday[!is.na(N2O_ghaday$Observed),"Observed"], N2O_ghaday[!is.na(N2O_ghaday$Observed),"APSIM"], na.rm=T), 
+       max(N2O_ghaday[!is.na(N2O_ghaday$Observed),"Observed"], N2O_ghaday[!is.na(N2O_ghaday$Observed),"APSIM"], na.rm=T)) +
   geom_point() +
   geom_abline() +
   geom_abline(intercept=Nfit_coef[1], slope=Nfit_coef[2], color="blue") +
   annotate("text", # line equation
-           x=min(N2O_ghaday$Observed, N2O_ghaday$APSIM, na.rm=T)*1.1,
-           y=max(N2O_ghaday$Observed, N2O_ghaday$APSIM, na.rm=T)*1,
+           x=abs(min(N2O_ghaday[!is.na(N2O_ghaday$Observed),"Observed"], N2O_ghaday[!is.na(N2O_ghaday$Observed),"APSIM"], na.rm=T)*1.1),
+           y=max(N2O_ghaday[!is.na(N2O_ghaday$Observed),"Observed"], N2O_ghaday[!is.na(N2O_ghaday$Observed),"APSIM"], na.rm=T)*1,
            hjust=0, family="serif", color="gray31",
            label=bquote("y =" ~.(round(Nfit_coef[2],4))~"x" ~+ ~.(round(Nfit_coef[1],4)))) +
   annotate("text", # R^2
-           x=min(N2O_ghaday$Observed, N2O_ghaday$APSIM, na.rm=T)*1.1,
-           y=max(N2O_ghaday$Observed, N2O_ghaday$APSIM, na.rm=T)*0.95,
+           x=abs(min(N2O_ghaday[!is.na(N2O_ghaday$Observed),"Observed"], N2O_ghaday[!is.na(N2O_ghaday$Observed),"APSIM"], na.rm=T)*1.1),
+           y=max(N2O_ghaday[!is.na(N2O_ghaday$Observed),"Observed"], N2O_ghaday[!is.na(N2O_ghaday$Observed),"APSIM"], na.rm=T)*0.95,
            hjust=0, family="serif", color="gray31",
            label=bquote(R^2 ~"=" ~.(Nfit_r2))) +
   annotate("text", # RMSE
-           x=min(N2O_ghaday$Observed, N2O_ghaday$APSIM, na.rm=T)*1.1,
-           y=max(N2O_ghaday$Observed, N2O_ghaday$APSIM, na.rm=T)*0.89,
+           x=abs(min(N2O_ghaday[!is.na(N2O_ghaday$Observed),"Observed"], N2O_ghaday[!is.na(N2O_ghaday$Observed),"APSIM"], na.rm=T)*1.1),
+           y=max(N2O_ghaday[!is.na(N2O_ghaday$Observed),"Observed"], N2O_ghaday[!is.na(N2O_ghaday$Observed),"APSIM"], na.rm=T)*0.89,
            hjust=0, family="serif", color="gray31",
            label=bquote("RMSE =" ~.(N_rmse))) +
   ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions (g ha" ^"-1"*" day"^"-1"*")"),
@@ -623,62 +757,51 @@ gNG_121 <- N2O_ghaday[N2O_ghaday$Observed!=0,] %>%
 
 gNG_121
 
-ggsave(filename=paste0(results_path,"calib_Maize_yield_comparison_1to1_",scenario_name,"_APSIM.jpg"),plot=gMY_121)
-ggsave(filename=paste0(results_path,"calib_Soybean_yield_comparison_1to1_",scenario_name,"_APSIM.jpg"),plot=gSY_121)
-ggsave(filename=paste0(results_path,"calib_Wheat_yield_comparison_1to1_",scenario_name,"_APSIM.jpg"),plot=gWY_121)
-#ggsave(filename=paste0(results_path,"calib_SOC_comparison_1to1_",scenario_name,"_APSIM.jpg"),plot=gC_121)
-ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_1to1_",scenario_name,"_APSIM.jpg"),plot=gT_121)
-ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_1to1_calib_",scenario_name,"_APSIM.jpg"),plot=gT_121_calib)
-ggsave(filename=paste0(results_path,"calib_Soil_Moist_comparison_1to1_",scenario_name,"_APSIM.jpg"),plot=gM_121)
-ggsave(filename=paste0(results_path,"calib_Soil_Moist_comparison_1to1_calib_",scenario_name,"_APSIM.jpg"),plot=gM_121_calib)
-ggsave(filename=paste0(results_path,"calib_N2O_comparison_1to1_",scenario_name,"_APSIM.jpg"),plot=gNG_121)
+ggsave(filename=paste0(results_path,"calib_Maize_yield_comparison_1to1_",scenario_name,"_APSIM.jpg"),
+       plot=gMY_121, width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Soybean_yield_comparison_1to1_",scenario_name,"_APSIM.jpg"),
+       plot=gSY_121, width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Wheat_yield_comparison_1to1_",scenario_name,"_APSIM.jpg"),
+       plot=gWY_121, width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_SOC_comparison_1to1_",scenario_name,"_APSIM.jpg"),
+       plot=gC_121, width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_1to1_",scenario_name,"_APSIM.jpg"),
+       plot=gT_121, width=6, height=6, dpi=300)
+#ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_1to1_calib_",scenario_name,"_APSIM.jpg"),plot=gT_121_calib)
+ggsave(filename=paste0(results_path,"calib_Soil_Moist_comparison_1to1_",scenario_name,"_APSIM.jpg"),
+       plot=gM_121, width=6, height=6, dpi=300)
+#ggsave(filename=paste0(results_path,"calib_Soil_Moist_comparison_1to1_calib_",scenario_name,"_APSIM.jpg"),plot=gM_121_calib)
+ggsave(filename=paste0(results_path,"calib_N2O_comparison_1to1_",scenario_name,"_APSIM.jpg"),
+       plot=gNG_121, width=6, height=6, dpi=300)
 
 
 #**********************************************************************
 
-# add this run's results to a log file
-calib_log_tab <- cbind(as.character(Sys.time()),
-                       model_name,clim_scenario_num,mgmt_scenario_num, scenario_name,
+# Log results -------------------------------------------------------------
+
+
+# add this run's results to model log file and file collecting all final
+# model runs
+calib_log_tab <- cbind(as.character(Sys.time()),model_name,
+                       clim_scenario_num,mgmt_scenario_num, scenario_name,
+                       scenario_abbrev,
                        MYfit_coef[2], MYfit_coef[1], MYfit_r2, MY_rmse,
+                       Maize_obsmod_diff_Mgha,
                        SYfit_coef[2], SYfit_coef[1], SYfit_r2, SY_rmse,
+                       Soybean_obsmod_diff_Mgha,
                        WYfit_coef[2], WYfit_coef[1], WYfit_r2, WY_rmse,
+                       Wheat_obsmod_diff_Mgha,
                        Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
+                       SOC_obsmod_diff_Mgha,
                        Tfit_coef[2], Tfit_coef[1], Tfit_r2, T_rmse,
                        Mfit_coef[2], Mfit_coef[1], Mfit_r2, M_rmse,
                        Nfit_coef[2], Nfit_coef[1], Nfit_r2, N_rmse,
-                       NA, NA, NA, NA)
-write.table(calib_log_tab,file=paste0(results_path,"Calibration_log_APSIM.csv"),
-            append=TRUE,row.names=FALSE,col.names=FALSE,sep=",")
-
-# make separate file with column headers (empty table with NA row)
-dummy<-data.frame(matrix(ncol=37))
-colnames(dummy) <- c("Date_time",
-                     "Model","Climate_Scenario","Mgmt_Scenario","Scenario_Name",
-                     "Maize_slope","Maize_yint","Maize_R2","Maize_RMSE",
-                     "Soy_slope","Soy_yint","Soy_R2","Soy_RMSE",
-                     "Wheat_slope","Wheat_yint","Wheat_R2","Wheat_RMSE",
-                     "SOC_slope","SOC_yint","SOC_R2","SOC_RMSE",
-                     "Temp_slope","Temp_yint","Temp_R2","Temp_RMSE",
-                     "Moist_slope","Moist_yint","Moist_R2","Moist_RMSE",
-                     "N2O_slope","N2O_yint","N2O_R2","N2O_RMSE",
-                     "CH4_slope","CH4_yint","CH4_R2","CH4_RMSE")
-write.table(dummy,file=paste0(results_path,"Calibration_log_columns.csv"),
-            append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
+                       N2O_obsmod_diff_gha,
+                       NA, NA, NA, NA,
+                       NA)
 
 
-# add/replace this run's results to a file collecting all final models/runs
-calib_summary_tab <- cbind(as.character(Sys.time()),
-                           model_name,clim_scenario_num,mgmt_scenario_num, scenario_name,
-                           MYfit_coef[2], MYfit_coef[1], MYfit_r2, MY_rmse,
-                           SYfit_coef[2], SYfit_coef[1], SYfit_r2, SY_rmse,
-                           WYfit_coef[2], WYfit_coef[1], WYfit_r2, WY_rmse,
-                           Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
-                           Tfit_coef[2], Tfit_coef[1], Tfit_r2, T_rmse,
-                           Mfit_coef[2], Mfit_coef[1], Mfit_r2, M_rmse,
-                           Nfit_coef[2], Nfit_coef[1], Nfit_r2, N_rmse,
-                           NA, NA, NA, NA)
-## call function to edit the summary output file
 source("p_Edit_calib_file.R")
-p_Edit_calib_file(calib_summary_tab,model_name,scenario_name)
+p_Edit_calib_file(calib_log_tab,model_name,scenario_name)
 
 }) # end suppressMessages

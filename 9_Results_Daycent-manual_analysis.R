@@ -72,42 +72,42 @@ lis_output_1_3 <- read.table(paste0(daycent_path,paste0("sched_fut_1_3.lis")),
 
 DayCI_gm2yr_1_1 <- lis_output_1_1[!((lis_output_1_1$cinput == 0 & 
                                (lis_output_1_1$time == experiment_start_year | lis_output_1_1$time == experiment_end_year+1)) |
-                              lis_output_1_1$time == 2100),c("time","clitad.2.")] %>%  
+                              lis_output_1_1$time == end_fut_period_year),c("time","clitad.2.")] %>%  
   mutate(year=floor(time),
          base=`clitad.2.`
   )
 
 DayCI_gm2yr_1_2 <- lis_output_1_2[!((lis_output_1_2$cinput == 0 & 
                                        (lis_output_1_2$time == experiment_start_year | lis_output_1_2$time == experiment_end_year+1)) |
-                                      lis_output_1_2$time == 2100),c("time","clitad.2.")] %>%  
+                                      lis_output_1_2$time == end_fut_period_year),c("time","clitad.2.")] %>%  
   mutate(year=floor(time),
          base=`clitad.2.`
   )
 
 DayCI_gm2yr_1_3 <- lis_output_1_3[!((lis_output_1_3$cinput == 0 & 
                                        (lis_output_1_3$time == experiment_start_year | lis_output_1_3$time == experiment_end_year+1)) |
-                                      lis_output_1_3$time == 2100),c("time","clitad.2.")] %>%  
+                                      lis_output_1_3$time == end_fut_period_year),c("time","clitad.2.")] %>%  
   mutate(year=floor(time),
          base=`clitad.2.`
   )
   
 DayNI_gm2yr_1_1 <- lis_output_1_1[!((lis_output_1_1$cinput == 0 & 
                                (lis_output_1_1$time == experiment_start_year | lis_output_1_1$time == experiment_end_year+1)) |
-                              lis_output_1_1$time == 2100),c("time","elitad.2.1.")] %>%  
+                              lis_output_1_1$time == end_fut_period_year),c("time","elitad.2.1.")] %>%  
   mutate(year=floor(time),
          base=`elitad.2.1.`
   )
 
 DayNI_gm2yr_1_2 <- lis_output_1_2[!((lis_output_1_2$cinput == 0 & 
                                        (lis_output_1_2$time == experiment_start_year | lis_output_1_2$time == experiment_end_year+1)) |
-                                      lis_output_1_2$time == 2100),c("time","elitad.2.1.")] %>%  
+                                      lis_output_1_2$time == end_fut_period_year),c("time","elitad.2.1.")] %>%  
   mutate(year=floor(time),
          base=`elitad.2.1.`
   )
 
 DayNI_gm2yr_1_3 <- lis_output_1_3[!((lis_output_1_3$cinput == 0 & 
                                        (lis_output_1_3$time == experiment_start_year | lis_output_1_3$time == experiment_end_year+1)) |
-                                      lis_output_1_3$time == 2100),c("time","elitad.2.1.")] %>%  
+                                      lis_output_1_3$time == end_fut_period_year),c("time","elitad.2.1.")] %>%  
   mutate(year=floor(time),
          base=`elitad.2.1.`
   )
@@ -152,5 +152,7 @@ gNI <- DayNI_gm2yr_1_1[DayNI_gm2yr_1_1$year <= experiment_end_year,] %>%
 
 gNI
 
-ggsave(filename=paste0(results_path,"C_input_",scenario_name,"_Daycent.jpg"),plot=gCI)
-ggsave(filename=paste0(results_path,"N_input_",scenario_name,"_Daycent.jpg"),plot=gNI)
+ggsave(filename=paste0(results_path,"C_input_",scenario_name,"_Daycent.jpg"),plot=gCI,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"N_input_",scenario_name,"_Daycent.jpg"),plot=gNI,
+       width=9, height=6, dpi=300)

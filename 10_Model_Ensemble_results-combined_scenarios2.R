@@ -31,10 +31,12 @@ library(ggplot2)
 source("f_model_coef.R")
 
 #*************************************************************
-# Import summarized data
+
+#  Import summarized data -------------------------------------------------
+
 
 # global warming potential
-## calculated by mean of SOC, N2O, CH4 among all models by 2100,
+## calculated by mean of SOC, N2O, CH4 among all models by 2100/2050/etc,
 ## then CO2 equivalent in 100-yr timeframe.
 ## then calculate emissions - sequestration: N2O + CH4 - SOC
 ## CH4 is usually negative, so will offset emissions
@@ -77,7 +79,7 @@ summary_output <- summary_fillin[,-which(names(summary_fillin) %in%
                                            c("model_mean_N2O_kgha","model_mean_CH4_kgha"))] %>%
   mutate(N2O_Mgha=Total_N2O_kgha/1000,
          CH4_Mgha=Total_CH4_kgha/1000,
-         CO2e_SOC=-SOC_Diff_Mgha/0.2727, # convert SOC to CO2e
+         CO2e_SOC=-SOC_Diff_Mgha/0.2727, # convert SOC to CO2e, make negative 
          CO2e_N2O=N2O_Mgha*298, # convert N2O to CO2e
          CO2e_CH4=CH4_Mgha*28 # convert CH4 to CO2e
   )
@@ -157,7 +159,7 @@ annual_results <- left_join(annual_results,
                             by="scenario_name")
 
 # mean annual results, by scenario
-mean_annual_results <- annual_results[annual_results<2100,] %>%
+mean_annual_results <- annual_results[annual_results<end_fut_period_year,] %>%
   group_by(year,scenario_name,climate_scenario_num,mgmt_scenario_grp_num,
            mgmt_scenario_opt_num,scenario_abbrev) %>%
   summarize(MaizeYld_Mgha=round(mean(MaizeYld_Mgha,na.rm=T),3),
@@ -205,7 +207,7 @@ daily_results <- left_join(daily_results,
                            by="scenario_name")
 
 # mean daily results, by scenario
-mean_daily_results <- daily_results[daily_results$year<2100,] %>%
+mean_daily_results <- daily_results[daily_results$year<end_fut_period_year,] %>%
   group_by(year,date,dayofyear,scenario_name,climate_scenario_num,
            mgmt_scenario_grp_num,mgmt_scenario_opt_num,scenario_abbrev) %>%
   summarize(N2O_emit_gha=round(mean(N2O_emit_gha,na.rm=T),5),
@@ -221,10 +223,10 @@ write.csv(mean_daily_results, file=paste0(results_path,"mean_daily_results.csv")
 
 #*************************************************************
 
-# Combine scenarios with multiple options - one set of graphs
-# per climate scenario
+# Combine scenarios with multiple options ---------------------------------
+#one set of graphs per climate scenario
 
-for(clim_num in 1:5) {
+for(clim_num in clim_nums) {
   climate_desc <-   if_else(clim_num=="1","Baseline",
                     if_else(clim_num=="2","GFDL_ESM4 Low",
                     if_else(clim_num=="3","GFDL_ESM4 High",
@@ -322,9 +324,9 @@ for(clim_num in 1:5) {
   gAllMYfut
 
   ggsave(filename=paste0(results_path,"scenario_comparison_mean_Maize_exp_",clim_num,".jpg"),
-         plot=gAllMYexp)
+         plot=gAllMYexp, width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"scenario_comparison_mean_Maize_fut_",clim_num,".jpg"),
-         plot=gAllMYfut)
+         plot=gAllMYfut, width=9, height=6, dpi=300)
 
 
   #### Soybean
@@ -410,8 +412,10 @@ for(clim_num in 1:5) {
 
   gAllSYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Soy_exp_",clim_num,".jpg"),plot=gAllSYexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Soy_fut_",clim_num,".jpg"),plot=gAllSYfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Soy_exp_",clim_num,".jpg"),
+         plot=gAllSYexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Soy_fut_",clim_num,".jpg"),
+         plot=gAllSYfut, width=9, height=6, dpi=300)
 
 
   ####Wheat
@@ -497,8 +501,10 @@ for(clim_num in 1:5) {
 
   gAllWYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Wheat_exp_",clim_num,".jpg"),plot=gAllWYexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Wheat_fut_",clim_num,".jpg"),plot=gAllWYfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Wheat_exp_",clim_num,".jpg"),
+         plot=gAllWYexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Wheat_fut_",clim_num,".jpg"),
+         plot=gAllWYfut, width=9, height=6, dpi=300)
 
 
   ## SOC
@@ -589,13 +595,16 @@ for(clim_num in 1:5) {
 
   gAllCfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_SOC_exp_",clim_num,".jpg"),plot=gAllCexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_SOC_fut_",clim_num,".jpg"),plot=gAllCfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_SOC_exp_",clim_num,".jpg"),
+         plot=gAllCexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_SOC_fut_",clim_num,".jpg"),
+         plot=gAllCfut, width=9, height=6, dpi=300)
 
 
   #*************************************************************
 
-  ### Scen grp 4
+# Scenario group 4 --------------------------------------------------------
+
 
   #### Maize yield
 
@@ -674,8 +683,10 @@ for(clim_num in 1:5) {
 
   gMYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_exp_grp_4_",clim_num,".jpg"),plot=gMYexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_fut_grp_4_",clim_num,".jpg"),plot=gMYfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_exp_grp_4_",clim_num,".jpg"),
+         plot=gMYexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_fut_grp_4_",clim_num,".jpg"),
+         plot=gMYfut, width=9, height=6, dpi=300)
 
 
 
@@ -757,8 +768,10 @@ for(clim_num in 1:5) {
 
   gSYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_exp_grp_4_",clim_num,".jpg"),plot=gSYexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_fut_grp_4_",clim_num,".jpg"),plot=gSYfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_exp_grp_4_",clim_num,".jpg"),
+         plot=gSYexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_fut_grp_4_",clim_num,".jpg"),
+         plot=gSYfut, width=9, height=6, dpi=300)
 
 
   #### Wheat yield
@@ -838,8 +851,10 @@ for(clim_num in 1:5) {
 
   gWYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_exp_grp_4_",clim_num,".jpg"),plot=gWYexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_fut_grp_4_",clim_num,".jpg"),plot=gWYfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_exp_grp_4_",clim_num,".jpg"),
+         plot=gWYexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_fut_grp_4_",clim_num,".jpg"),
+         plot=gWYfut, width=9, height=6, dpi=300)
 
 
   #### SOC
@@ -943,13 +958,16 @@ for(clim_num in 1:5) {
 
   gCfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_SOC_exp_grp_4_",clim_num,".jpg"),plot=gCexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_SOC_fut_grp_4_",clim_num,".jpg"),plot=gCfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_SOC_exp_grp_4_",clim_num,".jpg"),
+         plot=gCexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_SOC_fut_grp_4_",clim_num,".jpg"),
+         plot=gCfut, width=9, height=6, dpi=300)
 
 
   #*************************************************************
 
-  ### Scen grp 5
+# Scenario group 5 --------------------------------------------------------
+
 
   #### Maize yield
 
@@ -1024,8 +1042,10 @@ for(clim_num in 1:5) {
 
   gMYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_exp_grp_5_",clim_num,".jpg"),plot=gMYexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_fut_grp_5_",clim_num,".jpg"),plot=gMYfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_exp_grp_5_",clim_num,".jpg"),
+         plot=gMYexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_fut_grp_5_",clim_num,".jpg"),
+         plot=gMYfut, width=9, height=6, dpi=300)
 
 
 
@@ -1102,8 +1122,10 @@ for(clim_num in 1:5) {
 
   gSYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_exp_grp_5_",clim_num,".jpg"),plot=gSYexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_fut_grp_5_",clim_num,".jpg"),plot=gSYfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_exp_grp_5_",clim_num,".jpg"),
+         plot=gSYexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_fut_grp_5_",clim_num,".jpg"),
+         plot=gSYfut, width=9, height=6, dpi=300)
 
 
   #### Wheat yield
@@ -1179,8 +1201,10 @@ for(clim_num in 1:5) {
 
   gWYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_exp_grp_5_",clim_num,".jpg"),plot=gWYexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_fut_grp_5_",clim_num,".jpg"),plot=gWYfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_exp_grp_5_",clim_num,".jpg"),
+         plot=gWYexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_fut_grp_5_",clim_num,".jpg"),
+         plot=gWYfut, width=9, height=6, dpi=300)
 
 
   #### SOC
@@ -1236,13 +1260,16 @@ for(clim_num in 1:5) {
 
   gCfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_SOC_exp_grp_5_",clim_num,".jpg"),plot=gCexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_SOC_fut_grp_5_",clim_num,".jpg"),plot=gCfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_SOC_exp_grp_5_",clim_num,".jpg"),
+         plot=gCexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_SOC_fut_grp_5_",clim_num,".jpg"),
+         plot=gCfut, width=9, height=6, dpi=300)
 
 
   #*************************************************************
 
-  ### Scen grp 6
+# Scenario group 6 --------------------------------------------------------
+
 
   #### Maize yield
   MYfit_APSIM_1_61 <- coef(lm(MaizeYld_Mgha ~ year,
@@ -1335,8 +1362,10 @@ for(clim_num in 1:5) {
 
   gMYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_exp_grp_6_",clim_num,".jpg"),plot=gMYexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_fut_grp_6_",clim_num,".jpg"),plot=gMYfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_exp_grp_6_",clim_num,".jpg"),
+         plot=gMYexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_fut_grp_6_",clim_num,".jpg"),
+         plot=gMYfut, width=9, height=6, dpi=300)
 
 
 
@@ -1405,8 +1434,10 @@ for(clim_num in 1:5) {
 
   gSYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_exp_grp_6_",clim_num,".jpg"),plot=gSYexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_fut_grp_6_",clim_num,".jpg"),plot=gSYfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_exp_grp_6_",clim_num,".jpg"),
+         plot=gSYexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_fut_grp_6_",clim_num,".jpg"),
+         plot=gSYfut, width=9, height=6, dpi=300)
 
 
   #### Wheat yield
@@ -1473,8 +1504,10 @@ for(clim_num in 1:5) {
 
   gWYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_exp_grp_6_",clim_num,".jpg"),plot=gWYexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_fut_grp_6_",clim_num,".jpg"),plot=gWYfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_exp_grp_6_",clim_num,".jpg"),
+         plot=gWYexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_fut_grp_6_",clim_num,".jpg"),
+         plot=gWYfut, width=9, height=6, dpi=300)
 
 
   #### SOC
@@ -1552,15 +1585,17 @@ for(clim_num in 1:5) {
 
   gCfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_SOC_exp_grp_6_",clim_num,".jpg"),plot=gCexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_SOC_fut_grp_6_",clim_num,".jpg"),plot=gCfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_SOC_exp_grp_6_",clim_num,".jpg"),
+         plot=gCexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_SOC_fut_grp_6_",clim_num,".jpg"),
+         plot=gCfut, width=9, height=6, dpi=300)
 
 
   #*************************************************************
 
+# Daily graphs-combined scenarios -----------------------------------------
 
-  ## Daily graphs-combined scenarios
-
+  
   ### Mean of all scenarios
 
   gAllNexp <- mean_daily_results[mean_daily_results$year>=experiment_start_year &
@@ -1569,6 +1604,7 @@ for(clim_num in 1:5) {
     geom_line(size=1) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
+    ylim(0,100) +
     ggtitle(paste(site_name," Future N2O Cumulative Emissions: All Scenarios, Model Mean"),
             paste("Climate Scenario:",climate_desc)) +
     geom_vline(xintercept=experiment_end_year,linetype="dashed",color="darkgrey") +
@@ -1587,6 +1623,7 @@ for(clim_num in 1:5) {
     geom_line(size=1) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
+    ylim(0,100) +
     ggtitle(paste(site_name," Future N2O Cumulative Emissions: All Scenarios, Model Mean"),
             paste("Climate Scenario:",climate_desc)) +
     # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
@@ -1598,8 +1635,10 @@ for(clim_num in 1:5) {
 
   gAllNfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_N2O_exp_",clim_num,".jpg"),plot=gAllNexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_N2O_fut_",clim_num,".jpg"),plot=gAllNfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_N2O_exp_",clim_num,".jpg"),
+         plot=gAllNexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_N2O_fut_",clim_num,".jpg"),
+         plot=gAllNfut, width=9, height=6, dpi=300)
 
 
   gAllCHexp <- mean_daily_results[mean_daily_results$year>=experiment_start_year &
@@ -1609,6 +1648,7 @@ for(clim_num in 1:5) {
     geom_line(size=1) +
     xlab("Year") +
     ylab(expression('CH'[4]*' Emissions (kg ha ' ^-1*')')) +
+    ylim(-85,0) +
     ggtitle(paste(site_name," Future CH4 Cumulative Emissions: All Scenarios, Model Mean"),
             paste("Climate Scenario:",climate_desc)) +
     geom_vline(xintercept=experiment_end_year,linetype="dashed",color="darkgrey") +
@@ -1628,6 +1668,7 @@ for(clim_num in 1:5) {
     geom_line(size=1) +
     xlab("Year") +
     ylab(expression('CH'[4]*' Emissions (kg ha ' ^-1*')')) +
+    ylim(-85,0) +
     ggtitle(paste(site_name," Future CH4 Cumulative Emissions: All Scenarios, Model Mean"),
             paste("Climate Scenario:",climate_desc)) +
     # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
@@ -1639,13 +1680,15 @@ for(clim_num in 1:5) {
 
   gAllCHfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_CH4_exp_",clim_num,".jpg"),plot=gAllCHexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_CH4_fut_",clim_num,".jpg"),plot=gAllCHfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_CH4_exp_",clim_num,".jpg"),
+         plot=gAllCHexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_CH4_fut_",clim_num,".jpg"),
+         plot=gAllCHfut, width=9, height=6, dpi=300)
 
 
   #*************************************************************
 
-  ### Scen grp 4
+# Daily-scenario group 4 --------------------------------------------------
 
 
   # N2O
@@ -1658,6 +1701,7 @@ for(clim_num in 1:5) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
+    ylim(0,100) +
     ggtitle(paste(site_name," Cumulative N2O Emissions: Reducing Fertilizer Input"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM","Daycent"),
@@ -1678,6 +1722,7 @@ for(clim_num in 1:5) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
+    ylim(0,100) +
     ggtitle(paste(site_name," Cumulative N2O Emissions: Reducing Fertilizer Input"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM","Daycent"),
@@ -1689,8 +1734,10 @@ for(clim_num in 1:5) {
 
   gNfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_N2O_exp_grp_4_",clim_num,".jpg"),plot=gNexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_N2O_fut_grp_4_",clim_num,".jpg"),plot=gNfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_N2O_exp_grp_4_",clim_num,".jpg"),
+         plot=gNexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_N2O_fut_grp_4_",clim_num,".jpg"),
+         plot=gNfut, width=9, height=6, dpi=300)
 
 
   # CH4
@@ -1703,6 +1750,7 @@ for(clim_num in 1:5) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('CH'[4]*' Emissions (kg ha ' ^-1*')')) +
+    ylim(-85, 0) +
     ggtitle(paste(site_name," Cumulative Net CH4 Emissions: Reducing Fertilizer Input"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("Daycent"),
@@ -1723,6 +1771,7 @@ for(clim_num in 1:5) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('CH'[4]*' Emissions (kg ha ' ^-1*')')) +
+    ylim(-85,0) +
     ggtitle(paste(site_name," Cumulative Net CH4 Emissions: Reducing Fertilizer Input"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("Daycent"),
@@ -1734,14 +1783,16 @@ for(clim_num in 1:5) {
 
   gCHfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_CH4_exp_grp_4_",clim_num,".jpg"),plot=gCHexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_CH4_fut_grp_4_",clim_num,".jpg"),plot=gCHfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_CH4_exp_grp_4_",clim_num,".jpg"),
+         plot=gCHexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_CH4_fut_grp_4_",clim_num,".jpg"),
+         plot=gCHfut, width=9, height=6, dpi=300)
 
 
   #*************************************************************
 
+# Daily-scenario group 5 --------------------------------------------------
 
-  ### Scen grp 5
 
   # N2O
 
@@ -1753,6 +1804,7 @@ for(clim_num in 1:5) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
+    ylim(0,100) +
     ggtitle(paste(site_name," Cumulative N2O Emissions: Reducing Residue Removal"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM","Daycent"),
@@ -1773,6 +1825,7 @@ for(clim_num in 1:5) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
+    ylim(0,100) +
     ggtitle(paste(site_name," Cumulative N2O Emissions: Reducing Residue Removal"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM","Daycent"),
@@ -1784,8 +1837,10 @@ for(clim_num in 1:5) {
 
   gNfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_N2O_exp_grp_5_",clim_num,".jpg"),plot=gNexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_N2O_fut_grp_5_",clim_num,".jpg"),plot=gNfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_N2O_exp_grp_5_",clim_num,".jpg"),
+         plot=gNexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_N2O_fut_grp_5_",clim_num,".jpg"),
+         plot=gNfut, width=9, height=6, dpi=300)
 
 
   # CH4
@@ -1798,6 +1853,7 @@ for(clim_num in 1:5) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('CH'[4]*' Emissions (kg ha ' ^-1*')')) +
+    ylim(-85,0) +
     ggtitle(paste(site_name," Cumulative Net CH4 Emissions: Reducing Residue Removal"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("Daycent"),
@@ -1818,6 +1874,7 @@ for(clim_num in 1:5) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('CH'[4]*' Emissions (kg ha ' ^-1*')')) +
+    ylim(-85,0) +
     ggtitle(paste(site_name," Cumulative Net CH4 Emissions: Reducing Residue Removal"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("Daycent"),
@@ -1829,14 +1886,16 @@ for(clim_num in 1:5) {
 
   gCHfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_CH4_exp_grp_5_",clim_num,".jpg"),plot=gCHexp)
-  ggsave(filename=paste0(results_path,"scenario_comparison_CH4_fut_grp_5_",clim_num,".jpg"),plot=gCHfut)
+  ggsave(filename=paste0(results_path,"scenario_comparison_CH4_exp_grp_5_",clim_num,".jpg"),
+         plot=gCHexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_CH4_fut_grp_5_",clim_num,".jpg"),
+         plot=gCHfut, width=9, height=6, dpi=300)
 
 
   #*************************************************************
 
+# Daily-scenario group 6 --------------------------------------------------
 
-  ### Scen grp 6
 
   # N2O
 
@@ -1848,6 +1907,7 @@ for(clim_num in 1:5) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
+    ylim(0,100) +
     ggtitle(paste(site_name," Cumulative N2O Emissions: Biochar Addition"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM"),
@@ -1868,6 +1928,7 @@ for(clim_num in 1:5) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
+    ylim(0,100) +
     ggtitle(paste(site_name," Cumulative N2O Emissions: Biochar Addition"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM"),
@@ -1880,14 +1941,15 @@ for(clim_num in 1:5) {
   gNfut
 
   ggsave(filename=paste0(results_path,"scenario_comparison_N2O_exp_grp_6_clim_",clim_num,".jpg"),
-         plot=gNexp)
+         plot=gNexp, width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"scenario_comparison_N2O_fut_grp_6_clim_",clim_num,".jpg"),
-         plot=gNfut)
+         plot=gNfut, width=9, height=6, dpi=300)
 
 
   #*************************************************************
-  
-# GWP Bar charts
+
+# GWP bar charts ----------------------------------------------------------
+
 
 y_breaks <- seq(-50, 150, by = 10)
 #y_labels <- sprintf("%.1f", y_breaks)
@@ -1967,12 +2029,15 @@ gGWPmm
 #
 # gGWPmmeb
 
-ggsave(filename=paste0(results_path,"GWP_all_scenarios_",clim_num,".jpg"),plot=gGWP)
-ggsave(filename=paste0(results_path,"GWP_by_source_all_scenarios_",clim_num,".jpg"),plot=gGWPmm)
+ggsave(filename=paste0(results_path,"GWP_all_scenarios_",clim_num,".jpg"),
+       plot=gGWP, width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"GWP_by_source_all_scenarios_",clim_num,".jpg"),
+       plot=gGWPmm, width=9, height=6, dpi=300)
 
 #*************************************************************
 
-# Change over time charts
+# Change over time charts -------------------------------------------------
+
 
 ## Maize
 
@@ -2124,12 +2189,18 @@ gCH4chg <- scenario_gas_means[scenario_gas_means$Climate_Scenario==clim_num,] %>
 
 gCH4chg
 
-ggsave(filename=paste0(results_path,"change_in_maize_all_scenarios_",clim_num,".jpg"),plot=gMYchg)
-ggsave(filename=paste0(results_path,"change_in_soybean_all_scenarios_",clim_num,".jpg"),plot=gSYchg)
-ggsave(filename=paste0(results_path,"change_in_wheat_all_scenarios_",clim_num,".jpg"),plot=gWYchg)
-ggsave(filename=paste0(results_path,"change_in_soc_all_scenarios_",clim_num,".jpg"),plot=gSOCchg)
-ggsave(filename=paste0(results_path,"change_in_n2o_all_scenarios_",clim_num,".jpg"),plot=gN2Ochg)
-ggsave(filename=paste0(results_path,"change_in_ch4_all_scenarios_",clim_num,".jpg"),plot=gCH4chg)
+ggsave(filename=paste0(results_path,"change_in_maize_all_scenarios_",clim_num,".jpg"),
+       plot=gMYchg, width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"change_in_soybean_all_scenarios_",clim_num,".jpg"),
+       plot=gSYchg, width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"change_in_wheat_all_scenarios_",clim_num,".jpg"),
+       plot=gWYchg, width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"change_in_soc_all_scenarios_",clim_num,".jpg"),
+       plot=gSOCchg, width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"change_in_n2o_all_scenarios_",clim_num,".jpg"),
+       plot=gN2Ochg, width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"change_in_ch4_all_scenarios_",clim_num,".jpg"),
+       plot=gCH4chg, width=9, height=6, dpi=300)
 
 } # end for loop through climate scenarios
 

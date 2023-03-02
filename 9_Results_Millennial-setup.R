@@ -131,3 +131,14 @@ mbio_gm2 <- inner_join(mill_base_df[,c("year","date","MIC")],
                       ObsMB_all[ObsMB_all$trt==treatment,c("year","date","trt","mb_gm2")],
                       by=c("date","year"))
 colnames(mbio_gm2) <- c("year","date","Millennial","treatment","Observed")
+
+
+#**********************************************************************
+
+# calculate mean differences between observed and modeled results
+
+SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
+                                                 Cstock_Mgha$Millennial),"Observed"] -
+                              Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
+                                                   Cstock_Mgha$Millennial),"Millennial"])
+

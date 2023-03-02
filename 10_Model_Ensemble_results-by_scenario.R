@@ -251,6 +251,7 @@ gNG <- ens_N2O_cum_kgha_piv %>%
   geom_line(show.legend=TRUE) +
   xlab("Year") +
   ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
+  ylim(0,100) +
   ggtitle(paste(site_name,"N2O Emissions: ",scenario_descriptor)) +
   scale_color_manual(labels=c("APSIM","Daycent"),
                      values=cbPalette9[c(8,2)]) +
@@ -267,6 +268,7 @@ gMG <- ens_CH4_cum_kgha_piv %>%
   geom_line(show.legend=TRUE) +
   xlab("Year") +
   ylab(expression('CH'[4]*' Net Emissions (kg ha ' ^-1*')')) +
+  ylim(-85,0) +
   ggtitle(paste(site_name,expression('CH'[4]*' Emissions: '),scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent"),
                      values=cbPalette9[c(2)]) +
@@ -455,13 +457,19 @@ gMG
     
 }
 
-ggsave(filename=paste0(results_path,"Ensemble_Maize_comparison_",scenario_name,".jpg"),plot=gMY)
-ggsave(filename=paste0(results_path,"Ensemble_Soybean_comparison_",scenario_name,".jpg"),plot=gSY)
-ggsave(filename=paste0(results_path,"Ensemble_Wheat_comparison_",scenario_name,".jpg"),plot=gWY)
-ggsave(filename=paste0(results_path,"Ensemble_SOC_comparison_",scenario_name,".jpg"),plot=gC)
-ggsave(filename=paste0(results_path,"Ensemble_N2O_cum_comparison_",scenario_name,".jpg"),plot=gNG)
+ggsave(filename=paste0(results_path,"Ensemble_Maize_comparison_",scenario_name,".jpg"),
+       plot=gMY, width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"Ensemble_Soybean_comparison_",scenario_name,".jpg"),
+       plot=gSY, width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"Ensemble_Wheat_comparison_",scenario_name,".jpg"),
+       plot=gWY, width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"Ensemble_SOC_comparison_",scenario_name,".jpg"),
+       plot=gC, width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"Ensemble_N2O_cum_comparison_",scenario_name,".jpg"),
+       plot=gNG, width=9, height=6, dpi=300)
 if(mgmt_scenario_grp!=6) {
-ggsave(filename=paste0(results_path,"Ensemble_CH4_cum_comparison_",scenario_name,".jpg"),plot=gMG)
+ggsave(filename=paste0(results_path,"Ensemble_CH4_cum_comparison_",scenario_name,".jpg"),
+       plot=gMG, width=9, height=6, dpi=300)
 }
 
 }) # end suppressMessages
