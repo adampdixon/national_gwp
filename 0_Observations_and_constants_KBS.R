@@ -14,7 +14,7 @@
 
 suppressMessages({
 
-print("Starting 0_Observations_and_constants.R")
+print(paste0("Starting 0_Observations_and_constants_",site_name,".R"))
 
   
 library(readxl)
@@ -215,15 +215,17 @@ climate_scenario_descriptor <-
   
 scenario_descriptor_full <- paste0(scenario_descriptor, "; ",climate_scenario_descriptor)
 
+write.table(scenario_df,file=paste0(results_path,"Scenario_table.csv"),
+            append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
+
 site_id <- 0
 elevation_m = 288
 land_conversion_year <- 1850
 experiment_year_range <- experiment_start_year:experiment_end_year
-year_range_2100=experiment_start_year:2100
 experiment_start_date <- "1989-01-01"
 experiment_end_date <- "2021-12-31"
 end_exp_period_year <- 2021
-end_fut_period_year <- 2100
+year_range_2100=experiment_start_year:end_fut_period_year
 
 depth_m <- 0.25
 equil_C_input <- 305.00 #244.21 #210.84 # g C/m^2 annually
@@ -252,7 +254,7 @@ soil_temp_bias <- if_else(mgmt_scenario_num==1, 5.0,
                   if_else(mgmt_scenario_grp==5, 5.0,
                   if_else(mgmt_scenario_grp==6, 5.0,
                   0))))))
-soil_moist_bias <- if_else(mgmt_scenario_num==1, 2.0,
+soil_moist_bias <- if_else(mgmt_scenario_num==1, 4.0,
                    if_else(mgmt_scenario_num==2, 0,
                    if_else(mgmt_scenario_num==3, 0,
                    if_else(mgmt_scenario_grp==4, 2.0,
@@ -289,15 +291,15 @@ obs_plant_cn_filename <- "73-tissue+carbon+and+nitrogen+1667424583.csv"
 obs_biomass_filename <- "39-annual+crops+and+alfalfa+biomass+1667489393.csv"
 
 apsim_path <- paste0("APSIM/",site_name,"/") # for weather data - should replace with Daycent's
-apsim_db_filename <- paste0("scen_",scenario_name,".db")
-apsim_bc_filename <- if(mgmt_scenario_grp==6) {
-  if_else(mgmt_scenario_opt==1,paste0("BC19_",clim_scenario_num,".csv"),
-  if_else(mgmt_scenario_opt==2,paste0("BC38_",clim_scenario_num,".csv"),
-  if_else(mgmt_scenario_opt==3,paste0("BC57_",clim_scenario_num,".csv"),
-  if_else(mgmt_scenario_opt==4,paste0("BC76_",clim_scenario_num,".csv"),
-  if_else(mgmt_scenario_opt==5,paste0("BC96_",clim_scenario_num,".csv"),
-          "Error")))))
-}
+# apsim_db_filename <- paste0("scen_",scenario_name,".db")
+# apsim_bc_filename <- if(mgmt_scenario_grp==6) {
+#   if_else(mgmt_scenario_opt==1,paste0("BC19_",clim_scenario_num,".csv"),
+#   if_else(mgmt_scenario_opt==2,paste0("BC38_",clim_scenario_num,".csv"),
+#   if_else(mgmt_scenario_opt==3,paste0("BC57_",clim_scenario_num,".csv"),
+#   if_else(mgmt_scenario_opt==4,paste0("BC76_",clim_scenario_num,".csv"),
+#   if_else(mgmt_scenario_opt==5,paste0("BC96_",clim_scenario_num,".csv"),
+#           "Error")))))
+# }
 daycent_path <- paste0("Daycent/",site_name,"/")
 if(Sys.info()['sysname']=='Linux') {
   dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
@@ -610,12 +612,40 @@ Fert <- as.data.frame(read.csv(paste0(obs_path,obs_fert_filename)) %>%
 # Bring in weather data
 #######################
 
-# Obs_wth <- read.csv(paste0(apsim_path,"/basic_wth_",clim_scenario_num,".csv"),
-#                    skip=2) %>%
-#   mutate(meant=round((maxt+mint)/2,1),
-#          date=as.Date(day-1, origin=paste0(as.character(year),"-01-01"),),
-#          source="Air"
-#   )
+ObsWth <- read.csv(paste0(apsim_path,"/basic_wth_",clim_scenario_num,".csv"),
+                   skip=2) %>%
+  mutate(meant=round((maxt+mint)/2,1),
+         date=as.Date(day-1, origin=paste0(as.character(year),"-01-01"),),
+         source="Air"
+  )
+
+#**********************************************************************
+
+# write calibration header file ---------------------------------------
+
+# make separate file with column headers (empty table with NA row)
+dummy<-data.frame(matrix(ncol=44))
+log_col_headers <- c("Date_time","Model",
+                     "Climate_Scenario","Mgmt_Scenario","Scenario_Name",
+                     "Scenario_Abbr",
+                     "Maize_slope","Maize_yint","Maize_R2","Maize_RMSE",
+                     "Maize_diff",
+                     "Soy_slope","Soy_yint","Soy_R2","Soy_RMSE",
+                     "Soy_diff",
+                     "Wheat_slope","Wheat_yint","Wheat_R2","Wheat_RMSE",
+                     "Wheat_diff",
+                     "SOC_slope","SOC_yint","SOC_R2","SOC_RMSE",
+                     "SOC_diff",
+                     "Temp_slope","Temp_yint","Temp_R2","Temp_RMSE",
+                     "Moist_slope","Moist_yint","Moist_R2","Moist_RMSE",
+                     "N2O_slope","N2O_yint","N2O_R2","N2O_RMSE",
+                     "N2O_diff",
+                     "CH4_slope","CH4_yint","CH4_R2","CH4_RMSE",
+                     "CH4_diff")
+colnames(dummy) <- log_col_headers
+
+write.table(dummy,file=paste0(results_path,"Calibration_log_columns.csv"),
+            append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
 
 }) # end suppressMessages
 
