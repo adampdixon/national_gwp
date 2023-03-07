@@ -54,7 +54,7 @@ livec_output <- rbind(livec_output_base,livec_output_exp,livec_output_fut) %>%
 
 
 # collect plant/harvest dates
-all_years <- data.frame(year=land_conversion_year:2100)
+all_years <- data.frame(year=land_conversion_year:end_fut_period_year)
 
 ## assemble annual planting and harvest dates for crops - build list from schedule files
 planting_base <- data.frame(year=all_years[all_years$year >= land_conversion_year &
@@ -118,7 +118,7 @@ planting_wheat_fut <- data.frame(year=all_years[all_years$year > experiment_end_
          crop="Wheat")
 
 harvest_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
-                                            all_years$year <= 2100,"year"]) %>%
+                                            all_years$year <= end_fut_period_year,"year"]) %>%
   mutate(observation_type="Harvest",
          dayofyr=if_else((year %% 3) == 0,205-1, #wheat
                  if_else((year %% 3) == 1,291-1, #corn

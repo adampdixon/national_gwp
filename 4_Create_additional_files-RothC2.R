@@ -48,8 +48,8 @@ lpth <- paste0("RothC/",site_name,"/landman/")
   ### Equilibrium segment, to 1850
   cat(output_file,weather_eql,"2","0","0","0","0","5.2059","0","0","0","0","2",landman_eql_file,
       "2","1","2\n", file=scenario_path, sep="\n",append=FALSE)
-  ### "Short term" segments, annual through 2100
-  for(k in land_conversion_year:(2100-1)) { 
+  ### "Short term" segments, annual through end of future period
+  for(k in land_conversion_year:(end_fut_period_year-1)) { 
     if (k == land_conversion_year) # first short term segment uses same eql weather file, landman alternates even years corn, odd years wheat
       cat("1","2","1","2","2","1",paste(substr(as.character(k),2,4),"_",scenario_name,".dat",sep=""),"1850",
           "1","1","0","2\n", file=scenario_path, sep="\n", append=TRUE)
@@ -116,7 +116,7 @@ lpth <- paste0("RothC/",site_name,"/landman/")
     ## start experimental period
     ######################################
     
-    else if (k >= 2022 & k <= 2100-2) # future scenarios, new weather and landman files each year
+    else if (k >= 2022 & k <= end_fut_period_year-2) # future scenarios, new weather and landman files each year
       if((k %% 3) == 0) { # wheat
         cat("2","2",paste(clim_scenario_num,substr(as.character(k),2,4), sep=""),
             "1","1",paste(substr(as.character(k),2,4),"_",scenario_name,".dat",sep=""),
@@ -135,5 +135,5 @@ lpth <- paste0("RothC/",site_name,"/landman/")
           "1","1",paste(substr(as.character(k),2,4),"_",scenario_name,".dat",sep=""),
           "1","1","0","3", file=scenario_path, sep="\n", append=TRUE)
     }
-  } # end for land_conversion_year-2100
+  } # end for land_conversion_year -> end_fut_period_year
   

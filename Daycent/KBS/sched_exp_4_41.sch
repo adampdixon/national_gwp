@@ -502,7 +502,6 @@ C 			 Weather choice
 1 134 CROP C8
 1 134 PLTM
 1 170 FERT (13.8N)
-1 176 FERT (7.9N)
 1 295 HARV G75S
 -999 -999 X
 42	Block ## Experimental period

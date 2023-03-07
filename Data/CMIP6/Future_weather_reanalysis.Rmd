@@ -16,22 +16,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r libraries, message=FALSE, include=FALSE}
 library(readxl)
-# library(Hmisc)
-# library(dplyr)
-# #
 library(tidyverse)
-# library(broom)
-# library(gmodels)
-# library(ggrepel)
 library(ggplot2)
-# library(leaps)
-# library(readxl)
-# library(plotly)
-# library(accelerometry)
 library(magrittr)
 library(lubridate)
 library(dplyr)
-# library(plotrix)
 
 ```
 
@@ -68,14 +57,14 @@ cbPalette9 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
 ## Use Daycent weather for historical, over the experimental period
 #hist <- read.table(paste0("C:/Users/edmaas/Documents/Modeling/Daycent/",site_name,"/basic_exp.wth")) 
 hist_exp <- read.table(paste0("../../",daycent_path,"/basic_exp.wth"))
-colnames(hist_exp) <- c("day","month","year","dayofyear","h_tmin","h_tmax","h_rain_cm")
+colnames(hist_exp) <- c("day","month","year","dayofyear","h_tmax","h_tmin","h_rain_cm")
 hist_exp$date=make_date(hist_exp$year, hist_exp$month, hist_exp$day)
 
 # Future
 
 ## Use Daycent weather for historical, over the experimental period
 baseln <- read.table(paste0("../../",daycent_path,"/basic_1.wth"))
-colnames(baseln) <- c("day","month","year","dayofyear","bl_tmin","bl_tmax","bl_rain_cm")
+colnames(baseln) <- c("day","month","year","dayofyear","bl_tmax","bl_tmin","bl_rain_cm")
 baseln <- baseln[baseln$year<=end_fut_period_year,]
 baseln$date=make_date(baseln$year, baseln$month, baseln$day)
 
@@ -753,15 +742,15 @@ diff_ukesm_low <- hist_ys[2] - ukesm_low_ys[1]
 diff_ukesm_high <- hist_ys[2] - ukesm_high_ys[1]
 
 # need to adjust both _cm and _mm columns
-gfdl_low_reanal$rain_cm <- gfdl_low_raw$rain_cm + diff_gfdl_low
-gfdl_high_reanal$rain_cm <- gfdl_high_raw$rain_cm + diff_gfdl_high
-ukesm_low_reanal$rain_cm <- ukesm_low_raw$rain_cm + diff_ukesm_low
-ukesm_high_reanal$rain_cm <- ukesm_high_raw$rain_cm + diff_ukesm_high
+gfdl_low_reanal$rain_cm <- gfdl_low_raw$rain_cm + ifelse(diff_gfdl_low<0,0,diff_gfdl_low)
+gfdl_high_reanal$rain_cm <- gfdl_high_raw$rain_cm + ifelse(diff_gfdl_high<0,0,diff_gfdl_high)
+ukesm_low_reanal$rain_cm <- ukesm_low_raw$rain_cm + ifelse(diff_ukesm_low<0,0,diff_ukesm_low)
+ukesm_high_reanal$rain_cm <- ukesm_high_raw$rain_cm + ifelse(diff_ukesm_high<0,0,diff_ukesm_high)
 
-gfdl_low_reanal$rain_mm <- gfdl_low_raw$rain_mm + diff_gfdl_low
-gfdl_high_reanal$rain_mm <- gfdl_high_raw$rain_mm + diff_gfdl_high
-ukesm_low_reanal$rain_mm <- ukesm_low_raw$rain_mm + diff_ukesm_low
-ukesm_high_reanal$rain_mm <- ukesm_high_raw$rain_mm + diff_ukesm_high
+gfdl_low_reanal$rain_mm <- gfdl_low_raw$rain_mm + ifelse(diff_gfdl_low<0,0,diff_gfdl_low)
+gfdl_high_reanal$rain_mm <- gfdl_high_raw$rain_mm + ifelse(diff_gfdl_high<0,0,diff_gfdl_high)
+ukesm_low_reanal$rain_mm <- ukesm_low_raw$rain_mm + ifelse(diff_ukesm_low<0,0,diff_ukesm_low)
+ukesm_high_reanal$rain_mm <- ukesm_high_raw$rain_mm + ifelse(diff_ukesm_high<0,0,diff_ukesm_high)
 
 ```
 

@@ -4,7 +4,9 @@
 # Date: July 11, 2022
 # Output: It creates files in the appropriate folder for each model.
 # Description: This takes the prepared weather data from the setup script
-#              and formats it specifically for APSIM.
+#              and formats it specifically for APSIM. The apsimx library
+#              function as_apsim_met formats the data to APSIM .met
+#              format and writes the file.
 #######################################
 # Called by:
 # 1_Create_weather_input_files.R
@@ -29,7 +31,7 @@ suppressMessages({
                               longitude=longitude,
                               )
 
-    # find any columns with NA cells
+    # find any columns with NA cells and gap-fill
     try(
       APSIM_basic <- napad_apsim_met(APSIM_basic),
       silent=TRUE
@@ -39,50 +41,67 @@ suppressMessages({
 
     ###########
     
-    # baseline future period to 2100
+    # baseline through future period
     
     # Select year, dayofyear, radiation (MJ/m^2), maxt, mint, precip (mm)
-    APSIM_basic_2100 <- as_apsim_met(new_dat_2100[,c("year","dayofyear","radn_MJm2",
+    APSIM_basic_fut <- as_apsim_met(new_dat_fut[,c("year","dayofyear","radn_MJm2",
                                                      "maxt_C","mint_C","rain_mm")],
-                                     filename="basic_wth_",clim_scenario_num,".met",
+                                     filename=paste0("basic_wth_",clim_scenario_num,".met"),
                                      site=site_name,
                                      latitude=latitude,
                                      longitude=longitude,
     )
   
-  # find any columns with NA cells
+  # find any columns with NA cells and gap-fill
   try(
-    APSIM_basic_2100 <- napad_apsim_met(APSIM_basic_2100),
+    APSIM_basic_fut <- napad_apsim_met(APSIM_basic_fut),
     silent=TRUE
   )
   
-  write_apsim_met(APSIM_basic, wrt.dir=apsim_path, filename="basic_wth_",clim_scenario_num,".met")
-  
   } else if(clim_scenario_num>1) {
     
-    fut_dat <- read.csv(file=paste0(fut_weather_path,"fut_clim_scenario_",clim_scenario_num,'_reanal.csv'))
+    fut_dat <- read.csv(file=paste0(fut_weather_path,"fut_clim_scenario_",
+                                    clim_scenario_num,'_reanal.csv'))
     
     # Get experimental period and bind to future
     
     ## Select year, dayofyear, radiation (MJ/m^2), maxt, mint, precip (mm)
-    APSIM_basic <- new_dat[,c("year","dayofyear","radn_MJm2.x",
-                              "maxt_C.x","mint_C.x","rain_mm.x","month")]
-    colnames(APSIM_basic) <- c("year","day","radn","maxt","mint","rain","month")
-    APSIM_fut <- fut_dat[,c("year","dayofyear","radn_MJm2",
+    APSIM_basic <- new_dat[,c("year","dayofyear","radn_MJm2",
+                              "maxt_C","mint_C","rain_mm","month")]
+
+    APSIM_basic_fut <- fut_dat[,c("year","dayofyear","radn_MJm2",
                             "maxt_C","mint_C","rain_mm","month")]
-    colnames(APSIM_fut) <- c("year","day","radn","maxt","mint","rain","month")
-    APSIM_basic_esm <- rbind(APSIM_basic,APSIM_fut)
     
-    # find any columns with NA cells
-    na_find <- names(which(colSums(is.na(fut_dat[c(3:12053),]))>0))
+    # find any columns with NA cells and gap-fill
+    try(
+      APSIM_basic <- napad_apsim_met(APSIM_basic),
+      silent=TRUE
+    )
+    try(
+      APSIM_basic_fut <- napad_apsim_met(APSIM_basic_fut),
+      silent=TRUE
+    )
     
-  } else { # clim_scenario_num not found
+    APSIM_basic_combined <- rbind(APSIM_basic,APSIM_basic_fut)
+    colnames(APSIM_basic_combined) <- c("year","dayofyear","radn","maxt","mint","rain","month")
     
-    print(paste0("Unknown clim_scenario_num=",clim_scenario_num,"in 1_Create_weather_input_files-APSIM.R"))
+    APSIM_basic_fut <- as_apsim_met(APSIM_basic_combined[,c("year","dayofyear","radn",
+                                                            "maxt","mint","rain")],
+                                    filename=paste0("basic_wth_",clim_scenario_num,".met"),
+                                    site=site_name,
+                                    latitude=latitude,
+                                    longitude=longitude,
+    )
     
   } # if clim_scenario_num == 1
   
-  rm(list = c("APSIM_basic","APSIM_basic_2100","na_find","latlon_rows","APSIM_fut",
-              "fut_dat","APSIM_basic_esm", "monthly_avg","tav","amp"))
+  write_apsim_met(APSIM_basic_fut, wrt.dir=apsim_path, 
+                  filename=paste0("basic_wth_",clim_scenario_num,".met"))
+  
+  rm(list = c("APSIM_basic","APSIM_basic_fut"))
+if(clim_scenario_num>1) {
+  rm(list = c("fut_dat","APSIM_basic_combined"))
+}  
   
 }) # end suppressMessages
+

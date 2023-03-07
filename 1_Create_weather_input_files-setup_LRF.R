@@ -62,7 +62,7 @@ Clean_site <- Raw_site[Raw_site$year %in% experiment_year_range,] %>%
 ###### only need to run this once per site ##########
 
 # # compile and import historical data for spin-up-to-equilibrium period for 
-# # Daycent, RothC, and Millennial
+# # Daycent and RothC
 #source("f_Compile_historical_weather_files.R")
 #f_Compile_historical_weather_files(as.Date(min(Clean_site$date)))
 
@@ -190,17 +190,26 @@ new_dat <- new3 %>%
 #**********************************************************************
 
 ###########################
-## build baseline-to-2100 data
+## build baseline-through-future data
 ###########################
 
 
-new_dat_2100 <- new_dat
+new_dat_fut <- new_dat
 weather_28yr <- new_dat[new_dat$year %in% 1994:2021,]
 
 for (i in 1:3) {
   weather_28yr$year <- weather_28yr$year+28
-  new_dat_2100 <- rbind(new_dat_2100, weather_28yr)
+  new_dat_fut <- rbind(new_dat_fut, weather_28yr)
 }
+
+
+# Site stats --------------------------------------------------------------
+
+mean_ann_temp <- mean((new_dat$maxt+new_dat$mint/2))
+ann_prec <- new_dat %>%
+  group_by(year) %>%
+  summarize(tot_rain=sum(rain))
+mean_ann_prec <- mean(ann_prec$tot_rain)
 
 
 #**********************************************************************

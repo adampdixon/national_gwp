@@ -140,7 +140,7 @@ eqinit <- read.table(paste0(rothc_path,rothc_eqinit_filename),
 # Soil temperature, for Millennial
 ###########################################
 
-# Daycent data, experimental period through 2100
+# Daycent data, experimental period through future
 ## soil temperature is reduced to reduce warm bias
 Tin_daily_C <-   merge(ObsTemp,
                        DayT_C_all[,c("date","year","mean_3_4")],

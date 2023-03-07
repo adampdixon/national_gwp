@@ -99,7 +99,7 @@ gC
 ggsave(filename=paste0(results_path,"calib_SOC_comparison_exp_",
                        clim_scenario_num,"_",mgmt_scenario_num,"_RothC.jpg"),
        plot=gC,
-       width=9, height=6, dpi=300)
+       width=6, height=6, dpi=300)
 
 #**********************************************************************
 
@@ -166,24 +166,24 @@ ggsave(filename=paste0(results_path,"calib_SOC_comparison_1to1_",scenario_name,"
 calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                        clim_scenario_num,mgmt_scenario_num, scenario_name,
                        scenario_abbrev,
-                       MYfit_coef[2], MYfit_coef[1], MYfit_r2, MY_rmse,
-                       Maize_obsmod_diff_Mgha,
-                       SYfit_coef[2], SYfit_coef[1], SYfit_r2, SY_rmse,
-                       Soybean_obsmod_diff_Mgha,
-                       WYfit_coef[2], WYfit_coef[1], WYfit_r2, WY_rmse,
-                       Wheat_obsmod_diff_Mgha,
+                       NA, NA, NA, NA,
+                       NA,
+                       NA, NA, NA, NA,
+                       NA,
+                       NA, NA, NA, NA,
+                       NA,
                        Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
                        SOC_obsmod_diff_Mgha,
-                       Tfit_coef[2], Tfit_coef[1], Tfit_r2, T_rmse,
-                       Mfit_coef[2], Mfit_coef[1], Mfit_r2, M_rmse,
-                       Nfit_coef[2], Nfit_coef[1], Nfit_r2, N_rmse,
-                       N2O_obsmod_diff_gha,
+                       NA, NA, NA, NA,
+                       NA, NA, NA, NA,
+                       NA, NA, NA, NA,
+                       NA,
                        NA, NA, NA, NA,
                        NA)
 
 
 source("p_Edit_calib_file.R")
-p_Edit_calib_file(calib_summary_tab,model_name,scenario_name)
+p_Edit_calib_file(calib_log_tab,model_name,scenario_name)
 
 
 }) # end suppressMessages

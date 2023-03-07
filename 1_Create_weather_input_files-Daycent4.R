@@ -1,5 +1,5 @@
 #######################################
-# Script: 1_Create_weather_input_files-Daycent3.R
+# Script: 1_Create_weather_input_files-Daycent4.R
 # Author: Ellen Maas
 # Date: July 11, 2022
 # Output: .wth files for the given scenario.
@@ -17,7 +17,7 @@
 
 suppressMessages({
   
-  print("Starting 1_Create_weather_input_files-Daycent3.R")
+  print("Starting 1_Create_weather_input_files-Daycent4.R")
   
   if(clim_scenario_num==1) {
     
@@ -44,14 +44,14 @@ suppressMessages({
     write.table(DAYCENT_basic, file=paste0(daycent_path,"basic_exp.wth"),
                 row.names=F, quote=F, col.names=F, sep=' ')
     
-    # future period to 2100 (1994-2021 repeated 3 times)
+    # future period (1994-2021 repeated 3 times)
     
-    DAYCENT_basic_2100 <- new_dat_2100[new_dat_2100$year>end_exp_period_year,
+    DAYCENT_basic_fut <- new_dat_fut[new_dat_fut$year>end_exp_period_year,
                                        c("day","month","year","dayofyear",
                                          "maxt_C","mint_C","rain_cm")]
     
     # write data file with no headers, tab-delimited, for experimental period 
-    write.table(DAYCENT_basic_2100, file=paste0(daycent_path,"basic_",clim_scenario_num,".wth"),
+    write.table(DAYCENT_basic_fut, file=paste0(daycent_path,"basic_",clim_scenario_num,".wth"),
                 row.names=F, quote=F, col.names=F, sep=' ')
     
     
@@ -158,15 +158,12 @@ suppressMessages({
     # site_file[51:62] <- climate_stats[climate_stats$variable=="mean_maxT","text"]
     # writeLines(site_file,paste0(daycent_path,"site.100"))
     
-  } else {
-    
-    print(paste0("Unknown clim_scenario_num=",clim_scenario_num,"in 1_Create_weather_input_files-APSIM.R"))
-    
   } # if clim_scenario_num == 1
   
-  rm(list=c("DAYCENT_basic_eq","DAYCENT_basic","DAYCENT_basic_2100",#"DAYCENT_monthly_means",
-            # "ppt_params","minT_params","maxT_params","param","climate_data",
-            # "climate_stats","site_file","fut_dat",
-            "DAYCENT_basic_esm"))
-  
+  if(clim_scenario_num==1) {
+  rm(list=c("DAYCENT_basic_eq","DAYCENT_basic","DAYCENT_basic_fut"))
+} else if(clim_scenario_num>1) {
+  rm(list=c("fut_dat","DAYCENT_basic_esm"))
+}
+    
 }) # end suppressMessages

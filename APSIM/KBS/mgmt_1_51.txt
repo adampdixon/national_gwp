@@ -1,1123 +1,857 @@
-1989-04-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.9, depth: 110)
-1989-05-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-1989-05-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-1989-05-04 [Maize].Sow(cultivar: B_100, population: 6, depth: 50, rowSpacing: 762)
-1989-06-26 [Fertiliser].Apply(Amount: 124, Type: NO3N)
-1989-10-23 [Maize].Harvest
-1989-10-23 [Maize].EndCrop
-1990-05-25 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-1990-05-25 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-1990-05-25 [SurfaceOrganicMatter].Incorporate(fraction: 0.9, depth: 110)
-1990-05-25 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-1990-05-29 [Soybean].Sow(cultivar: Generic_MG2, population: 47, depth: 50, rowSpacing: 762)
-1990-10-17 [Soybean].Harvest
-1990-10-17 [Soybean].EndCrop
-1991-04-25 [SurfaceOrganicMatter].Incorporate(fraction: 0.9, depth: 110)
-1991-05-02 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-1991-05-02 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-1991-06-15 [Fertiliser].Apply(Amount: 124, Type: NO3N)
-1991-06-15 [Maize].Sow(cultivar: B_100, population: 6, depth: 50, rowSpacing: 762)
-1991-10-10 [Maize].Harvest
-1991-10-10 [Maize].EndCrop
-1992-05-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-1992-05-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.9, depth: 110)
-1992-05-18 [Soybean].Sow(cultivar: Generic_MG2, population: 47, depth: 50, rowSpacing: 762)
-1992-05-18 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-1992-10-26 [Soybean].Harvest
-1992-10-26 [Soybean].EndCrop
-1993-04-28 [SurfaceOrganicMatter].Incorporate(fraction: 0.9, depth: 110)
-1993-05-06 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-1993-05-07 [Maize].Sow(cultivar: B_100, population: 6, depth: 50, rowSpacing: 762)
-1993-05-07 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-1993-07-01 [Fertiliser].Apply(Amount: 84, Type: NO3N)
-1993-10-13 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-1993-11-08 [Maize].Harvest
-1993-11-08 [Maize].EndCrop
-1993-11-22 [SurfaceOrganicMatter].Incorporate(fraction: 0.75, depth: 0)
-1994-05-04 [SurfaceOrganicMatter].Incorporate(fraction: 0.9, depth: 110)
-1994-05-13 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-1994-05-16 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-1994-05-16 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-1994-05-18 [Soybean].Sow(cultivar: Generic_MG2, population: 49, depth: 50, rowSpacing: 762)
-1994-06-07 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-1994-10-07 [Soybean].Harvest
-1994-10-07 [Soybean].EndCrop
-1994-10-12 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-1994-10-13 [Wheat].Sow(cultivar: Yecora, population: 445, depth: 50, rowSpacing: 178)
-1995-04-17 [Fertiliser].Apply(Amount: 56, Type: NO3N)
-1995-07-21 [Wheat].Harvest
-1995-07-21 [Wheat].EndCrop
-1995-08-07 [SurfaceOrganicMatter].Incorporate(fraction: 0.75, depth: 0)
-1996-04-18 [SurfaceOrganicMatter].Incorporate(fraction: 0.9, depth: 110)
-1996-05-06 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-1996-05-14 [Fertiliser].Apply(Amount: 27, Type: NO3N)
-1996-05-14 [Fertiliser].Apply(Amount: 28, Type: NO3N)
-1996-05-14 [Maize].Sow(cultivar: B_100, population: 6, depth: 50, rowSpacing: 762)
-1996-05-14 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-1996-06-27 [Fertiliser].Apply(Amount: 134, Type: NO3N)
-1996-10-31 [Maize].Harvest
-1996-10-31 [Maize].EndCrop
-1997-04-04 [SurfaceOrganicMatter].Incorporate(fraction: 0.75, depth: 0)
-1997-04-09 [Fertiliser].Apply(Amount: 0, Type: CalciteCA)
-1997-04-10 [Fertiliser].Apply(Amount: 45, Type: RockP)
-1997-05-11 [SurfaceOrganicMatter].Incorporate(fraction: 0.9, depth: 110)
-1997-05-13 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-1997-05-22 [Soybean].Sow(cultivar: Generic_MG2, population: 47, depth: 50, rowSpacing: 762)
-1997-10-17 [Soybean].Harvest
-1997-10-17 [Soybean].EndCrop
-1997-10-22 [Wheat].Sow(cultivar: Yecora, population: 445, depth: 50, rowSpacing: 178)
-1997-10-22 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-1997-10-22 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-1998-04-20 [Fertiliser].Apply(Amount: 56, Type: NO3N)
-1998-07-10 [Wheat].Harvest
-1998-07-10 [Wheat].EndCrop
-1998-07-20 [SurfaceOrganicMatter].Incorporate(fraction: 0.75, depth: 0)
-1999-04-20 [Fertiliser].Apply(Amount: 0, Type: CalciteCA)
-1999-05-03 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-1999-05-19 [Fertiliser].Apply(Amount: 27, Type: NO3N)
-1999-05-19 [Maize].Sow(cultivar: B_100, population: 6, depth: 50, rowSpacing: 762)
-1999-06-30 [Fertiliser].Apply(Amount: 56, Type: NO3N)
-1999-10-11 [Maize].Harvest
-1999-10-11 [Maize].EndCrop
-2000-05-04 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2000-05-08 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2000-05-25 [Soybean].Sow(cultivar: Generic_MG2, population: 52, depth: 50, rowSpacing: 762)
-2000-05-25 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2000-10-11 [Soybean].Harvest
-2000-10-11 [Soybean].EndCrop
-2000-10-20 [Fertiliser].Apply(Amount: 0, Type: CalciteCA)
-2000-10-30 [Wheat].Sow(cultivar: Yecora, population: 466, depth: 50, rowSpacing: 178)
-2001-04-05 [Fertiliser].Apply(Amount: 40, Type: NO3N)
-2001-04-18 [Fertiliser].Apply(Amount: 40, Type: NO3N)
-2001-07-17 [Wheat].Harvest
-2001-07-17 [Wheat].EndCrop
-2001-07-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.75, depth: 0)
-2001-08-24 [Fertiliser].Apply(Amount: 3, Type: NO3N)
-2002-04-17 [SurfaceOrganicMatter].Incorporate(fraction: 0.9, depth: 110)
-2002-04-19 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2002-05-10 [Fertiliser].Apply(Amount: 28, Type: NO3N)
-2002-05-10 [Fertiliser].Apply(Amount: 11, Type: RockP)
-2002-05-10 [Maize].Sow(cultivar: B_100, population: 7, depth: 50, rowSpacing: 762)
-2002-05-28 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2002-07-01 [Fertiliser].Apply(Amount: 134, Type: NO3N)
-2002-10-23 [Maize].Harvest
-2002-10-23 [Maize].EndCrop
-2003-04-26 [Fertiliser].Apply(Amount: 7, Type: NO3N)
-2003-04-26 [Fertiliser].Apply(Amount: 14, Type: RockP)
-2003-05-22 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2003-05-27 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2003-05-28 [Soybean].Sow(cultivar: Generic_MG2, population: 44, depth: 50, rowSpacing: 762)
-2003-10-06 [Soybean].Harvest
-2003-10-06 [Soybean].EndCrop
-2003-10-08 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2003-10-08 [Fertiliser].Apply(Amount: 16, Type: RockP)
-2003-10-10 [Wheat].Sow(cultivar: Yecora, population: 494, depth: 50, rowSpacing: 178)
-2003-10-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2004-04-16 [Fertiliser].Apply(Amount: 54, Type: NO3N)
-2004-07-13 [Wheat].Harvest
-2004-07-13 [Wheat].EndCrop
-2004-07-14 [SurfaceOrganicMatter].Incorporate(fraction: 0.75, depth: 0)
-2005-04-25 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2005-05-03 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2005-05-04 [Fertiliser].Apply(Amount: 33, Type: NO3N)
-2005-05-04 [Fertiliser].Apply(Amount: 13, Type: RockP)
-2005-05-04 [Maize].Sow(cultivar: B_100, population: 7, depth: 50, rowSpacing: 762)
-2005-06-20 [Fertiliser].Apply(Amount: 124, Type: NO3N)
-2005-10-11 [Maize].Harvest
-2005-10-11 [Maize].EndCrop
-2006-05-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2006-06-05 [Soybean].Sow(cultivar: Generic_MG2, population: 44, depth: 50, rowSpacing: 762)
-2006-10-10 [Soybean].Harvest
-2006-10-10 [Soybean].EndCrop
-2006-11-06 [Wheat].Sow(cultivar: Yecora, population: 494, depth: 50, rowSpacing: 178)
-2007-03-30 [Fertiliser].Apply(Amount: 32, Type: NO3N)
-2007-03-30 [Fertiliser].Apply(Amount: 14, Type: RockP)
-2007-04-24 [Fertiliser].Apply(Amount: 54, Type: NO3N)
-2007-07-10 [Wheat].Harvest
-2007-07-10 [Wheat].EndCrop
-2007-07-13 [SurfaceOrganicMatter].Incorporate(fraction: 0.75, depth: 0)
-2007-09-22 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2008-05-06 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2008-05-09 [Fertiliser].Apply(Amount: 33, Type: NO3N)
-2008-05-09 [Fertiliser].Apply(Amount: 13, Type: RockP)
-2008-05-09 [Maize].Sow(cultivar: B_100, population: 7, depth: 50, rowSpacing: 762)
-2008-05-09 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2008-06-19 [Fertiliser].Apply(Amount: 114, Type: NO3N)
-2008-10-20 [Maize].Harvest
-2008-10-20 [Maize].EndCrop
-2009-05-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2009-05-20 [Soybean].Sow(cultivar: Generic_MG2, population: 44, depth: 50, rowSpacing: 762)
-2009-05-20 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2009-06-24 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2009-10-16 [Soybean].Harvest
-2009-10-16 [Soybean].EndCrop
-2009-11-06 [Wheat].Sow(cultivar: Yecora, population: 477, depth: 50, rowSpacing: 178)
-2010-04-20 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2010-04-21 [Fertiliser].Apply(Amount: 50, Type: NO3N)
-2010-04-29 [Fertiliser].Apply(Amount: 37, Type: NO3N)
-2010-07-14 [Wheat].Harvest
-2010-07-14 [Wheat].EndCrop
-2010-07-16 [SurfaceOrganicMatter].Incorporate(fraction: 0.75, depth: 0)
-2010-08-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2011-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2011-05-06 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2011-05-09 [Fertiliser].Apply(Amount: 33, Type: NO3N)
-2011-05-09 [Fertiliser].Apply(Amount: 13, Type: RockP)
-2011-05-09 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2011-06-15 [Fertiliser].Apply(Amount: 124, Type: NO3N)
-2011-11-14 [Maize].Harvest
-2011-11-14 [Maize].EndCrop
-2012-04-11 [Fertiliser].Apply(Amount: 0, Type: CalciteCA)
-2012-04-19 [Fertiliser].Apply(Amount: 8, Type: NO3N)
-2012-04-19 [Fertiliser].Apply(Amount: 17, Type: RockP)
-2012-04-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2012-05-17 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2012-05-19 [Soybean].Sow(cultivar: Generic_MG2, population: 44, depth: 50, rowSpacing: 762)
-2012-05-19 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2012-06-22 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2012-10-11 [Soybean].Harvest
-2012-10-11 [Soybean].EndCrop
-2012-11-07 [Wheat].Sow(cultivar: Yecora, population: 445, depth: 50, rowSpacing: 178)
-2013-05-02 [Fertiliser].Apply(Amount: 91, Type: NO3N)
-2013-07-24 [Wheat].Harvest
-2013-07-24 [Wheat].EndCrop
-2013-07-25 [SurfaceOrganicMatter].Incorporate(fraction: 0.75, depth: 0)
-2013-08-29 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2014-04-23 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2014-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2014-05-12 [Fertiliser].Apply(Amount: 33, Type: NO3N)
-2014-05-12 [Fertiliser].Apply(Amount: 13, Type: RockP)
-2014-05-12 [Maize].Sow(cultivar: B_100, population: 7, depth: 50, rowSpacing: 762)
-2014-05-24 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2014-06-17 [Fertiliser].Apply(Amount: 134, Type: NO3N)
-2014-10-30 [Maize].Harvest
-2014-10-30 [Maize].EndCrop
-2015-04-14 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2015-04-14 [Fertiliser].Apply(Amount: 26, Type: RockP)
-2015-05-02 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2015-05-18 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2015-05-19 [Soybean].Sow(cultivar: Generic_MG2, population: 44, depth: 50, rowSpacing: 762)
-2015-05-19 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2015-07-23 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2015-09-30 [Soybean].Harvest
-2015-09-30 [Soybean].EndCrop
-2015-10-06 [Wheat].Sow(cultivar: Yecora, population: 371, depth: 50, rowSpacing: 178)
-2016-03-21 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2016-04-05 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2016-04-05 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2016-04-16 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2016-04-24 [Fertiliser].Apply(Amount: 9, Type: NO3N)
-2016-04-24 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2016-04-24 [Fertiliser].Apply(Amount: 8, Type: RockP)
-2016-07-12 [Wheat].Harvest
-2016-07-12 [Wheat].EndCrop
-2016-08-29 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2017-04-18 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2017-04-27 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2017-05-16 [Fertiliser].Apply(Amount: 33, Type: NO3N)
-2017-05-16 [Fertiliser].Apply(Amount: 13, Type: RockP)
-2017-05-16 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2017-06-09 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2017-06-21 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2017-10-18 [Maize].Harvest
-2017-10-18 [Maize].EndCrop
-2018-05-25 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2018-05-27 [Soybean].Sow(cultivar: Generic_MG2, population: 35, depth: 50, rowSpacing: 762)
-2018-07-12 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2018-10-09 [Soybean].Harvest
-2018-10-09 [Soybean].EndCrop
-2018-10-17 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2018-10-19 [Wheat].Sow(cultivar: Yecora, population: 485, depth: 50, rowSpacing: 178)
-2019-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2019-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2019-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2019-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2019-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2019-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2019-07-24 [Wheat].Harvest
-2019-07-24 [Wheat].EndCrop
-2019-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2019-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2020-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2020-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2020-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2020-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2020-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2020-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2020-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2020-10-21 [Maize].Harvest
-2020-10-21 [Maize].EndCrop
-2021-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2021-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2021-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2021-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2021-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2021-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2021-09-30 [Soybean].Harvest
-2021-09-30 [Soybean].EndCrop
-2021-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2021-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2022-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2022-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2022-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2022-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2022-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2022-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2022-07-24 [Wheat].Harvest
-2022-07-24 [Wheat].EndCrop
-2022-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2022-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2022-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2023-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2023-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2023-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2023-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2023-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2023-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2023-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2023-10-21 [Maize].Harvest
-2023-10-21 [Maize].EndCrop
-2023-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2024-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2024-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2024-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2024-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2024-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2024-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2024-09-30 [Soybean].Harvest
-2024-09-30 [Soybean].EndCrop
-2024-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2024-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2024-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2025-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2025-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2025-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2025-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2025-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2025-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2025-07-24 [Wheat].Harvest
-2025-07-24 [Wheat].EndCrop
-2025-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2025-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2025-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2026-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2026-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2026-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2026-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2026-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2026-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2026-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2026-10-21 [Maize].Harvest
-2026-10-21 [Maize].EndCrop
-2026-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2027-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2027-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2027-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2027-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2027-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2027-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2027-09-30 [Soybean].Harvest
-2027-09-30 [Soybean].EndCrop
-2027-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2027-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2027-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2028-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2028-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2028-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2028-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2028-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2028-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2028-07-24 [Wheat].Harvest
-2028-07-24 [Wheat].EndCrop
-2028-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2028-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2028-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2029-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2029-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2029-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2029-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2029-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2029-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2029-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2029-10-21 [Maize].Harvest
-2029-10-21 [Maize].EndCrop
-2029-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2030-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2030-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2030-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2030-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2030-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2030-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2030-09-30 [Soybean].Harvest
-2030-09-30 [Soybean].EndCrop
-2030-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2030-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2030-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2031-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2031-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2031-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2031-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2031-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2031-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2031-07-24 [Wheat].Harvest
-2031-07-24 [Wheat].EndCrop
-2031-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2031-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2031-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2032-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2032-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2032-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2032-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2032-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2032-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2032-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2032-10-21 [Maize].Harvest
-2032-10-21 [Maize].EndCrop
-2032-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2033-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2033-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2033-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2033-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2033-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2033-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2033-09-30 [Soybean].Harvest
-2033-09-30 [Soybean].EndCrop
-2033-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2033-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2033-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2034-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2034-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2034-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2034-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2034-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2034-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2034-07-24 [Wheat].Harvest
-2034-07-24 [Wheat].EndCrop
-2034-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2034-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2034-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2035-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2035-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2035-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2035-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2035-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2035-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2035-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2035-10-21 [Maize].Harvest
-2035-10-21 [Maize].EndCrop
-2035-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2036-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2036-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2036-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2036-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2036-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2036-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2036-09-30 [Soybean].Harvest
-2036-09-30 [Soybean].EndCrop
-2036-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2036-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2036-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2037-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2037-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2037-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2037-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2037-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2037-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2037-07-24 [Wheat].Harvest
-2037-07-24 [Wheat].EndCrop
-2037-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2037-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2037-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2038-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2038-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2038-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2038-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2038-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2038-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2038-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2038-10-21 [Maize].Harvest
-2038-10-21 [Maize].EndCrop
-2038-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2039-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2039-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2039-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2039-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2039-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2039-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2039-09-30 [Soybean].Harvest
-2039-09-30 [Soybean].EndCrop
-2039-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2039-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2039-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2040-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2040-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2040-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2040-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2040-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2040-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2040-07-24 [Wheat].Harvest
-2040-07-24 [Wheat].EndCrop
-2040-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2040-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2040-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2041-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2041-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2041-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2041-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2041-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2041-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2041-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2041-10-21 [Maize].Harvest
-2041-10-21 [Maize].EndCrop
-2041-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2042-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2042-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2042-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2042-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2042-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2042-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2042-09-30 [Soybean].Harvest
-2042-09-30 [Soybean].EndCrop
-2042-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2042-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2042-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2043-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2043-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2043-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2043-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2043-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2043-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2043-07-24 [Wheat].Harvest
-2043-07-24 [Wheat].EndCrop
-2043-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2043-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2043-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2044-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2044-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2044-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2044-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2044-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2044-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2044-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2044-10-21 [Maize].Harvest
-2044-10-21 [Maize].EndCrop
-2044-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2045-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2045-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2045-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2045-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2045-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2045-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2045-09-30 [Soybean].Harvest
-2045-09-30 [Soybean].EndCrop
-2045-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2045-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2045-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2046-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2046-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2046-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2046-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2046-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2046-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2046-07-24 [Wheat].Harvest
-2046-07-24 [Wheat].EndCrop
-2046-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2046-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2046-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2047-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2047-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2047-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2047-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2047-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2047-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2047-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2047-10-21 [Maize].Harvest
-2047-10-21 [Maize].EndCrop
-2047-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2048-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2048-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2048-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2048-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2048-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2048-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2048-09-30 [Soybean].Harvest
-2048-09-30 [Soybean].EndCrop
-2048-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2048-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2048-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2049-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2049-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2049-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2049-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2049-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2049-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2049-07-24 [Wheat].Harvest
-2049-07-24 [Wheat].EndCrop
-2049-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2049-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2049-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2050-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2050-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2050-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2050-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2050-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2050-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2050-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2050-10-21 [Maize].Harvest
-2050-10-21 [Maize].EndCrop
-2050-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2051-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2051-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2051-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2051-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2051-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2051-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2051-09-30 [Soybean].Harvest
-2051-09-30 [Soybean].EndCrop
-2051-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2051-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2051-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2052-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2052-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2052-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2052-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2052-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2052-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2052-07-24 [Wheat].Harvest
-2052-07-24 [Wheat].EndCrop
-2052-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2052-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2052-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2053-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2053-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2053-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2053-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2053-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2053-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2053-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2053-10-21 [Maize].Harvest
-2053-10-21 [Maize].EndCrop
-2053-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2054-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2054-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2054-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2054-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2054-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2054-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2054-09-30 [Soybean].Harvest
-2054-09-30 [Soybean].EndCrop
-2054-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2054-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2054-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2055-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2055-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2055-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2055-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2055-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2055-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2055-07-24 [Wheat].Harvest
-2055-07-24 [Wheat].EndCrop
-2055-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2055-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2055-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2056-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2056-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2056-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2056-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2056-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2056-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2056-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2056-10-21 [Maize].Harvest
-2056-10-21 [Maize].EndCrop
-2056-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2057-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2057-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2057-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2057-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2057-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2057-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2057-09-30 [Soybean].Harvest
-2057-09-30 [Soybean].EndCrop
-2057-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2057-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2057-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2058-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2058-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2058-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2058-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2058-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2058-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2058-07-24 [Wheat].Harvest
-2058-07-24 [Wheat].EndCrop
-2058-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2058-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2058-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2059-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2059-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2059-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2059-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2059-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2059-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2059-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2059-10-21 [Maize].Harvest
-2059-10-21 [Maize].EndCrop
-2059-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2060-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2060-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2060-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2060-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2060-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2060-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2060-09-30 [Soybean].Harvest
-2060-09-30 [Soybean].EndCrop
-2060-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2060-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2060-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2061-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2061-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2061-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2061-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2061-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2061-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2061-07-24 [Wheat].Harvest
-2061-07-24 [Wheat].EndCrop
-2061-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2061-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2061-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2062-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2062-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2062-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2062-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2062-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2062-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2062-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2062-10-21 [Maize].Harvest
-2062-10-21 [Maize].EndCrop
-2062-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2063-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2063-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2063-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2063-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2063-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2063-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2063-09-30 [Soybean].Harvest
-2063-09-30 [Soybean].EndCrop
-2063-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2063-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2063-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2064-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2064-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2064-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2064-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2064-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2064-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2064-07-24 [Wheat].Harvest
-2064-07-24 [Wheat].EndCrop
-2064-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2064-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2064-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2065-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2065-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2065-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2065-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2065-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2065-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2065-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2065-10-21 [Maize].Harvest
-2065-10-21 [Maize].EndCrop
-2065-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2066-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2066-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2066-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2066-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2066-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2066-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2066-09-30 [Soybean].Harvest
-2066-09-30 [Soybean].EndCrop
-2066-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2066-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2066-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2067-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2067-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2067-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2067-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2067-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2067-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2067-07-24 [Wheat].Harvest
-2067-07-24 [Wheat].EndCrop
-2067-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2067-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2067-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2068-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2068-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2068-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2068-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2068-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2068-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2068-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2068-10-21 [Maize].Harvest
-2068-10-21 [Maize].EndCrop
-2068-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2069-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2069-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2069-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2069-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2069-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2069-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2069-09-30 [Soybean].Harvest
-2069-09-30 [Soybean].EndCrop
-2069-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2069-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2069-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2070-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2070-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2070-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2070-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2070-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2070-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2070-07-24 [Wheat].Harvest
-2070-07-24 [Wheat].EndCrop
-2070-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2070-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2070-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2071-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2071-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2071-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2071-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2071-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2071-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2071-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2071-10-21 [Maize].Harvest
-2071-10-21 [Maize].EndCrop
-2071-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2072-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2072-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2072-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2072-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2072-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2072-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2072-09-30 [Soybean].Harvest
-2072-09-30 [Soybean].EndCrop
-2072-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2072-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2072-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2073-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2073-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2073-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2073-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2073-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2073-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2073-07-24 [Wheat].Harvest
-2073-07-24 [Wheat].EndCrop
-2073-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2073-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2073-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2074-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2074-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2074-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2074-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2074-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2074-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2074-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2074-10-21 [Maize].Harvest
-2074-10-21 [Maize].EndCrop
-2074-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2075-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2075-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2075-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2075-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2075-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2075-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2075-09-30 [Soybean].Harvest
-2075-09-30 [Soybean].EndCrop
-2075-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2075-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2075-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2076-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2076-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2076-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2076-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2076-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2076-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2076-07-24 [Wheat].Harvest
-2076-07-24 [Wheat].EndCrop
-2076-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2076-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2076-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2077-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2077-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2077-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2077-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2077-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2077-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2077-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2077-10-21 [Maize].Harvest
-2077-10-21 [Maize].EndCrop
-2077-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2078-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2078-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2078-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2078-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2078-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2078-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2078-09-30 [Soybean].Harvest
-2078-09-30 [Soybean].EndCrop
-2078-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2078-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2078-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2079-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2079-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2079-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2079-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2079-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2079-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2079-07-24 [Wheat].Harvest
-2079-07-24 [Wheat].EndCrop
-2079-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2079-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2079-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2080-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2080-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2080-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2080-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2080-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2080-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2080-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2080-10-21 [Maize].Harvest
-2080-10-21 [Maize].EndCrop
-2080-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2081-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2081-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2081-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2081-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2081-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2081-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2081-09-30 [Soybean].Harvest
-2081-09-30 [Soybean].EndCrop
-2081-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2081-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2081-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2082-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2082-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2082-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2082-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2082-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2082-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2082-07-24 [Wheat].Harvest
-2082-07-24 [Wheat].EndCrop
-2082-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2082-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2082-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2083-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2083-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2083-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2083-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2083-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2083-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2083-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2083-10-21 [Maize].Harvest
-2083-10-21 [Maize].EndCrop
-2083-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2084-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2084-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2084-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2084-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2084-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2084-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2084-09-30 [Soybean].Harvest
-2084-09-30 [Soybean].EndCrop
-2084-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2084-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2084-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2085-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2085-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2085-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2085-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2085-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2085-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2085-07-24 [Wheat].Harvest
-2085-07-24 [Wheat].EndCrop
-2085-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2085-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2085-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2086-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2086-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2086-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2086-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2086-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2086-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2086-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2086-10-21 [Maize].Harvest
-2086-10-21 [Maize].EndCrop
-2086-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2087-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2087-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2087-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2087-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2087-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2087-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2087-09-30 [Soybean].Harvest
-2087-09-30 [Soybean].EndCrop
-2087-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2087-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2087-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2088-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2088-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2088-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2088-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2088-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2088-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2088-07-24 [Wheat].Harvest
-2088-07-24 [Wheat].EndCrop
-2088-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2088-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2088-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2089-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2089-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2089-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2089-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2089-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2089-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2089-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2089-10-21 [Maize].Harvest
-2089-10-21 [Maize].EndCrop
-2089-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2090-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2090-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2090-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2090-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2090-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2090-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2090-09-30 [Soybean].Harvest
-2090-09-30 [Soybean].EndCrop
-2090-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2090-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2090-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2091-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2091-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2091-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2091-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2091-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2091-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2091-07-24 [Wheat].Harvest
-2091-07-24 [Wheat].EndCrop
-2091-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2091-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2091-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2092-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2092-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2092-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2092-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2092-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2092-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2092-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2092-10-21 [Maize].Harvest
-2092-10-21 [Maize].EndCrop
-2092-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2093-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2093-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2093-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2093-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2093-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2093-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2093-09-30 [Soybean].Harvest
-2093-09-30 [Soybean].EndCrop
-2093-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2093-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2093-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2094-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2094-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2094-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2094-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2094-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2094-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2094-07-24 [Wheat].Harvest
-2094-07-24 [Wheat].EndCrop
-2094-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2094-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2094-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2095-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2095-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2095-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2095-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2095-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2095-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2095-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2095-10-21 [Maize].Harvest
-2095-10-21 [Maize].EndCrop
-2095-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2096-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2096-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2096-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2096-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2096-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2096-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2096-09-30 [Soybean].Harvest
-2096-09-30 [Soybean].EndCrop
-2096-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2096-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2096-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2097-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2097-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2097-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2097-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2097-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2097-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2097-07-24 [Wheat].Harvest
-2097-07-24 [Wheat].EndCrop
-2097-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2097-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2097-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2098-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2098-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2098-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2098-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2098-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2098-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2098-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2098-10-21 [Maize].Harvest
-2098-10-21 [Maize].EndCrop
-2098-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2099-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2099-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2099-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2099-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2099-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2099-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2099-09-30 [Soybean].Harvest
-2099-09-30 [Soybean].EndCrop
-2099-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2099-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2099-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
-2100-03-26 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2100-03-28 [Fertiliser].Apply(Amount: 24, Type: NO3N)
-2100-03-28 [Fertiliser].Apply(Amount: 50, Type: RockP)
-2100-04-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2100-05-05 [Fertiliser].Apply(Amount: 10, Type: NO3N)
-2100-05-05 [Fertiliser].Apply(Amount: 36, Type: NO3N)
-2100-07-24 [Wheat].Harvest
-2100-07-24 [Wheat].EndCrop
-2100-07-24 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2100-08-13 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2100-10-18 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2101-04-15 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2101-05-05 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2101-05-13 [Fertiliser].Apply(Amount: 34, Type: NO3N)
-2101-05-13 [Fertiliser].Apply(Amount: 34, Type: RockP)
-2101-05-13 [Maize].Sow(cultivar: B_100, population: 8, depth: 50, rowSpacing: 762)
-2101-06-18 [Fertiliser].Apply(Amount: 138, Type: NO3N)
-2101-06-24 [Fertiliser].Apply(Amount: 79, Type: NO3N)
-2101-10-21 [Maize].Harvest
-2101-10-21 [Maize].EndCrop
-2101-10-21 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2102-05-10 [Fertiliser].Apply(Amount: 11, Type: NO3N)
-2102-05-10 [Fertiliser].Apply(Amount: 28, Type: RockP)
-2102-05-10 [SurfaceOrganicMatter].Incorporate(fraction: 0.1, depth: 5)
-2102-05-14 [Soybean].Sow(cultivar: Generic_MG2, population: 37, depth: 50, rowSpacing: 762)
-2102-06-17 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2102-07-27 [Fertiliser].Apply(Amount: 1, Type: NO3N)
-2102-09-30 [Soybean].Harvest
-2102-09-30 [Soybean].EndCrop
-2102-09-30 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 0)
-2102-10-01 [SurfaceOrganicMatter].Incorporate(fraction: 0.5, depth: 30)
-2102-11-09 [Wheat].Sow(cultivar: Yecora, population: 519, depth: 50, rowSpacing: 178)
+21/04/1989	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+01/05/1989	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+01/05/1989	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+04/05/1989	maize sow plants = 6, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+26/06/1989	fertiliser apply amount = 124 (kg/ha), depth = 50 (mm), type = NO3_N
+25/05/1990	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+25/05/1990	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+25/05/1990	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+25/05/1990	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+29/05/1990	soybean sow plants = 47, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+25/04/1991	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+02/05/1991	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+02/05/1991	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+15/06/1991	fertiliser apply amount = 124 (kg/ha), depth = 50 (mm), type = NO3_N
+15/06/1991	maize sow plants = 6, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+15/05/1992	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/05/1992	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+18/05/1992	soybean sow plants = 47, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+18/05/1992	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+28/04/1993	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+06/05/1993	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+07/05/1993	maize sow plants = 6, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+07/05/1993	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+01/07/1993	fertiliser apply amount = 84 (kg/ha), depth = 50 (mm), type = NO3_N
+04/05/1994	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+13/05/1994	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+16/05/1994	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+16/05/1994	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+18/05/1994	soybean sow plants = 49, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+07/06/1994	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+12/10/1994	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+13/10/1994	wheat sow plants = 445, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+17/04/1995	fertiliser apply amount = 56 (kg/ha), depth = 50 (mm), type = NO3_N
+18/04/1996	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+06/05/1996	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+14/05/1996	fertiliser apply amount = 27 (kg/ha), depth = 50 (mm), type = NO3_N
+14/05/1996	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = NO3_N
+14/05/1996	maize sow plants = 6, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+14/05/1996	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+27/06/1996	fertiliser apply amount = 134 (kg/ha), depth = 50 (mm), type = NO3_N
+09/04/1997	fertiliser apply amount = 393 (kg/ha), depth = 50 (mm), type = Calcite_CA
+10/04/1997	fertiliser apply amount = 45 (kg/ha), depth = 50 (mm), type = Rock_P
+11/05/1997	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+13/05/1997	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+22/05/1997	soybean sow plants = 47, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+22/10/1997	wheat sow plants = 445, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+22/10/1997	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+22/10/1997	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+20/04/1998	fertiliser apply amount = 56 (kg/ha), depth = 50 (mm), type = NO3_N
+20/04/1999	fertiliser apply amount = 1123 (kg/ha), depth = 50 (mm), type = Calcite_CA
+03/05/1999	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+19/05/1999	fertiliser apply amount = 27 (kg/ha), depth = 50 (mm), type = NO3_N
+19/05/1999	maize sow plants = 6, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+30/06/1999	fertiliser apply amount = 56 (kg/ha), depth = 50 (mm), type = NO3_N
+04/05/2000	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+08/05/2000	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+25/05/2000	soybean sow plants = 52, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+25/05/2000	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+20/10/2000	fertiliser apply amount = 2470 (kg/ha), depth = 50 (mm), type = Calcite_CA
+30/10/2000	wheat sow plants = 466, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+05/04/2001	fertiliser apply amount = 40 (kg/ha), depth = 50 (mm), type = NO3_N
+18/04/2001	fertiliser apply amount = 40 (kg/ha), depth = 50 (mm), type = NO3_N
+24/08/2001	fertiliser apply amount = 3 (kg/ha), depth = 50 (mm), type = NO3_N
+17/04/2002	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+19/04/2002	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+10/05/2002	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2002	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2002	maize sow plants = 7, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+28/05/2002	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+01/07/2002	fertiliser apply amount = 134 (kg/ha), depth = 50 (mm), type = NO3_N
+26/04/2003	fertiliser apply amount = 7 (kg/ha), depth = 50 (mm), type = NO3_N
+26/04/2003	fertiliser apply amount = 14 (kg/ha), depth = 50 (mm), type = Rock_P
+22/05/2003	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+27/05/2003	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+28/05/2003	soybean sow plants = 44, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+08/10/2003	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+08/10/2003	fertiliser apply amount = 16 (kg/ha), depth = 50 (mm), type = Rock_P
+10/10/2003	wheat sow plants = 494, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+10/10/2003	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+16/04/2004	fertiliser apply amount = 54 (kg/ha), depth = 50 (mm), type = NO3_N
+25/04/2005	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+03/05/2005	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+04/05/2005	fertiliser apply amount = 33 (kg/ha), depth = 50 (mm), type = NO3_N
+04/05/2005	fertiliser apply amount = 13 (kg/ha), depth = 50 (mm), type = Rock_P
+04/05/2005	maize sow plants = 7, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+20/06/2005	fertiliser apply amount = 124 (kg/ha), depth = 50 (mm), type = NO3_N
+01/05/2006	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/06/2006	soybean sow plants = 44, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+06/11/2006	wheat sow plants = 494, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+30/03/2007	fertiliser apply amount = 32 (kg/ha), depth = 50 (mm), type = NO3_N
+30/03/2007	fertiliser apply amount = 14 (kg/ha), depth = 50 (mm), type = Rock_P
+24/04/2007	fertiliser apply amount = 54 (kg/ha), depth = 50 (mm), type = NO3_N
+22/09/2007	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+06/05/2008	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/05/2008	fertiliser apply amount = 33 (kg/ha), depth = 50 (mm), type = NO3_N
+09/05/2008	fertiliser apply amount = 13 (kg/ha), depth = 50 (mm), type = Rock_P
+09/05/2008	maize sow plants = 7, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+09/05/2008	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+19/06/2008	fertiliser apply amount = 114 (kg/ha), depth = 50 (mm), type = NO3_N
+15/05/2009	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+20/05/2009	soybean sow plants = 44, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+20/05/2009	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+24/06/2009	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+06/11/2009	wheat sow plants = 477, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+20/04/2010	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+21/04/2010	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = NO3_N
+29/04/2010	fertiliser apply amount = 37 (kg/ha), depth = 50 (mm), type = NO3_N
+17/08/2010	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2011	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+06/05/2011	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+09/05/2011	fertiliser apply amount = 33 (kg/ha), depth = 50 (mm), type = NO3_N
+09/05/2011	fertiliser apply amount = 13 (kg/ha), depth = 50 (mm), type = Rock_P
+09/05/2011	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+15/06/2011	fertiliser apply amount = 124 (kg/ha), depth = 50 (mm), type = NO3_N
+11/04/2012	fertiliser apply amount = 0 (kg/ha), depth = 50 (mm), type = Calcite_CA
+19/04/2012	fertiliser apply amount = 8 (kg/ha), depth = 50 (mm), type = NO3_N
+19/04/2012	fertiliser apply amount = 17 (kg/ha), depth = 50 (mm), type = Rock_P
+24/04/2012	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+17/05/2012	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+19/05/2012	soybean sow plants = 44, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+19/05/2012	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+22/06/2012	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+07/11/2012	wheat sow plants = 445, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+02/05/2013	fertiliser apply amount = 91 (kg/ha), depth = 50 (mm), type = NO3_N
+29/08/2013	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+23/04/2014	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2014	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+12/05/2014	fertiliser apply amount = 33 (kg/ha), depth = 50 (mm), type = NO3_N
+12/05/2014	fertiliser apply amount = 13 (kg/ha), depth = 50 (mm), type = Rock_P
+12/05/2014	maize sow plants = 7, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+24/05/2014	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+17/06/2014	fertiliser apply amount = 134 (kg/ha), depth = 50 (mm), type = NO3_N
+14/04/2015	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+14/04/2015	fertiliser apply amount = 26 (kg/ha), depth = 50 (mm), type = Rock_P
+02/05/2015	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+18/05/2015	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+19/05/2015	soybean sow plants = 44, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+19/05/2015	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+23/07/2015	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+06/10/2015	wheat sow plants = 371, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+21/03/2016	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+05/04/2016	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+05/04/2016	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+16/04/2016	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+24/04/2016	fertiliser apply amount = 9 (kg/ha), depth = 50 (mm), type = NO3_N
+24/04/2016	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+24/04/2016	fertiliser apply amount = 8 (kg/ha), depth = 50 (mm), type = Rock_P
+29/08/2016	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/04/2017	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+27/04/2017	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+16/05/2017	fertiliser apply amount = 33 (kg/ha), depth = 50 (mm), type = NO3_N
+16/05/2017	fertiliser apply amount = 13 (kg/ha), depth = 50 (mm), type = Rock_P
+16/05/2017	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+09/06/2017	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+21/06/2017	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+25/05/2018	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+27/05/2018	soybean sow plants = 35, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+12/07/2018	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+17/10/2018	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+19/10/2018	wheat sow plants = 485, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2019	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2019	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2019	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2019	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2019	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2019	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2019	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2019	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2020	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2020	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2020	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2020	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2020	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2020	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2021	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2021	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2021	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2021	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2021	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2021	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2021	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2021	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2022	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2022	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2022	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2022	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2022	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2022	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2022	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2022	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2023	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2023	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2023	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2023	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2023	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2023	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2023	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2024	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2024	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2024	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2024	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2024	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2024	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2024	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2024	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2024	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2024	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2025	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2025	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2025	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2025	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2025	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2025	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2025	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2025	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2026	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2026	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2026	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2026	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2026	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2026	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2026	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2027	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2027	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2027	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2027	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2027	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2027	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2027	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2027	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2027	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2027	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2028	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2028	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2028	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2028	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2028	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2028	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2028	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2028	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2029	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2029	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2029	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2029	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2029	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2029	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2029	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2030	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2030	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2030	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2030	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2030	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2030	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2030	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2030	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2030	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2030	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2031	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2031	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2031	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2031	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2031	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2031	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2031	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2031	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2032	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2032	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2032	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2032	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2032	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2032	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2032	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2033	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2033	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2033	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2033	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2033	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2033	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2033	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2033	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2033	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2033	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2034	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2034	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2034	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2034	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2034	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2034	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2034	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2034	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2035	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2035	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2035	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2035	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2035	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2035	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2035	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2036	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2036	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2036	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2036	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2036	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2036	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2036	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2036	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2036	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2036	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2037	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2037	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2037	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2037	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2037	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2037	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2037	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2037	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2038	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2038	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2038	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2038	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2038	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2038	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2038	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2039	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2039	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2039	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2039	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2039	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2039	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2039	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2039	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2039	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2039	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2040	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2040	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2040	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2040	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2040	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2040	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2040	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2040	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2041	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2041	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2041	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2041	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2041	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2041	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2041	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2042	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2042	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2042	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2042	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2042	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2042	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2042	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2042	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2042	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2042	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2043	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2043	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2043	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2043	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2043	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2043	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2043	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2043	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2044	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2044	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2044	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2044	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2044	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2044	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2044	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2045	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2045	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2045	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2045	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2045	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2045	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2045	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2045	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2045	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2045	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2046	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2046	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2046	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2046	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2046	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2046	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2046	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2046	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2047	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2047	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2047	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2047	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2047	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2047	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2047	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2048	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2048	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2048	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2048	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2048	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2048	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2048	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2048	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2048	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2048	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2049	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2049	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2049	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2049	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2049	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2049	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2049	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2049	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2050	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2050	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2050	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2050	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2050	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2050	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2050	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2051	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2051	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2051	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2051	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2051	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2051	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2051	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2051	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2051	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2051	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2052	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2052	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2052	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2052	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2052	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2052	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2052	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2052	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2053	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2053	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2053	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2053	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2053	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2053	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2053	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2054	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2054	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2054	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2054	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2054	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2054	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2054	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2054	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2054	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2054	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2055	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2055	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2055	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2055	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2055	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2055	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2055	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2055	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2056	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2056	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2056	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2056	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2056	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2056	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2056	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2057	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2057	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2057	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2057	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2057	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2057	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2057	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2057	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2057	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2057	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2058	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2058	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2058	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2058	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2058	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2058	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2058	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2058	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2059	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2059	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2059	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2059	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2059	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2059	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2059	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2060	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2060	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2060	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2060	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2060	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2060	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2060	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2060	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2060	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2060	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2061	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2061	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2061	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2061	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2061	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2061	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2061	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2061	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2062	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2062	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2062	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2062	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2062	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2062	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2062	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2063	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2063	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2063	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2063	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2063	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2063	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2063	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2063	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2063	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2063	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2064	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2064	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2064	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2064	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2064	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2064	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2064	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2064	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2065	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2065	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2065	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2065	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2065	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2065	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2065	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2066	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2066	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2066	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2066	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2066	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2066	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2066	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2066	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2066	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2066	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2067	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2067	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2067	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2067	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2067	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2067	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2067	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2067	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2068	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2068	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2068	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2068	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2068	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2068	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2068	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2069	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2069	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2069	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2069	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2069	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2069	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2069	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2069	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2069	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2069	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2070	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2070	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2070	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2070	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2070	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2070	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2070	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2070	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2071	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2071	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2071	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2071	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2071	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2071	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2071	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2072	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2072	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2072	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2072	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2072	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2072	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2072	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2072	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2072	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2072	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2073	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2073	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2073	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2073	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2073	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2073	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2073	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2073	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2074	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2074	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2074	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2074	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2074	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2074	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2074	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2075	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2075	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2075	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2075	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2075	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2075	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2075	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2075	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2075	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2075	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2076	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2076	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2076	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2076	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2076	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2076	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2076	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2076	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2077	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2077	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2077	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2077	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2077	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2077	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2077	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2078	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2078	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2078	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2078	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2078	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2078	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2078	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2078	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2078	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2078	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2079	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2079	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2079	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2079	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2079	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2079	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2079	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2079	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2080	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2080	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2080	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2080	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2080	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2080	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2080	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2081	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2081	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2081	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2081	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2081	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2081	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2081	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2081	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2081	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2081	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2082	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2082	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2082	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2082	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2082	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2082	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2082	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2082	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2083	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2083	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2083	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2083	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2083	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2083	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2083	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2084	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2084	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2084	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2084	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2084	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2084	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2084	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2084	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2084	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2084	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2085	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2085	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2085	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2085	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2085	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2085	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2085	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2085	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2086	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2086	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2086	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2086	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2086	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2086	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2086	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2087	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2087	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2087	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2087	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2087	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2087	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2087	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2087	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2087	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2087	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2088	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2088	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2088	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2088	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2088	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2088	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2088	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2088	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2089	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2089	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2089	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2089	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2089	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2089	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2089	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2090	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2090	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2090	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2090	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2090	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2090	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2090	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2090	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2090	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2090	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2091	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2091	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2091	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2091	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2091	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2091	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2091	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2091	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2092	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2092	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2092	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2092	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2092	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2092	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2092	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2093	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2093	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2093	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2093	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2093	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2093	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2093	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2093	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2093	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2093	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2094	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2094	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2094	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2094	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2094	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2094	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2094	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2094	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2095	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2095	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2095	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2095	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2095	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2095	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2095	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2096	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2096	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2096	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2096	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2096	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2096	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2096	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2096	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2096	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2096	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2097	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2097	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2097	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2097	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2097	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2097	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2097	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2097	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2098	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2098	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2098	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2098	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2098	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2098	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2098	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2099	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2099	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2099	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2099	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2099	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2099	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2099	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2099	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2099	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2099	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant
+26/03/2100	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2100	fertiliser apply amount = 24 (kg/ha), depth = 50 (mm), type = NO3_N
+28/03/2100	fertiliser apply amount = 50 (kg/ha), depth = 50 (mm), type = Rock_P
+17/04/2100	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2100	fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N
+05/05/2100	fertiliser apply amount = 36 (kg/ha), depth = 50 (mm), type = NO3_N
+13/08/2100	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+18/10/2100	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+10/04/2101	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+15/04/2101	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+05/05/2101	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+13/05/2101	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = NO3_N
+13/05/2101	fertiliser apply amount = 34 (kg/ha), depth = 50 (mm), type = Rock_P
+13/05/2101	maize sow plants = 8, sowing_depth = 50, cultivar = b_80, row_spacing = 762, crop_class = plant
+18/06/2101	fertiliser apply amount = 138 (kg/ha), depth = 50 (mm), type = NO3_N
+15/04/2102	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110
+20/04/2102	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+10/05/2102	fertiliser apply amount = 11 (kg/ha), depth = 50 (mm), type = NO3_N
+10/05/2102	fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = Rock_P
+10/05/2102	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5
+14/05/2102	soybean sow plants = 37, sowing_depth = 50, cultivar = mg_4, row_spacing = 762, crop_class = plant
+17/06/2102	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+27/07/2102	fertiliser apply amount = 1 (kg/ha), depth = 50 (mm), type = NO3_N
+01/10/2102	surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30
+09/11/2102	wheat sow plants = 519, sowing_depth = 50, cultivar = avalon, row_spacing = 178, crop_class = plant

@@ -36,6 +36,11 @@ latitude = 42.410
 longitude = -85.372
 experiment_start_year <- 1989
 experiment_end_year <- 2021
+end_fut_period_year <- 2050
+hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
+hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
+curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
+nasapower_output_filename <- paste0(site_name,"_np.csv")
 fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
 
 #source("p_Create_future_weather_files.R")
@@ -70,7 +75,7 @@ for (x in clim_nums) { # climate scenarios
       mgmt_scenario_opt <- if(max_scenario_options==1) "" else z
       mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
       scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num) 
-      source(paste0("0_Controller2_",site_name,".R"))
+      source(paste0("0_Controller2.R"))
     }
     
   } # end loop through management scenario groups

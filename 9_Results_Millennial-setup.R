@@ -28,7 +28,10 @@ mill_baseinput_filename <- "siteenviron_base_in.txt"
 
 
 mill_base_df_raw <- read.csv(file=paste0(mill_path,"base_out_",scenario_name,".csv"))
-mill_scen_df <- read.csv(file=paste0(mill_path,"scenario_out_",scenario_name,".csv"))
+mill_scen_df_raw <- read.csv(file=paste0(mill_path,"scenario_out_",scenario_name,".csv"))
+
+# limit future output to end of future period
+mill_scen_df <- mill_scen_df_raw[mill_scen_df_raw$year <= end_fut_period_year,]
 
 mill_daily_df <- rbind(mill_base_df_raw,mill_scen_df)
 mill_df <- mill_daily_df[month(mill_daily_df$date)==1 & day(mill_daily_df$date)==1,] %>%
@@ -81,6 +84,7 @@ colnames(output_annual_data) <- c("year","MaizeYld_Mgha","SoyYld_Mgha",
 write.table(output_annual_data,file=paste0(results_path,"Annual_results_compilation_",
                                            scenario_name,"_Millennial.csv"),
             col.names=T,row.names=F,sep=",",append=F)
+
 
 #*************************************************************
 
@@ -137,8 +141,8 @@ colnames(mbio_gm2) <- c("year","date","Millennial","treatment","Observed")
 
 # calculate mean differences between observed and modeled results
 
-SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
-                                                 Cstock_Mgha$Millennial),"Observed"] -
-                              Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
-                                                   Cstock_Mgha$Millennial),"Millennial"])
+SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha_25cm[!is.na(Cstock_Mgha_25cm$Observed) &
+                                          !is.na(Cstock_Mgha_25cm$Millennial),"Observed"] -
+                              Cstock_Mgha_25cm[!is.na(Cstock_Mgha_25cm$Observed) &
+                                            !is.na(Cstock_Mgha_25cm$Millennial),"Millennial"])
 

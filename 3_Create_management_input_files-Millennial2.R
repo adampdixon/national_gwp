@@ -61,8 +61,10 @@ mill_inputdata <- merge(Tin_daily_C[,c("date","soil_T")],
 # that the C input data is coming from Daycent, which is only to 25 cm, but
 # Millennial is to 1 m. This adjustment is set purely through trial and error,
 # to reproduce historical/experimental measurements.
-soc_adj <- if_else(mgmt_scenario_grp==1,2,
-           if_else(mgmt_scenario_grp==2,1.2,1))
+# soc_adj <- if_else(mgmt_scenario_grp==1,2,
+#                    if_else(mgmt_scenario_grp==2,1.2,1))
+soc_adj <- if_else(mgmt_scenario_grp==3,.95,
+           if_else(mgmt_scenario_grp==2,1.2,2))
 mill_inputdata$daily_soilC_gm2 <- mill_inputdata$daily_soilC_gm2*soc_adj
 base_inputdata = data.frame()
 
@@ -112,9 +114,14 @@ exp_inputdata <- mill_inputdata[mill_inputdata$year >= experiment_start_year &
          crop=if_else(year >= 1989 & year <= 1994 & (year %% 2)==0, "soybeans",
               if_else(year >= 1989 & year <= 1994 & (year %% 2)==1, "corn",
               if_else(year >= 1995 & year <= 2021 & (year %% 3)==0, "wheat",
-              if_else(year >= 1995 & year <= 2100 & (year %% 3)==1, "corn",
+              if_else(year >= 1995 & year <= end_fut_period_year & (year %% 3)==1, "corn",
                       "soybeans"))))
   )
+
+#cover crop scenario calibration is too high; reducing Cinput
+if(mgmt_scenario_grp==3) {
+  exp_inputdata$daily_soilC_gm2 <- exp_inputdata$daily_soilC_gm2*0.90
+}
 
 write.table(exp_inputdata[,c("soil_T","soil_M","daily_soilC_gm2","date","crop")], 
             file=paste0(mill_path,mill_baseinput_filename),
@@ -132,6 +139,11 @@ fut_inputdata <-mill_inputdata[mill_inputdata$year > experiment_end_year,
               if_else((year %% 3)==1, "corn",
               "soybeans"))
   )
+
+#cover crop scenario calibration is too high; reducing Cinput
+if(mgmt_scenario_grp==3) {
+  fut_inputdata$daily_soilC_gm2 <- fut_inputdata$daily_soilC_gm2*0.90
+}
 
 
 write.table(fut_inputdata[,c("soil_T","soil_M","daily_soilC_gm2","date","crop")], 

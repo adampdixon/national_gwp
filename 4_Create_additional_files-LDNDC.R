@@ -91,7 +91,7 @@ write_xml(doc_proj,file=dndc_project_filename)
           
 
 doc_proj_2100 <- read_xml(paste0("<?xml version=\"1.0\" ?><ldndcproject PackageMinimumVersionRequired=\"1.30.4\">",
-                 paste0('<schedule time=\"',start_date,'/1 -> ',end_date_2100,'\" />'),
+                 paste0('<schedule time=\"',start_date,'/1 -> ',end_fut_period_year,'\" />'),
                   "<input>",
                  paste0("<sources sourceprefix=\"",site_name,"\\",site_name,"_\" >"),
                  "<setup source=\"setup.xml\" />",

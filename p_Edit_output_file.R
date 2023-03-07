@@ -15,7 +15,7 @@
 #######################################
 # Audit Log
 # 11/4/2022 EDM Created function.
-#
+# 3/15/2023 Added cotton and sorghum.
 #######################################
 
 p_Edit_output_file <- function(data_mtx,model_name,scenario_name) {
@@ -26,7 +26,8 @@ p_Edit_output_file <- function(data_mtx,model_name,scenario_name) {
   colnames(data_mtx) <- c("Model","Climate_Scenario","Mgmt_Scenario","Scenario_Name",
                           "Maize_Diff_Mgha","Soybean_Diff_Mgha","Wheat_Diff_Mgha",
                           "SOC_Diff_Mgha","Total_N2O_kgha","N2O_Diff_kgha",
-                          "Total_CH4_kgha","CH4_Diff_kgha","Total_SOC_Mgha")
+                          "Total_CH4_kgha","CH4_Diff_kgha","Total_SOC_Mgha",
+                          "Cotton_Diff_Mgha","Sorghum_Diff_Mgha")
   
   # if the output file already exists, check if the model/scenario already has
   # an entry and replace it; otherwise, create a new file
@@ -43,6 +44,8 @@ p_Edit_output_file <- function(data_mtx,model_name,scenario_name) {
       existing_data[existing_rec,"Total_CH4_kgha"] <- data_mtx[,11]
       existing_data[existing_rec,"CH4_Diff_kgha"] <- data_mtx[,12]
       existing_data[existing_rec,"Total_SOC_Mgha"] <- data_mtx[,13]
+      existing_data[existing_rec,"Cotton_Diff_Mgha"] <- data_mtx[,14]
+      existing_data[existing_rec,"Sorghum_Diff_Mgha"] <- data_mtx[,15]
       data_mtx <- existing_data
     } else {
       data_mtx <- rbind(existing_data,data_mtx)
@@ -53,7 +56,8 @@ p_Edit_output_file <- function(data_mtx,model_name,scenario_name) {
               col.names=c("Model","Climate_Scenario","Mgmt_Scenario","Scenario_Name",
                           "Maize_Diff_Mgha","Soybean_Diff_Mgha","Wheat_Diff_Mgha",
                           "SOC_Diff_Mgha","Total_N2O_kgha","N2O_Diff_kgha",
-                          "Total_CH4_kgha","CH4_Diff_kgha","Total_SOC_Mgha"),
+                          "Total_CH4_kgha","CH4_Diff_kgha","Total_SOC_Mgha",
+                          "Cotton_Diff_Mgha","Sorghum_Diff_Mgha"),
               row.names=F,sep=",")
   
 }

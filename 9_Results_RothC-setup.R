@@ -30,7 +30,10 @@ RothCObs_df_raw <- read.fwf(rdata_filename,
                        colClasses=c("numeric","numeric","numeric","numeric","numeric",
                                     "numeric","numeric","numeric","numeric"),skip=1)
 
-RothCC_Mgha <- RothCObs_df_raw[,c("year","ModC","CO2")] #%>%
+# limit future output to future period
+RothCObs_df <- RothCObs_df_raw[RothCObs_df_raw$year <= end_fut_period_year,]
+
+RothCC_Mgha <- RothCObs_df[,c("year","ModC","CO2")] #%>%
 #  mutate(CO2_monthly_Mgha=CO2-lag(CO2,default=0),
 #         CO2_monthly_ghad=CO2_monthly_Mgha*1000000)
 
@@ -72,8 +75,8 @@ Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year),
 
 # calculate mean differences between observed and modeled results
 
-SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
-                                                 Cstock_Mgha$RothC),"Observed"] -
-                              Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
-                                                   Cstock_Mgha$RothC),"RothC"])
+SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed) &
+                                          !is.na(Cstock_Mgha$RothC),"Observed"] -
+                              Cstock_Mgha[!is.na(Cstock_Mgha$Observed) &
+                                            !is.na(Cstock_Mgha$RothC),"RothC"])
 

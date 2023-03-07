@@ -19,6 +19,7 @@
 write.table(soil_df[,c("upper_depth_cm","lower_depth_cm","BD","DUL","LL15","evap_coef",
                        "root_fraction","sand_fraction","clay_fraction","OM_fraction",
                        "deltamin","ksat_cmsec","PH")], 
-            file=paste0(daycent_path,"soils_",scenario_name,".in"),
+#            file=paste0(daycent_path,"soils_",scenario_name,".in"),
+            file=paste0(daycent_path,"soils.in"),
             row.names=F, quote=F, col.names=F, sep=' ')
 

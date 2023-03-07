@@ -12,11 +12,12 @@
 # 9/30/2022: Modified to include T3 data for scenario 3.
 # 10/3/2022: Changed hairy vetch crop type to white clover.
 # 10/22/2022: Changed from a function format to script.
+# 2/22/2022: Modified white and red clover to "AgPasture" for APSIM Classic.
 #######################################
 
 suppressMessages({
   
-  print("Starting 3_Create_management_input_files-setup3.R")
+  print(paste0("Starting 3_Create_management_input_files-setup_",site_name,".R"))
 
 library(readxl)
 library(dplyr)
@@ -74,13 +75,15 @@ temp_ops_ext_adj <- ops_ext_adj[(ops_ext_adj$observation_type!="Fertilizer appli
          rate_seeds_m2=round(rate_seeds_ha/10000,0),
          row_spacing_mm = ifelse(crop %in% c("Maize","Soybean"), 762, 178),
          seed_depth_mm = 50,
-         cultivar = ifelse(crop=="Maize","B_100",
-                    ifelse(crop=="Soybean","Generic_MG2",
-                    ifelse(crop=="Wheat","Yecora",
+         cultivar = ifelse(crop=="Maize","B_80",
+                    ifelse(crop=="Soybean"&mgmt_scenario_grp==2,"MG_3",
+                    ifelse(crop=="Soybean"&mgmt_scenario_grp==3,"MG_3",
+                    ifelse(crop=="Soybean","MG_4",
+                    ifelse(crop=="Wheat","Avalon",
                     ifelse(crop=="WhiteClover","Kopu",
                     ifelse(crop=="RedClover",covercrop_afterwheat_APSIM,
                     ifelse(crop=="Oats",covercrop_aftercorn_APSIM,
-                           "")))))),
+                           "")))))))),
          n_rate_g_m2=NA,
          p_rate_g_m2=NA,
          k_rate_g_m2=NA,
