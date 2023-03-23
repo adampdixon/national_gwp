@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site id="0">
+  <description>
+    <author>Ellen Maas</author>
+    <date>2023-03-23</date>
+    <dataset>KBS</dataset>
+  </description>
+  <soil>
+    <general usehistory="arable" humus="HUMUS" soil="LOAM"/>
+    <layers>
+      <layer  wcmin="67.53815" wcmax="260" ph="5.5" corg="0.0087" clay="0.19" sand="0.43" bd="1.11" depth="20" sks="0.006"/>
+      <layer  wcmin="67.53815" wcmax="260" ph="5.5" corg="0.0087" clay="0.19" sand="0.43" bd="1.11" depth="30" sks="0.006"/>
+      <layer  wcmin="67.53815" wcmax="260" ph="5.5" corg="0.0087" clay="0.19" sand="0.43" bd="1.11" depth="50" sks="0.006"/>
+      <layer  wcmin="67.53815" wcmax="260" ph="5.5" corg="0.0087" clay="0.19" sand="0.43" bd="1.11" depth="100" sks="0.006"/>
+      <layer  wcmin="67.53815" wcmax="260" ph="5.5" corg="0.0043" clay="0.19" sand="0.43" bd="1.2" depth="200" sks="0.006"/>
+      <layer  wcmin="67.53815" wcmax="260" ph="5.5" corg="0.0043" clay="0.19" sand="0.43" bd="1.6" depth="200" sks="0.006"/>
+      <layer  wcmin="138.22352" wcmax="246" ph="6.5" corg="0.00233" clay="0.23" sand="0.51" bd="1.55" depth="200" sks="0.0033"/>
+      <layer  wcmin="69.16603" wcmax="142" ph="6.5" corg="0.0019" clay="0.12" sand="0.71" bd="1.55" depth="200" sks="0.033"/>
+      <layer  wcmin="22.66792" wcmax="69" ph="6.5" corg="0.001" clay="0.05" sand="0.87" bd="1.55" depth="200" sks="0.33"/>
+      <layer  wcmin="22.66792" wcmax="69" ph="6.5" corg="0.001" clay="0.05" sand="0.87" bd="1.55" depth="200" sks="0.33"/>
+      <layer  wcmin="22.66792" wcmax="69" ph="6.5" corg="0.001" clay="0.05" sand="0.87" bd="1.55" depth="200" sks="0.33"/>
+      <layer  wcmin="22.66792" wcmax="33" ph="6.5" corg="0.001" clay="0.01" sand="0.95" bd="1.55" depth="200" sks="0.33"/>
+      <layer  wcmin="22.66792" wcmax="33" ph="6.5" corg="0.001" clay="0.01" sand="0.95" bd="1.55" depth="200" sks="0.33"/>
+    </layers>
+  </soil>
+</site>

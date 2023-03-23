@@ -1,0 +1,225 @@
+[1156440]  LandscapeDNDC 1.35.2 (revision 11164)  2023-02-01 01:12
+[1156440]  Thu Mar 23 14:58:24 EDT 2023
+[1156440]  running on host "node5" (10.0.0.5)
+[  ] {0-03-01 00:00:00} ==== project "./KBS.ldndc" ====
+[  ] {0-03-01 00:00:00} running crabmeat library version 0.12.1 (8170)
+[  ] {1989-01-01 00:00:00} clk=1989-01-01/1->2021-12-31  clock=62761824000  dt=86400
+[II] {LandscapeDNDC ModelCompositor<0> 1989-01-01 00:00:00} seeing 1 models
+[II] {MoBiLE Legacy MasterControlProgram<0> 1989-01-01 00:00:00} Using MoBiLE section "/mobile"
+[II] {MoBiLE Legacy MasterControlProgram<0> 1989-01-01 00:00:00} seeing 11 MoBiLE module(s)
+[II] {1989-01-01 00:00:00} STRATUM 1:
+[II] {1989-01-01 00:00:00} Stone fraction of stratum 1 not initialized, estimated value: 0 [m3 m-3]
+[II] {1989-01-01 00:00:00} Iron content of stratum 1 not initialized, estimated value: 0.01 [g g-1]
+[II] {1989-01-01 00:00:00} Total nitrogen content of stratum 1 not initialized, estimated value: 0.000572368 [g g-1]
+[II] {1989-01-01 00:00:00} Porosity of stratum 1 not initialized, estimated value (without stones): 57.9251 [%]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter n of stratum 1 not initialized, estimated value: 1.56 [-]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter alpha of stratum 1 not initialized, estimated value is 3.6 [m-1]
+[II] {1989-01-01 00:00:00} Maximum water filled pore space of stratum 1 not initialized, estimated value is 0.888855
+[II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 1 not initialized, estimated value is 0.210928
+[II] {1989-01-01 00:00:00} Field capacity in stratum 1 is 0.26 [m3 m-3]
+[II] {1989-01-01 00:00:00} Wilting point in stratum 1 is 0.0675382 [m3 m-3]
+[II] {1989-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 1. Minimum water filled pore space changed to: 0.116596 [m3 m-3]
+[II] {1989-01-01 00:00:00} STRATUM 2:
+[II] {1989-01-01 00:00:00} Stone fraction of stratum 2 not initialized, estimated value: 0 [m3 m-3]
+[II] {1989-01-01 00:00:00} Iron content of stratum 2 not initialized, estimated value: 0.01 [g g-1]
+[II] {1989-01-01 00:00:00} Total nitrogen content of stratum 2 not initialized, estimated value: 0.000612196 [g g-1]
+[II] {1989-01-01 00:00:00} Porosity of stratum 2 not initialized, estimated value (without stones): 57.9251 [%]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter n of stratum 2 not initialized, estimated value: 1.56 [-]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter alpha of stratum 2 not initialized, estimated value is 3.6 [m-1]
+[II] {1989-01-01 00:00:00} Maximum water filled pore space of stratum 2 not initialized, estimated value is 0.888855
+[II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 2 not initialized, estimated value is 0.210928
+[II] {1989-01-01 00:00:00} Field capacity in stratum 2 is 0.26 [m3 m-3]
+[II] {1989-01-01 00:00:00} Wilting point in stratum 2 is 0.0675382 [m3 m-3]
+[II] {1989-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 2. Minimum water filled pore space changed to: 0.116596 [m3 m-3]
+[II] {1989-01-01 00:00:00} STRATUM 3:
+[II] {1989-01-01 00:00:00} Stone fraction of stratum 3 not initialized, estimated value: 0 [m3 m-3]
+[II] {1989-01-01 00:00:00} Iron content of stratum 3 not initialized, estimated value: 0.01 [g g-1]
+[II] {1989-01-01 00:00:00} Total nitrogen content of stratum 3 not initialized, estimated value: 0.000630019 [g g-1]
+[II] {1989-01-01 00:00:00} Porosity of stratum 3 not initialized, estimated value (without stones): 57.9251 [%]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter n of stratum 3 not initialized, estimated value: 1.56 [-]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter alpha of stratum 3 not initialized, estimated value is 3.6 [m-1]
+[II] {1989-01-01 00:00:00} Maximum water filled pore space of stratum 3 not initialized, estimated value is 0.888855
+[II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 3 not initialized, estimated value is 0.210928
+[II] {1989-01-01 00:00:00} Field capacity in stratum 3 is 0.26 [m3 m-3]
+[II] {1989-01-01 00:00:00} Wilting point in stratum 3 is 0.0675382 [m3 m-3]
+[II] {1989-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 3. Minimum water filled pore space changed to: 0.116596 [m3 m-3]
+[II] {1989-01-01 00:00:00} STRATUM 4:
+[II] {1989-01-01 00:00:00} Stone fraction of stratum 4 not initialized, estimated value: 0 [m3 m-3]
+[II] {1989-01-01 00:00:00} Iron content of stratum 4 not initialized, estimated value: 0.01 [g g-1]
+[II] {1989-01-01 00:00:00} Total nitrogen content of stratum 4 not initialized, estimated value: 0.00065766 [g g-1]
+[II] {1989-01-01 00:00:00} Porosity of stratum 4 not initialized, estimated value (without stones): 57.9251 [%]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter n of stratum 4 not initialized, estimated value: 1.56 [-]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter alpha of stratum 4 not initialized, estimated value is 3.6 [m-1]
+[II] {1989-01-01 00:00:00} Maximum water filled pore space of stratum 4 not initialized, estimated value is 0.888855
+[II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 4 not initialized, estimated value is 0.210928
+[II] {1989-01-01 00:00:00} Field capacity in stratum 4 is 0.26 [m3 m-3]
+[II] {1989-01-01 00:00:00} Wilting point in stratum 4 is 0.0675382 [m3 m-3]
+[II] {1989-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 4. Minimum water filled pore space changed to: 0.116596 [m3 m-3]
+[II] {1989-01-01 00:00:00} STRATUM 5:
+[II] {1989-01-01 00:00:00} Stone fraction of stratum 5 not initialized, estimated value: 0 [m3 m-3]
+[II] {1989-01-01 00:00:00} Iron content of stratum 5 not initialized, estimated value: 0.01 [g g-1]
+[II] {1989-01-01 00:00:00} Total nitrogen content of stratum 5 not initialized, estimated value: 0.000351087 [g g-1]
+[II] {1989-01-01 00:00:00} Porosity of stratum 5 not initialized, estimated value (without stones): 54.9083 [%]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter n of stratum 5 not initialized, estimated value: 1.56 [-]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter alpha of stratum 5 not initialized, estimated value is 3.6 [m-1]
+[II] {1989-01-01 00:00:00} Maximum water filled pore space of stratum 5 not initialized, estimated value is 0.891305
+[II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 5 not initialized, estimated value is 0.211298
+[II] {1989-01-01 00:00:00} Field capacity in stratum 5 is 0.26 [m3 m-3]
+[II] {1989-01-01 00:00:00} Wilting point in stratum 5 is 0.0675382 [m3 m-3]
+[II] {1989-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 5. Minimum water filled pore space changed to: 0.123002 [m3 m-3]
+[II] {1989-01-01 00:00:00} STRATUM 6:
+[II] {1989-01-01 00:00:00} Stone fraction of stratum 6 not initialized, estimated value: 0 [m3 m-3]
+[II] {1989-01-01 00:00:00} Iron content of stratum 6 not initialized, estimated value: 0.01 [g g-1]
+[II] {1989-01-01 00:00:00} Total nitrogen content of stratum 6 not initialized, estimated value: 0.000402117 [g g-1]
+[II] {1989-01-01 00:00:00} Porosity of stratum 6 not initialized, estimated value (without stones): 39.8777 [%]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter n of stratum 6 not initialized, estimated value: 1.56 [-]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter alpha of stratum 6 not initialized, estimated value is 3.6 [m-1]
+[II] {1989-01-01 00:00:00} Maximum water filled pore space of stratum 6 not initialized, estimated value is 0.943385
+[II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 6 not initialized, estimated value is 0.29094
+[II] {1989-01-01 00:00:00} Field capacity in stratum 6 is 0.26 [m3 m-3]
+[II] {1989-01-01 00:00:00} Wilting point in stratum 6 is 0.0675382 [m3 m-3]
+[II] {1989-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 6. Minimum water filled pore space changed to: 0.169363 [m3 m-3]
+[II] {1989-01-01 00:00:00} STRATUM 7:
+[II] {1989-01-01 00:00:00} Stone fraction of stratum 7 not initialized, estimated value: 0 [m3 m-3]
+[II] {1989-01-01 00:00:00} Iron content of stratum 7 not initialized, estimated value: 0.01 [g g-1]
+[II] {1989-01-01 00:00:00} Total nitrogen content of stratum 7 not initialized, estimated value: 0.000246091 [g g-1]
+[II] {1989-01-01 00:00:00} Porosity of stratum 7 not initialized, estimated value (without stones): 41.9676 [%]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter n of stratum 7 not initialized, estimated value: 1.48 [-]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter alpha of stratum 7 not initialized, estimated value is 5.9 [m-1]
+[II] {1989-01-01 00:00:00} Maximum water filled pore space of stratum 7 not initialized, estimated value is 0.939653
+[II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 7 not initialized, estimated value is 0.317535
+[II] {1989-01-01 00:00:00} Field capacity in stratum 7 is 0.246 [m3 m-3]
+[II] {1989-01-01 00:00:00} Wilting point in stratum 7 is 0.138224 [m3 m-3]
+[II] {1989-01-01 00:00:00} STRATUM 8:
+[II] {1989-01-01 00:00:00} Stone fraction of stratum 8 not initialized, estimated value: 0 [m3 m-3]
+[II] {1989-01-01 00:00:00} Iron content of stratum 8 not initialized, estimated value: 0.01 [g g-1]
+[II] {1989-01-01 00:00:00} Total nitrogen content of stratum 8 not initialized, estimated value: 0.000225907 [g g-1]
+[II] {1989-01-01 00:00:00} Porosity of stratum 8 not initialized, estimated value (without stones): 41.7026 [%]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter n of stratum 8 not initialized, estimated value: 1.89 [-]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter alpha of stratum 8 not initialized, estimated value is 7.5 [m-1]
+[II] {1989-01-01 00:00:00} Maximum water filled pore space of stratum 8 not initialized, estimated value is 0.919247
+[II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 8 not initialized, estimated value is 0.186223
+[II] {1989-01-01 00:00:00} Field capacity in stratum 8 is 0.142 [m3 m-3]
+[II] {1989-01-01 00:00:00} Wilting point in stratum 8 is 0.069166 [m3 m-3]
+[II] {1989-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 8. Minimum water filled pore space changed to: 0.165855 [m3 m-3]
+[II] {1989-01-01 00:00:00} STRATUM 9:
+[II] {1989-01-01 00:00:00} Stone fraction of stratum 9 not initialized, estimated value: 0 [m3 m-3]
+[II] {1989-01-01 00:00:00} Iron content of stratum 9 not initialized, estimated value: 0.01 [g g-1]
+[II] {1989-01-01 00:00:00} Total nitrogen content of stratum 9 not initialized, estimated value: 0.000125 [g g-1]
+[II] {1989-01-01 00:00:00} Porosity of stratum 9 not initialized, estimated value (without stones): 41.5751 [%]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter n of stratum 9 not initialized, estimated value: 2.28 [-]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter alpha of stratum 9 not initialized, estimated value is 12.4 [m-1]
+[II] {1989-01-01 00:00:00} Maximum water filled pore space of stratum 9 not initialized, estimated value is 0.905228
+[II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 9 not initialized, estimated value is 0.0995787
+[II] {1989-01-01 00:00:00} Field capacity in stratum 9 is 0.069 [m3 m-3]
+[II] {1989-01-01 00:00:00} Wilting point in stratum 9 is 0.0226679 [m3 m-3]
+[II] {1989-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 9. Minimum water filled pore space changed to: 0.0545228 [m3 m-3]
+[II] {1989-01-01 00:00:00} STRATUM 10:
+[II] {1989-01-01 00:00:00} Stone fraction of stratum 10 not initialized, estimated value: 0 [m3 m-3]
+[II] {1989-01-01 00:00:00} Iron content of stratum 10 not initialized, estimated value: 0.01 [g g-1]
+[II] {1989-01-01 00:00:00} Total nitrogen content of stratum 10 not initialized, estimated value: 0.000125 [g g-1]
+[II] {1989-01-01 00:00:00} Porosity of stratum 10 not initialized, estimated value (without stones): 41.5751 [%]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter n of stratum 10 not initialized, estimated value: 2.28 [-]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter alpha of stratum 10 not initialized, estimated value is 12.4 [m-1]
+[II] {1989-01-01 00:00:00} Maximum water filled pore space of stratum 10 not initialized, estimated value is 0.905228
+[II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 10 not initialized, estimated value is 0.0995787
+[II] {1989-01-01 00:00:00} Field capacity in stratum 10 is 0.069 [m3 m-3]
+[II] {1989-01-01 00:00:00} Wilting point in stratum 10 is 0.0226679 [m3 m-3]
+[II] {1989-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 10. Minimum water filled pore space changed to: 0.0545228 [m3 m-3]
+[II] {1989-01-01 00:00:00} STRATUM 11:
+[II] {1989-01-01 00:00:00} Stone fraction of stratum 11 not initialized, estimated value: 0 [m3 m-3]
+[II] {1989-01-01 00:00:00} Iron content of stratum 11 not initialized, estimated value: 0.01 [g g-1]
+[II] {1989-01-01 00:00:00} Total nitrogen content of stratum 11 not initialized, estimated value: 0.000125 [g g-1]
+[II] {1989-01-01 00:00:00} Porosity of stratum 11 not initialized, estimated value (without stones): 41.5751 [%]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter n of stratum 11 not initialized, estimated value: 2.28 [-]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter alpha of stratum 11 not initialized, estimated value is 12.4 [m-1]
+[II] {1989-01-01 00:00:00} Maximum water filled pore space of stratum 11 not initialized, estimated value is 0.905228
+[II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 11 not initialized, estimated value is 0.0995787
+[II] {1989-01-01 00:00:00} Field capacity in stratum 11 is 0.069 [m3 m-3]
+[II] {1989-01-01 00:00:00} Wilting point in stratum 11 is 0.0226679 [m3 m-3]
+[II] {1989-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 11. Minimum water filled pore space changed to: 0.0545228 [m3 m-3]
+[II] {1989-01-01 00:00:00} STRATUM 12:
+[II] {1989-01-01 00:00:00} Stone fraction of stratum 12 not initialized, estimated value: 0 [m3 m-3]
+[II] {1989-01-01 00:00:00} Iron content of stratum 12 not initialized, estimated value: 0.01 [g g-1]
+[II] {1989-01-01 00:00:00} Total nitrogen content of stratum 12 not initialized, estimated value: 0.000125 [g g-1]
+[II] {1989-01-01 00:00:00} Porosity of stratum 12 not initialized, estimated value (without stones): 41.4523 [%]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter n of stratum 12 not initialized, estimated value: 2.68 [-]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter alpha of stratum 12 not initialized, estimated value is 14.5 [m-1]
+[II] {1989-01-01 00:00:00} Maximum water filled pore space of stratum 12 not initialized, estimated value is 0.898262
+[II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 12 not initialized, estimated value is 0.0516256
+[II] {1989-01-01 00:00:00} Field capacity in stratum 12 is 0.033 [m3 m-3]
+[II] {1989-01-01 00:00:00} Wilting point in stratum 12 is 0.0226679 [m3 m-3]
+[II] {1989-01-01 00:00:00} STRATUM 13:
+[II] {1989-01-01 00:00:00} Stone fraction of stratum 13 not initialized, estimated value: 0 [m3 m-3]
+[II] {1989-01-01 00:00:00} Iron content of stratum 13 not initialized, estimated value: 0.01 [g g-1]
+[II] {1989-01-01 00:00:00} Total nitrogen content of stratum 13 not initialized, estimated value: 0.000125 [g g-1]
+[II] {1989-01-01 00:00:00} Porosity of stratum 13 not initialized, estimated value (without stones): 41.4523 [%]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter n of stratum 13 not initialized, estimated value: 2.68 [-]
+[II] {1989-01-01 00:00:00} Van-Genuchten parameter alpha of stratum 13 not initialized, estimated value is 14.5 [m-1]
+[II] {1989-01-01 00:00:00} Maximum water filled pore space of stratum 13 not initialized, estimated value is 0.898262
+[II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 13 not initialized, estimated value is 0.0516256
+[II] {1989-01-01 00:00:00} Field capacity in stratum 13 is 0.033 [m3 m-3]
+[II] {1989-01-01 00:00:00} Wilting point in stratum 13 is 0.0226679 [m3 m-3]
+[II] {Soilchemistry MeTrX<0> 1989-04-21 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1989-04-21/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1989-05-01 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1989-05-01/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1989-05-01 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1989-05-01/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1990-05-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1990-05-25/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1990-05-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1990-05-25/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1990-05-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1990-05-25/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1990-05-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1990-05-25/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1991-04-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1991-04-25/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1991-05-02 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1991-05-02/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1991-05-02 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1991-05-02/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1992-05-15 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1992-05-15/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1992-05-15 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1992-05-15/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1992-05-18 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1992-05-18/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1993-04-28 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1993-04-28/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1993-05-06 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1993-05-06/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1993-05-07 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1993-05-07/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1994-05-04 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1994-05-04/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1994-05-13 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1994-05-13/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1994-05-16 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1994-05-16/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1994-05-16 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1994-05-16/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1994-06-07 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1994-06-07/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1994-10-12 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1994-10-12/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1996-04-18 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1996-04-18/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1996-05-06 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1996-05-06/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1996-05-14 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1996-05-14/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1997-05-11 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1997-05-11/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1997-05-13 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1997-05-13/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1997-10-22 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1997-10-22/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1997-10-22 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1997-10-22/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 1999-05-03 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1999-05-03/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2000-05-04 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2000-05-04/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2000-05-08 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2000-05-08/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2000-05-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2000-05-25/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2002-04-17 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=2002-04-17/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2002-04-19 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2002-04-19/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2002-05-28 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2002-05-28/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2003-05-22 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2003-05-22/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2003-05-27 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2003-05-27/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2003-10-10 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2003-10-10/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2005-04-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2005-04-25/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2005-05-03 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2005-05-03/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2006-05-01 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2006-05-01/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2008-05-06 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2008-05-06/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2008-05-09 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2008-05-09/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2009-05-15 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2009-05-15/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2009-05-20 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2009-05-20/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2011-05-05 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2011-05-05/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2011-05-06 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2011-05-06/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2012-04-24 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2012-04-24/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2012-05-17 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2012-05-17/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2014-04-23 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2014-04-23/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2014-05-05 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2014-05-05/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2015-05-02 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2015-05-02/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2015-05-18 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2015-05-18/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2017-04-18 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2017-04-18/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2017-04-27 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2017-04-27/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2018-05-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2018-05-25/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2018-10-17 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2018-10-17/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2020-04-15 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2020-04-15/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2020-05-05 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2020-05-05/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2021-05-10 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2021-05-10/1->2021-12-31]
+[II] {Soilchemistry MeTrX<0> 2021-10-01 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2021-10-01/1->2021-12-31]
+node 0: normal termination.

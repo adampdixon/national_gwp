@@ -2,16 +2,16 @@
 <ldndcproject PackageMinimumVersionRequired="1.35.2">
   <schedule time="1989-01-01/1 -&gt; 2021-12-31"/>
   <input>
-    <sources sourceprefix="KBS/KBS_">
+    <sources sourceprefix="KBS/">
       <setup source="setup.xml"/>
-      <site source="site.xml"/>
+      <site source="site_1.xml"/>
       <airchemistry source="airchem.txt" format="txt"/>
-      <climate source="climate.txt"/>
-      <event source="mana.xml"/>
+      <climate source="climate_1.txt"/>
+      <event source="mana_1.xml"/>
     </sources>
   </input>
   <output>
-    <sinks sinkprefix="KBS/KBS_output/KBS_">
+    <sinks sinkprefix="KBS/KBS_output/">
       <soilchemistrydaily sink="soil-chem.txt" format="txt"/>
       <microclimatedaily sink="soil-temp.txt" format="txt"/>
       <physiologydaily sink="physiology.txt" format="txt"/>
