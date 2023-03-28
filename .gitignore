@@ -121,7 +121,7 @@ RothC_Interface.CAB
 *.db*
 *.out
 *.sum
-.csv
+*.csv
 *.bin
 *.lis
 base_out*.csv
