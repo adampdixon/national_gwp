@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ldndcproject PackageMinimumVersionRequired="1.35.2">
+  <schedule time="1989-01-01/24 -&gt; 2100-12-31"/>
+  <input>
+    <sources sourceprefix="KBS/">
+      <setup source="setup.xml"/>
+      <site source="site_1.xml"/>
+      <airchemistry source="airchem.txt" format="txt"/>
+      <climate source="climate_1.txt"/>
+      <event source="mana_1.xml"/>
+    </sources>
+  </input>
+  <output>
+    <sinks sinkprefix="KBS/KBS_output/">
+      <soilchemistrydaily sink="soil_chem_daily_1_1.csv" format="txt" delimiter=","/>
+      <soilchemistryyearly sink="soil_chem_yearly_1_1.csv" format="txt" delimiter=","/>
+      <microclimatedaily sink="soil_temp_daily_1_1.csv" format="txt" delimiter=","/>
+      <physiologysubdaily sink="physiology_subdaily_1_1.csv" format="txt" delimiter=","/>
+      <reportharvest sink="harvest_1_1.csv" format="txt" delimiter=","/>
+      <watercyclesubdaily sink="soil_water_daily_1_1.csv" format="txt" delimiter=","/>
+    </sinks>
+  </output>
+</ldndcproject>

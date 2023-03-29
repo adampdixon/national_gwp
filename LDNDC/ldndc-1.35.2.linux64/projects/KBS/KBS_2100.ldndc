@@ -2,7 +2,7 @@
 <ldndcproject PackageMinimumVersionRequired="1.30.4">
   <schedule time="1989-01-01/1 -&gt; 2100-12-31"/>
   <input>
-    <sources sourceprefix="KBS\KBS_">
+    <sources sourceprefix="KBS/KBS_">
       <setup source="setup.xml"/>
       <site source="site.xml"/>
       <airchemistry source="airchem.txt" format="txt"/>
@@ -11,7 +11,7 @@
     </sources>
   </input>
   <output>
-    <sinks sinkprefix="KBS\KBS_output\KBS_">
+    <sinks sinkprefix="KBS/KBS_output/KBS_">
       <soilchemistrydaily sink="soil-chem_2100.txt" format="txt"/>
       <microclimatedaily sink="soil-temp_2100.txt" format="txt"/>
       <physiologydaily sink="physiology_2100.txt" format="txt"/>

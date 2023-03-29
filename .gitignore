@@ -1,3 +1,4 @@
+
 # History files
 .Rhistory
 .Rapp.history
@@ -74,6 +75,12 @@ Cluster/
 /LDNDC/ldndc-1.35.2.linux64/projects/tutorial_3/
 /LDNDC/ldndc-1.35.2.linux64/projects/tutorial_4/
 /LDNDC/ldndc-1.35.2.linux64/projects/tutorials/
+/LDNDC/ldndc-1.35.2.linux64/projects/KBS/KBS_output/
+/LDNDC/ldndc-1.35.2.linux64/projects/LRF/LRF_output/
+/KBS_results_2100/
+/KBS_results_2050/
+/LRF_results_2100/
+/LRF_results_2050/
 
 # Specific files
 .nfs*
@@ -122,7 +129,7 @@ RothC_Interface.CAB
 *.db*
 *.out
 *.sum
-*.csv
+# can't *.csv because some .csv are input files
 *.bin
 *.lis
 base_out*.csv
@@ -141,7 +148,8 @@ base_out*.csv
 #/Daycent/*.out
 #/Daycent/KBS/*.1
 #/Daycent/KBS/*.out
-#/Daycent/KBS/*.csv
+/Daycent/KBS/*.csv
+/Daycent/LRF/*.csv
 #/Daycent/KBS/*.bin
 #/Daycent/KBS/*.lis
 #/Daycent/SOURCE_CODE-vEVI/
@@ -154,8 +162,10 @@ base_out*.csv
 #/RothC/KBS/SETUP.LST
 #/RothC/KBS/ST6UNST.LOG
 #/RothC/KBS/RothC_Interface.CAB
-#/Millennial/R/simulation/KBS/base_out*.csv
-#/Millennial/R/simulation/KBS/scenario_out*.csv
+/Millennial/R/simulation/KBS/base_out*.csv
+/Millennial/R/simulation/KBS/scenario_out*.csv
+/Millennial/R/simulation/LRF/base_out*.csv
+/Millennial/R/simulation/LRF/scenario_out*.csv
 
 # LFS files
 #/KBS_results/mean_daily_results.csv
