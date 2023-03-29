@@ -25,10 +25,11 @@ print("Starting 4_Create_additional_files-LDNDC.R")
 
 library(xml2)
 
-dndc_setup_filename <- paste0(dndc_path,"/setup.xml")
-dndc_project_filename <- paste0(dndc_path,"/",site_name,".ldndc")
-dndc_airchem_filename <- paste0(dndc_path,"/airchem.txt")
-dndc_batch_filename <- paste0(dndc_path,"/",site_name,".bat")
+dndc_setup_filename <- paste0(dndc_path,"setup.xml")
+dndc_project_filename <- paste0(dndc_path,site_name,"_",scenario_name,".ldndc")
+dndc_airchem_filename <- paste0(dndc_path,"airchem.txt")
+dndc_batch_filename <- paste0(dndc_path,site_name,"_",scenario_name,".bat")
+dndc_shell_filename <- paste0(dndc_path,site_name,"_",scenario_name,".sh")
 
 
 #*************************************************************
@@ -46,15 +47,16 @@ doc_setup <- read_xml(paste0(
   "<modulelist>",
   "<module id=\"airchemistry:airchemistrydndc\" timemode=\"daily\" />",
   "<module id=\"microclimate:canopyecm\" timemode=\"daily\" />",
-  "<module id=\"physiology:arabledndc\" timemode=\"daily\" />",
+  "<module id=\"physiology:plamox\" timemode=\"subdaily\" />",
   "<module id=\"soilchemistry:metrx\" timemode=\"daily\" />",
-  "<module id=\"watercycle:watercycledndc\" timemode=\"daily\" />",
+  "<module id=\"watercycle:watercycledndc\" timemode=\"subdaily\" />",
   "<!-- outputs -->",
-  "<module id=\"output:soilchemistry-layer:daily\" />",
+  "<module id=\"output:soilchemistry:daily\" />",
   "<module id=\"output:soilchemistry:yearly\" />",
   "<module id=\"output:microclimate:daily\" />",
-  "<module id=\"output:physiology:daily\" />",
-  "<module id=\"output:watercycle:daily\" />",
+  "<module id=\"output:physiology:subdaily\" />",
+  #"<module id=\"output:physiology:yearly\" />",
+  "<module id=\"output:watercycle:subdaily\" />",
   "<module id=\"output:report:arable:harvest\" timemode=\"daily\" />",
   "</modulelist>",
   "</mobile>",
@@ -72,23 +74,25 @@ write_xml(doc_setup,file=dndc_setup_filename)
 base_treatment <- ifelse(mgmt_scenario_grp %in% c(1,4,5,6),1,mgmt_scenario_grp)
 
 doc_proj <- read_xml(paste0("<?xml version=\"1.0\" ?><ldndcproject PackageMinimumVersionRequired=\"1.35.2\">",
-                 paste0('<schedule time=\"',experiment_start_date,'/1 -> ',experiment_end_date,'\" />'),
+                 paste0('<schedule time=\"',experiment_start_date,'/24 -> ',end_fut_period_year,"-12-31",'\" />'),
                   "<input>",
                  paste0('<sources sourceprefix=\"',site_name,'/" >'),
                  "<setup source=\"setup.xml\" />",
                  paste0('<site source=\"site_',base_treatment,'.xml\" />'),
                  "<airchemistry source=\"airchem.txt\" format=\"txt\" />",
                  paste0('<climate source=\"climate_',clim_scenario_num,'.txt\" />'),
-                 paste0('<event source=\"mana_',base_treatment,'.xml\" />'),
+                 paste0('<event source=\"mana_',mgmt_scenario_num,'.xml\" />'),
                  "</sources>",
                   "</input>",
                   "<output>",
                  paste0('<sinks sinkprefix=\"',site_name,'/',site_name,'_output/" >'),
-                 "<soilchemistrydaily sink=\"soil-chem.txt\" format=\"txt\" />",
-                 "<microclimatedaily sink=\"soil-temp.txt\" format=\"txt\" />",
-                 "<physiologydaily sink=\"physiology.txt\" format=\"txt\" />",
-                 "<harvest sink=\"harvest.txt\" format=\"txt\" />",
-                 "<watercycledaily sink=\"soil-water.txt\" format=\"txt\" />",
+                 paste0("<soilchemistrydaily sink=\"soil_chem_daily_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
+                 paste0("<soilchemistryyearly sink=\"soil_chem_yearly_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
+                 paste0("<microclimatedaily sink=\"soil_temp_daily_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
+                 paste0("<physiologysubdaily sink=\"physiology_subdaily_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
+                 #paste0("<physiologyyearly sink=\"physiology_yearly_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
+                 paste0("<reportharvest sink=\"harvest_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
+                 paste0("<watercyclesubdaily sink=\"soil_water_daily_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
                  "</sinks>",
                   "</output>",
                  "</ldndcproject>"))
@@ -99,15 +103,32 @@ write_xml(doc_proj,file=dndc_project_filename)
           
 
 #*************************************************************
-## batch file
+## write Windows batch and Linux shell files
 
-
-# contents of batch file
-batch_txt <- paste0("%cd%\\..\\..\\bin\\ldndc.exe ",site_name,".ldndc")
+# batch file
+batch_txt <- paste0("%cd%\\..\\..\\bin\\ldndc.exe ",site_name,"_",mgmt_scenario_num,".ldndc")
                     
 writeLines(batch_txt,dndc_batch_filename)
 
+# shell file
+shell_txt <- c("#!/bin/bash",
+  "",
+  "if [ -e $HOME/.ldndc ]; ",
+  "then",
+  "#LandscapeDNDC program",
+  "ldndc=\"../../bin/ldndc\"",
+  "",
+  "#Target project",
+  paste0("project=\"./KBS_",scenario_name,".ldndc\""),
+  "",
+  "#Run target project",
+  "$ldndc $project",
+  "else",
+  "printf \"Directory \\\"~/.ldndc\\\" missing!\n\\",
+  "Did you install LandscapeDNDC via \\\"install.sh\\\"?\n\"",
+  "fi")
 
+writeLines(shell_txt,dndc_shell_filename)
 
 #*************************************************************
 ## air chemistry file

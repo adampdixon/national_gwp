@@ -1,9 +1,9 @@
-[1156440]  LandscapeDNDC 1.35.2 (revision 11164)  2023-02-01 01:12
-[1156440]  Thu Mar 23 14:58:24 EDT 2023
-[1156440]  running on host "node5" (10.0.0.5)
-[  ] {0-03-01 00:00:00} ==== project "./KBS.ldndc" ====
+[1379491]  LandscapeDNDC 1.35.2 (revision 11164)  2023-02-01 01:12
+[1379491]  Tue Mar 28 10:30:14 EDT 2023
+[1379491]  running on host "node5" (10.0.0.5)
+[  ] {0-03-01 00:00:00} ==== project "./KBS_1_1.ldndc" ====
 [  ] {0-03-01 00:00:00} running crabmeat library version 0.12.1 (8170)
-[  ] {1989-01-01 00:00:00} clk=1989-01-01/1->2021-12-31  clock=62761824000  dt=86400
+[  ] {1989-01-01 00:00:00} clk=1989-01-01-01/24->2100-12-31-01  clock=62761824000  dt=3600
 [II] {LandscapeDNDC ModelCompositor<0> 1989-01-01 00:00:00} seeing 1 models
 [II] {MoBiLE Legacy MasterControlProgram<0> 1989-01-01 00:00:00} Using MoBiLE section "/mobile"
 [II] {MoBiLE Legacy MasterControlProgram<0> 1989-01-01 00:00:00} seeing 11 MoBiLE module(s)
@@ -160,66 +160,4 @@
 [II] {1989-01-01 00:00:00} Minimum water filled pore space of stratum 13 not initialized, estimated value is 0.0516256
 [II] {1989-01-01 00:00:00} Field capacity in stratum 13 is 0.033 [m3 m-3]
 [II] {1989-01-01 00:00:00} Wilting point in stratum 13 is 0.0226679 [m3 m-3]
-[II] {Soilchemistry MeTrX<0> 1989-04-21 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1989-04-21/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1989-05-01 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1989-05-01/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1989-05-01 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1989-05-01/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1990-05-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1990-05-25/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1990-05-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1990-05-25/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1990-05-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1990-05-25/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1990-05-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1990-05-25/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1991-04-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1991-04-25/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1991-05-02 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1991-05-02/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1991-05-02 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1991-05-02/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1992-05-15 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1992-05-15/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1992-05-15 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1992-05-15/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1992-05-18 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1992-05-18/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1993-04-28 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1993-04-28/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1993-05-06 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1993-05-06/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1993-05-07 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1993-05-07/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1994-05-04 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1994-05-04/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1994-05-13 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1994-05-13/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1994-05-16 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1994-05-16/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1994-05-16 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1994-05-16/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1994-06-07 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1994-06-07/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1994-10-12 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1994-10-12/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1996-04-18 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1996-04-18/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1996-05-06 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1996-05-06/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1996-05-14 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1996-05-14/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1997-05-11 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=1997-05-11/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1997-05-13 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1997-05-13/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1997-10-22 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1997-10-22/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1997-10-22 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=1997-10-22/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 1999-05-03 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=1999-05-03/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2000-05-04 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2000-05-04/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2000-05-08 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2000-05-08/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2000-05-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2000-05-25/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2002-04-17 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=110m,time=2002-04-17/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2002-04-19 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2002-04-19/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2002-05-28 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2002-05-28/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2003-05-22 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2003-05-22/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2003-05-27 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2003-05-27/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2003-10-10 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2003-10-10/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2005-04-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2005-04-25/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2005-05-03 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2005-05-03/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2006-05-01 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2006-05-01/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2008-05-06 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2008-05-06/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2008-05-09 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2008-05-09/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2009-05-15 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2009-05-15/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2009-05-20 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2009-05-20/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2011-05-05 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2011-05-05/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2011-05-06 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2011-05-06/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2012-04-24 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2012-04-24/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2012-05-17 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2012-05-17/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2014-04-23 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2014-04-23/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2014-05-05 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2014-05-05/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2015-05-02 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2015-05-02/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2015-05-18 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2015-05-18/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2017-04-18 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2017-04-18/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2017-04-27 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2017-04-27/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2018-05-25 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2018-05-25/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2018-10-17 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2018-10-17/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2020-04-15 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2020-04-15/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2020-05-05 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2020-05-05/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2021-05-10 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=5m,time=2021-05-10/1->2021-12-31]
-[II] {Soilchemistry MeTrX<0> 2021-10-01 00:00:00} tilling depth greater than 0.5m, reset to 0.5m [depth=30m,time=2021-10-01/1->2021-12-31]
 node 0: normal termination.

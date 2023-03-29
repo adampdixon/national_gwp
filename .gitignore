@@ -44,6 +44,7 @@ Archive/
 Cluster/
 /APSIM/KBS/Result graphs/
 /APSIM/KBS/Soil temp testing/
+/Daycent/SOURCE_CODE-vEVI/
 /LDNDC/crabmeat/
 /LDNDC/ldndc-1.30.4.source/
 /LDNDC/ldndc-1.30.4.test/
@@ -52,8 +53,8 @@ Cluster/
 /RothC/KBS/Result Graphs/
 /RothC/KBS/troubleshooting/
 /RothC/KBS/auto/
-#/RothC/KBS/output/
-#/RothC/KBS/graph/
+/RothC/KBS/output/
+/RothC/KBS/graph/
 /LDNDC/ldndc-1.30.4.win64/doc/
 /LDNDC/ldndc-1.30.4.win64/projects/arable/
 /LDNDC/ldndc-1.30.4.win64/projects/forest/
@@ -76,8 +77,8 @@ Cluster/
 # Specific files
 .nfs*
 test*
-*_test.*
-*_old.*
+*_test*
+*_old*
 *- Copy.R
 *- Copy.csv
 *- Copy.out
@@ -105,31 +106,54 @@ test*
 #scenario_means.csv
 #log.txt
 ldndc-latest.linux64.tar.bz2
+.1
+*.dll
+*.DLL
+C14bomb.dat
+C14NOBOM.DAT
+fort.13
+fort.99
+SETUP.LST
+ST6UNST.LOG
+RothC_Interface.CAB
+LDNDC/ldndc-1.35.2.linux64/projects/KBS/KBS_output/*
 
+###### new output suppression, based on old coding, below
+*.db*
+*.out
+*.sum
+*.csv
+*.bin
+*.lis
+base_out*.csv
+
+###### old coding - limits to models and sites, which will get tedious
+###### as new models and sites added. will run out of free LFS space
+###### anyway, so just supress output file types
 #/APSIM/*.db*
 #/APSIM/KBS/*.out
 #/APSIM/KBS/*.db*
-/APSIM/KBS/*.sum
-/APSIM/KBS/*.xlsx
+#/APSIM/KBS/*.sum
+#/APSIM/KBS/*.xlsx
 #/APSIM/KBS/BC[0-9][0-9]_[0-9].csv
 #/APSIM/KBS/BC[0-9]_[0-9].csv
-/Daycent/*.1
-/Daycent/*.out
-/Daycent/KBS/*.1
-/Daycent/KBS/*.out
+#/Daycent/*.1
+#/Daycent/*.out
+#/Daycent/KBS/*.1
+#/Daycent/KBS/*.out
 #/Daycent/KBS/*.csv
 #/Daycent/KBS/*.bin
 #/Daycent/KBS/*.lis
-/Daycent/SOURCE_CODE-vEVI/
-/RothC/KBS/*.dll
-/RothC/KBS/*.DLL
-/RothC/KBS/C14bomb.dat
-/RothC/KBS/C14NOBOM.DAT
-/RothC/KBS/fort.13
-/RothC/KBS/fort.99
-/RothC/KBS/SETUP.LST
-/RothC/KBS/ST6UNST.LOG
-/RothC/KBS/RothC_Interface.CAB
+#/Daycent/SOURCE_CODE-vEVI/
+#/RothC/KBS/*.dll
+#/RothC/KBS/*.DLL
+#/RothC/KBS/C14bomb.dat
+#/RothC/KBS/C14NOBOM.DAT
+#/RothC/KBS/fort.13
+#/RothC/KBS/fort.99
+#/RothC/KBS/SETUP.LST
+#/RothC/KBS/ST6UNST.LOG
+#/RothC/KBS/RothC_Interface.CAB
 #/Millennial/R/simulation/KBS/base_out*.csv
 #/Millennial/R/simulation/KBS/scenario_out*.csv
 

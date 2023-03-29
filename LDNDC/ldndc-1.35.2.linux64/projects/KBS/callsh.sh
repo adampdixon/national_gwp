@@ -1,1 +1,1 @@
-./KBS.sh > mylog.txt 2>&1
+./KBS_1_1.sh > mylog.txt 2>&1
