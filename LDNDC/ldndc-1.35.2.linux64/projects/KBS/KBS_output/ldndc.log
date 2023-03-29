@@ -1,12 +1,12 @@
-[1379491]  LandscapeDNDC 1.35.2 (revision 11164)  2023-02-01 01:12
-[1379491]  Tue Mar 28 10:30:14 EDT 2023
-[1379491]  running on host "node5" (10.0.0.5)
+[1515977]  LandscapeDNDC 1.35.2 (revision 11164)  2023-02-01 01:12
+[1515977]  Wed Mar 29 16:40:36 EDT 2023
+[1515977]  running on host "node5" (10.0.0.5)
 [  ] {0-03-01 00:00:00} ==== project "./KBS_1_1.ldndc" ====
 [  ] {0-03-01 00:00:00} running crabmeat library version 0.12.1 (8170)
 [  ] {1989-01-01 00:00:00} clk=1989-01-01-01/24->2100-12-31-01  clock=62761824000  dt=3600
 [II] {LandscapeDNDC ModelCompositor<0> 1989-01-01 00:00:00} seeing 1 models
 [II] {MoBiLE Legacy MasterControlProgram<0> 1989-01-01 00:00:00} Using MoBiLE section "/mobile"
-[II] {MoBiLE Legacy MasterControlProgram<0> 1989-01-01 00:00:00} seeing 11 MoBiLE module(s)
+[II] {MoBiLE Legacy MasterControlProgram<0> 1989-01-01 00:00:00} seeing 10 MoBiLE module(s)
 [II] {1989-01-01 00:00:00} STRATUM 1:
 [II] {1989-01-01 00:00:00} Stone fraction of stratum 1 not initialized, estimated value: 0 [m3 m-3]
 [II] {1989-01-01 00:00:00} Iron content of stratum 1 not initialized, estimated value: 0.01 [g g-1]

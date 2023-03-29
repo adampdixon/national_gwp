@@ -17,7 +17,7 @@
       <microclimatedaily sink="soil_temp_daily_1_1.csv" format="txt" delimiter=","/>
       <physiologysubdaily sink="physiology_subdaily_1_1.csv" format="txt" delimiter=","/>
       <reportharvest sink="harvest_1_1.csv" format="txt" delimiter=","/>
-      <watercyclesubdaily sink="soil_water_daily_1_1.csv" format="txt" delimiter=","/>
+      <watercyclesubdaily sink="soil_water_subdaily_1_1.csv" format="txt" delimiter=","/>
     </sinks>
   </output>
 </ldndcproject>
