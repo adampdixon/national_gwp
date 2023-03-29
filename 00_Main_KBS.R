@@ -37,11 +37,23 @@ longitude = -85.372
 experiment_start_year <- 1989
 experiment_end_year <- 2021
 end_fut_period_year <- 2050
+calib_mgmt_grps <- c(1,2,3)
+#
+obs_path <- paste0("Data/",site_name,"/Calibration/")
 hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
 hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
 curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
 nasapower_output_filename <- paste0(site_name,"_np.csv")
 fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
+apsim_path <- paste0("APSIM/",site_name,"/")
+daycent_path <- paste0("Daycent/",site_name,"/")
+if(Sys.info()['sysname']=='Linux') {
+  dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
+} else {
+  dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
+}
+rothc_path <- paste0("RothC/",site_name,"/")
+mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 
 #source("p_Create_future_weather_files.R")
 #source("p_Future_weather_reanalysis.R")

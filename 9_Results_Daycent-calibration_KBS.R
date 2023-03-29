@@ -1086,7 +1086,11 @@ calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                        Nfit_coef[2], Nfit_coef[1], Nfit_r2, N_rmse,
                        N2O_obsmod_diff_gha,
                        Hfit_coef[2], Hfit_coef[1], Hfit_r2, H_rmse,
-                       CH4_obsmod_diff_gha)
+                       CH4_obsmod_diff_gha,
+                       NA, NA, NA, NA, # Cotton
+                       NA,
+                       NA, NA, NA, NA, # Sorghum
+                       NA)
 
 
 source("p_Edit_calib_file.R")

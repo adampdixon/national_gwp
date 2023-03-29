@@ -166,19 +166,23 @@ ggsave(filename=paste0(results_path,"calib_SOC_comparison_1to1_",scenario_name,"
 calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                        clim_scenario_num,mgmt_scenario_num, scenario_name,
                        scenario_abbrev,
-                       NA, NA, NA, NA,
+                       NA, NA, NA, NA, # Maize
                        NA,
-                       NA, NA, NA, NA,
+                       NA, NA, NA, NA, # Soybean
                        NA,
-                       NA, NA, NA, NA,
+                       NA, NA, NA, NA, # Wheat
                        NA,
                        Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
                        SOC_obsmod_diff_Mgha,
-                       NA, NA, NA, NA,
-                       NA, NA, NA, NA,
-                       NA, NA, NA, NA,
+                       NA, NA, NA, NA, # Temp
+                       NA, NA, NA, NA, # Moist
+                       NA, NA, NA, NA, # N2O
                        NA,
-                       NA, NA, NA, NA,
+                       NA, NA, NA, NA, # CH4
+                       NA,
+                       NA, NA, NA, NA, # Cotton
+                       NA,
+                       NA, NA, NA, NA, # Sorghum
                        NA)
 
 
