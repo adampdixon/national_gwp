@@ -12,18 +12,17 @@
 # 1/31/2023: Removed variable definition for "fut_weather_path" as 
 # it's in 00_Main and needed when testing the weather file creation
 # scripts.
+# 2/19/2023: Modified to use site name for setup script.
 #######################################
 
 
-source("1_Create_weather_input_files-setup2.R")
+source(paste0("1_Create_weather_input_files-setup_",site_name,".R"))
 #
 source("1_Create_weather_input_files-APSIM3.R")
-if(mgmt_scenario_grp!=6) {
-  source("1_Create_weather_input_files-Daycent3.R")
-  source("1_Create_weather_input_files-LDNDC.R")
-  source("1_Create_weather_input_files-RothC.R")
-  # Millennial doesn't use climate data as inputs. 
-  # Uses soil temperature and moisture together
-  # with daily NPP (C input). Generated in 
-  # "p3_Create_management_input_files".
-}
+source("1_Create_weather_input_files-Daycent4.R")
+source("1_Create_weather_input_files-LDNDC.R")
+source("1_Create_weather_input_files-RothC.R")
+# Millennial doesn't use climate data as inputs.
+# Uses soil temperature and moisture together
+# with daily NPP (C input). Generated in
+# "p3_Create_management_input_files".

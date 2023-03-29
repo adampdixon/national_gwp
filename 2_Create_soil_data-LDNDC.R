@@ -11,6 +11,7 @@
 # LDNDC
 ###########################
 
+library(xml2)
 
 ## this is the top level
 doc <- xml_new_root("site",.version="1.0", .encoding="UTF-8")

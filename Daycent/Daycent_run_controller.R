@@ -1,0 +1,35 @@
+###########################################################################
+# Script: run_Daycent_controller.R
+# Author: Ellen Maas 2/21/2023
+# Description: Calls scripts to run all or some segments of a Daycent
+# modeling run. Because each step is run as an extension of the step before,
+# any subsequent step can be run independently as many times as necessary.
+# This saves time rerunning prior steps if their inputs and outputs won't 
+# change. 
+###########################################################################
+# Audit Trail
+# 2/21/2022: Created script.
+###########################################################################
+
+print("Starting Daycent_run_controller.R")
+
+## Always run the setup script
+source(paste0("Daycent/run_Daycent_setup_",site_name,".R"))
+
+
+## The following must all be run at least once, in order. To save time in
+## subsequent testing, comment out prior steps that have already been run
+## successfully to preserve the output. Each step uses the output of the
+## step before.
+# --------------- Step 1: Run equilibrium simulation (4000-year spin-up) ---------------
+source("Daycent/run_Daycent_eq.R")
+
+# # --------------- Step 2: Run base cropping simulations (land conversion - start exp) ---------------
+source("Daycent/run_Daycent_base.R")
+# 
+# # --------------- Step 3: Run experimental period simulations  ---------------
+source("Daycent/run_Daycent_exp.R")
+# 
+# # --------------- Step 4: Run future emissions scenarios (end exp-2100) --------------- 
+source("Daycent/run_Daycent_fut.R")
+

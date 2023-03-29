@@ -14,7 +14,7 @@
 
 suppressMessages({
 
-print("Starting 0_Observations_and_constants.R")
+print(paste0("Starting 0_Observations_and_constants_",site_name,".R"))
 
   
 library(readxl)
@@ -215,13 +215,21 @@ climate_scenario_descriptor <-
   
 scenario_descriptor_full <- paste0(scenario_descriptor, "; ",climate_scenario_descriptor)
 
+#create results folder if it doesn't already exist
+results_path <- paste0(site_name,"_results_",end_fut_period_year,"/")
+if(!dir.exists(results_path)) dir.create(results_path)
+
+write.table(scenario_df,file=paste0(results_path,"Scenario_table.csv"),
+            append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
+
 site_id <- 0
 elevation_m = 288
 land_conversion_year <- 1850
 experiment_year_range <- experiment_start_year:experiment_end_year
-year_range_2100=experiment_start_year:2100
 experiment_start_date <- "1989-01-01"
 experiment_end_date <- "2021-12-31"
+end_exp_period_year <- 2021
+year_range_2100=experiment_start_year:end_fut_period_year
 
 depth_m <- 0.25
 equil_C_input <- 305.00 #244.21 #210.84 # g C/m^2 annually
@@ -229,6 +237,8 @@ surface_C_init <- 60 # Mg C ha-1
 
 control_treatment <- "T8"
 control_treatment_num <- 8
+calib_mgmt_scenario_grps <- c(1:3)
+
 treatment <- if_else(mgmt_scenario_num==1, "T1",
              if_else(mgmt_scenario_num==2, "T2",
              if_else(mgmt_scenario_num==3, "T3",
@@ -250,7 +260,7 @@ soil_temp_bias <- if_else(mgmt_scenario_num==1, 5.0,
                   if_else(mgmt_scenario_grp==5, 5.0,
                   if_else(mgmt_scenario_grp==6, 5.0,
                   0))))))
-soil_moist_bias <- if_else(mgmt_scenario_num==1, 2.0,
+soil_moist_bias <- if_else(mgmt_scenario_num==1, 4.0,
                    if_else(mgmt_scenario_num==2, 0,
                    if_else(mgmt_scenario_num==3, 0,
                    if_else(mgmt_scenario_grp==4, 2.0,
@@ -264,16 +274,10 @@ covercrop_afterwheat_APSIM <- "Colenso"
 covercrop_aftercorn_Daycent <- "OAT1"
 covercrop_afterwheat_Daycent <- "CLVC"
 
-obs_path <- paste0("Data/",site_name,"/Calibration/")
 hist_path <- paste0("Data/",site_name,"/Historical Land Use and Yields/")
 hist_filename <- "MI-Kalamazoo County historical yields and C input.xlsx"
 fut_filename <- "MI-Kalamazoo County future yields and C input.xlsx"
-wth_path <- paste0("Data/",site_name,"/Weather/") 
-hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
-hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
-curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
-nasapower_output_filename <- paste0(site_name,"_np.csv")
-obs_yield_filename <- "Yield by Year and Treatment.csv"
+obs_yield_filename <- "51-agronomic+yields+annual+crops+1656512632.csv"
 obs_bd_filename <- "71-soil+bulk+density+surface+1656513020.csv"
 obs_C_filename <- "Soil Total Carbon and Nitrogen - Surface.csv"
 obs_Cdeep_filename <- "164-soil+total+carbon+and+nitrogen+by+depth+deep+cores+1656512927.csv"
@@ -286,26 +290,6 @@ obs_mb_filename <- "25-soil+microbial+biomass+via+chloroform+fumigation+16565131
 obs_plant_cn_filename <- "73-tissue+carbon+and+nitrogen+1667424583.csv"
 obs_biomass_filename <- "39-annual+crops+and+alfalfa+biomass+1667489393.csv"
 
-apsim_path <- paste0("APSIM/",site_name,"/") # for weather data - should replace with Daycent's
-apsim_db_filename <- paste0("scen_",scenario_name,".db")
-apsim_bc_filename <- if(mgmt_scenario_grp==6) {
-  if_else(mgmt_scenario_opt==1,paste0("BC19_",clim_scenario_num,".csv"),
-  if_else(mgmt_scenario_opt==2,paste0("BC38_",clim_scenario_num,".csv"),
-  if_else(mgmt_scenario_opt==3,paste0("BC57_",clim_scenario_num,".csv"),
-  if_else(mgmt_scenario_opt==4,paste0("BC76_",clim_scenario_num,".csv"),
-  if_else(mgmt_scenario_opt==5,paste0("BC96_",clim_scenario_num,".csv"),
-          "Error")))))
-}
-daycent_path <- paste0("Daycent/",site_name,"/")
-if(Sys.info()['sysname']=='Linux') {
-  dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
-} else {
-  dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
-}
-rothc_path <- paste0("RothC/",site_name,"/")
-mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
-
-results_path <- paste0(site_name,"_results/")
 
 # 9-color palette with grey and black. Colors in order are:
 #[1]black, [2]dark blue, [3]green, [4]light blue, [5]grey,
@@ -351,44 +335,66 @@ ObsBD <- ObsBD_mean[ObsBD_mean$Treatment==control_treatment,] %>%
   summarize(mean_BD=round(mean(mean_BD),2))
 
 ## C percent
-ObsC_pct <- read.csv(paste0(obs_path,obs_C_filename),
+ObsC_pct_raw <- read.csv(paste0(obs_path,obs_C_filename),
                      skip=27) %>%
-  mutate(date=as.Date(sample_date, format="%m/%d/%Y"))
+  mutate(date=as.Date(sample_date, format="%m/%d/%Y"),
+         month=month(date))
+
+ObsC_pct <- ObsC_pct_raw[ObsC_pct_raw$month<7,]
 
 ##  C stock
 
 ObsC_Mgha_all <- ObsC_pct %>%
+  mutate(cstock_byrep=mean_c*ObsBD$mean_BD*25) %>%
   group_by(year,treatment) %>%
   summarize(mean_cpct=round(mean(mean_c,na.rm=T),2),
-            cstock=mean_cpct*ObsBD$mean_BD*25)
+            cstock=mean(cstock_byrep,na.rm=T),
+            sd_cstock=sd(cstock_byrep,na.rm=T))
+
 
 ### BD is from control plot to calculate C stocks
 ObsC_Mgha <- ObsC_pct[ObsC_pct$treatment==treatment_num,] %>%
+  mutate(cstock_byrep=mean_c*ObsBD$mean_BD*25) %>%
   group_by(year) %>%
   summarize(mean_cpct=round(mean(mean_c,na.rm=T),2),
-            cstock=mean_cpct*ObsBD$mean_BD*25)
+            cstock=mean(cstock_byrep,na.rm=T),
+            sd_cstock=sd(cstock_byrep,na.rm=T))
+
+ObsC_outliers <- boxplot(ObsC_Mgha$cstock, plot=FALSE)$out
+ObsC_Mgha_noout <- ObsC_Mgha[-which(ObsC_Mgha$cstock %in% ObsC_outliers),]
 
 ObsC_control_Mgha <- ObsC_pct[ObsC_pct$treatment==control_treatment_num,] %>%
+  mutate(cstock_byrep=mean_c*ObsBD$mean_BD*25) %>%
   group_by(year) %>%
   summarize(mean_cpct=round(mean(mean_c,na.rm=T),2),
-            cstock=mean_cpct*ObsBD$mean_BD*25)
+            cstock=mean(cstock_byrep,na.rm=T),
+            sd_cstock=sd(cstock_byrep,na.rm=T))
 initC <- mean(ObsC_control_Mgha$cstock)
 
 # initC is being ignored and 60 Mg C ha-1 forced in due to calibrating the
 # start C to RothC and evidence of decreasing C in the control plot during the experimental
-# period. It's losing .31 Mg C ha-1 yr-1, so the calculated mean of 43 Mg C ha-1
-# for the control plots isn't realistic for the assumed level in 1850. Also, if
-# the start is 60 and Bolinder input used as-is without adjustments, RothC hits
-# the start of the treatment plot observations dead-on.
-ObsC_Mgha <- rbind(c(land_conversion_year, NA, 60),ObsC_Mgha)
+# period. 
+ObsC_Mgha <- rbind(c(land_conversion_year, NA, 60, NA),ObsC_Mgha)
 
 ObsC_Mgha_mean_5yr <- mean(ObsC_Mgha$mean_cpct[1:5])
 
 ## Yield
-ObsYield_raw <- read.csv(paste0(obs_path,obs_yield_filename))
-ObsYield <- ObsYield_raw[ObsYield_raw$Treatment==treatment,]
-ObsYield$mean_yield <- ObsYield$mean_yield/1000
+ObsYield_raw <- read.csv(paste0(obs_path,obs_yield_filename),skip=31)
+ObsYield <- ObsYield_raw[ObsYield_raw$Treatment==treatment,] %>%
+  mutate(year=Year,
+         crop=if_else(Crop=="Zea mays L. (*)", "Maize",
+              if_else(Crop=="Glycine max L. (*)", "Soybean",
+              if_else(Crop=="Triticum aestivum L. (*)", "Wheat",
+                      Crop)))
+         ) %>%
+  group_by(year,Treatment,crop) %>%
+  summarize(mean_yield_kgha=round(mean(crop_only_yield_kg_ha,na.rm=T),0),
+            sd_yield_kgha=sd(crop_only_yield_kg_ha,na.rm=T))
+  
+ObsYield$mean_yield <- ObsYield$mean_yield_kgha/1000
+ObsYield$sd_yield <- ObsYield$sd_yield_kgha/1000
 ObsYield$mean_yield_gm2 <- ObsYield$mean_yield*100
+ObsYield$sd_yield_gm2 <- ObsYield$sd_yield*100
 
 ## Soil temp
 ObsTemp_raw <- read.csv(paste0(obs_path,obs_soiltemp_filename),
@@ -414,7 +420,7 @@ ObsGas_mean <- ObsGas_raw %>%
             CO2_C=round(mean(CO2_C),2),
             N2O_N=round(mean(N2O_N),2))
 ObsGas_all <- ObsGas_mean[,c("date","year","Treatment","CH4_C","CO2_C","N2O_N")]
-ObsGas <- ObsGas_raw[ObsGas_raw$Treatment==treatment,c("date","year","CH4_C","CO2_C",
+ObsGas <- ObsGas_mean[ObsGas_mean$Treatment==treatment,c("date","year","CH4_C","CO2_C",
                                                   "N2O_N")]
 
 ## Soil moisture
@@ -608,12 +614,44 @@ Fert <- as.data.frame(read.csv(paste0(obs_path,obs_fert_filename)) %>%
 # Bring in weather data
 #######################
 
-# Obs_wth <- read.csv(paste0(apsim_path,"/basic_wth_",clim_scenario_num,".csv"),
-#                    skip=2) %>%
-#   mutate(meant=round((maxt+mint)/2,1),
-#          date=as.Date(day-1, origin=paste0(as.character(year),"-01-01"),),
-#          source="Air"
-#   )
+ObsWth <- read.csv(paste0(apsim_path,"/basic_wth_",clim_scenario_num,".csv"),
+                   skip=2) %>%
+  mutate(meant=round((maxt+mint)/2,1),
+         date=as.Date(day-1, origin=paste0(as.character(year),"-01-01"),),
+         source="Air"
+  )
+
+#**********************************************************************
+
+# write calibration header file ---------------------------------------
+
+# make separate file with column headers (empty table with NA row)
+log_col_headers <- c("Date_time","Model",
+                     "Climate_Scenario","Mgmt_Scenario","Scenario_Name",
+                     "Scenario_Abbr",
+                     "Maize_slope","Maize_yint","Maize_R2","Maize_RMSE",
+                     "Maize_diff",
+                     "Soy_slope","Soy_yint","Soy_R2","Soy_RMSE",
+                     "Soy_diff",
+                     "Wheat_slope","Wheat_yint","Wheat_R2","Wheat_RMSE",
+                     "Wheat_diff",
+                     "SOC_slope","SOC_yint","SOC_R2","SOC_RMSE",
+                     "SOC_diff",
+                     "Temp_slope","Temp_yint","Temp_R2","Temp_RMSE",
+                     "Moist_slope","Moist_yint","Moist_R2","Moist_RMSE",
+                     "N2O_slope","N2O_yint","N2O_R2","N2O_RMSE",
+                     "N2O_diff",
+                     "CH4_slope","CH4_yint","CH4_R2","CH4_RMSE",
+                     "CH4_diff",
+                     "Cotton_slope","Cotton_yint","Cotton_R2","Cotton_RMSE",
+                     "Cotton_diff",
+                     "Sorghum_slope","Sorghum_yint","Sorghum_R2","Sorghum_RMSE",
+                     "Sorghum_diff")
+dummy<-data.frame(matrix(ncol=length(log_col_headers)))
+colnames(dummy) <- log_col_headers
+
+write.table(dummy,file=paste0(results_path,"Calibration_log_columns.csv"),
+            append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
 
 }) # end suppressMessages
 

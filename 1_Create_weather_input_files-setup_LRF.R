@@ -62,7 +62,7 @@ Clean_site <- Raw_site[Raw_site$year %in% experiment_year_range,] %>%
 ###### only need to run this once per site ##########
 
 # # compile and import historical data for spin-up-to-equilibrium period for 
-# # Daycent, RothC, and Millennial
+# # Daycent and RothC
 #source("f_Compile_historical_weather_files.R")
 #f_Compile_historical_weather_files(as.Date(min(Clean_site$date)))
 
@@ -153,31 +153,27 @@ new1 <- merge(full_data,
          dayofyear=yday(date))
 
 # join APSIM library-generated data
-new2 <- left_join(new1[,c("date","year","month","day","dayofyear",
+new2 <- right_join(new1[,c("date","year","month","day","dayofyear",
                           "radn","maxt","mint","rain","meanw_ms")],
                   new_met_df,by=c("date","year","dayofyear","month","day"))
 new2[is.na(new2$radn.x),"radn.x"] <- new2[is.na(new2$radn.x),"radn.y"]
 new2[is.na(new2$maxt.x),"maxt.x"] <- new2[is.na(new2$maxt.x),"maxt.y"]
 new2[is.na(new2$mint.x),"mint.x"] <- new2[is.na(new2$mint.x),"mint.y"]
 new2[is.na(new2$rain.x),"rain.x"] <- new2[is.na(new2$rain.x),"rain.y"]
-new2[is.na(new2$meanw_ms),"meanw_ms"] <- new2[is.na(new2$meanw_ms),"windspeed"]
+new2[is.na(new2$meanw_ms.x),"meanw_ms.x"] <- new2[is.na(new2$meanw_ms.x),"meanw_ms.y"]
 
 # find any columns with NA cells
 na_find_col <- names(which(colSums(is.na(new2))>0))
-na_find_row <- new[is.na(new$year),]
+na_find_row <- new2[is.na(new2$year),]
 
 # clean up and add more unit conversions
 new3 <- new2[,c("date","year","month","day","dayofyear",
-                      "radn.x","maxt.x","mint.x","rain.x","meanw_ms")]
+                      "radn.x","maxt.x","mint.x","rain.x","meanw_ms.x")]
 colnames(new3) <- c("date","year","month","day","dayofyear",
                     "radn","maxt","mint","rain","meanw_ms")
 
-# add in dates after site's experimental period to end of study's experimental 
-# period (2021)
-new_dat <- rbind(new3,new_met_df[new_met_df$year>2010,c("date","year","month",
-                                                        "day","dayofyear","radn",
-                                                        "maxt","mint","rain",
-                                                        "meanw_ms")]) %>%
+# add in unit conversions, then reorder
+new_dat <- new3 %>%
   mutate(tavg = (maxt + mint)/2,
          radn_MJm2 = radn,
          radn_Wm2 = radn_MJm2*11.57407407, # convert from MJ/m^2/day to W/m^2/day
@@ -186,24 +182,34 @@ new_dat <- rbind(new3,new_met_df[new_met_df$year>2010,c("date","year","month",
          mint_C = mint, # deg C
          rain_mm = rain, # mm/day
          rain_cm = rain_mm/10 # cm/day
-  )
+  ) %>%
+  arrange(year,month,day)
 
 #**********************************************************************
 ##### Future weather
 #**********************************************************************
 
 ###########################
-## build baseline-to-2100 data
+## build baseline-through-future data
 ###########################
 
 
-new_dat_2100 <- new_dat
+new_dat_fut <- new_dat
 weather_28yr <- new_dat[new_dat$year %in% 1994:2021,]
 
 for (i in 1:3) {
   weather_28yr$year <- weather_28yr$year+28
-  new_dat_2100 <- rbind(new_dat_2100, weather_28yr)
+  new_dat_fut <- rbind(new_dat_fut, weather_28yr)
 }
+
+
+# Site stats --------------------------------------------------------------
+
+mean_ann_temp <- mean((new_dat$maxt+new_dat$mint/2))
+ann_prec <- new_dat %>%
+  group_by(year) %>%
+  summarize(tot_rain=sum(rain))
+mean_ann_prec <- mean(ann_prec$tot_rain)
 
 
 #**********************************************************************

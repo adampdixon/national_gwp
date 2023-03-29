@@ -75,7 +75,7 @@ livec_output <- rbind(livec_output_base,livec_output_exp,livec_output_fut) %>%
 
 
 # collect plant/harvest dates
-all_years <- data.frame(year=land_conversion_year:2100)
+all_years <- data.frame(year=land_conversion_year:end_fut_period_year)
 
 ## assemble annual planting and harvest dates for crops - build list from schedule files
 planting_base <- data.frame(year=all_years[all_years$year >= land_conversion_year &
@@ -130,7 +130,7 @@ planting_corn_fut <- data.frame(year=all_years[all_years$year > experiment_end_y
 harvest_corn_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
                                                 (all_years$year %% 3) == 1,"year"]) %>%
   mutate(observation_type="Harvest",
-         dayofyr=302,
+         dayofyr=294,
          date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
          crop="Maize")
 
@@ -158,7 +158,7 @@ planting_soybean_fut <- data.frame(year=all_years[all_years$year > experiment_en
 harvest_soybean_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
                                                     (all_years$year %% 3) == 2,"year"]) %>%
   mutate(observation_type="Harvest",
-         dayofyr=291,
+         dayofyr=272,
          date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
          crop="Soybean")
 
@@ -256,7 +256,7 @@ for(i in which(c(1:nrow(all_field_ops[all_field_ops$year<2099,]))%%2==1)) {
 ### clean up the edges
 livec_output[livec_output$year==land_conversion_year,"crop"] <- "Maize"
 livec_output[livec_output$year == 2099 & is.na(livec_output$crop),"crop"] <- "Wheat"
-livec_output <- livec_output[livec_output$year < 2100,]
+livec_output <- livec_output[livec_output$year < end_fut_period_year,]
 
 
 write.table(livec_output[,c("date","year","dayofyr","month","aglivc","bglivcj","bglivcm","tot_plt_growth",

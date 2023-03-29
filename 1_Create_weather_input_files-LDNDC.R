@@ -17,8 +17,8 @@ if(clim_scenario_num==1) {
   # experimental period only (1989-2021)
   
   ## Select year, dayofyear, radiation (W/m^2), maxt, mint, precip (mm), mean wind (m/s)
-  DNDC_basic <- new_dat[,c("year","dayofyear","rain_mm.x","tavg","maxt_C.x","mint_C.x",
-                           "radn_Wm2.x","meanw_ms")]
+  DNDC_basic <- new_dat[,c("year","dayofyear","rain_mm","tavg","maxt_C","mint_C",
+                           "radn_Wm2","meanw_ms")]
   colnames(DNDC_basic) <- c("year","dayofyear","prec","tavg","tmax","tmin","grad","wind")
   
   
@@ -191,6 +191,9 @@ if(clim_scenario_num==1) {
 }# if clim_scenario_num==1
 
 
+}# if clim_scenario_num = 1 else >1
+
+if(clim_scenario_num==1) {
 rm(list=c("DNDC_basic","annual_tot_precipitation","annual_precipitation","temperature_average",
           "temperature_amplitude","wind_speed","time","DNDC_wth_file","header_txt",
           "DNDC_basic_fut"))

@@ -25,7 +25,8 @@ library(ggplot2)
 
 #*************************************************************
 
-# Temporal graphs
+# Temporal graphs ---------------------------------------------------------
+
 ## carbon
 
 #### full 1 m depth, full time span
@@ -99,13 +100,6 @@ ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
 gC3
 
 
- ggsave(filename=paste0("calib_SOC_comparison_1m_exp_",scenario_name,"_Millennial.jpg"),plot=gC1)
- ggsave(filename=paste0("calib_SOC_comparison_25cm_exp_",scenario_name,"_Millennial.jpg"),plot=gC2)
- ggsave(filename=paste0("calib_SOC_comparison_exp_",scenario_name,"_Millennial.jpg"),plot=gC3)
-
- #*************************************************************
- 
-
 ## microbial biomass
 
  
@@ -175,13 +169,23 @@ ggplot(aes(x=date, y=Millennial, color=cbPalette9[6])) +
 gMB3
 
 
-ggsave(filename=paste0(results_path,"calib_MBio_comparison_points_exp_",scenario_name,"_Millennial.jpg"),plot=gMB1)
-ggsave(filename=paste0(results_path,"calib_MBio_comparison_allMill_exp_",scenario_name,"_Millennial.jpg"),plot=gMB2)
-ggsave(filename=paste0(results_path,"calib_MBio_comparison_allexp_exp_",scenario_name,"_Millennial.jpg"),plot=gMB3)
+ggsave(filename=paste0(results_path,"calib_SOC_comparison_1m_exp_",scenario_name,"_Millennial.jpg"),plot=gC1,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_SOC_comparison_25cm_exp_",scenario_name,"_Millennial.jpg"),plot=gC2,
+       width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_SOC_comparison_exp_",scenario_name,"_Millennial.jpg"),plot=gC3,
+       width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_MBio_comparison_points_exp_",scenario_name,"_Millennial.jpg"),
+       plot=gMB1, width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_MBio_comparison_allMill_exp_",scenario_name,"_Millennial.jpg"),
+       plot=gMB2, width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_MBio_comparison_allexp_exp_",scenario_name,"_Millennial.jpg"),
+       plot=gMB3, width=9, height=6, dpi=300)
 
 #*************************************************************
 
-# 1:1 
+# 1:1 graphs --------------------------------------------------------------
+
 
 ##  SOC
 if(mgmt_scenario_grp==3) {
@@ -253,55 +257,40 @@ gMB_121 <- mbio_gm2 %>%
 
 gMB_121
 
+ggsave(filename=paste0(results_path,"calib_SOC_comparison_1to1_",
+                       scenario_name,"_Millennial.jpg"),
+       plot=gC_121, width=6, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_MBio_comparison_1to1_",
                        scenario_name,"_Millennial.jpg"),
-       plot=gMB_121)
+       plot=gMB_121, width=6, height=6, dpi=300)
 
 #**********************************************************************
 
-# add this run's results to a log file
-calib_log_tab <- cbind(as.character(Sys.time()),
-                       model_name,clim_scenario_num,mgmt_scenario_num, scenario_name,
+# Log results -------------------------------------------------------------
+
+
+# add this run's results to model log file and file collecting all final
+# model runs
+calib_log_tab <- cbind(as.character(Sys.time()),model_name,
+                       clim_scenario_num,mgmt_scenario_num, scenario_name,
+                       scenario_abbrev,
                        NA, NA, NA, NA,
+                       NA,
                        NA, NA, NA, NA,
+                       NA,
                        NA, NA, NA, NA,
+                       NA,
                        Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
+                       SOC_obsmod_diff_Mgha,
                        NA, NA, NA, NA,
                        NA, NA, NA, NA,
                        NA, NA, NA, NA,
-                       NA, NA, NA, NA)
-write.table(calib_log_tab,file=paste0(results_path,"Calibration_log_Millennial.csv")
-            ,append=TRUE,row.names=FALSE,col.names=FALSE,sep=",")
-
-# make separate file with column headers (empty table with NA row)
-dummy<-data.frame(matrix(ncol=37))
-colnames(dummy) <- c("Date_time",
-                     "Model","Climate_Scenario","Mgmt_Scenario","Scenario_Name",
-                     "Maize_slope","Maize_yint","Maize_R2","Maize_RMSE",
-                     "Soy_slope","Soy_yint","Soy_R2","Soy_RMSE",
-                     "Wheat_slope","Wheat_yint","Wheat_R2","Wheat_RMSE",
-                     "SOC_slope","SOC_yint","SOC_R2","SOC_RMSE",
-                     "Temp_slope","Temp_yint","Temp_R2","Temp_RMSE",
-                     "Moist_slope","Moist_yint","Moist_R2","Moist_RMSE",
-                     "N2O_slope","N2O_yint","N2O_R2","N2O_RMSE",
-                     "CH4_slope","CH4_yint","CH4_R2","CH4_RMSE")
-write.table(dummy,file=paste0(results_path,"Calibration_log_columns.csv"),
-            append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
+                       NA,
+                       NA, NA, NA, NA,
+                       NA)
 
 
-# add/replace this run's results to a file collecting all final models/runs
-calib_summary_tab <- cbind(as.character(Sys.time()),
-                           model_name,clim_scenario_num,mgmt_scenario_num, scenario_name,
-                           NA, NA, NA, NA,
-                           NA, NA, NA, NA,
-                           NA, NA, NA, NA,
-                           Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
-                           NA, NA, NA, NA,
-                           NA, NA, NA, NA,
-                           NA, NA, NA, NA,
-                           NA, NA, NA, NA)
-## call function to edit the summary output file
 source("p_Edit_calib_file.R")
-p_Edit_calib_file(calib_summary_tab,model_name,scenario_name)
+p_Edit_calib_file(calib_log_tab,model_name,scenario_name)
 
 }) # end suppressMessages

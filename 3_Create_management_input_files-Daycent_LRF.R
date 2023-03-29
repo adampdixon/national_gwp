@@ -1,0 +1,378 @@
+#######################################
+# Function: "3_Create_management_input_files-Daycent_LRF.R"
+# Author: "Ellen Maas"
+# Date: "Sept 23, 2022"
+# Output: .sch files for the scenario number.
+# Description: This procedure generates scenario file for each phase of
+# Daycent processing: base, experimental, and future periods. Weather
+# and management are tailored to each scenario."
+#######################################
+# Audit Log
+# 9/30/2022: Modified to include T3 data for scenario 3.
+# 10/3/2022: Changed hairy vetch crop type to white clover
+# 12/13/2022: Added climate scenario number to future weather file name.
+# 2/19/2023: Modified for Liberty Research Farm.
+#######################################
+
+suppressMessages({
+  
+print("Starting 3_Create_management_input_files-Daycent_LRF.R")
+
+####  NOTE: Equilibrium schedule file is manually edited: sched_eq.sch
+
+
+
+###########################
+## base period
+
+#Note: Daycent spin-up schedule file was assembled manually: sched_eq.sch
+
+## base
+
+schedule_file <- paste0(daycent_path,"sched_base.sch")
+
+### 1940-1959 - start with continuous sorghum ###
+
+init_base1 <- c(paste0(land_conversion_year,"          Starting year ## start with assumed ground-breaking for agriculture until intensification"),
+                paste0(experiment_start_year-1,"          Last year"),
+                "site.100  Site file name",
+                "0             Labeling type ## all defaults turned off",
+                "-1            Labeling year",
+                "-1.00         Microcosm",
+                "-1            CO2 Systems",
+                "-1            pH effect",
+                "-1            Soil warming",
+                "0             N input scalar option (0 or 1)",
+                "0             OMAD scalar option (0 or 1)",
+                "0             Climate scalar option",
+                "1             Initial system",
+                "SORL          Initial crop ## sorghum",
+                "              Initial tree",
+                "",
+                "Year Month Option",
+                "1       Block ## Sorghum, low yield, no fertilizer",
+                "1959    Last year",
+                "1       Repeats # of years",
+                "1940    Output starting year",
+                "12      Output month",
+                "1       Output interval",
+                "F       Weather choice",
+                "basic_eq.wth",
+                "1 89 CULT K			## Mar 30",
+                "1 120 CULT I		## Apr 30",
+                "1 145 CULT C		## May 25",
+                "1 161 CROP SORG	## Jun 10 - Grain sorghum",
+                "1 161 PLTM 			## Jun 10",
+                #"1 161 FERT (16.8N)	## Jun 10",
+                "1 319 HARV G90S	## Oct 23 - Harvest grains and 90% straw",
+                "-999 -999 X")
+
+writeLines(init_base1,schedule_file)
+
+# commented out 3/16 - going to all cotton now
+# ### 1960-1989 - wheat (2-year)
+# 
+# init_base2 <- c("2       Block ## Switch to wheat with fertilizer",
+#                 "1989    Last year",
+#                 "2       Repeats # of years",
+#                 "1960    Output starting year",
+#                 "12      Output month",
+#                 "1       Output interval",
+#                 "C       Weather choice ## Continue",
+#                 "1 74  CULT K		## Mar 15",
+#                 "1 105 CULT R		## Apr 15",
+#                 "1 196 CULT R		## Jul 15",
+#                 "1 274 CULT C		## Oct 1",
+#                 "1 288 CROP W3		## Oct 15",
+#                 "1 288 PLTM			## Oct 15",
+#                 "1 288 FERT (3.5N)	## Oct 15",
+#                 "2 181 HARV G90S		## Jun 30 - Harvest grains and 90% straw",
+#                 "2 213 CULT K		## Aug 1",
+#                 "2 258 CULT K		## Sep 15",
+#                 "2 288 CULT R		## Oct 15",
+#                 "-999 -999 X")
+# 
+# cat(init_base2,sep="\n",file=schedule_file,append=TRUE)
+
+### 1960-2001 - cotton
+
+init_base3 <- c("3       Block ## Switch to cotton",
+                "2001    Last year",
+                "1       Repeats # of years",
+                "1960    Output starting year",
+                "12      Output month",
+                "1       Output interval",
+                "C       Weather choice ## Continue",
+                "1 118 CULT K  ## Apr 28", 
+                "1 118 FERT (2.2N)  ## Apr 28",
+                "1 140 CULT ROW  ## May 20",
+                "1 140 CROP COT ## May 20",
+                "1 140 PLTM  ## May 20",
+                "1 290 HARV G90S  ## Oct 17", 
+                "-999 -999 X")
+
+cat(init_base3,sep="\n",file=schedule_file,append=TRUE)
+
+### 2002 - rye after cotton
+
+init_base3 <- c("4       Block ## All include rye at end as transistion year",
+                "2002    Last year",
+                "1       Repeats # of years",
+                "2002    Output starting year",
+                "12      Output month",
+                "1       Output interval",
+                "C       Weather choice ## Continue",
+                "1 118 CULT K  ## Apr 28", 
+                "1 118 FERT (2.2N)  ## Apr 28",
+                "1 140 CULT ROW  ## May 20",
+                "1 140 CROP COT ## May 20",
+                "1 140 PLTM  ## May 20",
+                "1 290 HARV G90S  ## Oct 17", 
+                paste0("1 341 CROP ",covercrop_Daycent),
+                "-999 -999 X")
+
+cat(init_base3,sep="\n",file=schedule_file,append=TRUE)
+
+
+
+###########################
+## experimental period
+
+
+schedule_file_exp <- paste0(daycent_path,"sched_exp_",scenario_name,".sch")
+
+# remove duplicate/NA records
+Daycent_data <- full_ops_ext_adj[!is.na(full_ops_ext_adj$daycent_mgmt_code),]
+
+# Scenario treatment
+temp_conv <- Daycent_data[Daycent_data$treatment==treatment,]
+
+Daycent_conv <- temp_conv[rowSums(is.na(temp_conv)) != ncol(temp_conv),] %>%
+  mutate(dayofyear=yday(date))
+
+block_num <- 10
+
+fileheader_txt <- c(paste0(experiment_start_year,"          Starting year ## start of experimental period for ",treatment),
+                    paste0(end_exp_period_year,"          Last year"),
+                    "site.100  Site file name",
+                    "0             Labeling type ## all defaults turned off",
+                    "-1            Labeling year",
+                    "-1.00         Microcosm",
+                    "-1            CO2 Systems",
+                    "-1            pH effect",
+                    "-1            Soil warming",
+                    "0             N input scalar option (0 or 1)",
+                    "0             OMAD scalar option (0 or 1)",
+                    "0             Climate scalar option",
+                    "1             Initial system",
+                    "COT           Initial crop ## cotton",
+                    "              Initial tree",
+                    "",
+                    "Year Month Option")
+
+cat(fileheader_txt,sep="\n",file=schedule_file_exp,append=FALSE)  
+
+for (i in experiment_start_year:end_exp_period_year) {
+  ## first year starts weather file; subsequent years continue weather file
+  if (i==experiment_start_year) {
+    curr_yr_ops <- Daycent_conv[Daycent_conv$year==i,c("date","daycent_mgmt_code","dayofyear")] %>%
+      mutate(ops_line=paste0("1 ",dayofyear," ",daycent_mgmt_code))
+    
+    header_txt <- c(
+      paste(block_num,"Block ## Experimental period",sep="\t"),
+      paste(i,"Last year",sep="\t"),
+      "1  Repeats # of years",
+      paste(i,"Output starting year",sep="\t"),
+      "12  Output starting month",
+      "1  Output interval",
+      "F 			 Weather choice",
+      "basic_exp.wth")
+    
+    ops_txt <- curr_yr_ops$ops_line
+    
+    footer_txt <- "-999 -999 X"
+    
+    block_txt <- c(header_txt, ops_txt, footer_txt)  
+    
+    cat(block_txt,sep="\n",file=schedule_file_exp,append=TRUE)  
+    block_num <- block_num + 1  
+  } # if year=experiment_start_year
+  else if (i>experiment_start_year & i<=experiment_end_year) {
+    curr_yr_ops <- Daycent_conv[Daycent_conv$year==i,c("date","daycent_mgmt_code","dayofyear")] %>%
+      mutate(ops_line=paste0("1 ",dayofyear," ",daycent_mgmt_code))
+    
+    header_txt <- c(
+      paste(block_num,"Block ## Experimental period",sep="\t"),
+      paste(i,"Last year",sep="\t"),
+      "1  Repeats # of years",
+      paste(i,"Output starting year",sep="\t"),
+      "12  Output starting month",
+      "1  Output interval",
+      "C 			 Weather choice")
+    
+    ops_txt <- curr_yr_ops$ops_line
+    
+    footer_txt <- "-999 -999 X"
+    
+    block_txt <- c(header_txt, ops_txt, footer_txt)  
+    
+    cat(block_txt,sep="\n",file=schedule_file_exp,append=TRUE)  
+    block_num <- block_num + 1  
+  } # else year is not in experiment year range
+  else { # Extended experimental period to pad through 2021
+    ### Use last 2 years and repeat
+    curr_yr_ops <- Daycent_conv[Daycent_conv$year==ifelse(i %% 2==1, (experiment_end_year-1),
+                                                          experiment_end_year),
+                                c("date","daycent_mgmt_code","dayofyear")] %>%
+      mutate(ops_line=paste0("1 ",dayofyear," ",daycent_mgmt_code))
+    
+    header_txt <- c(
+      paste(block_num,"Block ## Experimental period",sep="\t"),
+      paste(i,"Last year",sep="\t"),
+      "1  Repeats # of years",
+      paste(i,"Output starting year",sep="\t"),
+      "12  Output starting month",
+      "1  Output interval",
+      "C 			 Weather choice")
+    
+    ops_txt <- curr_yr_ops$ops_line
+### Need to remove final Rye planting in 2021 as the future 2-cycle doesn't
+### start with a kill event (no cover crop planted at end of cycle).
+    if(i==end_exp_period_year & mgmt_scenario_grp %in% c(3,8)) {
+      ops_txt <- ops_txt[1:(length(ops_txt)-2)]
+    }
+    
+    footer_txt <- "-999 -999 X"
+    
+    block_txt <- c(header_txt, ops_txt, footer_txt)  
+    
+    cat(block_txt,sep="\n",file=schedule_file_exp,append=TRUE)  
+    block_num <- block_num + 1  
+  } # else year is not start of experiment
+  
+} # for loop 2003-2010
+
+
+
+###########################
+## Daycent future
+### Use last 2 years management and repeat
+
+
+schedule_file_2100 <- paste0(daycent_path,"sched_fut_",scenario_name,".sch")
+
+Daycent_conv_2100 <- Daycent_conv[Daycent_conv$year %in% (experiment_end_year-1):experiment_end_year,
+                                  c("date","daycent_mgmt_code","dayofyear")]  %>%
+  mutate(
+    # daycent_mgmt_code=if_else(daycent_mgmt_code=="CROP C8","CROP C7",
+    #                                if_else(daycent_mgmt_code=="CROP W4EG","CROP W3EG",
+    #                                        if_else(daycent_mgmt_code=="CROP SYBN","CROP SYBN1",
+    #                                                daycent_mgmt_code))),
+    ops_line=paste0(if_else(year(date)==experiment_end_year-1,"1 ",
+                            "2 ")),dayofyear," ",daycent_mgmt_code)
+
+header_txt <- c(paste0(end_exp_period_year+1,"          Starting year ## start with assumed ground-breaking for agriculture until intensification"),
+                paste0(end_fut_period_year-1,"          Last year"),
+                "site.100      Site file name",
+                "0             Labeling type ## all defaults turned off",
+                "-1            Labeling year",
+                "-1.00         Microcosm",
+                "-1            CO2 Systems",
+                "-1            pH effect",
+                "-1            Soil warming",
+                "0             N input scalar option (0 or 1)",
+                "0             OMAD scalar option (0 or 1)",
+                "0             Climate scalar option",
+                "1             Initial system",
+                "SORG          Initial crop ## cotton, but could be sorghum, depending on treatment",
+                "              Initial tree",
+                "",
+                "Year Month Option",
+                "1       Block ## Corn, low yield, no fertilizer",
+                paste0(end_fut_period_year-1,"    Last year"),
+                "2       Repeats # of years",
+                paste0(end_exp_period_year+1,"    Output starting year"),
+                "12       Output month",
+                "1  Output interval",
+                "F       Weather choice",
+                paste0("basic_",clim_scenario_num,".wth"))
+
+ops_txt <- if(mgmt_scenario_grp==1) { #CSct
+  c(
+    paste0("1 71 FERT (",round(2.8*fert_adjust,2),"N)"),
+    paste0("1 80 CULT K",resid_adjust_chr),
+    "1 140 CROP COT",
+    "1 140 PLTM",
+    "1 192 CULT S",
+    paste0("1 323 HARV G",resid_adjust_chr,"S"),
+    paste0("2 17 CULT K",resid_adjust_chr),
+    "2 133 CROP SORG",
+    "2 133 PLTM",
+    "2 180 CULT S",
+    paste0("2 315 HARV G",resid_adjust_chr,"S")
+  )
+} else if(mgmt_scenario_grp==2) { #CSnt
+  c(
+    "1 133 CROP SORG",
+    "1 133 PLTM",
+    paste0("1 315 HARV G",resid_adjust_chr,"S"),
+    paste0("2 71 FERT (",round(2.8*fert_adjust,2),"N)"),
+           "2 140 CROP COT",
+           "2 140 PLTM",
+    paste0("2 323 HARV G",resid_adjust_chr,"S")
+  )
+} else if(mgmt_scenario_grp==3) { #CRSct
+  c(
+    "1 119 CULT K",
+    "1 131 CULT R",
+    "1 135 CROP SORG",
+    "1 135 PLTM",
+    paste0("1 306 HARV G",resid_adjust_chr,"S"),
+    "1 355 CROP RGA",
+    "1 355 PLTM",
+    "1 355 CULT K",
+    paste0("2 71 FERT (",round(2.8*fert_adjust,2),"N)"),
+    "2 80 CULT K",
+    "2 97 HARV KILL",
+    "2 140 CROP COT",
+    "2 140 PLTM",
+    "2 192 CULT S",
+    paste0("2 323 HARV G",resid_adjust_chr,"S")
+  )
+} else if(mgmt_scenario_grp==7) { #CCct
+  c(
+    paste0("1 71 FERT (",round(2.8*fert_adjust,2),"N)"),
+    paste0("1 80 CULT K",resid_adjust_chr),
+    "1 140 CROP COT",
+    "1 140 PLTM",
+    "1 192 CULT S",
+    paste0("1 323 HARV G",resid_adjust_chr,"S"),
+    paste0("2 17 CULT K",resid_adjust_chr),
+    "2 133 CROP COT",
+    "2 133 PLTM",
+    "2 180 CULT S",
+    paste0("2 315 HARV G",resid_adjust_chr,"S")
+  )
+} else if(mgmt_scenario_grp==8) { #CRSnt
+  c(
+    "1 135 CROP SORG",
+    "1 135 PLTM",
+    paste0("1 306 HARV G",resid_adjust_chr,"S"),
+    "1 355 CROP RGA",
+    "1 355 PLTM",
+    paste0("2 71 FERT (",round(2.8*fert_adjust,2),"N)"),
+    "2 97 HARV KILL",
+    "2 140 CROP COT",
+    "2 140 PLTM",
+    paste0("2 323 HARV G",resid_adjust_chr,"S")
+  )
+}
+
+footer_txt <- "-999 -999 X"
+
+fut_block_txt <- c(header_txt, ops_txt, footer_txt)
+
+writeLines(fut_block_txt,schedule_file_2100)
+
+}) # end suppressMessages
+

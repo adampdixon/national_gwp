@@ -16,39 +16,86 @@
 # 11/11/2022: Commented out leading variables due to the creation
 # of 00_Main.R, which drives the master process looping through
 # all the scenarios.
+# 3/9/2023: Reshuffled some variables from 0_Observations&Const
+# to here and 00_Main to allow for weather processing earlier in
+# the program flow.
 #
 #######################################
 
  print("Starting 0_Controller.R")
+
+rm(list=ls())
+master_path <- "~/Modeling"
+setwd(master_path)
+#
+site_id <- 1
+site_name <- "KBS"
+latitude = 42.410
+longitude = -85.372
+elevation_m = 288
+experiment_start_year <- 1989
+experiment_end_year <- 2021
+experiment_year_range <- experiment_start_year:experiment_end_year
+#end_exp_period_year <- 2021
+end_fut_period_year <- 2100
+obs_path <- paste0("Data/",site_name,"/Calibration/")
+hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
+hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
+curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
+nasapower_output_filename <- paste0(site_name,"_np.csv")
+#
+# # site_id <- 2
+# site_name <- "LRF"
+# latitude = 33.684
+# longitude = -101.768
+# elevation_m = 990
+# experiment_start_year <- 2003
+# experiment_end_year <- 2010
+# experiment_year_range <- experiment_start_year:experiment_end_year
+# experiment_start_date <- "2003-01-01"
+# experiment_end_date <- "2010-12-31"
+# end_exp_period_year <- 2021
+# end_fut_period_year <- 2100
+# calib_mgmt_grps <- c(1,2,3,7,8)
+# obs_path <- paste0("Data/",site_name,"/")
+# obs_filename <- "LibertyResearchFarm_adj.xlsx"
+# curr_wth_tab <- "WeatherDaily"
+# hist_raw_wth_filename <- "CDO_Lubbock_area.csv"
+# hist_wth_filename <- "NOAA-based Daily Lubbock 1940-2021.csv"
+# hist_wth_mon_filename <- "NOAA-based Monthly Lubbock 1940-2021 with OPE.csv"
+# curr_local_wth_filename <- "" # included in GRACEnet spreadsheet (obs_filename)
 # 
-# rm(list=ls())
-# master_path <- "~/Modeling"
-# setwd(master_path)
-# #
-# # # Constants
-# site_name <- "KBS"
-# latitude = 42.410
-# longitude = -85.372
-# experiment_start_year <- 1989
-# experiment_end_year <- 2021
-# clim_scenario_num <- 1
-# mgmt_scenario_grp <- 3 # scenario group number
-# mgmt_scenario_opt <- "" # scenario detail number; put "" if none
-# mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
-# scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
-# 
+wth_path <- paste0("Data/",site_name,"/Weather/")
+apsim_path <- paste0("APSIM/",site_name,"/")
+daycent_path <- paste0("Daycent/",site_name,"/")
+if(Sys.info()['sysname']=='Linux') {
+  dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
+} else {
+  dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
+}
+rothc_path <- paste0("RothC/",site_name,"/")
+mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
+#
+clim_scenario_num <- 1
+mgmt_scenario_grp <- 1 # scenario group number
+mgmt_scenario_opt <- "" # scenario detail number; put "" if none
+mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
+scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
+
 
 # Scenario-dependent scripts and functions
 
 ## These are used in multiple functions.
- source("0_Observations_and_constants.R") 
+source(paste0("0_Observations_and_constants_",site_name,".R"))
 
 
 #*************************************************************
 #*************************************************************
-#* Setup models
+# Setup models ------------------------------------------------------------
 #*************************************************************
 #*************************************************************
+
+
 
 
 # # Soil data
@@ -68,15 +115,16 @@
 
 #*************************************************************
 
-# # Management input files (APSIM, Daycent, LDNDC)
-# 
- source("3_Create_management_input_files-setup3.R")
-# #
-# source("3_Create_management_input_files-APSIM.R")
+# Management input files (APSIM, Daycent, LDNDC)
+
+ # source(paste0("3_Create_management_input_files-setup_",site_name,".R"))
+#
+# source("3_Create_management_input_files-APSIM3.R")
+#
 # if(mgmt_scenario_grp!=6) {
-#   source("3_Create_management_input_files-Daycent4.R")
-#  source("3_Create_management_input_files-LDNDC.R")
-  # Management input files for RothC, Millennial are created after Daycent runs
+# source(paste0("3_Create_management_input_files-Daycent_",site_name,".R"))
+# source("3_Create_management_input_files-LDNDC.R")
+# Management input files for RothC, Millennial are created after Daycent runs
 # }
 
 
@@ -90,15 +138,15 @@
 
 #*************************************************************
 #*************************************************************
-#* Run models
+# Run models --------------------------------------------------------------
 #*************************************************************
 #*************************************************************
 
-## APSIM Classic is currently run manually (all mgmt scenario 6).
+## APSIM Classic is currently run manually.
 
-## To run APSIM Next Gen (all other mgmt scenarios), copy and 
-## paste the management data file into the Operations model 
-## window, clear the data store, save, and run.
+## To run APSIM Classic scenarios, copy and 
+## paste the management data file into the Operations Schedule
+## model window, save, and run.
 
 # # APSIM
 # if(mgmt_scenario_grp!=6) {
@@ -107,102 +155,102 @@
 
 # Daycent
 if(mgmt_scenario_grp!=6) {
-source(paste0("Daycent/run_Daycent4.R"))
-# source(paste0("Daycent/run_Daycent_eq.R"))
-# source(paste0("Daycent/run_Daycent_base.R"))
-# source(paste0("Daycent/run_Daycent_exp.R"))
-# source(paste0("Daycent/run_Daycent_fut.R"))
-# # LDNDC
+  source(paste0("Daycent/Daycent_run_controller.R"))
+  # LDNDC
 }
 
 
 #*************************************************************
 #*************************************************************
-#* Graph and analyze APSIM, Daycent, and LDNDC
+# Graph and analyze APSIM, Daycent, and LDNDC -----------------------------
 #*************************************************************
 #*************************************************************
 
-# APSIM
- source("9_Results_APSIM-setup.R")
-#
-model_name <- "APSIM"
-if(clim_scenario_num==1 & mgmt_scenario_grp %in% c(1,2,3)) {
-  source("9_Results_APSIM-calibration2.R")
-}
-source("9_Results_APSIM-future.R")
-source("p_Results_analysis.R")
+# # APSIM
+# source(paste0("9_Results_APSIM-setup_",site_name,".R"))
+# #
+# model_name <- "APSIM"
+# if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
+#   source(paste0("9_Results_APSIM-calibration_",site_name,".R"))
+# }
+# source(paste0("9_Results_APSIM-future_",site_name,".R"))
+# source("p_Results_analysis.R")
 
 #*************************************************************
 
- # Daycent
- if(mgmt_scenario_grp!=6) {
-  source("9_Results_Daycent-setup3.R")
-  model_name <- "Daycent"
-  if(clim_scenario_num==1 & mgmt_scenario_grp %in% c(1,2,3)) {
-    source("9_Results_Daycent-calibration2.R")
-  }
-  source("9_Results_Daycent-future.R")
-  source("p_Results_analysis.R")
- }
-
-
-#*************************************************************
-#*************************************************************
-#* Set up and run Millennial and RothC, driving from Daycent
-#*************************************************************
-#*************************************************************
-
-
+# Daycent
 if(mgmt_scenario_grp!=6) {
-# Management input files (RothC, Millennial)
-source("3_Create_management_input_files-setupRM4.R")
-
-## Millennial
-  source("3_Create_management_input_files-Millennial2.R")
-  source(paste0(mill_path,"run_Millennial.R"))
-
-  ## RothC
-  source("3_Create_management_input_files-RothC2.R")
-  source("4_Create_additional_files-RothC2.R")
-
-  ## RothC is currently run manually: after management and scenario
-  ## files are created, open RothC and run the model.
+  source(paste0("9_Results_Daycent-setup_",site_name,".R"))
+  model_name <- "Daycent"
+  if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
+    source(paste0("9_Results_Daycent-calibration_",site_name,".R"))
+  }
+ # source(paste0("9_Results_Daycent-future_",site_name,".R"))
+ # source("p_Results_analysis.R")
 }
 
 
 #*************************************************************
 #*************************************************************
-#* Graph and analyze RothC and Millennial
+# Set up and run Millennial and RothC, driving from Daycent ---------------
 #*************************************************************
 #*************************************************************
 
+
+# if(mgmt_scenario_grp!=6) {
+# # Management input files (RothC, Millennial)
+#  source("3_Create_management_input_files-setupRM4.R")
+# 
+# ## Millennial
+#   source("3_Create_management_input_files-Millennial2.R")
+#   source(paste0(mill_path,"run_Millennial.R"))
+# 
+#   ## RothC
+#   source("3_Create_management_input_files-RothC2.R")
+#   source("4_Create_additional_files-RothC2.R")
+# #
+# # RothC is currently run manually: after management and scenario
+# # files are created, open RothC and run the model.
+#  }
+
+
+#*************************************************************
+#*************************************************************
+# Graph and analyze RothC and Millennial ----------------------------------
+#*************************************************************
+#*************************************************************
+
+## these don't need to have site-specific versions because
+## they only have SOC, and site-specific versions are 
+## different because of variable crop types or other
+## management-related differences, where SOC is a constant.
 
 # # Millennial
 #  if(mgmt_scenario_grp!=6) {
-#    source("9_Results_Millennial-setup.R")
+      # source("9_Results_Millennial-setup.R")
 #   #
 #   model_name <- "Millennial"
-#   if(clim_scenario_num==1 & mgmt_scenario_grp %in% c(1,2,3)) {
+#   if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
 #     source("9_Results_Millennial-calibration.R")
 #   }
 #   source("9_Results_Millennial-future.R")
 #   source("p_Results_analysis.R")
-# }
+#  }
 
 
 #*************************************************************
 
 #   # RothC
-# if(mgmt_scenario_grp!=6) {
-#  source("9_Results_RothC-setup.R")
+#  if(mgmt_scenario_grp!=6) {
+    # source("9_Results_RothC-setup.R")
 # #
 # model_name <- "RothC"
-# if(clim_scenario_num==1 & mgmt_scenario_grp %in% c(1,2,3)) {
+# if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
 #   source("9_Results_RothC-calibration.R")
 # }
 #   source("9_Results_RothC-future.R")
 #   source("p_Results_analysis.R")
-# }
+#  }
 
 
 #*************************************************************
@@ -211,7 +259,7 @@ source("3_Create_management_input_files-setupRM4.R")
 
 #*************************************************************
 #*************************************************************
-#* Graph ensemble compilations
+# Graph ensemble compilations ---------------------------------------------
 #*************************************************************
 #*************************************************************
 

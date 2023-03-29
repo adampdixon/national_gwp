@@ -30,7 +30,7 @@ source("Monthly_UPET_Correct.R")
 ## import local data
 ###########################
 
-# import historical data for spin-up-to-equilibrium period for Daycent, RothC, and Millennial
+# import historical data for spin-up-to-equilibrium period for Daycent and RothC
 Hist_site <- read_csv(paste0(wth_path,hist_wth_filename),
                       show_col_types = FALSE) %>%
   mutate(TMAX=round(TMAX,1),
@@ -139,7 +139,7 @@ na_find_row <- new[is.na(new$year),]
 #**********************************************************************
 
 ###########################
-## build baseline-to-2100 data
+## build baseline-through-future data
 ###########################
 
 

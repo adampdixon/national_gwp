@@ -1,15 +1,15 @@
-#######################################
+#**********************************************************************
 # File: 0_Observations_and_constants_LRF
 # Author: Ellen Maas
 # Date: Oct 2, 2022
 # Description: It is designed to be run as-is from calling scripts in order
 # to create the variables in the local space. It imports data from files and sets 
 # values to shared variables that will be used throughout the project.
-#######################################
+#**********************************************************************
 # Audit Log
 # 1/23/2023: Renamed to include abbreviation of site.
 #
-#######################################
+#**********************************************************************
 
 #rm(list=ls())
 
@@ -33,11 +33,8 @@ library(data.table)
 library(tidyr)
 library(stringr)
 
-##################################################
-#################### constants ###################
-##################################################
-
-
+  #**********************************************************************
+# Constants ---------------------------------------------------------------
 
   scenario_df <- data.frame(scenario_descriptor=c("Crop Rotation", #LRF CSct
                                                   "No Till, Crop Rotation", #LRF CSnt
@@ -50,12 +47,12 @@ library(stringr)
                                                   "Redu Fert 15%, No Till, Crop Rotation",
                                                   "Redu Fert 25%, No Till, Crop Rotation",
                                                   "Redu Fert 35%, No Till, Crop Rotation",
-                                                  "Rmv Resid 75%, Crop Rotation",
                                                   "Rmv Resid 50%, Crop Rotation",
                                                   "Rmv Resid 25%, Crop Rotation",
-                                                  "Rmv Resid 75%, No Till, Crop Rotation",
+                                                  "Rmv Resid 0%, Crop Rotation",
                                                   "Rmv Resid 50%, No Till, Crop Rotation",
                                                   "Rmv Resid 25%, No Till, Crop Rotation",
+                                                  "Rmv Resid 0%, No Till, Crop Rotation",
                                                   "Biochar 19 Mgha, Crop Rotation",
                                                   "Biochar 38 Mgha, Crop Rotation",
                                                   "Biochar 57 Mgha, Crop Rotation",
@@ -129,8 +126,8 @@ library(stringr)
                             scenario_abbrev=c("CR","NT-CR","CC-CR",
                                               "RF05-CR","RF15-CR","RF25-CR","RF35-CR",
                                               "RF05-NT-CR","RF15-NT-CR","RF25-NT-CR","RF35-NT-CR",
-                                              "RR75-CR","RR50-CR","RR25-CR",
-                                              "RR75-NT-CR","RR50-NT-CR","RR25-NT-CR",
+                                              "RR50-CR","RR25-CR","RR00-CR",
+                                              "RR50-NT-CR","RR25-NT-CR","RR00-NT-CR",
                                               "BC19-CR","BC38-CR","BC57-CR","BC76-CR","BC96-CR",
                                               "BC19-NT-CR","BC38-NT-CR","BC57-NT-CR","BC76-NT-CR","BC96-NT-CR",
                                               "CN","NT-CC-CR"),
@@ -228,12 +225,12 @@ scenario_abbrev <-
   if_else(mgmt_scenario_num=="46","RF15-NT-CR",
   if_else(mgmt_scenario_num=="47","RF25-NT-CR",
   if_else(mgmt_scenario_num=="48","RF35-NT-CR",
-  if_else(mgmt_scenario_num=="51","RR75-CR",
-  if_else(mgmt_scenario_num=="52","RR50-CR",
-  if_else(mgmt_scenario_num=="53","RR25-CR",
-  if_else(mgmt_scenario_num=="54","RR75-NT-CR",
-  if_else(mgmt_scenario_num=="55","RR50-NT-CR",
-  if_else(mgmt_scenario_num=="56","RR25-NT-CR",
+  if_else(mgmt_scenario_num=="51","RR50-CR",
+  if_else(mgmt_scenario_num=="52","RR25-CR",
+  if_else(mgmt_scenario_num=="53","RR00-CR",
+  if_else(mgmt_scenario_num=="54","RR50-NT-CR",
+  if_else(mgmt_scenario_num=="55","RR25-NT-CR",
+  if_else(mgmt_scenario_num=="56","RR00-NT-CR",
   if_else(mgmt_scenario_num=="61","BC19-CR",
   if_else(mgmt_scenario_num=="62","BC38-CR",
   if_else(mgmt_scenario_num=="63","BC57-CR",
@@ -245,14 +242,14 @@ scenario_abbrev <-
   if_else(mgmt_scenario_num=="69","BC76-NT-CR",
   if_else(mgmt_scenario_num=="610","BC96-NT-CR",
   if_else(mgmt_scenario_num=="7","CN",
-  if_else(mgmt_scenario_num=="8","CN-NT-CR",
+  if_else(mgmt_scenario_num=="8","NT-CC-CR",
           "Missing Descriptor"
           )))))))))))))))))))))))))))))
 
 scenario_descriptor <- 
-  if_else(mgmt_scenario_num=="1","Crop Rotation", #KBS T1
-  if_else(mgmt_scenario_num=="2","No Till, Crop Rotation", #KBS T2
-  if_else(mgmt_scenario_num=="3","Cover Crop, Crop Rotation", #KBS T3
+  if_else(mgmt_scenario_num=="1","Crop Rotation", # X don't do: step backwards
+  if_else(mgmt_scenario_num=="2","No Till, Crop Rotation", # X don't do: step backwards
+  if_else(mgmt_scenario_num=="3","Cover Crop, Crop Rotation", # LRF CRSct (4)
   if_else(mgmt_scenario_num=="41","Redu Fert 5%, Crop Rotation",
   if_else(mgmt_scenario_num=="42","Redu Fert 15%, Crop Rotation",
   if_else(mgmt_scenario_num=="43","Redu Fert 25%, Crop Rotation",
@@ -261,12 +258,12 @@ scenario_descriptor <-
   if_else(mgmt_scenario_num=="46","Redu Fert 15%, No Till, Crop Rotation",
   if_else(mgmt_scenario_num=="47","Redu Fert 25%, No Till, Crop Rotation",
   if_else(mgmt_scenario_num=="48","Redu Fert 35%, No Till, Crop Rotation",
-  if_else(mgmt_scenario_num=="51","Rmv Resid 75%, Crop Rotation",
-  if_else(mgmt_scenario_num=="52","Rmv Resid 50%, Crop Rotation",
-  if_else(mgmt_scenario_num=="53","Rmv Resid 25%, Crop Rotation",
-  if_else(mgmt_scenario_num=="54","Rmv Resid 75%, No Till, Crop Rotation",
-  if_else(mgmt_scenario_num=="55","Rmv Resid 50%, No Till, Crop Rotation",
-  if_else(mgmt_scenario_num=="56","Rmv Resid 25%, No Till, Crop Rotation",
+  if_else(mgmt_scenario_num=="51","Rmv Resid 50%, Crop Rotation",
+  if_else(mgmt_scenario_num=="52","Rmv Resid 25%, Crop Rotation",
+  if_else(mgmt_scenario_num=="53","Rmv Resid 0%, Crop Rotation", # LRF CSct (2)
+  if_else(mgmt_scenario_num=="54","Rmv Resid 50%, No Till, Crop Rotation",
+  if_else(mgmt_scenario_num=="55","Rmv Resid 25%, No Till, Crop Rotation",
+  if_else(mgmt_scenario_num=="56","Rmv Resid 0%, No Till, Crop Rotation", # LRF CSnt (3)
   if_else(mgmt_scenario_num=="61","Biochar 19 Mgha, Crop Rotation",
   if_else(mgmt_scenario_num=="62","Biochar 38 Mgha, Crop Rotation",
   if_else(mgmt_scenario_num=="63","Biochar 57 Mgha, Crop Rotation",
@@ -277,8 +274,8 @@ scenario_descriptor <-
   if_else(mgmt_scenario_num=="68","Biochar 57 Mgha, No Till, Crop Rotation",
   if_else(mgmt_scenario_num=="69","Biochar 76 Mgha, No Till, Crop Rotation",
   if_else(mgmt_scenario_num=="610","Biochar 96 Mgha, No Till, Crop Rotation",
-  if_else(mgmt_scenario_num=="7","Continuous Crop",
-  if_else(mgmt_scenario_num=="8","No Till, Cover Crop, Crop Rotation",
+  if_else(mgmt_scenario_num=="7","Continuous Crop", # LRF CCct (1)
+  if_else(mgmt_scenario_num=="8","No Till, Cover Crop, Crop Rotation", # CRSnt (5)
           "Missing Descriptor"
           )))))))))))))))))))))))))))))
 
@@ -292,14 +289,17 @@ climate_scenario_descriptor <-
   
 scenario_descriptor_full <- paste0(scenario_descriptor, "; ",climate_scenario_descriptor)
 
+#create results folder if it doesn't already exist
+results_path <- paste0(site_name,"_results_",end_fut_period_year,"/")
+if(!dir.exists(results_path)) dir.create(results_path)
+
+write.table(scenario_df,file=paste0(results_path,"Scenario_table.csv"),
+            append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
+
+
 site_id <- 1
-elevation_m = 960
-land_conversion_year <- 1910 # estimated from NASS Census of Agriculture: county 50% in farms
-experiment_year_range <- experiment_start_year:experiment_end_year
-year_range_2100=experiment_start_year:2100
-experiment_start_date <- "2003-01-01"
-experiment_end_date <- "2010-12-31"
-end_exp_period_year <- 2021
+land_conversion_year <- 1940 # estimated from NASS Census of Agriculture: county 50% in farms
+year_range_fut=experiment_start_year:end_fut_period_year
 
 depth_m <- 0.1
 equil_C_input <- NA #305.00 g C/m^2 annually
@@ -307,8 +307,8 @@ surface_C_init <- 45 # Mg C ha-1; estimated from Parton et al. 2005
 
 control_treatment <- "CCct"
 control_treatment_num <- 7
-treatment <- if_else(mgmt_scenario_num==1, "CSct",
-             if_else(mgmt_scenario_num==2, "CSnt",
+treatment <- if_else(mgmt_scenario_num==1, "CSct", # won't run: dup of 53
+             if_else(mgmt_scenario_num==2, "CSnt", # won't run: dup of 56
              if_else(mgmt_scenario_num==3, "CRSct",
              if_else(mgmt_scenario_grp==4 &
                        mgmt_scenario_opt<=4, "CSct",
@@ -322,8 +322,9 @@ treatment <- if_else(mgmt_scenario_num==1, "CSct",
              if_else(mgmt_scenario_grp==7, "CCct",
              if_else(mgmt_scenario_grp==8, "CRSnt",
              "Error")))))))))))
-treatment_num <- if_else(mgmt_scenario_num==1, 2,
-                 if_else(mgmt_scenario_num==2, 3,
+# this treatment num provides a crosswalk from LRF treatment num to scenario num
+treatment_num <- if_else(mgmt_scenario_num==1, 2, # won't run: dup of 53
+                 if_else(mgmt_scenario_num==2, 3, # won't run: dup of 56
                  if_else(mgmt_scenario_num==3, 4,
                  if_else(mgmt_scenario_grp==4 &
                            mgmt_scenario_opt<=4, 2,
@@ -366,30 +367,22 @@ soil_moist_bias <- if_else(mgmt_scenario_num==1, 0,
                    if_else(mgmt_scenario_grp==7, 0,
                    if_else(mgmt_scenario_grp==8, 0,
                    0))))))))))
-#covercrop_aftercorn <- "Oats"
-#covercrop_afterwheat <- "Red Clover"
-covercrop_aftercotton <- "Rye"
-covercrop_aftersorghum <- "Rye"
-#covercrop_aftercorn_APSIM <- "Wintaroo"
-#covercrop_afterwheat_APSIM <- "Colenso"
-covercrop_aftercotton_APSIM <- ""
-covercrop_aftersorghum_APSIM <- ""
-#covercrop_aftercorn_Daycent <- "OAT1"
-#covercrop_afterwheat_Daycent <- "CLVC"
-covercrop_aftercotton_Daycent <- ""
-covercrop_aftersorghum_Daycent <- ""
 
-obs_path <- paste0("Data/",site_name,"/")
+# covercrop_aftercotton <- "Rye"
+# covercrop_aftersorghum <- "Rye"
+# covercrop_aftercotton_APSIM <- "moata" #-a fudge taken from wheat
+# covercrop_aftersorghum_APSIM <- "moata"
+# covercrop_aftercotton_Daycent <- "RGA"
+# covercrop_aftersorghum_Daycent <- "RGA"
+
+covercrop_aftercotton <- "Rye"
+covercrop_APSIM <- "moata"
+covercrop_Daycent <- "RGA"
+
+obs_soil_path <- paste0(obs_path,'Soil/')
 hist_path <- paste0("Data/",site_name,"/Historical Land Use and Yields/")
 hist_filename <- "TX-Lubbock County historical yields and C input.xlsx"
-obs_filename <- "LibertyResearchFarm.xlsx"
-wth_path <- paste0("Data/",site_name,"/Weather/") 
-hist_raw_wth_filename <- "CDO_Lubbock_area.csv"
-hist_wth_filename <- "NOAA-based Daily Lubbock 1940-2021.csv"
-hist_wth_mon_filename <- "NOAA-based Monthly Lubbock 1940-2021 with OPE.csv"
-curr_local_wth_filename <- "" # included in GRACEnet spreadsheet (obs_filename)
 obs_treatments_tab <- "Treatments"
-curr_wth_tab <- "WeatherDaily"
 obs_fert_tab <- "MgtAmendments"
 obs_planting_tab <- "MgtPlanting"
 obs_tillage_tab <- "MgtTillage"
@@ -400,20 +393,6 @@ obs_harvest_tab <- "MeasResidueMgnt"
 obs_biomass_tab <- "MeasHarvestFraction"
 obs_soiltemp_tab <- "WeatherDaily"
 
-apsim_path <- paste0("APSIM/",site_name,"/") 
-apsim_db_filename <- paste0("scen_",scenario_name,".db")
-apsim_bc_filename <- if(mgmt_scenario_grp==6) {
-  if_else(mgmt_scenario_opt==1,paste0("BC19_",clim_scenario_num,".csv"),
-  if_else(mgmt_scenario_opt==2,paste0("BC38_",clim_scenario_num,".csv"),
-  if_else(mgmt_scenario_opt==3,paste0("BC57_",clim_scenario_num,".csv"),
-  if_else(mgmt_scenario_opt==4,paste0("BC76_",clim_scenario_num,".csv"),
-  if_else(mgmt_scenario_opt==5,paste0("BC96_",clim_scenario_num,".csv"),
-          "Error")))))
-}
-daycent_path <- paste0("Daycent/",site_name,"/")
-dndc_path <- paste0("LDNDC/ldndc-1.30.4.win64/projects/",site_name,"/")
-rothc_path <- paste0("RothC/",site_name,"/")
-mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 
 # 9-color palette with grey and black. Colors in order are:
 #[1]black, [2]dark blue, [3]green, [4]light blue, [5]grey,
@@ -422,12 +401,15 @@ cbPalette9 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
                 "#CC79A7","#D55E00","#E69F00","#F0E442")
 
 
-###########################################################
-#################### observational data ###################
-###########################################################
+
+#**********************************************************************
+# Observational data ------------------------------------------------------
+#**********************************************************************
 
 
-####################### historical averages #######################
+#**********************************************************************
+# Historical data ---------------------------------------------------------
+
 
 
 Hist_raw <- read_xlsx(paste0(hist_path,hist_filename),
@@ -440,7 +422,9 @@ HistY_Mgha <- Hist_raw[Hist_raw$Year<=experiment_start_year,] %>%
 
 
 
-######################## measured observations #######################
+#**********************************************************************
+# Measured observations ---------------------------------------------------
+
 
 ####### Read in data tabs to start
 
@@ -459,7 +443,7 @@ obs_fert_raw <- read_xlsx(paste0(obs_path, obs_filename),
             by="treatment")
 
 obs_planting_raw <- read_xlsx(paste0(obs_path, obs_filename),
-                              sheet=obs_planting_tab,range="A1:K694") %>%
+                              sheet=obs_planting_tab,range="A1:K721") %>%
   mutate(date=Date,
          year=year(date),
          treatment=word(`Treatment ID`,2,sep="_"),
@@ -506,13 +490,13 @@ obs_soilbio_raw <- read_xlsx(paste0(obs_path, obs_filename),
             by="treatment")
 
 obs_harvest_raw <- read_xlsx(paste0(obs_path, obs_filename),
-                             sheet=obs_harvest_tab,range="A1:AS340") %>%
+                             sheet=obs_harvest_tab,range="A1:AS406") %>%
   mutate(date=Date,
          year=year(date),
          treatment=word(`Treatment ID`,2,sep="_"),
          replicate=word(`Exp Unit ID`,2,sep="_")) %>%
   left_join(obs_treatments_raw[,c("treatment","treatment_num")],
-            by="treatment")
+            by="treatment") 
 
 obs_biomass_raw <- read_xlsx(paste0(obs_path, obs_filename),
                              sheet=obs_biomass_tab,range="A1:Q425") %>%
@@ -524,12 +508,12 @@ obs_biomass_raw <- read_xlsx(paste0(obs_path, obs_filename),
             by="treatment")
 
 obs_soiltemp_raw <- read_xlsx(paste0(obs_path, obs_filename),
-                              sheet=obs_soiltemp_tab,range="A1:Q425") %>%
+                              sheet=obs_soiltemp_tab,range="A1:V1296") %>%
   mutate(date=`Weather Date`,
          year=year(date),
          soil_temperature=`Soil Temp 5cm degC`)
 
-###########################
+#*************************************************************
 
 ## Sand/silt/clay %s
 
@@ -569,44 +553,64 @@ ObsBD_grouped <- obs_soilphys_raw[substr(obs_soilphys_raw$treatment,1,1)=='C' &
 colnames(ObsBD_grouped) <- c("year","treatment","treatment_num","replicate",
                              "upper_cm","lower_cm","mean_BD")
 
+ObsBD_mean_bylayer <- ObsBD_grouped[,c("year","treatment","treatment_num",
+                                       "replicate","upper_cm","lower_cm","mean_BD")] %>%
+  group_by(treatment,treatment_num,upper_cm,lower_cm) %>% 
+  summarize(mean_BD=round(mean(mean_BD),2))
+
+## artificially add a 5-15 cm "measurement" for the CCct treatment, as it was
+## not included in the 2003 set, and is missing that depth. This will make
+## the site mean a more balanced mean, even though it's an estimated addition
+ObsBD_mean_bylayer <- rbind(data.frame(treatment="CCct",
+                                       treatment_num=1,
+                                       upper_cm=5,
+                                       lower_cm=15,
+                                       mean_BD=1.35),ObsBD_mean_bylayer)
+
+# mean of all layers (0-5,5-10 (for all),5-15 (all but CCct treatment))
 ObsBD_mean <- ObsBD_grouped[,c("year","treatment","treatment_num",
                                "replicate","upper_cm","lower_cm","mean_BD")] %>%
   group_by(treatment,treatment_num) %>% 
   summarize(mean_BD=round(mean(mean_BD),2))
 
-ObsBD_mean_bylayer <- ObsBD_grouped[,c("year","treatment","treatment_num",
-                                       "replicate","upper_cm","lower_cm","mean_BD")] %>%
-  group_by(treatment,treatment_num,upper_cm) %>% 
-  summarize(mean_BD=round(mean(mean_BD),2))
-
-ObsBD_site <- mean(ObsBD_mean$mean_BD)
-
-ObsBD_site_bylayer <- ObsBD_mean_bylayer[,c("upper_cm","mean_BD")] %>%
-  group_by(upper_cm) %>%
+# used for creating additional soil layers in 2_Create_soil_data
+ObsBD_site_bylayer <- ObsBD_mean_bylayer[,c("upper_cm","lower_cm","mean_BD")] %>%
+  group_by(upper_cm,lower_cm) %>%
   summarize(mean_BD=mean(mean_BD))
+## since there is a 5-10 and 5-15, the 5-15 could be seen as the average of 
+## 5-10 and 10-15, which can be calculated:
+ObsBD_site_bylayer <- ObsBD_site_bylayer %>%
+  bind_rows(c(upper_cm=10,lower_cm=15,
+              mean_BD=((as.numeric(ObsBD_site_bylayer[ObsBD_site_bylayer$lower_cm==15,"mean_BD"])*2)-
+                         as.numeric(ObsBD_site_bylayer[ObsBD_site_bylayer$lower_cm==10,"mean_BD"]))))
 
-### set BD to current treatment value (will need to account for equiv soil mass later)
+# mean to 10 cm for all treatments
+ObsBD_site <- mean(pull(ObsBD_site_bylayer[ObsBD_site_bylayer$lower_cm <= 10,"mean_BD"]))
+
+### BD set to current treatment value (doesn't account for equiv soil mass)
 ObsBD_treat <- ObsBD_grouped[ObsBD_grouped$treatment==treatment,] %>%
   group_by(year,treatment,treatment_num) %>%
   summarize(mean_BD=round(mean(mean_BD),2))
 
-### set BD to control treatment value for equiv. soil mass
+### set BD to control treatment value for equiv. soil mass, mean by depth
 ObsBD_ctrl <- ObsBD_grouped[ObsBD_grouped$treatment==control_treatment,] %>%
   group_by(year,treatment,treatment_num) %>%
   summarize(mean_BD=round(mean(mean_BD),2))
 
-Obs_BD <- ObsBD_site
+# site mean to 10 cm
+ObsBD <- as.numeric(ObsBD_site_bylayer[1,"mean_BD"])
 
 
 
-## C percent
+## C percent (only one measurement of organic to 10 cm)
 ObsC_pct <- obs_soilchem_raw[substr(obs_soilchem_raw$treatment,1,1)=='C' &
                                !is.na(obs_soilchem_raw$orgC_gkg),
                              c("date","year","treatment","treatment_num",
-                               "replicate","orgC_gkg")] %>%
+                               "replicate","Upper cm","Lower cm","orgC_gkg")] %>%
   mutate(orgC_pct=orgC_gkg/10) %>%
-  group_by(year,treatment,treatment_num) %>%
-  summarize(mean_c=mean(orgC_pct))
+  group_by(year,treatment,treatment_num,`Upper cm`,`Lower cm`) %>%
+  summarize(mean_c=mean(orgC_pct),
+            sd_c=sd(orgC_pct))
 
 ObsC_pct_mean <- obs_soilchem_raw[substr(obs_soilchem_raw$treatment,1,1)=='C' &
                                !is.na(obs_soilchem_raw$orgC_gkg),
@@ -614,17 +618,19 @@ ObsC_pct_mean <- obs_soilchem_raw[substr(obs_soilchem_raw$treatment,1,1)=='C' &
                                "replicate","orgC_gkg")] %>%
   mutate(orgC_pct=orgC_gkg/10) %>%
   group_by(treatment,treatment_num) %>%
-  summarize(mean_c=mean(orgC_pct))
+  summarize(mean_c=mean(orgC_pct),
+            sd_c=sd(orgC_pct))
 
 ObsC_pct_site <- mean(ObsC_pct$mean_c)
 
 ##  C stock (C% * BD * depth (cm))
-### BD is from control plot to calculate C stocks
 ### calculate for all plots
 ObsC_Mgha_all <- ObsC_pct %>%
   group_by(year,treatment,treatment_num) %>%
   summarize(mean_cpct=round(mean(mean_c,na.rm=T),5),
-            cstock=round(mean_cpct*ObsBD_ctrl$mean_BD*10,2))
+            sd_cpct=round(mean(sd_c,na.rm=T),5),
+            cstock=round(mean_cpct*ObsBD*10,2),
+            sd_cstock=round(sd_cpct*ObsBD*10,2))
 
 ### this commented out version uses BD from each treatment
 # ObsC_Mgha_all <- left_join(ObsC_pct,
@@ -635,10 +641,7 @@ ObsC_Mgha_all <- ObsC_pct %>%
 #          cstock=round(mean_cpct*mean_BD*10,2))
 
 ### calculate just for the current treatment
-ObsC_Mgha <- ObsC_pct[ObsC_pct$treatment_num==treatment_num,] %>%
-  group_by(year) %>%
-  summarize(mean_cpct=round(mean(mean_c,na.rm=T),5),
-            cstock=round(mean_cpct*ObsBD_ctrl$mean_BD*10,2))
+ObsC_Mgha <- ObsC_Mgha_all[ObsC_Mgha_all$treatment==treatment,]
 
 ### The following is commented out for LRF; no true control from native
 ### ecosystem is available, so estimated from literature (see ObsC_Mgha)
@@ -649,29 +652,77 @@ ObsC_Mgha <- ObsC_pct[ObsC_pct$treatment_num==treatment_num,] %>%
 # initC <- mean(ObsC_control_Mgha$cstock)
 
 # Use estimated starting OrgC from shortgrass prairie from []
-ObsC_Mgha <- rbind(c(land_conversion_year, NA, surface_C_init),ObsC_Mgha)
+ObsC_Mgha <- rbind(data.frame(year=land_conversion_year, 
+                              treatment=treatment,
+                              treatment_num=treatment_num,
+                              mean_cpct=NA,
+                              sd_cpct=NA,
+                              cstock=45,
+                              sd_cstock=NA),ObsC_Mgha)
 
+
+# rbind(data.frame(treatment="CCct",
+#                  treatment_num=1,
+#                  upper_cm=5,
+#                  lower_cm=15,
+#                  mean_BD=1.35),ObsBD_mean_bylayer)
 #ObsC_Mgha_mean_5yr <- mean(ObsC_Mgha$mean_cpct[1:5])
 
-## Yield
+## Grain Yield
 ObsYield_raw <- obs_harvest_raw[substr(obs_harvest_raw$treatment,1,1)=='C',
                                 c("date","year","treatment","treatment_num",
                                   "replicate","Crop","Harvested Frac",
                                   "Grain Dry Matt kg/ha","Harv NonGrain Bio kg/ha")] %>%
-  mutate(crop=Crop,
+  mutate(crop=if_else(grepl("Sorghum",Crop,fixed=TRUE), "Sorghum",
+              if_else(grepl("Cotton", Crop,fixed=TRUE), "Cotton",
+              if_else(grepl("Rye", Crop,fixed=TRUE), "Rye",
+                      "Error"))),
          harv_frac=`Harvested Frac`,
          yield=if_else(is.na(`Grain Dry Matt kg/ha`),`Harv NonGrain Bio kg/ha`,`Grain Dry Matt kg/ha`))
 ObsYield_mean <- ObsYield_raw[,c("date","year","treatment","treatment_num",
                                  "replicate","crop","harv_frac","yield")] %>%
   group_by(date,year,treatment,treatment_num,crop,harv_frac) %>%
-  summarize(mean_yield=mean(yield, na.rm=T)/1000) %>%
-  mutate(mean_yield_gm2=mean_yield*100)
+  summarize(mean_yield=mean(yield, na.rm=T)/1000, # Mg/ha
+            sd_yield=sd(yield,na.rm=T)/1000, # Mg/ha
+            mean_yield_kgha=mean(yield, na.rm=T),
+            sd_yield_kgha=sd(yield,na.rm=T)) %>%
+  mutate(mean_yield_gm2=mean_yield_kgha*100,
+         sd_yield_gm2=sd_yield_kgha*100)
 
 ObsYield <- ObsYield_mean[ObsYield_mean$treatment_num==treatment_num,]
 
+
+## Biomass yield
+## whole plant biomass (used in addition to grain measurements)
+ObsBiomass_raw <- obs_biomass_raw[substr(obs_biomass_raw$treatment,1,1)=='C',
+                                  c("date","year","treatment","treatment_num",
+                                    "replicate","Crop","Plant Fraction",
+                                    "Frac Dry Matt kg/ha")] %>%
+  mutate(date=as.Date(date),
+         crop=if_else(grepl("Sorghum",Crop,fixed=TRUE), "Sorghum",
+                      if_else(grepl("Cotton", Crop,fixed=TRUE), "Cotton",
+                              if_else(grepl("Rye", Crop,fixed=TRUE), "Rye",
+                                      "Error"))),
+         harv_frac=`Plant Fraction`,
+         yield=`Frac Dry Matt kg/ha`)
+
+ObsBiomass_mean <- ObsBiomass_raw[,c("date","year","treatment","treatment_num",
+                                     "replicate","crop","harv_frac","yield")] %>%
+  group_by(date,year,treatment,treatment_num,crop,harv_frac) %>%
+  summarize(mean_yield=mean(yield, na.rm=T)/1000, # Mg/ha
+            sd_yield=sd(yield,na.rm=T)/1000, # Mg/ha
+            mean_yield_kgha=mean(yield, na.rm=T),
+            sd_yield_kgha=sd(yield,na.rm=T)) %>%
+  mutate(mean_yield_gm2=mean_yield_kgha*100,
+         sd_yield_gm2=sd_yield_kgha*100)
+
+ObsBiomass <- ObsBiomass_mean[ObsBiomass_mean$treatment_num==treatment_num,]
+
+
 ## Soil temp
 ObsTemp_all <- obs_soiltemp_raw[,c("date","year","soil_temperature")]
-ObsTemp <- ObsTemp_all
+ObsTemp <- ObsTemp_all %>%
+  mutate(date=as.Date(date))
 
 
 #********************************************************************
@@ -773,22 +824,9 @@ ObsMB <- ObsMB_mean[ObsMB_mean$treatment_num==treatment_num,] %>%
 #          grainN_gm2=percent_N/100*mean_yield_gm2)
 # 
 # 
-# ## biomass (to calculate C and N of stover)
-# ObsBiomass_raw <- read.csv(paste0(obs_path,obs_biomass_filename),
-#                            skip=29) %>%
-#   mutate(date=as.Date(Date, format="%m/%d/%Y"),
-#          year=Year)
-# 
-# ObsBiomass_mean <- ObsBiomass_raw %>%
-#   group_by(year,Treatment,Species,Fraction) %>%
-#   summarize(biomass_gm2=round(mean(Biomass),2)) %>%
-#   mutate(crop=if_else(Species=="Zea mays L. (*)", "Maize",
-#                       if_else(Species=="Glycine max L. (*)", "Soybean",
-#                               if_else(Species=="Triticum aestivum L. (*)", "Wheat",
-#                                       Species)))
-#   )
-# 
-# ObsBiomass <- ObsBiomass_mean[ObsBiomass_mean$Treatment==treatment,] 
+
+
+
 # 
 # ### now "widen" the results to match format of Daycent data, add N data
 # ObsBiomass_wide <- pivot_wider(ObsBiomass, 
@@ -803,12 +841,12 @@ ObsMB <- ObsMB_mean[ObsMB_mean$treatment_num==treatment_num,] %>%
 #             by=c("year","Treatment","crop")) %>%
 #   mutate(stoverC_gm2=percent_C_STOVER/100*STOVER,
 #          stoverN_gm2=percent_N_STOVER/100*STOVER)
+
+
 #**********************************************************************
+# Fertilizer ----------------------------------------
 
-
-##################################
 # Add fertilizer for GHG reference
-##################################
 
 # # APSIM needs its own df because the date format is different? Not sure
 # # it's being used, though, so commenting it out.
@@ -817,30 +855,63 @@ ObsMB <- ObsMB_mean[ObsMB_mean$treatment_num==treatment_num,] %>%
 Fert <- obs_fert_raw[substr(obs_fert_raw$treatment,1,1)=='C',
                      c("date","year","treatment","treatment_num",
                        "replicate","Crop","Amend Placement","Amend Type",
-                       "Total N Amount kgN/ha")] %>%
-  mutate(crop=Crop,
+                       "Total N Amount kgN/ha","Total P Amount kgP/ha",
+                       "Total K Amount kgK/ha")] %>%
+  mutate(date=as.Date(date),
+         crop=Crop,
          amend_method=`Amend Placement`,
          amend_type=`Amend Type`,
-         totalN_kgha=`Total N Amount kgN/ha`) %>%
-  select(-c(`Crop`,`Amend Placement`,`Amend Type`,`Total N Amount kgN/ha`))
+         totalN_kgha=`Total N Amount kgN/ha`,
+         totalP_kgha=`Total P Amount kgP/ha`,
+         totalK_kgha=`Total K Amount kgK/ha`) %>%
+  select(-c(`Crop`,`Amend Placement`,`Amend Type`,`Total N Amount kgN/ha`,
+            `Total P Amount kgP/ha`,`Total K Amount kgK/ha`))
 
-#######################
-# Bring in weather data
-#######################
 
-# Obs_wth <- read.csv(paste0(apsim_path,"/basic_wth_",clim_scenario_num,".csv"),
-#                    skip=2) %>%
-#   mutate(meant=round((maxt+mint)/2,1),
-#          date=as.Date(day-1, origin=paste0(as.character(year),"-01-01"),),
-#          source="Air"
-#   )
+#**********************************************************************
+# Weather -----------------------------------------------------------------
 
-rm(obs_biomass_raw,obs_fert_raw,obs_harvest_raw,obs_planting_raw,
-   obs_soilbio_raw,obs_soilchem_raw,obs_soilphys_raw,obs_soiltemp_raw,
-   obs_tillage_raw,obs_treatments_raw,na_cols_df,
-   obs_biomass_tab,obs_fert_tab,obs_harvest_tab,obs_planting_tab,
-   obs_soilbio_tab,obs_soilchem_tab,obs_soilphys_tab,obs_soiltemp_tab,
-   obs_tillage_tab,obs_treatments_tab)
+
+ObsWth <- read.table(paste0(apsim_path,"basic_wth_",clim_scenario_num,".met"),
+                    skip=8,sep=" ",row.names=NULL,
+                    col.names=c("year","day","radn","maxt","mint","rain")) %>%
+  mutate(meant=round((maxt+mint)/2,1),
+         date=as.Date(day-1, origin=paste0(as.character(year),"-01-01"),),
+         source="Air"
+  )
+
+
+#**********************************************************************
+# write calibration header file ---------------------------------------
+
+# make separate file with column headers (empty table with NA row)
+dummy<-data.frame(matrix(ncol=54))
+log_col_headers <- c("Date_time","Model",
+                     "Climate_Scenario","Mgmt_Scenario","Scenario_Name",
+                     "Scenario_Abbr",
+                     "Maize_slope","Maize_yint","Maize_R2","Maize_RMSE",
+                     "Maize_diff",
+                     "Soy_slope","Soy_yint","Soy_R2","Soy_RMSE",
+                     "Soy_diff",
+                     "Wheat_slope","Wheat_yint","Wheat_R2","Wheat_RMSE",
+                     "Wheat_diff",
+                     "SOC_slope","SOC_yint","SOC_R2","SOC_RMSE",
+                     "SOC_diff",
+                     "Temp_slope","Temp_yint","Temp_R2","Temp_RMSE",
+                     "Moist_slope","Moist_yint","Moist_R2","Moist_RMSE",
+                     "N2O_slope","N2O_yint","N2O_R2","N2O_RMSE",
+                     "N2O_diff",
+                     "CH4_slope","CH4_yint","CH4_R2","CH4_RMSE",
+                     "CH4_diff",
+                     "Cotton_slope","Cotton_yint","Cotton_R2","Cotton_RMSE",
+                     "Cotton_diff",
+                     "Sorghum_slope","Sorghum_yint","Sorghum_R2","Sorghum_RMSE",
+                     "Sorghum_diff")
+colnames(dummy) <- log_col_headers
+
+write.table(dummy,file=paste0(results_path,"Calibration_log_columns.csv"),
+            append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
+
 
 }) # end suppressMessages
 

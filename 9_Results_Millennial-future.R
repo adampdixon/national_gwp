@@ -62,7 +62,8 @@ gC4 <- input_data %>%
 
 gC4
 
-ggsave(filename=paste0(results_path,"SOC_comparison_fut_",scenario_name,"_Millennial.jpg"),plot=gC4)
+ggsave(filename=paste0(results_path,"SOC_comparison_fut_",scenario_name,"_Millennial.jpg"),plot=gC4,
+       width=9, height=6, dpi=300)
 
 
 }) # end suppressMessages

@@ -15,16 +15,16 @@ print("Starting 1_Create_weather_input_files-RothC.R")
 source("Monthly_UPET_Correct.R")
 rothc_weather_path <- paste0(rothc_path,"weather/")
   
-if(weather_ind=="C") {
+if(clim_scenario_num==1) {
   
   # create initial 28-year average for spin-up and 1920-1949 timeframe
-  Monthly_init <- Hist_site_mon[Hist_site_mon$Year %in% 1950:1977, 
-                                c("Month","PRCP","Calc_TAVG","TM_OPE_down")]
+  Monthly_init <- Hist_site_mon[Hist_site_mon$year %in% 1950:1977, 
+                                c("month","PRCP","Calc_TAVG","TM_OPE")]
   
-  WeatherInit <- Monthly_init[,c("Month","PRCP","Calc_TAVG","TM_OPE_down")] %>%
-    group_by(Month) %>%
+  WeatherInit <- Monthly_init[,c("month","PRCP","Calc_TAVG","TM_OPE")] %>%
+    group_by(month) %>%
     summarize(PRCP = round(mean(PRCP, na.rm=TRUE),2), Calc_TAVG = round(mean(Calc_TAVG, na.rm=TRUE),2),
-              OpenPanEvap = round(mean(TM_OPE_down, na.rm=TRUE),2))
+              OpenPanEvap = round(mean(TM_OPE, na.rm=TRUE),2))
   
   
   ###########################
@@ -45,51 +45,51 @@ if(weather_ind=="C") {
   
   
   # Aggregate daily KBS weather to monthly
-  OPEMonthly_sub_2100 <- new_dat_2100[,c("month","year","rain_mm.x","tavg")]
+  OPEMonthly_sub_fut <- new_dat_fut[,c("month","year","rain_mm","tavg")]
   #
-  OPEMonthly_2100 <- OPEMonthly_sub_2100 %>%
+  OPEMonthly_fut <- OPEMonthly_sub_fut %>%
     group_by(year,month) %>% 
-    summarize(PRCP = round(sum(rain_mm.x, na.rm=TRUE),2), 
+    summarize(PRCP = round(sum(rain_mm, na.rm=TRUE),2), 
               Calc_TAVG = round(mean(tavg, na.rm=TRUE),2)
     )
-  colnames(OPEMonthly_2100) <- c("Year","Month","PRCP","Calc_TAVG")
+  colnames(OPEMonthly_fut) <- c("year","month","PRCP","Calc_TAVG")
   
   # Calculate T&M and reduce by 13%
   ## Add monthly head index
-  OPEMonthly_2100$Hm <- ifelse(OPEMonthly_2100$Calc_TAVG<=0,0,(0.2*OPEMonthly_2100$Calc_TAVG)^1.514)
+  OPEMonthly_fut$Hm <- ifelse(OPEMonthly_fut$Calc_TAVG<=0,0,(0.2*OPEMonthly_fut$Calc_TAVG)^1.514)
   ## Add annual heat index
-  OPEAnnHIdx_sub_2100 <- OPEMonthly_2100[,c("Year","Hm")]
-  OPEAnnHIdx_2100 <- OPEAnnHIdx_sub_2100 %>%
-    group_by(Year) %>%
+  OPEAnnHIdx_sub_fut <- OPEMonthly_fut[,c("year","Hm")]
+  OPEAnnHIdx_fut <- OPEAnnHIdx_sub_fut %>%
+    group_by(year) %>%
     summarize(Ha = round(sum(Hm,na.rm=TRUE)),2)
-  OPEMonthly_2100 <- left_join(OPEMonthly_2100,OPEAnnHIdx_2100,by="Year")
+  OPEMonthly_fut <- left_join(OPEMonthly_fut,OPEAnnHIdx_fut,by="year")
   ## Add "a" constant
-  OPEMonthly_2100$a <- (0.000000675*OPEMonthly_2100$Ha^3) - 
-    (0.0000771*OPEMonthly_2100$Ha^2) + 
-    (0.01792*OPEMonthly_2100$Ha) + 0.49239
+  OPEMonthly_fut$a <- (0.000000675*OPEMonthly_fut$Ha^3) - 
+    (0.0000771*OPEMonthly_fut$Ha^2) + 
+    (0.01792*OPEMonthly_fut$Ha) + 0.49239
   ## Add raw UPET
-  OPEMonthly_2100$UPETraw <- ifelse(OPEMonthly_2100$Calc_TAVG<=0,0,
-                                    ifelse(OPEMonthly_2100$Calc_TAVG>0 & OPEMonthly_2100$Calc_TAVG<27,
-                                           (0.53*((10*(OPEMonthly_2100$Calc_TAVG/OPEMonthly_2100$Ha))^OPEMonthly_2100$a)),
-                                           (-0.015*OPEMonthly_2100$Calc_TAVG^2 + 1.093 - 14.208)))
-  OPEMonthly_2100$TM_PET <- Monthly_UPET_Correct(OPEMonthly_2100$UPETraw,OPEMonthly_2100$Month)
+  OPEMonthly_fut$UPETraw <- ifelse(OPEMonthly_fut$Calc_TAVG<=0,0,
+                                    ifelse(OPEMonthly_fut$Calc_TAVG>0 & OPEMonthly_fut$Calc_TAVG<27,
+                                           (0.53*((10*(OPEMonthly_fut$Calc_TAVG/OPEMonthly_fut$Ha))^OPEMonthly_fut$a)),
+                                           (-0.015*OPEMonthly_fut$Calc_TAVG^2 + 1.093 - 14.208)))
+  OPEMonthly_fut$TM_PET <- Monthly_UPET_Correct(OPEMonthly_fut$UPETraw,OPEMonthly_fut$month)
   
-  OPEMonthly_2100$TM_OPE <- round(OPEMonthly_2100$TM_PET/0.75,1)
+  OPEMonthly_fut$TM_OPE <- round(OPEMonthly_fut$TM_PET/0.75,1)
   
-  # downscale 13% for "observed" OPE 
-  OPEMonthly_2100$TM_OPE_down <- OPEMonthly_2100$TM_OPE*(1-(13/100))
+  # # downscale 13% for "observed" OPE 
+  # OPEMonthly_fut$TM_OPE_down <- OPEMonthly_fut$TM_OPE*(1-(13/100))
   
   
   ###########################
   ## Write annual files
   
   # Catenate historicalexperimental, and future baseline data together
-  base_weather <- rbind(Hist_site_mon[Hist_site_mon$Year<1989,
-                                      c("Month","Year","Calc_TAVG","PRCP","TM_OPE_down")],
-                        OPEMonthly_2100[,c("Month","Year","Calc_TAVG","PRCP","TM_OPE_down")])
+  base_weather <- rbind(Hist_site_mon[Hist_site_mon$year<experiment_start_year,
+                                      c("month","year","Calc_TAVG","PRCP","TM_OPE")],
+                        OPEMonthly_fut[,c("month","year","Calc_TAVG","PRCP","TM_OPE")])
   
   # split Hist_site_mon into a list of monthly records indexed by year through 1988
-  lst <- split(base_weather,base_weather$Year)
+  lst <- split(base_weather,base_weather$year)
 
   ## create annual RothC weather files with initial text lines
   lapply(names(lst),
@@ -103,12 +103,12 @@ if(weather_ind=="C") {
          },
          lst)
   
-} else if(weather_ind=="F") {
+} else if(clim_scenario_num>1) {
   
-  fut_dat <- read.csv(file=paste0(fut_weather_path,"fut_clim_scenario_",clim_scenario_num,'.csv'))
+  fut_dat <- read.csv(file=paste0(fut_weather_path,"fut_clim_scenario_",clim_scenario_num,'_reanal.csv'))
   
   # bind experimental and future data together
-  exp_dat <- new_dat[,c("month","year","rain_mm.x","tavg")]
+  exp_dat <- new_dat[,c("month","year","rain_mm","tavg")]
   colnames(exp_dat) <- c("month","year","rain_mm","tavg")
   OPE_all <- rbind(exp_dat,fut_dat[,c("month","year","rain_mm","tavg")])
   
@@ -120,17 +120,17 @@ if(weather_ind=="C") {
     summarize(PRCP = round(sum(rain_mm, na.rm=TRUE),2), 
               Calc_TAVG = round(mean(tavg, na.rm=TRUE),2)
     )
-  colnames(OPEMonthly_esm) <- c("Year","Month","PRCP","Calc_TAVG")
+  colnames(OPEMonthly_esm) <- c("year","month","PRCP","Calc_TAVG")
   
   # Calculate T&M and reduce by 13%
   ## Add monthly head index
   OPEMonthly_esm$Hm <- ifelse(OPEMonthly_esm$Calc_TAVG<=0,0,(0.2*OPEMonthly_esm$Calc_TAVG)^1.514)
   ## Add annual heat index
-  OPEAnnHIdx_sub_esm <- OPEMonthly_esm[,c("Year","Hm")]
+  OPEAnnHIdx_sub_esm <- OPEMonthly_esm[,c("year","Hm")]
   OPEAnnHIdx_esm <- OPEAnnHIdx_sub_esm %>%
-    group_by(Year) %>%
+    group_by(year) %>%
     summarize(Ha = round(sum(Hm,na.rm=TRUE)),2)
-  OPEMonthly_esm <- left_join(OPEMonthly_esm,OPEAnnHIdx_esm,by="Year")
+  OPEMonthly_esm <- left_join(OPEMonthly_esm,OPEAnnHIdx_esm,by="year")
   ## Add "a" constant
   OPEMonthly_esm$a <- (0.000000675*OPEMonthly_esm$Ha^3) - 
     (0.0000771*OPEMonthly_esm$Ha^2) + 
@@ -140,44 +140,47 @@ if(weather_ind=="C") {
                                     ifelse(OPEMonthly_esm$Calc_TAVG>0 & OPEMonthly_esm$Calc_TAVG<27,
                                            (0.53*((10*(OPEMonthly_esm$Calc_TAVG/OPEMonthly_esm$Ha))^OPEMonthly_esm$a)),
                                            (-0.015*OPEMonthly_esm$Calc_TAVG^2 + 1.093 - 14.208)))
-  OPEMonthly_esm$TM_PET <- Monthly_UPET_Correct(OPEMonthly_esm$UPETraw,OPEMonthly_esm$Month)
+  OPEMonthly_esm$TM_PET <- Monthly_UPET_Correct(OPEMonthly_esm$UPETraw,OPEMonthly_esm$month)
   
   OPEMonthly_esm$TM_OPE <- round(OPEMonthly_esm$TM_PET/0.75,1)
   
-  # downscale 13% for "observed" OPE 
-  OPEMonthly_esm$TM_OPE_down <- OPEMonthly_esm$TM_OPE*(1-(13/100))
+  # # downscale 13% for "observed" OPE 
+  # OPEMonthly_esm$TM_OPE_down <- OPEMonthly_esm$TM_OPE*(1-(13/100))
   
   
   ###########################
   ## Write annual files
   
   # Catenate historical, experimental, and future baseline data together
-  base_weather <- rbind(Hist_site_mon[Hist_site_mon$Year<1989,
-                                      c("Month","Year","Calc_TAVG","PRCP","TM_OPE_down")],
-                        OPEMonthly_esm[,c("Month","Year","Calc_TAVG","PRCP","TM_OPE_down")])
+  base_weather <- rbind(Hist_site_mon[Hist_site_mon$year<experiment_start_year,
+                                      c("month","year","Calc_TAVG","PRCP","TM_OPE")],
+                        OPEMonthly_esm[,c("month","year","Calc_TAVG","PRCP","TM_OPE")])
   
   # split Hist_site_mon into a list of monthly records indexed by year through 1988
-  lst <- split(base_weather,base_weather$Year)
+  lst <- split(base_weather,base_weather$year)
   
   ## create annual RothC weather files with initial text lines
   lapply(names(lst),
-         function(myfun, lst) {cat(paste(site_name,", NOAA weather year ",myfun,"; with weighted average clay and sampling depth'",sep=""),
-                               file=paste(rothc_weather_path,clim_scenario_num,substr(myfun,2,4),".dat", sep=""), sep="\n",append=FALSE)
-           write.table(lst[[myfun]], file=paste(rothc_weather_path,clim_scenario_num,substr(myfun,2,4),".dat", sep=""),
+         function(myfun, lst) {cat(paste(site_name,", NOAA weather year ",myfun,
+                                         "; with weighted average clay and sampling depth'",sep=""),
+                               file=paste(rothc_weather_path,clim_scenario_num,
+                                          substr(myfun,2,4),".dat", sep=""), sep="\n",append=FALSE)
+           write.table(lst[[myfun]], file=paste(rothc_weather_path,clim_scenario_num,
+                                                substr(myfun,2,4),".dat", sep=""),
                        col.names=FALSE, row.names=FALSE, sep="\t", 
                        quote=FALSE, append=TRUE)
-           cat("19","25", file=paste(rothc_weather_path,clim_scenario_num,substr(myfun,2,4),".dat", sep=""), 
+           cat("19","25", file=paste(rothc_weather_path,clim_scenario_num,
+                                     substr(myfun,2,4),".dat", sep=""), 
                sep="\t", append=TRUE)
          },
          lst)
 
-} else {
-  
-  print(paste0("Unknown weather_ind=",weather_ind,"in 1_Create_weather_input_files-RothC.R"))
+}# if clim_scenario_num
 
-}# if weather_ind == C or F
-
-rm(list=c("Monthly_init","WeatherInit","RothC_equil","weather_path","OPEMonthly_sub_2100",
-          "OPEMonthly_2100"," OPEAnnHIdx_sub_2100","OPEAnnHIdx_2100","base_weather","lst",
-          "myfun","fut_dat","exp_dat","OPE_all","OPEMonthly_sub_esm","OPEMonthly_esm",
-          "OPEAnnHIdx_sub_esm","OPEAnnHIdx_esm"))
+if(clim_scenario_num==1) {
+rm(list=c("Monthly_init","WeatherInit","RothC_equil","weather_path","base_weather","lst",
+          "OPEMonthly_sub_fut","OPEMonthly_fut","OPEAnnHIdx_sub_fut","OPEAnnHIdx_fut"))
+} else if(clim_scenario_num>1) {
+  rm(list=c("fut_dat","exp_dat","OPE_all","OPEMonthly_sub_esm","OPEMonthly_esm",
+            "OPEAnnHIdx_sub_esm","OPEAnnHIdx_esm","base_weather","lst"))
+}
