@@ -47,8 +47,9 @@ Cluster/
 /APSIM/KBS/Soil temp testing/
 /Daycent/SOURCE_CODE-vEVI/
 /LDNDC/crabmeat/
-/LDNDC/ldndc-1.30.4.source/
-/LDNDC/ldndc-1.30.4.test/
+#/LDNDC/ldndc-1.30.4.source/
+#/LDNDC/ldndc-1.30.4.test/
+/LDNDC/ldndc-1.30.4*/
 /Millennial/R/analysis/
 /Millennial/R/simulation/KBS/Result Graphs/
 /RothC/KBS/Result Graphs/
@@ -56,15 +57,15 @@ Cluster/
 /RothC/KBS/auto/
 /RothC/KBS/output/
 /RothC/KBS/graph/
-/LDNDC/ldndc-1.30.4.win64/doc/
-/LDNDC/ldndc-1.30.4.win64/projects/arable/
-/LDNDC/ldndc-1.30.4.win64/projects/forest/
-/LDNDC/ldndc-1.30.4.win64/projects/grassland/
-/LDNDC/ldndc-1.30.4.win64/projects/tutorial_1/
-/LDNDC/ldndc-1.30.4.win64/projects/tutorial_2/
-/LDNDC/ldndc-1.30.4.win64/projects/tutorial_3/
-/LDNDC/ldndc-1.30.4.win64/projects/tutorial_4/
-/LDNDC/ldndc-1.30.4.win64/projects/tutorials/
+#/LDNDC/ldndc-1.30.4.win64/doc/
+#/LDNDC/ldndc-1.30.4.win64/projects/arable/
+#/LDNDC/ldndc-1.30.4.win64/projects/forest/
+#/LDNDC/ldndc-1.30.4.win64/projects/grassland/
+#/LDNDC/ldndc-1.30.4.win64/projects/tutorial_1/
+#/LDNDC/ldndc-1.30.4.win64/projects/tutorial_2/
+#/LDNDC/ldndc-1.30.4.win64/projects/tutorial_3/
+#/LDNDC/ldndc-1.30.4.win64/projects/tutorial_4/
+#/LDNDC/ldndc-1.30.4.win64/projects/tutorials/
 /LDNDC/ldndc-1.35.2.linux64/doc/
 /LDNDC/ldndc-1.35.2.linux64/projects/arable/
 /LDNDC/ldndc-1.35.2.linux64/projects/forest/

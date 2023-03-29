@@ -782,6 +782,7 @@ ggsave(filename=paste0(results_path,"calib_N2O_comparison_1to1_",scenario_name,"
 
 # add this run's results to model log file and file collecting all final
 # model runs
+
 calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                        clim_scenario_num,mgmt_scenario_num, scenario_name,
                        scenario_abbrev,
@@ -797,9 +798,12 @@ calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                        Mfit_coef[2], Mfit_coef[1], Mfit_r2, M_rmse,
                        Nfit_coef[2], Nfit_coef[1], Nfit_r2, N_rmse,
                        N2O_obsmod_diff_gha,
-                       NA, NA, NA, NA,
+                       NA, NA, NA, NA, # CH4
+                       NA,
+                       NA, NA, NA, NA, # Cotton
+                       NA,
+                       NA, NA, NA, NA, # Sorghum
                        NA)
-
 
 source("p_Edit_calib_file.R")
 p_Edit_calib_file(calib_log_tab,model_name,scenario_name)
