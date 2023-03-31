@@ -37,10 +37,14 @@ ens_MaizeYld_Mgha <- merge(merge(ObsYield[ObsYield$crop=="Maize",c("year","mean_
                              all=TRUE),
                        DayY_Mgha[DayY_Mgha$crop=="Maize",c("year","yield")],
                        by="year",
-                       all=TRUE)
-colnames(ens_MaizeYld_Mgha) <- c("year","Observed","Obs_sd","APSIM","Daycent")
+                       all=TRUE) %>%
+  mutate(crop="Maize",
+         treatment_scen=scenario_descriptor)
+colnames(ens_MaizeYld_Mgha) <- c("year","Observed","Obs_sd","APSIM","Daycent",
+                                 "crop","treatment_scen")
 
-ens_MaizeYld_Mgha_piv <- pivot_longer(ens_MaizeYld_Mgha, c(-year,-Obs_sd),
+ens_MaizeYld_Mgha_piv <- pivot_longer(ens_MaizeYld_Mgha, c(-year,-Obs_sd,
+                                                           -crop,-treatment_scen),
                names_to = "Model",
                values_to = "yield_val")
 
@@ -55,10 +59,14 @@ ens_SoyYld_Mgha <- merge(merge(ObsYield[ObsYield$crop=="Soybean",c("year","mean_
                            all=TRUE),
                      DayY_Mgha[DayY_Mgha$crop=="Soybean",c("year","yield")],
                      by="year",
-                     all=TRUE)
-colnames(ens_SoyYld_Mgha) <- c("year","Observed","Obs_sd","APSIM","Daycent")
+                     all=TRUE) %>%
+  mutate(crop="Soybean",
+         treatment_scen=scenario_descriptor)
+colnames(ens_SoyYld_Mgha) <- c("year","Observed","Obs_sd","APSIM","Daycent",
+                               "crop","treatment_scen")
 
-ens_SoyYld_Mgha_piv <- pivot_longer(ens_SoyYld_Mgha, c(-year,-Obs_sd),
+ens_SoyYld_Mgha_piv <- pivot_longer(ens_SoyYld_Mgha, c(-year,-Obs_sd,
+                                                       -crop,-treatment_scen),
                names_to = "Model",
                values_to = "yield_val")
 
@@ -73,10 +81,14 @@ ens_WheatYld_Mgha <- merge(merge(ObsYield[ObsYield$crop=="Wheat",c("year","mean_
                              all=TRUE),
                        DayY_Mgha[DayY_Mgha$crop=="Wheat",c("year","yield")],
                        by="year",
-                       all=TRUE)
-colnames(ens_WheatYld_Mgha) <- c("year","Observed","Obs_sd","APSIM","Daycent")
+                       all=TRUE) %>%
+  mutate(crop="Wheat",
+         treatment_scen=scenario_descriptor)
+colnames(ens_WheatYld_Mgha) <- c("year","Observed","Obs_sd","APSIM","Daycent",
+                                 "crop","treatment_scen")
 
-ens_WheatYld_Mgha_piv <- pivot_longer(ens_WheatYld_Mgha, c(-year,-Obs_sd),
+ens_WheatYld_Mgha_piv <- pivot_longer(ens_WheatYld_Mgha, c(-year,-Obs_sd,
+                                                           -crop,-treatment_scen),
                names_to = "Model",
                values_to = "yield_val")
 
@@ -96,11 +108,14 @@ ens_Cstock_Mgha <- merge(merge(merge(merge(ObsC_Mgha[,c("year","cstock","sd_csto
                            all=TRUE),
                        millC_Mgha_25cm,
                        by="year",
-                       all=TRUE)
+                       all=TRUE) %>%
+  mutate(treatment_scen=scenario_descriptor)
 
-colnames(ens_Cstock_Mgha) <- c("year","Observed","Obs_sd","APSIM","Daycent","RothC","Millennial")
+colnames(ens_Cstock_Mgha) <- c("year","Observed","Obs_sd","APSIM","Daycent",
+                               "RothC","Millennial","treatment_scen")
 
-ens_Cstock_Mgha_piv <-  pivot_longer(ens_Cstock_Mgha, c(-year,-Obs_sd),
+ens_Cstock_Mgha_piv <-  pivot_longer(ens_Cstock_Mgha, c(-year,-Obs_sd,
+                                                        -treatment_scen),
                names_to = "Model",
                values_to = "C_val")
 
@@ -157,6 +172,18 @@ ens_CH4_cum_kgha_piv <- pivot_longer(ens_CH4_cum_kgha, c(-date,-Observed),
                                names_to = "Model",
                                values_to = "ch4_val")
 
+
+## for trendlines
+
+ens_SOC_trendline_dat <- soc_calib_output_df_piv %>%
+  filter(Model == "Observed") %>%
+  mutate(
+    AllObs = C_val,
+    OutlierRemoved = ifelse(C_val %in% ObsC_outliers, NA, C_val),
+    .keep = "unused"
+  ) %>%
+  pivot_longer(AllObs:OutlierRemoved, names_to = "fit") %>%
+  mutate(treatment_scen=scenario_descriptor)
 
 
 # Calibration temporal graphs ---------------------------------------------
@@ -312,7 +339,26 @@ ggsave(filename=paste0(results_path,"pub_Ensemble_Wheat_calibration_",scenario_n
 ggsave(filename=paste0(results_path,"pub_Ensemble_SOC_calibration_",scenario_name,".jpg"),
        plot=gC_calib, width=9, height=6, dpi=300)
 
-}
+
+
+# ## Stash data in list for later use combining graphs
+# calib_output_list[[treatment]] <- list(ens_MaizeYld_Mgha=ens_MaizeYld_Mgha,
+#                                        ens_MaizeYld_Mgha_piv=ens_MaizeYld_Mgha_piv,
+#                                        ens_SoyYld_Mgha=ens_SoyYld_Mgha,
+#                                        ens_SoyYld_Mgha_piv=ens_SoyYld_Mgha_piv,
+#                                        ens_WheatYld_Mgha=ens_WheatYld_Mgha,
+#                                        ens_WheatYld_Mgha_piv=ens_WheatYld_Mgha_piv,
+#                                        ens_Cstock_Mgha=ens_Cstock_Mgha,
+#                                        ens_Cstock_Mgha_piv_adj=ens_Cstock_Mgha_piv_adj)
+
+## Create master df for later use combining graphs
+crop_calib_output_df <- rbind(crop_calib_output_df,ens_MaizeYld_Mgha,ens_SoyYld_Mgha,ens_WheatYld_Mgha)
+crop_calib_output_df_piv <- rbind(crop_calib_output_df_piv,ens_MaizeYld_Mgha_piv,
+                             ens_SoyYld_Mgha_piv,ens_WheatYld_Mgha_piv)
+soc_calib_output_df <- rbind(soc_calib_output_df,ens_Cstock_Mgha)
+soc_calib_output_df_piv <- rbind(soc_calib_output_df_piv,ens_Cstock_Mgha_piv_adj)
+soc_trendlines <- rbind(soc_trendlines,ens_SOC_trendline_dat)
+
 
 
 

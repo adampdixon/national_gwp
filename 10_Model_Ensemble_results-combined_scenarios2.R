@@ -1,4 +1,4 @@
-#######################################
+#*************************************************************
 # File: 10_Model_Ensemble_Results-combined_scenarios2
 # Author: Ellen Maas
 # Date: 8/30/2022
@@ -6,16 +6,16 @@
 # annual and daily mean values, then graphs them. Also 
 # calculates the global warming potential by scenario and 
 # graphs it.
-#######################################
+#*************************************************************
 # Calls:
 # f_model_coef
-#######################################
+#*************************************************************
 # Audit Log
 # 8/30/2022: Created script.
 # 12/22/2022: Reworked linear models to use f_model_coef, 
 # loop for climate scenarios.
 # 2/15/2023: Made y-axes equivalent for future change graphs.
-#######################################
+#*************************************************************
 
 suppressMessages({
   
@@ -30,9 +30,72 @@ library(ggplot2)
 
 source("f_model_coef.R")
 
-#*************************************************************
+  #*************************************************************
 
-#  Import summarized data -------------------------------------------------
+  # Calibration graphs ------------------------------------------------------
+
+  gY_calib <- crop_calib_output_df_piv[crop_calib_output_df_piv$year %in% experiment_year_range,] %>%
+    ggplot(aes(x=year, y=yield_val, color=Model, show.legend=TRUE)) +
+    geom_point(show.legend=TRUE) +
+    xlab("Year") +
+    ylab(expression('Grain Yield (Mg ha ' ^-1*')')) +
+    ylim(0,13) +
+    ggtitle(paste(site_name,"Crop Yield Calibration")) +
+    geom_errorbar(aes(ymin=yield_val-Obs_sd, ymax=yield_val+Obs_sd),
+                  width=.5) + # Width of the error bars
+    geom_smooth(method='lm', formula= y~x, se=FALSE, aes(colour = Model)
+                ,linewidth=0.75) +
+    scale_color_manual(labels=c("APSIM","Daycent","Observed"),
+                       values=cbPalette9[c(8,2,1)]) +
+    facet_grid(crop~treatment_scen) +
+    theme_classic(base_family = "serif", base_size = 16) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA, linewidth=.1),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gY_calib
+  
+  gSOC_calib <- soc_calib_output_df_piv[soc_calib_output_df_piv$year %in% experiment_year_range,] %>%
+    ggplot(aes(x=year, y=C_val, color=Model, show.legend=TRUE)) +
+    geom_point(show.legend=TRUE) +
+    xlab("Year") +
+    ylab(expression('SOC (Mg ha ' ^-1*')')) +
+    ggtitle(paste(site_name,"Soil Organic Carbon Calibration")) +
+    geom_errorbar(aes(ymin=C_val-Obs_sd, ymax=C_val+Obs_sd),
+                  width=.5) +  # Width of the error bars
+    # geom_smooth(method='lm', formula= y~x, se=FALSE, aes(colour = Model)
+    #             ,linewidth=0.75) +
+    stat_smooth(
+      data = soc_trendlines[soc_trendlines$year %in% experiment_year_range,], 
+      aes(linetype = fit, y=value), 
+      method = lm,
+      se = FALSE,
+      fullrange=TRUE
+    ) +
+    scale_color_manual(labels=c("APSIM","Daycent","Millennial","Observed","RothC"),
+                       values=cbPalette9[c(8,2,6,1,3)]) +
+    facet_wrap(~treatment_scen,nrow=1) +
+    theme_classic(base_family = "serif", base_size = 16) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA, linewidth=.1),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gSOC_calib
+  
+  ggsave(filename=paste0(results_path,"pub_Crop_yield_calibration.jpg"),
+         plot=gY_calib, width=9, height=7, dpi=300)
+  ggsave(filename=paste0(results_path,"pub_SOC_calibration.jpg"),
+         plot=gSOC_calib, width=9, height=7, dpi=300)
+  
+  #*************************************************************
+
+    # Import summarized data -------------------------------------------------
 
 
 # global warming potential
@@ -83,35 +146,37 @@ summary_output <- summary_fillin[,-which(names(summary_fillin) %in%
          CO2e_N2O=N2O_Mgha*298, # convert N2O to CO2e
          CO2e_CH4=CH4_Mgha*28 # convert CH4 to CO2e
   ) %>%
-left_join(scenario_df[,c("scenario_name","scenario_abbrev")],by=c("Scenario_Name"="scenario_name"))
+left_join(scenario_df[,c("scenario_name","scenario_abbrev")],
+          by=c("Scenario_Name"="scenario_name"))
 
 summary_output$GWP=rowSums(summary_output[grep("^CO2e", names(summary_output))], 
                            na.rm=TRUE) # SOC negative for sequestration
 
 scenario_means <- summary_output %>%
   group_by(Climate_Scenario,Mgmt_Scenario,Scenario_Name) %>%
-  summarize(mean_MaizeYld_Mgha=round(mean(Maize_Diff_Mgha,na.rm=T),1),
-            mean_SoyYld_Mgha=round(mean(Soybean_Diff_Mgha,na.rm=T),1),
-            mean_WheatYld_Mgha=round(mean(Wheat_Diff_Mgha,na.rm=T),1),
-            mean_SOC_Mgha=round(mean(SOC_Diff_Mgha,na.rm=T),2),
-            mean_N2O_Mgha=round(mean(N2O_Mgha,na.rm=T),2),
-            mean_CH4_Mgha=round(mean(CH4_Mgha,na.rm=T),2),
-            mean_CO2e_SOC=round(mean(CO2e_SOC,na.rm=T),2),
-            mean_CO2e_N2O=round(mean(CO2e_N2O,na.rm=T),2),
-            mean_CO2e_CH4=round(mean(CO2e_CH4,na.rm=T),2),
-            mean_GWP=round(mean(GWP,na.rm=T),1),
-            sd_MaizeYld_Mgha=round(sd(Maize_Diff_Mgha,na.rm=T),1),
-            sd_SoyYld_Mgha=round(sd(Soybean_Diff_Mgha,na.rm=T),1),
-            sd_WheatYld_Mgha=round(sd(Wheat_Diff_Mgha,na.rm=T),1),
-            sd_SOC_Mgha=round(sd(SOC_Diff_Mgha,na.rm=T),2),
-            sd_N2O_Mgha=round(sd(N2O_Mgha,na.rm=T),2),
-            sd_CH4_Mgha=round(sd(CH4_Mgha,na.rm=T),2),
-            sd_CO2e_SOC=round(sd(CO2e_SOC),2),
-            sd_CO2e_N2O=round(sd(CO2e_N2O),2),
-            sd_CO2e_CH4=round(sd(CO2e_CH4),2),
-            sd_GWP=round(sd(GWP,na.rm=T),1)
+  summarize(mean_MaizeYld_Mgha=round(mean(Maize_Diff_Mgha,na.rm=T),5),
+            mean_SoyYld_Mgha=round(mean(Soybean_Diff_Mgha,na.rm=T),5),
+            mean_WheatYld_Mgha=round(mean(Wheat_Diff_Mgha,na.rm=T),5),
+            mean_SOC_Mgha=round(mean(SOC_Diff_Mgha,na.rm=T),5),
+            mean_N2O_Mgha=round(mean(N2O_Mgha,na.rm=T),5),
+            mean_CH4_Mgha=round(mean(CH4_Mgha,na.rm=T),5),
+            mean_CO2e_SOC=round(mean(CO2e_SOC,na.rm=T),5),
+            mean_CO2e_N2O=round(mean(CO2e_N2O,na.rm=T),5),
+            mean_CO2e_CH4=round(mean(CO2e_CH4,na.rm=T),5),
+            mean_GWP=round(mean(GWP,na.rm=T),5),
+            sd_MaizeYld_Mgha=round(sd(Maize_Diff_Mgha,na.rm=T),5),
+            sd_SoyYld_Mgha=round(sd(Soybean_Diff_Mgha,na.rm=T),5),
+            sd_WheatYld_Mgha=round(sd(Wheat_Diff_Mgha,na.rm=T),5),
+            sd_SOC_Mgha=round(sd(SOC_Diff_Mgha,na.rm=T),5),
+            sd_N2O_Mgha=round(sd(N2O_Mgha,na.rm=T),5),
+            sd_CH4_Mgha=round(sd(CH4_Mgha,na.rm=T),5),
+            sd_CO2e_SOC=round(sd(CO2e_SOC),5),
+            sd_CO2e_N2O=round(sd(CO2e_N2O),5),
+            sd_CO2e_CH4=round(sd(CO2e_CH4),5),
+            sd_GWP=round(sd(GWP,na.rm=T),5)
   ) %>%
-  left_join(scenario_df[,c("scenario_name","scenario_abbrev")],by=c("Scenario_Name"="scenario_name"))
+  left_join(scenario_df[,c("scenario_name","scenario_abbrev")],
+            by=c("Scenario_Name"="scenario_name"))
 
 
 
@@ -2007,9 +2072,30 @@ gGWPmm <- gwp_means_piv[gwp_means_piv$source %in% c("mean_CO2e_SOC","mean_CO2e_N
                           gwp_means_piv$Climate_Scenario==clim_num,] %>%
   ggplot(aes(x=scenario_abbrev, y=vals, fill=source)) +
   geom_col(position="stack") +
-  # geom_errorbar(aes(ymin=mean_GWP-sd_GWP, ymax=mean_GWP+sd_GWP),
-  #               width=.2,                    # Width of the error bars
-  #               position=position_dodge(.9)) +
+  annotate("rect", xmin = 0.5, xmax = 5.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 5.5, xmax = 6.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 6.5, xmax = 7.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 7.5, xmax = 8.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 8.5, xmax = 12.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 12.5, xmax = 15.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
   ggtitle(paste0(site_name," Global Warming Potential by Source by ",
@@ -2070,31 +2156,31 @@ ggsave(filename=paste0(results_path,"pub_GWP_by_source_all_scenarios_",clim_num,
 
 crop_ylim <- c(-2,1.5)
 
-## Maize
-
-gMYchg <- scenario_means[scenario_means$Climate_Scenario==clim_num,] %>%
-  ggplot(aes(x=scenario_abbrev, y=mean_MaizeYld_Mgha, fill=factor(scenario_abbrev))) +
-  geom_col(position="dodge") +
-  geom_errorbar(aes(ymin=mean_MaizeYld_Mgha-sd_MaizeYld_Mgha,
-                    ymax=mean_MaizeYld_Mgha+sd_MaizeYld_Mgha),
-                width=.2,                    # Width of the error bars
-                position=position_dodge(.9)) +
-  ylab(expression('Maize Yield (Mg ha ' ^-1*')')) +
-  xlab("") +
-  ylim(crop_ylim) +
-  ggtitle(paste(site_name,"Change in Maize Yield by ",
-                end_fut_period_year,"-Model Means"),
-          paste("Climate Scenario:",climate_desc)) +
-  labs(fill = "Scenario") +
-  # scale_y_continuous(breaks=y_breaks) +
-  theme(panel.background = element_blank(),
-        #        text = element_text(size=16),
-        axis.line = element_line(colour = "black"),
-        axis.ticks.x = element_blank(),
-        axis.text.x = element_text(angle = 45,
-                                   hjust = 1))
-
-gMYchg
+# ## Maize with error bars
+# 
+# gMYchg <- scenario_means[scenario_means$Climate_Scenario==clim_num,] %>%
+#   ggplot(aes(x=scenario_abbrev, y=mean_MaizeYld_Mgha, fill=factor(scenario_abbrev))) +
+#   geom_col(position="dodge") +
+#   geom_errorbar(aes(ymin=mean_MaizeYld_Mgha-sd_MaizeYld_Mgha,
+#                     ymax=mean_MaizeYld_Mgha+sd_MaizeYld_Mgha),
+#                 width=.2,                    # Width of the error bars
+#                 position=position_dodge(.9)) +
+#   ylab(expression('Maize Yield (Mg ha ' ^-1*')')) +
+#   xlab("") +
+#   ylim(crop_ylim) +
+#   ggtitle(paste(site_name,"Change in Maize Yield by ",
+#                 end_fut_period_year,"-Model Means"),
+#           paste("Climate Scenario:",climate_desc)) +
+#   labs(fill = "Scenario") +
+#   # scale_y_continuous(breaks=y_breaks) +
+#   theme(panel.background = element_blank(),
+#         #        text = element_text(size=16),
+#         axis.line = element_line(colour = "black"),
+#         axis.ticks.x = element_blank(),
+#         axis.text.x = element_text(angle = 45,
+#                                    hjust = 1))
+# 
+# gMYchg
 
 ## Maize all models
 gMYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
@@ -2104,6 +2190,30 @@ gMYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
   geom_col(data=scenario_means[scenario_means$Climate_Scenario==clim_num,],
            aes(x=scenario_abbrev, y=mean_MaizeYld_Mgha), color= "black", 
            fill=NA, position="dodge") +
+  annotate("rect", xmin = 0.5, xmax = 5.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 5.5, xmax = 6.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 6.5, xmax = 7.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 7.5, xmax = 8.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 8.5, xmax = 12.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 12.5, xmax = 15.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
   ggtitle(paste0(site_name," Change in Maize Yield by ",
@@ -2119,31 +2229,31 @@ gMYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
 
 gMYchg_am
 
-## Soybean
-
-gSYchg <- scenario_means[scenario_means$Climate_Scenario==clim_num,] %>%
-  ggplot(aes(x=scenario_abbrev, y=mean_SoyYld_Mgha, fill=factor(scenario_abbrev))) +
-  geom_col(position="dodge") +
-  geom_errorbar(aes(ymin=mean_SoyYld_Mgha-sd_SoyYld_Mgha,
-                    ymax=mean_SoyYld_Mgha+sd_SoyYld_Mgha),
-                width=.2,                    # Width of the error bars
-                position=position_dodge(.9)) +
-  ylab(expression('Soybean Yield (Mg ha ' ^-1*')')) +
-  xlab("") +
-  ylim(crop_ylim) +
-  ggtitle(paste(site_name,"Change in Soybean Yield by ",
-                end_fut_period_year,"-Model Means"),
-          paste("Climate Scenario:",climate_desc)) +
-  labs(fill = "Scenario") +
-  # scale_y_continuous(breaks=y_breaks) +
-  theme(panel.background = element_blank(),
-        #        text = element_text(size=16),
-        axis.line = element_line(colour = "black"),
-        axis.ticks.x = element_blank(),
-        axis.text.x = element_text(angle = 45,
-                                   hjust = 1))
-
-gSYchg
+# ## Soybean with error bars
+# 
+# gSYchg <- scenario_means[scenario_means$Climate_Scenario==clim_num,] %>%
+#   ggplot(aes(x=scenario_abbrev, y=mean_SoyYld_Mgha, fill=factor(scenario_abbrev))) +
+#   geom_col(position="dodge") +
+#   geom_errorbar(aes(ymin=mean_SoyYld_Mgha-sd_SoyYld_Mgha,
+#                     ymax=mean_SoyYld_Mgha+sd_SoyYld_Mgha),
+#                 width=.2,                    # Width of the error bars
+#                 position=position_dodge(.9)) +
+#   ylab(expression('Soybean Yield (Mg ha ' ^-1*')')) +
+#   xlab("") +
+#   ylim(crop_ylim) +
+#   ggtitle(paste(site_name,"Change in Soybean Yield by ",
+#                 end_fut_period_year,"-Model Means"),
+#           paste("Climate Scenario:",climate_desc)) +
+#   labs(fill = "Scenario") +
+#   # scale_y_continuous(breaks=y_breaks) +
+#   theme(panel.background = element_blank(),
+#         #        text = element_text(size=16),
+#         axis.line = element_line(colour = "black"),
+#         axis.ticks.x = element_blank(),
+#         axis.text.x = element_text(angle = 45,
+#                                    hjust = 1))
+# 
+# gSYchg
 
 ## Soybean all models
 gSYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
@@ -2153,6 +2263,30 @@ gSYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
   geom_col(data=scenario_means[scenario_means$Climate_Scenario==clim_num,],
            aes(x=scenario_abbrev, y=mean_SoyYld_Mgha), color= "black", 
            fill=NA, position="dodge") +
+  annotate("rect", xmin = 0.5, xmax = 5.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 5.5, xmax = 6.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 6.5, xmax = 7.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 7.5, xmax = 8.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 8.5, xmax = 12.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 12.5, xmax = 15.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
   ggtitle(paste0(site_name," Change in Soybean Yield by ",
@@ -2168,31 +2302,31 @@ gSYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
 
 gSYchg_am
 
-## Wheat
-
-gWYchg <- scenario_means[scenario_means$Climate_Scenario==clim_num,] %>%
-  ggplot(aes(x=scenario_abbrev, y=mean_WheatYld_Mgha, fill=factor(scenario_abbrev))) +
-  geom_col(position="dodge") +
-  geom_errorbar(aes(ymin=mean_WheatYld_Mgha-sd_WheatYld_Mgha,
-                    ymax=mean_WheatYld_Mgha+sd_WheatYld_Mgha),
-                width=.2,                    # Width of the error bars
-                position=position_dodge(.9)) +
-  ylab(expression('Wheat Yield (Mg ha ' ^-1*')')) +
-  xlab("") +
-  ylim(crop_ylim) +
-  ggtitle(paste(site_name,"Change in Wheat Yield by ",
-                end_fut_period_year,"-Model Means"),
-          paste("Climate Scenario:",climate_desc)) +
-  labs(fill = "Scenario") +
-  # scale_y_continuous(breaks=y_breaks) +
-  theme(panel.background = element_blank(),
-        #        text = element_text(size=16),
-        axis.line = element_line(colour = "black"),
-        axis.ticks.x = element_blank(),
-        axis.text.x = element_text(angle = 45,
-                                   hjust = 1))
-
-gWYchg
+# ## Wheat with error bars
+# 
+# gWYchg <- scenario_means[scenario_means$Climate_Scenario==clim_num,] %>%
+#   ggplot(aes(x=scenario_abbrev, y=mean_WheatYld_Mgha, fill=factor(scenario_abbrev))) +
+#   geom_col(position="dodge") +
+#   geom_errorbar(aes(ymin=mean_WheatYld_Mgha-sd_WheatYld_Mgha,
+#                     ymax=mean_WheatYld_Mgha+sd_WheatYld_Mgha),
+#                 width=.2,                    # Width of the error bars
+#                 position=position_dodge(.9)) +
+#   ylab(expression('Wheat Yield (Mg ha ' ^-1*')')) +
+#   xlab("") +
+#   ylim(crop_ylim) +
+#   ggtitle(paste(site_name,"Change in Wheat Yield by ",
+#                 end_fut_period_year,"-Model Means"),
+#           paste("Climate Scenario:",climate_desc)) +
+#   labs(fill = "Scenario") +
+#   # scale_y_continuous(breaks=y_breaks) +
+#   theme(panel.background = element_blank(),
+#         #        text = element_text(size=16),
+#         axis.line = element_line(colour = "black"),
+#         axis.ticks.x = element_blank(),
+#         axis.text.x = element_text(angle = 45,
+#                                    hjust = 1))
+# 
+# gWYchg
 
 ## Wheat all models
 gWYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
@@ -2201,7 +2335,31 @@ gWYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
   geom_col(position="dodge") +
   geom_col(data=scenario_means[scenario_means$Climate_Scenario==clim_num,],
            aes(x=scenario_abbrev, y=mean_WheatYld_Mgha), color= "black", 
-           fill=NA, position="dodge") +
+           fill=NA, position="dodge") + 
+  annotate("rect", xmin = 0.5, xmax = 5.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = 0,
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 5.5, xmax = 6.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = 0,
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 6.5, xmax = 7.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = 0,
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 7.5, xmax = 8.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = 0,
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 8.5, xmax = 12.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = 0,
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 12.5, xmax = 15.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = 0,
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
   ggtitle(paste0(site_name," Change in Wheat Yield by ",
@@ -2217,39 +2375,64 @@ gWYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
 
 gWYchg_am
 
-## SOC
-
-gSOCchg <- scenario_means[scenario_means$Climate_Scenario==clim_num,] %>%
-  ggplot(aes(x=scenario_abbrev, y=mean_SOC_Mgha, fill=factor(scenario_abbrev))) +
-  geom_col(position="dodge") +
-  geom_errorbar(aes(ymin=mean_SOC_Mgha-sd_SOC_Mgha,
-                    ymax=mean_SOC_Mgha+sd_SOC_Mgha),
-                width=.2,                    # Width of the error bars
-                position=position_dodge(.9)) +
-  ylab(expression('SOC (Mg ha ' ^-1*')')) +
-  xlab("") +
-#  ylim(-20,60) +
-  ggtitle(paste(site_name,"Change in Soil Organic Carbon by ",
-                end_fut_period_year,"-Model Means"),
-          paste("Climate Scenario:",climate_desc)) +
-  labs(fill = "Scenario") +
-  # scale_y_continuous(breaks=y_breaks) +
-  theme(panel.background = element_blank(),
-        #        text = element_text(size=16),
-        axis.line = element_line(colour = "black"),
-        axis.ticks.x = element_blank(),
-        axis.text.x = element_text(angle = 45,
-                                   hjust = 1))
-
-gSOCchg
+# ## SOC with error bars
+# 
+# gSOCchg <- scenario_means[scenario_means$Climate_Scenario==clim_num,] %>%
+#   ggplot(aes(x=scenario_abbrev, y=mean_SOC_Mgha, fill=factor(scenario_abbrev))) +
+#   geom_col(position="dodge") +
+#   geom_errorbar(aes(ymin=mean_SOC_Mgha-sd_SOC_Mgha,
+#                     ymax=mean_SOC_Mgha+sd_SOC_Mgha),
+#                 width=.2) +   # Width of the error bars
+#   ylab(expression('SOC (Mg ha ' ^-1*')')) +
+#   xlab("") +
+# #  ylim(-20,60) +
+#   ggtitle(paste(site_name,"Change in Soil Organic Carbon by ",
+#                 end_fut_period_year,"-Model Means"),
+#           paste("Climate Scenario:",climate_desc)) +
+#   labs(fill = "Scenario") +
+#   # scale_y_continuous(breaks=y_breaks) +
+#   theme(panel.background = element_blank(),
+#         #        text = element_text(size=16),
+#         axis.line = element_line(colour = "black"),
+#         axis.ticks.x = element_blank(),
+#         axis.text.x = element_text(angle = 45,
+#                                    hjust = 1))
+# 
+# gSOCchg
 
 ## GWP model means with each individual model included
+
+## SOC
 gSOCchg_am <- summary_output[summary_output$Climate_Scenario==clim_num,] %>%
   ggplot(aes(x=scenario_abbrev,y=CO2e_SOC,fill=factor(Model))) +
   geom_col(position="dodge") +
   geom_col(data=scenario_means[scenario_means$Climate_Scenario==clim_num,],
            aes(x=scenario_abbrev, y=mean_CO2e_SOC), color= "black", 
-           fill=NA, position="dodge") +
+           fill=NA, position="dodge") +  
+  annotate("rect", xmin = 0.5, xmax = 5.5, 
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05), 
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 5.5, xmax = 6.5, 
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05),
+           alpha = 0, color= "grey") +  
+  annotate("rect", xmin = 6.5, xmax = 7.5, 
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05),
+           alpha = 0, color= "grey") +  
+  annotate("rect", xmin = 7.5, xmax = 8.5, 
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05),
+           alpha = 0, color= "grey") +  
+  annotate("rect", xmin = 8.5, xmax = 12.5, 
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05),
+           alpha = 0, color= "grey") +  
+  annotate("rect", xmin = 12.5, xmax = 15.5, 
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05),
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
   ggtitle(paste0(site_name," Change in CO2e-SOC by ",
@@ -2265,31 +2448,31 @@ gSOCchg_am <- summary_output[summary_output$Climate_Scenario==clim_num,] %>%
 
 gSOCchg_am
 
-## N2O
-
-gN2Ochg <- scenario_gas_means[scenario_gas_means$Climate_Scenario==clim_num,] %>%
-  ggplot(aes(x=scenario_abbrev, y=mean_N2O_Mgha, fill=factor(scenario_abbrev))) +
-  geom_col(position="dodge") +
-  geom_errorbar(aes(ymin=mean_N2O_Mgha-sd_N2O_Mgha,
-                    ymax=mean_N2O_Mgha+sd_N2O_Mgha),
-                width=.2,                    # Width of the error bars
-                position=position_dodge(.9)) +
-  ylab(expression('N2O (Mg ha ' ^-1*')')) +
-  xlab("") +
-#  ylim(0,0.1) +
-  ggtitle(paste(site_name,"Change in Cumulative N2O Emissions by ",
-                end_fut_period_year,"-Model Means"),
-          paste("Climate Scenario:",climate_desc)) +
-  labs(fill = "Scenario") +
-  # scale_y_continuous(breaks=y_breaks) +
-  theme(panel.background = element_blank(),
-        #        text = element_text(size=16),
-        axis.line = element_line(colour = "black"),
-        axis.ticks.x = element_blank(),
-        axis.text.x = element_text(angle = 45,
-                                   hjust = 1))
-
-gN2Ochg
+# ## N2O with error bars
+# 
+# gN2Ochg <- scenario_gas_means[scenario_gas_means$Climate_Scenario==clim_num,] %>%
+#   ggplot(aes(x=scenario_abbrev, y=mean_N2O_Mgha, fill=factor(scenario_abbrev))) +
+#   geom_col(position="dodge") +
+#   geom_errorbar(aes(ymin=mean_N2O_Mgha-sd_N2O_Mgha,
+#                     ymax=mean_N2O_Mgha+sd_N2O_Mgha),
+#                 width=.2,                    # Width of the error bars
+#                 position=position_dodge(.9)) +
+#   ylab(expression('N2O (Mg ha ' ^-1*')')) +
+#   xlab("") +
+# #  ylim(0,0.1) +
+#   ggtitle(paste(site_name,"Change in Cumulative N2O Emissions by ",
+#                 end_fut_period_year,"-Model Means"),
+#           paste("Climate Scenario:",climate_desc)) +
+#   labs(fill = "Scenario") +
+#   # scale_y_continuous(breaks=y_breaks) +
+#   theme(panel.background = element_blank(),
+#         #        text = element_text(size=16),
+#         axis.line = element_line(colour = "black"),
+#         axis.ticks.x = element_blank(),
+#         axis.text.x = element_text(angle = 45,
+#                                    hjust = 1))
+# 
+# gN2Ochg
 
 ## N2O all models
 gN2Ochg_am <- summary_output[summary_output$Climate_Scenario==clim_num,] %>%
@@ -2298,7 +2481,29 @@ gN2Ochg_am <- summary_output[summary_output$Climate_Scenario==clim_num,] %>%
   geom_col(data=scenario_means[scenario_means$Climate_Scenario==clim_num,],
            aes(x=scenario_abbrev, y=mean_CO2e_N2O), color= "black", 
            fill=NA, position="dodge") +
-  ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
+  # geom_vline(xintercept=5.5, color = "grey") +
+  # geom_vline(xintercept=6.5, color = "grey") +
+  # geom_vline(xintercept=7.5, color = "grey") +
+  # geom_vline(xintercept=8.5, color = "grey") +
+  # geom_vline(xintercept=12.5, color = "grey") +
+  annotate("rect", xmin = 0.5, xmax = 5.5, ymin = 0, 
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_N2O"]*1.05),
+           alpha = 0, color= "grey") +
+  annotate("rect", xmin = 5.5, xmax = 6.5, ymin = 0, 
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_N2O"]*1.05),
+           alpha = 0, color= "grey") +  
+  annotate("rect", xmin = 6.5, xmax = 7.5, ymin = 0,
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_N2O"]*1.05),
+           alpha = 0, color= "grey") +  
+  annotate("rect", xmin = 7.5, xmax = 8.5, ymin = 0, 
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_N2O"]*1.05),
+           alpha = 0, color= "grey") +  
+  annotate("rect", xmin = 8.5, xmax = 12.5, ymin = 0, 
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_N2O"]*1.05),
+           alpha = 0, color= "grey") +  
+  annotate("rect", xmin = 12.5, xmax = 15.5, ymin = 0, 
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_N2O"]*1.05),
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
   ggtitle(paste0(site_name," Change in CO2e-N2O by ",
                  end_fut_period_year,"-All Models"),
@@ -2313,31 +2518,31 @@ gN2Ochg_am <- summary_output[summary_output$Climate_Scenario==clim_num,] %>%
 
 gN2Ochg_am
 
-## CH4
-
-gCH4chg <- scenario_gas_means[scenario_gas_means$Climate_Scenario==clim_num,] %>%
-  ggplot(aes(x=scenario_abbrev, y=mean_CH4_Mgha, fill=factor(scenario_abbrev))) +
-  geom_col(position="dodge") +
-  geom_errorbar(aes(ymin=mean_CH4_Mgha-sd_CH4_Mgha, 
-                    ymax=mean_CH4_Mgha+sd_CH4_Mgha),
-                width=.2,                    # Width of the error bars
-                position=position_dodge(.9)) +
-  ylab(expression('CH4 (Mg ha ' ^-1*')')) +
-  xlab("") +
-#  ylim(-0.1,0) +
-  ggtitle(paste(site_name,"Change in Cumulative CH4 Emissions by ",
-                end_fut_period_year,"-Model Means"),
-          paste("Climate Scenario:",climate_desc)) +
-  labs(fill = "Scenario") +
-  # scale_y_continuous(breaks=y_breaks) +
-  theme(panel.background = element_blank(),
-        #        text = element_text(size=16),
-        axis.line = element_line(colour = "black"), 
-        axis.ticks.x = element_blank(),
-        axis.text.x = element_text(angle = 45,
-                                   hjust = 1))
-
-gCH4chg
+# ## CH4 with error bars
+# 
+# gCH4chg <- scenario_gas_means[scenario_gas_means$Climate_Scenario==clim_num,] %>%
+#   ggplot(aes(x=scenario_abbrev, y=mean_CH4_Mgha, fill=factor(scenario_abbrev))) +
+#   geom_col(position="dodge") +
+#   geom_errorbar(aes(ymin=mean_CH4_Mgha-sd_CH4_Mgha, 
+#                     ymax=mean_CH4_Mgha+sd_CH4_Mgha),
+#                 width=.2,                    # Width of the error bars
+#                 position=position_dodge(.9)) +
+#   ylab(expression('CH4 (Mg ha ' ^-1*')')) +
+#   xlab("") +
+# #  ylim(-0.1,0) +
+#   ggtitle(paste(site_name,"Change in Cumulative CH4 Emissions by ",
+#                 end_fut_period_year,"-Model Means"),
+#           paste("Climate Scenario:",climate_desc)) +
+#   labs(fill = "Scenario") +
+#   # scale_y_continuous(breaks=y_breaks) +
+#   theme(panel.background = element_blank(),
+#         #        text = element_text(size=16),
+#         axis.line = element_line(colour = "black"), 
+#         axis.ticks.x = element_blank(),
+#         axis.text.x = element_text(angle = 45,
+#                                    hjust = 1))
+# 
+# gCH4chg
 
 ## CH4 all models
 gCH4chg_am <- summary_output[summary_output$Climate_Scenario==clim_num,] %>%
@@ -2346,6 +2551,11 @@ gCH4chg_am <- summary_output[summary_output$Climate_Scenario==clim_num,] %>%
   geom_col(data=scenario_means[scenario_means$Climate_Scenario==clim_num,],
            aes(x=scenario_abbrev, y=mean_CO2e_CH4), color= "black", 
            fill=NA, position="dodge") +
+  geom_vline(xintercept=5.5, color = "grey") +
+  geom_vline(xintercept=6.5, color = "grey") +
+  geom_vline(xintercept=7.5, color = "grey") +
+  geom_vline(xintercept=8.5, color = "grey") +
+  geom_vline(xintercept=12.5, color = "grey") +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
   ggtitle(paste0(site_name," Change in CH4 by ",
@@ -2369,6 +2579,11 @@ gCH4chg_am2 <- summary_output[summary_output$Climate_Scenario==clim_num &
   geom_col(data=scenario_means[scenario_means$Climate_Scenario==clim_num,],
            aes(x=scenario_abbrev, y=mean_CO2e_CH4), color= "black", 
            fill=NA, position="dodge") +
+  geom_vline(xintercept=5.5, color = "grey") +
+  geom_vline(xintercept=6.5, color = "grey") +
+  geom_vline(xintercept=7.5, color = "grey") +
+  geom_vline(xintercept=8.5, color = "grey") +
+  geom_vline(xintercept=12.5, color = "grey") +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
   ggtitle(paste0(site_name," Change in CH4 by ",
@@ -2421,3 +2636,4 @@ ggsave(filename=paste0(results_path,"pub_change_in_ch4_all_scenarios_all_models2
 ## GWP graph
 
 }) # end suppressMessages
+

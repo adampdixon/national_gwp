@@ -290,7 +290,6 @@ obs_mb_filename <- "25-soil+microbial+biomass+via+chloroform+fumigation+16565131
 obs_plant_cn_filename <- "73-tissue+carbon+and+nitrogen+1667424583.csv"
 obs_biomass_filename <- "39-annual+crops+and+alfalfa+biomass+1667489393.csv"
 
-
 # 9-color palette with grey and black. Colors in order are:
 #[1]black, [2]dark blue, [3]green, [4]light blue, [5]grey,
 #[6]pink, [7]red, [8]orange, [9]yellow

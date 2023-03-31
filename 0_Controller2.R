@@ -37,7 +37,7 @@ print("Starting 0_Controller.R")
 # experiment_end_year <- 2021
 # experiment_year_range <- experiment_start_year:experiment_end_year
 # #end_exp_period_year <- 2021
-# end_fut_period_year <- 2100
+# end_fut_period_year <- 2050
 # obs_path <- paste0("Data/",site_name,"/Calibration/")
 # hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
 # hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
@@ -64,7 +64,7 @@ print("Starting 0_Controller.R")
 # # hist_wth_filename <- "NOAA-based Daily Lubbock 1940-2021.csv"
 # # hist_wth_mon_filename <- "NOAA-based Monthly Lubbock 1940-2021 with OPE.csv"
 # # curr_local_wth_filename <- "" # included in GRACEnet spreadsheet (obs_filename)
-# # 
+# #
 # wth_path <- paste0("Data/",site_name,"/Weather/")
 # apsim_path <- paste0("APSIM/",site_name,"/")
 # daycent_path <- paste0("Daycent/",site_name,"/")
@@ -81,7 +81,7 @@ print("Starting 0_Controller.R")
 # mgmt_scenario_opt <- "" # scenario detail number; put "" if none
 # mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
 # scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
-# 
+
 
 # Scenario-dependent scripts and functions
 
@@ -168,25 +168,25 @@ source(paste0("3_Create_management_input_files-setup_",site_name,".R"))
 
 # APSIM
 source(paste0("9_Results_APSIM-setup_",site_name,".R"))
-#
-model_name <- "APSIM"
-if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
-  source(paste0("9_Results_APSIM-calibration_",site_name,".R"))
-}
-source(paste0("9_Results_APSIM-future_",site_name,".R"))
-source("p_Results_analysis.R")
+# #
+# model_name <- "APSIM"
+# if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
+#   source(paste0("9_Results_APSIM-calibration_",site_name,".R"))
+# }
+# source(paste0("9_Results_APSIM-future_",site_name,".R"))
+# source("p_Results_analysis.R")
 
 #*************************************************************
 
 # Daycent
 if(mgmt_scenario_grp!=6) {
   source(paste0("9_Results_Daycent-setup_",site_name,".R"))
-  model_name <- "Daycent"
-  if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
-    source(paste0("9_Results_Daycent-calibration_",site_name,".R"))
-  }
-  source(paste0("9_Results_Daycent-future_",site_name,".R"))
-  source("p_Results_analysis.R")
+  # model_name <- "Daycent"
+  # if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
+  #   source(paste0("9_Results_Daycent-calibration_",site_name,".R"))
+  # }
+  # source(paste0("9_Results_Daycent-future_",site_name,".R"))
+  # source("p_Results_analysis.R")
 }
 
 
@@ -228,13 +228,13 @@ if(mgmt_scenario_grp!=6) {
 # Millennial
 if(mgmt_scenario_grp!=6) {
   source("9_Results_Millennial-setup.R")
-  #
-  model_name <- "Millennial"
-  if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
-    source("9_Results_Millennial-calibration.R")
-  }
-  source("9_Results_Millennial-future.R")
-  source("p_Results_analysis.R")
+  # #
+  # model_name <- "Millennial"
+  # if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
+  #   source("9_Results_Millennial-calibration.R")
+  # }
+  # source("9_Results_Millennial-future.R")
+  # source("p_Results_analysis.R")
 }
 
 
@@ -243,13 +243,13 @@ if(mgmt_scenario_grp!=6) {
 # RothC
 if(mgmt_scenario_grp!=6) {
   source("9_Results_RothC-setup.R")
-  #
-  model_name <- "RothC"
-  if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
-    source("9_Results_RothC-calibration.R")
-  }
-  source("9_Results_RothC-future.R")
-  source("p_Results_analysis.R")
+  # #
+  # model_name <- "RothC"
+  # if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
+  #   source("9_Results_RothC-calibration.R")
+  # }
+  # source("9_Results_RothC-future.R")
+  # source("p_Results_analysis.R")
 }
 
 
