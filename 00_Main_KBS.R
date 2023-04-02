@@ -36,7 +36,7 @@ latitude = 42.410
 longitude = -85.372
 experiment_start_year <- 1989
 experiment_end_year <- 2021
-end_fut_period_year <- 2050
+end_fut_period_year <- 2100
 calib_mgmt_grps <- c(1,2,3)
 #
 obs_path <- paste0("Data/",site_name,"/Calibration/")
@@ -69,8 +69,8 @@ soc_trendlines <-data.frame()
 
 # Loop through the scenarios; set which climate and management
 # scenario numbers to use for this run:
-clim_nums <- c(1)
-mgmt_grps <- c(1:3) #calib_mgmt_grps #c(1:3)
+clim_nums <- c(1:5)
+mgmt_grps <- c(1:6) #calib_mgmt_grps #c(1:3)
 
 for (x in clim_nums) { # climate scenarios
   print("************************************")
@@ -102,7 +102,7 @@ for (x in clim_nums) { # climate scenarios
   } # end loop through management scenario groups
 } # end loop through climate scenarios
 
-source("10_Model_Ensemble_results-combined_scenarios2.R")
+source(paste0("10_Model_Ensemble_results-combined_scenarios_",site_name,".R"))
 
 # end timer
 run_time <- round(toc(echo=TRUE)/60,1)
