@@ -19,7 +19,7 @@
 
 suppressMessages({
   
-print("Starting 10_Model_Ensemble_results-combined_scenarios2.R")
+print(paste0("Starting 10_Model_Ensemble_results-combined_scenarios_",site_name,".R"))
 
 library(readxl)
 library(magrittr)
@@ -70,11 +70,12 @@ source("f_model_coef.R")
     #             ,linewidth=0.75) +
     stat_smooth(
       data = soc_trendlines, 
-      aes(linetype = fit, y=value), 
+      aes(linetype = Fit, y=value), 
+      #color="black", 
       method = lm,
       se = FALSE,
-      fullrange=TRUE,
-      show.legend = FALSE
+      show.legend = TRUE,
+      fullrange=TRUE
     ) +
     scale_color_manual(labels=c("APSIM","Daycent","Millennial","Observed","RothC"),
                        values=cbPalette9[c(8,2,6,1,3)]) +
@@ -92,7 +93,7 @@ source("f_model_coef.R")
   ggsave(filename=paste0(results_path,"pub_Crop_yield_calibration.jpg"),
          plot=gY_calib, width=9, height=7, dpi=300)
   ggsave(filename=paste0(results_path,"pub_SOC_calibration.jpg"),
-         plot=gSOC_calib, width=12, height=7, dpi=300)
+         plot=gSOC_calib, width=14, height=7, dpi=300)
   
   #*************************************************************
 
@@ -2436,6 +2437,7 @@ gSOCchg_am <- summary_output[summary_output$Climate_Scenario==clim_num,] %>%
            alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
+  ylim(-40,60) +
   ggtitle(paste0(site_name," Change in CO2e-SOC by ",
                  end_fut_period_year,"-All Models"),
           paste("Climate Scenario:",climate_desc)) +
