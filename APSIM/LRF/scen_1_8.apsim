@@ -13,7 +13,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
         <filename name="filename" input="yes">basic_wth_1.met</filename>
       </metfile>
       <clock>
-        <start_date type="date" description="Enter the start date of the simulation">01/01/2003</start_date>
+        <start_date type="date" description="Enter the start date of the simulation">01/01/1995</start_date>
         <end_date type="date" description="Enter the end date of the simulation">31/12/2099</end_date>
       </clock>
       <summaryfile />
@@ -1099,9 +1099,9 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             </SWCON>
           </SoilWater>
           <SoilOrganicMatter>
-            <RootCN>40</RootCN>
+            <RootCN>25</RootCN>
             <RootWt>1000</RootWt>
-            <SoilCN>10</SoilCN>
+            <SoilCN>12</SoilCN>
             <EnrACoeff>7.4</EnrACoeff>
             <EnrBCoeff>0.2</EnrBCoeff>
             <Thickness>
@@ -1113,11 +1113,11 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
               <double>940</double>
             </Thickness>
             <OC>
-              <double>0.46</double>
-              <double>0.46</double>
-              <double>0.45</double>
-              <double>0.53</double>
-              <double>0.285</double>
+              <double>0.1</double>
+              <double>0.1</double>
+              <double>0.1</double>
+              <double>0.1</double>
+              <double>0.1</double>
               <double>0.1</double>
             </OC>
             <OCMetadata>
@@ -1254,11 +1254,11 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
               <double>0.047</double>
             </NH4>
             <OC>
-              <double>0.46</double>
-              <double>0.46</double>
-              <double>0.45</double>
-              <double>0.53</double>
-              <double>0.285</double>
+              <double>0.1</double>
+              <double>0.1</double>
+              <double>0.1</double>
+              <double>0.1</double>
+              <double>0.1</double>
               <double>0.1</double>
             </OC>
             <PH>
@@ -1275,8 +1275,135 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <OCUnits>Total</OCUnits>
             <PHUnits>Water</PHUnits>
           </Sample>
+          <ini>
+            <filename input="yes">Soil.xml</filename>
+          </ini>
         </Soil>
         <operations name="Operations Schedule">
+          <operation condition="start_of_day">
+            <date>27/05/1995</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/12/1995</date>
+            <action>ryegrass sow plants = 51, sowing_depth = 25.4, cultivar = moata, row_spacing = 430, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>07/04/1996</date>
+            <action>ryegrass end_crop</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>07/04/1996</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0, tillage_depth = 0</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1996</date>
+            <action>fertiliser apply amount = 22 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>14/05/1996</date>
+            <action>sorghum sow plants = 3, sowing_depth = 25.4, cultivar = csh13r, row_spacing = 1010, tiller_no_fertile = 1, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/12/1996</date>
+            <action>ryegrass sow plants = 51, sowing_depth = 25.4, cultivar = moata, row_spacing = 430, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>07/04/1997</date>
+            <action>ryegrass end_crop</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>07/04/1997</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0, tillage_depth = 0</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>25/04/1997</date>
+            <action>fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>19/05/1997</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>05/01/1998</date>
+            <action>ryegrass sow plants = 51, sowing_depth = 25.4, cultivar = moata, row_spacing = 430, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>07/04/1998</date>
+            <action>ryegrass end_crop</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>07/04/1998</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0, tillage_depth = 0</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>02/06/1998</date>
+            <action>sorghum sow plants = 3, sowing_depth = 25.4, cultivar = csh13r, row_spacing = 1010, tiller_no_fertile = 1, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>13/02/1999</date>
+            <action>ryegrass sow plants = 51, sowing_depth = 25.4, cultivar = moata, row_spacing = 430, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>07/04/1999</date>
+            <action>ryegrass end_crop</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>07/04/1999</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0, tillage_depth = 0</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>24/06/1999</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>24/03/2000</date>
+            <action>fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>24/03/2000</date>
+            <action>fertiliser apply amount = 15 (kg/ha), depth = 50 (mm), type = Rock_P</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>13/05/2000</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>13/05/2001</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>13/12/2001</date>
+            <action>ryegrass sow plants = 51, sowing_depth = 25.4, cultivar = moata, row_spacing = 430, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>12/03/2002</date>
+            <action>fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>07/04/2002</date>
+            <action>ryegrass end_crop</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>07/04/2002</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0, tillage_depth = 0</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/2002</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>13/12/2002</date>
+            <action>ryegrass sow plants = 51, sowing_depth = 25.4, cultivar = moata, row_spacing = 430, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>07/04/2003</date>
+            <action>ryegrass end_crop</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>07/04/2003</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0, tillage_depth = 0</action>
+          </operation>
           <operation condition="start_of_day">
             <date>27/05/2003</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>

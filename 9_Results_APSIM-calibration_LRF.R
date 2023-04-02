@@ -154,10 +154,10 @@ if(mgmt_scenario_grp != 7) {
 
 ### SOC
 
-  Cfit_APSIM <- coef(lm(APSIM ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% experiment_year_range,]))
+  Cfit_APSIM <- coef(lm(APSIM ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% 1995:2021,]))#experiment_year_range,]))
   Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
 
-  gC <- Cstock_Mgha_piv[Cstock_Mgha_piv$year %in% experiment_year_range,] %>%
+  gC <- Cstock_Mgha_piv[Cstock_Mgha_piv$year %in% 1995:2021,] %>%#experiment_year_range,] %>%
   ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point() +
   geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
@@ -165,7 +165,7 @@ if(mgmt_scenario_grp != 7) {
                   width=.2) + # Width of the error bars
     xlab("Year") +
   ylab(expression('SOC stock (Mg C ha ' ^-1*')')) +
-  ylim(5,10) +
+  ylim(3,12) +
   ggtitle(paste(site_name,"Soil Organic Carbon"),
           paste0("Scenario: ",scenario_descriptor)) +
     geom_abline(intercept=Cfit_APSIM[1], slope=Cfit_APSIM[2], color="orange") +
@@ -247,6 +247,67 @@ gM <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='APSIM'
         legend.key = element_blank())
 
 gM
+
+gM_rain <- ggplot() +
+  geom_point(data=SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='APSIM' 
+                        & SoilMoist_VSM_piv$year %in% ObsVSM$year,],
+             aes(x=date, y=h2o_val, color=source)) +
+  geom_line(data=ObsWth[year(ObsWth$date) %in% year(ObsGas$date) &
+                          ObsWth$rain>0,], aes(x=date, y=rain, color="blue"), linetype=2) +
+  scale_y_continuous(
+    sec.axis = sec_axis(trans = ~ .x * 2,
+                        name = expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')'))
+  ) +
+  xlab("Year") +
+  ylab("Volumetric soil moisture") +
+  ggtitle(paste0(site_name," Soil Moisture"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  scale_color_manual(labels=c("APSIM","Rain"),
+                     values=cbPalette9[c(8,4)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gM_rain
+
+gNG_rain <- ggplot() +
+  geom_line(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='APSIM' &
+                                  year(N2O_ghaday_piv$date) %in% year(ObsGas$date),],
+            aes(x=date, y=n2o_val, color=source)) +
+  geom_line(data=ObsWth[year(ObsWth$date) %in% year(ObsGas$date) &
+                          ObsWth$rain>0,], aes(x=date, y=rain, color="blue"), linetype=2) +
+  geom_point(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='Observed'&
+                                   year(N2O_ghaday_piv$date) %in% year(ObsGas$date),],
+             aes(x=date, y=n2o_val, color=source)) +
+  scale_y_continuous(
+    sec.axis = sec_axis(trans = ~ .x * 2,
+                        name = expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')'))
+  ) +
+  geom_segment(data=Fert[Fert$treatment==treatment & 
+                           year(Fert$date) %in% year(ObsGas$date) &
+                           Fert$totalN_kgha>10,],
+               aes(x = date, y = 200,
+                   xend = date, yend = 175),
+               colour=cbPalette9[7],
+               show.legend=F,
+               lineend = "round",
+               linejoin = "round",
+               arrow = arrow(length = unit(0.3, "cm"))
+               # colour = "black" 
+  ) + 
+  xlab("Year") +
+  ylab("Rain (mm)") +
+  ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  scale_color_manual(labels=c("APSIM","Rain","Observed"),
+                     values=cbPalette9[c(8,4,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
 
 ## Not using APSIM for RothC or Millennial, so no longer needed
 # gM_calib <- SoilMoist_VSM_piv_calib[SoilMoist_VSM_piv_calib$source=='APSIM' 

@@ -27,11 +27,13 @@ suppressMessages({
   # remove duplicates created by DayCent coding
   APSIM_data_all <- distinct(full_ops_ext_adj[,c(1:20)])
   
-  
-  #   # remove harvest of rye that was planted in 2002 in all plots, 
-  #   # because APSIM does no spin-up and starts fresh in 2003
-  #   APSIM_data <- APSIM_data_all[APSIM_data_all$date >= as.Date("2003-05-01"),]
+  # remove harvest of rye that was planted in 2002 in non-cover crop treatments
+  if(mgmt_scenario_grp %in% c(4,5,6,7)) {
+    APSIM_data <- APSIM_data_all[APSIM_data_all$date >= as.Date("2003-05-01"),]
+    } else {
       APSIM_data <- APSIM_data_all
+    }
+    
 
     APSIM_data$till_depth <- ifelse(APSIM_data$obs_code=="plow",150,
                              ifelse(APSIM_data$obs_code %in% c("rodweed","disk"),80,
@@ -227,7 +229,7 @@ suppressMessages({
   # last year of the experimental period in order to better isolate the future
   # effects of biochar addition.
   if(mgmt_scenario_grp==6) {
-  biochar_ops <- data.frame(V1="12/08/2010",
+  biochar_ops <- data.frame(V1="12/08/2021",
                             V2="biochar5v3 tillage type = user_defined, f_incorp = 1.0, tillage_depth = 300")
   APSIM_ops_fut_biochar <- rbind(APSIM_ops_fut,biochar_ops) %>%
     arrange(as.Date(V1,"%d/%m/%Y"))
