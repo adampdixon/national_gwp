@@ -592,39 +592,39 @@ transform_factor <- 200
 #   
 # gN2O_expl
 
-gNG_20ghd <- N2O_ghaday_piv[N2O_ghaday_piv$source==model_name &
-                              year(N2O_ghaday_piv$date) %in% year(ObsGas$date),] %>%
-  ggplot(aes(x=date, y=n2o_val, color=source)) +
-  geom_line(show.legend=TRUE) +
-  geom_point(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='Observed'&
-                                   year(N2O_ghaday_piv$date) %in% year(ObsGas$date),],
-             aes(x=date, y=n2o_val, color=source)) +
-  geom_segment(data=Fert[Fert$treatment==treatment & 
-                           Fert$date %in% year(ObsGas$date) &
-                           Fert$totalN_kgha>10,],
-               aes(x = date, y = 200,
-                   xend = date, yend = 175),
-               colour=cbPalette9[7],
-               show.legend=F,
-               lineend = "round",
-               linejoin = "round",
-               arrow = arrow(length = unit(0.3, "cm"))
-               # colour = "black" 
-  ) + 
-  xlab("Year") +
-  ylab(expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')')) +
-  ylim(0,20) +
-  ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions-limited display to 20 g/ha/day"),
-          paste0("Scenario: ",scenario_descriptor)) +
-  scale_color_manual(labels=c(model_name,"Observed","Fertilizer"),
-                     values=cbPalette9[c(8,1,7)]) +
-  theme_classic(base_family = "serif", base_size = 15) +
-  theme(panel.background = element_blank(),
-        axis.line = element_line(),
-        legend.position = "right",
-        legend.key = element_blank())
-
-gNG_20ghd
+# gNG_20ghd <- N2O_ghaday_piv[N2O_ghaday_piv$source==model_name &
+#                               year(N2O_ghaday_piv$date) %in% year(ObsGas$date),] %>%
+#   ggplot(aes(x=date, y=n2o_val, color=source)) +
+#   geom_line(show.legend=TRUE) +
+#   geom_point(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='Observed'&
+#                                    year(N2O_ghaday_piv$date) %in% year(ObsGas$date),],
+#              aes(x=date, y=n2o_val, color=source)) +
+#   geom_segment(data=Fert[Fert$treatment==treatment & 
+#                            Fert$date %in% year(ObsGas$date) &
+#                            Fert$totalN_kgha>10,],
+#                aes(x = date, y = 200,
+#                    xend = date, yend = 175),
+#                colour=cbPalette9[7],
+#                show.legend=F,
+#                lineend = "round",
+#                linejoin = "round",
+#                arrow = arrow(length = unit(0.3, "cm"))
+#                # colour = "black" 
+#   ) + 
+#   xlab("Year") +
+#   ylab(expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')')) +
+#   ylim(0,20) +
+#   ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions-limited display to 20 g/ha/day"),
+#           paste0("Scenario: ",scenario_descriptor)) +
+#   scale_color_manual(labels=c(model_name,"Observed","Fertilizer"),
+#                      values=cbPalette9[c(8,1,7)]) +
+#   theme_classic(base_family = "serif", base_size = 15) +
+#   theme(panel.background = element_blank(),
+#         axis.line = element_line(),
+#         legend.position = "right",
+#         legend.key = element_blank())
+# 
+# gNG_20ghd
 
 ggsave(filename=paste0(results_path,"calib_Cotton_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gCY,
        width=6, height=6, dpi=300)
@@ -654,8 +654,8 @@ ggsave(filename=paste0(results_path,"calib_NH4_input_exp_",scenario_name,"_Dayce
        width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_NO3_input_exp_",scenario_name,"_Daycent.jpg"),plot=gNO3,
        width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"calib_N2O_comparison_20ghd_exp_",scenario_name,"_Daycent.jpg"),plot=gNG_20ghd,
-       width=9, height=6, dpi=300)
+# ggsave(filename=paste0(results_path,"calib_N2O_comparison_20ghd_exp_",scenario_name,"_Daycent.jpg"),plot=gNG_20ghd,
+#        width=9, height=6, dpi=300)
 
 
 

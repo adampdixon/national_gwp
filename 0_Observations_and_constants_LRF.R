@@ -36,8 +36,8 @@ library(stringr)
   #**********************************************************************
 # Constants ---------------------------------------------------------------
 
-  scenario_df <- data.frame(scenario_descriptor=c("Crop Rotation", #LRF CSct
-                                                  "No Till, Crop Rotation", #LRF CSnt
+  scenario_df <- data.frame(scenario_descriptor=c("Crop Rotation", 
+                                                  "No Till, Crop Rotation",
                                                   "Cover Crop, Crop Rotation", #LRF CRSct
                                                   "Redu Fert 5%, Crop Rotation",
                                                   "Redu Fert 15%, Crop Rotation",
@@ -49,10 +49,10 @@ library(stringr)
                                                   "Redu Fert 35%, No Till, Crop Rotation",
                                                   "Rmv Resid 50%, Crop Rotation",
                                                   "Rmv Resid 25%, Crop Rotation",
-                                                  "Rmv Resid 0%, Crop Rotation",
+                                                  "Rmv Resid 0%, Crop Rotation", #LRF CSct
                                                   "Rmv Resid 50%, No Till, Crop Rotation",
                                                   "Rmv Resid 25%, No Till, Crop Rotation",
-                                                  "Rmv Resid 0%, No Till, Crop Rotation",
+                                                  "Rmv Resid 0%, No Till, Crop Rotation", #LRF CSnt
                                                   "Biochar 19 Mgha, Crop Rotation",
                                                   "Biochar 38 Mgha, Crop Rotation",
                                                   "Biochar 57 Mgha, Crop Rotation",
@@ -307,8 +307,8 @@ surface_C_init <- 45 # Mg C ha-1; estimated from Parton et al. 2005
 
 control_treatment <- "CCct"
 control_treatment_num <- 7
-treatment <- if_else(mgmt_scenario_num==1, "CSct", # won't run: dup of 53
-             if_else(mgmt_scenario_num==2, "CSnt", # won't run: dup of 56
+treatment <- #if_else(mgmt_scenario_num==1, "CSct", # won't run: dup of 53
+             #if_else(mgmt_scenario_num==2, "CSnt", # won't run: dup of 56
              if_else(mgmt_scenario_num==3, "CRSct",
              if_else(mgmt_scenario_grp==4 &
                        mgmt_scenario_opt<=4, "CSct",
@@ -321,10 +321,10 @@ treatment <- if_else(mgmt_scenario_num==1, "CSct", # won't run: dup of 53
              if_else(mgmt_scenario_grp==6, "CSnt",
              if_else(mgmt_scenario_grp==7, "CCct",
              if_else(mgmt_scenario_grp==8, "CRSnt",
-             "Error")))))))))))
+             "Error")))))))))#))
 # this treatment num provides a crosswalk from LRF treatment num to scenario num
-treatment_num <- if_else(mgmt_scenario_num==1, 2, # won't run: dup of 53
-                 if_else(mgmt_scenario_num==2, 3, # won't run: dup of 56
+treatment_num <- #if_else(mgmt_scenario_num==1, 2, # won't run: dup of 53
+                 #if_else(mgmt_scenario_num==2, 3, # won't run: dup of 56
                  if_else(mgmt_scenario_num==3, 4,
                  if_else(mgmt_scenario_grp==4 &
                            mgmt_scenario_opt<=4, 2,
@@ -337,7 +337,7 @@ treatment_num <- if_else(mgmt_scenario_num==1, 2, # won't run: dup of 53
                  if_else(mgmt_scenario_grp==6, 3,
                  if_else(mgmt_scenario_grp==7, 1,
                  if_else(mgmt_scenario_grp==8, 5,
-                 0)))))))))))
+                 0)))))))))#))
 soil_temp_bias <- if_else(mgmt_scenario_num==1, 0,
                   if_else(mgmt_scenario_num==2, 0,
                   if_else(mgmt_scenario_num==3, 0,

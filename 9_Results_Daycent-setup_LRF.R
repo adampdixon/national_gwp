@@ -295,8 +295,8 @@ DayY_Mgha <- Day_harvest[substr(Day_harvest$crpval,2,5)!="RGA",] %>%
   mutate(year=floor(time),
          yield=cgrain/100/.45, #g C/m^2 converted to Mg/ha, then divided by .45 to convert C mass to yield mass
          crop=if_else(substr(crpval,2,2)=="C", "Cotton",
-                      if_else(substr(crpval,2,2)=="S", "Sorghum", 
-                              if_else(substr(crpval,2,2)=="W", "Wheat", "Unknown")))
+              if_else(substr(crpval,2,2)=="S", "Sorghum", 
+              if_else(substr(crpval,2,2)=="W", "Wheat", "Unknown")))
   )
 
 DayY_Mgha_pivwid <- pivot_wider(DayY_Mgha,names_from="crop",values_from="yield")

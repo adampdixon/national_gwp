@@ -154,11 +154,11 @@ source(paste0("0_Observations_and_constants_",site_name,".R"))
 #   source(paste0(apsim_path,"run_APSIM.R"))
 # }
 
-# # Daycent
-# if(mgmt_scenario_grp!=6) {
-#   source(paste0("Daycent/Daycent_run_controller.R"))
-#   # LDNDC
-# }
+# Daycent
+if(mgmt_scenario_grp!=6) {
+  source(paste0("Daycent/Daycent_run_controller.R"))
+  # LDNDC
+}
 
 
 #*************************************************************
@@ -167,9 +167,9 @@ source(paste0("0_Observations_and_constants_",site_name,".R"))
 #*************************************************************
 #*************************************************************
 
-# APSIM
-source(paste0("9_Results_APSIM-setup_",site_name,".R"))
-#
+# # APSIM
+# source(paste0("9_Results_APSIM-setup_",site_name,".R"))
+# #
 # model_name <- "APSIM"
 # if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
 #   source(paste0("9_Results_APSIM-calibration_",site_name,".R"))

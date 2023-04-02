@@ -42,7 +42,7 @@ suppressMessages({
   
   ## Cotton
   
-  CYfit_APSIM <- coef(lm(Daycent ~ year, 
+  CYfit_Daycent <- coef(lm(Daycent ~ year, 
                          data = CottonYld_Mgha[CottonYld_Mgha$year>end_exp_period_year,]))
   CYfit_Obs <- coef(lm(Observed ~ year, 
                        data = CottonYld_Mgha[CottonYld_Mgha$year %in% experiment_year_range,]))

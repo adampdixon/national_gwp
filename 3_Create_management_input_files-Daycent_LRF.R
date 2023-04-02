@@ -297,7 +297,8 @@ header_txt <- c(paste0(end_exp_period_year+1,"          Starting year ## start w
                 "F       Weather choice",
                 paste0("basic_",clim_scenario_num,".wth"))
 
-ops_txt <- if(mgmt_scenario_grp==1) { #CSct
+ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
+              mgmt_scenario_grp == 4) { #CSct
   c(
     paste0("1 71 FERT (",round(2.8*fert_adjust,2),"N)"),
     paste0("1 80 CULT K",resid_adjust_chr),
@@ -311,7 +312,7 @@ ops_txt <- if(mgmt_scenario_grp==1) { #CSct
     "2 180 CULT S",
     paste0("2 315 HARV G",resid_adjust_chr,"S")
   )
-} else if(mgmt_scenario_grp==2) { #CSnt
+} else if(mgmt_scenario_num %in% c(54,55,56)) { #CSnt
   c(
     "1 133 CROP SORG",
     "1 133 PLTM",
