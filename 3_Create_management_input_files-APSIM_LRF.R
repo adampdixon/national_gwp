@@ -28,26 +28,15 @@ suppressMessages({
   APSIM_data_all <- distinct(full_ops_ext_adj[,c(1:20)])
   
   
-  # if(site_name=="LRF") {
   #   # remove harvest of rye that was planted in 2002 in all plots, 
   #   # because APSIM does no spin-up and starts fresh in 2003
   #   APSIM_data <- APSIM_data_all[APSIM_data_all$date >= as.Date("2003-05-01"),]
-  # } else if(site_name=="KBS") {
       APSIM_data <- APSIM_data_all
-  # }
-  
-  # add tillage depth
-  if(site_name=="KBS") {
-  APSIM_data$till_depth <- ifelse(APSIM_data$obs_code=="plow",110,
-                           ifelse(APSIM_data$obs_code %in% c("disk","hoe"),30,
-                           ifelse(APSIM_data$observation_type=="Soil Preparation",5,
-                                  NA)))
-  } else if(site_name=="LRF") {
+
     APSIM_data$till_depth <- ifelse(APSIM_data$obs_code=="plow",150,
                              ifelse(APSIM_data$obs_code %in% c("rodweed","disk"),80,
                              ifelse(APSIM_data$observation_type=="Soil Preparation",5,
                                     NA)))
-   }
 
   # change clovers to "AgPasture" for APSIM Classic
   APSIM_data$crop <- ifelse(APSIM_data$crop=="RedClover","WhiteClover",
@@ -72,15 +61,13 @@ suppressMessages({
   
   # Just for LRF, construct an 8-year spin-up taking the whole 2003-2010 
   # experiment and starting it in 1995
-  if(site_name=="LRF") {
     spinup_df <- APSIM_conv
     spinup_df$year <- APSIM_conv$year-8
     spinup_df$date <- APSIM_conv$date - years(8)
     APSIM_conv <- rbind(spinup_df,APSIM_conv)
     ## remove harvest of rye in 19952 in all plots
     APSIM_conv <- APSIM_conv[APSIM_conv$date >= as.Date("1995-05-01"),]
-  }
-  
+
   for (i in 1:nrow(APSIM_conv)) {
     current_op <- APSIM_conv[i,"observation_type"]
     if(current_op=="Fertilizer application") {
@@ -175,73 +162,6 @@ suppressMessages({
   APSIM_ops_fut <- data.frame()
   
 
-# KBS ---------------------------------------------------------------------
-
-  
-  if(site_name=="KBS") {
-    
-    APSIM_ops_3yr <- as.data.frame(APSIM_ops[str_sub(APSIM_ops[,"V1"],-4,-1) %in% 
-                                               experiment_end_year-2:experiment_end_year,])
-    colnames(APSIM_ops_3yr) <- c("V1","V2")
-    
-    # Add conventional tillage back in for future scenario
-    if(mgmt_scenario_grp!=2) {
-      tillage_ops <- data.frame(V1=c("10/04/2020","15/04/2021","20/04/2021"),
-                                V2=c("surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110",
-                                     "surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 110",
-                                     "surfaceorganicmatter tillage type = user_defined, f_incorp = 0.5, tillage_depth = 30"
-                                )
-      )
-      APSIM_ops_tillage <- rbind(APSIM_ops_3yr,tillage_ops) %>%
-        arrange(as.Date(V1,"%d/%m/%Y"))
-      APSIM_ops_3yr <- APSIM_ops_tillage
-    }
-    
-    if(mgmt_scenario_grp==4) {
-      APSIM_ops_3yr <- APSIM_ops_3yr %>%
-        mutate(x = as.character(as.numeric(str_extract(V2, "(?i)(?<=amount =\\D)\\d+"))*fert_adjust),
-               V2 = ifelse(str_detect(V2, "fertiliser"), str_replace(V2,"(?i)(?<=amount =\\D)\\d+", x), V2)) %>%
-        select(-x)
-    } 
-    
-    # # Scenario 5 (residue removal) is managed in APSIM Classic as a paddock-Manager folder model
-    # # (BTW, the following code is still designed for APSIM Next Gen...)
-    # else if(mgmt_scenario_grp==5) {
-    #   endcrop_dat <- APSIM_ops_3yr[which(str_detect(APSIM_ops_3yr$V1, "EndCrop")),]
-    #   for (i in 1:length(endcrop_dat)) {
-    #     APSIM_ops_3yr <- insertRows(APSIM_ops_3yr,
-    #                                 which(str_detect(APSIM_ops_3yr$V1, "EndCrop"))[i]+1,
-    #                                 new=paste0(substr(endcrop_dat[i],1,10),
-    #                                            " [SurfaceOrganicMatter].Incorporate(fraction: ",resid_adjust,", depth: 0)"))
-    #   }
-    # } # end if
-    
-    
-    # Now take the 3-year management actions and repeat them out to 2100
-    repeat_times <- ceiling((end_fut_period_year-experiment_end_year)/3)
-    
-    for (i in 1:repeat_times) {
-      str_sub(APSIM_ops_3yr[,"V1"],-4,-1) <- as.character(as.integer(str_sub(APSIM_ops_3yr[,"V1"],-4,-1)) + 3)
-      APSIM_ops_fut <- rbind(APSIM_ops_fut, APSIM_ops_3yr)
-    }
-    
-    # Add one-time biochar addition for those scenarios. Biochar is added in the
-    # last year of the experimental period in order to better isolate the future
-    # effects of biochar addition.
-    if(mgmt_scenario_grp==6) {
-      biochar_ops <- data.frame(V1="12/08/2021",
-                                V2="biochar5v3 tillage type = user_defined, f_incorp = 1.0, tillage_depth = 300")
-      APSIM_ops_fut_biochar <- rbind(APSIM_ops_fut,biochar_ops) %>%
-        arrange(as.Date(V1,"%d/%m/%Y"))
-      APSIM_ops_fut <- APSIM_ops_fut_biochar
-    }
-    
-
-# LRF ---------------------------------------------------------------------
-
-
-  } else if(site_name=="LRF") {
-
     if(mgmt_scenario_grp %in% c(3,8)) {
       # sorghum dropped out of rotation in 2007, so need to cobble a rotation
       # together for the future, including rye planting in early winter after
@@ -315,8 +235,7 @@ suppressMessages({
   
   }
   
-  } # end switch on site name
-  
+
   APSIM_ops_fut2 <- paste0(APSIM_ops_fut$V1,"\t",
                            APSIM_ops_fut$V2)
   
