@@ -8,7 +8,7 @@
 # change. 
 ###########################################################################
 # Audit Trail
-# 2/21/2022: Created script.
+# 2/21/2023: Created script.
 ###########################################################################
 
 print("Starting Daycent_run_controller.R")
@@ -22,14 +22,14 @@ source(paste0("Daycent/run_Daycent_setup_",site_name,".R"))
 ## successfully to preserve the output. Each step uses the output of the
 ## step before.
 # --------------- Step 1: Run equilibrium simulation (4000-year spin-up) ---------------
-source("Daycent/run_Daycent_eq.R")
+source(paste0("Daycent/run_Daycent_eq_",site_name,".R"))
 
 # # --------------- Step 2: Run base cropping simulations (land conversion - start exp) ---------------
-source("Daycent/run_Daycent_base.R")
+source(paste0("Daycent/run_Daycent_base_",site_name,".R"))
 # 
 # # --------------- Step 3: Run experimental period simulations  ---------------
-source("Daycent/run_Daycent_exp.R")
+# source("Daycent/run_Daycent_exp.R")
 # 
 # # --------------- Step 4: Run future emissions scenarios (end exp-2100) --------------- 
-source("Daycent/run_Daycent_fut.R")
+# source("Daycent/run_Daycent_fut.R")
 

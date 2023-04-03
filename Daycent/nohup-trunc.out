@@ -1,0 +1,2674 @@
+
+Attaching package: ‘lubridate’
+
+The following objects are masked from ‘package:base’:
+
+    date, intersect, setdiff, union
+
+── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+✔ tibble  3.1.7     ✔ dplyr   1.0.9
+✔ tidyr   1.2.0     ✔ stringr 1.4.0
+✔ readr   2.1.2     ✔ forcats 0.5.1
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ lubridate::as.difftime() masks base::as.difftime()
+✖ lubridate::date()        masks base::date()
+✖ tidyr::extract()         masks magrittr::extract()
+✖ dplyr::filter()          masks stats::filter()
+✖ lubridate::intersect()   masks base::intersect()
+✖ dplyr::lag()             masks stats::lag()
+✖ purrr::set_names()       masks magrittr::set_names()
+✖ lubridate::setdiff()     masks base::setdiff()
+✖ lubridate::union()       masks base::union()
+
+Attaching package: ‘data.table’
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, first, last
+
+The following object is masked from ‘package:purrr’:
+
+    transpose
+
+The following objects are masked from ‘package:lubridate’:
+
+    hour, isoweek, mday, minute, month, quarter, second, wday, week,
+    yday, year
+
+New names:
+• `Corn g/m^2` -> `Corn g/m^2...5`
+• `Soybean g/m^2` -> `Soybean g/m^2...6`
+• `Wheat g/m^2` -> `Wheat g/m^2...7`
+• `Corn g/m^2` -> `Corn g/m^2...8`
+• `Soybean g/m^2` -> `Soybean g/m^2...9`
+• `Wheat g/m^2` -> `Wheat g/m^2...10`
+• `Corn` -> `Corn...11`
+• `Soybean` -> `Soybean...12`
+• `Wheat` -> `Wheat...13`
+• `Corn` -> `Corn...14`
+• `Soybean` -> `Soybean...15`
+• `Wheat` -> `Wheat...16`
+• `` -> `...17`
+• `Ci g/m^2` -> `Ci g/m^2...18`
+• `CP` -> `CP...19`
+• `SP` -> `SP...20`
+• `CS` -> `CS...21`
+• `SS` -> `SS...22`
+• `CR` -> `CR...23`
+• `SR` -> `SR...24`
+• `CE` -> `CE...25`
+• `SE` -> `SE...26`
+• `Ci g/m^2` -> `Ci g/m^2...27`
+• `CP` -> `CP...28`
+• `SP` -> `SP...29`
+• `CS` -> `CS...30`
+• `SS` -> `SS...31`
+• `CR` -> `CR...32`
+• `SR` -> `SR...33`
+• `CE` -> `CE...34`
+• `SE` -> `SE...35`
+• `Ci g/m^2` -> `Ci g/m^2...36`
+• `CP` -> `CP...37`
+• `SP` -> `SP...38`
+• `CS` -> `CS...39`
+• `SS` -> `SS...40`
+• `CR` -> `CR...41`
+• `SR` -> `SR...42`
+• `CE` -> `CE...43`
+• `SE` -> `SE...44`
+• `` -> `...45`
+• `Corn` -> `Corn...46`
+• `Soybean` -> `Soybean...47`
+• `Wheat` -> `Wheat...48`
+`summarise()` has grouped output by 'year', 'Treatment', 'Replicate'. You can
+override using the `.groups` argument.
+`summarise()` has grouped output by 'year'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'year'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'date', 'year'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'date'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'date', 'year'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'date'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'year', 'trt'. You can override using the
+`.groups` argument.
+`summarise()` has grouped output by 'year', 'treatment'. You can override using
+the `.groups` argument.
+`summarise()` has grouped output by 'year', 'treatment'. You can override using
+the `.groups` argument.
+`summarise()` has grouped output by 'year'. You can override using the
+`.groups` argument.
+New names:
+• `` -> `...3`
+[1] TRUE
+     WARNING: site.100 values for SAND, SILT, CLAY, BULKDEN, and PH will be
+     overwritten with corresponding values from the soils.in file.
+     WARNING: site.100 values for AWILT and AFIEL will be overwritten with
+     corresponding values from the soils.in file.
+Entering function initlyrs
+
+Soil Structure: 
+lyr	dpthmn	dpthmx	bulkd	fieldc	wiltpt	ecoeff	tcoeff	sand	clay	org	swclim	satcond	pH
+  0	  0.0	  2.0	1.11	0.3200	0.1534	0.00	0.01	0.43	0.19	0.02	0.14	0.00010	5.50
+  1	  2.0	  5.0	1.11	0.3200	0.1534	0.00	0.04	0.43	0.19	0.02	0.14	0.00010	5.50
+  2	  5.0	 10.0	1.11	0.3200	0.1534	0.00	0.25	0.43	0.19	0.02	0.14	0.00010	5.50
+  3	 10.0	 20.0	1.11	0.3200	0.1534	0.00	0.30	0.43	0.19	0.02	0.14	0.00010	5.50
+  4	 20.0	 40.0	1.20	0.3400	0.1331	0.00	0.15	0.43	0.19	0.01	0.13	0.00010	5.50
+  5	 40.0	 60.0	1.60	0.3400	0.1331	0.00	0.10	0.43	0.19	0.01	0.13	0.00010	5.50
+  6	 60.0	 80.0	1.55	0.3300	0.1399	0.00	0.05	0.51	0.23	0.00	0.14	0.00006	6.50
+  7	 80.0	100.0	1.55	0.3200	0.0929	0.00	0.04	0.71	0.12	0.00	0.09	0.00055	6.50
+  8	100.0	120.0	1.55	0.0900	0.0509	0.00	0.03	0.87	0.05	0.00	0.05	0.00550	6.50
+  9	120.0	140.0	1.55	0.0900	0.0509	0.00	0.02	0.87	0.05	0.00	0.05	0.00550	6.50
+ 10	140.0	160.0	1.55	0.0900	0.0509	0.00	0.01	0.87	0.05	0.00	0.05	0.00550	6.50
+ 11	160.0	180.0	1.55	0.0040	0.0010	0.00	0.00	0.95	0.01	0.00	0.00	0.00550	6.50
+ 12	180.0	200.0	1.55	0.0040	0.0010	0.00	0.00	0.95	0.01	0.00	0.00	0.00550	6.50
+
+Calculated soil parameters: 
+lyr	width	depth	thetas	psis	b	binv
+  0	  2.0	  1.0	 43.691	 23.491	 5.954	0.1680
+  1	  3.0	  3.5	 43.691	 23.491	 5.954	0.1680
+  2	  5.0	  7.5	 43.691	 23.491	 5.954	0.1680
+  3	 10.0	 15.0	 43.691	 23.491	 5.954	0.1680
+  4	 20.0	 30.0	 43.691	 23.491	 5.954	0.1680
+  5	 20.0	 50.0	 43.691	 23.491	 5.954	0.1680
+  6	 20.0	 70.0	 42.407	 16.569	 6.558	0.1525
+  7	 20.0	 90.0	 39.974	  9.389	 4.771	0.2096
+  8	 20.0	110.0	 37.961	  5.806	 3.624	0.2759
+  9	 20.0	130.0	 37.961	  5.806	 3.624	0.2759
+ 10	 20.0	150.0	 37.961	  5.806	 3.624	0.2759
+ 11	 20.0	170.0	 36.973	  4.599	 2.972	0.3365
+ 12	 20.0	190.0	 36.973	  4.599	 2.972	0.3365
+nelyrs =    0
+Exiting function initlyrs
+Entering function initsite
+sitepar; usexdrvrs: 0
+sitepar; sublimation scalar sublimscale: 1.000000
+sitepar; vegetation reflectivity, reflec: 0.180000
+sitepar; snow albedo, albedo: 0.200000
+sitepar; initial soil water content: 0.600000
+sitepar; soil water flux damping factor, dmpflux: 0.000008
+sitepar; rainfall duration, hours_rain: 12.000000
+sitepar; drainlag: 1
+sitepar; watertable[1]: 0
+sitepar; watertable[2]: 0
+sitepar; watertable[3]: 0
+sitepar; watertable[4]: 0
+sitepar; watertable[5]: 0
+sitepar; watertable[6]: 0
+sitepar; watertable[7]: 0
+sitepar; watertable[8]: 0
+sitepar; watertable[9]: 0
+sitepar; watertable[10]: 0
+sitepar; watertable[11]: 0
+sitepar; watertable[12]: 0
+sitepar; deep storage hydraulic potential, hpotdeep: -200.000000
+sitepar; deep storage saturated hydraulic conductivity, ksatdeep: 0.000300
+sitepar; cldcov[1]: 60.000000
+sitepar; cldcov[2]: 59.000000
+sitepar; cldcov[3]: 55.000000
+sitepar; cldcov[4]: 62.000000
+sitepar; cldcov[5]: 67.000000
+sitepar; cldcov[6]: 72.000000
+sitepar; cldcov[7]: 73.000000
+sitepar; cldcov[8]: 76.000000
+sitepar; cldcov[9]: 73.000000
+sitepar; cldcov[10]: 75.000000
+sitepar; cldcov[11]: 65.000000
+sitepar; cldcov[12]: 66.000000
+sitepar; min and max temperature for bottom soil layer, tbotmn tbotmx: 0.000000 12.400000
+sitepar; soil temperature damping factor, dmp: 0.003000
+sitepar; date of coolest temp at soil bottom, timlag: 30.000000
+sitepar; coefficient for nitrification, Ncoeff: 0.030000
+sitepar; denitrification respiration restraint dates, jdayStart/jdayEnd: 0 0
+sitepar; WFPS where 1/2 of max NO3 is lost as N2O: sitepar->NO3_N2O_x: 0.899901
+sitepar; Percent NO3 lost as N2O at x-inflection: sitepar->NO3_N2O_y: 1.501422
+sitepar; Step between min and max NO3 lost as N2O: sitepar->NO3_N2O_step: 2.926867
+sitepar; Slope of NO3/N2O WFPS funtion: sitepar->NO3_N2O_slope: 5.992157
+sitepar; maximum daily nitrification, MaxNitAmt: 0.391165
+sitepar; Snow insulating flag, SnowFlag: 1
+sitepar; Fraction of net mineralization to NO3, netmn_to_no3: 0.306123
+sitepar; WFPS inflection point adjustment, wfpsdnitadj: 1.450000
+sitepar; N2/N2O ratio adjustment, n2n2oadj: 0.617283
+Exiting function initsite
+sitlat =  42.41
+rlatitude =   0.74
+ly   swcinit    swcmin    minpot
+ 0    0.3840    0.2868  -17852.5508
+ly   swcinit    swcmin    minpot
+ 1    0.5760    0.4302  -17852.5508
+ly   swcinit    swcmin    minpot
+ 2    0.9600    0.7170  -17852.5508
+ly   swcinit    swcmin    minpot
+ 3    1.9200    1.4340  -17852.5508
+ly   swcinit    swcmin    minpot
+ 4    4.0800    2.6420  -29103.0625
+ly   swcinit    swcmin    minpot
+ 5    4.0800    2.6420  -29103.0625
+ly   swcinit    swcmin    minpot
+ 6    3.9600    2.7980  -23865.0879
+ly   swcinit    swcmin    minpot
+ 7    3.8400    1.8580  -9914.6660
+ly   swcinit    swcmin    minpot
+ 8    1.0800    1.0180  -8438.6787
+ly   swcinit    swcmin    minpot
+ 9    1.0800    1.0180  -8438.6787
+ly   swcinit    swcmin    minpot
+10    1.0800    1.0180  -8438.6787
+ly   swcinit    swcmin    minpot
+11    0.0480    0.0200  -81920.0000
+ly   swcinit    swcmin    minpot
+12    0.0480    0.0200  -81920.0000
+Output (0/1)    file_name       description
+0             bio.out           # daily above and below ground live carbon
+wrt = 0
+1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1
+0             soiltavg.out      # daily average soil temperature by layer
+wrt = 0
+0             soiltmax.out      # daily maximum soil temperature by layer
+wrt = 0
+0             soiltmin.out      # daily minimum soil temperature by layer
+wrt = 0
+0             stemp_dx.out      # daily soil temperature every few cm (HUGE)!
+wrt = 0
+1             vswc.out          # daily volumetric soilwater content by layer
+wrt = 1
+0             watrbal.out       # daily water balance
+wrt = 0
+0             wfps.out          # daily water filled pore space by layer
+wrt = 0
+0             co2.out           # daily CO2 concentrations by layer
+wrt = 0
+0             wflux.out         # daily water flux through the bottom of soil layers
+wrt = 0
+0             mresp.out         # daily maintenance respiration
+wrt = 0
+0             year_summary.out  # yearly trace gas fluxes
+wrt = 0
+0             livec.out         # daily live carbon
+wrt = 0
+0             deadc.out         # daily dead carbon
+wrt = 0
+1             soilc.out         # daily soil carbon
+wrt = 1
+0             sysc.out          # daily system carbon
+wrt = 0
+0             tgmonth.out       # monthly trace gas fluxes
+wrt = 0
+0             dN2lyr.out        # daily denitrification N2 fluxes by layer
+wrt = 0
+0             dN2Olyr.out       # daily denitrification N2O fluxes by layer
+wrt = 0
+0             gresp.out         # daily growth respiration
+wrt = 0
+0             dels.out          # daily delta 13C/14C values
+wrt = 0
+0             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+wrt = 0
+1             harvest.csv       # state of the system at time of harvest
+wrt = 1
+0             cflows.out        # daily carbon flows due to decompostion
+wrt = 0
+0             year_cflows.out   # annual accumulators of decomp carbon flows
+wrt = 0
+0             daily.out         # daily ET, defac, soil temp, snow, and therm units
+wrt = 0
+1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1
+1             summary.out       # daily climate, trace gas, and CO resp
+wrt = 1
+Open soiln.out
+Open soilc.out
+Exitting initsw...
+ 0 ::  0  1  2
+ 1 ::  3
+ 2 ::  4
+ 3 ::  5
+ 4 ::  6
+ 5 ::  7
+ 6 ::  8  9 10 11 12
+swflag = 0
+sand =  0.43
+silt =  0.38
+clay =  0.19
+bulkd =  1.11
+pH =  5.50
+awilt[0] = 0.153400
+afiel[0] = 0.320000
+awilt[1] = 0.153400
+afiel[1] = 0.320000
+awilt[2] = 0.133100
+afiel[2] = 0.340000
+awilt[3] = 0.133100
+afiel[3] = 0.340000
+awilt[4] = 0.139900
+afiel[4] = 0.330000
+awilt[5] = 0.092900
+afiel[5] = 0.320000
+awilt[6] = 0.030940
+afiel[6] = 0.055600
+awilt[7] = 0.153400
+afiel[7] = 0.320000
+calciv   : npool_sum = 0.7707031125   minerl_sum = 0.7707031108  npool-minrl = 0.0000000016
+ minerl[1][N] = 0.0981852189
+minerl[2][N] = 0.0995528996
+minerl[3][N] = 0.1094280034
+minerl[4][N] = 0.1135369986
+minerl[5][N] = 0.1599999964
+minerl[6][N] = 0.1299999952
+minerl[7][N] = 0.0599999987
+minerl[8][N] = 0.0000000000
+nitrate[0] = 0.0068729654
+nitrate[1] = 0.0196370441
+nitrate[2] = 0.0716752110
+nitrate[3] = 0.0995528996
+nitrate[4] = 0.1094280034
+nitrate[5] = 0.1135369986
+nitrate[6] = 0.1599999964
+nitrate[7] = 0.1299999952
+nitrate[8] = 0.0119999997
+nitrate[9] = 0.0119999997
+nitrate[10] = 0.0119999997
+nitrate[11] = 0.0119999997
+nitrate[12] = 0.0119999997
+nitrate[13] = 0.0000000000
+ammonium = 0.0000000000
+Entering function watrflow
+Entering function trwtavg
+Exiting function trwtavg
+In watrflow after snowmodel/Cent: pptsoil=0.00000
+pptsoil=0.00, sumintrcpt=0.00, wintstcr=0.00, wintlit=0.00
+SnowFlag = 1;  snow insulation with basetemp max; Parton paper
+Before h2oflux:  0.38400   0.57600   0.96000   1.92000   4.08000   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+Day 1: watrinput (cm) = 0.0000000000
+bserate = 0.0350774378
+cond[0] (cm/sec) = 0.0000095950	mpot[0] (cm) = -3140.64	hpot[0] (cm) = -3141.64	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095950	mpot[1] (cm) = -3140.64	hpot[1] (cm) = -3144.14	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095950	mpot[2] (cm) = -3140.64	hpot[2] (cm) = -3148.14	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095950	mpot[3] (cm) = -3140.64	hpot[3] (cm) = -3155.64	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132028	mpot[4] (cm) = -2189.05	hpot[4] (cm) = -2219.05	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202387	mpot[5] (cm) = -2189.05	hpot[5] (cm) = -2239.05	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092229	mpot[6] (cm) = -2446.27	hpot[6] (cm) = -2516.27	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001164905	mpot[7] (cm) = -310.49	hpot[7] (cm) = -400.49	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002264707	mpot[8] (cm) = -6811.22	hpot[8] (cm) = -6921.22	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002264707	mpot[9] (cm) = -6811.22	hpot[9] (cm) = -6941.22	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002264707	mpot[10] (cm) = -6811.22	hpot[10] (cm) = -6961.22	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0001861252	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861252	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = 0.0000002763
+net_flux[0] = -0.0014618362	
+SWC before net_flux addition in lyr 0:  0.38400   0.57600   0.96000   1.92000   4.08000   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+SWC after net_flux addition in lyr 0: 0.38254   0.57600   0.96000   1.92000   4.08000   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+Flux[1] = 0.0000002763	 Flux[2] = 0.0000002763
+net_flux[1] = -0.0000000000	
+SWC before net_flux addition in lyr 1:  0.38254   0.57600   0.96000   1.92000   4.08000   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+SWC after net_flux addition in lyr 1: 0.38254   0.57600   0.96000   1.92000   4.08000   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+Flux[2] = 0.0000002763	 Flux[3] = 0.0000002763
+net_flux[2] = 0.0000000000	
+SWC before net_flux addition in lyr 2:  0.38254   0.57600   0.96000   1.92000   4.08000   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+SWC after net_flux addition in lyr 2: 0.38254   0.57600   0.96000   1.92000   4.08000   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+Flux[3] = 0.0000002763	 Flux[4] = -0.0000215795
+net_flux[3] = 0.0000218558	
+SWC before net_flux addition in lyr 3:  0.38254   0.57600   0.96000   1.92000   4.08000   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+SWC after net_flux addition in lyr 3: 0.38254   0.57600   0.96000   1.92002   4.08000   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+Flux[4] = -0.0000215795	 Flux[5] = 0.0000004816
+net_flux[4] = -0.0000220610	
+SWC before net_flux addition in lyr 4:  0.38254   0.57600   0.96000   1.92002   4.08000   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+SWC after net_flux addition in lyr 4: 0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+Flux[5] = 0.0000004816	 Flux[6] = 0.0000058806
+net_flux[5] = -0.0000053990	
+SWC before net_flux addition in lyr 5:  0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+SWC after net_flux addition in lyr 5: 0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+Flux[6] = 0.0000058806	 Flux[7] = -0.0001915072
+net_flux[6] = 0.0001973878	
+SWC before net_flux addition in lyr 6:  0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96000   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+SWC after net_flux addition in lyr 6: 0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+Flux[7] = -0.0001915072	 Flux[8] = 0.0016101762
+net_flux[7] = -0.0018016834	
+SWC before net_flux addition in lyr 7:  0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.84000   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+SWC after net_flux addition in lyr 7: 0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+Flux[8] = 0.0016101762	 Flux[9] = 0.0000065224
+net_flux[8] = 0.0016036538	
+SWC before net_flux addition in lyr 8:  0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08000   1.08000   1.08000   0.04800   0.04800  
+
+SWC after net_flux addition in lyr 8: 0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.08000   0.04800   0.04800  
+
+Flux[9] = 0.0000065224	 Flux[10] = 0.0000065224
+net_flux[9] = 0.0000000000	
+SWC before net_flux addition in lyr 9:  0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.08000   0.04800   0.04800  
+
+SWC after net_flux addition in lyr 9: 0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.08000   0.04800   0.04800  
+
+Flux[10] = 0.0000065224	 Flux[11] = 0.0223184400
+net_flux[10] = -0.0223119176	
+SWC before net_flux addition in lyr 10:  0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.08000   0.04800   0.04800  
+
+SWC after net_flux addition in lyr 10: 0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.04800   0.04800  
+
+Flux[11] = 0.0223184400	 Flux[12] = 0.0000053604
+net_flux[11] = 0.0223130796	
+SWC before net_flux addition in lyr 11:  0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.04800   0.04800  
+
+SWC after net_flux addition in lyr 11: 0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04800  
+
+Flux[12] = 0.0000053604	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000053604	
+SWC before net_flux addition in lyr 12:  0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04800  
+
+SWC after net_flux addition in lyr 12: 0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+cond[0] (cm/sec) = 0.0000095004	mpot[0] (cm) = -3212.78	hpot[0] (cm) = -3213.78	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095950	mpot[1] (cm) = -3140.64	hpot[1] (cm) = -3144.14	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095950	mpot[2] (cm) = -3140.64	hpot[2] (cm) = -3148.14	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095953	mpot[3] (cm) = -3140.43	hpot[3] (cm) = -3155.43	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132027	mpot[4] (cm) = -2189.12	hpot[4] (cm) = -2219.12	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202387	mpot[5] (cm) = -2189.07	hpot[5] (cm) = -2239.07	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092240	mpot[6] (cm) = -2445.48	hpot[6] (cm) = -2515.48	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001164090	mpot[7] (cm) = -311.19	hpot[7] (cm) = -401.19	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002271978	mpot[8] (cm) = -6774.69	hpot[8] (cm) = -6884.69	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002264707	mpot[9] (cm) = -6811.22	hpot[9] (cm) = -6941.22	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002163352	mpot[10] (cm) = -7346.50	hpot[10] (cm) = -7496.50	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0001950836	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861274	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0000076213
+net_flux[0] = -0.0014539386	
+SWC before net_flux addition in lyr 0:  0.38254   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+SWC after net_flux addition in lyr 0: 0.38108   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+Flux[1] = -0.0000076213	 Flux[2] = 0.0000002763
+net_flux[1] = -0.0000078976	
+SWC before net_flux addition in lyr 1:  0.38108   0.57600   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+SWC after net_flux addition in lyr 1: 0.38108   0.57599   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+Flux[2] = 0.0000002763	 Flux[3] = 0.0000002685
+net_flux[2] = 0.0000000078	
+SWC before net_flux addition in lyr 2:  0.38108   0.57599   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+SWC after net_flux addition in lyr 2: 0.38108   0.57599   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+Flux[3] = 0.0000002685	 Flux[4] = -0.0000215730
+net_flux[3] = 0.0000218415	
+SWC before net_flux addition in lyr 3:  0.38108   0.57599   0.96000   1.92002   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+SWC after net_flux addition in lyr 3: 0.38108   0.57599   0.96000   1.92004   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+Flux[4] = -0.0000215730	 Flux[5] = 0.0000004803
+net_flux[4] = -0.0000220532	
+SWC before net_flux addition in lyr 4:  0.38108   0.57599   0.96000   1.92004   4.07998   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+SWC after net_flux addition in lyr 4: 0.38108   0.57599   0.96000   1.92004   4.07996   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+Flux[5] = 0.0000004803	 Flux[6] = 0.0000058635
+net_flux[5] = -0.0000053832	
+SWC before net_flux addition in lyr 5:  0.38108   0.57599   0.96000   1.92004   4.07996   4.08000   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+SWC after net_flux addition in lyr 5: 0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+Flux[6] = 0.0000058635	 Flux[7] = -0.0001912495
+net_flux[6] = 0.0001971130	
+SWC before net_flux addition in lyr 6:  0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96020   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+SWC after net_flux addition in lyr 6: 0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+Flux[7] = -0.0001912495	 Flux[8] = 0.0016039986
+net_flux[7] = -0.0017952481	
+SWC before net_flux addition in lyr 7:  0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83820   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+SWC after net_flux addition in lyr 7: 0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+Flux[8] = 0.0016039986	 Flux[9] = 0.0000184632
+net_flux[8] = 0.0015855354	
+SWC before net_flux addition in lyr 8:  0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08160   1.08000   1.05769   0.07031   0.04801  
+
+SWC after net_flux addition in lyr 8: 0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.08000   1.05769   0.07031   0.04801  
+
+Flux[9] = 0.0000184632	 Flux[10] = 0.0001770351
+net_flux[9] = -0.0001585719	
+SWC before net_flux addition in lyr 9:  0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.08000   1.05769   0.07031   0.04801  
+
+SWC after net_flux addition in lyr 9: 0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.05769   0.07031   0.04801  
+
+Flux[10] = 0.0001770351	 Flux[11] = 0.0220962013
+net_flux[10] = -0.0219191662	
+SWC before net_flux addition in lyr 10:  0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.05769   0.07031   0.04801  
+
+SWC after net_flux addition in lyr 10: 0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.07031   0.04801  
+
+Flux[11] = 0.0220962013	 Flux[12] = 0.0000054894
+net_flux[11] = 0.0220907119	
+SWC before net_flux addition in lyr 11:  0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.07031   0.04801  
+
+SWC after net_flux addition in lyr 11: 0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+Flux[12] = 0.0000054894	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000054894	
+SWC before net_flux addition in lyr 12:  0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+SWC after net_flux addition in lyr 12: 0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+cond[0] (cm/sec) = 0.0000094062	mpot[0] (cm) = -3286.45	hpot[0] (cm) = -3287.45	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095947	mpot[1] (cm) = -3140.90	hpot[1] (cm) = -3144.40	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095950	mpot[2] (cm) = -3140.64	hpot[2] (cm) = -3148.14	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095956	mpot[3] (cm) = -3140.22	hpot[3] (cm) = -3155.22	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132025	mpot[4] (cm) = -2189.19	hpot[4] (cm) = -2219.19	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202386	mpot[5] (cm) = -2189.08	hpot[5] (cm) = -2239.08	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092251	mpot[6] (cm) = -2444.67	hpot[6] (cm) = -2514.67	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001163278	mpot[7] (cm) = -311.88	hpot[7] (cm) = -401.88	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002279164	mpot[8] (cm) = -6738.82	hpot[8] (cm) = -6848.82	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002263988	mpot[9] (cm) = -6814.84	hpot[9] (cm) = -6944.84	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002063403	mpot[10] (cm) = -7925.73	hpot[10] (cm) = -8075.73	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002039199	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861296	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0000155013
+net_flux[0] = -0.0014460586	
+SWC before net_flux addition in lyr 0:  0.38108   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+SWC after net_flux addition in lyr 0: 0.37964   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+Flux[1] = -0.0000155013	 Flux[2] = 0.0000002586
+net_flux[1] = -0.0000157599	
+SWC before net_flux addition in lyr 1:  0.37964   0.57599   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+SWC after net_flux addition in lyr 1: 0.37964   0.57598   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+Flux[2] = 0.0000002586	 Flux[3] = 0.0000002606
+net_flux[2] = -0.0000000021	
+SWC before net_flux addition in lyr 2:  0.37964   0.57598   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+SWC after net_flux addition in lyr 2: 0.37964   0.57598   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+Flux[3] = 0.0000002606	 Flux[4] = -0.0000215664
+net_flux[3] = 0.0000218270	
+SWC before net_flux addition in lyr 3:  0.37964   0.57598   0.96000   1.92004   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+SWC after net_flux addition in lyr 3: 0.37964   0.57598   0.96000   1.92007   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+Flux[4] = -0.0000215664	 Flux[5] = 0.0000004790
+net_flux[4] = -0.0000220453	
+SWC before net_flux addition in lyr 4:  0.37964   0.57598   0.96000   1.92007   4.07996   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+SWC after net_flux addition in lyr 4: 0.37964   0.57598   0.96000   1.92007   4.07993   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+Flux[5] = 0.0000004790	 Flux[6] = 0.0000058463
+net_flux[5] = -0.0000053674	
+SWC before net_flux addition in lyr 5:  0.37964   0.57598   0.96000   1.92007   4.07993   4.07999   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+SWC after net_flux addition in lyr 5: 0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+Flux[6] = 0.0000058463	 Flux[7] = -0.0001909923
+net_flux[6] = 0.0001968386	
+SWC before net_flux addition in lyr 6:  0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96039   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+SWC after net_flux addition in lyr 6: 0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+Flux[7] = -0.0001909923	 Flux[8] = 0.0015979110
+net_flux[7] = -0.0017889033	
+SWC before net_flux addition in lyr 7:  0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83640   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+SWC after net_flux addition in lyr 7: 0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+Flux[8] = 0.0015979110	 Flux[9] = 0.0000314087
+net_flux[8] = 0.0015665023	
+SWC before net_flux addition in lyr 8:  0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08319   1.07984   1.03577   0.09240   0.04801  
+
+SWC after net_flux addition in lyr 8: 0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07984   1.03577   0.09240   0.04801  
+
+Flux[9] = 0.0000314087	 Flux[10] = 0.0003523555
+net_flux[9] = -0.0003209468	
+SWC before net_flux addition in lyr 9:  0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07984   1.03577   0.09240   0.04801  
+
+SWC after net_flux addition in lyr 9: 0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.03577   0.09240   0.04801  
+
+Flux[10] = 0.0003523555	 Flux[11] = 0.0218628793
+net_flux[10] = -0.0215105238	
+SWC before net_flux addition in lyr 10:  0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.03577   0.09240   0.04801  
+Readjusting net_flux for lyr 10
+net_flux[10] = -0.0177689524
+
+SWC after net_flux addition in lyr 10: 0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.09240   0.04801  
+
+Flux[11] = 0.0181213078	 Flux[12] = 0.0000056167
+net_flux[11] = 0.0181156911	
+SWC before net_flux addition in lyr 11:  0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.09240   0.04801  
+
+SWC after net_flux addition in lyr 11: 0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04801  
+
+Flux[12] = 0.0000056167	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000056167	
+SWC before net_flux addition in lyr 12:  0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04801  
+
+SWC after net_flux addition in lyr 12: 0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+cond[0] (cm/sec) = 0.0000093125	mpot[0] (cm) = -3361.70	hpot[0] (cm) = -3362.70	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095940	mpot[1] (cm) = -3141.41	hpot[1] (cm) = -3144.91	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095950	mpot[2] (cm) = -3140.64	hpot[2] (cm) = -3148.14	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095958	mpot[3] (cm) = -3140.00	hpot[3] (cm) = -3155.00	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132024	mpot[4] (cm) = -2189.26	hpot[4] (cm) = -2219.26	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202385	mpot[5] (cm) = -2189.10	hpot[5] (cm) = -2239.10	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092262	mpot[6] (cm) = -2443.88	hpot[6] (cm) = -2513.88	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001162469	mpot[7] (cm) = -312.58	hpot[7] (cm) = -402.58	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002286263	mpot[8] (cm) = -6703.62	hpot[8] (cm) = -6813.62	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002262533	mpot[9] (cm) = -6822.19	hpot[9] (cm) = -6952.19	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0001982092	mpot[10] (cm) = -8438.68	hpot[10] (cm) = -8588.68	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111431	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861318	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0000233639
+net_flux[0] = -0.0014381960	
+SWC before net_flux addition in lyr 0:  0.37964   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+SWC after net_flux addition in lyr 0: 0.37820   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+Flux[1] = -0.0000233639	 Flux[2] = 0.0000002232
+net_flux[1] = -0.0000235871	
+SWC before net_flux addition in lyr 1:  0.37820   0.57598   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+SWC after net_flux addition in lyr 1: 0.37820   0.57595   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+Flux[2] = 0.0000002232	 Flux[3] = 0.0000002528
+net_flux[2] = -0.0000000296	
+SWC before net_flux addition in lyr 2:  0.37820   0.57595   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+SWC after net_flux addition in lyr 2: 0.37820   0.57595   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+Flux[3] = 0.0000002528	 Flux[4] = -0.0000215598
+net_flux[3] = 0.0000218127	
+SWC before net_flux addition in lyr 3:  0.37820   0.57595   0.96000   1.92007   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+SWC after net_flux addition in lyr 3: 0.37820   0.57595   0.96000   1.92009   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+Flux[4] = -0.0000215598	 Flux[5] = 0.0000004777
+net_flux[4] = -0.0000220375	
+SWC before net_flux addition in lyr 4:  0.37820   0.57595   0.96000   1.92009   4.07993   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+SWC after net_flux addition in lyr 4: 0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+Flux[5] = 0.0000004777	 Flux[6] = 0.0000058293
+net_flux[5] = -0.0000053516	
+SWC before net_flux addition in lyr 5:  0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+SWC after net_flux addition in lyr 5: 0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+Flux[6] = 0.0000058293	 Flux[7] = -0.0001907363
+net_flux[6] = 0.0001965656	
+SWC before net_flux addition in lyr 6:  0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96059   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+SWC after net_flux addition in lyr 6: 0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+Flux[7] = -0.0001907363	 Flux[8] = 0.0015919171
+net_flux[7] = -0.0017826534	
+SWC before net_flux addition in lyr 7:  0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83461   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+SWC after net_flux addition in lyr 7: 0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+Flux[8] = 0.0015919171	 Flux[9] = 0.0000453823
+net_flux[8] = 0.0015465348	
+SWC before net_flux addition in lyr 8:  0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08476   1.07952   1.01800   0.11052   0.04802  
+
+SWC after net_flux addition in lyr 8: 0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07952   1.01800   0.11052   0.04802  
+
+Flux[9] = 0.0000453823	 Flux[10] = 0.0005001337
+net_flux[9] = -0.0004547513	
+SWC before net_flux addition in lyr 9:  0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07952   1.01800   0.11052   0.04802  
+
+SWC after net_flux addition in lyr 9: 0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01800   0.11052   0.04802  
+
+Flux[10] = 0.0005001337	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0005001337	
+SWC before net_flux addition in lyr 10:  0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01800   0.11052   0.04802  
+
+SWC after net_flux addition in lyr 10: 0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11052   0.04802  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11052   0.04802  
+
+SWC after net_flux addition in lyr 11: 0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 12: 0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+cond[0] (cm/sec) = 0.0000092192	mpot[0] (cm) = -3438.53	hpot[0] (cm) = -3439.53	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095930	mpot[1] (cm) = -3142.18	hpot[1] (cm) = -3145.68	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095950	mpot[2] (cm) = -3140.64	hpot[2] (cm) = -3148.14	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095961	mpot[3] (cm) = -3139.79	hpot[3] (cm) = -3154.79	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132022	mpot[4] (cm) = -2189.33	hpot[4] (cm) = -2219.33	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202385	mpot[5] (cm) = -2189.12	hpot[5] (cm) = -2239.12	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092272	mpot[6] (cm) = -2443.08	hpot[6] (cm) = -2513.08	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001161662	mpot[7] (cm) = -313.27	hpot[7] (cm) = -403.27	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002293269	mpot[8] (cm) = -6669.10	hpot[8] (cm) = -6779.10	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002260471	mpot[9] (cm) = -6832.61	hpot[9] (cm) = -6962.61	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0001984384	mpot[10] (cm) = -8423.67	hpot[10] (cm) = -8573.67	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111408	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861342	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0000312088
+net_flux[0] = -0.0014303511	
+SWC before net_flux addition in lyr 0:  0.37820   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 0: 0.37677   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+Flux[1] = -0.0000312088	 Flux[2] = 0.0000001703
+net_flux[1] = -0.0000313791	
+SWC before net_flux addition in lyr 1:  0.37677   0.57595   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 1: 0.37677   0.57592   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+Flux[2] = 0.0000001703	 Flux[3] = 0.0000002450
+net_flux[2] = -0.0000000747	
+SWC before net_flux addition in lyr 2:  0.37677   0.57592   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 2: 0.37677   0.57592   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+Flux[3] = 0.0000002450	 Flux[4] = -0.0000215533
+net_flux[3] = 0.0000217983	
+SWC before net_flux addition in lyr 3:  0.37677   0.57592   0.96000   1.92009   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 3: 0.37677   0.57592   0.96000   1.92011   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+Flux[4] = -0.0000215533	 Flux[5] = 0.0000004764
+net_flux[4] = -0.0000220298	
+SWC before net_flux addition in lyr 4:  0.37677   0.57592   0.96000   1.92011   4.07991   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 4: 0.37677   0.57592   0.96000   1.92011   4.07989   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+Flux[5] = 0.0000004764	 Flux[6] = 0.0000058123
+net_flux[5] = -0.0000053358	
+SWC before net_flux addition in lyr 5:  0.37677   0.57592   0.96000   1.92011   4.07989   4.07998   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 5: 0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+Flux[6] = 0.0000058123	 Flux[7] = -0.0001904808
+net_flux[6] = 0.0001962930	
+SWC before net_flux addition in lyr 6:  0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96079   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 6: 0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+Flux[7] = -0.0001904808	 Flux[8] = 0.0015860186
+net_flux[7] = -0.0017764993	
+SWC before net_flux addition in lyr 7:  0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83283   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 7: 0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+Flux[8] = 0.0015860186	 Flux[9] = 0.0000601688
+net_flux[8] = 0.0015258498	
+SWC before net_flux addition in lyr 8:  0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08630   1.07907   1.01850   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 8: 0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07907   1.01850   0.11051   0.04802  
+
+Flux[9] = 0.0000601688	 Flux[10] = 0.0004923874
+net_flux[9] = -0.0004322185	
+SWC before net_flux addition in lyr 9:  0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07907   1.01850   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 9: 0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01850   0.11051   0.04802  
+
+Flux[10] = 0.0004923874	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004923874	
+SWC before net_flux addition in lyr 10:  0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01850   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 10: 0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04802  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 11: 0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04802  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04802  
+
+SWC after net_flux addition in lyr 12: 0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+cond[0] (cm/sec) = 0.0000091263	mpot[0] (cm) = -3516.99	hpot[0] (cm) = -3517.99	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095916	mpot[1] (cm) = -3143.20	hpot[1] (cm) = -3146.70	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095950	mpot[2] (cm) = -3140.65	hpot[2] (cm) = -3148.15	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095964	mpot[3] (cm) = -3139.58	hpot[3] (cm) = -3154.58	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132021	mpot[4] (cm) = -2189.40	hpot[4] (cm) = -2219.40	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202384	mpot[5] (cm) = -2189.14	hpot[5] (cm) = -2239.14	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092283	mpot[6] (cm) = -2442.29	hpot[6] (cm) = -2512.29	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001160858	mpot[7] (cm) = -313.97	hpot[7] (cm) = -403.97	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002300180	mpot[8] (cm) = -6635.26	hpot[8] (cm) = -6745.26	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002258511	mpot[9] (cm) = -6842.54	hpot[9] (cm) = -6972.54	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0001986641	mpot[10] (cm) = -8408.93	hpot[10] (cm) = -8558.93	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111385	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861365	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0000390358
+net_flux[0] = -0.0014225241	
+SWC before net_flux addition in lyr 0:  0.37677   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+SWC after net_flux addition in lyr 0: 0.37535   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+Flux[1] = -0.0000390358	 Flux[2] = 0.0000001001
+net_flux[1] = -0.0000391360	
+SWC before net_flux addition in lyr 1:  0.37535   0.57592   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+SWC after net_flux addition in lyr 1: 0.37535   0.57588   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+Flux[2] = 0.0000001001	 Flux[3] = 0.0000002371
+net_flux[2] = -0.0000001370	
+SWC before net_flux addition in lyr 2:  0.37535   0.57588   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+SWC after net_flux addition in lyr 2: 0.37535   0.57588   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+Flux[3] = 0.0000002371	 Flux[4] = -0.0000215468
+net_flux[3] = 0.0000217840	
+SWC before net_flux addition in lyr 3:  0.37535   0.57588   0.96000   1.92011   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+SWC after net_flux addition in lyr 3: 0.37535   0.57588   0.96000   1.92013   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+Flux[4] = -0.0000215468	 Flux[5] = 0.0000004752
+net_flux[4] = -0.0000220220	
+SWC before net_flux addition in lyr 4:  0.37535   0.57588   0.96000   1.92013   4.07989   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+SWC after net_flux addition in lyr 4: 0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+Flux[5] = 0.0000004752	 Flux[6] = 0.0000057953
+net_flux[5] = -0.0000053201	
+SWC before net_flux addition in lyr 5:  0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+SWC after net_flux addition in lyr 5: 0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+Flux[6] = 0.0000057953	 Flux[7] = -0.0001902261
+net_flux[6] = 0.0001960214	
+SWC before net_flux addition in lyr 6:  0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96098   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+SWC after net_flux addition in lyr 6: 0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+Flux[7] = -0.0001902261	 Flux[8] = 0.0015802172
+net_flux[7] = -0.0017704433	
+SWC before net_flux addition in lyr 7:  0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.83105   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+SWC after net_flux addition in lyr 7: 0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+Flux[8] = 0.0015802172	 Flux[9] = 0.0000745994
+net_flux[8] = 0.0015056178	
+SWC before net_flux addition in lyr 8:  0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08783   1.07863   1.01899   0.11051   0.04803  
+
+SWC after net_flux addition in lyr 8: 0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07863   1.01899   0.11051   0.04803  
+
+Flux[9] = 0.0000745994	 Flux[10] = 0.0004848818
+net_flux[9] = -0.0004102823	
+SWC before net_flux addition in lyr 9:  0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07863   1.01899   0.11051   0.04803  
+
+SWC after net_flux addition in lyr 9: 0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01899   0.11051   0.04803  
+
+Flux[10] = 0.0004848818	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004848818	
+SWC before net_flux addition in lyr 10:  0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01899   0.11051   0.04803  
+
+SWC after net_flux addition in lyr 10: 0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11051   0.04803  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11051   0.04803  
+
+SWC after net_flux addition in lyr 11: 0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 12: 0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+cond[0] (cm/sec) = 0.0000090339	mpot[0] (cm) = -3597.10	hpot[0] (cm) = -3598.10	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095899	mpot[1] (cm) = -3144.47	hpot[1] (cm) = -3147.97	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095950	mpot[2] (cm) = -3140.65	hpot[2] (cm) = -3148.15	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095967	mpot[3] (cm) = -3139.37	hpot[3] (cm) = -3154.37	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132019	mpot[4] (cm) = -2189.47	hpot[4] (cm) = -2219.47	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202384	mpot[5] (cm) = -2189.15	hpot[5] (cm) = -2239.15	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092294	mpot[6] (cm) = -2441.50	hpot[6] (cm) = -2511.50	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001160057	mpot[7] (cm) = -314.66	hpot[7] (cm) = -404.66	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002306998	mpot[8] (cm) = -6602.09	hpot[8] (cm) = -6712.09	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002256650	mpot[9] (cm) = -6851.98	hpot[9] (cm) = -6981.98	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0001988863	mpot[10] (cm) = -8394.45	hpot[10] (cm) = -8544.45	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111362	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861387	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0000468452
+net_flux[0] = -0.0014147147	
+SWC before net_flux addition in lyr 0:  0.37535   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 0: 0.37393   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+Flux[1] = -0.0000468452	 Flux[2] = 0.0000000124
+net_flux[1] = -0.0000468576	
+SWC before net_flux addition in lyr 1:  0.37393   0.57588   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 1: 0.37393   0.57584   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+Flux[2] = 0.0000000124	 Flux[3] = 0.0000002292
+net_flux[2] = -0.0000002168	
+SWC before net_flux addition in lyr 2:  0.37393   0.57584   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 2: 0.37393   0.57584   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+Flux[3] = 0.0000002292	 Flux[4] = -0.0000215403
+net_flux[3] = 0.0000217696	
+SWC before net_flux addition in lyr 3:  0.37393   0.57584   0.96000   1.92013   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 3: 0.37393   0.57584   0.96000   1.92015   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+Flux[4] = -0.0000215403	 Flux[5] = 0.0000004739
+net_flux[4] = -0.0000220142	
+SWC before net_flux addition in lyr 4:  0.37393   0.57584   0.96000   1.92015   4.07987   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 4: 0.37393   0.57584   0.96000   1.92015   4.07985   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+Flux[5] = 0.0000004739	 Flux[6] = 0.0000057783
+net_flux[5] = -0.0000053044	
+SWC before net_flux addition in lyr 5:  0.37393   0.57584   0.96000   1.92015   4.07985   4.07997   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 5: 0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+Flux[6] = 0.0000057783	 Flux[7] = -0.0001899721
+net_flux[6] = 0.0001957504	
+SWC before net_flux addition in lyr 6:  0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96118   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 6: 0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+Flux[7] = -0.0001899721	 Flux[8] = 0.0015745100
+net_flux[7] = -0.0017644821	
+SWC before net_flux addition in lyr 7:  0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82928   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 7: 0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+Flux[8] = 0.0015745100	 Flux[9] = 0.0000886831
+net_flux[8] = 0.0014858269	
+SWC before net_flux addition in lyr 8:  0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.08933   1.07822   1.01948   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 8: 0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07822   1.01948   0.11050   0.04803  
+
+Flux[9] = 0.0000886831	 Flux[10] = 0.0004776091
+net_flux[9] = -0.0003889260	
+SWC before net_flux addition in lyr 9:  0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07822   1.01948   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 9: 0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01948   0.11050   0.04803  
+
+Flux[10] = 0.0004776091	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004776091	
+SWC before net_flux addition in lyr 10:  0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01948   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 10: 0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04803  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 11: 0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04803  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04803  
+
+SWC after net_flux addition in lyr 12: 0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+cond[0] (cm/sec) = 0.0000089419	mpot[0] (cm) = -3678.89	hpot[0] (cm) = -3679.89	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095879	mpot[1] (cm) = -3145.99	hpot[1] (cm) = -3149.49	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095950	mpot[2] (cm) = -3140.65	hpot[2] (cm) = -3148.15	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095970	mpot[3] (cm) = -3139.16	hpot[3] (cm) = -3154.16	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132018	mpot[4] (cm) = -2189.54	hpot[4] (cm) = -2219.54	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202383	mpot[5] (cm) = -2189.17	hpot[5] (cm) = -2239.17	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092304	mpot[6] (cm) = -2440.71	hpot[6] (cm) = -2510.71	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001159259	mpot[7] (cm) = -315.35	hpot[7] (cm) = -405.35	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002313723	mpot[8] (cm) = -6569.55	hpot[8] (cm) = -6679.55	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002254885	mpot[9] (cm) = -6860.94	hpot[9] (cm) = -6990.94	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0001991051	mpot[10] (cm) = -8380.21	hpot[10] (cm) = -8530.21	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111339	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861411	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0000546365
+net_flux[0] = -0.0014069233	
+SWC before net_flux addition in lyr 0:  0.37393   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+SWC after net_flux addition in lyr 0: 0.37253   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+Flux[1] = -0.0000546365	 Flux[2] = -0.0000000925
+net_flux[1] = -0.0000545441	
+SWC before net_flux addition in lyr 1:  0.37253   0.57584   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+SWC after net_flux addition in lyr 1: 0.37253   0.57578   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+Flux[2] = -0.0000000925	 Flux[3] = 0.0000002212
+net_flux[2] = -0.0000003137	
+SWC before net_flux addition in lyr 2:  0.37253   0.57578   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+SWC after net_flux addition in lyr 2: 0.37253   0.57578   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+Flux[3] = 0.0000002212	 Flux[4] = -0.0000215338
+net_flux[3] = 0.0000217550	
+SWC before net_flux addition in lyr 3:  0.37253   0.57578   0.96000   1.92015   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+SWC after net_flux addition in lyr 3: 0.37253   0.57578   0.96000   1.92017   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+Flux[4] = -0.0000215338	 Flux[5] = 0.0000004726
+net_flux[4] = -0.0000220064	
+SWC before net_flux addition in lyr 4:  0.37253   0.57578   0.96000   1.92017   4.07985   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+SWC after net_flux addition in lyr 4: 0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+Flux[5] = 0.0000004726	 Flux[6] = 0.0000057613
+net_flux[5] = -0.0000052888	
+SWC before net_flux addition in lyr 5:  0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+SWC after net_flux addition in lyr 5: 0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+Flux[6] = 0.0000057613	 Flux[7] = -0.0001897190
+net_flux[6] = 0.0001954803	
+SWC before net_flux addition in lyr 6:  0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96138   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+SWC after net_flux addition in lyr 6: 0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+Flux[7] = -0.0001897190	 Flux[8] = 0.0015688927
+net_flux[7] = -0.0017586116	
+SWC before net_flux addition in lyr 7:  0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82752   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+SWC after net_flux addition in lyr 7: 0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+Flux[8] = 0.0015688927	 Flux[9] = 0.0001024299
+net_flux[8] = 0.0014664628	
+SWC before net_flux addition in lyr 8:  0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09082   1.07783   1.01996   0.11050   0.04804  
+
+SWC after net_flux addition in lyr 8: 0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07783   1.01996   0.11050   0.04804  
+
+Flux[9] = 0.0001024299	 Flux[10] = 0.0004705642
+net_flux[9] = -0.0003681343	
+SWC before net_flux addition in lyr 9:  0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07783   1.01996   0.11050   0.04804  
+
+SWC after net_flux addition in lyr 9: 0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.01996   0.11050   0.04804  
+
+Flux[10] = 0.0004705642	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004705642	
+SWC before net_flux addition in lyr 10:  0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.01996   0.11050   0.04804  
+
+SWC after net_flux addition in lyr 10: 0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11050   0.04804  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11050   0.04804  
+
+SWC after net_flux addition in lyr 11: 0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04804  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04804  
+
+SWC after net_flux addition in lyr 12: 0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+cond[0] (cm/sec) = 0.0000088503	mpot[0] (cm) = -3762.39	hpot[0] (cm) = -3763.39	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095855	mpot[1] (cm) = -3147.77	hpot[1] (cm) = -3151.27	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095950	mpot[2] (cm) = -3140.66	hpot[2] (cm) = -3148.16	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095972	mpot[3] (cm) = -3138.94	hpot[3] (cm) = -3153.94	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132016	mpot[4] (cm) = -2189.61	hpot[4] (cm) = -2219.61	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202383	mpot[5] (cm) = -2189.19	hpot[5] (cm) = -2239.19	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092315	mpot[6] (cm) = -2439.92	hpot[6] (cm) = -2509.92	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001158463	mpot[7] (cm) = -316.04	hpot[7] (cm) = -406.04	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002320361	mpot[8] (cm) = -6537.65	hpot[8] (cm) = -6647.65	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002253216	mpot[9] (cm) = -6869.44	hpot[9] (cm) = -6999.44	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0001993207	mpot[10] (cm) = -8366.21	hpot[10] (cm) = -8516.21	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111317	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861434	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0000624098
+net_flux[0] = -0.0013991501	
+SWC before net_flux addition in lyr 0:  0.37253   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 0: 0.37113   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+Flux[1] = -0.0000624098	 Flux[2] = -0.0000002146
+net_flux[1] = -0.0000621952	
+SWC before net_flux addition in lyr 1:  0.37113   0.57578   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 1: 0.37113   0.57572   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+Flux[2] = -0.0000002146	 Flux[3] = 0.0000002132
+net_flux[2] = -0.0000004278	
+SWC before net_flux addition in lyr 2:  0.37113   0.57572   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 2: 0.37113   0.57572   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+Flux[3] = 0.0000002132	 Flux[4] = -0.0000215273
+net_flux[3] = 0.0000217405	
+SWC before net_flux addition in lyr 3:  0.37113   0.57572   0.96000   1.92017   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 3: 0.37113   0.57572   0.96000   1.92020   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+Flux[4] = -0.0000215273	 Flux[5] = 0.0000004713
+net_flux[4] = -0.0000219986	
+SWC before net_flux addition in lyr 4:  0.37113   0.57572   0.96000   1.92020   4.07982   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 4: 0.37113   0.57572   0.96000   1.92020   4.07980   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+Flux[5] = 0.0000004713	 Flux[6] = 0.0000057444
+net_flux[5] = -0.0000052732	
+SWC before net_flux addition in lyr 5:  0.37113   0.57572   0.96000   1.92020   4.07980   4.07996   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 5: 0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+Flux[6] = 0.0000057444	 Flux[7] = -0.0001894664
+net_flux[6] = 0.0001952108	
+SWC before net_flux addition in lyr 6:  0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96157   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 6: 0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+Flux[7] = -0.0001894664	 Flux[8] = 0.0015633676
+net_flux[7] = -0.0017528341	
+SWC before net_flux addition in lyr 7:  0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82576   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 7: 0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+Flux[8] = 0.0015633676	 Flux[9] = 0.0001158452
+net_flux[8] = 0.0014475224	
+SWC before net_flux addition in lyr 8:  0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09229   1.07747   1.02043   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 8: 0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07747   1.02043   0.11049   0.04805  
+
+Flux[9] = 0.0001158452	 Flux[10] = 0.0004637397
+net_flux[9] = -0.0003478945	
+SWC before net_flux addition in lyr 9:  0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07747   1.02043   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 9: 0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02043   0.11049   0.04805  
+
+Flux[10] = 0.0004637397	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004637397	
+SWC before net_flux addition in lyr 10:  0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02043   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 10: 0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 11: 0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 12: 0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+cond[0] (cm/sec) = 0.0000087592	mpot[0] (cm) = -3847.64	hpot[0] (cm) = -3848.64	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095829	mpot[1] (cm) = -3149.79	hpot[1] (cm) = -3153.29	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095950	mpot[2] (cm) = -3140.67	hpot[2] (cm) = -3148.17	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095975	mpot[3] (cm) = -3138.73	hpot[3] (cm) = -3153.73	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132015	mpot[4] (cm) = -2189.68	hpot[4] (cm) = -2219.68	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202382	mpot[5] (cm) = -2189.20	hpot[5] (cm) = -2239.20	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092326	mpot[6] (cm) = -2439.13	hpot[6] (cm) = -2509.13	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001157670	mpot[7] (cm) = -316.74	hpot[7] (cm) = -406.74	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002326911	mpot[8] (cm) = -6506.34	hpot[8] (cm) = -6616.34	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002251638	mpot[9] (cm) = -6877.49	hpot[9] (cm) = -7007.49	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0001995332	mpot[10] (cm) = -8352.45	hpot[10] (cm) = -8502.45	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111294	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861457	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0000701642
+net_flux[0] = -0.0013913957	
+SWC before net_flux addition in lyr 0:  0.37113   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 0: 0.36973   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+Flux[1] = -0.0000701642	 Flux[2] = -0.0000003539
+net_flux[1] = -0.0000698104	
+SWC before net_flux addition in lyr 1:  0.36973   0.57572   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 1: 0.36973   0.57565   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+Flux[2] = -0.0000003539	 Flux[3] = 0.0000002051
+net_flux[2] = -0.0000005590	
+SWC before net_flux addition in lyr 2:  0.36973   0.57565   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 2: 0.36973   0.57565   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+Flux[3] = 0.0000002051	 Flux[4] = -0.0000215208
+net_flux[3] = 0.0000217259	
+SWC before net_flux addition in lyr 3:  0.36973   0.57565   0.96000   1.92020   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 3: 0.36973   0.57565   0.96000   1.92022   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+Flux[4] = -0.0000215208	 Flux[5] = 0.0000004700
+net_flux[4] = -0.0000219908	
+SWC before net_flux addition in lyr 4:  0.36973   0.57565   0.96000   1.92022   4.07980   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 4: 0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+Flux[5] = 0.0000004700	 Flux[6] = 0.0000057275
+net_flux[5] = -0.0000052576	
+SWC before net_flux addition in lyr 5:  0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 5: 0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+Flux[6] = 0.0000057275	 Flux[7] = -0.0001892147
+net_flux[6] = 0.0001949422	
+SWC before net_flux addition in lyr 6:  0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96177   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 6: 0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+Flux[7] = -0.0001892147	 Flux[8] = 0.0015579271
+net_flux[7] = -0.0017471418	
+SWC before net_flux addition in lyr 7:  0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82401   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 7: 0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+Flux[8] = 0.0015579271	 Flux[9] = 0.0001289426
+net_flux[8] = 0.0014289845	
+SWC before net_flux addition in lyr 8:  0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09373   1.07712   1.02089   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 8: 0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07712   1.02089   0.11049   0.04805  
+
+Flux[9] = 0.0001289426	 Flux[10] = 0.0004571320
+net_flux[9] = -0.0003281894	
+SWC before net_flux addition in lyr 9:  0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07712   1.02089   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 9: 0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02089   0.11049   0.04805  
+
+Flux[10] = 0.0004571320	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004571320	
+SWC before net_flux addition in lyr 10:  0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02089   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 10: 0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11049   0.04805  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11049   0.04805  
+
+SWC after net_flux addition in lyr 11: 0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04805  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04805  
+
+SWC after net_flux addition in lyr 12: 0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+cond[0] (cm/sec) = 0.0000086685	mpot[0] (cm) = -3934.66	hpot[0] (cm) = -3935.66	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095798	mpot[1] (cm) = -3152.07	hpot[1] (cm) = -3155.57	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095949	mpot[2] (cm) = -3140.68	hpot[2] (cm) = -3148.18	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095978	mpot[3] (cm) = -3138.52	hpot[3] (cm) = -3153.52	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132014	mpot[4] (cm) = -2189.76	hpot[4] (cm) = -2219.76	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202382	mpot[5] (cm) = -2189.22	hpot[5] (cm) = -2239.22	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092336	mpot[6] (cm) = -2438.34	hpot[6] (cm) = -2508.34	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001156879	mpot[7] (cm) = -317.43	hpot[7] (cm) = -407.43	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002333375	mpot[8] (cm) = -6475.63	hpot[8] (cm) = -6585.63	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002250148	mpot[9] (cm) = -6885.09	hpot[9] (cm) = -7015.09	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0001997425	mpot[10] (cm) = -8338.91	hpot[10] (cm) = -8488.91	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111271	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861480	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0000779003
+net_flux[0] = -0.0013836596	
+SWC before net_flux addition in lyr 0:  0.36973   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+SWC after net_flux addition in lyr 0: 0.36835   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+Flux[1] = -0.0000779003	 Flux[2] = -0.0000005102
+net_flux[1] = -0.0000773901	
+SWC before net_flux addition in lyr 1:  0.36835   0.57565   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+SWC after net_flux addition in lyr 1: 0.36835   0.57557   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+Flux[2] = -0.0000005102	 Flux[3] = 0.0000001970
+net_flux[2] = -0.0000007071	
+SWC before net_flux addition in lyr 2:  0.36835   0.57557   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+SWC after net_flux addition in lyr 2: 0.36835   0.57557   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+Flux[3] = 0.0000001970	 Flux[4] = -0.0000215143
+net_flux[3] = 0.0000217113	
+SWC before net_flux addition in lyr 3:  0.36835   0.57557   0.96000   1.92022   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+SWC after net_flux addition in lyr 3: 0.36835   0.57557   0.96000   1.92024   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+Flux[4] = -0.0000215143	 Flux[5] = 0.0000004687
+net_flux[4] = -0.0000219830	
+SWC before net_flux addition in lyr 4:  0.36835   0.57557   0.96000   1.92024   4.07978   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+SWC after net_flux addition in lyr 4: 0.36835   0.57557   0.96000   1.92024   4.07976   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+Flux[5] = 0.0000004687	 Flux[6] = 0.0000057107
+net_flux[5] = -0.0000052420	
+SWC before net_flux addition in lyr 5:  0.36835   0.57557   0.96000   1.92024   4.07976   4.07995   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+SWC after net_flux addition in lyr 5: 0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+Flux[6] = 0.0000057107	 Flux[7] = -0.0001889637
+net_flux[6] = 0.0001946743	
+SWC before net_flux addition in lyr 6:  0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96196   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+SWC after net_flux addition in lyr 6: 0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+Flux[7] = -0.0001889637	 Flux[8] = 0.0015525717
+net_flux[7] = -0.0017415354	
+SWC before net_flux addition in lyr 7:  0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82226   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+SWC after net_flux addition in lyr 7: 0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+Flux[8] = 0.0015525717	 Flux[9] = 0.0001417275
+net_flux[8] = 0.0014108442	
+SWC before net_flux addition in lyr 8:  0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09516   1.07679   1.02135   0.11048   0.04806  
+
+SWC after net_flux addition in lyr 8: 0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07679   1.02135   0.11048   0.04806  
+
+Flux[9] = 0.0001417275	 Flux[10] = 0.0004507308
+net_flux[9] = -0.0003090033	
+SWC before net_flux addition in lyr 9:  0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07679   1.02135   0.11048   0.04806  
+
+SWC after net_flux addition in lyr 9: 0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02135   0.11048   0.04806  
+
+Flux[10] = 0.0004507308	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004507308	
+SWC before net_flux addition in lyr 10:  0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02135   0.11048   0.04806  
+
+SWC after net_flux addition in lyr 10: 0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11048   0.04806  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11048   0.04806  
+
+SWC after net_flux addition in lyr 11: 0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 12: 0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+cond[0] (cm/sec) = 0.0000085782	mpot[0] (cm) = -4023.48	hpot[0] (cm) = -4024.48	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095765	mpot[1] (cm) = -3154.59	hpot[1] (cm) = -3158.09	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095949	mpot[2] (cm) = -3140.69	hpot[2] (cm) = -3148.19	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095981	mpot[3] (cm) = -3138.31	hpot[3] (cm) = -3153.31	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132012	mpot[4] (cm) = -2189.82	hpot[4] (cm) = -2219.82	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202381	mpot[5] (cm) = -2189.24	hpot[5] (cm) = -2239.24	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092347	mpot[6] (cm) = -2437.56	hpot[6] (cm) = -2507.56	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001156090	mpot[7] (cm) = -318.12	hpot[7] (cm) = -408.12	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002339756	mpot[8] (cm) = -6445.49	hpot[8] (cm) = -6555.49	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002248747	mpot[9] (cm) = -6892.25	hpot[9] (cm) = -7022.25	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0001999491	mpot[10] (cm) = -8325.58	hpot[10] (cm) = -8475.58	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111248	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861503	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0000856171
+net_flux[0] = -0.0013759428	
+SWC before net_flux addition in lyr 0:  0.36835   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 0: 0.36698   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+Flux[1] = -0.0000856171	 Flux[2] = -0.0000006834
+net_flux[1] = -0.0000849337	
+SWC before net_flux addition in lyr 1:  0.36698   0.57557   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 1: 0.36698   0.57549   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+Flux[2] = -0.0000006834	 Flux[3] = 0.0000001887
+net_flux[2] = -0.0000008721	
+SWC before net_flux addition in lyr 2:  0.36698   0.57549   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 2: 0.36698   0.57549   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+Flux[3] = 0.0000001887	 Flux[4] = -0.0000215078
+net_flux[3] = 0.0000216965	
+SWC before net_flux addition in lyr 3:  0.36698   0.57549   0.96000   1.92024   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 3: 0.36698   0.57549   0.96000   1.92026   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+Flux[4] = -0.0000215078	 Flux[5] = 0.0000004674
+net_flux[4] = -0.0000219752	
+SWC before net_flux addition in lyr 4:  0.36698   0.57549   0.96000   1.92026   4.07976   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 4: 0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+Flux[5] = 0.0000004674	 Flux[6] = 0.0000056939
+net_flux[5] = -0.0000052265	
+SWC before net_flux addition in lyr 5:  0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 5: 0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+Flux[6] = 0.0000056939	 Flux[7] = -0.0001887134
+net_flux[6] = 0.0001944073	
+SWC before net_flux addition in lyr 6:  0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96216   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 6: 0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+Flux[7] = -0.0001887134	 Flux[8] = 0.0015472988
+net_flux[7] = -0.0017360121	
+SWC before net_flux addition in lyr 7:  0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.82052   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 7: 0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+Flux[8] = 0.0015472988	 Flux[9] = 0.0001542058
+net_flux[8] = 0.0013930930	
+SWC before net_flux addition in lyr 8:  0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09657   1.07648   1.02180   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 8: 0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07648   1.02180   0.11047   0.04806  
+
+Flux[9] = 0.0001542058	 Flux[10] = 0.0004445358
+net_flux[9] = -0.0002903300	
+SWC before net_flux addition in lyr 9:  0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07648   1.02180   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 9: 0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02180   0.11047   0.04806  
+
+Flux[10] = 0.0004445358	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004445358	
+SWC before net_flux addition in lyr 10:  0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02180   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 10: 0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04806  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 11: 0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04806  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04806  
+
+SWC after net_flux addition in lyr 12: 0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+cond[0] (cm/sec) = 0.0000084883	mpot[0] (cm) = -4114.14	hpot[0] (cm) = -4115.14	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095728	mpot[1] (cm) = -3157.36	hpot[1] (cm) = -3160.86	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095949	mpot[2] (cm) = -3140.71	hpot[2] (cm) = -3148.21	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095984	mpot[3] (cm) = -3138.10	hpot[3] (cm) = -3153.10	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132011	mpot[4] (cm) = -2189.89	hpot[4] (cm) = -2219.89	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202381	mpot[5] (cm) = -2189.25	hpot[5] (cm) = -2239.25	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092358	mpot[6] (cm) = -2436.77	hpot[6] (cm) = -2506.77	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001155305	mpot[7] (cm) = -318.81	hpot[7] (cm) = -408.81	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002346056	mpot[8] (cm) = -6415.90	hpot[8] (cm) = -6525.90	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002247429	mpot[9] (cm) = -6898.99	hpot[9] (cm) = -7028.99	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002001526	mpot[10] (cm) = -8312.47	hpot[10] (cm) = -8462.47	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111226	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861526	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0000933140
+net_flux[0] = -0.0013682459	
+SWC before net_flux addition in lyr 0:  0.36698   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+SWC after net_flux addition in lyr 0: 0.36561   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+Flux[1] = -0.0000933140	 Flux[2] = -0.0000008736
+net_flux[1] = -0.0000924403	
+SWC before net_flux addition in lyr 1:  0.36561   0.57549   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+SWC after net_flux addition in lyr 1: 0.36561   0.57539   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+Flux[2] = -0.0000008736	 Flux[3] = 0.0000001803
+net_flux[2] = -0.0000010539	
+SWC before net_flux addition in lyr 2:  0.36561   0.57539   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+SWC after net_flux addition in lyr 2: 0.36561   0.57539   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+Flux[3] = 0.0000001803	 Flux[4] = -0.0000215013
+net_flux[3] = 0.0000216817	
+SWC before net_flux addition in lyr 3:  0.36561   0.57539   0.96000   1.92026   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+SWC after net_flux addition in lyr 3: 0.36561   0.57539   0.96000   1.92028   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+Flux[4] = -0.0000215013	 Flux[5] = 0.0000004661
+net_flux[4] = -0.0000219675	
+SWC before net_flux addition in lyr 4:  0.36561   0.57539   0.96000   1.92028   4.07974   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+SWC after net_flux addition in lyr 4: 0.36561   0.57539   0.96000   1.92028   4.07971   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+Flux[5] = 0.0000004661	 Flux[6] = 0.0000056771
+net_flux[5] = -0.0000052109	
+SWC before net_flux addition in lyr 5:  0.36561   0.57539   0.96000   1.92028   4.07971   4.07994   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+SWC after net_flux addition in lyr 5: 0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+Flux[6] = 0.0000056771	 Flux[7] = -0.0001884636
+net_flux[6] = 0.0001941407	
+SWC before net_flux addition in lyr 6:  0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96235   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+SWC after net_flux addition in lyr 6: 0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+Flux[7] = -0.0001884636	 Flux[8] = 0.0015421065
+net_flux[7] = -0.0017305701	
+SWC before net_flux addition in lyr 7:  0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81878   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+SWC after net_flux addition in lyr 7: 0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+Flux[8] = 0.0015421065	 Flux[9] = 0.0001663872
+net_flux[8] = 0.0013757192	
+SWC before net_flux addition in lyr 8:  0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09797   1.07619   1.02224   0.11047   0.04807  
+
+SWC after net_flux addition in lyr 8: 0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07619   1.02224   0.11047   0.04807  
+
+Flux[9] = 0.0001663872	 Flux[10] = 0.0004385377
+net_flux[9] = -0.0002721504	
+SWC before net_flux addition in lyr 9:  0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07619   1.02224   0.11047   0.04807  
+
+SWC after net_flux addition in lyr 9: 0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02224   0.11047   0.04807  
+
+Flux[10] = 0.0004385377	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004385377	
+SWC before net_flux addition in lyr 10:  0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02224   0.11047   0.04807  
+
+SWC after net_flux addition in lyr 10: 0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11047   0.04807  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11047   0.04807  
+
+SWC after net_flux addition in lyr 11: 0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 12: 0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+cond[0] (cm/sec) = 0.0000083989	mpot[0] (cm) = -4206.66	hpot[0] (cm) = -4207.66	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095689	mpot[1] (cm) = -3160.38	hpot[1] (cm) = -3163.88	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095949	mpot[2] (cm) = -3140.73	hpot[2] (cm) = -3148.23	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095987	mpot[3] (cm) = -3137.89	hpot[3] (cm) = -3152.89	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132009	mpot[4] (cm) = -2189.96	hpot[4] (cm) = -2219.96	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202380	mpot[5] (cm) = -2189.27	hpot[5] (cm) = -2239.27	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092368	mpot[6] (cm) = -2435.99	hpot[6] (cm) = -2505.99	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001154521	mpot[7] (cm) = -319.50	hpot[7] (cm) = -409.50	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002352275	mpot[8] (cm) = -6386.85	hpot[8] (cm) = -6496.85	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002246195	mpot[9] (cm) = -6905.32	hpot[9] (cm) = -7035.32	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002003535	mpot[10] (cm) = -8299.56	hpot[10] (cm) = -8449.56	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111203	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861549	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0001009908
+net_flux[0] = -0.0013605691	
+SWC before net_flux addition in lyr 0:  0.36561   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 0: 0.36425   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+Flux[1] = -0.0001009908	 Flux[2] = -0.0000010805
+net_flux[1] = -0.0000999103	
+SWC before net_flux addition in lyr 1:  0.36425   0.57539   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 1: 0.36425   0.57529   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+Flux[2] = -0.0000010805	 Flux[3] = 0.0000001717
+net_flux[2] = -0.0000012522	
+SWC before net_flux addition in lyr 2:  0.36425   0.57529   0.96000   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 2: 0.36425   0.57529   0.95999   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+Flux[3] = 0.0000001717	 Flux[4] = -0.0000214949
+net_flux[3] = 0.0000216666	
+SWC before net_flux addition in lyr 3:  0.36425   0.57529   0.95999   1.92028   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 3: 0.36425   0.57529   0.95999   1.92030   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+Flux[4] = -0.0000214949	 Flux[5] = 0.0000004649
+net_flux[4] = -0.0000219597	
+SWC before net_flux addition in lyr 4:  0.36425   0.57529   0.95999   1.92030   4.07971   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 4: 0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+Flux[5] = 0.0000004649	 Flux[6] = 0.0000056603
+net_flux[5] = -0.0000051954	
+SWC before net_flux addition in lyr 5:  0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 5: 0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+Flux[6] = 0.0000056603	 Flux[7] = -0.0001882147
+net_flux[6] = 0.0001938750	
+SWC before net_flux addition in lyr 6:  0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96255   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 6: 0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+Flux[7] = -0.0001882147	 Flux[8] = 0.0015369914
+net_flux[7] = -0.0017252061	
+SWC before net_flux addition in lyr 7:  0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81705   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 7: 0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+Flux[8] = 0.0015369914	 Flux[9] = 0.0001782810
+net_flux[8] = 0.0013587104	
+SWC before net_flux addition in lyr 8:  0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.09934   1.07592   1.02268   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 8: 0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07592   1.02268   0.11046   0.04807  
+
+Flux[9] = 0.0001782810	 Flux[10] = 0.0004327304
+net_flux[9] = -0.0002544494	
+SWC before net_flux addition in lyr 9:  0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07592   1.02268   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 9: 0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02268   0.11046   0.04807  
+
+Flux[10] = 0.0004327304	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004327304	
+SWC before net_flux addition in lyr 10:  0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02268   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 10: 0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04807  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 11: 0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04807  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04807  
+
+SWC after net_flux addition in lyr 12: 0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+cond[0] (cm/sec) = 0.0000083099	mpot[0] (cm) = -4301.09	hpot[0] (cm) = -4302.09	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095645	mpot[1] (cm) = -3163.65	hpot[1] (cm) = -3167.15	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095948	mpot[2] (cm) = -3140.75	hpot[2] (cm) = -3148.25	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095989	mpot[3] (cm) = -3137.68	hpot[3] (cm) = -3152.68	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132008	mpot[4] (cm) = -2190.03	hpot[4] (cm) = -2220.03	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202380	mpot[5] (cm) = -2189.29	hpot[5] (cm) = -2239.29	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092379	mpot[6] (cm) = -2435.21	hpot[6] (cm) = -2505.21	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001153740	mpot[7] (cm) = -320.19	hpot[7] (cm) = -410.19	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002358416	mpot[8] (cm) = -6358.33	hpot[8] (cm) = -6468.33	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002245040	mpot[9] (cm) = -6911.24	hpot[9] (cm) = -7041.24	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002005517	mpot[10] (cm) = -8286.85	hpot[10] (cm) = -8436.85	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111180	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861572	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0001086472
+net_flux[0] = -0.0013529127	
+SWC before net_flux addition in lyr 0:  0.36425   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+SWC after net_flux addition in lyr 0: 0.36289   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+Flux[1] = -0.0001086472	 Flux[2] = -0.0000013041
+net_flux[1] = -0.0001073430	
+SWC before net_flux addition in lyr 1:  0.36289   0.57529   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+SWC after net_flux addition in lyr 1: 0.36289   0.57519   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+Flux[2] = -0.0000013041	 Flux[3] = 0.0000001630
+net_flux[2] = -0.0000014672	
+SWC before net_flux addition in lyr 2:  0.36289   0.57519   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+SWC after net_flux addition in lyr 2: 0.36289   0.57519   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+Flux[3] = 0.0000001630	 Flux[4] = -0.0000214884
+net_flux[3] = 0.0000216514	
+SWC before net_flux addition in lyr 3:  0.36289   0.57519   0.95999   1.92030   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+SWC after net_flux addition in lyr 3: 0.36289   0.57519   0.95999   1.92033   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+Flux[4] = -0.0000214884	 Flux[5] = 0.0000004636
+net_flux[4] = -0.0000219519	
+SWC before net_flux addition in lyr 4:  0.36289   0.57519   0.95999   1.92033   4.07969   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+SWC after net_flux addition in lyr 4: 0.36289   0.57519   0.95999   1.92033   4.07967   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+Flux[5] = 0.0000004636	 Flux[6] = 0.0000056435
+net_flux[5] = -0.0000051799	
+SWC before net_flux addition in lyr 5:  0.36289   0.57519   0.95999   1.92033   4.07967   4.07993   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+SWC after net_flux addition in lyr 5: 0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+Flux[6] = 0.0000056435	 Flux[7] = -0.0001879663
+net_flux[6] = 0.0001936098	
+SWC before net_flux addition in lyr 6:  0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96274   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+SWC after net_flux addition in lyr 6: 0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+Flux[7] = -0.0001879663	 Flux[8] = 0.0015319534
+net_flux[7] = -0.0017199197	
+SWC before net_flux addition in lyr 7:  0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81533   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+SWC after net_flux addition in lyr 7: 0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+Flux[8] = 0.0015319534	 Flux[9] = 0.0001898920
+net_flux[8] = 0.0013420614	
+SWC before net_flux addition in lyr 8:  0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10070   1.07566   1.02311   0.11046   0.04808  
+
+SWC after net_flux addition in lyr 8: 0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07566   1.02311   0.11046   0.04808  
+
+Flux[9] = 0.0001898920	 Flux[10] = 0.0004271106
+net_flux[9] = -0.0002372186	
+SWC before net_flux addition in lyr 9:  0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07566   1.02311   0.11046   0.04808  
+
+SWC after net_flux addition in lyr 9: 0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02311   0.11046   0.04808  
+
+Flux[10] = 0.0004271106	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004271106	
+SWC before net_flux addition in lyr 10:  0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02311   0.11046   0.04808  
+
+SWC after net_flux addition in lyr 10: 0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11046   0.04808  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11046   0.04808  
+
+SWC after net_flux addition in lyr 11: 0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04808  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04808  
+
+SWC after net_flux addition in lyr 12: 0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+cond[0] (cm/sec) = 0.0000082213	mpot[0] (cm) = -4397.45	hpot[0] (cm) = -4398.45	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095599	mpot[1] (cm) = -3167.17	hpot[1] (cm) = -3170.67	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095948	mpot[2] (cm) = -3140.78	hpot[2] (cm) = -3148.28	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095992	mpot[3] (cm) = -3137.47	hpot[3] (cm) = -3152.47	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132006	mpot[4] (cm) = -2190.10	hpot[4] (cm) = -2220.10	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202379	mpot[5] (cm) = -2189.30	hpot[5] (cm) = -2239.30	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092389	mpot[6] (cm) = -2434.43	hpot[6] (cm) = -2504.43	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001152962	mpot[7] (cm) = -320.88	hpot[7] (cm) = -410.88	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002364481	mpot[8] (cm) = -6330.31	hpot[8] (cm) = -6440.31	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002243964	mpot[9] (cm) = -6916.77	hpot[9] (cm) = -7046.77	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002007472	mpot[10] (cm) = -8274.32	hpot[10] (cm) = -8424.32	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111157	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861595	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0001162818
+net_flux[0] = -0.0013452781	
+SWC before net_flux addition in lyr 0:  0.36289   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 0: 0.36155   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+Flux[1] = -0.0001162818	 Flux[2] = -0.0000015446
+net_flux[1] = -0.0001147372	
+SWC before net_flux addition in lyr 1:  0.36155   0.57519   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 1: 0.36155   0.57507   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+Flux[2] = -0.0000015446	 Flux[3] = 0.0000001543
+net_flux[2] = -0.0000016989	
+SWC before net_flux addition in lyr 2:  0.36155   0.57507   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 2: 0.36155   0.57507   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+Flux[3] = 0.0000001543	 Flux[4] = -0.0000214819
+net_flux[3] = 0.0000216362	
+SWC before net_flux addition in lyr 3:  0.36155   0.57507   0.95999   1.92033   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 3: 0.36155   0.57507   0.95999   1.92035   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+Flux[4] = -0.0000214819	 Flux[5] = 0.0000004622
+net_flux[4] = -0.0000219441	
+SWC before net_flux addition in lyr 4:  0.36155   0.57507   0.95999   1.92035   4.07967   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 4: 0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+Flux[5] = 0.0000004622	 Flux[6] = 0.0000056268
+net_flux[5] = -0.0000051646	
+SWC before net_flux addition in lyr 5:  0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 5: 0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+Flux[6] = 0.0000056268	 Flux[7] = -0.0001877187
+net_flux[6] = 0.0001933455	
+SWC before net_flux addition in lyr 6:  0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96293   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 6: 0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+Flux[7] = -0.0001877187	 Flux[8] = 0.0015269887
+net_flux[7] = -0.0017147073	
+SWC before net_flux addition in lyr 7:  0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81361   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 7: 0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+Flux[8] = 0.0015269887	 Flux[9] = 0.0002012277
+net_flux[8] = 0.0013257610	
+SWC before net_flux addition in lyr 8:  0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10204   1.07543   1.02354   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 8: 0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07543   1.02354   0.11045   0.04809  
+
+Flux[9] = 0.0002012277	 Flux[10] = 0.0004216743
+net_flux[9] = -0.0002204467	
+SWC before net_flux addition in lyr 9:  0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07543   1.02354   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 9: 0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02354   0.11045   0.04809  
+
+Flux[10] = 0.0004216743	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004216743	
+SWC before net_flux addition in lyr 10:  0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02354   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 10: 0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 11: 0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 12: 0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+cond[0] (cm/sec) = 0.0000081331	mpot[0] (cm) = -4495.77	hpot[0] (cm) = -4496.77	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095550	mpot[1] (cm) = -3170.94	hpot[1] (cm) = -3174.44	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095948	mpot[2] (cm) = -3140.81	hpot[2] (cm) = -3148.31	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095995	mpot[3] (cm) = -3137.26	hpot[3] (cm) = -3152.26	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132005	mpot[4] (cm) = -2190.17	hpot[4] (cm) = -2220.17	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202379	mpot[5] (cm) = -2189.32	hpot[5] (cm) = -2239.32	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092400	mpot[6] (cm) = -2433.65	hpot[6] (cm) = -2503.65	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001152185	mpot[7] (cm) = -321.57	hpot[7] (cm) = -411.57	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002370471	mpot[8] (cm) = -6302.79	hpot[8] (cm) = -6412.79	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002242964	mpot[9] (cm) = -6921.91	hpot[9] (cm) = -7051.91	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002009403	mpot[10] (cm) = -8261.98	hpot[10] (cm) = -8411.98	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111134	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861618	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0001238942
+net_flux[0] = -0.0013376657	
+SWC before net_flux addition in lyr 0:  0.36155   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 0: 0.36021   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+Flux[1] = -0.0001238942	 Flux[2] = -0.0000018017
+net_flux[1] = -0.0001220925	
+SWC before net_flux addition in lyr 1:  0.36021   0.57507   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 1: 0.36021   0.57495   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+Flux[2] = -0.0000018017	 Flux[3] = 0.0000001453
+net_flux[2] = -0.0000019470	
+SWC before net_flux addition in lyr 2:  0.36021   0.57495   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 2: 0.36021   0.57495   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+Flux[3] = 0.0000001453	 Flux[4] = -0.0000214754
+net_flux[3] = 0.0000216207	
+SWC before net_flux addition in lyr 3:  0.36021   0.57495   0.95999   1.92035   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 3: 0.36021   0.57495   0.95999   1.92037   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+Flux[4] = -0.0000214754	 Flux[5] = 0.0000004609
+net_flux[4] = -0.0000219364	
+SWC before net_flux addition in lyr 4:  0.36021   0.57495   0.95999   1.92037   4.07965   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 4: 0.36021   0.57495   0.95999   1.92037   4.07963   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+Flux[5] = 0.0000004609	 Flux[6] = 0.0000056101
+net_flux[5] = -0.0000051492	
+SWC before net_flux addition in lyr 5:  0.36021   0.57495   0.95999   1.92037   4.07963   4.07992   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 5: 0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+Flux[6] = 0.0000056101	 Flux[7] = -0.0001874717
+net_flux[6] = 0.0001930818	
+SWC before net_flux addition in lyr 6:  0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96313   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 6: 0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+Flux[7] = -0.0001874717	 Flux[8] = 0.0015220969
+net_flux[7] = -0.0017095686	
+SWC before net_flux addition in lyr 7:  0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81189   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 7: 0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+Flux[8] = 0.0015220969	 Flux[9] = 0.0002122938
+net_flux[8] = 0.0013098031	
+SWC before net_flux addition in lyr 8:  0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10337   1.07521   1.02396   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 8: 0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07521   1.02396   0.11045   0.04809  
+
+Flux[9] = 0.0002122938	 Flux[10] = 0.0004164148
+net_flux[9] = -0.0002041210	
+SWC before net_flux addition in lyr 9:  0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07521   1.02396   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 9: 0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02396   0.11045   0.04809  
+
+Flux[10] = 0.0004164148	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004164148	
+SWC before net_flux addition in lyr 10:  0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02396   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 10: 0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11045   0.04809  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11045   0.04809  
+
+SWC after net_flux addition in lyr 11: 0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04809  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04809  
+
+SWC after net_flux addition in lyr 12: 0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+cond[0] (cm/sec) = 0.0000080454	mpot[0] (cm) = -4596.10	hpot[0] (cm) = -4597.10	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095497	mpot[1] (cm) = -3174.95	hpot[1] (cm) = -3178.45	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095947	mpot[2] (cm) = -3140.85	hpot[2] (cm) = -3148.35	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000095998	mpot[3] (cm) = -3137.05	hpot[3] (cm) = -3152.05	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132003	mpot[4] (cm) = -2190.25	hpot[4] (cm) = -2220.25	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202378	mpot[5] (cm) = -2189.34	hpot[5] (cm) = -2239.34	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092411	mpot[6] (cm) = -2432.87	hpot[6] (cm) = -2502.87	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001151411	mpot[7] (cm) = -322.26	hpot[7] (cm) = -412.26	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002376387	mpot[8] (cm) = -6275.75	hpot[8] (cm) = -6385.75	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002242038	mpot[9] (cm) = -6926.67	hpot[9] (cm) = -7056.67	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002011309	mpot[10] (cm) = -8249.82	hpot[10] (cm) = -8399.82	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111112	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861640	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0001314847
+net_flux[0] = -0.0013300752	
+SWC before net_flux addition in lyr 0:  0.36021   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+SWC after net_flux addition in lyr 0: 0.35888   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+Flux[1] = -0.0001314847	 Flux[2] = -0.0000020753
+net_flux[1] = -0.0001294094	
+SWC before net_flux addition in lyr 1:  0.35888   0.57495   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+SWC after net_flux addition in lyr 1: 0.35888   0.57482   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+Flux[2] = -0.0000020753	 Flux[3] = 0.0000001361
+net_flux[2] = -0.0000022114	
+SWC before net_flux addition in lyr 2:  0.35888   0.57482   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+SWC after net_flux addition in lyr 2: 0.35888   0.57482   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+Flux[3] = 0.0000001361	 Flux[4] = -0.0000214689
+net_flux[3] = 0.0000216051	
+SWC before net_flux addition in lyr 3:  0.35888   0.57482   0.95999   1.92037   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+SWC after net_flux addition in lyr 3: 0.35888   0.57482   0.95999   1.92039   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+Flux[4] = -0.0000214689	 Flux[5] = 0.0000004596
+net_flux[4] = -0.0000219286	
+SWC before net_flux addition in lyr 4:  0.35888   0.57482   0.95999   1.92039   4.07963   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+SWC after net_flux addition in lyr 4: 0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+Flux[5] = 0.0000004596	 Flux[6] = 0.0000055935
+net_flux[5] = -0.0000051338	
+SWC before net_flux addition in lyr 5:  0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+SWC after net_flux addition in lyr 5: 0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+Flux[6] = 0.0000055935	 Flux[7] = -0.0001872254
+net_flux[6] = 0.0001928189	
+SWC before net_flux addition in lyr 6:  0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96332   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+SWC after net_flux addition in lyr 6: 0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+Flux[7] = -0.0001872254	 Flux[8] = 0.0015172754
+net_flux[7] = -0.0017045008	
+SWC before net_flux addition in lyr 7:  0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.81018   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+SWC after net_flux addition in lyr 7: 0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+Flux[8] = 0.0015172754	 Flux[9] = 0.0002231005
+net_flux[8] = 0.0012941749	
+SWC before net_flux addition in lyr 8:  0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10468   1.07500   1.02438   0.11044   0.04810  
+
+SWC after net_flux addition in lyr 8: 0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07500   1.02438   0.11044   0.04810  
+
+Flux[9] = 0.0002231005	 Flux[10] = 0.0004113256
+net_flux[9] = -0.0001882251	
+SWC before net_flux addition in lyr 9:  0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07500   1.02438   0.11044   0.04810  
+
+SWC after net_flux addition in lyr 9: 0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02438   0.11044   0.04810  
+
+Flux[10] = 0.0004113256	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004113256	
+SWC before net_flux addition in lyr 10:  0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02438   0.11044   0.04810  
+
+SWC after net_flux addition in lyr 10: 0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11044   0.04810  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11044   0.04810  
+
+SWC after net_flux addition in lyr 11: 0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 12: 0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+cond[0] (cm/sec) = 0.0000079581	mpot[0] (cm) = -4698.45	hpot[0] (cm) = -4699.45	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095441	mpot[1] (cm) = -3179.20	hpot[1] (cm) = -3182.70	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095947	mpot[2] (cm) = -3140.89	hpot[2] (cm) = -3148.39	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000096001	mpot[3] (cm) = -3136.84	hpot[3] (cm) = -3151.84	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132002	mpot[4] (cm) = -2190.31	hpot[4] (cm) = -2220.31	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202377	mpot[5] (cm) = -2189.35	hpot[5] (cm) = -2239.35	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092421	mpot[6] (cm) = -2432.09	hpot[6] (cm) = -2502.09	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001150639	mpot[7] (cm) = -322.95	hpot[7] (cm) = -412.95	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002382233	mpot[8] (cm) = -6249.18	hpot[8] (cm) = -6359.18	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002241183	mpot[9] (cm) = -6931.07	hpot[9] (cm) = -7061.07	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002013192	mpot[10] (cm) = -8237.82	hpot[10] (cm) = -8387.82	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111089	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861664	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0001390508
+net_flux[0] = -0.0013225091	
+SWC before net_flux addition in lyr 0:  0.35888   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 0: 0.35756   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+Flux[1] = -0.0001390508	 Flux[2] = -0.0000023654
+net_flux[1] = -0.0001366854	
+SWC before net_flux addition in lyr 1:  0.35756   0.57482   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 1: 0.35756   0.57468   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+Flux[2] = -0.0000023654	 Flux[3] = 0.0000001269
+net_flux[2] = -0.0000024922	
+SWC before net_flux addition in lyr 2:  0.35756   0.57468   0.95999   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 2: 0.35756   0.57468   0.95998   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+Flux[3] = 0.0000001269	 Flux[4] = -0.0000214625
+net_flux[3] = 0.0000215894	
+SWC before net_flux addition in lyr 3:  0.35756   0.57468   0.95998   1.92039   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 3: 0.35756   0.57468   0.95998   1.92041   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+Flux[4] = -0.0000214625	 Flux[5] = 0.0000004584
+net_flux[4] = -0.0000219209	
+SWC before net_flux addition in lyr 4:  0.35756   0.57468   0.95998   1.92041   4.07960   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 4: 0.35756   0.57468   0.95998   1.92041   4.07958   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+Flux[5] = 0.0000004584	 Flux[6] = 0.0000055768
+net_flux[5] = -0.0000051184	
+SWC before net_flux addition in lyr 5:  0.35756   0.57468   0.95998   1.92041   4.07958   4.07991   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 5: 0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+Flux[6] = 0.0000055768	 Flux[7] = -0.0001869796
+net_flux[6] = 0.0001925564	
+SWC before net_flux addition in lyr 6:  0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96351   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 6: 0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+Flux[7] = -0.0001869796	 Flux[8] = 0.0015125234
+net_flux[7] = -0.0016995030	
+SWC before net_flux addition in lyr 7:  0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80848   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 7: 0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+Flux[8] = 0.0015125234	 Flux[9] = 0.0002336497
+net_flux[8] = 0.0012788737	
+SWC before net_flux addition in lyr 8:  0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10597   1.07481   1.02479   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 8: 0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07481   1.02479   0.11043   0.04810  
+
+Flux[9] = 0.0002336497	 Flux[10] = 0.0004064034
+net_flux[9] = -0.0001727537	
+SWC before net_flux addition in lyr 9:  0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07481   1.02479   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 9: 0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02479   0.11043   0.04810  
+
+Flux[10] = 0.0004064034	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004064034	
+SWC before net_flux addition in lyr 10:  0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02479   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 10: 0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04810  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 11: 0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04810  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04810  
+
+SWC after net_flux addition in lyr 12: 0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+cond[0] (cm/sec) = 0.0000078712	mpot[0] (cm) = -4802.87	hpot[0] (cm) = -4803.87	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095382	mpot[1] (cm) = -3183.71	hpot[1] (cm) = -3187.21	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095946	mpot[2] (cm) = -3140.94	hpot[2] (cm) = -3148.44	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000096003	mpot[3] (cm) = -3136.63	hpot[3] (cm) = -3151.63	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000132000	mpot[4] (cm) = -2190.39	hpot[4] (cm) = -2220.39	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202377	mpot[5] (cm) = -2189.37	hpot[5] (cm) = -2239.37	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092432	mpot[6] (cm) = -2431.32	hpot[6] (cm) = -2501.32	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001149870	mpot[7] (cm) = -323.63	hpot[7] (cm) = -413.63	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002388007	mpot[8] (cm) = -6223.06	hpot[8] (cm) = -6333.06	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002240399	mpot[9] (cm) = -6935.11	hpot[9] (cm) = -7065.11	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002015053	mpot[10] (cm) = -8225.99	hpot[10] (cm) = -8375.99	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111066	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861687	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0001465924
+net_flux[0] = -0.0013149675	
+SWC before net_flux addition in lyr 0:  0.35756   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+SWC after net_flux addition in lyr 0: 0.35624   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+Flux[1] = -0.0001465924	 Flux[2] = -0.0000026721
+net_flux[1] = -0.0001439203	
+SWC before net_flux addition in lyr 1:  0.35624   0.57468   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+SWC after net_flux addition in lyr 1: 0.35624   0.57454   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+Flux[2] = -0.0000026721	 Flux[3] = 0.0000001173
+net_flux[2] = -0.0000027894	
+SWC before net_flux addition in lyr 2:  0.35624   0.57454   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+SWC after net_flux addition in lyr 2: 0.35624   0.57454   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+Flux[3] = 0.0000001173	 Flux[4] = -0.0000214560
+net_flux[3] = 0.0000215733	
+SWC before net_flux addition in lyr 3:  0.35624   0.57454   0.95998   1.92041   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+SWC after net_flux addition in lyr 3: 0.35624   0.57454   0.95998   1.92043   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+Flux[4] = -0.0000214560	 Flux[5] = 0.0000004571
+net_flux[4] = -0.0000219131	
+SWC before net_flux addition in lyr 4:  0.35624   0.57454   0.95998   1.92043   4.07958   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+SWC after net_flux addition in lyr 4: 0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+Flux[5] = 0.0000004571	 Flux[6] = 0.0000055602
+net_flux[5] = -0.0000051032	
+SWC before net_flux addition in lyr 5:  0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+SWC after net_flux addition in lyr 5: 0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+Flux[6] = 0.0000055602	 Flux[7] = -0.0001867347
+net_flux[6] = 0.0001922949	
+SWC before net_flux addition in lyr 6:  0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96370   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+SWC after net_flux addition in lyr 6: 0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+Flux[7] = -0.0001867347	 Flux[8] = 0.0015078384
+net_flux[7] = -0.0016945730	
+SWC before net_flux addition in lyr 7:  0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80678   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+SWC after net_flux addition in lyr 7: 0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+Flux[8] = 0.0015078384	 Flux[9] = 0.0002439506
+net_flux[8] = 0.0012638877	
+SWC before net_flux addition in lyr 8:  0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10725   1.07464   1.02520   0.11043   0.04811  
+
+SWC after net_flux addition in lyr 8: 0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07464   1.02520   0.11043   0.04811  
+
+Flux[9] = 0.0002439506	 Flux[10] = 0.0004016450
+net_flux[9] = -0.0001576944	
+SWC before net_flux addition in lyr 9:  0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07464   1.02520   0.11043   0.04811  
+
+SWC after net_flux addition in lyr 9: 0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02520   0.11043   0.04811  
+
+Flux[10] = 0.0004016450	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0004016450	
+SWC before net_flux addition in lyr 10:  0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02520   0.11043   0.04811  
+
+SWC after net_flux addition in lyr 10: 0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11043   0.04811  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11043   0.04811  
+
+SWC after net_flux addition in lyr 11: 0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 12: 0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+cond[0] (cm/sec) = 0.0000077847	mpot[0] (cm) = -4909.40	hpot[0] (cm) = -4910.40	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095320	mpot[1] (cm) = -3188.46	hpot[1] (cm) = -3191.96	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095945	mpot[2] (cm) = -3141.00	hpot[2] (cm) = -3148.50	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000096006	mpot[3] (cm) = -3136.42	hpot[3] (cm) = -3151.42	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000131999	mpot[4] (cm) = -2190.46	hpot[4] (cm) = -2220.46	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202376	mpot[5] (cm) = -2189.38	hpot[5] (cm) = -2239.38	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092442	mpot[6] (cm) = -2430.55	hpot[6] (cm) = -2500.55	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001149103	mpot[7] (cm) = -324.32	hpot[7] (cm) = -414.32	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002393713	mpot[8] (cm) = -6197.38	hpot[8] (cm) = -6307.38	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002239684	mpot[9] (cm) = -6938.79	hpot[9] (cm) = -7068.79	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002016891	mpot[10] (cm) = -8214.32	hpot[10] (cm) = -8364.32	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111043	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861710	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0001541089
+net_flux[0] = -0.0013074510	
+SWC before net_flux addition in lyr 0:  0.35624   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 0: 0.35494   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+Flux[1] = -0.0001541089	 Flux[2] = -0.0000029950
+net_flux[1] = -0.0001511139	
+SWC before net_flux addition in lyr 1:  0.35494   0.57454   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 1: 0.35494   0.57439   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+Flux[2] = -0.0000029950	 Flux[3] = 0.0000001075
+net_flux[2] = -0.0000031025	
+SWC before net_flux addition in lyr 2:  0.35494   0.57439   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 2: 0.35494   0.57439   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+Flux[3] = 0.0000001075	 Flux[4] = -0.0000214495
+net_flux[3] = 0.0000215570	
+SWC before net_flux addition in lyr 3:  0.35494   0.57439   0.95998   1.92043   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 3: 0.35494   0.57439   0.95998   1.92046   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+Flux[4] = -0.0000214495	 Flux[5] = 0.0000004557
+net_flux[4] = -0.0000219052	
+SWC before net_flux addition in lyr 4:  0.35494   0.57439   0.95998   1.92046   4.07956   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 4: 0.35494   0.57439   0.95998   1.92046   4.07954   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+Flux[5] = 0.0000004557	 Flux[6] = 0.0000055437
+net_flux[5] = -0.0000050880	
+SWC before net_flux addition in lyr 5:  0.35494   0.57439   0.95998   1.92046   4.07954   4.07990   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 5: 0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+Flux[6] = 0.0000055437	 Flux[7] = -0.0001864903
+net_flux[6] = 0.0001920340	
+SWC before net_flux addition in lyr 6:  0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96390   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 6: 0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+Flux[7] = -0.0001864903	 Flux[8] = 0.0015032178
+net_flux[7] = -0.0016897081	
+SWC before net_flux addition in lyr 7:  0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80509   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 7: 0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+Flux[8] = 0.0015032178	 Flux[9] = 0.0002540107
+net_flux[8] = 0.0012492071	
+SWC before net_flux addition in lyr 8:  0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10852   1.07448   1.02560   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 8: 0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07448   1.02560   0.11042   0.04811  
+
+Flux[9] = 0.0002540107	 Flux[10] = 0.0003970443
+net_flux[9] = -0.0001430336	
+SWC before net_flux addition in lyr 9:  0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07448   1.02560   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 9: 0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02560   0.11042   0.04811  
+
+Flux[10] = 0.0003970443	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0003970443	
+SWC before net_flux addition in lyr 10:  0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02560   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 10: 0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04811  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 11: 0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04811  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04811  
+
+SWC after net_flux addition in lyr 12: 0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+cond[0] (cm/sec) = 0.0000076986	mpot[0] (cm) = -5018.06	hpot[0] (cm) = -5019.06	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095255	mpot[1] (cm) = -3193.46	hpot[1] (cm) = -3196.96	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095944	mpot[2] (cm) = -3141.06	hpot[2] (cm) = -3148.56	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000096009	mpot[3] (cm) = -3136.21	hpot[3] (cm) = -3151.21	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000131997	mpot[4] (cm) = -2190.53	hpot[4] (cm) = -2220.53	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202376	mpot[5] (cm) = -2189.40	hpot[5] (cm) = -2239.40	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092453	mpot[6] (cm) = -2429.78	hpot[6] (cm) = -2499.78	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001148337	mpot[7] (cm) = -325.01	hpot[7] (cm) = -415.01	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002399351	mpot[8] (cm) = -6172.14	hpot[8] (cm) = -6282.14	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002239035	mpot[9] (cm) = -6942.15	hpot[9] (cm) = -7072.15	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002018708	mpot[10] (cm) = -8202.81	hpot[10] (cm) = -8352.81	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002111020	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861733	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0001615990
+net_flux[0] = -0.0012999609	
+SWC before net_flux addition in lyr 0:  0.35494   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+SWC after net_flux addition in lyr 0: 0.35364   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+Flux[1] = -0.0001615990	 Flux[2] = -0.0000033343
+net_flux[1] = -0.0001582647	
+SWC before net_flux addition in lyr 1:  0.35364   0.57439   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+SWC after net_flux addition in lyr 1: 0.35364   0.57423   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+Flux[2] = -0.0000033343	 Flux[3] = 0.0000000976
+net_flux[2] = -0.0000034318	
+SWC before net_flux addition in lyr 2:  0.35364   0.57423   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+SWC after net_flux addition in lyr 2: 0.35364   0.57423   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+Flux[3] = 0.0000000976	 Flux[4] = -0.0000214431
+net_flux[3] = 0.0000215407	
+SWC before net_flux addition in lyr 3:  0.35364   0.57423   0.95998   1.92046   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+SWC after net_flux addition in lyr 3: 0.35364   0.57423   0.95998   1.92048   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+Flux[4] = -0.0000214431	 Flux[5] = 0.0000004544
+net_flux[4] = -0.0000218976	
+SWC before net_flux addition in lyr 4:  0.35364   0.57423   0.95998   1.92048   4.07954   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+SWC after net_flux addition in lyr 4: 0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+Flux[5] = 0.0000004544	 Flux[6] = 0.0000055272
+net_flux[5] = -0.0000050727	
+SWC before net_flux addition in lyr 5:  0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+SWC after net_flux addition in lyr 5: 0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+Flux[6] = 0.0000055272	 Flux[7] = -0.0001862466
+net_flux[6] = 0.0001917737	
+SWC before net_flux addition in lyr 6:  0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96409   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+SWC after net_flux addition in lyr 6: 0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+Flux[7] = -0.0001862466	 Flux[8] = 0.0014986606
+net_flux[7] = -0.0016849072	
+SWC before net_flux addition in lyr 7:  0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80340   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+SWC after net_flux addition in lyr 7: 0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+Flux[8] = 0.0014986606	 Flux[9] = 0.0002638344
+net_flux[8] = 0.0012348262	
+SWC before net_flux addition in lyr 8:  0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.10976   1.07434   1.02599   0.11042   0.04812  
+
+SWC after net_flux addition in lyr 8: 0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07434   1.02599   0.11042   0.04812  
+
+Flux[9] = 0.0002638344	 Flux[10] = 0.0003925961
+net_flux[9] = -0.0001287617	
+SWC before net_flux addition in lyr 9:  0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07434   1.02599   0.11042   0.04812  
+
+SWC after net_flux addition in lyr 9: 0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02599   0.11042   0.04812  
+
+Flux[10] = 0.0003925961	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0003925961	
+SWC before net_flux addition in lyr 10:  0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02599   0.11042   0.04812  
+
+SWC after net_flux addition in lyr 10: 0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11042   0.04812  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11042   0.04812  
+
+SWC after net_flux addition in lyr 11: 0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04812  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04812  
+
+SWC after net_flux addition in lyr 12: 0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+cond[0] (cm/sec) = 0.0000076130	mpot[0] (cm) = -5128.89	hpot[0] (cm) = -5129.89	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095187	mpot[1] (cm) = -3198.70	hpot[1] (cm) = -3202.20	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095944	mpot[2] (cm) = -3141.12	hpot[2] (cm) = -3148.62	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000096012	mpot[3] (cm) = -3136.00	hpot[3] (cm) = -3151.00	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000131996	mpot[4] (cm) = -2190.60	hpot[4] (cm) = -2220.60	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202375	mpot[5] (cm) = -2189.42	hpot[5] (cm) = -2239.42	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092463	mpot[6] (cm) = -2429.01	hpot[6] (cm) = -2499.01	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001147574	mpot[7] (cm) = -325.70	hpot[7] (cm) = -415.70	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002404923	mpot[8] (cm) = -6147.32	hpot[8] (cm) = -6257.32	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002238450	mpot[9] (cm) = -6945.16	hpot[9] (cm) = -7075.16	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002020505	mpot[10] (cm) = -8191.44	hpot[10] (cm) = -8341.44	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002110998	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861756	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0001690614
+net_flux[0] = -0.0012924985	
+SWC before net_flux addition in lyr 0:  0.35364   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 0: 0.35234   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+Flux[1] = -0.0001690614	 Flux[2] = -0.0000036903
+net_flux[1] = -0.0001653711	
+SWC before net_flux addition in lyr 1:  0.35234   0.57423   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 1: 0.35234   0.57407   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+Flux[2] = -0.0000036903	 Flux[3] = 0.0000000874
+net_flux[2] = -0.0000037777	
+SWC before net_flux addition in lyr 2:  0.35234   0.57407   0.95998   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 2: 0.35234   0.57407   0.95997   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+Flux[3] = 0.0000000874	 Flux[4] = -0.0000214367
+net_flux[3] = 0.0000215241	
+SWC before net_flux addition in lyr 3:  0.35234   0.57407   0.95997   1.92048   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 3: 0.35234   0.57407   0.95997   1.92050   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+Flux[4] = -0.0000214367	 Flux[5] = 0.0000004532
+net_flux[4] = -0.0000218899	
+SWC before net_flux addition in lyr 4:  0.35234   0.57407   0.95997   1.92050   4.07952   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 4: 0.35234   0.57407   0.95997   1.92050   4.07949   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+Flux[5] = 0.0000004532	 Flux[6] = 0.0000055106
+net_flux[5] = -0.0000050574	
+SWC before net_flux addition in lyr 5:  0.35234   0.57407   0.95997   1.92050   4.07949   4.07989   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 5: 0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+Flux[6] = 0.0000055106	 Flux[7] = -0.0001860032
+net_flux[6] = 0.0001915138	
+SWC before net_flux addition in lyr 6:  0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96428   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 6: 0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+Flux[7] = -0.0001860032	 Flux[8] = 0.0014941678
+net_flux[7] = -0.0016801711	
+SWC before net_flux addition in lyr 7:  0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80171   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 7: 0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+Flux[8] = 0.0014941678	 Flux[9] = 0.0002734244
+net_flux[8] = 0.0012207435	
+SWC before net_flux addition in lyr 8:  0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11100   1.07421   1.02639   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 8: 0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07421   1.02639   0.11041   0.04813  
+
+Flux[9] = 0.0002734244	 Flux[10] = 0.0003882994
+net_flux[9] = -0.0001148750	
+SWC before net_flux addition in lyr 9:  0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07421   1.02639   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 9: 0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02639   0.11041   0.04813  
+
+Flux[10] = 0.0003882994	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0003882994	
+SWC before net_flux addition in lyr 10:  0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02639   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 10: 0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 11: 0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 12: 0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+cond[0] (cm/sec) = 0.0000075277	mpot[0] (cm) = -5241.94	hpot[0] (cm) = -5242.94	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095115	mpot[1] (cm) = -3204.19	hpot[1] (cm) = -3207.69	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095943	mpot[2] (cm) = -3141.20	hpot[2] (cm) = -3148.70	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000096014	mpot[3] (cm) = -3135.79	hpot[3] (cm) = -3150.79	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000131995	mpot[4] (cm) = -2190.66	hpot[4] (cm) = -2220.66	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202375	mpot[5] (cm) = -2189.43	hpot[5] (cm) = -2239.43	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092474	mpot[6] (cm) = -2428.23	hpot[6] (cm) = -2498.23	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001146813	mpot[7] (cm) = -326.39	hpot[7] (cm) = -416.39	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002410431	mpot[8] (cm) = -6122.90	hpot[8] (cm) = -6232.90	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002237929	mpot[9] (cm) = -6947.85	hpot[9] (cm) = -7077.85	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002022282	mpot[10] (cm) = -8180.23	hpot[10] (cm) = -8330.23	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002110975	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861779	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate = 0.0000004060
+
+Flux[0] = -0.0014615599	 Flux[1] = -0.0001764959
+net_flux[0] = -0.0012850640	
+SWC before net_flux addition in lyr 0:  0.35234   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 0: 0.35106   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+Flux[1] = -0.0001764959	 Flux[2] = -0.0000040619
+net_flux[1] = -0.0001724340	
+SWC before net_flux addition in lyr 1:  0.35106   0.57407   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 1: 0.35106   0.57389   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+Flux[2] = -0.0000040619	 Flux[3] = 0.0000000770
+net_flux[2] = -0.0000041389	
+SWC before net_flux addition in lyr 2:  0.35106   0.57389   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 2: 0.35106   0.57389   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+Flux[3] = 0.0000000770	 Flux[4] = -0.0000214303
+net_flux[3] = 0.0000215073	
+SWC before net_flux addition in lyr 3:  0.35106   0.57389   0.95997   1.92050   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 3: 0.35106   0.57389   0.95997   1.92052   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+Flux[4] = -0.0000214303	 Flux[5] = 0.0000004519
+net_flux[4] = -0.0000218821	
+SWC before net_flux addition in lyr 4:  0.35106   0.57389   0.95997   1.92052   4.07949   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 4: 0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+Flux[5] = 0.0000004519	 Flux[6] = 0.0000054941
+net_flux[5] = -0.0000050422	
+SWC before net_flux addition in lyr 5:  0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 5: 0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+Flux[6] = 0.0000054941	 Flux[7] = -0.0001857605
+net_flux[6] = 0.0001912546	
+SWC before net_flux addition in lyr 6:  0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96447   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 6: 0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+Flux[7] = -0.0001857605	 Flux[8] = 0.0014897338
+net_flux[7] = -0.0016754943	
+SWC before net_flux addition in lyr 7:  0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.80003   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 7: 0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+Flux[8] = 0.0014897338	 Flux[9] = 0.0002827926
+net_flux[8] = 0.0012069411	
+SWC before net_flux addition in lyr 8:  0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11222   1.07410   1.02678   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 8: 0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07410   1.02678   0.11041   0.04813  
+
+Flux[9] = 0.0002827926	 Flux[10] = 0.0003841461
+net_flux[9] = -0.0001013534	
+SWC before net_flux addition in lyr 9:  0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07410   1.02678   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 9: 0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02678   0.11041   0.04813  
+
+Flux[10] = 0.0003841461	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0003841461	
+SWC before net_flux addition in lyr 10:  0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02678   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 10: 0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11041   0.04813  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:  0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11041   0.04813  
+
+SWC after net_flux addition in lyr 11: 0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04813  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:  0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04813  
+
+SWC after net_flux addition in lyr 12: 0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+soilEvap = 0.0350774372
+After h2oflux:  0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+Exiting function watrflow
+Entering function watrflow
+Entering function trwtavg
+Exiting function trwtavg
+In watrflow after snowmodel/Cent: pptsoil=0.48000
+In watrflow after watrstcr: pptsoil=0.48000
+Before watrlit: watrinput=0.48, pptactual=0.48000, wintstcr=0.00, pptsoil=0.48000, blitter -nan
+In waterlit: par1=-nan, blitter= -nan
+wintlit=-nan
+After watrlit: watrinput=0.48, pptsoil=-nan, wintlit=-nan
+pptsoil=-nan, sumintrcpt=-nan, wintstcr=0.00, wintlit=-nan
+Before h2oflux:  0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+Day 2: watrinput (cm) =         -nan
+bserate =         -nan
+cond[0] (cm/sec) = 0.0000074429	mpot[0] (cm) = -5357.23	hpot[0] (cm) = -5358.23	minpot[0] (cm) = -17852.55
+cond[1] (cm/sec) = 0.0000095041	mpot[1] (cm) = -3209.93	hpot[1] (cm) = -3213.43	minpot[1] (cm) = -17852.55
+cond[2] (cm/sec) = 0.0000095941	mpot[2] (cm) = -3141.28	hpot[2] (cm) = -3148.78	minpot[2] (cm) = -17852.55
+cond[3] (cm/sec) = 0.0000096017	mpot[3] (cm) = -3135.58	hpot[3] (cm) = -3150.58	minpot[3] (cm) = -17852.55
+cond[4] (cm/sec) = 0.0000131993	mpot[4] (cm) = -2190.74	hpot[4] (cm) = -2220.74	minpot[4] (cm) = -29103.06
+cond[5] (cm/sec) = 0.0000202374	mpot[5] (cm) = -2189.45	hpot[5] (cm) = -2239.45	minpot[5] (cm) = -29103.06
+cond[6] (cm/sec) = 0.0000092484	mpot[6] (cm) = -2427.47	hpot[6] (cm) = -2497.47	minpot[6] (cm) = -23865.09
+cond[7] (cm/sec) = 0.0001146054	mpot[7] (cm) = -327.07	hpot[7] (cm) = -417.07	minpot[7] (cm) = -9914.67
+cond[8] (cm/sec) = 0.0002415876	mpot[8] (cm) = -6098.88	hpot[8] (cm) = -6208.88	minpot[8] (cm) = -8438.68
+cond[9] (cm/sec) = 0.0002237469	mpot[9] (cm) = -6950.23	hpot[9] (cm) = -7080.23	minpot[9] (cm) = -8438.68
+cond[10] (cm/sec) = 0.0002024040	mpot[10] (cm) = -8169.14	hpot[10] (cm) = -8319.14	minpot[10] (cm) = -8438.68
+cond[11] (cm/sec) = 0.0002110952	mpot[11] (cm) = -81920.00	hpot[11] (cm) = -82090.00	minpot[11] (cm) = -81920.00
+cond[12] (cm/sec) = 0.0001861802	mpot[12] (cm) = -81920.00	hpot[12] (cm) = -82110.00	minpot[12] (cm) = -81920.00
+Evap rate =         -nan
+
+Flux[0] =          nan	 Flux[1] = -0.0001839004
+net_flux[0] =          nan	
+SWC before net_flux addition in lyr 0:  0.35106   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+SWC after net_flux addition in lyr 0:     nan   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+Flux[1] = -0.0001839004	 Flux[2] = -0.0000044500
+net_flux[1] = -0.0001794503	
+SWC before net_flux addition in lyr 1:      nan   0.57389   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+SWC after net_flux addition in lyr 1:     nan   0.57371   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+Flux[2] = -0.0000044500	 Flux[3] = 0.0000000663
+net_flux[2] = -0.0000045163	
+SWC before net_flux addition in lyr 2:      nan   0.57371   0.95997   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+SWC after net_flux addition in lyr 2:     nan   0.57371   0.95996   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+Flux[3] = 0.0000000663	 Flux[4] = -0.0000214238
+net_flux[3] = 0.0000214901	
+SWC before net_flux addition in lyr 3:      nan   0.57371   0.95996   1.92052   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+SWC after net_flux addition in lyr 3:     nan   0.57371   0.95996   1.92054   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+Flux[4] = -0.0000214238	 Flux[5] = 0.0000004506
+net_flux[4] = -0.0000218744	
+SWC before net_flux addition in lyr 4:      nan   0.57371   0.95996   1.92054   4.07947   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+SWC after net_flux addition in lyr 4:     nan   0.57371   0.95996   1.92054   4.07945   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+Flux[5] = 0.0000004506	 Flux[6] = 0.0000054776
+net_flux[5] = -0.0000050271	
+SWC before net_flux addition in lyr 5:      nan   0.57371   0.95996   1.92054   4.07945   4.07988   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+SWC after net_flux addition in lyr 5:     nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+Flux[6] = 0.0000054776	 Flux[7] = -0.0001855186
+net_flux[6] = 0.0001909962	
+SWC before net_flux addition in lyr 6:      nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96466   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+SWC after net_flux addition in lyr 6:     nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96485   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+Flux[7] = -0.0001855186	 Flux[8] = 0.0014853602
+net_flux[7] = -0.0016708788	
+SWC before net_flux addition in lyr 7:      nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96485   3.79836   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+SWC after net_flux addition in lyr 7:     nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96485   3.79668   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+Flux[8] = 0.0014853602	 Flux[9] = 0.0002919390
+net_flux[8] = 0.0011934213	
+SWC before net_flux addition in lyr 8:      nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96485   3.79668   1.11343   1.07400   1.02716   0.11040   0.04814  
+
+SWC after net_flux addition in lyr 8:     nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96485   3.79668   1.11462   1.07400   1.02716   0.11040   0.04814  
+
+Flux[9] = 0.0002919390	 Flux[10] = 0.0003801335
+net_flux[9] = -0.0000881945	
+SWC before net_flux addition in lyr 9:      nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96485   3.79668   1.11462   1.07400   1.02716   0.11040   0.04814  
+
+SWC after net_flux addition in lyr 9:     nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96485   3.79668   1.11462   1.07391   1.02716   0.11040   0.04814  
+
+Flux[10] = 0.0003801335	 Flux[11] = 0.0000000000
+net_flux[10] = 0.0003801335	
+SWC before net_flux addition in lyr 10:      nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96485   3.79668   1.11462   1.07391   1.02716   0.11040   0.04814  
+
+SWC after net_flux addition in lyr 10:     nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96485   3.79668   1.11462   1.07391   1.02754   0.11040   0.04814  
+
+Flux[11] = 0.0000000000	 Flux[12] = 0.0000057208
+net_flux[11] = -0.0000057208	
+SWC before net_flux addition in lyr 11:      nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.9648Potential problem (h2ofluxx) with swpotentl, 	swc[0] =        nan
+Potential problem (h2ofluxx) with swpotentl, 	swc[0] =        nan
+5   3.79668   1.11462   1.07391   1.02754   0.11040   0.04814  
+
+SWC after net_flux addition in lyr 11:     nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96485   3.79668   1.11462   1.07391   1.02754   0.11039   0.04814  
+
+Flux[12] = 0.0000057208	 Flux[13] = 0.0000000000
+net_flux[12] = 0.0000057208	
+SWC before net_flux addition in lyr 12:      nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96485   3.79668   1.11462   1.07391   1.02754   0.11039   0.04814  
+
+SWC after net_flux addition in lyr 12:     nan   0.57371   0.95996   1.92054   4.07945   4.07987   3.96485   3.79668   1.11462   1.07391   1.02754   0.11039   0.04814  
+Potential problem (h2ofluxx) with swpotentl	swc[0] =        nan
+
+
+etc.....
+
