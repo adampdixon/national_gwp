@@ -338,19 +338,27 @@ suppressMessages({
       #                                        ens_Cstock_Mgha=ens_Cstock_Mgha,
       #                                        ens_Cstock_Mgha_piv_adj=ens_Cstock_Mgha_piv_adj)
       
-      ## Create master df for later use combining graphs
-      crop_calib_output_df <- rbind(crop_calib_output_df,
-                                    ens_MaizeYld_Mgha[ens_MaizeYld_Mgha$year %in% experiment_year_range,],
+      ## Save data for later use combining graphs
+      crop_calib_output_df <- rbind(ens_MaizeYld_Mgha[ens_MaizeYld_Mgha$year %in% experiment_year_range,],
                                     ens_SoyYld_Mgha[ens_SoyYld_Mgha$year %in% experiment_year_range,],
                                     ens_WheatYld_Mgha[ens_WheatYld_Mgha$year %in% experiment_year_range,])
-      crop_calib_output_df_piv <- rbind(crop_calib_output_df_piv,
-                                        ens_MaizeYld_Mgha_piv[ens_MaizeYld_Mgha_piv$year %in% experiment_year_range,],
+      soc_calib_output_df <- rbind(ens_Cstock_Mgha[ens_Cstock_Mgha$year %in% experiment_year_range,])
+      source("p_Edit_calib_data_file.R")
+      p_Edit_calib_data_file(crop_calib_output_df,
+                             paste0(results_path,"calib_crop_df.csv"))
+      p_Edit_calib_data_file(soc_calib_output_df,
+                             paste0(results_path,"calib_soc_df.csv"))
+      
+
+      crop_calib_output_df_piv <- rbind(ens_MaizeYld_Mgha_piv[ens_MaizeYld_Mgha_piv$year %in% experiment_year_range,],
                                         ens_SoyYld_Mgha_piv[ens_SoyYld_Mgha_piv$year %in% experiment_year_range,],
                                         ens_WheatYld_Mgha_piv[ens_WheatYld_Mgha_piv$year %in% experiment_year_range,])
-      soc_calib_output_df <- rbind(soc_calib_output_df,
-                                   ens_Cstock_Mgha[ens_Cstock_Mgha$year %in% experiment_year_range,])
-      soc_calib_output_df_piv <- rbind(soc_calib_output_df_piv,
-                                       ens_Cstock_Mgha_piv_adj[ens_Cstock_Mgha_piv_adj$year %in% experiment_year_range,])
+      soc_calib_output_df_piv <- rbind(ens_Cstock_Mgha_piv_adj[ens_Cstock_Mgha_piv_adj$year %in% experiment_year_range,])
+      
+      p_Edit_calib_data_file(crop_calib_output_df_piv,
+                             paste0(results_path,"calib_crop_df_piv.csv"))
+      p_Edit_calib_data_file(soc_calib_output_df_piv,
+                             paste0(results_path,"calib_soc_df_piv.csv"))
       
       ## for trendlines
       
@@ -364,9 +372,9 @@ suppressMessages({
         pivot_longer(AllObs:OutlierRemoved, names_to = "Fit") %>%
         mutate(treatment_scen=scenario_descriptor)
       
-      soc_trendlines <- rbind(soc_trendlines,
-                              obs_SOC_trendline_dat)
-      
+      p_Edit_calib_data_file(obs_SOC_trendline_dat,
+                             paste0(results_path,"calib_soc_trendline_piv.csv"))
+
       
     } # end if mgmt_scenario is a calibration treatment
       

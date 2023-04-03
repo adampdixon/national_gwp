@@ -6,7 +6,7 @@
 
 suppressMessages({
   
-  print("Starting 9_Results_APSIM-calibration2.R")
+  print(paste0("Starting 9_Results_APSIM-calibration_",site_name,".R"))
   
 library(magrittr)
 library(tidyverse)
@@ -329,39 +329,39 @@ gNG_rain5yr <- ggplot() +
 
 gNG_rain5yr
 
-gNG_20ghd <- N2O_ghaday_piv[N2O_ghaday_piv$source=='APSIM' &
-                        year(N2O_ghaday_piv$date) %in% year(ObsGas$date),] %>%
-  ggplot(aes(x=date, y=n2o_val, color=source)) +
-  geom_line(show.legend=TRUE) +
-  geom_point(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='Observed'&
-                                   year(N2O_ghaday_piv$date) %in% year(ObsGas$date),],
-             aes(x=date, y=n2o_val, color=source)) +
-  geom_segment(data=Fert[Fert$treatment==treatment & 
-                           Fert$date %in% year(ObsGas$date) &
-                           Fert$n_rate_kg_ha>10,],
-               aes(x = date, y = 200,
-                   xend = date, yend = 175),
-               colour=cbPalette9[7],
-               show.legend=F,
-               lineend = "round",
-               linejoin = "round",
-               arrow = arrow(length = unit(0.3, "cm"))
-               # colour = "black" 
-  ) + 
-  xlab("Year") +
-  ylab(expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')')) +
-  ylim(0,20) +
-  ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions-limited display to 20 g/ha/day"),
-          paste0("Scenario: ",scenario_descriptor)) +
-  scale_color_manual(labels=c("APSIM","Observed","Fertilizer"),
-                     values=cbPalette9[c(8,1,7)]) +
-  theme_classic(base_family = "serif", base_size = 15) +
-  theme(panel.background = element_blank(),
-        axis.line = element_line(),
-        legend.position = "right",
-        legend.key = element_blank())
-
-gNG_20ghd
+# gNG_20ghd <- N2O_ghaday_piv[N2O_ghaday_piv$source=='APSIM' &
+#                         year(N2O_ghaday_piv$date) %in% year(ObsGas$date),] %>%
+#   ggplot(aes(x=date, y=n2o_val, color=source)) +
+#   geom_line(show.legend=TRUE) +
+#   geom_point(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='Observed'&
+#                                    year(N2O_ghaday_piv$date) %in% year(ObsGas$date),],
+#              aes(x=date, y=n2o_val, color=source)) +
+#   geom_segment(data=Fert[Fert$treatment==treatment & 
+#                            Fert$date %in% year(ObsGas$date) &
+#                            Fert$n_rate_kg_ha>10,],
+#                aes(x = date, y = 200,
+#                    xend = date, yend = 175),
+#                colour=cbPalette9[7],
+#                show.legend=F,
+#                lineend = "round",
+#                linejoin = "round",
+#                arrow = arrow(length = unit(0.3, "cm"))
+#                # colour = "black" 
+#   ) + 
+#   xlab("Year") +
+#   ylab(expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')')) +
+#   ylim(0,20) +
+#   ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions-limited display to 20 g/ha/day"),
+#           paste0("Scenario: ",scenario_descriptor)) +
+#   scale_color_manual(labels=c("APSIM","Observed","Fertilizer"),
+#                      values=cbPalette9[c(8,1,7)]) +
+#   theme_classic(base_family = "serif", base_size = 15) +
+#   theme(panel.background = element_blank(),
+#         axis.line = element_line(),
+#         legend.position = "right",
+#         legend.key = element_blank())
+# 
+# gNG_20ghd
 
 
 ggsave(filename=paste0(results_path,"calib_Maize_yield_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gMY,
@@ -382,8 +382,8 @@ ggsave(filename=paste0(results_path,"calib_N2O_comparison_exp_",scenario_name,"_
        width=6, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_N2O_comparison_rain5yr_exp_",scenario_name,"_APSIM.jpg"),plot=gNG_rain5yr,
        width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"calib_N2O_comparison_20ghd_exp_",scenario_name,"_APSIM.jpg"),plot=gNG_20ghd,
-       width=9, height=6, dpi=300)
+# ggsave(filename=paste0(results_path,"calib_N2O_comparison_20ghd_exp_",scenario_name,"_APSIM.jpg"),plot=gNG_20ghd,
+#        width=9, height=6, dpi=300)
 
 
 #**********************************************************************

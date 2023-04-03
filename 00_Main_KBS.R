@@ -55,14 +55,6 @@ if(Sys.info()['sysname']=='Linux') {
 rothc_path <- paste0("RothC/",site_name,"/")
 mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 
-# collect calibration data into one list, one list element per field treatment
-#calib_output_list <- list(T1=NA,T2=NA,T3=NA)
-crop_calib_output_df <- data.frame()
-crop_calib_output_df_piv <- data.frame()
-soc_calib_output_df <- data.frame()
-soc_calib_output_df_piv <- data.frame()
-soc_trendlines <-data.frame()
-
 
 #source("p_Create_future_weather_files.R")
 #source("p_Future_weather_reanalysis.R")
@@ -70,7 +62,7 @@ soc_trendlines <-data.frame()
 # Loop through the scenarios; set which climate and management
 # scenario numbers to use for this run:
 clim_nums <- c(1:5)
-mgmt_grps <- c(1:6) #calib_mgmt_grps #c(1:3)
+mgmt_grps <- calib_mgmt_grps #c(1:3)
 
 for (x in clim_nums) { # climate scenarios
   print("************************************")

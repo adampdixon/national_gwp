@@ -1,5 +1,5 @@
 #*************************************************************
-# File: 10_Model_Ensemble_Results-combined_scenarios2
+# File: 10_Model_Ensemble_Results-combined_scenarios_KBS
 # Author: Ellen Maas
 # Date: 8/30/2022
 # Description: Assembles individual model runs and calculates
@@ -32,10 +32,23 @@ source("f_model_coef.R")
 
   #*************************************************************
 
+
+# Import calibration data -------------------------------------------------
+
+crop_calib_output_df_piv <- read.table(file=paste0(results_path,"calib_crop_df_piv.csv"),
+                                       header=TRUE,sep=",")  
+crop_calib_output_df_piv$Source <- crop_calib_output_df_piv$Model
+soc_calib_output_df_piv <- read.table(file=paste0(results_path,"calib_soc_df_piv.csv"),
+                                      header=TRUE,sep=",")  
+soc_calib_output_df_piv$Source <- soc_calib_output_df_piv$Model
+soc_trendlines_df <- read.table(file=paste0(results_path,"calib_soc_trendline_piv.csv"),
+                                header=TRUE,sep=",")  
+soc_trendlines_df$Source <- soc_trendlines_df$Model
+  
   # Calibration graphs ------------------------------------------------------
 
   gY_calib <- crop_calib_output_df_piv[crop_calib_output_df_piv$year %in% experiment_year_range,] %>%
-    ggplot(aes(x=year, y=yield_val, color=Model, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=yield_val, color=Source, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('Grain Yield (Mg ha ' ^-1*')')) +
@@ -50,7 +63,7 @@ source("f_model_coef.R")
     facet_grid(crop~treatment_scen) +
     theme_classic(base_family = "serif", base_size = 16) +
     theme(panel.background = element_blank(),
-          panel.border = element_rect(colour = "darkgrey", fill=NA, linewidth=.1),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
           strip.background = element_blank(),
           axis.line = element_line(),
           legend.position = "right",
@@ -59,7 +72,7 @@ source("f_model_coef.R")
   gY_calib
   
   gSOC_calib <- soc_calib_output_df_piv[soc_calib_output_df_piv$year %in% experiment_year_range,] %>%
-    ggplot(aes(x=year, y=C_val, color=Model, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=C_val, color=Source, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('SOC (Mg ha ' ^-1*')')) +
@@ -69,7 +82,7 @@ source("f_model_coef.R")
     # geom_smooth(method='lm', formula= y~x, se=FALSE, aes(colour = Model)
     #             ,linewidth=0.75) +
     stat_smooth(
-      data = soc_trendlines, 
+      data = soc_trendlines_df, 
       aes(linetype = Fit, y=value), 
       #color="black", 
       method = lm,
@@ -82,7 +95,7 @@ source("f_model_coef.R")
     facet_wrap(~treatment_scen,nrow=1) +
     theme_classic(base_family = "serif", base_size = 16) +
     theme(panel.background = element_blank(),
-          panel.border = element_rect(colour = "darkgrey", fill=NA, linewidth=.1),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
           strip.background = element_blank(),
           axis.line = element_line(),
           legend.position = "right",
@@ -2602,28 +2615,28 @@ gCH4chg_am2 <- summary_output[summary_output$Climate_Scenario==clim_num &
 
 gCH4chg_am2
 
-ggsave(filename=paste0(results_path,"pub_change_in_maize_all_scenarios_",clim_num,".jpg"),
-       plot=gMYchg, width=9, height=6, dpi=300)
+# ggsave(filename=paste0(results_path,"pub_change_in_maize_all_scenarios_",clim_num,".jpg"),
+#        plot=gMYchg, width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"pub_change_in_maize_all_scenarios_all_models_",clim_num,".jpg"),
        plot=gMYchg_am, width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"pub_change_in_soybean_all_scenarios_",clim_num,".jpg"),
-       plot=gSYchg, width=9, height=6, dpi=300)
+# ggsave(filename=paste0(results_path,"pub_change_in_soybean_all_scenarios_",clim_num,".jpg"),
+#        plot=gSYchg, width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"pub_change_in_soybean_all_scenarios_all_models_",clim_num,".jpg"),
        plot=gSYchg_am, width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"pub_change_in_wheat_all_scenarios_",clim_num,".jpg"),
-       plot=gWYchg, width=9, height=6, dpi=300)
+# ggsave(filename=paste0(results_path,"pub_change_in_wheat_all_scenarios_",clim_num,".jpg"),
+#        plot=gWYchg, width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"pub_change_in_wheat_all_scenarios_all_models_",clim_num,".jpg"),
        plot=gWYchg_am, width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"pub_change_in_soc_all_scenarios_",clim_num,".jpg"),
-       plot=gSOCchg, width=9, height=6, dpi=300)
+# ggsave(filename=paste0(results_path,"pub_change_in_soc_all_scenarios_",clim_num,".jpg"),
+#        plot=gSOCchg, width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"pub_change_in_soc_all_scenarios_all_models_",clim_num,".jpg"),
        plot=gSOCchg_am, width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"pub_change_in_n2o_all_scenarios_",clim_num,".jpg"),
-       plot=gN2Ochg, width=9, height=6, dpi=300)
+# ggsave(filename=paste0(results_path,"pub_change_in_n2o_all_scenarios_",clim_num,".jpg"),
+#        plot=gN2Ochg, width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"pub_change_in_n2o_all_scenarios_all_models_",clim_num,".jpg"),
        plot=gN2Ochg_am, width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"pub_change_in_ch4_all_scenarios_",clim_num,".jpg"),
-       plot=gCH4chg, width=9, height=6, dpi=300)
+# ggsave(filename=paste0(results_path,"pub_change_in_ch4_all_scenarios_",clim_num,".jpg"),
+#        plot=gCH4chg, width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"pub_change_in_ch4_all_scenarios_all_models_",clim_num,".jpg"),
        plot=gCH4chg_am, width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"pub_change_in_ch4_all_scenarios_all_models2_",clim_num,".jpg"),
