@@ -24,64 +24,64 @@
 
 print("Starting 0_Controller.R")
 
-# rm(list=ls())
-# master_path <- "~/Modeling"
-# setwd(master_path)
-# #
-# site_id <- 1
-# site_name <- "KBS"
-# latitude = 42.410
-# longitude = -85.372
-# elevation_m = 288
-# experiment_start_year <- 1989
-# experiment_end_year <- 2021
-# experiment_year_range <- experiment_start_year:experiment_end_year
-# #end_exp_period_year <- 2021
-# end_fut_period_year <- 2050
-# calib_mgmt_grps <- c(1,2,3)
-# obs_path <- paste0("Data/",site_name,"/Calibration/")
-# hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
-# hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
-# curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
-# nasapower_output_filename <- paste0(site_name,"_np.csv")
-# 
-# # # site_id <- 2
-# # site_name <- "LRF"
-# # latitude = 33.684
-# # longitude = -101.768
-# # elevation_m = 990
-# # experiment_start_year <- 2003
-# # experiment_end_year <- 2010
-# # experiment_start_date <- "2003-01-01"
-# # experiment_end_date <- "2010-12-31"
-# # end_exp_period_year <- 2021
-# # experiment_year_range <- experiment_start_year:end_exp_period_year
-# # end_fut_period_year <- 2100
-# # calib_mgmt_grps <- c(3,5,7,8)
-# # obs_path <- paste0("Data/",site_name,"/")
-# # obs_filename <- "LibertyResearchFarm_adj.xlsx"
-# # curr_wth_tab <- "WeatherDaily"
-# # hist_raw_wth_filename <- "CDO_Lubbock_area.csv"
-# # hist_wth_filename <- "NOAA-based Daily Lubbock 1940-2021.csv"
-# # hist_wth_mon_filename <- "NOAA-based Monthly Lubbock 1940-2021 with OPE.csv"
-# # curr_local_wth_filename <- "" # included in GRACEnet spreadsheet (obs_filename)
-# #
-# wth_path <- paste0("Data/",site_name,"/Weather/")
-# apsim_path <- paste0("APSIM/",site_name,"/")
-# daycent_path <- paste0("Daycent/",site_name,"/")
-# if(Sys.info()['sysname']=='Linux') {
-#   dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
-# } else {
-#   dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
-# }
-# rothc_path <- paste0("RothC/",site_name,"/")
-# mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
-# #
-# clim_scenario_num <- 1
-# mgmt_scenario_grp <- 3 # scenario group number
-# mgmt_scenario_opt <- "" # scenario detail number; put "" if none
-# mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
-# scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
+rm(list=ls())
+master_path <- "~/Modeling"
+setwd(master_path)
+#
+site_id <- 1
+site_name <- "KBS"
+latitude = 42.410
+longitude = -85.372
+elevation_m = 288
+experiment_start_year <- 1989
+experiment_end_year <- 2021
+end_exp_period_year <- 2021
+experiment_year_range <- experiment_start_year:end_exp_period_year
+end_fut_period_year <- 2050
+calib_mgmt_grps <- c(1,2,3)
+obs_path <- paste0("Data/",site_name,"/Calibration/")
+hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
+hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
+curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
+nasapower_output_filename <- paste0(site_name,"_np.csv")
+
+# # site_id <- 2
+# site_name <- "LRF"
+# latitude = 33.684
+# longitude = -101.768
+# elevation_m = 990
+# experiment_start_year <- 2003
+# experiment_end_year <- 2010
+# experiment_start_date <- "2003-01-01"
+# experiment_end_date <- "2010-12-31"
+# end_exp_period_year <- 2021
+# experiment_year_range <- experiment_start_year:end_exp_period_year
+# end_fut_period_year <- 2100
+# calib_mgmt_grps <- c(3,5,7,8)
+# obs_path <- paste0("Data/",site_name,"/")
+# obs_filename <- "LibertyResearchFarm_adj.xlsx"
+# curr_wth_tab <- "WeatherDaily"
+# hist_raw_wth_filename <- "CDO_Lubbock_area.csv"
+# hist_wth_filename <- "NOAA-based Daily Lubbock 1940-2021.csv"
+# hist_wth_mon_filename <- "NOAA-based Monthly Lubbock 1940-2021 with OPE.csv"
+# curr_local_wth_filename <- "" # included in GRACEnet spreadsheet (obs_filename)
+#
+wth_path <- paste0("Data/",site_name,"/Weather/")
+apsim_path <- paste0("APSIM/",site_name,"/")
+daycent_path <- paste0("Daycent/",site_name,"/")
+if(Sys.info()['sysname']=='Linux') {
+  dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
+} else {
+  dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
+}
+rothc_path <- paste0("RothC/",site_name,"/")
+mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
+#
+clim_scenario_num <- 1
+mgmt_scenario_grp <- 3 # scenario group number
+mgmt_scenario_opt <- "" # scenario detail number; put "" if none
+mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
+scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
 
 
 # Scenario-dependent scripts and functions
@@ -182,12 +182,12 @@ source(paste0("9_Results_APSIM-setup_",site_name,".R"))
 # Daycent
 if(mgmt_scenario_grp!=6) {
   source(paste0("9_Results_Daycent-setup_",site_name,".R"))
-  # model_name <- "Daycent"
-  # if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
-  #   source(paste0("9_Results_Daycent-calibration_",site_name,".R"))
-  # }
-  # source(paste0("9_Results_Daycent-future_",site_name,".R"))
-  # source("p_Results_analysis.R")
+  model_name <- "Daycent"
+  if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
+    source(paste0("9_Results_Daycent-calibration_",site_name,".R"))
+  }
+  source(paste0("9_Results_Daycent-future_",site_name,".R"))
+  source("p_Results_analysis.R")
 }
 
 
