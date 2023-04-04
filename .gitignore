@@ -124,15 +124,16 @@ fort.99
 SETUP.LST
 ST6UNST.LOG
 RothC_Interface.CAB
+AUTO.OUT
 
 ###### new output suppression, based on old coding, below
 *.db*
-*.out
+#*.out
 *.sum
 # can't *.csv because some .csv are input files
 *.bin
 *.lis
-base_out*.csv
+#base_out*.csv
 
 ###### old coding - limits to models and sites, which will get tedious
 ###### as new models and sites added. will run out of free LFS space
@@ -148,8 +149,8 @@ base_out*.csv
 #/Daycent/*.out
 #/Daycent/KBS/*.1
 #/Daycent/KBS/*.out
-/Daycent/KBS/*.csv
-/Daycent/LRF/*.csv
+#/Daycent/KBS/*.csv
+#/Daycent/LRF/*.csv
 #/Daycent/KBS/*.bin
 #/Daycent/KBS/*.lis
 #/Daycent/SOURCE_CODE-vEVI/
