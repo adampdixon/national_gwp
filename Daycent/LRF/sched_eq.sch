@@ -11,7 +11,7 @@ site.100	  Site file name
 0             OMAD scalar option (0 or 1) ## leave off, do not scale inputs
 0             Climate scalar option ## leave 0, will create own climate simulations
 1             Initial system ## 1 for crop or grassland
-GI5           Initial crop ## mixed grass, 50% warm, 50% cool season
+GI5           Initial crop ## mixed grass, 75% warm, 25% cool season
               Initial tree
 
 Year Month Option

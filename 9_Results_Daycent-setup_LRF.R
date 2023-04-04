@@ -28,7 +28,7 @@ library(broom)
 
 ### harvest 
 
-Day_base_harvest <- read_csv(paste0(daycent_path,paste0("harvest_base_",scenario_name,".csv")),
+Day_base_harvest <- read_csv(paste0(daycent_path,paste0("harvest_base.csv")),
                              col_names = TRUE, show_col_types = F)
 Day_exp_harvest <- read_csv(paste0(daycent_path,paste0("harvest_exp_",scenario_name,".csv")),
                             col_names = TRUE, show_col_types = F)
@@ -45,7 +45,7 @@ Day_harvest <- Day_harvest_raw[Day_harvest_raw$year <= end_fut_period_year,]
 
 ## soil temperature
 
-Day_base_soiltavg <- read.fwf(paste0(daycent_path,paste0("soiltavg_base_",scenario_name,".out")),
+Day_base_soiltavg <- read.fwf(paste0(daycent_path,paste0("soiltavg_base.out")),
                               widths=c(12,5,8,8,8,8,8,8,8,6),
                               col.names=c("time","dayofyear","layer1","layer2","layer3",
                                           "layer4","layer5","layer6","layer7","layer8"),
@@ -89,7 +89,7 @@ DayT_C_all <- DayT_C_all_raw[DayT_C_all_raw$year <= end_fut_period_year,]
 
 ## soil moisture
 
-Day_base_vswc <- read.fwf(paste0(daycent_path,paste0("vswc_base_",scenario_name,".out")),
+Day_base_vswc <- read.fwf(paste0(daycent_path,paste0("vswc_base.out")),
                           widths=c(10,7,10,10,10,10,10,10,10,6),
                           col.names=c("time","dayofyear","layer1","layer2","layer3",
                                       "layer4","layer5","layer6","layer7","layer8"),
@@ -193,7 +193,7 @@ Day_summary_raw <- rbind(Day_exp_summary,Day_fut_summary) %>%
 
 Day_summary <- Day_summary_raw[Day_summary_raw$year <= end_fut_period_year,]
   
-Day_base_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_base_",scenario_name,".out")),
+Day_base_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_base.out")),
                            widths=c(8,6,14,14,14,14,14,14,14,14,14,14,14,14,14,14),
                            col.names=c("time","dayofyear","ammonium","NO3_ppm0","NO3_ppm1",
                                        "NO3_ppm2","NO3_ppm3","NO3_ppm4","NO3_ppm5","NO3_ppm6",

@@ -28,8 +28,6 @@ basic_exp.wth
 1 147 PLTM
 1 147 CULT R
 1 162 CULT D
-1 170 CULT S
-1 181 CULT S
 1 227 HARV G90S
 1 227 CULT K
 -999 -999 X
@@ -60,7 +58,6 @@ C 			 Weather choice
 1 138 CULT R
 1 139 CROP COT
 1 139 PLTM
-1 174 CULT S
 1 287 HARV G90S
 -999 -999 X
 13	Block ## Experimental period
@@ -85,8 +82,6 @@ C 			 Weather choice
 1 44 CULT K
 1 175 CROP COT
 1 175 PLTM
-1 177 CULT S
-1 201 CULT S
 1 297 HARV G90S
 -999 -999 X
 15	Block ## Experimental period
@@ -101,8 +96,6 @@ C 			 Weather choice
 1 84 FERT (1.5P)
 1 134 CROP COT
 1 134 PLTM
-1 163 CULT S
-1 189 CULT S
 1 316 HARV G90S
 -999 -999 X
 16	Block ## Experimental period
@@ -115,7 +108,6 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 180 CULT S
 1 315 HARV G90S
 -999 -999 X
 17	Block ## Experimental period
@@ -129,7 +121,6 @@ C 			 Weather choice
 1 80 CULT K
 1 140 CROP COT
 1 140 PLTM
-1 192 CULT S
 1 323 HARV G90S
 -999 -999 X
 18	Block ## Experimental period
@@ -142,7 +133,6 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 180 CULT S
 1 315 HARV G90S
 -999 -999 X
 19	Block ## Experimental period
@@ -156,7 +146,6 @@ C 			 Weather choice
 1 80 CULT K
 1 140 CROP COT
 1 140 PLTM
-1 192 CULT S
 1 323 HARV G90S
 -999 -999 X
 20	Block ## Experimental period
@@ -169,7 +158,6 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 180 CULT S
 1 315 HARV G90S
 -999 -999 X
 21	Block ## Experimental period
@@ -183,7 +171,6 @@ C 			 Weather choice
 1 80 CULT K
 1 140 CROP COT
 1 140 PLTM
-1 192 CULT S
 1 323 HARV G90S
 -999 -999 X
 22	Block ## Experimental period
@@ -196,7 +183,6 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 180 CULT S
 1 315 HARV G90S
 -999 -999 X
 23	Block ## Experimental period
@@ -210,7 +196,6 @@ C 			 Weather choice
 1 80 CULT K
 1 140 CROP COT
 1 140 PLTM
-1 192 CULT S
 1 323 HARV G90S
 -999 -999 X
 24	Block ## Experimental period
@@ -223,7 +208,6 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 180 CULT S
 1 315 HARV G90S
 -999 -999 X
 25	Block ## Experimental period
@@ -237,7 +221,6 @@ C 			 Weather choice
 1 80 CULT K
 1 140 CROP COT
 1 140 PLTM
-1 192 CULT S
 1 323 HARV G90S
 -999 -999 X
 26	Block ## Experimental period
@@ -250,7 +233,6 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 180 CULT S
 1 315 HARV G90S
 -999 -999 X
 27	Block ## Experimental period
@@ -264,7 +246,6 @@ C 			 Weather choice
 1 80 CULT K
 1 140 CROP COT
 1 140 PLTM
-1 192 CULT S
 1 323 HARV G90S
 -999 -999 X
 28	Block ## Experimental period
@@ -277,6 +258,5 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 180 CULT S
 1 315 HARV G90S
 -999 -999 X

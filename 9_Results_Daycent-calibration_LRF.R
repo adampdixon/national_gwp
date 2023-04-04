@@ -663,7 +663,6 @@ ggsave(filename=paste0(results_path,"calib_NO3_input_exp_",scenario_name,"_Dayce
 
 # 1:1 graphs --------------------------------------------------------------
 
-if(mgmt_scenario_grp!=3) {
 CYfit <- lm(Daycent ~ Observed, data = CottonYld_Mgha)
 CYfit_coef <- coef(CYfit)
 CYfit_r2 <- round(summary(CYfit)$r.squared,2)
@@ -702,7 +701,7 @@ gCY_121 <- CottonYld_Mgha %>%
 #plot.title = element_text(hjust = 0.5))
 
 gCY_121
-}
+
 
 
 if(mgmt_scenario_grp != 7 & mgmt_scenario_grp != 5) {
@@ -1042,10 +1041,8 @@ gTc_121
 # 
 # gSCN_121
 
-if(mgmt_scenario_grp!=3) {
 ggsave(filename=paste0(results_path,"calib_Cotton_yield_comparison_1to1_",scenario_name,"_Daycent.jpg"),
        plot=gCY_121, width=6, height=6, dpi=300)
-}
 if(mgmt_scenario_grp!=7 & mgmt_scenario_grp!=5) {
 ggsave(filename=paste0(results_path,"calib_Sorghum_yield_comparison_1to1_",scenario_name,"_Daycent.jpg"),
        plot=gSY_121, width=6, height=6, dpi=300)

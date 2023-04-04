@@ -44,14 +44,14 @@ X     Fixed_values  10/25/19 Add Ram 30cm Param w/Ken F-T Opt Param TESTING
 150.00        'DAMRMN(2)'
 150.00        'DAMRMN(3)'
 3.9000        'DEC1(1)'
-4.9000        'DEC1(2)'
-14.800        'DEC2(1)'
-18.500        'DEC2(2)'
-6.0000        'DEC3(1)'
-7.3000        'DEC3(2)'
-0.0043        'DEC4'
-0.10          'DEC5(1)'
-0.0866        'DEC5(2)' # Bill says try reducing 0.15 to 0.12  24Jan
+7.0000        'DEC1(2)'
+10.000        'DEC2(1)'
+10.000        'DEC2(2)'
+9.0000        'DEC3(1)'
+5.0000        'DEC3(2)'
+0.0085         'DEC4'
+0.50          'DEC5(1)'
+0.0500        'DEC5(2)' # Bill says try reducing 0.15 to 0.12  24Jan
 5.0           'DECK5'
 -4.0          'DLIGDF'
 0.999         'DRESP'
@@ -63,9 +63,9 @@ X     Fixed_values  10/25/19 Add Ram 30cm Param w/Ken F-T Opt Param TESTING
 0.2000        'FAVAIL(4)'
 0.4000        'FAVAIL(5)'
 2.0000        'FAVAIL(6)'
-0.50          'FLEACH(1)' # improve estimate NO3 leaching Delgrosso 24Jan  Bill 0.2
-0.50          'FLEACH(2)' # improve estimate NO3 leaching Delgrosso 24Jan  Bill 0.7
-1.00          'FLEACH(3)'
+0.20          'FLEACH(1)' # improve estimate NO3 leaching Delgrosso 24Jan  Bill 0.2
+0.70          'FLEACH(2)' # improve estimate NO3 leaching Delgrosso 24Jan  Bill 0.7
+0.8          'FLEACH(3)' # was 1.0
 0.00          'FLEACH(4)'
 0.10          'FLEACH(5)'
 1.0000        'FWLOSS(1)'
@@ -171,7 +171,7 @@ X     Fixed_values  10/25/19 Add Ram 30cm Param w/Ken F-T Opt Param TESTING
 50.000        'VARAT11(2,3)'
 2.0000        'VARAT11(3,3)'
 14.000        'VARAT12(1,1)'
-3.0000        'VARAT12(2,1)'
+6.0000        'VARAT12(2,1)' #edm was 3; Melannie suggested 6 for N-balance error. Didn't fix it but leaving it.
 2.0000        'VARAT12(3,1)'
 150.00        'VARAT12(1,2)'
 30.000        'VARAT12(2,2)'

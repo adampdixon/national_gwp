@@ -31,20 +31,33 @@ basic_eq.wth
 1 319 HARV G90S	## Oct 23 - Harvest grains and 90% straw
 -999 -999 X
 3       Block ## Switch to cotton
-2001    Last year
+1979    Last year
 1       Repeats # of years
 1960    Output starting year
 12      Output month
 1       Output interval
 C       Weather choice ## Continue
 1 118 CULT K  ## Apr 28
-1 118 FERT (2.2N)  ## Apr 28
 1 140 CULT ROW  ## May 20
-1 140 CROP COT ## May 20
+1 140 CROP COTL ## May 20
 1 140 PLTM  ## May 20
 1 290 HARV G90S  ## Oct 17
 -999 -999 X
-4       Block ## All include rye at end as transistion year
+4       Block ## Switch to cotton
+2001    Last year
+1       Repeats # of years
+1980    Output starting year
+12      Output month
+1       Output interval
+C       Weather choice ## Continue
+1 118 CULT K  ## Apr 28
+1 118 FERT (1.5N)  ## Apr 28
+1 140 CULT ROW  ## May 20
+1 140 CROP COTL ## May 20
+1 140 PLTM  ## May 20
+1 290 HARV G90S  ## Oct 17
+-999 -999 X
+5       Block ## All include rye at end as transistion year
 2002    Last year
 1       Repeats # of years
 2002    Output starting year

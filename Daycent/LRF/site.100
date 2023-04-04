@@ -91,7 +91,7 @@ X    LRF, TX
  0.0           DNEND   # sitepar jdayEnd
  0.012         NADJFC  # sitepar N2Oadjust_fc
  0.012         NADJWP  # sitepar N2Oadjust_wp
- 1.            MAXNIT  # sitepar MaxNitAmt   
+ 0.1            MAXNIT  # sitepar MaxNitAmt   
  0.2           MINO3   # sitepar netmn_to_no3
  1.            WFPSNIP # sitepar wfpsdnitadj 
  1.            N2N2OA  # sitepar N2N2Oadj    

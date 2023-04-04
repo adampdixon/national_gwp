@@ -233,6 +233,10 @@ Day_soiln_all_raw <- rbind(Day_base_soiln,Day_exp_soiln,Day_fut_soiln) %>%
 
 Day_soiln_all <- Day_soiln_all_raw[Day_soiln_all_raw$year,]
 
+# water-filled pore space
+
+
+
 #**********************************************************************
 
 

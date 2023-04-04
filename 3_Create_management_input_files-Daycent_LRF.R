@@ -96,17 +96,33 @@ writeLines(init_base1,schedule_file)
 
 ### 1960-2001 - cotton
 
-init_base3 <- c("3       Block ## Switch to cotton",
-                "2001    Last year",
+init_base2 <- c("2       Block ## Switch to cotton",
+                "1979    Last year",
                 "1       Repeats # of years",
                 "1960    Output starting year",
                 "12      Output month",
                 "1       Output interval",
                 "C       Weather choice ## Continue",
                 "1 118 CULT K  ## Apr 28", 
-                "1 118 FERT (2.2N)  ## Apr 28",
                 "1 140 CULT ROW  ## May 20",
-                "1 140 CROP COT ## May 20",
+                "1 140 CROP COTL ## May 20",
+                "1 140 PLTM  ## May 20",
+                "1 290 HARV G90S  ## Oct 17", 
+                "-999 -999 X")
+
+cat(init_base2,sep="\n",file=schedule_file,append=TRUE)
+
+init_base3 <- c("3       Block ## Switch to cotton",
+                "2001    Last year",
+                "1       Repeats # of years",
+                "1980    Output starting year",
+                "12      Output month",
+                "1       Output interval",
+                "C       Weather choice ## Continue",
+                "1 118 CULT K  ## Apr 28", 
+                "1 118 FERT (1N)  ## Apr 28",
+                "1 140 CULT ROW  ## May 20",
+                "1 140 CROP COTL ## May 20",
                 "1 140 PLTM  ## May 20",
                 "1 290 HARV G90S  ## Oct 17", 
                 "-999 -999 X")
@@ -115,7 +131,7 @@ cat(init_base3,sep="\n",file=schedule_file,append=TRUE)
 
 ### 2002 - rye after cotton
 
-init_base3 <- c("4       Block ## All include rye at end as transistion year",
+init_base4 <- c("4       Block ## All include rye at end as transistion year",
                 "2002    Last year",
                 "1       Repeats # of years",
                 "2002    Output starting year",
@@ -131,7 +147,7 @@ init_base3 <- c("4       Block ## All include rye at end as transistion year",
                 paste0("1 341 CROP ",covercrop_Daycent),
                 "-999 -999 X")
 
-cat(init_base3,sep="\n",file=schedule_file,append=TRUE)
+cat(init_base4,sep="\n",file=schedule_file,append=TRUE)
 
 
 
