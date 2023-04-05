@@ -49,7 +49,7 @@ X     Fixed_values  10/25/19 Add Ram 30cm Param w/Ken F-T Opt Param TESTING
 10.000        'DEC2(2)'
 9.0000        'DEC3(1)'
 5.0000        'DEC3(2)'
-0.0085         'DEC4'
+0.0080        'DEC4'
 0.50          'DEC5(1)'
 0.0500        'DEC5(2)' # Bill says try reducing 0.15 to 0.12  24Jan
 5.0           'DECK5'
