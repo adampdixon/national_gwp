@@ -36,5 +36,5 @@ source(paste0("Daycent/run_Daycent_exp_",site_name,".R"))
 #### results from the phases before it. So if you're testing just the base
 #### or experimental phase, you'll have to run this far anyway, or make a 
 #### version of the setup file that only uses the base or exp output files.
-source("Daycent/run_Daycent_fut.R")
+source(paste0("Daycent/run_Daycent_fut_",site_name,".R"))
 

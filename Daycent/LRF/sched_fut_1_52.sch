@@ -23,4 +23,13 @@ Year Month Option
 1  Output interval
 F       Weather choice
 basic_1.wth
+1 71 FERT (2.8N)
+1 80 CULT K25
+1 140 CROP COT
+1 140 PLTM
+1 323 HARV G25S
+2 17 CULT K25
+2 133 CROP SORG
+2 133 PLTM
+2 315 HARV G25S
 -999 -999 X

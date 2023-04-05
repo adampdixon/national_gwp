@@ -42,12 +42,12 @@ suppressMessages({
   
   ## Cotton
   
-  CYfit_Daycent <- coef(lm(Daycent ~ year, 
+  CYfit_Day <- coef(lm(Daycent ~ year, 
                          data = CottonYld_Mgha[CottonYld_Mgha$year>end_exp_period_year,]))
   CYfit_Obs <- coef(lm(Observed ~ year, 
                        data = CottonYld_Mgha[CottonYld_Mgha$year %in% experiment_year_range,]))
   CYxs <- c(end_exp_period_year+1, end_fut_period_year)
-  CYys <- cbind(1, CYxs) %*% CYfit_Daycent
+  CYys <- cbind(1, CYxs) %*% CYfit_Day
   CYobsxs <- c(experiment_start_year, experiment_end_year)
   CYobsys <- cbind(1, CYobsxs) %*% CYfit_Obs
   
@@ -57,11 +57,11 @@ suppressMessages({
     xlab("Year") +
     ylab(expression('Cotton Yield (Mg ha ' ^-1*')')) +
     ggtitle(paste(site_name,"Cotton Yield"),paste0("Scenario: ",scenario_descriptor_full)) +
-    #    geom_abline(intercept=CYfit_Daycent[1], slope=CYfit_Daycent[2], color="orange") +
+    #    geom_abline(intercept=CYfit_[1], slope=CYfit_Day[2], color="orange") +
     geom_segment(aes(x = CYxs[1], xend = CYxs[2], y = CYys[1], yend = CYys[2]), color=cbPalette9[8]) +
     geom_segment(aes(x = CYobsxs[1], xend = CYobsxs[2], y = CYobsys[1], yend = CYobsys[2]), color=cbPalette9[1]) +
-    scale_color_manual(labels=c("Daycent","Observed"),
-                       values=cbPalette9[c(8,1)]) +
+    scale_color_manual(labels=c("Daycent","Historical","Observed"),
+                       values=cbPalette9[c(8,4,1)]) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -73,12 +73,12 @@ suppressMessages({
   if(mgmt_scenario_grp!=7) {
     ## Sorghum
     
-    SYfit_Daycent <- coef(lm(Daycent ~ year, 
+    SYfit_Day <- coef(lm(Daycent ~ year, 
                            data = SorghumYld_Mgha[SorghumYld_Mgha$year>end_exp_period_year,]))
     SYfit_Obs <- coef(lm(Observed ~ year, 
                          data = SorghumYld_Mgha[SorghumYld_Mgha$year %in% experiment_year_range,]))
     SYxs <- c(end_exp_period_year+1, end_fut_period_year)
-    SYys <- cbind(1, SYxs) %*% SYfit_Daycent
+    SYys <- cbind(1, SYxs) %*% SYfit_Day
     SYobsxs <- c(experiment_start_year, experiment_end_year)
     SYobsys <- cbind(1, SYobsxs) %*% SYfit_Obs
     
@@ -90,8 +90,8 @@ suppressMessages({
       ggtitle(paste(site_name,"Sorghum Yield"),paste0("Scenario: ",scenario_descriptor_full)) +
       geom_segment(aes(x = SYxs[1], xend = SYxs[2], y = SYys[1], yend = SYys[2]), color=cbPalette9[8]) +
       geom_segment(aes(x = SYobsxs[1], xend = SYobsxs[2], y = SYobsys[1], yend = SYobsys[2]), color=cbPalette9[1]) +
-      scale_color_manual(labels=c("Daycent","Observed"),
-                         values=cbPalette9[c(8,1)]) +
+      scale_color_manual(labels=c("Daycent","Historical","Observed"),
+                         values=cbPalette9[c(8,4,1)]) +
       theme_classic(base_family = "serif", base_size = 15) +
       theme(panel.background = element_blank(),
             axis.line = element_line(),
@@ -104,7 +104,7 @@ suppressMessages({
 
   ## SOC
   
-  Cfit_Daycent <- coef(lm(Daycent ~ year, data = Cstock_Mgha))
+  Cfit_Day <- coef(lm(Daycent ~ year, data = Cstock_Mgha))
   if(mgmt_scenario_grp==3) {
     Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year!=1998 &
                                                               Cstock_Mgha$year >= experiment_start_year,]))
@@ -113,7 +113,7 @@ suppressMessages({
   }
   
   Cxs <- c(end_exp_period_year+1, end_fut_period_year)
-  Cys <- cbind(1, Cxs) %*% Cfit_Daycent
+  Cys <- cbind(1, Cxs) %*% Cfit_Day
   Cobsxs <- c(experiment_start_year, experiment_end_year)
   Cobsys <- cbind(1, Cobsxs) %*% Cfit_Obs
   
@@ -125,7 +125,7 @@ suppressMessages({
     # geom_abline(intercept=Cfit_Daycent[1], slope=Cfit_Daycent[2], color="orange") +
     # geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
     ggtitle(paste(site_name,"Soil Organic Carbon"),paste0("Scenario: ",scenario_descriptor_full)) +
-    geom_segment(aes(x = Cxs[1], xend = Cxs[2], y = Cys[1], yend = Cys[2]), color=cbPalette9[8]) +
+#    geom_segment(aes(x = Cxs[1], xend = Cxs[2], y = Cys[1], yend = Cys[2]), color=cbPalette9[8]) +
     geom_segment(aes(x = Cobsxs[1], xend = Cobsxs[2], y = Cobsys[1], yend = Cobsys[2]), color=cbPalette9[1]) +
     scale_color_manual(labels=c("Daycent","Observed"),
                        values=cbPalette9[c(8,1)]) +
@@ -399,11 +399,9 @@ suppressMessages({
   gNO3
   
   
-  ggsave(filename=paste0(results_path,"Maize_yield_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gMY,
+  ggsave(filename=paste0(results_path,"Cotton_yield_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gCY,
          width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"Soybean_yield_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gSY,
-         width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"Wheat_yield_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gWY,
+  ggsave(filename=paste0(results_path,"Sorghum_yield_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gSY,
          width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"SOC_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gC,
          width=9, height=6, dpi=300)

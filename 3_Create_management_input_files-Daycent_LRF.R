@@ -320,12 +320,10 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
     paste0("1 80 CULT K",resid_adjust_chr),
     "1 140 CROP COT",
     "1 140 PLTM",
-    "1 192 CULT S",
     paste0("1 323 HARV G",resid_adjust_chr,"S"),
     paste0("2 17 CULT K",resid_adjust_chr),
     "2 133 CROP SORG",
     "2 133 PLTM",
-    "2 180 CULT S",
     paste0("2 315 HARV G",resid_adjust_chr,"S")
   )
 } else if(mgmt_scenario_num %in% c(54,55,56)) { #CSnt
@@ -353,7 +351,6 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
     "2 97 HARV KILL",
     "2 140 CROP COT",
     "2 140 PLTM",
-    "2 192 CULT S",
     paste0("2 323 HARV G",resid_adjust_chr,"S")
   )
 } else if(mgmt_scenario_grp==7) { #CCct
@@ -362,12 +359,10 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
     paste0("1 80 CULT K",resid_adjust_chr),
     "1 140 CROP COT",
     "1 140 PLTM",
-    "1 192 CULT S",
     paste0("1 323 HARV G",resid_adjust_chr,"S"),
     paste0("2 17 CULT K",resid_adjust_chr),
     "2 133 CROP COT",
     "2 133 PLTM",
-    "2 180 CULT S",
     paste0("2 315 HARV G",resid_adjust_chr,"S")
   )
 } else if(mgmt_scenario_grp==8) { #CRSnt

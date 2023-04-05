@@ -289,6 +289,18 @@ DayC_Mgha <- lis_output[!((lis_output$cinput == 0 &
   mutate(base=round(somsc_gm2/100,1)
   )
 
+# reduce C to limit to top 10 cm; Daycent provides top 20 cm
+## calculate the Mgha to reduce the output by to get from 1 m C to top 25 cm
+## can't just multiply by a fraction as the values end up compressed, and we just
+## need everything to drop down by a set amount
+reduceCby <- 4.2
+  #if_else(mgmt_scenario_num==1 | mgmt_scenario_grp %in% 4:6, 35,
+   #                  if_else(mgmt_scenario_num==2, 35,
+    #                         if_else(mgmt_scenario_num==3, 33,
+     #                                0)))
+DayC_Mgha$base <- DayC_Mgha$base-reduceCby
+
+
 
 DayY_Mgha <- Day_harvest[substr(Day_harvest$crpval,2,5)!="RGA",] %>%
   select(time,cgrain,crpval) %>%
