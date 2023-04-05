@@ -187,7 +187,7 @@ ggsave(filename=paste0(results_path,"calib_MBio_comparison_allexp_exp_",scenario
 # 1:1 graphs --------------------------------------------------------------
 
 
-##  SOC
+##  SOC-full profile
 if(mgmt_scenario_grp==3) {
   Cfit <- lm(Millennial ~ Observed, data = Cstock_Mgha[Cstock_Mgha$year!=1998 &
                                                     Cstock_Mgha$year!=1850,])
@@ -225,6 +225,55 @@ gC_121 <- Cstock_Mgha %>%
   annotate("text", # RMSE
            x=min(Cstock_Mgha$Observed, Cstock_Mgha$Millennial, na.rm=T)*1.1,
            y=max(Cstock_Mgha$Observed, Cstock_Mgha$Millennial, na.rm=T)*0.89,
+           hjust=0, family="serif", color="gray31",
+           label=bquote("RMSE =" ~.(C_rmse))) +
+  ggtitle("SOC stock") +
+  theme(panel.background = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.line = element_line(),
+        plot.title = element_text(hjust = 0.5))
+
+gC_121
+
+##  SOC-25 cm
+
+if(mgmt_scenario_grp==3) {
+  Cfit <- lm(Millennial ~ Observed, data = Cstock_Mgha_25cm[Cstock_Mgha_25cm$year!=1998 &
+                                                              Cstock_Mgha_25cm$year!=1850,])
+  Cfit_coef <- coef(Cfit)
+  Cfit_r2 <- round(summary(Cfit)$r.squared,2)
+  
+  C_rmse_error <- Cstock_Mgha_25cm$Observed-Cstock_Mgha_25cm$Millennial
+  C_rmse <- round(sqrt(mean(C_rmse_error^2,na.rm=TRUE)),2)
+} else {
+  Cfit <- lm(Millennial ~ Observed, data = Cstock_Mgha_25cm[Cstock_Mgha_25cm$year!=1850,])
+  Cfit_coef <- coef(Cfit)
+  Cfit_r2 <- round(summary(Cfit)$r.squared,2)
+  
+  C_rmse_error <- Cstock_Mgha_25cm$Observed-Cstock_Mgha_25cm$Millennial
+  C_rmse <- round(sqrt(mean(C_rmse_error^2,na.rm=TRUE)),2)
+}
+
+gC_121 <- Cstock_Mgha_25cm %>%
+  ggplot(aes(x=Observed, y=Millennial,
+             xmin=min(Observed, Millennial, na.rm=T), xmax=max(Observed, Millennial, na.rm=T),
+             ymin=min(Observed, Millennial, na.rm=T), ymax=max(Observed, Millennial, na.rm=T))) +
+  geom_point() +
+  geom_abline() +
+  geom_abline(intercept=Cfit_coef[1], slope=Cfit_coef[2], color="blue") +
+  annotate("text", # line equation
+           x=min(Cstock_Mgha_25cm$Observed, Cstock_Mgha_25cm$Millennial, na.rm=T)*1.1,
+           y=max(Cstock_Mgha_25cm$Observed, Cstock_Mgha_25cm$Millennial, na.rm=T)*1,
+           hjust=0, family="serif", color="gray31",
+           label=bquote("y =" ~.(round(Cfit_coef[2],4))~"x" ~+ ~.(round(Cfit_coef[1],4)))) +
+  annotate("text", # R^2
+           x=min(Cstock_Mgha_25cm$Observed, Cstock_Mgha_25cm$Millennial, na.rm=T)*1.1,
+           y=max(Cstock_Mgha_25cm$Observed, Cstock_Mgha_25cm$Millennial, na.rm=T)*0.95,
+           hjust=0, family="serif", color="gray31",
+           label=bquote(R^2 ~"=" ~.(Cfit_r2))) +
+  annotate("text", # RMSE
+           x=min(Cstock_Mgha_25cm$Observed, Cstock_Mgha_25cm$Millennial, na.rm=T)*1.1,
+           y=max(Cstock_Mgha_25cm$Observed, Cstock_Mgha_25cm$Millennial, na.rm=T)*0.89,
            hjust=0, family="serif", color="gray31",
            label=bquote("RMSE =" ~.(C_rmse))) +
   ggtitle("SOC stock") +

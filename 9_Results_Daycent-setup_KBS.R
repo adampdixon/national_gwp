@@ -235,6 +235,14 @@ Day_soiln_all <- Day_soiln_all_raw[Day_soiln_all_raw$year,]
 
 # water-filled pore space
 
+Day_exp_wfps <- read.fwf(paste0(daycent_path,paste0("wfps_exp_",scenario_name,".out")),
+                          widths=c(8,5,9,9,9,9,9,9,9,9,9,9,9,9,9),
+                          col.names=c("time","dayofyear","wfps_layer1","wfps_layer2",
+                                      "wfps_layer3","wfps_layer4","wfps_layer5",
+                                      "wfps_layer6","wfps_layer7","wfps_layer8",
+                                      "wfps_layer9","wfps_layer10","wfps_layer11",
+                                      "wfps_layer12","wfps_layer13"),
+                          skip=1)
 
 
 #**********************************************************************

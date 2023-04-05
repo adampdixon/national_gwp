@@ -18,6 +18,7 @@
 ###########################
 # create parameter files
 
+# param_pc = slope of mineral C - clay relationship from Georgiou et al.
 parameters <- data.frame(param_name = c("param_pH","param_bulkd","param_pc","param_claysilt"),
                          param_value = c(soil_df[4,"PH"],soil_df[4,"BD"]*1000,0.86,
                                          (soil_df[4,"ParticleSizeClay"]+soil_df[4,"ParticleSizeSilt"])))

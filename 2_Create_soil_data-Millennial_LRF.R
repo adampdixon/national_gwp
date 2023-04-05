@@ -1,0 +1,31 @@
+#######################################
+# Function: "p_Create_soil_data"
+# Author: "Ellen Maas"
+# Date: "July 11, 2022"
+# Output: This procedure generates soil data for the site.
+#######################################
+
+
+###########################
+# Millennial
+###########################
+
+
+##Soil parameter set
+
+###########################
+# create parameter files
+
+# param_pc = slope of mineral C - clay relationship from Georgiou et al.
+# rec soil_df[4,] is 10-20 cm depth
+parameters <- data.frame(param_name = c("param_pH","param_bulkd","param_pc","param_claysilt"),
+                         param_value = c(soil_df[4,"phaq_value_avg"],soil_df[4,"bdfiod_value_avg"]*1000,0.86,
+                                         (soil_df[4,"clay_fraction"]+soil_df[4,"sand_fraction"])*100
+                                         )
+                         )
+  
+###########################
+# write parameter files
+## this does NOT need scenario designators; always the same for the site
+write.table(parameters, file=paste0(mill_path,"siteparams_in.txt"),
+            row.names=F, quote=F, col.names=F, sep=' ')
