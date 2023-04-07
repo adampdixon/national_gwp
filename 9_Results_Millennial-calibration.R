@@ -33,14 +33,14 @@ library(ggplot2)
 gC1 <- Cstock_Mgha_piv[Cstock_Mgha_piv$year <= experiment_end_year,] %>%
 ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
-  geom_point(data=ObsCdeep_Mgha, aes(x=year, y=cstock, color="black")) +
+  #geom_point(data=ObsCdeep_Mgha, aes(x=year, y=cstock, color="black")) +
   xlab("Year") +
   ylab(expression('SOC stock (Mg C ha' ^-1*')')) +
   ggtitle(paste(site_name,"Soil Organic Carbon (1 m depth): Scenario ",scenario_name)) +
 #  geom_abline(intercept=Cfit_RothC[1], slope=Cfit_RothC[2], color="orange") +
 #  geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
-  scale_color_manual(labels=c("Observed-100cm","Millennial","Observed-25cm"),
-                     values=cbPalette9[c(6,8,1)]) +
+  scale_color_manual(labels=c("Millennial","Observed-10cm"),
+                     values=cbPalette9[c(8,1)]) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -54,7 +54,7 @@ Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= expe
 gC2 <- Cstock_Mgha_piv_25cm[Cstock_Mgha_piv_25cm$year <= experiment_end_year,] %>%
 ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
-  geom_point(data=ObsCdeep_Mgha, aes(x=year, y=cstock, color="blue")) +
+  #geom_point(data=ObsCdeep_Mgha, aes(x=year, y=cstock, color="blue")) +
   geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
   xlab("Year") +
   ylab(expression('SOC stock (Mg C ha' ^-1*')')) +
@@ -72,14 +72,6 @@ gC2
 
 
 #### 25 cm depth, base through experimental
-if(scenario_name=="1_3") {
-  # remove 1998 observation from regression, looks like bad data
-  Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha_25cm[Cstock_Mgha_25cm$year >= experiment_start_year &
-                                                                     Cstock_Mgha_25cm$year != 1998,]))
-} else {
-  Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha_25cm[Cstock_Mgha_25cm$year >= experiment_start_year,]))
-}
-
 
 gC3 <- Cstock_Mgha_piv_25cm[Cstock_Mgha_piv_25cm$year <= experiment_end_year,] %>%
 ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +

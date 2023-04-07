@@ -1,4 +1,3 @@
-
 # title: "9_Results_Daycent-setup3.R"
 # author: "Ellen Maas"
 # date: "8/8/2022"
@@ -456,7 +455,6 @@ Cstock_Mgha <- merge(ObsC_Mgha[,c("year","cstock")],
                      by="year",
                      all=TRUE)
 colnames(Cstock_Mgha) <- c("year","Observed","Daycent")
-Cstock_Mgha <- unique(Cstock_Mgha)
 
 Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year),
                                  names_to = "source",
@@ -629,4 +627,3 @@ CH4_obsmod_diff_gha <- sum(CH4_ghaday[!is.na(CH4_ghaday$Observed) &
                                         !is.na(CH4_ghaday$Daycent),"Observed"] -
                              CH4_ghaday[!is.na(CH4_ghaday$Observed) &
                                           !is.na(CH4_ghaday$Daycent),"Daycent"])
-

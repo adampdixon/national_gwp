@@ -107,7 +107,7 @@ source(paste0("0_Observations_and_constants_",site_name,".R"))
 #   #
 #   source("2_Create_soil_data-APSIM.R")
 #   source("2_Create_soil_data-Daycent.R")
-#   source("2_Create_soil_data-LDNDC.R")
+  source("2_Create_soil_data-LDNDC.R")
 #   # RothC only uses clay content, which is included in the weather input file.
    # source(paste0("2_Create_soil_data-Millennial_",site_name,".R"))
 # }
@@ -117,13 +117,13 @@ source(paste0("0_Observations_and_constants_",site_name,".R"))
 
 # Management input files (APSIM, Daycent, LDNDC)
 
-# source(paste0("3_Create_management_input_files-setup_",site_name,".R"))
+source(paste0("3_Create_management_input_files-setup_",site_name,".R"))
 # 
 # source(paste0("3_Create_management_input_files-APSIM_",site_name,".R"))
 #
 # if(mgmt_scenario_grp!=6) {
 # source(paste0("3_Create_management_input_files-Daycent_",site_name,".R"))
-# source("3_Create_management_input_files-LDNDC.R")
+source("3_Create_management_input_files-LDNDC.R")
 # Management input files for RothC, Millennial are created after Daycent runs
 # }
 
@@ -132,7 +132,7 @@ source(paste0("0_Observations_and_constants_",site_name,".R"))
 
 # # Other files
 # if(mgmt_scenario_grp!=6) {
-#   source("4_Create_additional_files-LDNDC.R")
+  source("4_Create_additional_files-LDNDC.R")
 # }
 
 
@@ -149,12 +149,10 @@ source(paste0("0_Observations_and_constants_",site_name,".R"))
 ## model window, save, and run.
 
 # # APSIM
-# if(mgmt_scenario_grp!=6) {
 #   source(paste0(apsim_path,"run_APSIM.R"))
-# }
 
-# # Daycent
 # if(mgmt_scenario_grp!=6) {
+# # Daycent
 #   source(paste0("Daycent/Daycent_run_controller.R"))
 #   # LDNDC
 # }
@@ -178,17 +176,29 @@ source(paste0("0_Observations_and_constants_",site_name,".R"))
 
 #*************************************************************
 
-# Daycent
+# # Daycent
+# if(mgmt_scenario_grp!=6) {
+  # source(paste0("9_Results_Daycent-setup_",site_name,".R"))
+#   model_name <- "Daycent"
+#   if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
+#     source(paste0("9_Results_Daycent-calibration_",site_name,".R"))
+#   }
+#   # source(paste0("9_Results_Daycent-future_",site_name,".R"))
+#   # source("p_Results_analysis.R")
+# }
+
+#*************************************************************
+
+# LDNDC
 if(mgmt_scenario_grp!=6) {
-  source(paste0("9_Results_Daycent-setup_",site_name,".R"))
-  model_name <- "Daycent"
+source(paste0("9_Results_LDNDC-setup_",site_name,".R"))
+  model_name <- "LDNDC"
   if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
-    source(paste0("9_Results_Daycent-calibration_",site_name,".R"))
+    source(paste0("9_Results_LDNDC-calibration_",site_name,".R"))
   }
-  source(paste0("9_Results_Daycent-future_",site_name,".R"))
+  source(paste0("9_Results_LDNDC-future_",site_name,".R"))
   source("p_Results_analysis.R")
 }
-
 
 #*************************************************************
 #*************************************************************
@@ -199,15 +209,17 @@ if(mgmt_scenario_grp!=6) {
 
 # if(mgmt_scenario_grp!=6) {
 # # Management input files (RothC, Millennial)
- # source("3_Create_management_input_files-setupRM4.R")
+## need to run 3_Create_management_input_files-setup_",site_name,".R" first
+## and 9_Results_Daycent-setup_",site_name,".R
+ # source(paste0("3_Create_management_input_files-setupRM_",site_name,".R"))
 # 
 # ## Millennial
-  # source("3_Create_management_input_files-Millennial2.R")
+  # source(paste0("3_Create_management_input_files-Millennial_",site_name,".R"))
   # source(paste0(mill_path,"run_Millennial.R"))
 # 
 #   ## RothC
-#   source("3_Create_management_input_files-RothC2.R")
-#   source("4_Create_additional_files-RothC2.R")
+  # source("3_Create_management_input_files-RothC2.R")
+  # source("4_Create_additional_files-RothC2.R")
 # #
 # # RothC is currently run manually: after management and scenario
 # # files are created, open RothC and run the model.
@@ -227,7 +239,7 @@ if(mgmt_scenario_grp!=6) {
 
 # Millennial
 # if(mgmt_scenario_grp!=6) {
-#   source("9_Results_Millennial-setup.R")
+  # source("9_Results_Millennial-setup.R")
 #   # #
 #   # model_name <- "Millennial"
 #   # if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {

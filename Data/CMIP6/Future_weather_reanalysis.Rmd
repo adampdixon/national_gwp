@@ -26,10 +26,10 @@ library(dplyr)
 
 ```{r constants}
 #
-site_name <- "LRF"
-experiment_start_year <- 2003
+site_name <- "KBS"
+experiment_start_year <- 1989
 experiment_end_year <- 2021
-experiment_start_date <- "2003-01-01"
+experiment_start_date <- "1989-01-01"
 experiment_end_date <- "2021-12-31"
 # site_name <- "LRF"
 # experiment_start_year <- 2003
