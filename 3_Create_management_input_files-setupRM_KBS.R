@@ -64,7 +64,7 @@ soil_moist_bias <- 0
 # C input, for both
 ###########################################
 
-source("p_Daycent_Cinput3.R")
+source(paste0("p_Daycent_Cinput_",site_name,".R"))
 
 Cin_daily <- read.csv(file=paste0(mgmt_path,"Daycent_Cinput_",scenario_name,".csv")) %>%
   mutate(date=as.Date(date))

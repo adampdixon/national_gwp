@@ -43,7 +43,7 @@ Cin_monthly_Mgha$Cinput_mon_Mgha <- Cin_monthly_Mgha$Cinput_mon_Mgha*C_multiplie
 
 
 # create one file per time period per scenario
-for(i in 1850:end_fut_period_year) {
+for(i in land_conversion_year:end_fut_period_year) {
   landman_file <- paste("/landman/",substr(as.character(i),2,4),"_",scenario_name,".dat",sep="")
   landman_data <- Cin_monthly_Mgha[Cin_monthly_Mgha$year==i,c("Cinput_mon_Mgha","Manure_Mgha","Soil_covered")]
   ### header text and data

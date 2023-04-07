@@ -338,15 +338,15 @@ for (i in experiment_start_year:experiment_end_year) {
 
 schedule_file_2100 <- paste0(daycent_path,"sched_fut_",scenario_name,".sch")
 
-Daycent_conv_2100 <- Daycent_conv[Daycent_conv$year %in% 2019:2021,
+Daycent_conv_2100 <- Daycent_conv[Daycent_conv$year %in% experiment_end_year-2:experiment_end_year,
                                 c("date","daycent_mgmt_code","dayofyear")]  %>%
   mutate(
     # daycent_mgmt_code=if_else(daycent_mgmt_code=="CROP C8","CROP C7",
     #                                if_else(daycent_mgmt_code=="CROP W4EG","CROP W3EG",
     #                                        if_else(daycent_mgmt_code=="CROP SYBN","CROP SYBN1",
     #                                                daycent_mgmt_code))),
-    ops_line=paste0(if_else(year(date)==2019,"1 ",
-                    if_else(year(date)==2020,"2 ",
+    ops_line=paste0(if_else(year(date)==experiment_end_year-2,"1 ",
+                    if_else(year(date)==experiment_end_year-1,"2 ",
                                              "3 ")),dayofyear," ",daycent_mgmt_code))
 
 header_txt <- c("2022          Starting year ## start with assumed ground-breaking for agriculture until intensification",

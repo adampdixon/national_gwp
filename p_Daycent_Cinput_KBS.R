@@ -16,7 +16,7 @@
 
 suppressMessages({
   
-  print("Starting p_Daycent_Cinput3")
+  print(paste0("Starting p_Daycent_Cinput_",site_name,".R"))
   
   library(datetime)
   
@@ -74,9 +74,19 @@ suppressMessages({
                             tot_plt_growth-lag(tot_plt_growth,default=1000000),
                             0))
   
+  # fail-safe: limit to future year range selected for this test/run
+  # can hit an error if 2050 testing is done when 2100 last generated
+  # the .lis files
+  
+  livec_output <- livec_output[livec_output$year<=end_fut_period_year,]
+  
+  # Plant/harvest dates - base ----------------------------------------------
+  
   
   # collect plant/harvest dates
   all_years <- data.frame(year=land_conversion_year:end_fut_period_year)
+  
+  
   
   ## assemble annual planting and harvest dates for crops - build list from schedule files
   planting_base <- data.frame(year=all_years[all_years$year >= land_conversion_year &
@@ -111,6 +121,10 @@ suppressMessages({
                                 )))
     )
   
+  
+  # Plant/harvest dates - exp -----------------------------------------------
+  
+  
   # add field ops data - reduce to unique rows
   ### NOTE: There MUST only be one Planting and one Harvest per crop (vs. separate for grain
   ###       and stover)
@@ -120,76 +134,173 @@ suppressMessages({
   #dayofyear=yday(date))
   #field_ops_exp <- field_ops_exp[,c("year","observation_type","dayofyear","date","crop")]
   
-  # set planting and harvest dates by crop
-  ## corn
-  planting_corn_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
-                                                   (all_years$year %% 3) == 1,"year"]) %>%
-    mutate(observation_type="Planting",
-           dayofyr=147,
-           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
-           crop="Maize")
-  harvest_corn_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
-                                                  (all_years$year %% 3) == 1,"year"]) %>%
-    mutate(observation_type="Harvest",
-           dayofyr=294,
-           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
-           crop="Maize")
   
-  ## oats following corn
-  planting_corncc_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+  # Plant/harvest dates - fut -----------------------------------------------
+  ######### NOTE: Harvest dates here need to be set to one day before the
+  ## actual harvest date in the schedule file. This is because the 
+  ## vegetation values for the crop are reset to 0 on the day of harvest
+  ## and we need the cumulative total for the growing season, which ends
+  ## the day before in the Daycent data.
+  
+  # set planting and harvest dates by crop and scenario
+  
+  if(mgmt_scenario_grp==3) {
+    ## corn
+    planting_corn_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
                                                      (all_years$year %% 3) == 1,"year"]) %>%
-    mutate(observation_type="Planting",
-           dayofyr=321,
-           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
-           crop=covercrop_aftercorn)
-  harvest_corncc_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
-                                                    (all_years$year %% 3) == 2,"year"]) %>%
-    mutate(observation_type="Harvest",
-           dayofyr=31,
-           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
-           crop=covercrop_aftercorn)
-  
-  ## soybean following corn/clover
-  planting_soybean_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+      mutate(observation_type="Planting",
+             dayofyr=147,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Maize")
+    harvest_corn_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                    (all_years$year %% 3) == 1,"year"]) %>%
+      mutate(observation_type="Harvest",
+             dayofyr=303-1,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Maize")
+    
+    ## oats following corn
+    planting_corncc_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                       all_years$year < end_fut_period_year & # don't plant fall of last year or there won't be a matching harvest record for 2050
+                                                       (all_years$year %% 3) == 1,"year"]) %>%
+      mutate(observation_type="Planting",
+             dayofyr=321,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop=covercrop_aftercorn)
+    harvest_corncc_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
                                                       (all_years$year %% 3) == 2,"year"]) %>%
-    mutate(observation_type="Planting",
-           dayofyr=168,
-           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
-           crop="Soybean")
-  harvest_soybean_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
-                                                     (all_years$year %% 3) == 2,"year"]) %>%
-    mutate(observation_type="Harvest",
-           dayofyr=272,
-           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
-           crop="Soybean")
-  
-  ## wheat following soybean
-  planting_wheat_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
-                                                    (all_years$year %% 3) == 2,"year"]) %>%
-    mutate(observation_type="Planting",
-           dayofyr=311,
-           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
-           crop="Wheat")
-  harvest_wheat_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
-                                                   (all_years$year %% 3) == 0,"year"]) %>%
-    mutate(observation_type="Harvest",
-           dayofyr=204,
-           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
-           crop="Wheat")
-  
-  ## clover following wheat
-  planting_wheatcc_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
-                                                      (all_years$year %% 3) == 0,"year"]) %>%
-    mutate(observation_type="Planting",
-           dayofyr=234,
-           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
-           crop=covercrop_afterwheat)
-  harvest_wheatcc_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+      mutate(observation_type="Harvest",
+             dayofyr=32-1,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop=covercrop_aftercorn)
+    
+    ## soybean following corn/clover
+    planting_soybean_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                        (all_years$year %% 3) == 2,"year"]) %>%
+      mutate(observation_type="Planting",
+             dayofyr=168,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Soybean")
+    harvest_soybean_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                       (all_years$year %% 3) == 2,"year"]) %>%
+      mutate(observation_type="Harvest",
+             dayofyr=292-1,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Soybean")
+    
+    ## wheat following soybean
+    planting_wheat_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                      (all_years$year %% 3) == 2,"year"]) %>%
+      mutate(observation_type="Planting",
+             dayofyr=311,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Wheat")
+    harvest_wheat_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
                                                      (all_years$year %% 3) == 0,"year"]) %>%
-    mutate(observation_type="Harvest",
-           dayofyr=300,
-           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
-           crop=covercrop_afterwheat)
+      mutate(observation_type="Harvest",
+             dayofyr=205-1,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Wheat")
+    
+    ## clover following wheat
+    planting_wheatcc_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                        (all_years$year %% 3) == 0,"year"]) %>%
+      mutate(observation_type="Planting",
+             dayofyr=234,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop=covercrop_afterwheat)
+    harvest_wheatcc_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                       (all_years$year %% 3) == 1,"year"]) %>%
+      mutate(observation_type="Harvest",
+             dayofyr=31-1,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop=covercrop_afterwheat)
+    
+  } else if(mgmt_scenario_grp==2) {
+    ## corn
+    planting_corn_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                     (all_years$year %% 3) == 1,"year"]) %>%
+      mutate(observation_type="Planting",
+             dayofyr=133,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Maize")
+    harvest_corn_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                    (all_years$year %% 3) == 1,"year"]) %>%
+      mutate(observation_type="Harvest",
+             dayofyr=303-1,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Maize")
+    
+    ## soybean following corn
+    planting_soybean_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                        (all_years$year %% 3) == 2,"year"]) %>%
+      mutate(observation_type="Planting",
+             dayofyr=131,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Soybean")
+    harvest_soybean_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                       (all_years$year %% 3) == 2,"year"]) %>%
+      mutate(observation_type="Harvest",
+             dayofyr=273-1,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Soybean")
+    
+    ## wheat following soybean
+    planting_wheat_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                      (all_years$year %% 3) == 2,"year"]) %>%
+      mutate(observation_type="Planting",
+             dayofyr=291,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Wheat")
+    harvest_wheat_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                     (all_years$year %% 3) == 0,"year"]) %>%
+      mutate(observation_type="Harvest",
+             dayofyr=205-1,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Wheat")
+  } else { #everything else based on mgmt_scenario_grp==1
+    ## corn
+    planting_corn_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                     (all_years$year %% 3) == 1,"year"]) %>%
+      mutate(observation_type="Planting",
+             dayofyr=134,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Maize")
+    harvest_corn_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                    (all_years$year %% 3) == 1,"year"]) %>%
+      mutate(observation_type="Harvest",
+             dayofyr=295-1,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Maize")
+    
+    ## soybean following corn
+    planting_soybean_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                        (all_years$year %% 3) == 2,"year"]) %>%
+      mutate(observation_type="Planting",
+             dayofyr=134,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Soybean")
+    harvest_soybean_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                       (all_years$year %% 3) == 2,"year"]) %>%
+      mutate(observation_type="Harvest",
+             dayofyr=273-1,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Soybean")
+    
+    ## wheat following soybean
+    planting_wheat_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                      (all_years$year %% 3) == 2,"year"]) %>%
+      mutate(observation_type="Planting",
+             dayofyr=313,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Wheat")
+    harvest_wheat_fut <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                     (all_years$year %% 3) == 0,"year"]) %>%
+      mutate(observation_type="Harvest",
+             dayofyr=205-1,
+             date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+             crop="Wheat")
+  }
   
   # combine
   if(mgmt_scenario_grp!=3) {
@@ -248,7 +359,7 @@ suppressMessages({
   livec_output$month <- month(livec_output$date)
   
   ## fill in crop type from planting-planting
-  for(i in which(c(1:nrow(all_field_ops[all_field_ops$year<2099,]))%%2==1)) {
+  for(i in which(c(1:nrow(all_field_ops[all_field_ops$year<end_fut_period_year-1,]))%%2==1)) {
     planting_date <- all_field_ops[i,"date"]
     next_planting_date <- all_field_ops[i+2,"date"]
     livec_output[livec_output$date>=planting_date & 
@@ -256,7 +367,13 @@ suppressMessages({
   }
   ### clean up the edges
   livec_output[livec_output$year==land_conversion_year,"crop"] <- "Maize"
-  livec_output[livec_output$year == 2099 & is.na(livec_output$crop),"crop"] <- "Wheat"
+  if(end_fut_period_year==2100) {
+    livec_output[livec_output$year == 2099 & is.na(livec_output$crop),"crop"] <- "Wheat"
+  } else if(end_fut_period_year==2050) {
+    livec_output[livec_output$year == 2099 & is.na(livec_output$crop),"crop"] <- "Maize"
+  } else {
+    print("Error in p_Daycent_Cinput_KBS.R: unhandled end_fut_period_year")
+  }
   livec_output <- livec_output[livec_output$year < end_fut_period_year,]
   
   
