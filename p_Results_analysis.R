@@ -57,7 +57,7 @@ if(model_name %in% c("APSIM","Daycent","LDNDC")) {
     SoyYld_diff_fut <- NA
     WheatYld_diff_fut <- NA
     CottonYld_diff_fut <- CYys[2]-CYys[1]
-    SorghumYld_diff_fut <- SYys[2]-SYys[1]
+    SorghumYld_diff_fut <- ifelse(mgmt_scenario_grp!=7,SYys[2]-SYys[1],NA)
   }
   
   N2O_total_fut <- sum(N2O_ghaday[N2O_ghaday$date>experiment_end_date,model_name])/1000

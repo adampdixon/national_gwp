@@ -38,7 +38,7 @@ experiment_year_range <- experiment_start_year:experiment_end_year
 experiment_start_date <- "2003-01-01"
 experiment_end_date <- "2010-12-31"
 end_exp_period_year <- 2021
-end_fut_period_year <- 2100
+end_fut_period_year <- 2050
 calib_mgmt_grps <- c(3,5,7,8)
 #
 fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
@@ -65,7 +65,7 @@ mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 # Loop through the scenarios; set which climate and management
 # scenario numbers to use for this run:
 clim_nums <- c(1:5)
-mgmt_grps <- c(3,4,5,7,8) #calib_mgmt_grps
+mgmt_grps <- c(1:6) #calib_mgmt_grps
 
 
 for (x in clim_nums) { # climate scenarios
