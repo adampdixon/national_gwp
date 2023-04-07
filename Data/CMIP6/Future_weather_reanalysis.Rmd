@@ -26,10 +26,10 @@ library(dplyr)
 
 ```{r constants}
 #
-site_name <- "KBS"
-experiment_start_year <- 1989
+site_name <- "LRF"
+experiment_start_year <- 2003
 experiment_end_year <- 2021
-experiment_start_date <- "1989-01-01"
+experiment_start_date <- "2003-01-01"
 experiment_end_date <- "2021-12-31"
 # site_name <- "LRF"
 # experiment_start_year <- 2003
@@ -999,48 +999,3 @@ write.csv(ukesm_high_reanal,file=paste0(site_name,"/fut_clim_scenario_5_reanal.c
 
 ```
 
-
-```{r fudge_for_LRF}
-
-## Use Daycent weather for historical, over the experimental period
-#hist <- read.table(paste0("C:/Users/edmaas/Documents/Modeling/Daycent/",site_name,"/basic_exp.wth")) 
-hist_exp <- read.table(paste0("../../",daycent_path,"/basic_exp.wth"))
-colnames(hist_exp) <- c("day","month","year","dayofyear","h_tmax","h_tmin","h_rain_cm")
-hist_exp$date=make_date(hist_exp$year, hist_exp$month, hist_exp$day)
-
-# Future
-
-## Use Daycent weather for historical, over the experimental period
-baseln <- read.table(paste0("../../",daycent_path,"/basic_1.wth"))
-colnames(baseln) <- c("day","month","year","dayofyear","bl_tmax","bl_tmin","bl_rain_cm")
-baseln <- baseln[baseln$year<=end_fut_period_year,]
-baseln$date=make_date(baseln$year, baseln$month, baseln$day)
-
-## CMIPs
-gfdl_low_raw_reanal <- read.csv(paste0("LRF/fut_clim_scenario_2_reanal.csv")) 
-gfdl_low_reanal <- gfdl_low_raw_reanal %>%
-  select(day,month,year,dayofyear,mint_C,maxt_C,rain_cm)
-colnames(gfdl_low) <- c("day","month","year","dayofyear","gl_tmin","gl_tmax","gl_rain_cm")
-gfdl_low$date=make_date(gfdl_low$year, gfdl_low$month, gfdl_low$day)
-
-gfdl_high_raw_reanal <- read.csv(paste0(site_name,"/fut_clim_scenario_3_reanal.csv")) 
-gfdl_high_reanal <- gfdl_high_raw_reanal %>%
-  select(day,month,year,dayofyear,mint_C,maxt_C,rain_cm)
-colnames(gfdl_high) <- c("day","month","year","dayofyear","gh_tmin","gh_tmax","gh_rain_cm")
-gfdl_high$date=make_date(gfdl_high$year, gfdl_high$month, gfdl_high$day)
-
-ukesm_low_raw_reanal <- read.csv(paste0(site_name,"/fut_clim_scenario_4_reanal.csv")) 
-ukesm_low_reanal <- ukesm_low_raw_reanal %>%
-  select(day,month,year,dayofyear,mint_C,maxt_C,rain_cm)
-colnames(ukesm_low) <- c("day","month","year","dayofyear","ul_tmin","ul_tmax","ul_rain_cm")
-ukesm_low$date=make_date(ukesm_low$year, ukesm_low$month, ukesm_low$day)
-
-ukesm_high_raw_reanal <- read.csv(paste0(site_name,"/fut_clim_scenario_5_reanal.csv")) 
-ukesm_high_reanal <- ukesm_high_raw_reanal %>%
-  select(day,month,year,dayofyear,mint_C,maxt_C,rain_cm)
-colnames(ukesm_high) <- c("day","month","year","dayofyear","uh_tmin","uh_tmax","uh_rain_cm")
-ukesm_high$date=make_date(ukesm_high$year, ukesm_high$month, ukesm_high$day)
-
-
-
-```
