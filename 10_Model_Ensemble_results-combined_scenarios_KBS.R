@@ -2118,8 +2118,8 @@ gGWPam <- summary_output[summary_output$Climate_Scenario==clim_num,] %>%
            alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
-  #ylim(-35,60) +
-  ylim(-155,90) +
+  ylim(-50,60) +
+  #ylim(-155,90) +
   ggtitle(paste0(site_name," Global Warming Potential by ",
                  end_fut_period_year,"-Model Means"),
           paste("Climate Scenario:",climate_desc)) +
