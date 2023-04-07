@@ -168,10 +168,10 @@ AUTO.OUT
 #/RothC/KBS/SETUP.LST
 #/RothC/KBS/ST6UNST.LOG
 #/RothC/KBS/RothC_Interface.CAB
-/Millennial/R/simulation/KBS/base_out*.csv
-/Millennial/R/simulation/KBS/scenario_out*.csv
-/Millennial/R/simulation/LRF/base_out*.csv
-/Millennial/R/simulation/LRF/scenario_out*.csv
+#/Millennial/R/simulation/KBS/base_out*.csv
+#/Millennial/R/simulation/KBS/scenario_out*.csv
+#/Millennial/R/simulation/LRF/base_out*.csv
+#/Millennial/R/simulation/LRF/scenario_out*.csv
 
 # LFS files
 #/KBS_results/mean_daily_results.csv
