@@ -26,10 +26,10 @@ library(dplyr)
 
 ```{r constants}
 #
-site_name <- "LRF"
-experiment_start_year <- 2003
+site_name <- "KBS"
+experiment_start_year <- 1989
 experiment_end_year <- 2021
-experiment_start_date <- "2003-01-01"
+experiment_start_date <- "1989-01-01"
 experiment_end_date <- "2021-12-31"
 # site_name <- "LRF"
 # experiment_start_year <- 2003
@@ -390,7 +390,7 @@ pLM <- tmin_df %>%
 
 pLM
 
-ggsave(filename=paste0(site_name,"/Verification-Minimum Temperature linear models.jpg"),plot=pUH,
+ggsave(filename=paste0(site_name,"/Verification-Minimum Temperature linear models.jpg"),plot=pLM,
        width=9, height=6, dpi=300)
 ```
 
@@ -1000,7 +1000,7 @@ write.csv(ukesm_high_reanal,file=paste0(site_name,"/fut_clim_scenario_5_reanal.c
 ```
 
 
-```{fudge_for_LRF}
+```{r fudge_for_LRF}
 
 ## Use Daycent weather for historical, over the experimental period
 #hist <- read.table(paste0("C:/Users/edmaas/Documents/Modeling/Daycent/",site_name,"/basic_exp.wth")) 
@@ -1017,7 +1017,8 @@ baseln <- baseln[baseln$year<=end_fut_period_year,]
 baseln$date=make_date(baseln$year, baseln$month, baseln$day)
 
 ## CMIPs
-gfdl_low_raw_reanal <- read.csv(paste0("Data/CMIP6/LRF/fut_clim_scenario_2_reanal.csv")) 
+gfdl_low_raw_reanal <- read.csv(paste0("fut_clim_scenario_2_reanal.csv")) 
+gfdl_low_raw_reanal <- read.csv("Data/CMIP6/LRF/fut_clim_scenario_2_reanal.csv") 
 gfdl_low <- gfdl_low_raw %>%
   select(day,month,year,dayofyear,mint_C,maxt_C,rain_cm)
 colnames(gfdl_low) <- c("day","month","year","dayofyear","gl_tmin","gl_tmax","gl_rain_cm")

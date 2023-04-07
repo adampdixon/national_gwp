@@ -36,7 +36,7 @@ library(stringr)
 mgmt_path <- paste0("Data/",site_name,"/Management/")
 
 # crop_filename <- "51-agronomic+yields+annual+crops+1656512632.csv"
-# mill_equilinit_filename <- "equil_init.txt"
+ mill_equilinit_filename <- "equil_init.txt"
 # mill_corninit_filename <- "corn_init.txt"
 # mill_soybeaninit_filename <- "soy_init.txt"
 # mill_wheatinit_filename <- "wheat_init.txt"
@@ -64,7 +64,7 @@ soil_moist_bias <- 0
 # C input, for both
 ###########################################
 
-source("p_Daycent_Cinput3.R")
+source(paste0("p_Daycent_Cinput_",site_name,".R"))
 
 Cin_daily <- read.csv(file=paste0(mgmt_path,"Daycent_Cinput_",scenario_name,".csv")) %>%
   mutate(date=as.Date(date))

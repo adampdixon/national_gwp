@@ -302,8 +302,8 @@ land_conversion_year <- 1940 # estimated from NASS Census of Agriculture: county
 year_range_fut=experiment_start_year:end_fut_period_year
 
 depth_m <- 0.1
-equil_C_input <- NA #305.00 g C/m^2 annually
-surface_C_init <- 45 # Mg C ha-1; estimated from Parton et al. 2005
+equil_C_input <- 150 # g C/m^2 annually; 150 is based on inverse modeling with RothC
+surface_C_init <- 30 # Mg C ha-1; estimated from 45 in topsoil in literature
 
 control_treatment <- "CCct"
 control_treatment_num <- 7

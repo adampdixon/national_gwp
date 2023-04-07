@@ -23,16 +23,20 @@ setwd(mill_path)
 
 # local constants
 
-meas_initC <- 9500 # g C/m^2
+meas_initC <- 6500 # g C/m^2
 #Define path to the Millennial directory
 rootdir <- "../../../"
+
 # the base scenario name reflects the experimental treatment that the future
 # scenario is extending (such as conventional tillage)
-base_scenario_name <- if_else(mgmt_scenario_num==1 | mgmt_scenario_grp %in% c(4:7), 
-                              "1_1",
-                      if_else(mgmt_scenario_num==2, "1_2",
-                      if_else(mgmt_scenario_num==3, "1_3",
-                      "Error")))
+base_scenario_name <- if_else(mgmt_scenario_grp==3, "1_3",
+                      if_else(mgmt_scenario_grp==4 | 
+                                (mgmt_scenario_grp==5 & 
+                                   mgmt_scenario_num <= 3), "1_53",
+                      if_else(mgmt_scenario_grp==5, "1_56",
+                      if_else(mgmt_scenario_grp==7, "1_7",
+                      if_else(mgmt_scenario_grp==8, "1_8",
+                      "Error")))))
 
 #*************************************************************
 
@@ -53,7 +57,8 @@ scen_inputdata <- select(scen_input_raw,-c("date","crop"))
 
 #Read in parameters, using experimental data the scenario is based on
 ##Described in Table A1 of Abramoff et al. (2021)
-parameters.file <- read.table(paste0("soilparams_in_",base_scenario_name,".txt"))
+#parameters.file <- read.table(paste0(mill_path,"soilparams_in_",base_scenario_name,".txt"))
+parameters.file <- read.table("soilparams_in.txt")
 parameters <- as.list(parameters.file$V2)
 names(parameters) <- parameters.file$V1
 
@@ -67,7 +72,7 @@ parameters <- c(parameters,site_parameters)
 
 #Read in functions
 source("run_functions.R") #R script that contains calls to run model
-source(paste0(rootdir, "R/models/derivs_V2_MM.R")) #The official version of Millennial V2
+source(paste0(rootdir,"R/models/derivs_V2_MM.R")) #The official version of Millennial V2
 
 
 #*************************************************************
