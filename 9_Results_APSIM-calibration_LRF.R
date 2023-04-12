@@ -1,4 +1,4 @@
-#title: "2_Calibrate_APSIM"
+#title: "9_Results_APSIM-calibration"
 #author: "Ellen Maas"
 #date: "7/22/2022"
 #output: html_document
@@ -6,7 +6,7 @@
 
 suppressMessages({
   
-  print("Starting 9_Results_APSIM-calibration2.R")
+  print(paste0("Starting 9_Results_APSIM-calibration_",site_name,".R"))
   
 library(magrittr)
 library(tidyverse)

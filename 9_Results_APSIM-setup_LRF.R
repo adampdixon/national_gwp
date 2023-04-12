@@ -1,5 +1,5 @@
 #######################################
-# File: "9_Results_APSIM-setup.R"
+# File: "9_Results_APSIM-setup_LRF.R"
 # Author: "Ellen Maas"
 # Date: "7/22/2022"
 # Description: Imports results from APSIM output. Changed to all drive
@@ -11,7 +11,7 @@
 # 2/23/2023: Modified to use all APSIM Classic.
 #
 #######################################
-print("Starting 9_Results_APSIM-setup.R")
+print(paste0("Starting 9_Results_APSIM-setup_",site_name,".R"))
 
 #library(apsimx)
 #library(readxl)
