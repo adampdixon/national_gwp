@@ -65,7 +65,7 @@ mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 # Loop through the scenarios; set which climate and management
 # scenario numbers to use for this run:
 clim_nums <- c(1:5)
-mgmt_grps <- c(1:6) #calib_mgmt_grps
+mgmt_grps <- c(5) #calib_mgmt_grps
 
 
 for (x in clim_nums) { # climate scenarios

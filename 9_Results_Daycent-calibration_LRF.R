@@ -180,79 +180,31 @@ gShY
 # 
 # gWhY
 
-##
-Cfit_Daycent <- coef(lm(Daycent ~ year, data = Cstock_Mgha))
 
-if(mgmt_scenario_grp!=3) {
-Cfit_Obs <- coef(lm(Observed ~ year, 
-                    data = Cstock_Mgha[Cstock_Mgha$year %in% experiment_year_range,]))
-} else {
-  Cfit_Obs <- coef(lm(Observed ~ year, 
-                      data = Cstock_Mgha[Cstock_Mgha$year %in% experiment_year_range &
-                                           Cstock_Mgha$year!=1998,]))
-}
+## SOC
 
-# gCb <- Cstock_Mgha_piv[Cstock_Mgha_piv$year <= experiment_end_year,] %>%
-#   ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
-#   geom_point(show.legend=TRUE) +
-#   xlab("Year") +
-#   ylab(expression('SOC stock (Mg C ha' ^-1*')')) +
-#   #geom_abline(intercept=Cfit_Daycent[1], slope=Cfit_Daycent[2], color="orange") +
-#   #geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
-#   scale_color_manual(labels=c("Daycent","Observed"),
-#                      values=cbPalette9[c(8,1)]) +
-#   theme(panel.background = element_blank(),
-#         axis.line = element_line(),
-#         legend.position = "right",
-#         legend.key = element_blank())
+Cfit_Daycent <- coef(lm(Daycent ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% 2003:2021,]))#experiment_year_range,]))
+Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
 
-
-gCb <- Cstock_Mgha[Cstock_Mgha$year <= experiment_end_year,] %>%
-  ggplot(aes(x=year, y=Observed, color=cbPalette9[8]), show.legend=TRUE) +
-  geom_point(show.legend=TRUE) +
-  geom_line(data=Cstock_Mgha[Cstock_Mgha$year <= experiment_end_year,],
-            aes(x=year, y=Daycent, color=cbPalette9[1]), show.legend=TRUE) +
-  xlab("Year") +
-  ylab(expression('SOC stock (Mg C ha' ^-1*')')) +
-  ggtitle(paste(site_name,"Soil Organic Carbon"),
-          paste0("Scenario: ",scenario_descriptor)) +
-  #geom_abline(intercept=Cfit_Daycent[1], slope=Cfit_Daycent[2], color="orange") +
+gC <- Cstock_Mgha_piv[Cstock_Mgha_piv$year %in% 2003:2021,] %>%#experiment_year_range,] %>%
+  ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
+  geom_point() +
   geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
-  scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
-  theme(panel.background = element_blank(),
-        axis.line = element_line(),
-        legend.position = "right",
-        legend.key = element_blank())
-
-gCb 
-
-Cat_landconv <- lis_output[lis_output$time==land_conversion_year,"somsc_gm2"]
-Cat_startexp <- unique(lis_output[lis_output$time==experiment_start_year,"somsc_gm2"])
-Cdiff_landconv_startexp <- lis_output[lis_output$time==land_conversion_year,"somsc_gm2"]-
-  lis_output[lis_output$time==experiment_start_year-1,"somsc_gm2"]
-
-
-##
-
-gC <- Cstock_Mgha[Cstock_Mgha$year %in% experiment_year_range,] %>%
-  ggplot(aes(x=year, y=Observed, color=cbPalette9[8]), show.legend=TRUE) +
-  geom_point(show.legend=TRUE) +
-  geom_line(data=Cstock_Mgha[Cstock_Mgha$year %in% experiment_year_range,],
-            aes(x=year, y=Daycent, color=cbPalette9[1]), show.legend=TRUE) +
+  geom_errorbar(aes(ymin=C_val-Obs_sd, ymax=C_val+Obs_sd),
+                width=.2) + # Width of the error bars
   xlab("Year") +
-  ylab(expression('SOC stock (Mg C ha' ^-1*')')) +
+  ylab(expression('SOC stock (Mg C ha ' ^-1*')')) +
+  ylim(3,12) +
   ggtitle(paste(site_name,"Soil Organic Carbon"),
           paste0("Scenario: ",scenario_descriptor)) +
-  #geom_abline(intercept=Cfit_Daycent[1], slope=Cfit_Daycent[2], color="orange") +
-  #geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
+  geom_abline(intercept=Cfit_Daycent[1], slope=Cfit_Daycent[2], color="orange") +
   scale_color_manual(labels=c("Daycent","Observed"),
                      values=cbPalette9[c(8,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
         legend.key = element_blank())
-
 
 gC 
 
@@ -260,6 +212,40 @@ SOC_diff <- lis_output[lis_output$time==land_conversion_year,"somsc_gm2"]-
   lis_output[lis_output$time==experiment_start_year-1,"somsc_gm2"]
 SOC_landconv <- lis_output[lis_output$time==land_conversion_year,"somsc_gm2"]
 SOC_startexp <- unique(lis_output[lis_output$time==experiment_start_year,"somsc_gm2"])
+
+
+## SOC with spin-up
+
+Cfith_Daycent <- coef(lm(Daycent ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% 2003:2021,]))#experiment_year_range,]))
+Cfith_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
+
+gCh <- Cstock_Mgha_piv %>%#experiment_year_range,] %>%
+  ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
+  geom_point() +
+  geom_abline(intercept=Cfith_Obs[1], slope=Cfith_Obs[2], color="black") +
+  geom_errorbar(aes(ymin=C_val-Obs_sd, ymax=C_val+Obs_sd),
+                width=.2) + # Width of the error bars
+  xlab("Year") +
+  ylab(expression('SOC stock (Mg C ha ' ^-1*')')) +
+#  ylim(0,12) +
+  ggtitle(paste(site_name,"Soil Organic Carbon"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  geom_abline(intercept=Cfith_Daycent[1], slope=Cfith_Daycent[2], color="orange") +
+  scale_color_manual(labels=c("Daycent","Observed"),
+                     values=cbPalette9[c(8,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gCh
+
+Cat_landconv <- lis_output[lis_output$time==land_conversion_year,"somsc_gm2"]
+Cat_startexp <- unique(lis_output[lis_output$time==experiment_start_year,"somsc_gm2"])
+Cdiff_landconv_startexp <- lis_output[lis_output$time==land_conversion_year,"somsc_gm2"]-
+  lis_output[lis_output$time==experiment_start_year-1,"somsc_gm2"]
+
 
 #first(SoilTemp_C_piv[SoilTemp_C_piv$source=="KBS_Observed"&!is.na(SoilTemp_C_piv$temp_val),"date"])
 
@@ -636,7 +622,7 @@ ggsave(filename=paste0(results_path,"calib_Sorghum_hist_yield_comparison_exp_",s
        width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_SOC_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gC,
        width=6, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"calib_SOC_comparison_base_",scenario_name,"_Daycent.jpg"),plot=gCb,
+ggsave(filename=paste0(results_path,"calib_SOC_comparison_base_",scenario_name,"_Daycent.jpg"),plot=gCh,
        width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gT,
        width=6, height=6, dpi=300)

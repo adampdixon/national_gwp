@@ -87,6 +87,8 @@ suppressMessages({
   all_years <- data.frame(year=land_conversion_year:end_fut_period_year)
   
   
+  # Base period -------------------------------------------------------------
+  
   
   ## assemble annual planting and harvest dates for crops - build list from schedule files
   planting_base <- data.frame(year=all_years[all_years$year >= land_conversion_year &
@@ -301,6 +303,7 @@ suppressMessages({
              date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
              crop="Wheat")
   }
+  
   
   # combine
   if(mgmt_scenario_grp!=3) {

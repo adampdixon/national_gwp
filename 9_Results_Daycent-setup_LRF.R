@@ -282,15 +282,15 @@ lis_output_raw <- read.table(paste0(daycent_path,paste0("sched_fut_",scenario_na
 lis_output <- lis_output_raw[lis_output_raw$year <= end_fut_period_year,]
 
 ## need to remove duplicate years where phases join (base-exp, exp-fut)
-## and end of future simulation
-DayC_Mgha <- lis_output[!((lis_output$cinput == 0 & 
+## and end of future simulation - unique should do it
+DayC_Mgha <- unique(lis_output[!((lis_output$cinput == 0 & 
                            (lis_output$time == experiment_start_year | lis_output$time == experiment_end_year+1)) |
                           lis_output$time == end_fut_period_year),c("time","somsc_gm2","year")] %>%  
   mutate(base=round(somsc_gm2/100,1)
   )
+)
 
 # reduce C to limit to top 10 cm; Daycent provides top 20 cm
-## calculate the Mgha to reduce the output by to get from 1 m C to top 25 cm
 ## can't just multiply by a fraction as the values end up compressed, and we just
 ## need everything to drop down by a set amount
 reduceCby <- 4.2
@@ -405,62 +405,94 @@ write.table(output_daily_data,file=paste0(results_path,"Daily_results_compilatio
 
 # merge observed and modeled data
 
-CottonYld_Mgha <- merge(ObsYield[ObsYield$crop=="Cotton",c("year","mean_yield")],
-                       DayY_Mgha[DayY_Mgha$crop=="Cotton", #DayY_Mgha$yield != 0,
-                                 c("year","yield")],
-                       by="year",
-                       all=TRUE) %>%
-  merge(HistY_Mgha[,c("year","cotton_yield_mgha")],
-        by="year",
-        all=TRUE)
-colnames(CottonYld_Mgha) <- c("year","Observed","Daycent","Historical")
+## Sorghum yield
 
-CottonYld_Mgha_piv <- pivot_longer(CottonYld_Mgha, c(-year),
-                                  names_to = "source",
-                                  values_to = "yield_val")
+SorghumYld_Mgha <- merge(ObsYield[ObsYield$crop=="Sorghum",c("year","mean_yield","sd_yield")],
+                         DayY_Mgha[DayY_Mgha$yield != 0,
+                                     c("year","yield")],
+                         by="year",
+                         all=TRUE)
+colnames(SorghumYld_Mgha) <- c("year","Observed","Obs_sd","Daycent")
 
-##
-SorghumYld_Mgha <- merge(ObsYield[ObsYield$crop=="Sorghum",c("year","mean_yield")],
-                     DayY_Mgha[DayY_Mgha$crop=="Sorghum", #DayY_Mgha$yield != 0,
-                               c("year","yield")],
-                     by="year",
-                     all=TRUE) %>%
-  merge(HistY_Mgha[HistY_Mgha$year>=1954,c("year","sorghum_yield_mgha")],
-        by="year",
-        all=TRUE)
-colnames(SorghumYld_Mgha) <- c("year","Observed","Daycent","Historical")
+SorghumYld_Mgha_piv <- pivot_longer(SorghumYld_Mgha, c(-year,-Obs_sd),
+                                    names_to = "source",
+                                    values_to = "yield_val")
 
-SorghumYld_Mgha_piv <- pivot_longer(SorghumYld_Mgha, c(-year),
-                                names_to = "source",
-                                values_to = "yield_val")
+# remove sd from modeled records; only for observed
+SorghumYld_Mgha_piv <- SorghumYld_Mgha_piv %>%
+  mutate(Obs_sd=replace(Obs_sd, source!="Observed", NA))
 
-# ##
-# WheatYld_Mgha <- merge(ObsYield[ObsYield$crop=="Wheat",c("year","mean_yield")],
-#                        DayY_Mgha[DayY_Mgha$crop=="Wheat", #DayY_Mgha$yield != 0,DayY_Mgha$yield != 0,
-#                                  c("year","yield")],
-#                        by="year",
-#                        all=TRUE) %>%
-#   merge(HistY_Mgha[HistY_Mgha$year>=1954,c("year","wheat_yield_mgha")],
-#         by="year",
-#         all=TRUE)
-# colnames(WheatYld_Mgha) <- c("year","Observed","Daycent","Historical")
+
+## Cotton yield
+
+CottonYld_Mgha <- merge(ObsYield[ObsYield$crop=="Cotton",c("year","mean_yield","sd_yield")],
+                        DayY_Mgha[DayY_Mgha$yield != 0,
+                                    c("year","yield")],
+                        by="year",
+                        all=TRUE)
+colnames(CottonYld_Mgha) <- c("year","Observed","Obs_sd","Daycent")
+
+CottonYld_Mgha_piv <- pivot_longer(CottonYld_Mgha, c(-year,-Obs_sd),
+                                   names_to = "source",
+                                   values_to = "yield_val")
+
+# remove sd from modeled records; only for observed
+CottonYld_Mgha_piv <- CottonYld_Mgha_piv %>%
+  mutate(Obs_sd=replace(Obs_sd, source!="Observed", NA))
+
+# ## Sorghum biomass - don't have for Daycent yet
 # 
-# WheatYld_Mgha_piv <- pivot_longer(WheatYld_Mgha, c(-year),
-#                                   names_to = "source",
-#                                   values_to = "yield_val")
+# SorghumBioYld_Mgha <- merge(ObsBiomass[ObsBiomass$crop=="Sorghum",c("year","mean_yield","sd_yield")],
+#                             DayBY_Mgha[DayBY_Mgha$yield != 0,
+#                                          c("year","yield")],
+#                             by="year",
+#                             all=TRUE)
+# colnames(SorghumBioYld_Mgha) <- c("year","Observed","Obs_sd","Daycent")
+# 
+# SorghumBioYld_Mgha_piv <- pivot_longer(SorghumBioYld_Mgha, c(-year,-Obs_sd),
+#                                        names_to = "source",
+#                                        values_to = "yield_val")
+# 
+# # remove sd from modeled records; only for observed
+# SorghumBioYld_Mgha_piv <- SorghumBioYld_Mgha_piv %>%
+#   mutate(Obs_sd=replace(Obs_sd, source!="Observed", NA))
+# 
+# ## Cotton biomass - don't have for Daycent yet
+# 
+# CottonBioYld_Mgha <- merge(ObsBiomass[ObsBiomass$crop=="Cotton",c("year","mean_yield","sd_yield")],
+#                            DayBY_Mgha[DayBY_Mgha$CottonYield_Mgha != 0,
+#                                         c("year","CottonYield_Mgha")],
+#                            by="year",
+#                            all=TRUE)
+# colnames(CottonBioYld_Mgha) <- c("year","Observed","Obs_sd","Daycent")
+# 
+# CottonBioYld_Mgha_piv <- pivot_longer(CottonBioYld_Mgha, c(-year,-Obs_sd),
+#                                       names_to = "source",
+#                                       values_to = "yield_val")
+# 
+# # remove sd from modeled records; only for observed
+# CottonBioYld_Mgha_piv <- CottonBioYld_Mgha_piv %>%
+#   mutate(Obs_sd=replace(Obs_sd, source!="Observed", NA))
 
-##
-Cstock_Mgha <- merge(ObsC_Mgha[,c("year","cstock")],
+## SOC
+
+Cstock_Mgha <- merge(ObsC_Mgha[,c("year","cstock","sd_cstock")],
                      DayC_Mgha[,c("year","base")],
                      by="year",
                      all=TRUE)
-colnames(Cstock_Mgha) <- c("year","Observed","Daycent")
+colnames(Cstock_Mgha) <- c("year","Observed","Obs_sd","Daycent")
 
-Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year),
+Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year,-Obs_sd),
                                  names_to = "source",
                                  values_to = "C_val")
 
-##
+# remove sd from modeled records; only for observed
+Cstock_Mgha_piv <- Cstock_Mgha_piv %>%
+  mutate(Obs_sd=replace(Obs_sd, source!="Observed", NA))
+
+
+## Soil Temp
+
 SoilTemp_C <- merge(ObsTemp[,c("date","soil_temperature")],
                     DayT_C[,c("date","mean_3_4")],#DayT_C[,c("date","layer3")],
                     by="date",

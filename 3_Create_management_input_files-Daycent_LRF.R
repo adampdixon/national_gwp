@@ -212,7 +212,7 @@ for (i in experiment_start_year:end_exp_period_year) {
     
     cat(block_txt,sep="\n",file=schedule_file_exp,append=TRUE)  
     block_num <- block_num + 1  
-  } # if year=experiment_start_year
+  } # end if year=experiment_start_year
   else if (i>experiment_start_year & i<=experiment_end_year) {
     curr_yr_ops <- Daycent_conv[Daycent_conv$year==i,c("date","daycent_mgmt_code","dayofyear")] %>%
       mutate(ops_line=paste0("1 ",dayofyear," ",daycent_mgmt_code))
@@ -234,13 +234,25 @@ for (i in experiment_start_year:end_exp_period_year) {
     
     cat(block_txt,sep="\n",file=schedule_file_exp,append=TRUE)  
     block_num <- block_num + 1  
-  } # else year is not in experiment year range
+  } # end else year is in experiment year range
   else { # Extended experimental period to pad through 2021
+    if(mgmt_scenario_grp %in% c(3,8)) {
+      ### use 2004 and 2005 because sorghum dropped out in 2007
+      if(i %% 2==0) {
+        curr_yr_ops <- rbind(Daycent_conv[Daycent_conv$year==2005,],
+                             Daycent_conv[Daycent_conv$date==as.Date("2009-12-13"),])
+        } else {
+            curr_yr_ops <- Daycent_conv[Daycent_conv$year==2004,]
+        }
+      curr_yr_ops$year <- i
+      curr_yr_ops$date <- as.Date(paste0(i,substr(as.character(curr_yr_ops$date),5,10)))
+    } else {
     ### Use last 2 years and repeat
     curr_yr_ops <- Daycent_conv[Daycent_conv$year==ifelse(i %% 2==1, (experiment_end_year-1),
                                                           experiment_end_year),
                                 c("date","daycent_mgmt_code","dayofyear")] %>%
       mutate(ops_line=paste0("1 ",dayofyear," ",daycent_mgmt_code))
+    }
     
     header_txt <- c(
       paste(block_num,"Block ## Experimental period",sep="\t"),
@@ -252,11 +264,11 @@ for (i in experiment_start_year:end_exp_period_year) {
       "C 			 Weather choice")
     
     ops_txt <- curr_yr_ops$ops_line
-### Need to remove final Rye planting in 2021 as the future 2-cycle doesn't
-### start with a kill event (no cover crop planted at end of cycle).
-    if(i==end_exp_period_year & mgmt_scenario_grp %in% c(3,8)) {
-      ops_txt <- ops_txt[1:(length(ops_txt)-2)]
-    }
+    # ### Need to remove final Rye planting in 2021 as the future 2-cycle doesn't
+    # ### start with a kill event (no cover crop planted at end of cycle).
+    # if(i==end_exp_period_year & mgmt_scenario_grp %in% c(3,8)) {
+    #   ops_txt <- ops_txt[1:(length(ops_txt)-2)]
+    # }
     
     footer_txt <- "-999 -999 X"
     
@@ -264,7 +276,7 @@ for (i in experiment_start_year:end_exp_period_year) {
     
     cat(block_txt,sep="\n",file=schedule_file_exp,append=TRUE)  
     block_num <- block_num + 1  
-  } # else year is not start of experiment
+  } # end extended period
   
 } # for loop 2003-2010
 
@@ -328,30 +340,35 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
   )
 } else if(mgmt_scenario_num %in% c(54,55,56)) { #CSnt
   c(
-    "1 133 CROP SORG",
-    "1 133 PLTM",
-    paste0("1 315 HARV G",resid_adjust_chr,"S"),
-    paste0("2 71 FERT (",round(2.8*fert_adjust,2),"N)"),
-           "2 140 CROP COT",
-           "2 140 PLTM",
-    paste0("2 323 HARV G",resid_adjust_chr,"S")
+    paste0("1 71 FERT (",round(2.8*fert_adjust,2),"N)"),
+           "1 140 CROP COT",
+           "1 140 PLTM",
+    paste0("1 323 HARV G",resid_adjust_chr,"S"),
+    "2 133 CROP SORG",
+    "2 133 PLTM",
+    paste0("2 315 HARV G",resid_adjust_chr,"S")
   )
 } else if(mgmt_scenario_grp==3) { #CRSct
   c(
-    "1 119 CULT K",
-    "1 131 CULT R",
-    "1 135 CROP SORG",
-    "1 135 PLTM",
-    paste0("1 306 HARV G",resid_adjust_chr,"S"),
-    "1 355 CROP RGA",
-    "1 355 PLTM",
-    "1 355 CULT K",
-    paste0("2 71 FERT (",round(2.8*fert_adjust,2),"N)"),
-    "2 80 CULT K",
-    "2 97 HARV KILL",
-    "2 140 CROP COT",
-    "2 140 PLTM",
-    paste0("2 323 HARV G",resid_adjust_chr,"S")
+    "1 97 HARV KILL",
+    paste0("1 115 FERT (",round(2.8*fert_adjust,2),"N)"),
+    "1 115 CULT K",
+    "1 138 CULT R",
+    "1 139 CROP COT",
+    "1 139 PLTM",
+    paste0("1 287 HARV G",resid_adjust_chr,"S"),
+    "1 347 CROP RGA",
+    "1 347 PLTM",
+    "2 98  HARV KILL",
+    paste0("2 119 FERT (",round(2.8*fert_adjust,2),"N)"),
+    "2 119 CULT K",
+    "2 131 CULT R",
+    "2 135 CROP SORG",
+    "2 135 PLTM",
+    paste0("2 306 HARV G",resid_adjust_chr,"S"),
+    "2 355 CULT K",
+    "2 355 CROP RGA",
+    "2 355 PLTM"
   )
 } else if(mgmt_scenario_grp==7) { #CCct
   c(
@@ -367,16 +384,20 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
   )
 } else if(mgmt_scenario_grp==8) { #CRSnt
   c(
-    "1 135 CROP SORG",
-    "1 135 PLTM",
-    paste0("1 306 HARV G",resid_adjust_chr,"S"),
-    "1 355 CROP RGA",
-    "1 355 PLTM",
-    paste0("2 71 FERT (",round(2.8*fert_adjust,2),"N)"),
-    "2 97 HARV KILL",
-    "2 140 CROP COT",
-    "2 140 PLTM",
-    paste0("2 323 HARV G",resid_adjust_chr,"S")
+    "1 97 HARV KILL",
+    paste0("1 115 FERT (",round(2.8*fert_adjust,2),"N)"),
+    "1 139 CROP COT",
+    "1 139 PLTM",
+    paste0("1 287 HARV G",resid_adjust_chr,"S"),
+    "1 347 CROP RGA",
+    "1 347 PLTM",
+    "2 98 HARV KILL",
+    paste0("2 119 FERT (",round(2.8*fert_adjust,2),"N)"),
+    "2 135 CROP SORG",
+    "2 135 PLTM",
+    paste0("2 306 HARV G",resid_adjust_chr,"S"),
+    "2 355 CROP RGA",
+    "2 355 PLTM"
   )
 }
 

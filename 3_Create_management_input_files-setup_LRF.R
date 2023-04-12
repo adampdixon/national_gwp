@@ -16,7 +16,7 @@
 
 suppressMessages({
   
-  print("Starting 3_Create_management_input_files-setup.R")
+  print(paste0("Starting 3_Create_management_input_files-setup_",site_name,".R"))
 
 library(readxl)
 library(dplyr)
@@ -211,10 +211,10 @@ temp_ops <- rbind(obs_tillage, obs_planting, obs_harvest) %>%
                            if_else(obs_code=="plant"&crop=="Cotton","CROP COT",
                            if_else(obs_code=="plant"&crop=="Sorghum","CROP SORG",
                            if_else(obs_code=="plant"&crop=="Ryegrass",paste("CROP",covercrop_Daycent),
-                           ## assume 75% stover removal on all crops
-                           if_else(obs_code=="grain","HARV G90S",
-                           if_else(obs_code=="lint","HARV G90S",
-                           if_else(obs_code=="none","HARV G90S",
+                           ## 0% stover removal is baseline treatment
+                           if_else(obs_code=="grain",paste0("HARV G",resid_adjust_chr,"S"),
+                           if_else(obs_code=="lint",paste0("HARV G",resid_adjust_chr,"S"),
+                           if_else(obs_code=="none",paste0("HARV G",resid_adjust_chr,"S"),
                            ## assuming all-in-one event, ignore "stover" events
                            #if_else(obs_code=="stover"&crop=="Wheat","HARV G90S", 
                            if_else(obs_code %in% c("winterkill","mow"),"HARV KILL", 

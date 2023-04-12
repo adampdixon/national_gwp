@@ -17,7 +17,7 @@
 
 suppressMessages({
   
-  print("Starting p_Daycent_Cinput3")
+  print(paste0("Starting p_Daycent_Cinput_",site_name,".R"))
   
   library(datetime)
   
@@ -75,12 +75,20 @@ suppressMessages({
                             tot_plt_growth-lag(tot_plt_growth,default=1000000),
                             0))
   
+  # fail-safe: limit to future year range selected for this test/run
+  # can hit an error if 2050 testing is done when 2100 last generated
+  # the .lis files
+  
+  livec_output <- livec_output[livec_output$year<=end_fut_period_year,]
+  
+  # Plant/harvest dates - base ----------------------------------------------
+  
   
   # collect plant/harvest dates
   all_years <- data.frame(year=land_conversion_year:end_fut_period_year)
   
 
-# Base period -------------------------------------------------------------
+  # Base period -------------------------------------------------------------
 
   
   ## assemble annual planting and harvest dates for crops - build list from schedule files
@@ -189,8 +197,11 @@ suppressMessages({
   }
   
   
-  # set planting and harvest dates by crop
-  ## cotton (odd years)
+  # Future period -----------------------------------------------------
+  
+  ## ***** all scenarios *****
+  ## set planting and harvest dates by crop
+  ### cotton (odd years)
   planting_cotton_fut <- data.frame(year=all_years[all_years$year > end_exp_period_year &
                                                    (all_years$year %% 2) == 1,"year"]) %>%
     mutate(observation_type="Planting",
@@ -203,21 +214,6 @@ suppressMessages({
            dayofyr=323-1,
            date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
            crop="Cotton")
-  
-  ## ryegrass following sorghum (planted even years, harvested odd)
-  planting_cottoncc_fut <- data.frame(year=all_years[all_years$year > end_exp_period_year &
-                                                       all_years$year < end_fut_period_year &
-                                                     (all_years$year %% 2) == 0,"year"]) %>%
-    mutate(observation_type="Planting",
-           dayofyr=355,
-           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
-           crop="Ryegrass")
-  harvest_cottoncc_fut <- data.frame(year=all_years[all_years$year > end_exp_period_year &
-                                                    (all_years$year %% 2) == 1,"year"]) %>%
-    mutate(observation_type="Harvest",
-           dayofyr=97-1,
-           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
-           crop="Ryegrass")
   
   ## sorghum (even years)
   planting_sorghum_fut <- data.frame(year=all_years[all_years$year > end_exp_period_year &
@@ -233,8 +229,25 @@ suppressMessages({
            date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
            crop="Sorghum")
 
-  
+  ## ***** cover crop scenarios *****
+  if(mgmt_scenario_grp %in% c(3,8)) {
+    ## ryegrass following sorghum (planted even years, harvested odd)
+  planting_cottoncc_fut <- data.frame(year=all_years[all_years$year > end_exp_period_year &
+                                                       all_years$year < end_fut_period_year &
+                                                     (all_years$year %% 2) == 0,"year"]) %>%
+    mutate(observation_type="Planting",
+           dayofyr=355,
+           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+           crop="Ryegrass")
+  harvest_cottoncc_fut <- data.frame(year=all_years[all_years$year > end_exp_period_year &
+                                                    (all_years$year %% 2) == 1,"year"]) %>%
+    mutate(observation_type="Harvest",
+           dayofyr=97-1,
+           date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+           crop="Ryegrass")
+  } # end if scenario group in 3,8
 
+  
   # combine
   if(mgmt_scenario_grp!=3) {
     planting_fut <- rbind(planting_cotton_fut,planting_sorghum_fut)
@@ -265,7 +278,8 @@ suppressMessages({
     harvest_date <- all_field_ops[i+1,"date"]
     # get total plant growth for the season (at harvest)
     livec_output[livec_output$date>=planting_date & 
-                   livec_output$date<=harvest_date,"tot_NPP"] <- livec_output[livec_output$date==harvest_date, "tot_plt_growth"]
+                   livec_output$date<=harvest_date,"tot_NPP"] <- max(livec_output[livec_output$date>=planting_date & 
+                                                                                    livec_output$date<=harvest_date, "tot_plt_growth"])
     # calculate the fraction of each day's growth between planting-harvest of total (tot_NPP)
     # need to calculate the amount of each day's growth as change from the day before (because
     # it's cumulative); this is the plant growth curve we need to approximate soil C input
@@ -291,9 +305,11 @@ suppressMessages({
   livec_output$month <- month(livec_output$date)
   
   ## fill in crop type from planting-planting
-  for(i in which(c(1:nrow(all_field_ops[all_field_ops$year<2099,]))%%2==1)) {
+  for(i in which(c(1:nrow(all_field_ops[all_field_ops$year<end_fut_period_year-1,]))%%2==1)) {
     planting_date <- all_field_ops[i,"date"]
-    next_planting_date <- all_field_ops[i+2,"date"]
+    next_planting_date <- ifelse(i<max(which(c(1:nrow(all_field_ops[all_field_ops$year<end_fut_period_year-1,]))%%2==1)),
+                                 all_field_ops[i+2,"date"],
+                                 max(all_field_ops$date))
     livec_output[livec_output$date>=planting_date & 
                    livec_output$date<next_planting_date,"crop"] <- all_field_ops[i,"crop"]
   }
