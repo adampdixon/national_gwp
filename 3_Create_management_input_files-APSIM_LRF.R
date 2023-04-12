@@ -19,7 +19,42 @@ suppressMessages({
   library(stringr)
   library(lubridate)
 
+  #***************************************************
+  #*  Start empty file -----------------------------------------------------
+  #***************************************************
 
+    if(file.exists(paste0(apsim_path,"mgmt_",
+                        clim_scenario_num,"_",mgmt_scenario_num,".txt"))) {
+    file.remove(paste0(apsim_path,"mgmt_",
+                       clim_scenario_num,"_",mgmt_scenario_num,".txt")) }
+  
+  file.create(paste0(apsim_path,"mgmt_",
+                     clim_scenario_num,"_",mgmt_scenario_num,".txt")) 
+  
+  
+  #***************************************************
+  #*  Spinup - 16 yrs -----------------------------------------------------
+  #***************************************************
+
+  APSIM_spinup_1yr <- read.delim(paste0(apsim_path,"mgmt_spinup_1yr.txt"),
+                                 sep="\t",header=FALSE,col.names=c("date","text"))
+  APSIM_spinup_16yr <- APSIM_spinup_1yr
+  for(i in 1:15) {
+  APSIM_spinup_nextyr <- APSIM_spinup_1yr
+  APSIM_spinup_nextyr$date <- as.character(as.Date(APSIM_spinup_nextyr$date,format="%d/%m/%Y") + years(i),format="%d/%m/%Y")
+  APSIM_spinup_16yr <- rbind(APSIM_spinup_16yr,APSIM_spinup_nextyr)
+  }
+  
+  cat(paste0(APSIM_spinup_16yr$date,"\t",APSIM_spinup_16yr$text),
+      file=paste0(apsim_path,"mgmt_",
+                  clim_scenario_num,"_",mgmt_scenario_num,".txt"), sep="\n",append=TRUE) 
+  
+  if(mgmt_scenario_grp %in% c(3,8)) {
+    cat("28/12/2003	ryegrass sow plants = 51, sowing_depth = 25.4, cultivar = moata, row_spacing = 430, crop_class = plant",
+        file=paste0(apsim_path,"mgmt_",
+                    clim_scenario_num,"_",mgmt_scenario_num,".txt"), sep="\n",append=TRUE)
+  }
+  
   #***************************************************
   #*  Experimental period -----------------------------------------------------
   #***************************************************
@@ -53,22 +88,19 @@ suppressMessages({
   
   #APSIM_ops <- data.frame()
   
-  if(file.exists(paste0(apsim_path,"mgmt_",
-                        clim_scenario_num,"_",mgmt_scenario_num,".txt"))) {
-    file.remove(paste0(apsim_path,"mgmt_",
-                       clim_scenario_num,"_",mgmt_scenario_num,".txt")) }
-  
-  file.create(paste0(apsim_path,"mgmt_",
-                     clim_scenario_num,"_",mgmt_scenario_num,".txt")) 
-  
-  # Just for LRF, construct an 8-year spin-up taking the whole 2003-2010 
-  # experiment and starting it in 1995
-    spinup_df <- APSIM_conv
-    spinup_df$year <- APSIM_conv$year-8
-    spinup_df$date <- APSIM_conv$date - years(8)
-    APSIM_conv <- rbind(spinup_df,APSIM_conv)
-    ## remove harvest of rye in 19952 in all plots
-    APSIM_conv <- APSIM_conv[APSIM_conv$date >= as.Date("1995-05-01"),]
+  #   # Just for LRF, construct a 16-year spin-up taking the whole 2003-2010 
+  #   # experiment (8 years) twice starting it in 1987. Remove ryegrass to
+  # # be consistent with Daycent spinup
+  #   spinup1_df <- APSIM_conv
+  #   spinup1_df$year <- APSIM_conv$year-16
+  #   spinup1_df$date <- APSIM_conv$date - years(16)
+  #   spinup16_df <- spinup1_df[which(spinup1_df$crop!="Ryegrass"),]
+  #   spinup2_df <- APSIM_conv
+  #   spinup2_df$year <- spinup2_df$year-8
+  #   spinup2_df$date <- spinup2_df$date - years(8)
+  #   spinup8_df <- spinup2_df[which(spinup2_df$crop!="Ryegrass"),]
+  #   APSIM_conv <- rbind(spinup16_df,spinup8_df,APSIM_conv)
+
 
   for (i in 1:nrow(APSIM_conv)) {
     current_op <- APSIM_conv[i,"observation_type"]
@@ -87,7 +119,8 @@ suppressMessages({
                       clim_scenario_num,"_",mgmt_scenario_num,".txt"), sep="\n",append=TRUE) 
     } else if(current_op=="Harvest" & APSIM_conv[i,"obs_code"]=="grain") {
       NULL # APSIM Classic harvests cash crops by harvest rule; necessary in order
-           # to reduce the number of operations which can overwhelm it.
+           # to reduce the number of operations which can overwhelm it. This both
+           # ends the crop and handles residue.
     } else if(current_op=="Harvest" & APSIM_conv[i,"obs_code"]=="stover") {
       cat(paste0(format(APSIM_conv[i,"date"],"%d/%m/%Y"), 
                  "\t",tolower(APSIM_conv[i,"crop"])," harvest"),
@@ -97,9 +130,9 @@ suppressMessages({
                  "\t",tolower(APSIM_conv[i,"crop"])," end_crop"),
           file=paste0(apsim_path,"mgmt_",
                       clim_scenario_num,"_",mgmt_scenario_num,".txt"), sep="\n",append=TRUE)
-      #9/27/2022: changed fraction from 0.9 to 0.75, to leave 25% on surface
+      #f_incorp=0 means no residue will be removed
       cat(paste0(format(APSIM_conv[i,"date"],"%d/%m/%Y"), 
-                 "\tsurfaceorganicmatter tillage type = user_defined, f_incorp = 0.75, tillage_depth = 0"),
+                 "\tsurfaceorganicmatter tillage type = user_defined, f_incorp = 0, tillage_depth = 0"),
           file=paste0(apsim_path,"mgmt_",
                       clim_scenario_num,"_",mgmt_scenario_num,".txt"), sep="\n",append=TRUE) 
     } else if(current_op=="Harvest" & APSIM_conv[i,"obs_code"]=="winterkill") {

@@ -13,8 +13,8 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
         <filename name="filename" input="yes">basic_wth_3.met</filename>
       </metfile>
       <clock>
-        <start_date type="date" description="Enter the start date of the simulation">01/01/1995</start_date>
-        <end_date type="date" description="Enter the end date of the simulation">31/12/2099</end_date>
+        <start_date type="date" description="Enter the start date of the simulation">01/01/1987</start_date>
+        <end_date type="date" description="Enter the end date of the simulation">31/12/2100</end_date>
       </clock>
       <summaryfile />
       <area name="paddock">
@@ -59,8 +59,6 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </variables>
           <Graph name="XY">
             <Legend>
-              <CheckedTitles> 76 mg</CheckedTitles>
-              <CheckedTitles> {Checkpoint} 76 mg</CheckedTitles>
             </Legend>
             <Plot>
               <SeriesType>Solid line</SeriesType>
@@ -1281,119 +1279,263 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
         </Soil>
         <operations name="Operations Schedule">
           <operation condition="start_of_day">
-            <date>27/05/1995</date>
+            <date>28/04/1987</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1987</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1987</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1987</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>28/12/1995</date>
-            <action>ryegrass sow plants = 51, sowing_depth = 25.4, cultivar = moata, row_spacing = 430, crop_class = plant</action>
+            <date>28/04/1988</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
-            <date>07/04/1996</date>
-            <action>ryegrass end_crop</action>
+            <date>28/04/1988</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
           </operation>
           <operation condition="start_of_day">
-            <date>07/04/1996</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0, tillage_depth = 0</action>
+            <date>20/05/1988</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1988</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1989</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1989</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1989</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1989</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1990</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1990</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1990</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1990</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1991</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1991</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1991</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1991</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1992</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1992</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1992</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1992</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1993</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1993</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1993</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1993</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1994</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1994</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1994</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1994</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1995</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1995</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1995</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1995</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1996</date>
-            <action>fertiliser apply amount = 22 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
-            <date>14/05/1996</date>
-            <action>sorghum sow plants = 3, sowing_depth = 25.4, cultivar = csh13r, row_spacing = 1010, tiller_no_fertile = 1, crop_class = plant</action>
+            <date>28/04/1996</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
           </operation>
           <operation condition="start_of_day">
-            <date>20/12/1996</date>
-            <action>ryegrass sow plants = 51, sowing_depth = 25.4, cultivar = moata, row_spacing = 430, crop_class = plant</action>
+            <date>20/05/1996</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
           </operation>
           <operation condition="start_of_day">
-            <date>07/04/1997</date>
-            <action>ryegrass end_crop</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>07/04/1997</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0, tillage_depth = 0</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>25/04/1997</date>
-            <action>fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = NO3_N</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>19/05/1997</date>
+            <date>20/05/1996</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>05/01/1998</date>
-            <action>ryegrass sow plants = 51, sowing_depth = 25.4, cultivar = moata, row_spacing = 430, crop_class = plant</action>
+            <date>28/04/1997</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
-            <date>07/04/1998</date>
-            <action>ryegrass end_crop</action>
+            <date>28/04/1997</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
           </operation>
           <operation condition="start_of_day">
-            <date>07/04/1998</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0, tillage_depth = 0</action>
+            <date>20/05/1997</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
           </operation>
           <operation condition="start_of_day">
-            <date>02/06/1998</date>
-            <action>sorghum sow plants = 3, sowing_depth = 25.4, cultivar = csh13r, row_spacing = 1010, tiller_no_fertile = 1, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>13/02/1999</date>
-            <action>ryegrass sow plants = 51, sowing_depth = 25.4, cultivar = moata, row_spacing = 430, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>07/04/1999</date>
-            <action>ryegrass end_crop</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>07/04/1999</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0, tillage_depth = 0</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>24/06/1999</date>
+            <date>20/05/1997</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>24/03/2000</date>
-            <action>fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+            <date>28/04/1998</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
-            <date>24/03/2000</date>
-            <action>fertiliser apply amount = 15 (kg/ha), depth = 50 (mm), type = Rock_P</action>
+            <date>28/04/1998</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
           </operation>
           <operation condition="start_of_day">
-            <date>13/05/2000</date>
+            <date>20/05/1998</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1998</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>13/05/2001</date>
+            <date>28/04/1999</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1999</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1999</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1999</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>13/12/2001</date>
-            <action>ryegrass sow plants = 51, sowing_depth = 25.4, cultivar = moata, row_spacing = 430, crop_class = plant</action>
+            <date>28/04/2000</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
-            <date>12/03/2002</date>
-            <action>fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+            <date>28/04/2000</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
           </operation>
           <operation condition="start_of_day">
-            <date>07/04/2002</date>
-            <action>ryegrass end_crop</action>
+            <date>20/05/2000</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
           </operation>
           <operation condition="start_of_day">
-            <date>07/04/2002</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0, tillage_depth = 0</action>
+            <date>20/05/2000</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/2001</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/2001</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/2001</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/2001</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/2002</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/2002</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/2002</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2002</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>13/12/2002</date>
+            <date>28/12/2003</date>
             <action>ryegrass sow plants = 51, sowing_depth = 25.4, cultivar = moata, row_spacing = 430, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">

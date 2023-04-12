@@ -154,10 +154,10 @@ if(mgmt_scenario_grp != 7) {
 
 ### SOC
 
-  Cfit_APSIM <- coef(lm(APSIM ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% 1995:2021,]))#experiment_year_range,]))
+  Cfit_APSIM <- coef(lm(APSIM ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% 2003:2021,]))#experiment_year_range,]))
   Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
 
-  gC <- Cstock_Mgha_piv[Cstock_Mgha_piv$year %in% 1995:2021,] %>%#experiment_year_range,] %>%
+  gC <- Cstock_Mgha_piv[Cstock_Mgha_piv$year %in% 2003:2021,] %>%#experiment_year_range,] %>%
   ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point() +
   geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
@@ -178,6 +178,35 @@ if(mgmt_scenario_grp != 7) {
         legend.key = element_blank())
 
 gC 
+
+
+### SOC with spin-up
+
+Cfith_APSIM <- coef(lm(APSIM ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% 2003:2021,]))#experiment_year_range,]))
+Cfith_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
+
+gCh <- Cstock_Mgha_piv[Cstock_Mgha_piv$year %in% 1987:2021,] %>%#experiment_year_range,] %>%
+  ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
+  geom_point() +
+  geom_abline(intercept=Cfith_Obs[1], slope=Cfith_Obs[2], color="black") +
+  geom_errorbar(aes(ymin=C_val-Obs_sd, ymax=C_val+Obs_sd),
+                width=.2) + # Width of the error bars
+  xlab("Year") +
+  ylab(expression('SOC stock (Mg C ha ' ^-1*')')) +
+  ylim(0,12) +
+  ggtitle(paste(site_name,"Soil Organic Carbon"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  geom_abline(intercept=Cfith_APSIM[1], slope=Cfith_APSIM[2], color="orange") +
+  scale_color_manual(labels=c("APSIM","Observed"),
+                     values=cbPalette9[c(8,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gCh 
+
 
 ### soil temp
 
@@ -488,6 +517,8 @@ ggsave(filename=paste0(results_path,"calib_Sorghum_yield_comparison_exp_",scenar
          width=6, height=6, dpi=300)
 }
 ggsave(filename=paste0(results_path,"calib_SOC_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gC,
+       width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_SOC_comparison_base_",scenario_name,"_APSIM.jpg"),plot=gCh,
        width=6, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gT,
        width=6, height=6, dpi=300)

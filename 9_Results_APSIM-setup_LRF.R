@@ -180,7 +180,7 @@ write.table(output_daily_data,file=paste0(results_path,"Daily_results_compilatio
 
 
 #**********************************************************************
-# merge observed and modeled data for graphing model-specific resu --------
+# merge observed and modeled data for graphing model-specific results --------
 
 SorghumYld_Mgha <- merge(ObsYield[ObsYield$crop=="Sorghum",c("year","mean_yield","sd_yield")],
              APSIMY_Mgha[APSIMY_Mgha$SorghumYield_Mgha != 0,

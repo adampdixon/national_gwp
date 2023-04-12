@@ -13,8 +13,8 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
         <filename name="filename" input="yes">basic_wth_4.met</filename>
       </metfile>
       <clock>
-        <start_date type="date" description="Enter the start date of the simulation">01/01/1995</start_date>
-        <end_date type="date" description="Enter the end date of the simulation">31/12/2099</end_date>
+        <start_date type="date" description="Enter the start date of the simulation">01/01/1987</start_date>
+        <end_date type="date" description="Enter the end date of the simulation">31/12/2100</end_date>
       </clock>
       <summaryfile />
       <area name="paddock">
@@ -991,9 +991,9 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
               <double>940</double>
             </Thickness>
             <OC>
-              <double>0.1</double>
-              <double>0.1</double>
-              <double>0.1</double>
+              <double>0.05</double>
+              <double>0.05</double>
+              <double>0.05</double>
               <double>0.1</double>
               <double>0.1</double>
               <double>0.1</double>
@@ -1132,10 +1132,10 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
               <double>0.047</double>
             </NH4>
             <OC>
+              <double>0.05</double>
+              <double>0.05</double>
+              <double>0.05</double>
               <double>0.1</double>
-              <double>0.1</double>
-              <double>0.1</double>
-              <double>0.2</double>
               <double>0.1</double>
               <double>0.1</double>
             </OC>
@@ -1159,144 +1159,260 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
         </Soil>
         <operations name="Operations Schedule">
           <operation condition="start_of_day">
-            <date>27/05/1995</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <date>28/04/1987</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
-            <date>27/05/1995</date>
+            <date>28/04/1987</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1987</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/06/1995</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
+            <date>20/05/1987</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>19/06/1995</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
+            <date>28/04/1988</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
-            <date>30/06/1995</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
+            <date>28/04/1988</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
           </operation>
           <operation condition="start_of_day">
-            <date>15/08/1995</date>
+            <date>20/05/1988</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1988</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1989</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1989</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1989</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1989</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1990</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1990</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1990</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1990</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1991</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1991</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1991</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1991</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1992</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1992</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1992</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1992</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1993</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1993</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1993</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1993</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1994</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1994</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1994</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1994</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1995</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1995</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1995</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1995</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1996</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1996</date>
-            <action>fertiliser apply amount = 22 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
           </operation>
           <operation condition="start_of_day">
-            <date>28/04/1996</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>10/05/1996</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>10/05/1996</date>
+            <date>20/05/1996</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
           </operation>
           <operation condition="start_of_day">
-            <date>20/12/1996</date>
+            <date>20/05/1996</date>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/1997</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
-            <date>25/04/1997</date>
-            <action>fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+            <date>28/04/1997</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
           </operation>
           <operation condition="start_of_day">
-            <date>25/04/1997</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>18/05/1997</date>
+            <date>20/05/1997</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
           </operation>
           <operation condition="start_of_day">
-            <date>19/05/1997</date>
+            <date>20/05/1997</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>23/06/1997</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
+            <date>28/04/1998</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
-            <date>10/05/1998</date>
+            <date>28/04/1998</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1998</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
           </operation>
           <operation condition="start_of_day">
-            <date>02/06/1998</date>
+            <date>20/05/1998</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>13/02/1999</date>
+            <date>28/04/1999</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
-            <date>24/06/1999</date>
+            <date>28/04/1999</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1999</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/1999</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>26/06/1999</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>20/07/1999</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>24/02/2000</date>
+            <date>28/04/2000</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
-            <date>24/03/2000</date>
-            <action>fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+            <date>28/04/2000</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
           </operation>
           <operation condition="start_of_day">
-            <date>24/03/2000</date>
-            <action>fertiliser apply amount = 15 (kg/ha), depth = 50 (mm), type = Rock_P</action>
+            <date>20/05/2000</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
           </operation>
           <operation condition="start_of_day">
-            <date>13/05/2000</date>
+            <date>20/05/2000</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/06/2000</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>07/07/2000</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>17/01/2001</date>
+            <date>28/04/2001</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
-            <date>13/05/2001</date>
+            <date>28/04/2001</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/2001</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/2001</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>29/06/2001</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>12/03/2002</date>
-            <action>fertiliser apply amount = 28 (kg/ha), depth = 50 (mm), type = NO3_N</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>21/03/2002</date>
+            <date>28/04/2002</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>28/04/2002</date>
+            <action>fertiliser apply amount = 10 (kg/ha), depth = 50 (mm), type = NO3_N</action>
+          </operation>
+          <operation condition="start_of_day">
+            <date>20/05/2002</date>
+            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2002</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>11/07/2002</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>27/05/2003</date>
@@ -1308,14 +1424,6 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>11/06/2003</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>19/06/2003</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>30/06/2003</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
@@ -1359,10 +1467,6 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>23/06/2005</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>10/05/2006</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 80</action>
           </operation>
@@ -1377,14 +1481,6 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           <operation condition="start_of_day">
             <date>24/06/2007</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>26/06/2007</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>20/07/2007</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>24/02/2008</date>
@@ -1403,24 +1499,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/06/2008</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>07/07/2008</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2009</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2009</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2009</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2010</date>
@@ -1435,20 +1519,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2010</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2011</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2011</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2011</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2012</date>
@@ -1463,20 +1539,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2012</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2013</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2013</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2013</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2014</date>
@@ -1491,20 +1559,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2014</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2015</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2015</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2015</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2016</date>
@@ -1519,20 +1579,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2016</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2017</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2017</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2017</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2018</date>
@@ -1547,20 +1599,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2018</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2019</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2019</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2019</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2020</date>
@@ -1575,20 +1619,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2020</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2021</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2021</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2021</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2022</date>
@@ -1603,20 +1639,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2022</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2023</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2023</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2023</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2024</date>
@@ -1631,20 +1659,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2024</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2025</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2025</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2025</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2026</date>
@@ -1659,20 +1679,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2026</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2027</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2027</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2027</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2028</date>
@@ -1687,20 +1699,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2028</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2029</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2029</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2029</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2030</date>
@@ -1715,20 +1719,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2030</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2031</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2031</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2031</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2032</date>
@@ -1743,20 +1739,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2032</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2033</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2033</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2033</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2034</date>
@@ -1771,20 +1759,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2034</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2035</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2035</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2035</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2036</date>
@@ -1799,20 +1779,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2036</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2037</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2037</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2037</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2038</date>
@@ -1827,20 +1799,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2038</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2039</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2039</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2039</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2040</date>
@@ -1855,20 +1819,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2040</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2041</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2041</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2041</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2042</date>
@@ -1883,20 +1839,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2042</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2043</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2043</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2043</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2044</date>
@@ -1911,20 +1859,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2044</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2045</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2045</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2045</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2046</date>
@@ -1939,20 +1879,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2046</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2047</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2047</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2047</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2048</date>
@@ -1967,20 +1899,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2048</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2049</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2049</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2049</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2050</date>
@@ -1995,20 +1919,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2050</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2051</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2051</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2051</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2052</date>
@@ -2023,20 +1939,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2052</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2053</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2053</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2053</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2054</date>
@@ -2051,20 +1959,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2054</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2055</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2055</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2055</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2056</date>
@@ -2079,20 +1979,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2056</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2057</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2057</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2057</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2058</date>
@@ -2107,20 +1999,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2058</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2059</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2059</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2059</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2060</date>
@@ -2135,20 +2019,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2060</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2061</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2061</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2061</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2062</date>
@@ -2163,20 +2039,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2062</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2063</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2063</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2063</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2064</date>
@@ -2191,20 +2059,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2064</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2065</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2065</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2065</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2066</date>
@@ -2219,20 +2079,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2066</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2067</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2067</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2067</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2068</date>
@@ -2247,20 +2099,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2068</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2069</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2069</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2069</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2070</date>
@@ -2275,20 +2119,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2070</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2071</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2071</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2071</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2072</date>
@@ -2303,20 +2139,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2072</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2073</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2073</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2073</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2074</date>
@@ -2331,20 +2159,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2074</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2075</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2075</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2075</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2076</date>
@@ -2359,20 +2179,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2076</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2077</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2077</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2077</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2078</date>
@@ -2387,20 +2199,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2078</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2079</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2079</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2079</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2080</date>
@@ -2415,20 +2219,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2080</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2081</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2081</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2081</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2082</date>
@@ -2443,20 +2239,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2082</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2083</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2083</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2083</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2084</date>
@@ -2471,20 +2259,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2084</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2085</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2085</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2085</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2086</date>
@@ -2499,20 +2279,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2086</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2087</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2087</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2087</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2088</date>
@@ -2527,20 +2299,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2088</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2089</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2089</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2089</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2090</date>
@@ -2555,20 +2319,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2090</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2091</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2091</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2091</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2092</date>
@@ -2583,20 +2339,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2092</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2093</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2093</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2093</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2094</date>
@@ -2611,20 +2359,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2094</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2095</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2095</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2095</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2096</date>
@@ -2639,20 +2379,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2096</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2097</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2097</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2097</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2098</date>
@@ -2667,20 +2399,12 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
-            <date>11/07/2098</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
-          </operation>
-          <operation condition="start_of_day">
             <date>17/01/2099</date>
             <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.9, tillage_depth = 150</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2099</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>29/06/2099</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2100</date>
@@ -2693,10 +2417,6 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           <operation condition="start_of_day">
             <date>20/05/2100</date>
             <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
-          </operation>
-          <operation condition="start_of_day">
-            <date>11/07/2100</date>
-            <action>surfaceorganicmatter tillage type = user_defined, f_incorp = 0.1, tillage_depth = 5</action>
           </operation>
         </operations>
       </area>
