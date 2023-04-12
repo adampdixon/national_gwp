@@ -26,7 +26,7 @@ basic_exp.wth
 1 97 HARV KILL
 1 147 CROP COT
 1 147 PLTM
-1 227 HARV G90S
+1 227 HARV G0S
 1 362 CROP RGA
 1 362 PLTM
 -999 -999 X
@@ -41,7 +41,7 @@ C 			 Weather choice
 1 119 FERT (2.2N)
 1 135 CROP SORG
 1 135 PLTM
-1 306 HARV G90S
+1 306 HARV G0S
 1 355 CROP RGA
 1 355 PLTM
 -999 -999 X
@@ -56,7 +56,7 @@ C 			 Weather choice
 1 115 FERT (2.8N)
 1 139 CROP COT
 1 139 PLTM
-1 287 HARV G90S
+1 287 HARV G0S
 -999 -999 X
 13	Block ## Experimental period
 2006	Last year
@@ -78,13 +78,13 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 18 HARV G90S
+1 18 HARV G0S
 1 44 CROP RGA
 1 44 PLTM
 1 97 HARV KILL
 1 175 CROP COT
 1 175 PLTM
-1 297 HARV G90S
+1 297 HARV G0S
 -999 -999 X
 15	Block ## Experimental period
 2008	Last year
@@ -97,7 +97,7 @@ C 			 Weather choice
 1 84 FERT (1.5P)
 1 134 CROP COT
 1 134 PLTM
-1 316 HARV G90S
+1 316 HARV G0S
 -999 -999 X
 16	Block ## Experimental period
 2009	Last year
@@ -108,7 +108,7 @@ C 			 Weather choice
 C 			 Weather choice
 1 133 CROP COT
 1 133 PLTM
-1 315 HARV G90S
+1 315 HARV G0S
 1 347 CROP RGA
 1 347 PLTM
 -999 -999 X
@@ -123,7 +123,7 @@ C 			 Weather choice
 1 97 HARV KILL
 1 140 CROP COT
 1 140 PLTM
-1 323 HARV G90S
+1 323 HARV G0S
 1 347 CROP RGA
 1 347 PLTM
 -999 -999 X
@@ -134,11 +134,6 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP COT
-1 133 PLTM
-1 315 HARV G90S
-1 347 CROP RGA
-1 347 PLTM
 -999 -999 X
 19	Block ## Experimental period
 2012	Last year
@@ -147,13 +142,6 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 71 FERT (2.8N)
-1 97 HARV KILL
-1 140 CROP COT
-1 140 PLTM
-1 323 HARV G90S
-1 347 CROP RGA
-1 347 PLTM
 -999 -999 X
 20	Block ## Experimental period
 2013	Last year
@@ -162,11 +150,6 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP COT
-1 133 PLTM
-1 315 HARV G90S
-1 347 CROP RGA
-1 347 PLTM
 -999 -999 X
 21	Block ## Experimental period
 2014	Last year
@@ -175,13 +158,6 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 71 FERT (2.8N)
-1 97 HARV KILL
-1 140 CROP COT
-1 140 PLTM
-1 323 HARV G90S
-1 347 CROP RGA
-1 347 PLTM
 -999 -999 X
 22	Block ## Experimental period
 2015	Last year
@@ -190,11 +166,6 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP COT
-1 133 PLTM
-1 315 HARV G90S
-1 347 CROP RGA
-1 347 PLTM
 -999 -999 X
 23	Block ## Experimental period
 2016	Last year
@@ -203,13 +174,6 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 71 FERT (2.8N)
-1 97 HARV KILL
-1 140 CROP COT
-1 140 PLTM
-1 323 HARV G90S
-1 347 CROP RGA
-1 347 PLTM
 -999 -999 X
 24	Block ## Experimental period
 2017	Last year
@@ -218,11 +182,6 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP COT
-1 133 PLTM
-1 315 HARV G90S
-1 347 CROP RGA
-1 347 PLTM
 -999 -999 X
 25	Block ## Experimental period
 2018	Last year
@@ -231,13 +190,6 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 71 FERT (2.8N)
-1 97 HARV KILL
-1 140 CROP COT
-1 140 PLTM
-1 323 HARV G90S
-1 347 CROP RGA
-1 347 PLTM
 -999 -999 X
 26	Block ## Experimental period
 2019	Last year
@@ -246,11 +198,6 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP COT
-1 133 PLTM
-1 315 HARV G90S
-1 347 CROP RGA
-1 347 PLTM
 -999 -999 X
 27	Block ## Experimental period
 2020	Last year
@@ -259,13 +206,6 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 71 FERT (2.8N)
-1 97 HARV KILL
-1 140 CROP COT
-1 140 PLTM
-1 323 HARV G90S
-1 347 CROP RGA
-1 347 PLTM
 -999 -999 X
 28	Block ## Experimental period
 2021	Last year
@@ -274,7 +214,4 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP COT
-1 133 PLTM
-1 315 HARV G90S
 -999 -999 X

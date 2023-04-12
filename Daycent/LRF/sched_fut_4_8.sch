@@ -1,5 +1,5 @@
 2022          Starting year ## start with assumed ground-breaking for agriculture until intensification
-2099          Last year
+2049          Last year
 site.100      Site file name
 0             Labeling type ## all defaults turned off
 -1            Labeling year
@@ -16,21 +16,25 @@ SORG          Initial crop ## cotton, but could be sorghum, depending on treatme
 
 Year Month Option
 1       Block ## Corn, low yield, no fertilizer
-2099    Last year
+2049    Last year
 2       Repeats # of years
 2022    Output starting year
 12       Output month
 1  Output interval
 F       Weather choice
 basic_4.wth
-1 135 CROP SORG
-1 135 PLTM
-1 306 HARV G0S
-1 355 CROP RGA
-1 355 PLTM
-2 71 FERT (2.8N)
-2 97 HARV KILL
-2 140 CROP COT
-2 140 PLTM
-2 323 HARV G0S
+1 97 HARV KILL
+1 115 FERT (2.8N)
+1 139 CROP COT
+1 139 PLTM
+1 287 HARV G0S
+1 347 CROP RGA
+1 347 PLTM
+2 98 HARV KILL
+2 119 FERT (2.8N)
+2 135 CROP SORG
+2 135 PLTM
+2 306 HARV G0S
+2 355 CROP RGA
+2 355 PLTM
 -999 -999 X

@@ -28,7 +28,7 @@ basic_exp.wth
 1 147 PLTM
 1 147 CULT R
 1 162 CULT D
-1 227 HARV G90S
+1 227 HARV G0S
 1 227 CULT K
 -999 -999 X
 11	Block ## Experimental period
@@ -43,7 +43,7 @@ C 			 Weather choice
 1 131 CROP COT
 1 131 PLTM
 1 131 CULT R
-1 289 HARV G90S
+1 289 HARV G0S
 1 355 CULT K
 -999 -999 X
 12	Block ## Experimental period
@@ -58,7 +58,7 @@ C 			 Weather choice
 1 138 CULT R
 1 139 CROP COT
 1 139 PLTM
-1 287 HARV G90S
+1 287 HARV G0S
 -999 -999 X
 13	Block ## Experimental period
 2006	Last year
@@ -70,7 +70,7 @@ C 			 Weather choice
 1 130 CULT R
 1 153 CROP COT
 1 153 PLTM
-1 321 HARV G90S
+1 321 HARV G0S
 -999 -999 X
 14	Block ## Experimental period
 2007	Last year
@@ -82,7 +82,7 @@ C 			 Weather choice
 1 44 CULT K
 1 175 CROP COT
 1 175 PLTM
-1 297 HARV G90S
+1 297 HARV G0S
 -999 -999 X
 15	Block ## Experimental period
 2008	Last year
@@ -96,7 +96,7 @@ C 			 Weather choice
 1 84 FERT (1.5P)
 1 134 CROP COT
 1 134 PLTM
-1 316 HARV G90S
+1 316 HARV G0S
 -999 -999 X
 16	Block ## Experimental period
 2009	Last year
@@ -108,7 +108,7 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 315 HARV G90S
+1 315 HARV G0S
 -999 -999 X
 17	Block ## Experimental period
 2010	Last year
@@ -121,7 +121,7 @@ C 			 Weather choice
 1 80 CULT K
 1 140 CROP COT
 1 140 PLTM
-1 323 HARV G90S
+1 323 HARV G0S
 -999 -999 X
 18	Block ## Experimental period
 2011	Last year
@@ -133,7 +133,7 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 315 HARV G90S
+1 315 HARV G0S
 -999 -999 X
 19	Block ## Experimental period
 2012	Last year
@@ -146,7 +146,7 @@ C 			 Weather choice
 1 80 CULT K
 1 140 CROP COT
 1 140 PLTM
-1 323 HARV G90S
+1 323 HARV G0S
 -999 -999 X
 20	Block ## Experimental period
 2013	Last year
@@ -158,7 +158,7 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 315 HARV G90S
+1 315 HARV G0S
 -999 -999 X
 21	Block ## Experimental period
 2014	Last year
@@ -171,7 +171,7 @@ C 			 Weather choice
 1 80 CULT K
 1 140 CROP COT
 1 140 PLTM
-1 323 HARV G90S
+1 323 HARV G0S
 -999 -999 X
 22	Block ## Experimental period
 2015	Last year
@@ -183,7 +183,7 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 315 HARV G90S
+1 315 HARV G0S
 -999 -999 X
 23	Block ## Experimental period
 2016	Last year
@@ -196,7 +196,7 @@ C 			 Weather choice
 1 80 CULT K
 1 140 CROP COT
 1 140 PLTM
-1 323 HARV G90S
+1 323 HARV G0S
 -999 -999 X
 24	Block ## Experimental period
 2017	Last year
@@ -208,7 +208,7 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 315 HARV G90S
+1 315 HARV G0S
 -999 -999 X
 25	Block ## Experimental period
 2018	Last year
@@ -221,7 +221,7 @@ C 			 Weather choice
 1 80 CULT K
 1 140 CROP COT
 1 140 PLTM
-1 323 HARV G90S
+1 323 HARV G0S
 -999 -999 X
 26	Block ## Experimental period
 2019	Last year
@@ -233,7 +233,7 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 315 HARV G90S
+1 315 HARV G0S
 -999 -999 X
 27	Block ## Experimental period
 2020	Last year
@@ -246,7 +246,7 @@ C 			 Weather choice
 1 80 CULT K
 1 140 CROP COT
 1 140 PLTM
-1 323 HARV G90S
+1 323 HARV G0S
 -999 -999 X
 28	Block ## Experimental period
 2021	Last year
@@ -258,5 +258,5 @@ C 			 Weather choice
 1 17 CULT K
 1 133 CROP COT
 1 133 PLTM
-1 315 HARV G90S
+1 315 HARV G0S
 -999 -999 X
