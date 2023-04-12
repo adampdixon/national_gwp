@@ -78,8 +78,8 @@ rothc_path <- paste0("RothC/",site_name,"/")
 mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 #
 clim_scenario_num <- 1
-mgmt_scenario_grp <- 4 # scenario group number
-mgmt_scenario_opt <- 1 # scenario detail number; put "" if none
+mgmt_scenario_grp <- 3 # scenario group number
+mgmt_scenario_opt <- "" # scenario detail number; put "" if none
 mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
 scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
 
