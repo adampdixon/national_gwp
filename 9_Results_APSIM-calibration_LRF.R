@@ -22,7 +22,8 @@ library(ggplot2)
 
   ### cotton lint yield
   
-  Cotton_this <- CottonYld_Mgha_piv[CottonYld_Mgha_piv$year %in% experiment_year_range,]
+  Cotton_this <- CottonYld_Mgha_piv[CottonYld_Mgha_piv$year %in% experiment_year_range &
+                                      CottonYld_Mgha_piv$source %in% c("APSIM","Observed"),]
   
   CY_rmse_error <- pull(Cotton_this[Cotton_this$source=="Observed",],yield_val)-
     pull(Cotton_this[Cotton_this$source=="APSIM",],"yield_val")
@@ -52,39 +53,20 @@ gCY <- Cotton_this %>%
 
 gCY
 
-### sorghum grain yield
-
-if(mgmt_scenario_grp != 7) {
-Sorghum_this <- SorghumYld_Mgha_piv[SorghumYld_Mgha_piv$year %in% experiment_year_range,]
-
-SY_rmse_error <- pull(Sorghum_this[Sorghum_this$source=="Observed",],yield_val)-
-  pull(Sorghum_this[Sorghum_this$source=="APSIM",],"yield_val")
-SY_rmse <- round(sqrt(mean(SY_rmse_error^2,na.rm=TRUE)),2)
-
-gSY <- Sorghum_this %>%
+gChY <- CottonYld_Mgha_piv[CottonYld_Mgha_piv$year <= experiment_end_year,] %>%
   ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
-  geom_point() +
-  annotate("text", # RMSE
-           x=min(Sorghum_this$year, na.rm=T),
-           y=max(Sorghum_this$yield_val, na.rm=T),
-           hjust=0, family="serif", color="gray31",
-           label=bquote("RMSE =" ~.(SY_rmse))) +
-  geom_errorbar(aes(ymin=yield_val-Obs_sd, ymax=yield_val+Obs_sd),
-                width=.2) + # Width of the error bars
+  geom_point(show.legend=TRUE) +
   xlab("Year") +
-  ylab(expression('Sorghum Yield (Mg ha ' ^-1*')')) +
-  ggtitle(paste(site_name,"Sorghum Yield"),
+  ggtitle(paste(site_name,"Cotton Yield"),
           paste0("Scenario: ",scenario_descriptor)) +
-  scale_color_manual(labels=c("APSIM","Observed"),
-                     values=cbPalette9[c(8,1)]) +
-  theme_classic(base_family = "serif", base_size = 15) +
+  scale_color_manual(labels=c("APSIM","Historical","Observed"),
+                     values=cbPalette9[c(8,4,1)]) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
         legend.key = element_blank())
 
-gSY
-}
+gChY
 
 ### cotton mid-August biomass yield
 
@@ -118,6 +100,58 @@ gCBY <- Cottonbio_this %>%
 
 gCBY
 
+### sorghum grain yield
+
+if(mgmt_scenario_grp != 7) {
+Sorghum_this <- SorghumYld_Mgha_piv[SorghumYld_Mgha_piv$year %in% experiment_year_range &
+                                      SorghumYld_Mgha_piv$source %in% c("Observed","APSIM"),]
+
+SY_rmse_error <- pull(Sorghum_this[Sorghum_this$source=="Observed",],yield_val)-
+  pull(Sorghum_this[Sorghum_this$source=="APSIM",],"yield_val")
+SY_rmse <- round(sqrt(mean(SY_rmse_error^2,na.rm=TRUE)),2)
+
+gSY <- Sorghum_this %>%
+  ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
+  geom_point() +
+  annotate("text", # RMSE
+           x=min(Sorghum_this$year, na.rm=T),
+           y=max(Sorghum_this$yield_val, na.rm=T),
+           hjust=0, family="serif", color="gray31",
+           label=bquote("RMSE =" ~.(SY_rmse))) +
+  geom_errorbar(aes(ymin=yield_val-Obs_sd, ymax=yield_val+Obs_sd),
+                width=.2) + # Width of the error bars
+  xlab("Year") +
+  ylab(expression('Sorghum Yield (Mg ha ' ^-1*')')) +
+  ggtitle(paste(site_name,"Sorghum Yield"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  scale_color_manual(labels=c("APSIM","Observed"),
+                     values=cbPalette9[c(8,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gSY
+}
+
+gShY <- SorghumYld_Mgha_piv[SorghumYld_Mgha_piv$year <= end_exp_period_year,] %>%
+  ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
+  geom_point(show.legend=TRUE) +
+  xlab("Year") +
+  ylab(expression('Sorghum Yield (Mg ha' ^-1*')')) +
+  ggtitle(paste(site_name,"Sorghum Yield"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  scale_color_manual(labels=c("Daycent","Historical","Observed"),
+                     values=cbPalette9[c(8,4,1)]) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gShY
+
+
 ### sorghum mid-August biomass yield
 
 if(mgmt_scenario_grp != 7) {
@@ -134,7 +168,7 @@ if(mgmt_scenario_grp != 7) {
              x=min(Sorghumbio_this$year, na.rm=T),
              y=max(Sorghumbio_this$yield_val, na.rm=T),
              hjust=0, family="serif", color="gray31",
-             label=bquote("RMSE =" ~.(SY_rmse))) +
+             label=bquote("RMSE =" ~.(SBY_rmse))) +
     geom_errorbar(aes(ymin=yield_val-Obs_sd, ymax=yield_val+Obs_sd),
                   width=.2) + # Width of the error bars
     xlab("Year") +
@@ -508,11 +542,15 @@ gNG_5ghd
 
 ggsave(filename=paste0(results_path,"calib_Cotton_yield_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gCY,
        width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"calib_Cotton_hist_yield_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gChY,
+       width=6, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_Cotton_biomass_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gCBY,
        width=6, height=6, dpi=300)
 if(mgmt_scenario_grp != 7) {
 ggsave(filename=paste0(results_path,"calib_Sorghum_yield_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gSY,
        width=6, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"calib_Sorghum_hist_yield_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gShY,
+         width=6, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"calib_Sorghum_biomass_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gSBY,
          width=6, height=6, dpi=300)
 }
@@ -890,6 +928,11 @@ ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_1to1_",scenario_
 
 # Log results -------------------------------------------------------------
 
+# aggregate cultivars into comma-separated list. includes exp-fut periods.
+cultivars <- APSIM_data[!is.na(APSIM_data$crop),] %>%
+  group_by(crop) %>%
+  summarize(names=paste(unique(cultivar),collapse=';'))
+
 # add this run's results to model log file and file collecting all final
 # model runs
 if(mgmt_scenario_grp != 7) {
@@ -913,7 +956,10 @@ calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                        CYfit_coef[2], CYfit_coef[1], CYfit_r2, CY_rmse,
                        Cotton_obsmod_diff_Mgha,
                        SYfit_coef[2], SYfit_coef[1], SYfit_r2, SY_rmse,
-                       Sorghum_obsmod_diff_Mgha)
+                       Sorghum_obsmod_diff_Mgha,
+                       NA, NA, NA, # maize, soybean, wheat cultivars
+                       cultivars[cultivars$crop=="Cotton","names"],
+                       cultivars[cultivars$crop=="Sorghum","names"])
 } else {
   calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                          clim_scenario_num,mgmt_scenario_num, scenario_name,
@@ -935,7 +981,11 @@ calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                          CYfit_coef[2], CYfit_coef[1], CYfit_r2, CY_rmse,
                          Cotton_obsmod_diff_Mgha,
                          NA, NA, NA, NA, # Sorghum
-                         NA)
+                         NA,
+                         NA, NA, NA, # maize, soybean, wheat cultivars
+                         cultivars[cultivars$crop=="Cotton","names"],
+                         NA # sorghum cultivar
+                         )
 }
 
 source("p_Edit_calib_file.R")

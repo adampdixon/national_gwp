@@ -408,11 +408,14 @@ write.table(output_daily_data,file=paste0(results_path,"Daily_results_compilatio
 ## Sorghum yield
 
 SorghumYld_Mgha <- merge(ObsYield[ObsYield$crop=="Sorghum",c("year","mean_yield","sd_yield")],
-                         DayY_Mgha[DayY_Mgha$yield != 0,
+                         DayY_Mgha[DayY_Mgha$yield != 0 & DayY_Mgha$crop=="Sorghum",
                                      c("year","yield")],
                          by="year",
-                         all=TRUE)
-colnames(SorghumYld_Mgha) <- c("year","Observed","Obs_sd","Daycent")
+                         all=TRUE)%>%
+  merge(HistY_Mgha[,c("year","sorghum_yield_mgha")],
+        by="year",
+        all=TRUE)
+colnames(SorghumYld_Mgha) <- c("year","Observed","Obs_sd","Daycent","Historical")
 
 SorghumYld_Mgha_piv <- pivot_longer(SorghumYld_Mgha, c(-year,-Obs_sd),
                                     names_to = "source",
@@ -429,8 +432,11 @@ CottonYld_Mgha <- merge(ObsYield[ObsYield$crop=="Cotton",c("year","mean_yield","
                         DayY_Mgha[DayY_Mgha$yield != 0,
                                     c("year","yield")],
                         by="year",
-                        all=TRUE)
-colnames(CottonYld_Mgha) <- c("year","Observed","Obs_sd","Daycent")
+                        all=TRUE) %>%
+  merge(HistY_Mgha[,c("year","cotton_yield_mgha")],
+        by="year",
+        all=TRUE)
+colnames(CottonYld_Mgha) <- c("year","Observed","Obs_sd","Daycent","Historical")
 
 CottonYld_Mgha_piv <- pivot_longer(CottonYld_Mgha, c(-year,-Obs_sd),
                                    names_to = "source",

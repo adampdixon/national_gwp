@@ -48,15 +48,11 @@ mill_annualCinput_df <- mill_dailyCinput_df %>%
   summarize(totC=sum(forc_npp))
 
 # reduce Millennial C to limit to top 10 cm
-## calculate the Mgha to reduce the output by to get from 1 m C to top 25 cm
+## calculate the Mgha to reduce the output by to get from 1 m C to top 10 cm
 ## can't just multiply by a fraction as the values end up compressed, and we just
 ## need everything to drop down by a set amount
-# pct_diff_1m_25cm <- if_else(mgmt_scenario_num==1 | mgmt_scenario_grp %in% 4:7, 0.63,
-#                     if_else(mgmt_scenario_num==2, 0.5,
-#                     if_else(mgmt_scenario_num==3, 0.47,
-#                     0)))
 reduceCby <- 50
-millC_Mgha_25cm <- data.frame(year=millC_Mgha$year,
+millC_Mgha_10cm <- data.frame(year=millC_Mgha$year,
                             cstock=millC_Mgha$TOC_Mgha-reduceCby) 
 
 # add daily microbial CO2 (model output is cumulative)
@@ -69,8 +65,8 @@ mill_base_df <- mill_base_df_raw %>%
 #**********************************************************************
 
 # write out results for use later in ensemble results
-output_annual_data <- cbind(millC_Mgha_25cm$year,NA,NA,NA,
-                            millC_Mgha_25cm[,"cstock"],
+output_annual_data <- cbind(millC_Mgha_10cm$year,NA,NA,NA,
+                            millC_Mgha_10cm[,"cstock"],
                             "Millennial",scenario_name,clim_scenario_num,
                             mgmt_scenario_grp,mgmt_scenario_opt)
 colnames(output_annual_data) <- c("year","MaizeYld_Mgha","SoyYld_Mgha",
@@ -90,7 +86,6 @@ write.table(output_annual_data,file=paste0(results_path,"Annual_results_compilat
 # Carbon, full 1 m depth
 Cstock_Mgha <- merge(ObsC_Mgha[,c("year","cstock")],
                      millC_Mgha,
-                     #millC_Mgha_25cm,
                      by="year",
                      all=TRUE)
 colnames(Cstock_Mgha) <- c("year","Observed","Millennial")
@@ -100,46 +95,46 @@ Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year),
                values_to = "C_val")
 
 ## C for full 1 m depth
-Cat1940 <- as.numeric(millC_Mgha[millC_Mgha$year==1940,"TOC_Mgha"])
-Cat2003 <- as.numeric(millC_Mgha[millC_Mgha$year==2003,"TOC_Mgha"])
+Cat1940 <- as.numeric(millC_Mgha[millC_Mgha$year==land_conversion_year,"TOC_Mgha"])
+Cat2003 <- as.numeric(millC_Mgha[millC_Mgha$year==experiment_start_year,"TOC_Mgha"])
 Cdiff_1940_2003 <- Cat1940-Cat2003
 
-# Carbon, 25 cm depth
-Cstock_Mgha_25cm <- merge(ObsC_Mgha[,c("year","cstock")],
-                     millC_Mgha_25cm,
+# Carbon, 10 cm depth
+Cstock_Mgha_10cm <- merge(ObsC_Mgha[,c("year","cstock")],
+                     millC_Mgha_10cm,
                      by="year",
                      all=TRUE)
-colnames(Cstock_Mgha_25cm) <- c("year","Observed","Millennial")
+colnames(Cstock_Mgha_10cm) <- c("year","Observed","Millennial")
 
-Cstock_Mgha_piv_25cm <-  pivot_longer(Cstock_Mgha_25cm, c(-year),
+Cstock_Mgha_piv_10cm <-  pivot_longer(Cstock_Mgha_10cm, c(-year),
                names_to = "source",
                values_to = "C_val")
 
 
 # Microbial
-#CO2_ghaday <- merge(ObsGas_all[ObsGas_all$Treatment %in% treatment,
-#                     c("date","year","Treatment","CO2_C")],
-#                    mill_base_df,
-#                    by=c("date","year"),
-#                    all=TRUE)
+CO2_ghaday <- merge(ObsGas_all[ObsGas_all$Treatment %in% treatment,
+                    c("date","year","treatment","CO2_C")],
+                   mill_base_df,
+                   by=c("date","year"),
+                   all=TRUE)
 
-# mbio_gm2_all <- left_join(mill_base_df[,c("year","date","MIC")],
-#                       ObsMB_all[ObsMB_all$trt==treatment,c("year","date","trt","mb_gm2")],
-#                       by=c("date","year"))
-# colnames(mbio_gm2_all) <- c("year","date","Millennial","treatment","Observed")
-# 
-# mbio_gm2 <- inner_join(mill_base_df[,c("year","date","MIC")],
-#                       ObsMB_all[ObsMB_all$trt==treatment,c("year","date","trt","mb_gm2")],
-#                       by=c("date","year"))
-# colnames(mbio_gm2) <- c("year","date","Millennial","treatment","Observed")
+mbio_gm2_all <- left_join(mill_base_df[,c("year","date","MIC")],
+                      ObsMB_all[ObsMB_all$treatment==treatment,c("year","date","treatment","mb_gm2")],
+                      by=c("date","year"))
+colnames(mbio_gm2_all) <- c("year","date","Millennial","treatment","Observed")
+
+mbio_gm2 <- inner_join(mill_base_df[,c("year","date","MIC")],
+                      ObsMB_all[ObsMB_all$treatment==treatment,c("year","date","treatment","mb_gm2")],
+                      by=c("date","year"))
+colnames(mbio_gm2) <- c("year","date","Millennial","treatment","Observed")
 
 
 #**********************************************************************
 
 # calculate mean differences between observed and modeled results
 
-SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha_25cm[!is.na(Cstock_Mgha_25cm$Observed) &
-                                          !is.na(Cstock_Mgha_25cm$Millennial),"Observed"] -
-                              Cstock_Mgha_25cm[!is.na(Cstock_Mgha_25cm$Observed) &
-                                            !is.na(Cstock_Mgha_25cm$Millennial),"Millennial"])
+SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha_10cm[!is.na(Cstock_Mgha_10cm$Observed) &
+                                          !is.na(Cstock_Mgha_10cm$Millennial),"Observed"] -
+                              Cstock_Mgha_10cm[!is.na(Cstock_Mgha_10cm$Observed) &
+                                            !is.na(Cstock_Mgha_10cm$Millennial),"Millennial"])
 

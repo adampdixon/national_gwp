@@ -48,10 +48,10 @@ ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
 
 gC1 
 
-#### 25 cm depth, full time span
+#### 10 cm depth, full time span
 Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
 
-gC2 <- Cstock_Mgha_piv_25cm[Cstock_Mgha_piv_25cm$year <= experiment_end_year,] %>%
+gC2 <- Cstock_Mgha_piv_10cm[Cstock_Mgha_piv_10cm$year <= experiment_end_year,] %>%
 ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
   #geom_point(data=ObsCdeep_Mgha, aes(x=year, y=cstock, color="blue")) +
@@ -61,8 +61,8 @@ ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   ggtitle(paste(site_name,"Soil Organic Carbon (25 cm depth): Scenario ",scenario_name)) +
 #  geom_abline(intercept=Cfit_RothC[1], slope=Cfit_RothC[2], color="orange") +
 #  geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
-  scale_color_manual(labels=c("Observed-100cm","Millennial","Observed-25cm"),
-                     values=cbPalette9[c(6,8,1)]) +
+  scale_color_manual(labels=c("Millennial","Observed-10cm"),
+                     values=cbPalette9[c(6,1)]) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -71,9 +71,9 @@ ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
 gC2 
 
 
-#### 25 cm depth, base through experimental
+#### 10 cm depth, base through experimental
 
-gC3 <- Cstock_Mgha_piv_25cm[Cstock_Mgha_piv_25cm$year <= experiment_end_year,] %>%
+gC3 <- Cstock_Mgha_piv_10cm[Cstock_Mgha_piv_10cm$year <= experiment_end_year,] %>%
 ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
   geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
@@ -163,7 +163,7 @@ gMB3
 
 ggsave(filename=paste0(results_path,"calib_SOC_comparison_1m_exp_",scenario_name,"_Millennial.jpg"),plot=gC1,
        width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"calib_SOC_comparison_25cm_exp_",scenario_name,"_Millennial.jpg"),plot=gC2,
+ggsave(filename=paste0(results_path,"calib_SOC_comparison_10cm_exp_",scenario_name,"_Millennial.jpg"),plot=gC2,
        width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_SOC_comparison_exp_",scenario_name,"_Millennial.jpg"),plot=gC3,
        width=6, height=6, dpi=300)

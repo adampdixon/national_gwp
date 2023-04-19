@@ -14,10 +14,9 @@
 print(paste0("Starting 9_Results_APSIM-setup_",site_name,".R"))
 
 #library(apsimx)
-#library(readxl)
  library(magrittr)
  library(lubridate)
-# library(tidyverse)
+library(dplyr)
 
 
 
@@ -183,15 +182,18 @@ write.table(output_daily_data,file=paste0(results_path,"Daily_results_compilatio
 # merge observed and modeled data for graphing model-specific results --------
 
 SorghumYld_Mgha <- merge(ObsYield[ObsYield$crop=="Sorghum",c("year","mean_yield","sd_yield")],
-             APSIMY_Mgha[APSIMY_Mgha$SorghumYield_Mgha != 0,
-                             c("year","SorghumYield_Mgha")],
-             by="year",
-             all=TRUE)
-colnames(SorghumYld_Mgha) <- c("year","Observed","Obs_sd","APSIM")
+                         APSIMY_Mgha[APSIMY_Mgha$SorghumYield_Mgha != 0,
+                                   c("year","SorghumYield_Mgha")],
+                         by="year",
+                         all=TRUE)%>%
+  merge(HistY_Mgha[,c("year","sorghum_yield_mgha")],
+        by="year",
+        all=TRUE)
+colnames(SorghumYld_Mgha) <- c("year","Observed","Obs_sd","APSIM","Historical")
 
 SorghumYld_Mgha_piv <- pivot_longer(SorghumYld_Mgha, c(-year,-Obs_sd),
-               names_to = "source",
-               values_to = "yield_val")
+                                    names_to = "source",
+                                    values_to = "yield_val")
 
 # remove sd from modeled records; only for observed
 SorghumYld_Mgha_piv <- SorghumYld_Mgha_piv %>%
@@ -200,15 +202,18 @@ SorghumYld_Mgha_piv <- SorghumYld_Mgha_piv %>%
 
 ##
 CottonYld_Mgha <- merge(ObsYield[ObsYield$crop=="Cotton",c("year","mean_yield","sd_yield")],
-             APSIMY_Mgha[APSIMY_Mgha$CottonYield_Mgha != 0,
-                             c("year","CottonYield_Mgha")],
-             by="year",
-             all=TRUE)
-colnames(CottonYld_Mgha) <- c("year","Observed","Obs_sd","APSIM")
+                        APSIMY_Mgha[APSIMY_Mgha$CottonYield_Mgha != 0,
+                                  c("year","CottonYield_Mgha")],
+                        by="year",
+                        all=TRUE) %>%
+  merge(HistY_Mgha[,c("year","cotton_yield_mgha")],
+        by="year",
+        all=TRUE)
+colnames(CottonYld_Mgha) <- c("year","Observed","Obs_sd","APSIM","Historical")
 
 CottonYld_Mgha_piv <- pivot_longer(CottonYld_Mgha, c(-year,-Obs_sd),
-               names_to = "source",
-               values_to = "yield_val")
+                                   names_to = "source",
+                                   values_to = "yield_val")
 
 # remove sd from modeled records; only for observed
 CottonYld_Mgha_piv <- CottonYld_Mgha_piv %>%

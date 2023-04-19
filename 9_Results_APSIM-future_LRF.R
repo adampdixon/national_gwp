@@ -30,7 +30,7 @@ suppressMessages({
   CYobsxs <- c(experiment_start_year, experiment_end_year)
   CYobsys <- cbind(1, CYobsxs) %*% CYfit_Obs
   
-  gCY <- CottonYld_Mgha_piv %>%
+  gCY <- CottonYld_Mgha_piv[CottonYld_Mgha_piv$source %in% c("APSIM","Observed"),] %>%
     ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
     geom_point() +
     xlab("Year") +
@@ -49,6 +49,28 @@ suppressMessages({
   
   gCY
   
+  gChY <- CottonYld_Mgha_piv %>%
+    ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
+    geom_point() +
+    xlab("Year") +
+    ylab(expression('Cotton Yield (Mg ha ' ^-1*')')) +
+    ggtitle(paste(site_name,"Cotton Yield"),paste0("Scenario: ",scenario_descriptor_full)) +
+    #    geom_abline(intercept=CYfit_APSIM[1], slope=CYfit_APSIM[2], color="orange") +
+    #geom_segment(aes(x = CYxs[1], xend = CYxs[2], y = CYys[1], yend = CYys[2]), color=cbPalette9[8]) +
+    #geom_segment(aes(x = CYobsxs[1], xend = CYobsxs[2], y = CYobsys[1], yend = CYobsys[2]), color=cbPalette9[1]) +
+    geom_vline(xintercept=1987,linetype=2) +
+    geom_vline(xintercept=2003,linetype=2) +
+    geom_vline(xintercept=2010,linetype=2) +
+    scale_color_manual(labels=c("APSIM","Historical","Observed"),
+                       values=cbPalette9[c(8,4,1)]) +
+    theme_classic(base_family = "serif", base_size = 15) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gChY
+  
   if(mgmt_scenario_grp!=7) {
   ## Sorghum
   
@@ -61,7 +83,7 @@ suppressMessages({
   SYobsxs <- c(experiment_start_year, experiment_end_year)
   SYobsys <- cbind(1, SYobsxs) %*% SYfit_Obs
   
-  gSY <- SorghumYld_Mgha_piv %>%
+  gSY <- SorghumYld_Mgha_piv[SorghumYld_Mgha_piv$source %in% c("APSIM","Observed"),] %>%
     ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
     geom_point() +
     xlab("Year") +
@@ -78,6 +100,25 @@ suppressMessages({
           legend.key = element_blank())
   
   gSY
+
+  gShY <- SorghumYld_Mgha_piv %>%
+    ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
+    geom_point() +
+    xlab("Year") +
+    ylab(expression('Sorghum Yield (Mg ha ' ^-1*')')) +
+    ggtitle(paste(site_name,"Sorghum Yield"),paste0("Scenario: ",scenario_descriptor_full)) +
+    #geom_segment(aes(x = SYxs[1], xend = SYxs[2], y = SYys[1], yend = SYys[2]), color=cbPalette9[8]) +
+    #geom_segment(aes(x = SYobsxs[1], xend = SYobsxs[2], y = SYobsys[1], yend = SYobsys[2]), color=cbPalette9[1]) +
+    scale_color_manual(labels=c("APSIM","Historical","Observed"),
+                       values=cbPalette9[c(8,4,1)]) +
+    theme_classic(base_family = "serif", base_size = 15) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gShY
+  
   }
 
   ## SOC
@@ -265,10 +306,14 @@ suppressMessages({
   
   ggsave(filename=paste0(results_path,"Cotton_yield_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
          plot=gCY, width=9, height=6, dpi=300)
-if(mgmt_scenario_grp!=7) {
+  ggsave(filename=paste0(results_path,"Cotton_hist_yield_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+         plot=gChY, width=9, height=6, dpi=300)
+  if(mgmt_scenario_grp!=7) {
     ggsave(filename=paste0(results_path,"Sorghum_yield_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
          plot=gSY, width=9, height=6, dpi=300)
-}
+    ggsave(filename=paste0(results_path,"Sorghum_hist_yield_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+           plot=gShY, width=9, height=6, dpi=300)
+  }
   ggsave(filename=paste0(results_path,"SOC_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
          plot=gC, width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"Soil_Temp_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
