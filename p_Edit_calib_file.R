@@ -91,6 +91,11 @@ p_Edit_calib_file <- function(data_mtx,model_name,scenario_name) {
       existing_data[existing_rec,"Sorghum_R2"] <- data_mtx[,52]
       existing_data[existing_rec,"Sorghum_RMSE"] <- data_mtx[,53]
       existing_data[existing_rec,"Sorghum_diff"] <- data_mtx[,54]
+      existing_data[existing_rec,"Maize_cultivar"] <-data_mtx[,55]
+      existing_data[existing_rec,"Soybean_cultivar"] <-data_mtx[,56]
+      existing_data[existing_rec,"Wheat_cultivar"] <-data_mtx[,57]
+      existing_data[existing_rec,"Cotton_cultivar"] <-data_mtx[,58]
+      existing_data[existing_rec,"Sorghum_cultivar"] <-data_mtx[,59]
       data_mtx <- existing_data
     } else {
       data_mtx <- rbind(existing_data,data_mtx)

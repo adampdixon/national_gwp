@@ -1,9 +1,8 @@
 #######################################
-# Function: "p_Edit_soc_trendline_piv_file"
+# Function: "p_Edit_calib_data_file"
 # Author: "Ellen Maas"
 # Date: "Nov. 4, 2022"
-# Output: Function doesn't return any data, hence the "p" (procedure) naming
-# convention. It creates a new output file with summary data from a model
+# Output: It creates a new output file with summary data from a model
 # run and writes the data. If it already exists, it checks to see if a record
 # already exists for the model and scenario. If it does, it replaces the data,
 # otherwise it appends it to the end."
@@ -19,7 +18,7 @@
 
 p_Edit_calib_data_file <- function(data_mtx,outfile_name) {
   
-  print("Starting p_Edit_soc_trendline_piv_file")
+  print("Starting p_Edit_calib_data_file")
   
   # if the output file already exists, check if the model/scenario already has
   # an entry and replace it; otherwise, create a new file
