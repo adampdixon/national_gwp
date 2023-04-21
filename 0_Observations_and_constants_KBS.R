@@ -645,7 +645,9 @@ log_col_headers <- c("Date_time","Model",
                      "Cotton_slope","Cotton_yint","Cotton_R2","Cotton_RMSE",
                      "Cotton_diff",
                      "Sorghum_slope","Sorghum_yint","Sorghum_R2","Sorghum_RMSE",
-                     "Sorghum_diff")
+                     "Sorghum_diff",
+                     "Maize_cultivar","Soybean_cultivar","Wheat_cultivar",
+                     "Cotton_cultivar","Sorghum_cultivar")
 dummy<-data.frame(matrix(ncol=length(log_col_headers)))
 colnames(dummy) <- log_col_headers
 

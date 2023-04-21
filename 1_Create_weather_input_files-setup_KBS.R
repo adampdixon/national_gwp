@@ -17,7 +17,7 @@
 # 12/7/2022: Included CMIP6 data.
 #######################################
 
-print("Starting 1_Create_weather_input_files-setup2.R")
+print(paste0("Starting 1_Create_weather_input_files-setup_",site_name,".R"))
 
 library(lubridate)
 library(tidyverse)

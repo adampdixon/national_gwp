@@ -619,9 +619,6 @@
   <event type="fertilize" time="2020-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2020-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2020-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -696,9 +693,6 @@
   </event>
   <event type="fertilize" time="2023-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2023-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2023-10-21">
     <harvest remains="0.25" name="FOCO"/>
@@ -781,9 +775,6 @@
   <event type="fertilize" time="2026-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2026-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2026-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -864,9 +855,6 @@
   </event>
   <event type="fertilize" time="2029-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2029-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2029-10-21">
     <harvest remains="0.25" name="FOCO"/>
@@ -949,9 +937,6 @@
   <event type="fertilize" time="2032-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2032-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2032-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -1032,9 +1017,6 @@
   </event>
   <event type="fertilize" time="2035-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2035-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2035-10-21">
     <harvest remains="0.25" name="FOCO"/>
@@ -1117,9 +1099,6 @@
   <event type="fertilize" time="2038-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2038-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2038-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -1200,9 +1179,6 @@
   </event>
   <event type="fertilize" time="2041-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2041-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2041-10-21">
     <harvest remains="0.25" name="FOCO"/>
@@ -1285,9 +1261,6 @@
   <event type="fertilize" time="2044-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2044-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2044-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -1368,9 +1341,6 @@
   </event>
   <event type="fertilize" time="2047-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2047-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2047-10-21">
     <harvest remains="0.25" name="FOCO"/>
@@ -1453,9 +1423,6 @@
   <event type="fertilize" time="2050-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2050-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2050-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -1536,9 +1503,6 @@
   </event>
   <event type="fertilize" time="2053-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2053-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2053-10-21">
     <harvest remains="0.25" name="FOCO"/>
@@ -1621,9 +1585,6 @@
   <event type="fertilize" time="2056-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2056-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2056-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -1704,9 +1665,6 @@
   </event>
   <event type="fertilize" time="2059-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2059-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2059-10-21">
     <harvest remains="0.25" name="FOCO"/>
@@ -1789,9 +1747,6 @@
   <event type="fertilize" time="2062-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2062-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2062-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -1872,9 +1827,6 @@
   </event>
   <event type="fertilize" time="2065-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2065-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2065-10-21">
     <harvest remains="0.25" name="FOCO"/>
@@ -1957,9 +1909,6 @@
   <event type="fertilize" time="2068-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2068-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2068-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -2040,9 +1989,6 @@
   </event>
   <event type="fertilize" time="2071-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2071-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2071-10-21">
     <harvest remains="0.25" name="FOCO"/>
@@ -2125,9 +2071,6 @@
   <event type="fertilize" time="2074-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2074-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2074-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -2208,9 +2151,6 @@
   </event>
   <event type="fertilize" time="2077-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2077-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2077-10-21">
     <harvest remains="0.25" name="FOCO"/>
@@ -2293,9 +2233,6 @@
   <event type="fertilize" time="2080-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2080-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2080-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -2376,9 +2313,6 @@
   </event>
   <event type="fertilize" time="2083-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2083-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2083-10-21">
     <harvest remains="0.25" name="FOCO"/>
@@ -2461,9 +2395,6 @@
   <event type="fertilize" time="2086-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2086-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2086-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -2544,9 +2475,6 @@
   </event>
   <event type="fertilize" time="2089-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2089-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2089-10-21">
     <harvest remains="0.25" name="FOCO"/>
@@ -2629,9 +2557,6 @@
   <event type="fertilize" time="2092-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2092-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2092-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -2712,9 +2637,6 @@
   </event>
   <event type="fertilize" time="2095-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2095-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2095-10-21">
     <harvest remains="0.25" name="FOCO"/>
@@ -2797,9 +2719,6 @@
   <event type="fertilize" time="2098-06-18">
     <fertilize amount="138" type="no3"/>
   </event>
-  <event type="fertilize" time="2098-06-24">
-    <fertilize amount="79" type="no3"/>
-  </event>
   <event type="harvest" time="2098-10-21">
     <harvest remains="0.25" name="FOCO"/>
   </event>
@@ -2880,9 +2799,6 @@
   </event>
   <event type="fertilize" time="2101-06-18">
     <fertilize amount="138" type="no3"/>
-  </event>
-  <event type="fertilize" time="2101-06-24">
-    <fertilize amount="79" type="no3"/>
   </event>
   <event type="harvest" time="2101-10-21">
     <harvest remains="0.25" name="FOCO"/>

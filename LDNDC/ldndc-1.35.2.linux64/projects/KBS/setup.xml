@@ -7,16 +7,17 @@
     </models>
     <mobile>
       <modulelist>
-        <module id="airchemistry:airchemistrydndc" timemode="subdaily"/>
         <module id="microclimate:canopyecm" timemode="subdaily"/>
+        <module id="watercycle:watercycledndc" timemode="subdaily"/>
+        <module id="airchemistry:airchemistrydndc" timemode="daily"/>
         <module id="physiology:plamox" timemode="subdaily"/>
         <module id="soilchemistry:metrx" timemode="subdaily"/>
-        <module id="watercycle:watercycledndc" timemode="subdaily"/>
         <!-- outputs -->
-        <module id="output:soilchemistry:subdaily"/>
-        <module id="output:microclimate:subdaily"/>
-        <module id="output:physiology:subdaily"/>
-        <module id="output:watercycle:subdaily"/>
+        <module id="output:microclimate:daily"/>
+        <module id="output:watercycle:daily"/>
+        <module id="output:physiology:daily"/>
+        <module id="output:soilchemistry:daily"/>
+        <module id="output:soilchemistry:yearly"/>
         <module id="output:report:arable:harvest" timemode="subdaily"/>
       </modulelist>
     </mobile>

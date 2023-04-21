@@ -77,6 +77,21 @@ suppressMessages({
   
   gMY
   
+  gMhY <- MaizeYld_Mgha_piv[MaizeYld_Mgha_piv$year <= experiment_end_year,] %>%
+    ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
+    geom_point(show.legend=TRUE) +
+    xlab("Year") +
+    ggtitle(paste(site_name,"Maize Yield"),
+            paste0("Scenario: ",scenario_descriptor)) +
+    scale_color_manual(labels=c("Historical","LDNDC","Observed"),
+                       values=cbPalette9[c(4,8,1)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gMhY
+  
 
   Soy_this <- SoyYld_Mgha_piv[SoyYld_Mgha_piv$year %in% experiment_year_range &
                                 SoyYld_Mgha_piv$source!='Historical',]
@@ -106,6 +121,23 @@ suppressMessages({
   
   gSY
   
+  gShY <- SoyYld_Mgha_piv[SoyYld_Mgha_piv$year <= experiment_end_year,] %>%
+    ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
+    geom_point(show.legend=TRUE) +
+    xlab("Year") +
+    ylab(expression('Soybean Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Soybean Yield"),
+            paste0("Scenario: ",scenario_descriptor)) +
+    scale_color_manual(labels=c("Historical","LDNDC","Observed"),
+                       values=cbPalette9[c(4,8,1)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gShY
+  
+  
   Wheat_this <- WheatYld_Mgha_piv[WheatYld_Mgha_piv$year %in% experiment_year_range &
                                     WheatYld_Mgha_piv$source!='Historical',]
   
@@ -133,6 +165,23 @@ suppressMessages({
           legend.key = element_blank())
   
   gWY
+  
+  gWhY <- WheatYld_Mgha_piv[WheatYld_Mgha_piv$year <= experiment_end_year,] %>%
+    ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
+    geom_point(show.legend=TRUE) +
+    xlab("Year") +
+    ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Wheat Yield"),
+            paste0("Scenario: ",scenario_descriptor)) +
+    scale_color_manual(labels=c("Historical","LDNDC","Observed"),
+                       values=cbPalette9[c(4,8,1)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gWhY
+  
   
   ##
   if(mgmt_scenario_grp==3) {
@@ -419,16 +468,16 @@ suppressMessages({
   
   ggsave(filename=paste0(results_path,"calib_Maize_yield_comparison_exp_",scenario_name,"_LDNDC.jpg"),plot=gMY,
          width=6, height=6, dpi=300)
-  # ggsave(filename=paste0(results_path,"calib_Maize_hist_yield_comparison_exp_",scenario_name,"_LDNDC.jpg"),plot=gMhY,
-  #        width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"calib_Maize_hist_yield_comparison_exp_",scenario_name,"_LDNDC.jpg"),plot=gMhY,
+         width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"calib_Soybean_yield_comparison_exp_",scenario_name,"_LDNDC.jpg"),plot=gSY,
          width=6, height=6, dpi=300)
-  # ggsave(filename=paste0(results_path,"calib_Soybean_hist_yield_comparison_exp_",scenario_name,"_LDNDC.jpg"),plot=gShY,
-  #        width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"calib_Soybean_hist_yield_comparison_exp_",scenario_name,"_LDNDC.jpg"),plot=gShY,
+         width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"calib_Wheat_yield_comparison_exp_",scenario_name,"_LDNDC.jpg"),plot=gWY,
          width=6, height=6, dpi=300)
-  # ggsave(filename=paste0(results_path,"calib_Wheat_hist_yield_comparison_exp_",scenario_name,"_LDNDC.jpg"),plot=gWhY,
-  #        width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"calib_Wheat_hist_yield_comparison_exp_",scenario_name,"_LDNDC.jpg"),plot=gWhY,
+         width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"calib_SOC_comparison_exp_",scenario_name,"_LDNDC.jpg"),plot=gC,
          width=6, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_exp_",scenario_name,"_LDNDC.jpg"),plot=gT,
@@ -847,7 +896,15 @@ suppressMessages({
                          Nfit_coef[2], Nfit_coef[1], Nfit_r2, N_rmse,
                          N2O_obsmod_diff_gha,
                          Hfit_coef[2], Hfit_coef[1], Hfit_r2, H_rmse,
-                         CH4_obsmod_diff_gha)
+                         CH4_obsmod_diff_gha,
+                         NA, NA, NA, NA, # Cotton
+                         NA,
+                         NA, NA, NA, NA, # Sorghum
+                         NA,
+                         NA, NA, NA, # maize, soybean, wheat cultivars
+                         NA, # cotton cultivar
+                         NA # sorghum cultivar
+  )
   
   
   source("p_Edit_calib_file.R")

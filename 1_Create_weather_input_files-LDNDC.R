@@ -125,7 +125,7 @@ if(clim_scenario_num==1) {
               row.names = F,
               col.names = F)
   
-} else if(clim_scenario_num>=1) {
+} else if(clim_scenario_num>1) {
   
   # Get experimental period and bind to future
   DNDC_basic <- new_dat[,c("year","dayofyear","rain_mm.x","tavg","maxt_C.x","mint_C.x",
@@ -188,15 +188,12 @@ if(clim_scenario_num==1) {
               row.names = F,
               col.names = F)
   
-}# if clim_scenario_num==1
-
-
 }# if clim_scenario_num = 1 else >1
 
 if(clim_scenario_num==1) {
 rm(list=c("DNDC_basic","annual_tot_precipitation","annual_precipitation","temperature_average",
           "temperature_amplitude","wind_speed","time","DNDC_wth_file","header_txt",
           "DNDC_basic_fut"))
-if(clim_scenario_num>1) {
+} else if(clim_scenario_num>1) {
   rm("fut_dat")
 }

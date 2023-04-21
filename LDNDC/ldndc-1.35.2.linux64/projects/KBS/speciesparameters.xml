@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ldndcspeciesparameters>
+  <speciesparameters>
+    <species group="crop" mnemonic="soyb">
+      <par name="gdd_maturity" value="2000"/>
+    </species>
+  </speciesparameters>
+</ldndcspeciesparameters>

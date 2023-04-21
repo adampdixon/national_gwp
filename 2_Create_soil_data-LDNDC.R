@@ -13,6 +13,17 @@
 
 library(xml2)
 
+soil_filename <- paste0(dndc_path,"/site_",mgmt_scenario_num,".xml")
+
+
+# Remove old file ---------------------------------------------------------
+
+unlink(soil_filename)
+
+
+
+# Generate new file -------------------------------------------------------
+
 ## this is the top level
 doc <- xml_new_root("site",.version="1.0", .encoding="UTF-8")
 xml_set_attr(doc, "id", site_id)
@@ -79,6 +90,11 @@ xml_add_child((layer_nodes), paste("layer ",
 
 #doc
 
-write_xml(doc,file=paste0(dndc_path,"/site_",mgmt_scenario_num,".xml"),
+write_xml(doc,file=soil_filename,
           append=F)
 
+
+# Clean up ----------------------------------------------------------------
+
+rm(doc, description_nodes, soil_nodes, general_node, layer_nodes,
+   flipped_soil_df)
