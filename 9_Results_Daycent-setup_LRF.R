@@ -429,7 +429,7 @@ SorghumYld_Mgha_piv <- SorghumYld_Mgha_piv %>%
 ## Cotton yield
 
 CottonYld_Mgha <- merge(ObsYield[ObsYield$crop=="Cotton",c("year","mean_yield","sd_yield")],
-                        DayY_Mgha[DayY_Mgha$yield != 0,
+                        DayY_Mgha[DayY_Mgha$yield != 0 & DayY_Mgha$crop=="Cotton",
                                     c("year","yield")],
                         by="year",
                         all=TRUE) %>%
@@ -642,8 +642,9 @@ CH4_ghayr_piv <- pivot_longer(CH4_ghayr, c(-year),
 #                             values_to = "stoverCN_val")
 
 #**********************************************************************
+# calculate mean differences ----------------------------------------------
 
-# calculate mean differences between observed and modeled results
+# between observed and modeled results
 
 Cotton_obsmod_diff_Mgha <- sum(CottonYld_Mgha[!is.na(CottonYld_Mgha$Observed &
                                                        CottonYld_Mgha$Daycent),"Observed"] -
@@ -665,3 +666,9 @@ CH4_obsmod_diff_gha <- sum(CH4_ghaday[!is.na(CH4_ghaday$Observed) &
                                         !is.na(CH4_ghaday$Daycent),"Observed"] -
                              CH4_ghaday[!is.na(CH4_ghaday$Observed) &
                                           !is.na(CH4_ghaday$Daycent),"Daycent"])
+
+#**********************************************************************
+# Clean up ----------------------------------------------------------------
+
+rm(Day_harvest_raw,Day_methane_raw,Day_soiln_raw,Day_summary_raw,DayM_V_all_raw,
+   DayM_V_raw,DayT_C_all_raw)

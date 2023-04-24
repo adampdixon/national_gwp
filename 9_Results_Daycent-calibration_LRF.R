@@ -1074,7 +1074,10 @@ if(mgmt_scenario_grp == 3) {
                          NA, NA, NA, NA, # Cotton
                          NA,
                          SYfit_coef[2], SYfit_coef[1], SYfit_r2, SY_rmse, # Sorghum
-                         Sorghum_obsmod_diff_Mgha)
+                         Sorghum_obsmod_diff_Mgha,
+                         NA, NA, NA, # maize, soybean, wheat cultivars
+                         NA, NA # cotton, sorghum cultivars
+                         )
 } else if(mgmt_scenario_grp == 7 | mgmt_scenario_grp == 5) {
   calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                          clim_scenario_num,mgmt_scenario_num, scenario_name,
@@ -1096,7 +1099,10 @@ if(mgmt_scenario_grp == 3) {
                          CYfit_coef[2], CYfit_coef[1], CYfit_r2, CY_rmse,
                          Cotton_obsmod_diff_Mgha,
                          NA, NA, NA, NA, # Sorghum
-                         NA)
+                         NA,
+                         NA, NA, NA, # maize, soybean, wheat cultivars
+                         NA, NA # cotton, sorghum cultivars
+                         )
 } else {
   calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                          clim_scenario_num,mgmt_scenario_num, scenario_name,
@@ -1118,7 +1124,10 @@ if(mgmt_scenario_grp == 3) {
                          CYfit_coef[2], CYfit_coef[1], CYfit_r2, CY_rmse,
                          Cotton_obsmod_diff_Mgha,
                          SYfit_coef[2], SYfit_coef[1], SYfit_r2, SY_rmse,
-                         Sorghum_obsmod_diff_Mgha)
+                         Sorghum_obsmod_diff_Mgha,
+                         NA, NA, NA, # maize, soybean, wheat cultivars
+                         NA, NA # cotton, sorghum cultivars
+                         )
 }
 
 source("p_Edit_calib_file.R")

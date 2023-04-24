@@ -20,7 +20,7 @@
 # 1/31/2023: Rewrote to use APISM Classic met file format.
 #######################################
 
-print("Starting 1_Create_weather_input_files-setup_LRF.R")
+print(paste0("Starting 1_Create_weather_input_files-setup_LRF_",site_name,".R"))
 
 library(readxl)
 library(readr)
@@ -31,7 +31,7 @@ library(apsimx)
 source("Monthly_UPET_Correct.R")
 
 ###########################
-## import local data
+## import local data, set constants
 ###########################
 
 # start with observed data at or near site for experimental period
@@ -40,6 +40,10 @@ Raw_site <-  read_xlsx(paste0(obs_path, obs_filename),
                        sheet=curr_wth_tab,range="A1:L1296") %>%
   mutate(date=`Weather Date`,
          year=year(date))
+
+# for RothC
+soil_depth_cm <- 10 
+clay_content <- 17
 
 ## Only take complete years [LRF is missing 2003 weather data, though]
 ## Make sure data are chronological order oldest->newest (they are)

@@ -15,7 +15,7 @@
 #
 #######################################
 
-print("Starting 3_Create_management_input_files-RothC2.R")
+print(paste0("Starting 3_Create_management_input_files-RothC_",site_name,".R"))
 
 library(dplyr)
 
@@ -39,7 +39,7 @@ write.table(eqil, file=paste0(rothc_path,rothc_eqil_filename),sep="\t",
 
 ## base-future
 
-# First, decrease C input by multipliers determined by calibration
+# First, adjust C input by multipliers determined by calibration
 Cin_monthly_Mgha$Cinput_mon_Mgha <- Cin_monthly_Mgha$Cinput_mon_Mgha*C_multiplier
 
 

@@ -36,6 +36,8 @@ suppressMessages({
   #*  Spinup - 16 yrs -----------------------------------------------------
   #***************************************************
 
+  # one year's worth of data for spin-up file is manually created (this means
+  # any changes/calibration won't be recorded in the calibration log)
   APSIM_spinup_1yr <- read.delim(paste0(apsim_path,"mgmt_spinup_1yr.txt"),
                                  sep="\t",header=FALSE,col.names=c("date","text"))
   APSIM_spinup_16yr <- APSIM_spinup_1yr

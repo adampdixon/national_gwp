@@ -24,7 +24,7 @@ eq_inputdata <- read.table(paste0(mill_path,"../",mill_init_filename))
 # decrease soil temp since air temps on average were lower in 1850
 eq_inputdata[1] <- eq_inputdata[1]-0.5
 
-# Alternatively, using the daily percentages in the equilibrium initialization file, assign 
+# Using the daily percentages in the equilibrium initialization file, assign 
 # g C/m^2 per day of the annual total determined by RothC inverse mode to reach 
 # equilibrium at this site
 equil_C_input_adj <- equil_C_input # try adjusting the C input for calibration
@@ -33,7 +33,7 @@ eq_inputdata[3] <- round(equil_init*equil_C_input_adj,5)
 eq_inputdata[,4:5] <- Cin_daily_gm2[1:365,c("month","day")] # add date elements to help with readability
 names(eq_inputdata) <- c("forc_st","forc_sw","forc_npp","month","day") 
 
-# how much total C are we adding, to 1 meter?
+# how much total C are we adding, to 20 cm?
 eq_annual_C <- sum(eq_inputdata[3])
 
 write.table(eq_inputdata, file=paste0(mill_path,mill_eqilinput_filename),

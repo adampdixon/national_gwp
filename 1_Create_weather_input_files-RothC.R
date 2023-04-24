@@ -37,7 +37,7 @@ if(clim_scenario_num==1) {
       file=weather_path, sep="\n",append=FALSE)
   write.table(WeatherInit[,c(3,2,4)], file=weather_path, col.names=FALSE, row.names=FALSE, sep="\t", 
               quote=FALSE, append=TRUE)
-  cat("19","25", file=weather_path, sep="\t", append=TRUE)
+  cat(clay_content,soil_depth_cm, file=weather_path, sep="\t", append=TRUE)
   
   
   ###########################
@@ -98,7 +98,7 @@ if(clim_scenario_num==1) {
            write.table(lst[[myfun]], file=paste(rothc_weather_path,clim_scenario_num,substr(myfun,2,4),".dat", sep=""),
                        col.names=FALSE, row.names=FALSE, sep="\t", 
                        quote=FALSE, append=TRUE)
-           cat("19","25", file=paste(rothc_weather_path,clim_scenario_num,substr(myfun,2,4),".dat", sep=""), 
+           cat(clay_content,soil_depth_cm, file=paste(rothc_weather_path,clim_scenario_num,substr(myfun,2,4),".dat", sep=""), 
                sep="\t", append=TRUE)
          },
          lst)
@@ -112,7 +112,7 @@ if(clim_scenario_num==1) {
   colnames(exp_dat) <- c("month","year","rain_mm","tavg")
   OPE_all <- rbind(exp_dat,fut_dat[,c("month","year","rain_mm","tavg")])
   
-  # Aggregate daily KBS weather to monthly
+  # Aggregate daily weather to monthly
   OPEMonthly_sub_esm <- OPE_all
   #
   OPEMonthly_esm <- OPEMonthly_sub_esm %>%
@@ -169,7 +169,7 @@ if(clim_scenario_num==1) {
                                                 substr(myfun,2,4),".dat", sep=""),
                        col.names=FALSE, row.names=FALSE, sep="\t", 
                        quote=FALSE, append=TRUE)
-           cat("19","25", file=paste(rothc_weather_path,clim_scenario_num,
+           cat(clay_content,soil_depth_cm, file=paste(rothc_weather_path,clim_scenario_num,
                                      substr(myfun,2,4),".dat", sep=""), 
                sep="\t", append=TRUE)
          },

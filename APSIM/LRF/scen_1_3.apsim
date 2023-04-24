@@ -7,7 +7,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
 
 
 </memo>
-  <folder name="KBS">
+  <folder name="LRF">
     <simulation name="scen_1_3">
       <metfile name="met">
         <filename name="filename" input="yes">basic_wth_1.met</filename>

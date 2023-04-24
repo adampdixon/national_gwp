@@ -302,8 +302,8 @@ land_conversion_year <- 1940 # estimated from NASS Census of Agriculture: county
 year_range_fut=experiment_start_year:end_fut_period_year
 
 depth_m <- 0.1
-equil_C_input <- 150 # g C/m^2 annually; 150 is based on inverse modeling with RothC
-surface_C_init <- 30 # Mg C ha-1; estimated from 45 in topsoil in literature
+equil_C_input <- 147 # g C/m^2 annually; 147 is based on inverse modeling with RothC
+#surface_C_init <- 30 # Mg C ha-1; estimated from 45 in topsoil in literature
 
 control_treatment <- "CCct"
 control_treatment_num <- 7
@@ -885,7 +885,7 @@ ObsWth <- read.table(paste0(apsim_path,"basic_wth_",clim_scenario_num,".met"),
 # write calibration header file ---------------------------------------
 
 # make separate file with column headers (empty table with NA row)
-dummy<-data.frame(matrix(ncol=54))
+dummy<-data.frame(matrix(ncol=59))
 log_col_headers <- c("Date_time","Model",
                      "Climate_Scenario","Mgmt_Scenario","Scenario_Name",
                      "Scenario_Abbr",
@@ -906,7 +906,9 @@ log_col_headers <- c("Date_time","Model",
                      "Cotton_slope","Cotton_yint","Cotton_R2","Cotton_RMSE",
                      "Cotton_diff",
                      "Sorghum_slope","Sorghum_yint","Sorghum_R2","Sorghum_RMSE",
-                     "Sorghum_diff")
+                     "Sorghum_diff",
+                     "Maize_cultivar","Soybean_cultivar","Wheat_culivar",
+                     "Cotton_cultivar","Sorghum_cultivar")
 colnames(dummy) <- log_col_headers
 
 write.table(dummy,file=paste0(results_path,"Calibration_log_columns.csv"),

@@ -1,5 +1,5 @@
 #######################################
-# File: "p_Daycent_Cinput3.R"
+# File: "p_Daycent_Cinput2.R"
 # Author: "Ellen Maas"
 # Date: "Nov 6, 2022"
 # Description: This script takes C output from Daycent for use by
@@ -17,7 +17,7 @@
 
 suppressMessages({
   
-  print(paste0("Starting p_Daycent_Cinput_",site_name,".R"))
+  print(paste0("Starting p_Daycent_Cinput2_",site_name,".R"))
   
   library(datetime)
   
@@ -79,13 +79,13 @@ suppressMessages({
   # can hit an error if 2050 testing is done when 2100 last generated
   # the .lis files
   
-  livec_output <- livec_output[livec_output$year<=end_fut_period_year,]
+  livec_output <- livec_output[livec_output$year<=max_fut_period_year,]
   
   # Plant/harvest dates - base ----------------------------------------------
   
   
   # collect plant/harvest dates
-  all_years <- data.frame(year=land_conversion_year:end_fut_period_year)
+  all_years <- data.frame(year=land_conversion_year:max_fut_period_year)
   
 
   # Base period -------------------------------------------------------------
@@ -127,7 +127,7 @@ suppressMessages({
 
   
   # fill-in for end of experiment through end of experimental period
-  if(mgmt_scenario_grp==3) {
+  if(mgmt_scenario_grp %in% c(3,8)) {
     ## assemble annual planting and harvest dates for crops - build list from schedule files
     ## cotton year 1
     planting_cottonyr1_fillin <- data.frame(year=all_years[all_years$year > experiment_end_year &
@@ -160,6 +160,28 @@ suppressMessages({
                              planting_cottonyr2_fillin)
     
 
+  } else {
+      ## assemble annual planting and harvest dates for crops - build list from schedule files
+      ## cotton year 1
+      planting_cottonyr1_fillin <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                               all_years$year <= end_exp_period_year &
+                                                               (all_years$year %% 2) == 1,"year"]) %>% # odd years
+        mutate(observation_type="Planting",
+               dayofyr=133,
+               date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+               crop="Cotton")
+      
+      ## cotton year 2
+      planting_cottonyr2_fillin <- data.frame(year=all_years[all_years$year > experiment_end_year &
+                                                               all_years$year <= end_exp_period_year &
+                                                               (all_years$year %% 2) == 0,"year"]) %>% # even years
+        mutate(observation_type="Planting",
+               dayofyr=140,
+               date=as.Date(dayofyr-1, origin = paste0(year,"-01-01")),
+               crop="Cotton")
+      
+      ## combine
+      planting_fillin <- rbind(planting_cottonyr1_fillin,planting_cottonyr2_fillin)
   }
   
   
@@ -187,7 +209,7 @@ suppressMessages({
   if(mgmt_scenario_grp %in% c(3,8)) {
     ## ryegrass following sorghum (planted even years, harvested odd)
   planting_cottoncc_fut <- data.frame(year=all_years[all_years$year > end_exp_period_year &
-                                                       all_years$year < end_fut_period_year &
+                                                       all_years$year < max_fut_period_year &
                                                      (all_years$year %% 2) == 0,"year"]) %>%
     mutate(observation_type="Planting",
            dayofyr=355,
@@ -241,9 +263,9 @@ suppressMessages({
   livec_output$month <- month(livec_output$date)
   
   ## fill in crop type from planting-planting
-  for(i in which(c(1:nrow(all_field_ops[all_field_ops$year<end_fut_period_year-1,]))%%2==1)) {
+  for(i in which(c(1:nrow(all_field_ops[all_field_ops$year<max_fut_period_year-1,]))%%2==1)) {
     planting_date <- all_field_ops[i,"date"]
-    next_planting_date <- ifelse(i<max(which(c(1:nrow(all_field_ops[all_field_ops$year<end_fut_period_year-1,]))%%2==1)),
+    next_planting_date <- ifelse(i<max(which(c(1:nrow(all_field_ops[all_field_ops$year<max_fut_period_year-1,]))%%2==1)),
                                  all_field_ops[i+2,"date"],
                                  max(all_field_ops$date))
     livec_output[livec_output$date>=planting_date & 
@@ -252,7 +274,7 @@ suppressMessages({
   ### clean up the edges
   livec_output[livec_output$year==land_conversion_year,"crop"] <- "Sorghum"
   livec_output[livec_output$year == 2099 & is.na(livec_output$crop),"crop"] <- "Cotton"
-  livec_output <- livec_output[livec_output$year < end_fut_period_year,]
+  livec_output <- livec_output[livec_output$year < max_fut_period_year,]
   
   
   ########################################################
@@ -267,4 +289,13 @@ suppressMessages({
               ,row.names=F,
               sep=",")
   
+
+# Clean up ----------------------------------------------------------------
+
+rm(planting_base, planting_cc_base, planting_cotton_fut, planting_cottoncc_fillin,
+   planting_cottoncc_fut, planting_cottonyr1_fillin, planting_cottonyr2_fillin,
+   planting_fillin, planting_fut, planting_sorghum_fut, lis_output,
+   livec_output, livec_output_base, livec_output_exp, livec_output_fut,
+   planting_date, next_planting_date, field_ops_exp, all_years)
+    
 }) # end suppressMessages

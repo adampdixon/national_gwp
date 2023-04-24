@@ -147,6 +147,16 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
+1 98 HARV KILL
+1 119 FERT (2.2N)
+1 119 CULT K
+1 131 CULT R
+1 135 CROP SORG
+1 135 PLTM
+1 306 HARV G0S
+1 355 CROP RGA
+1 355 PLTM
+1 355 CULT K
 -999 -999 X
 19	Block ## Experimental period
 2012	Last year
@@ -155,6 +165,15 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
+1 97 HARV KILL
+1 115 FERT (2.8N)
+1 115 CULT K
+1 138 CULT R
+1 139 CROP COT
+1 139 PLTM
+1 287 HARV G0S
+1 347 CROP RGA
+1 347 PLTM
 -999 -999 X
 20	Block ## Experimental period
 2013	Last year
@@ -163,6 +182,16 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
+1 98 HARV KILL
+1 119 FERT (2.2N)
+1 119 CULT K
+1 131 CULT R
+1 135 CROP SORG
+1 135 PLTM
+1 306 HARV G0S
+1 355 CROP RGA
+1 355 PLTM
+1 355 CULT K
 -999 -999 X
 21	Block ## Experimental period
 2014	Last year
@@ -171,6 +200,15 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
+1 97 HARV KILL
+1 115 FERT (2.8N)
+1 115 CULT K
+1 138 CULT R
+1 139 CROP COT
+1 139 PLTM
+1 287 HARV G0S
+1 347 CROP RGA
+1 347 PLTM
 -999 -999 X
 22	Block ## Experimental period
 2015	Last year
@@ -179,6 +217,16 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
+1 98 HARV KILL
+1 119 FERT (2.2N)
+1 119 CULT K
+1 131 CULT R
+1 135 CROP SORG
+1 135 PLTM
+1 306 HARV G0S
+1 355 CROP RGA
+1 355 PLTM
+1 355 CULT K
 -999 -999 X
 23	Block ## Experimental period
 2016	Last year
@@ -187,6 +235,15 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
+1 97 HARV KILL
+1 115 FERT (2.8N)
+1 115 CULT K
+1 138 CULT R
+1 139 CROP COT
+1 139 PLTM
+1 287 HARV G0S
+1 347 CROP RGA
+1 347 PLTM
 -999 -999 X
 24	Block ## Experimental period
 2017	Last year
@@ -195,6 +252,16 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
+1 98 HARV KILL
+1 119 FERT (2.2N)
+1 119 CULT K
+1 131 CULT R
+1 135 CROP SORG
+1 135 PLTM
+1 306 HARV G0S
+1 355 CROP RGA
+1 355 PLTM
+1 355 CULT K
 -999 -999 X
 25	Block ## Experimental period
 2018	Last year
@@ -203,6 +270,15 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
+1 97 HARV KILL
+1 115 FERT (2.8N)
+1 115 CULT K
+1 138 CULT R
+1 139 CROP COT
+1 139 PLTM
+1 287 HARV G0S
+1 347 CROP RGA
+1 347 PLTM
 -999 -999 X
 26	Block ## Experimental period
 2019	Last year
@@ -211,6 +287,16 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
+1 98 HARV KILL
+1 119 FERT (2.2N)
+1 119 CULT K
+1 131 CULT R
+1 135 CROP SORG
+1 135 PLTM
+1 306 HARV G0S
+1 355 CROP RGA
+1 355 PLTM
+1 355 CULT K
 -999 -999 X
 27	Block ## Experimental period
 2020	Last year
@@ -219,6 +305,15 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
+1 97 HARV KILL
+1 115 FERT (2.8N)
+1 115 CULT K
+1 138 CULT R
+1 139 CROP COT
+1 139 PLTM
+1 287 HARV G0S
+1 347 CROP RGA
+1 347 PLTM
 -999 -999 X
 28	Block ## Experimental period
 2021	Last year
@@ -227,4 +322,14 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
+1 98 HARV KILL
+1 119 FERT (2.2N)
+1 119 CULT K
+1 131 CULT R
+1 135 CROP SORG
+1 135 PLTM
+1 306 HARV G0S
+1 355 CROP RGA
+1 355 PLTM
+1 355 CULT K
 -999 -999 X

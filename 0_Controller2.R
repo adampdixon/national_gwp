@@ -174,9 +174,9 @@ source(paste0("3_Create_management_input_files-setup_",site_name,".R"))
 
 #*************************************************************
 
-# Daycent
+# # Daycent
 # if(mgmt_scenario_grp!=6) {
-# source(paste0("9_Results_Daycent-setup_",site_name,".R"))
+source(paste0("9_Results_Daycent-setup_",site_name,".R"))
   # model_name <- "Daycent"
   # if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
     # source(paste0("9_Results_Daycent-calibration_",site_name,".R"))
@@ -209,15 +209,17 @@ source(paste0("3_Create_management_input_files-setup_",site_name,".R"))
 # # Management input files (RothC, Millennial)
 ## need to first run 3_Create_management_input_files-setup_",site_name,".R
 ## and 9_Results_Daycent-setup_",site_name,".R when testing
- # source(paste0("3_Create_management_input_files-setupRM_",site_name,".R"))
+ source(paste0("3_Create_management_input_files-setupRM_",site_name,".R"))
 # 
 # ## Millennial
   # source(paste0("3_Create_management_input_files-Millennial_",site_name,".R"))
   # source(paste0(mill_path,"run_Millennial.R"))
 # 
-#   ## RothC
-  # source("3_Create_management_input_files-RothC2.R")
-  # source("4_Create_additional_files-RothC2.R")
+  ## RothC
+  source(paste0("3_Create_management_input_files-RothC_",site_name,".R"))
+  source(paste0("4_Create_additional_files-RothC_",site_name,".R"))
+  ### alternative management output for spreadsheet
+  source(paste0("5_Alternative_management_input_files-RothC_",site_name,".R"))
 # #
 # # RothC is currently run manually: after management and scenario
 # # files are created, open RothC and run the model.
@@ -251,16 +253,16 @@ source(paste0("3_Create_management_input_files-setup_",site_name,".R"))
 #*************************************************************
 
 # RothC
-# if(mgmt_scenario_grp!=6) {
-#   source("9_Results_RothC-setup.R")
-#   # #
-#   # model_name <- "RothC"
-#   # if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
-#   #   source("9_Results_RothC-calibration.R")
-#   # }
-#   # source("9_Results_RothC-future.R")
-#   # source("p_Results_analysis.R")
-# }
+if(mgmt_scenario_grp!=6) {
+  source("9_Results_RothC-setup.R")
+  #
+  model_name <- "RothC"
+  if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
+    source("9_Results_RothC-calibration2.R")
+  }
+  # source("9_Results_RothC-future.R")
+  # source("p_Results_analysis.R")
+}
 
 
 #*************************************************************

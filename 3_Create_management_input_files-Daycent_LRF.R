@@ -46,7 +46,7 @@ init_base1 <- c(paste0(land_conversion_year,"          Starting year ## start wi
                 "0             OMAD scalar option (0 or 1)",
                 "0             Climate scalar option",
                 "1             Initial system",
-                "SORL          Initial crop ## sorghum",
+                "GI5          Initial crop ## sorghum",
                 "              Initial tree",
                 "",
                 "Year Month Option",
@@ -68,31 +68,6 @@ init_base1 <- c(paste0(land_conversion_year,"          Starting year ## start wi
                 "-999 -999 X")
 
 writeLines(init_base1,schedule_file)
-
-# commented out 3/16 - going to all cotton now
-# ### 1960-1989 - wheat (2-year)
-# 
-# init_base2 <- c("2       Block ## Switch to wheat with fertilizer",
-#                 "1989    Last year",
-#                 "2       Repeats # of years",
-#                 "1960    Output starting year",
-#                 "12      Output month",
-#                 "1       Output interval",
-#                 "C       Weather choice ## Continue",
-#                 "1 74  CULT K		## Mar 15",
-#                 "1 105 CULT R		## Apr 15",
-#                 "1 196 CULT R		## Jul 15",
-#                 "1 274 CULT C		## Oct 1",
-#                 "1 288 CROP W3		## Oct 15",
-#                 "1 288 PLTM			## Oct 15",
-#                 "1 288 FERT (3.5N)	## Oct 15",
-#                 "2 181 HARV G90S		## Jun 30 - Harvest grains and 90% straw",
-#                 "2 213 CULT K		## Aug 1",
-#                 "2 258 CULT K		## Sep 15",
-#                 "2 288 CULT R		## Oct 15",
-#                 "-999 -999 X")
-# 
-# cat(init_base2,sep="\n",file=schedule_file,append=TRUE)
 
 ### 1960-2001 - cotton
 
@@ -299,8 +274,8 @@ Daycent_conv_2100 <- Daycent_conv[Daycent_conv$year %in% (experiment_end_year-1)
     ops_line=paste0(if_else(year(date)==experiment_end_year-1,"1 ",
                             "2 ")),dayofyear," ",daycent_mgmt_code)
 
-header_txt <- c(paste0(end_exp_period_year+1,"          Starting year ## start with assumed ground-breaking for agriculture until intensification"),
-                paste0(end_fut_period_year-1,"          Last year"),
+header_txt <- c(paste0(end_exp_period_year+1,"          "),
+                paste0(max_fut_period_year-1,"          Last year"),
                 "site.100      Site file name",
                 "0             Labeling type ## all defaults turned off",
                 "-1            Labeling year",
@@ -317,7 +292,7 @@ header_txt <- c(paste0(end_exp_period_year+1,"          Starting year ## start w
                 "",
                 "Year Month Option",
                 "1       Block ## Corn, low yield, no fertilizer",
-                paste0(end_fut_period_year-1,"    Last year"),
+                paste0(max_fut_period_year-1,"    Last year"),
                 "2       Repeats # of years",
                 paste0(end_exp_period_year+1,"    Output starting year"),
                 "12       Output month",
