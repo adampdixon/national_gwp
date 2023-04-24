@@ -7,7 +7,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
 
 
 </memo>
-  <folder name="KBS">
+  <folder name="LRF">
     <simulation name="scen_2_7">
       <metfile name="met">
         <filename name="filename" input="yes">basic_wth_2.met</filename>
@@ -692,7 +692,11 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             </init>
           </initsection>
         </cotton2>
-        <sorghum />
+        <sorghum>
+          <ini>
+            <filename input="yes">SorghumLocal.xml</filename>
+          </ini>
+        </sorghum>
         <folder name="Manager folder1">
           <manager name="Harvesting and remove1">
             <ui>
@@ -1172,7 +1176,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/1987</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1988</date>
@@ -1188,7 +1192,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/1988</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1989</date>
@@ -1204,7 +1208,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/1989</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1990</date>
@@ -1220,7 +1224,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/1990</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1991</date>
@@ -1236,7 +1240,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/1991</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1992</date>
@@ -1252,7 +1256,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/1992</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1993</date>
@@ -1268,7 +1272,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/1993</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1994</date>
@@ -1284,7 +1288,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/1994</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1995</date>
@@ -1300,7 +1304,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/1995</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1996</date>
@@ -1316,7 +1320,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/1996</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1997</date>
@@ -1332,7 +1336,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/1997</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1998</date>
@@ -1348,7 +1352,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/1998</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/1999</date>
@@ -1364,7 +1368,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/1999</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/2000</date>
@@ -1380,7 +1384,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2000</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/2001</date>
@@ -1396,7 +1400,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2001</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>28/04/2002</date>
@@ -1412,11 +1416,11 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2002</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = kwam, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>27/05/2003</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>27/05/2003</date>
@@ -1440,7 +1444,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>10/05/2004</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>10/05/2004</date>
@@ -1464,7 +1468,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>19/05/2005</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>10/05/2006</date>
@@ -1472,7 +1476,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>02/06/2006</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>13/02/2007</date>
@@ -1480,7 +1484,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>24/06/2007</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>24/02/2008</date>
@@ -1496,7 +1500,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2008</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2009</date>
@@ -1504,7 +1508,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2009</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2010</date>
@@ -1516,7 +1520,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2010</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2011</date>
@@ -1524,7 +1528,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2011</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2012</date>
@@ -1536,7 +1540,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2012</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2013</date>
@@ -1544,7 +1548,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2013</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2014</date>
@@ -1556,7 +1560,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2014</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2015</date>
@@ -1564,7 +1568,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2015</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2016</date>
@@ -1576,7 +1580,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2016</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2017</date>
@@ -1584,7 +1588,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2017</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2018</date>
@@ -1596,7 +1600,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2018</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2019</date>
@@ -1604,7 +1608,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2019</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2020</date>
@@ -1616,7 +1620,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2020</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2021</date>
@@ -1624,7 +1628,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2021</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2022</date>
@@ -1636,7 +1640,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2022</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2023</date>
@@ -1644,7 +1648,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2023</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2024</date>
@@ -1656,7 +1660,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2024</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2025</date>
@@ -1664,7 +1668,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2025</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2026</date>
@@ -1676,7 +1680,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2026</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2027</date>
@@ -1684,7 +1688,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2027</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2028</date>
@@ -1696,7 +1700,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2028</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2029</date>
@@ -1704,7 +1708,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2029</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2030</date>
@@ -1716,7 +1720,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2030</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2031</date>
@@ -1724,7 +1728,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2031</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2032</date>
@@ -1736,7 +1740,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2032</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2033</date>
@@ -1744,7 +1748,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2033</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2034</date>
@@ -1756,7 +1760,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2034</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2035</date>
@@ -1764,7 +1768,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2035</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2036</date>
@@ -1776,7 +1780,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2036</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2037</date>
@@ -1784,7 +1788,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2037</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2038</date>
@@ -1796,7 +1800,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2038</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2039</date>
@@ -1804,7 +1808,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2039</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2040</date>
@@ -1816,7 +1820,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2040</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2041</date>
@@ -1824,7 +1828,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2041</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2042</date>
@@ -1836,7 +1840,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2042</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2043</date>
@@ -1844,7 +1848,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2043</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2044</date>
@@ -1856,7 +1860,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2044</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2045</date>
@@ -1864,7 +1868,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2045</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2046</date>
@@ -1876,7 +1880,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2046</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2047</date>
@@ -1884,7 +1888,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2047</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2048</date>
@@ -1896,7 +1900,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2048</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2049</date>
@@ -1904,7 +1908,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2049</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2050</date>
@@ -1916,7 +1920,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2050</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2051</date>
@@ -1924,7 +1928,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2051</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2052</date>
@@ -1936,7 +1940,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2052</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2053</date>
@@ -1944,7 +1948,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2053</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2054</date>
@@ -1956,7 +1960,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2054</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2055</date>
@@ -1964,7 +1968,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2055</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2056</date>
@@ -1976,7 +1980,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2056</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2057</date>
@@ -1984,7 +1988,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2057</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2058</date>
@@ -1996,7 +2000,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2058</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2059</date>
@@ -2004,7 +2008,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2059</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2060</date>
@@ -2016,7 +2020,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2060</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2061</date>
@@ -2024,7 +2028,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2061</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2062</date>
@@ -2036,7 +2040,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2062</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2063</date>
@@ -2044,7 +2048,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2063</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2064</date>
@@ -2056,7 +2060,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2064</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2065</date>
@@ -2064,7 +2068,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2065</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2066</date>
@@ -2076,7 +2080,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2066</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2067</date>
@@ -2084,7 +2088,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2067</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2068</date>
@@ -2096,7 +2100,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2068</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2069</date>
@@ -2104,7 +2108,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2069</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2070</date>
@@ -2116,7 +2120,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2070</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2071</date>
@@ -2124,7 +2128,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2071</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2072</date>
@@ -2136,7 +2140,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2072</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2073</date>
@@ -2144,7 +2148,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2073</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2074</date>
@@ -2156,7 +2160,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2074</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2075</date>
@@ -2164,7 +2168,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2075</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2076</date>
@@ -2176,7 +2180,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2076</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2077</date>
@@ -2184,7 +2188,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2077</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2078</date>
@@ -2196,7 +2200,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2078</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2079</date>
@@ -2204,7 +2208,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2079</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2080</date>
@@ -2216,7 +2220,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2080</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2081</date>
@@ -2224,7 +2228,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2081</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2082</date>
@@ -2236,7 +2240,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2082</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2083</date>
@@ -2244,7 +2248,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2083</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2084</date>
@@ -2256,7 +2260,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2084</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2085</date>
@@ -2264,7 +2268,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2085</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2086</date>
@@ -2276,7 +2280,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2086</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2087</date>
@@ -2284,7 +2288,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2087</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2088</date>
@@ -2296,7 +2300,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2088</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2089</date>
@@ -2304,7 +2308,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2089</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2090</date>
@@ -2316,7 +2320,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2090</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2091</date>
@@ -2324,7 +2328,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2091</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2092</date>
@@ -2336,7 +2340,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2092</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2093</date>
@@ -2344,7 +2348,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2093</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2094</date>
@@ -2356,7 +2360,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2094</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2095</date>
@@ -2364,7 +2368,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2095</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2096</date>
@@ -2376,7 +2380,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2096</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2097</date>
@@ -2384,7 +2388,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2097</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2098</date>
@@ -2396,7 +2400,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2098</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>17/01/2099</date>
@@ -2404,7 +2408,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>13/05/2099</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
           <operation condition="start_of_day">
             <date>12/03/2100</date>
@@ -2416,7 +2420,7 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
           </operation>
           <operation condition="start_of_day">
             <date>20/05/2100</date>
-            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s324, row_spacing = 1010, crop_class = plant</action>
+            <action>cotton sow plants = 12, sowing_depth = 25.4, cultivar = s71br, row_spacing = 1010, crop_class = plant</action>
           </operation>
         </operations>
       </area>

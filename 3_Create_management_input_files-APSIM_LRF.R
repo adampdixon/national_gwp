@@ -252,7 +252,7 @@ suppressMessages({
   
   
   # Now take the 2-year management actions and repeat them out to 2100
-  repeat_times <- ceiling((end_fut_period_year-experiment_end_year)/2)
+  repeat_times <- ceiling((max_fut_period_year-experiment_end_year)/2)
   
   for (i in 1:repeat_times) {
     #replace year 
