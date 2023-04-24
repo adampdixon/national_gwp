@@ -16,7 +16,7 @@
 #
 #######################################
 
-print("Starting 3_Create_additional_files-RothC2.R")
+print(paste0("Starting 4_Create_additional_files-RothC_",site_name,".R"))
 
 library(readxl)
 library(dplyr)
@@ -46,7 +46,7 @@ lpth <- paste0("RothC/",site_name,"/landman/")
   weather_eql_dat <- paste(weather_eql,".dat",sep="")
   landman_eql_file <- "Eqil.dat"
   ### Equilibrium segment, to 1940 (IOM was 2.3585)
-  cat(output_file,weather_eql,"2","0","0","0","0","2.3585","0","0","0","0","2",landman_eql_file,
+  cat(output_file,weather_eql,"2","0","0","0","0","2.1","0","0","0","0","2",landman_eql_file,
       "2","1","2\n", file=scenario_path, sep="\n",append=FALSE)
   ### "Short term" segments, annual through end of future period
   for(k in land_conversion_year:(end_fut_period_year-1)) { 

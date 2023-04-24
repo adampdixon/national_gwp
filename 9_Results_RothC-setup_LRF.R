@@ -4,7 +4,7 @@
 #date: 8/30/2022
 #output: html_document
 
-print("Starting 9_Results_RothC-setup.R")
+print(paste0("Starting 9_Results_RothC-setup_",site_name,".R"))
 
 library(readxl)
 #library(plotly)
@@ -33,9 +33,9 @@ RothCObs_df_raw <- read.fwf(rdata_filename,
 # limit future output to future period
 RothCObs_df <- RothCObs_df_raw[RothCObs_df_raw$year <= end_fut_period_year,]
 
-RothCC_Mgha <- RothCObs_df[,c("year","ModC","CO2")] #%>%
-#  mutate(CO2_monthly_Mgha=CO2-lag(CO2,default=0),
-#         CO2_monthly_ghad=CO2_monthly_Mgha*1000000)
+# Cinput for for 20 cm, so reduce results 50% for 10 cm observations
+RothCC_Mgha <- RothCObs_df[,c("year","ModC","CO2")] %>%
+  mutate(ModC=ModC*0.5)
 
 
 #**********************************************************************

@@ -208,7 +208,10 @@ calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                        NA, NA, NA, NA, # Cotton
                        NA,
                        NA, NA, NA, NA, # Sorghum
-                       NA)
+                       NA,
+                       NA, NA, NA, # maize, soybean, wheat cultivars
+                       NA, NA # cotton, sorghum cultivars
+                       )
 
 
 source("p_Edit_calib_file.R")
