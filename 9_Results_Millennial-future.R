@@ -30,18 +30,18 @@ library(ggplot2)
 
 if(scenario_name=="1_3") {
   # remove 1998 observation from regression, looks like bad data
-  Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha_25cm[Cstock_Mgha_25cm$year >= experiment_start_year &
-                                                                 Cstock_Mgha_25cm$year != 1998,]))
+  Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha_10cm[Cstock_Mgha_10cm$year >= experiment_start_year &
+                                                                 Cstock_Mgha_10cm$year != 1998,]))
 } else {
-  Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha_25cm[Cstock_Mgha_25cm$year >= experiment_start_year,]))
+  Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha_10cm[Cstock_Mgha_10cm$year >= experiment_start_year,]))
 }
 
 
-input_data <- if(scenario_name=="1_3") { Cstock_Mgha_piv_25cm[Cstock_Mgha_piv_25cm$year>=1989 & 
-                                                         Cstock_Mgha_piv_25cm$year!=1998,] 
-} else { Cstock_Mgha_piv_25cm[Cstock_Mgha_piv_25cm$year>=1989,] }
+input_data <- if(scenario_name=="1_3") { Cstock_Mgha_piv_10cm[Cstock_Mgha_piv_10cm$year>=1989 & 
+                                                         Cstock_Mgha_piv_10cm$year!=1998,] 
+} else { Cstock_Mgha_piv_10cm[Cstock_Mgha_piv_10cm$year>=1989,] }
 
-# 25 cm experimental through future 
+# 10 cm experimental through future 
 gC4 <- input_data %>%
   ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
@@ -52,7 +52,7 @@ gC4 <- input_data %>%
   ggtitle(paste(site_name,"Soil Organic Carbon: Scenario ",scenario_name)) +
   #  geom_abline(intercept=Cfit_RothC[1], slope=Cfit_RothC[2], color="orange") +
   #  geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
-  scale_color_manual(labels=c("Millennial","Observed-25cm"),
+  scale_color_manual(labels=c("Millennial","Observed-10cm"),
                      values=cbPalette9[c(8,1)]) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),

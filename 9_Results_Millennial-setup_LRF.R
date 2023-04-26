@@ -4,7 +4,7 @@
 # date: "8/30/2022"
 # output: html_document
 
-print("Starting 9_Results_Millennial-setup.R")
+print(paste0("Starting 9_Results_Millennial-setup_",site_name,".R"))
 
 library(readxl)
 #library(plotly)
@@ -23,8 +23,7 @@ mill_baseinput_filename <- "siteenviron_base_in.txt"
 
 
 #*************************************************************
-
-# import Millennial
+# import Millennial -------------------------------------------------------
 
 
 mill_base_df_raw <- read.csv(file=paste0(mill_path,"base_out_",scenario_name,".csv"))
@@ -51,7 +50,7 @@ mill_annualCinput_df <- mill_dailyCinput_df %>%
 ## calculate the Mgha to reduce the output by to get from 1 m C to top 10 cm
 ## can't just multiply by a fraction as the values end up compressed, and we just
 ## need everything to drop down by a set amount
-reduceCby <- 50
+reduceCby <- 38
 millC_Mgha_10cm <- data.frame(year=millC_Mgha$year,
                             cstock=millC_Mgha$TOC_Mgha-reduceCby) 
 
@@ -63,6 +62,8 @@ mill_base_df <- mill_base_df_raw %>%
 
 
 #**********************************************************************
+# write results -----------------------------------------------------------
+
 
 # write out results for use later in ensemble results
 output_annual_data <- cbind(millC_Mgha_10cm$year,NA,NA,NA,
@@ -80,36 +81,49 @@ write.table(output_annual_data,file=paste0(results_path,"Annual_results_compilat
 
 
 #*************************************************************
+# merge data --------------------------------------------------------------
 
-# merge data
 
 # Carbon, full 1 m depth
-Cstock_Mgha <- merge(ObsC_Mgha[,c("year","cstock")],
+Cstock_Mgha <- merge(ObsC_Mgha[,c("year","cstock","sd_cstock")],
                      millC_Mgha,
                      by="year",
                      all=TRUE)
-colnames(Cstock_Mgha) <- c("year","Observed","Millennial")
+colnames(Cstock_Mgha) <- c("year","Observed","Obs_sd","Millennial")
 
-Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year),
+Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year,-Obs_sd),
                names_to = "source",
                values_to = "C_val")
+
+# remove sd from modeled records; only for observed
+Cstock_Mgha_piv <- Cstock_Mgha_piv %>%
+  mutate(Obs_sd=replace(Obs_sd, source!="Observed", NA))
+
+# -------------
 
 ## C for full 1 m depth
 Cat1940 <- as.numeric(millC_Mgha[millC_Mgha$year==land_conversion_year,"TOC_Mgha"])
 Cat2003 <- as.numeric(millC_Mgha[millC_Mgha$year==experiment_start_year,"TOC_Mgha"])
 Cdiff_1940_2003 <- Cat1940-Cat2003
 
+# -------------
+
 # Carbon, 10 cm depth
-Cstock_Mgha_10cm <- merge(ObsC_Mgha[,c("year","cstock")],
+Cstock_Mgha_10cm <- merge(ObsC_Mgha[,c("year","cstock","sd_cstock")],
                      millC_Mgha_10cm,
                      by="year",
                      all=TRUE)
-colnames(Cstock_Mgha_10cm) <- c("year","Observed","Millennial")
+colnames(Cstock_Mgha_10cm) <- c("year","Observed","Obs_sd","Millennial")
 
-Cstock_Mgha_piv_10cm <-  pivot_longer(Cstock_Mgha_10cm, c(-year),
+Cstock_Mgha_piv_10cm <-  pivot_longer(Cstock_Mgha_10cm, c(-year,-Obs_sd),
                names_to = "source",
                values_to = "C_val")
 
+# remove sd from modeled records; only for observed
+Cstock_Mgha_piv_10cm <- Cstock_Mgha_piv_10cm %>%
+  mutate(Obs_sd=replace(Obs_sd, source!="Observed", NA))
+
+# -------------
 
 # Microbial
 CO2_ghaday <- merge(ObsGas_all[ObsGas_all$Treatment %in% treatment,
@@ -130,8 +144,9 @@ colnames(mbio_gm2) <- c("year","date","Millennial","treatment","Observed")
 
 
 #**********************************************************************
+# calculate mean diffs ----------------------------------------------------
 
-# calculate mean differences between observed and modeled results
+# differences between observed and modeled results
 
 SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha_10cm[!is.na(Cstock_Mgha_10cm$Observed) &
                                           !is.na(Cstock_Mgha_10cm$Millennial),"Observed"] -

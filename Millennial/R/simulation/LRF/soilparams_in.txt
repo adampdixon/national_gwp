@@ -1,6 +1,6 @@
 param_pi 0.66
 param_pa 0.33
-kaff_pl 5000.
+kaff_pl 7800.
 alpha_pl 1.8e12
 eact_pl 63909.
 rate_pa 0.018
@@ -9,12 +9,12 @@ rate_leach 0.0015
 kaff_des 1
 param_p1 0.12
 param_p2 0.216
-kaff_lb 900.
+kaff_lb 875.
 alpha_lb 2.3e12
 eact_lb 57865.
 rate_bd 0.0045
 rate_ma 0.0048
-cue_ref 0.19
+cue_ref 0.218
 cue_t 0.012
 tae_ref 15.
 matpot 15.
