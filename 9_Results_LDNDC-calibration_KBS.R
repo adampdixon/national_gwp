@@ -546,7 +546,8 @@ suppressMessages({
     geom_point() +
     geom_abline() +
     geom_abline(intercept=SYfit_coef[1], slope=SYfit_coef[2], color="blue") +
-    annotate("text",x=2,y=1.5,label=paste0("R^2=",SYfit_r2)) +
+    annotate("text",x=1.5,y=3.5,label=paste0("R^2=",SYfit_r2)) +
+    annotate("text",x=1.5,y=3,label=paste0("Slope=",round(SYfit_coef[2],2))) +
     ggtitle(bquote(.(site_name)~"Soybean Yield (Mg ha" ^"-1"*")"),
             paste0("Scenario: ",scenario_descriptor)) +
     theme(panel.background = element_blank(),

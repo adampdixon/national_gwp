@@ -35,20 +35,9 @@ dndc_callshell_filename <- paste0(dndc_path,"callsh_",scenario_name,".sh")
 
 
 #*************************************************************
-# Remove existing files ----------------------------------------------------------------
-
-unlink(dndc_setup_filename)
-unlink(dndc_project_filename)
-unlink(dndc_speciesparams_filename)
-unlink(dndc_airchem_filename)
-unlink(dndc_batch_filename)
-unlink(dndc_shell_filename)
-unlink(dndc_callshell_filename)
-
-
-#*************************************************************
 # setup file --------------------------------------------------------------
 
+unlink(dndc_setup_filename)
 
 doc_setup <- read_xml(paste0(
   "<?xml version=\"1.0\" ?>",
@@ -84,13 +73,15 @@ write_xml(doc_setup,file=dndc_setup_filename)
 #*************************************************************
 # project file (.ldndc) --------------------------------------------------------------
 
+unlink(dndc_project_filename)
 
 # set the treatment details (soil and management) the scenario is based on
 base_treatment <- ifelse(mgmt_scenario_grp %in% c(1,4,5,6),1,mgmt_scenario_grp)
 
 doc_proj <- read_xml(paste0("<?xml version=\"1.0\" ?><ldndcproject PackageMinimumVersionRequired=\"1.35.2\">",
                  paste0('<schedule time=\"',experiment_start_date,'/24 -> ',max_fut_period_year,'-12-31\" />'),
-                  "<input>",
+                 #paste0('<schedule time=\"1989-01-01/24 -> 2075-12-31\" />'),
+                 "<input>",
                  paste0('<sources sourceprefix=\"',site_name,'/" >'),
                  "<setup source=\"setup.xml\" />",
                  paste0('<site source=\"site_',base_treatment,'.xml\" />'),
@@ -123,13 +114,59 @@ write_xml(doc_proj,file=dndc_project_filename)
           
 
 #*************************************************************
+#*## air chemistry file
+
+unlink(dndc_airchem_filename)
+
+airchem_txt <- c("nh4\t no3\t ch4\t co2\t o3\t nh3\t no2\t no",
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t"),
+                 paste0("0.3\t 0.3\t 0.883\t 353.0\t 0.0\t 0.0\t 0.0\t 0.0\t")
+)
+
+writeLines(airchem_txt,dndc_airchem_filename)
+
+
+#*************************************************************
 # species parameters --------------------------------------------------------------
+
+unlink(dndc_speciesparams_filename)
 
 doc_specparam <- read_xml(paste0(
   "<ldndcspeciesparameters>",
   "<speciesparameters>",
   "<species group=\"crop\" mnemonic=\"soyb\">",
-  "<par name=\"gdd_maturity\" value=\"2000\" />", #default=1819
+  "<par name=\"gdd_base_temperature\" value=\"7\" />", #7
+  "<par name=\"gdd_maturity\" value=\"1819\" />", #default=1819
+  "<par name=\"gdd_grain_filling\" value=\"-1\" />", #default=est. at 1000
+  "<par name=\"fraction_foliage\" value=\"0.43\" />", #default=0.43
+  "<par name=\"fraction_fruit\" value=\"0.4\" />", #default=0.4
+  "<par name=\"fraction_root\" value=\"0.06\" />", #default=0.06
+  "<par name=\"fyield\" value=\"0.18\" />", #default=0.25
+  "<par name=\"slamax\" value=\"20\" />", #default=20
+  "<par name=\"vcmax25\" value=\"125.6\" />", #default=125.6
+  "<par name=\"h2oref_a\" value=\"0.5\" />", #default=0.5
   "</species>",
   "</speciesparameters>",
   "</ldndcspeciesparameters>"
@@ -139,6 +176,10 @@ write_xml(doc_specparam,file=dndc_speciesparams_filename)
 
 #*************************************************************
 # write batch and shell files --------------------------------------------------------------
+
+unlink(dndc_batch_filename)
+unlink(dndc_shell_filename)
+unlink(dndc_callshell_filename)
 
 ## write Windows batch and Linux shell files
 
@@ -184,38 +225,14 @@ writeLines(callsh_txt,dndc_callshell_filename)
 system(paste0("chmod u+x ",dndc_callshell_filename))
 
 
+
+
 #*************************************************************
 # Clean up ----------------------------------------------------------------
 
-rm(dndc_setup_filename,dndc_project_filename,dndc_speciesparams_filename,
+rm(dndc_setup_filename,dndc_project_filename,#dndc_speciesparams_filename,
    dndc_airchem_filename,dndc_batch_filename,dndc_shell_filename,
    dndc_callshell_filename,doc_setup,base_treatment,doc_proj,doc_specparam,
    batch_txt,shell_txt,callsh_txt)
 
-#*************************************************************
-#*## air chemistry file
 
-
-# # output header data
-# 
-# DNDC_airchem_file <- paste0(dndc_path,site_name,"/",site_name,"_airchem.txt")
-# 
-# airchem_txt <- c("%global",
-#                 paste0("        time = \"",start_date,"/1\"\n"),
-#                 "%airchemistry",
-#                 paste0("        id = \"",as.character(site_id),"\""),
-#                 "%attributes",
-#                 paste0("        co2 = \"353\"") #,
-# #                "\n",
-# #                "%data",
-# #                "*\t *\t prec\t tavg\t tmax\t tmin\t grad\t wind"
-# )
-# 
-# writeLines(airchem_txt,dndc_airchem_filename)
-# 
-# # # add data
-# # write.table(DNDC_basic,sep="\t",
-# #             file=DNDC_wth_file,
-# #             append=TRUE,
-# #             row.names = F,
-# #             col.names = F)
