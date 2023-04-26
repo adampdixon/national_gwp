@@ -302,7 +302,7 @@ land_conversion_year <- 1940 # estimated from NASS Census of Agriculture: county
 year_range_fut=experiment_start_year:end_fut_period_year
 
 depth_m <- 0.1
-equil_C_input <- 147 # g C/m^2 annually; 147 is based on inverse modeling with RothC
+equil_C_input <- 129 # g C/m^2 annually; based on inverse modeling with RothC
 #surface_C_init <- 30 # Mg C ha-1; estimated from 45 in topsoil in literature
 
 control_treatment <- "CCct"
@@ -644,21 +644,16 @@ ObsC_Mgha_all <- ObsC_pct %>%
 ObsC_Mgha <- ObsC_Mgha_all[ObsC_Mgha_all$treatment==treatment,]
 
 ### The following is commented out for LRF; no true control from native
-### ecosystem is available, so estimated from literature (see ObsC_Mgha)
-# ObsC_control_Mgha <- ObsC_pct[ObsC_pct$treatment==control_treatment_num,] %>%
-#   group_by(year) %>%
-#   summarize(mean_cpct=round(mean(mean_c,na.rm=T),2),
-#             cstock=mean_cpct*ObsBD$mean_BD*25)
-# initC <- mean(ObsC_control_Mgha$cstock)
+### ecosystem is available, so need to eliminate
 
-# Use estimated starting OrgC from shortgrass prairie from []
-ObsC_Mgha <- rbind(data.frame(year=land_conversion_year, 
-                              treatment=treatment,
-                              treatment_num=treatment_num,
-                              mean_cpct=NA,
-                              sd_cpct=NA,
-                              cstock=45,
-                              sd_cstock=NA),ObsC_Mgha)
+# # Use estimated starting OrgC from shortgrass prairie from []
+# ObsC_Mgha <- rbind(data.frame(year=land_conversion_year, 
+#                               treatment=treatment,
+#                               treatment_num=treatment_num,
+#                               mean_cpct=NA,
+#                               sd_cpct=NA,
+#                               cstock=45,
+#                               sd_cstock=NA),ObsC_Mgha)
 
 
 # rbind(data.frame(treatment="CCct",
@@ -907,13 +902,23 @@ log_col_headers <- c("Date_time","Model",
                      "Cotton_diff",
                      "Sorghum_slope","Sorghum_yint","Sorghum_R2","Sorghum_RMSE",
                      "Sorghum_diff",
-                     "Maize_cultivar","Soybean_cultivar","Wheat_culivar",
+                     "Maize_cultivar","Soybean_cultivar","Wheat_cultivar",
                      "Cotton_cultivar","Sorghum_cultivar")
 colnames(dummy) <- log_col_headers
 
 write.table(dummy,file=paste0(results_path,"Calibration_log_columns.csv"),
             append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
 
+
+#**********************************************************************
+# Clean up ----------------------------------------------------------------
+
+rm(obs_biomass_raw,obs_fert_raw,
+   obs_soilbio_raw,obs_soilchem_raw,obs_soilphys_raw,obs_soiltemp_raw,
+   obs_treatments_raw,ObsMB_raw,ObsYield_raw,ObsBiomass_raw
+   )
+## don't remove obs_tillage_raw, obs_harvest_raw, or obs_planting_raw as
+## they are used by other scripts
 
 }) # end suppressMessages
 
