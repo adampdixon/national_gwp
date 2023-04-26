@@ -34,6 +34,8 @@ gC1 <- Cstock_Mgha_piv[Cstock_Mgha_piv$year <= experiment_end_year,] %>%
 ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
   #geom_point(data=ObsCdeep_Mgha, aes(x=year, y=cstock, color="black")) +
+  geom_errorbar(aes(ymin=C_val-Obs_sd, ymax=C_val+Obs_sd),
+                width=.2) + # Width of the error bars
   xlab("Year") +
   ylab(expression('SOC stock (Mg C ha' ^-1*')')) +
   ggtitle(paste(site_name,"Soil Organic Carbon (1 m depth): Scenario ",scenario_name)) +
@@ -56,6 +58,8 @@ ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
   #geom_point(data=ObsCdeep_Mgha, aes(x=year, y=cstock, color="blue")) +
   geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
+  geom_errorbar(aes(ymin=C_val-Obs_sd, ymax=C_val+Obs_sd),
+                width=.2) + # Width of the error bars
   xlab("Year") +
   ylab(expression('SOC stock (Mg C ha' ^-1*')')) +
   ggtitle(paste(site_name,"Soil Organic Carbon (25 cm depth): Scenario ",scenario_name)) +
@@ -73,15 +77,20 @@ gC2
 
 #### 10 cm depth, base through experimental
 
+Cfit_MillC <- coef(lm(Millennial ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% 
+                                                         experiment_start_year:end_exp_period_year,]))#experiment_year_range,]))
+Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
+
 gC3 <- Cstock_Mgha_piv_10cm[Cstock_Mgha_piv_10cm$year <= experiment_end_year,] %>%
 ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
   geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
+  geom_errorbar(aes(ymin=C_val-Obs_sd, ymax=C_val+Obs_sd),
+                width=.2) + # Width of the error bars
+  geom_abline(intercept=Cfit_MillC[1], slope=Cfit_MillC[2], color="orange") +
   xlab("Year") +
   ylab(expression('SOC stock (Mg C ha ' ^-1*')')) +
   ggtitle(paste(site_name,"Soil Organic Carbon: Scenario ",scenario_name)) +
-#  geom_abline(intercept=Cfit_RothC[1], slope=Cfit_RothC[2], color="orange") +
-#  geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
   scale_color_manual(labels=c("Millennial","Observed"),
                      values=cbPalette9[c(8,1)]) +
   theme(panel.background = element_blank(),
@@ -332,7 +341,10 @@ calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                        NA, NA, NA, NA, # Cotton
                        NA,
                        NA, NA, NA, NA, # Sorghum
-                       NA)
+                       NA,
+                       NA, NA, NA, # maize, soybean, wheat cultivars
+                       NA, NA # cotton, sorghum cultivars
+                       )
 
 
 source("p_Edit_calib_file.R")
