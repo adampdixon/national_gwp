@@ -88,8 +88,8 @@ suppressMessages({
     ggtitle(paste(site_name,"Soybean Yield"),paste0("Scenario: ",scenario_descriptor_full)) +
     geom_segment(aes(x = SYxs[1], xend = SYxs[2], y = SYys[1], yend = SYys[2]), color=cbPalette9[8]) +
     geom_segment(aes(x = SYobsxs[1], xend = SYobsxs[2], y = SYobsys[1], yend = SYobsys[2]), color=cbPalette9[1]) +
-    scale_color_manual(labels=c("LDNDC","Observed"),
-                       values=cbPalette9[c(8,1)]) +
+    scale_color_manual(labels=c("Historical","LDNDC","Observed"),
+                       values=cbPalette9[c(4,8,1)]) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
           legend.position = "right",
