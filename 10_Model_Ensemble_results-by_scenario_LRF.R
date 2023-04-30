@@ -27,19 +27,19 @@ library(ggplot2)
 
   if(mgmt_scenario_grp!=6) {
   
+    if(mgmt_scenario_grp!=7) {
 # merge observed and modeled data
 ## use ens_ (ensemble) prefix to distinguish these from the "SorghumYld_Mgha" etc.
 ## files in each model's Results files.
-ens_SorghumYld_Mgha <- #merge(
-  merge(ObsYield[ObsYield$crop=="Sorghum",c("year","mean_yield","sd_yield")],
+ens_SorghumYld_Mgha <- merge(merge(ObsYield[ObsYield$crop=="Sorghum",c("year","mean_yield","sd_yield")],
                              APSIMY_Mgha[APSIMY_Mgha$SorghumYield_Mgha != 0,
                                          c("year","SorghumYield_Mgha")],
                              by="year",
-                             all=TRUE)#,
-                       # DayY_Mgha[DayY_Mgha$crop=="Sorghum",c("year","yield")],
-                       # by="year",
-                       # all=TRUE)
-colnames(ens_SorghumYld_Mgha) <- c("year","Observed","Obs_sd","APSIM") #,"Daycent")
+                             all=TRUE),
+                       DayY_Mgha[DayY_Mgha$crop=="Sorghum",c("year","yield")],
+                       by="year",
+                       all=TRUE)
+colnames(ens_SorghumYld_Mgha) <- c("year","Observed","Obs_sd","APSIM","Daycent")
 
 ens_SorghumYld_Mgha_piv <- pivot_longer(ens_SorghumYld_Mgha, c(-year,-Obs_sd),
                names_to = "Model",
@@ -49,6 +49,8 @@ ens_SorghumYld_Mgha_piv <- pivot_longer(ens_SorghumYld_Mgha, c(-year,-Obs_sd),
 ens_SorghumYld_Mgha_piv <- ens_SorghumYld_Mgha_piv %>%
   mutate(Obs_sd=replace(Obs_sd, Model!="Observed", NA))
 
+    }
+    
 #
 ens_CottonYld_Mgha <- merge(merge(ObsYield[ObsYield$crop=="Cotton",c("year","mean_yield","sd_yield")],
                            APSIMY_Mgha[APSIMY_Mgha$CottonYield_Mgha != 0,
@@ -64,6 +66,7 @@ ens_CottonYld_Mgha_piv <- pivot_longer(ens_CottonYld_Mgha, c(-year,-Obs_sd),
                names_to = "Model",
                values_to = "yield_val")
 
+# remove sd from modeled records; only for observed
 ens_CottonYld_Mgha_piv <- ens_CottonYld_Mgha_piv %>%
   mutate(Obs_sd=replace(Obs_sd, Model!="Observed", NA))
 
@@ -79,7 +82,7 @@ ens_Cstock_Mgha <- merge(merge(merge(merge(ObsC_Mgha[,c("year","cstock","sd_csto
                            RothCC_Mgha[,c("year","ModC")],
                            by="year",
                            all=TRUE),
-                       millC_Mgha_25cm,
+                       millC_Mgha_10cm,
                        by="year",
                        all=TRUE)
 
@@ -146,53 +149,23 @@ ens_CH4_cum_kgha_piv <- pivot_longer(ens_CH4_cum_kgha, c(-date,-Observed),
 
 # Calibration temporal graphs ---------------------------------------------
 
-if(clim_scenario_num == 1 & mgmt_scenario_grp %in% calib_mgmt_scenario_grps) {
+if(clim_scenario_num == 1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
   
+  if(mgmt_scenario_grp!=7) {
   ## Sorghum
-MYfit_APSIM <- coef(lm(APSIM ~ year, 
+SYfit_APSIM <- coef(lm(APSIM ~ year, 
                        data = ens_SorghumYld_Mgha[ens_SorghumYld_Mgha$year %in% experiment_year_range,]))
-MYfit_Daycent <- coef(lm(Daycent ~ year, 
+SYfit_Daycent <- coef(lm(Daycent ~ year, 
                          data = ens_SorghumYld_Mgha[ens_SorghumYld_Mgha$year %in% experiment_year_range,]))
-MYfit_Observed <- coef(lm(Observed ~ year, 
+SYfit_Observed <- coef(lm(Observed ~ year, 
                          data = ens_SorghumYld_Mgha[ens_SorghumYld_Mgha$year %in% experiment_year_range,]))
 
-gMY_calib <- ens_SorghumYld_Mgha_piv[ens_SorghumYld_Mgha_piv$year %in% experiment_year_range,] %>%
+gSY_calib <- ens_SorghumYld_Mgha_piv[ens_SorghumYld_Mgha_piv$year %in% experiment_year_range,] %>%
   ggplot(aes(x=year, y=yield_val, color=Model, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
   xlab("Year") +
   ylab(expression('Sorghum Yield (Mg ha' ^-1*')')) +
   ggtitle(paste(site_name,"Sorghum Yield Calibration"),
-          paste0("Scenario: ",scenario_descriptor)) +
-  geom_abline(intercept=MYfit_APSIM[1], slope=MYfit_APSIM[2], color="orange") +
-  geom_abline(intercept=MYfit_Daycent[1], slope=MYfit_Daycent[2], color="#0072B2") +
-  geom_abline(intercept=MYfit_Observed[1], slope=MYfit_Observed[2], color="#000000") +
-  geom_errorbar(aes(ymin=yield_val-Obs_sd, ymax=yield_val+Obs_sd),
-                width=.2) + # Width of the error bars
-  scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-                     values=cbPalette9[c(8,2,1)]) +
-  theme_classic(base_family = "serif", base_size = 15) +
-  theme(panel.background = element_blank(),
-        axis.line = element_line(),
-        legend.position = "right",
-        legend.key = element_blank())
-
-gMY_calib
-
-## Cotton
-
-SYfit_APSIM <- coef(lm(APSIM ~ year, 
-                       data = ens_CottonYld_Mgha[ens_CottonYld_Mgha$year %in% experiment_year_range,]))
-SYfit_Daycent <- coef(lm(Daycent ~ year, 
-                         data = ens_CottonYld_Mgha[ens_CottonYld_Mgha$year %in% experiment_year_range,]))
-SYfit_Observed <- coef(lm(Observed ~ year, 
-                          data = ens_CottonYld_Mgha[ens_CottonYld_Mgha$year %in% experiment_year_range,]))
-
-gSY_calib <- ens_CottonYld_Mgha_piv[ens_CottonYld_Mgha_piv$year %in% experiment_year_range,] %>%
-  ggplot(aes(x=year, y=yield_val, color=Model, show.legend=TRUE)) +
-  geom_point(show.legend=TRUE) +
-  xlab("Year") +
-  ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
-  ggtitle(paste(site_name,"Cotton Yield Calibration"),
           paste0("Scenario: ",scenario_descriptor)) +
   geom_abline(intercept=SYfit_APSIM[1], slope=SYfit_APSIM[2], color="orange") +
   geom_abline(intercept=SYfit_Daycent[1], slope=SYfit_Daycent[2], color="#0072B2") +
@@ -208,28 +181,29 @@ gSY_calib <- ens_CottonYld_Mgha_piv[ens_CottonYld_Mgha_piv$year %in% experiment_
         legend.key = element_blank())
 
 gSY_calib
+  }
+  
+## Cotton
 
-# Wheat
+CYfit_APSIM <- coef(lm(APSIM ~ year, 
+                       data = ens_CottonYld_Mgha[ens_CottonYld_Mgha$year %in% experiment_year_range,]))
+CYfit_Daycent <- coef(lm(Daycent ~ year, 
+                         data = ens_CottonYld_Mgha[ens_CottonYld_Mgha$year %in% experiment_year_range,]))
+CYfit_Observed <- coef(lm(Observed ~ year, 
+                          data = ens_CottonYld_Mgha[ens_CottonYld_Mgha$year %in% experiment_year_range,]))
 
-WYfit_APSIM <- coef(lm(APSIM ~ year, 
-                       data = ens_WheatYld_Mgha[ens_WheatYld_Mgha$year %in% experiment_year_range,]))
-WYfit_Daycent <- coef(lm(Daycent ~ year, 
-                         data = ens_WheatYld_Mgha[ens_WheatYld_Mgha$year %in% experiment_year_range,]))
-WYfit_Observed <- coef(lm(Observed ~ year, 
-                          data = ens_WheatYld_Mgha[ens_WheatYld_Mgha$year %in% experiment_year_range,]))
-
-gWY_calib <- ens_WheatYld_Mgha_piv[ens_WheatYld_Mgha_piv$year %in% experiment_year_range,] %>%
+gCY_calib <- ens_CottonYld_Mgha_piv[ens_CottonYld_Mgha_piv$year %in% experiment_year_range,] %>%
   ggplot(aes(x=year, y=yield_val, color=Model, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
   xlab("Year") +
-  ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
-  ggtitle(paste(site_name,"Wheat Yield Calibration"),
+  ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
+  ggtitle(paste(site_name,"Cotton Yield Calibration"),
           paste0("Scenario: ",scenario_descriptor)) +
-  geom_abline(intercept=WYfit_APSIM[1], slope=WYfit_APSIM[2], color="orange") +
-  geom_abline(intercept=WYfit_Daycent[1], slope=WYfit_Daycent[2], color="#0072B2") +
-  geom_abline(intercept=WYfit_Observed[1], slope=WYfit_Observed[2], color="#000000") +
+  geom_abline(intercept=CYfit_APSIM[1], slope=CYfit_APSIM[2], color="orange") +
+  geom_abline(intercept=CYfit_Daycent[1], slope=CYfit_Daycent[2], color="#0072B2") +
+  geom_abline(intercept=CYfit_Observed[1], slope=CYfit_Observed[2], color="#000000") +
   geom_errorbar(aes(ymin=yield_val-Obs_sd, ymax=yield_val+Obs_sd),
-                width=.2) +  # Width of the error bars
+                width=.2) + # Width of the error bars
   scale_color_manual(labels=c("APSIM","Daycent","Observed"),
                      values=cbPalette9[c(8,2,1)]) +
   theme_classic(base_family = "serif", base_size = 15) +
@@ -238,28 +212,12 @@ gWY_calib <- ens_WheatYld_Mgha_piv[ens_WheatYld_Mgha_piv$year %in% experiment_ye
         legend.position = "right",
         legend.key = element_blank())
 
-gWY_calib
+gCY_calib
+
 
 ## SOC
 
-# if(mgmt_scenario_num==3) {
-#   Cfit_Obs <- coef(lm(Observed ~ year, data = ens_Cstock_Mgha[ens_Cstock_Mgha$year %in% experiment_year_range &
-#                                                                 ens_Cstock_Mgha$year!=1998,]))
-#   Cfit_Obs_noout <- coef(lm(Observed ~ year, data = ens_Cstock_Mgha[ens_Cstock_Mgha$year %in% experiment_year_range &
-#                                                                       ens_Cstock_Mgha$year!=1998 &
-#                                                                       !(ens_Cstock_Mgha$Observed %in% ObsC_outliers),]))
-#   ens_Cstock_df <- ens_Cstock_Mgha_piv_adj[ens_Cstock_Mgha_piv_adj$year %in% experiment_year_range &
-#                                              ens_Cstock_Mgha_piv_adj$year!=1998,]
-# } else {
-#   Cfit_Obs <- coef(lm(Observed ~ year, data = ens_Cstock_Mgha[ens_Cstock_Mgha$year %in% experiment_year_range,]))
-#   Cfit_Obs_noout <- coef(lm(Observed ~ year, data = ens_Cstock_Mgha[ens_Cstock_Mgha$year %in% experiment_year_range &
-#                                                                       !(ens_Cstock_Mgha$Observed %in% ObsC_outliers),]))
-#   ens_Cstock_df <- ens_Cstock_Mgha_piv_adj[ens_Cstock_Mgha_piv_adj$year %in% experiment_year_range,]
-# }
-
   Cfit_Obs <- coef(lm(Observed ~ year, data = ens_Cstock_Mgha[ens_Cstock_Mgha$year %in% experiment_year_range,]))
-  Cfit_Obs_noout <- coef(lm(Observed ~ year, data = ens_Cstock_Mgha[ens_Cstock_Mgha$year %in% experiment_year_range &
-                                                                      !(ens_Cstock_Mgha$Observed %in% ObsC_outliers),]))
   ens_Cstock_df <- ens_Cstock_Mgha_piv_adj[ens_Cstock_Mgha_piv_adj$year %in% experiment_year_range,]
 
 gC_calib <- ens_Cstock_df[ens_Cstock_df$year %in% experiment_year_range &
@@ -270,7 +228,6 @@ gC_calib <- ens_Cstock_df[ens_Cstock_df$year %in% experiment_year_range &
                                  ens_Cstock_df$Model != "Observed",],
             aes(x=year, y=C_val, color=Model), show.legend=TRUE) +
   geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
-  geom_abline(intercept=Cfit_Obs_noout[1], slope=Cfit_Obs_noout[2], color="black", linetype=2) +
   geom_errorbar(aes(ymin=C_val-Obs_sd, ymax=C_val+Obs_sd),
                 width=.2,                    # Width of the error bars
                 position=position_dodge(.9)) +
@@ -289,11 +246,9 @@ gC_calib <- ens_Cstock_df[ens_Cstock_df$year %in% experiment_year_range &
 gC_calib 
 
 ggsave(filename=paste0(results_path,"pub_Ensemble_Sorghum_calibration_",scenario_name,".jpg"),
-       plot=gMY_calib, width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"pub_Ensemble_Cotton_calibration_",scenario_name,".jpg"),
        plot=gSY_calib, width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"pub_Ensemble_Wheat_calibration_",scenario_name,".jpg"),
-       plot=gWY_calib, width=9, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"pub_Ensemble_Cotton_calibration_",scenario_name,".jpg"),
+       plot=gCY_calib, width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"pub_Ensemble_SOC_calibration_",scenario_name,".jpg"),
        plot=gC_calib, width=9, height=6, dpi=300)
 
@@ -304,44 +259,19 @@ ggsave(filename=paste0(results_path,"pub_Ensemble_SOC_calibration_",scenario_nam
 # Future temporal graphs --------------------------------------------------
 
 
-
-MYfit_APSIM <- coef(lm(APSIM ~ year, 
+if(mgmt_scenario_grp!=7) {
+SYfit_APSIM <- coef(lm(APSIM ~ year, 
                        data = ens_SorghumYld_Mgha[ens_SorghumYld_Mgha$year>=experiment_end_year,]))
-MYfit_Daycent <- coef(lm(Daycent ~ year, 
+SYfit_Daycent <- coef(lm(Daycent ~ year, 
                          data = ens_SorghumYld_Mgha[ens_SorghumYld_Mgha$year>=experiment_end_year,]))
 
-gMY <- ens_SorghumYld_Mgha_piv[ens_SorghumYld_Mgha_piv$Model %in% c("APSIM","Daycent") &
+gSY <- ens_SorghumYld_Mgha_piv[ens_SorghumYld_Mgha_piv$Model %in% c("APSIM","Daycent") &
                              ens_SorghumYld_Mgha_piv$year>=experiment_end_year,] %>%
 ggplot(aes(x=year, y=yield_val, color=Model, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
   xlab("Year") +
   ylab(expression('Sorghum Yield (Mg ha' ^-1*')')) +
   ggtitle(paste(site_name,"Future Sorghum Yield: ",scenario_descriptor)) +
-  geom_abline(intercept=MYfit_APSIM[1], slope=MYfit_APSIM[2], color="orange") +
-  geom_abline(intercept=MYfit_Daycent[1], slope=MYfit_Daycent[2], color="#0072B2") +
-  scale_color_manual(labels=c("APSIM","Daycent"),
-                     values=cbPalette9[c(8,2)]) +
-  theme_classic(base_family = "serif", base_size = 15) +
-  theme(panel.background = element_blank(),
-        axis.line = element_line(),
-        legend.position = "right",
-        legend.key = element_blank())
-
-gMY
-
-#
-SYfit_APSIM <- coef(lm(APSIM ~ year, 
-                       data = ens_CottonYld_Mgha[ens_CottonYld_Mgha$year>=experiment_end_year,]))
-SYfit_Daycent <- coef(lm(Daycent ~ year, 
-                         data = ens_CottonYld_Mgha[ens_CottonYld_Mgha$year>=experiment_end_year,]))
-
-gSY <- ens_CottonYld_Mgha_piv[ens_CottonYld_Mgha_piv$Model %in% c("APSIM","Daycent") &
-                             ens_CottonYld_Mgha_piv$year>=experiment_end_year,] %>%
-ggplot(aes(x=year, y=yield_val, color=Model, show.legend=TRUE)) +
-  geom_point(show.legend=TRUE) +
-  xlab("Year") +
-  ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
-  ggtitle(paste(site_name,"Future Cotton Yield: ",scenario_descriptor)) +
   geom_abline(intercept=SYfit_APSIM[1], slope=SYfit_APSIM[2], color="orange") +
   geom_abline(intercept=SYfit_Daycent[1], slope=SYfit_Daycent[2], color="#0072B2") +
   scale_color_manual(labels=c("APSIM","Daycent"),
@@ -353,22 +283,23 @@ ggplot(aes(x=year, y=yield_val, color=Model, show.legend=TRUE)) +
         legend.key = element_blank())
 
 gSY
+}
 
 #
-WYfit_APSIM <- coef(lm(APSIM ~ year, 
-                       data = ens_WheatYld_Mgha[ens_WheatYld_Mgha$year>=experiment_end_year,]))
-WYfit_Daycent <- coef(lm(Daycent ~ year, 
-                         data = ens_WheatYld_Mgha[ens_WheatYld_Mgha$year>=experiment_end_year,]))
+CYfit_APSIM <- coef(lm(APSIM ~ year, 
+                       data = ens_CottonYld_Mgha[ens_CottonYld_Mgha$year>=experiment_end_year,]))
+CYfit_Daycent <- coef(lm(Daycent ~ year, 
+                         data = ens_CottonYld_Mgha[ens_CottonYld_Mgha$year>=experiment_end_year,]))
 
-gWY <- ens_WheatYld_Mgha_piv[ens_WheatYld_Mgha_piv$Model %in% c("APSIM","Daycent") &
-                               ens_WheatYld_Mgha_piv$year>=experiment_end_year,] %>%
+gCY <- ens_CottonYld_Mgha_piv[ens_CottonYld_Mgha_piv$Model %in% c("APSIM","Daycent") &
+                             ens_CottonYld_Mgha_piv$year>=experiment_end_year,] %>%
 ggplot(aes(x=year, y=yield_val, color=Model, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
   xlab("Year") +
-  ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
-  ggtitle(paste(site_name,"Future Wheat Yield: ",scenario_descriptor)) +
-  geom_abline(intercept=WYfit_APSIM[1], slope=WYfit_APSIM[2], color="orange") +
-  geom_abline(intercept=WYfit_Daycent[1], slope=WYfit_Daycent[2], color="#0072B2") +
+  ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
+  ggtitle(paste(site_name,"Future Cotton Yield: ",scenario_descriptor)) +
+  geom_abline(intercept=CYfit_APSIM[1], slope=CYfit_APSIM[2], color="orange") +
+  geom_abline(intercept=CYfit_Daycent[1], slope=CYfit_Daycent[2], color="#0072B2") +
   scale_color_manual(labels=c("APSIM","Daycent"),
                      values=cbPalette9[c(8,2)]) +
   theme_classic(base_family = "serif", base_size = 15) +
@@ -377,17 +308,11 @@ ggplot(aes(x=year, y=yield_val, color=Model, show.legend=TRUE)) +
         legend.position = "right",
         legend.key = element_blank())
 
-gWY
+gCY
 
-if(mgmt_scenario_num==3) {
-  Cfit_Obs <- coef(lm(Observed ~ year, data = ens_Cstock_Mgha[ens_Cstock_Mgha$year >= experiment_start_year &
-                                                           ens_Cstock_Mgha$year!=1998,]))
-  ens_Cstock_df <- ens_Cstock_Mgha_piv_adj[ens_Cstock_Mgha_piv_adj$year>=experiment_start_year &
-                            ens_Cstock_Mgha_piv_adj$year!=1998,]
-} else {
+
   Cfit_Obs <- coef(lm(Observed ~ year, data = ens_Cstock_Mgha[ens_Cstock_Mgha$year >= experiment_start_year,]))
   ens_Cstock_df <- ens_Cstock_Mgha_piv_adj[ens_Cstock_Mgha_piv_adj$year>=experiment_start_year,]
-}
 
 gC <- ens_Cstock_df[ens_Cstock_df$year <= experiment_end_year &
                        ens_Cstock_df$Model == "Observed",] %>%
@@ -472,18 +397,7 @@ gMG
                                         names_to = "Model",
                                         values_to = "yield_val")
     
-    #
-    ens_WheatYld_Mgha <- merge(ObsYield[ObsYield$crop=="Wheat",c("year","mean_yield")],
-                                     APSIMY_Mgha[APSIMY_Mgha$WheatYield_Mgha != 0,
-                                                 c("year","WheatYield_Mgha")],
-                                     by="year",
-                                     all=TRUE)
-    colnames(ens_WheatYld_Mgha) <- c("year","Observed","APSIM")
-    
-    ens_WheatYld_Mgha_piv <- pivot_longer(ens_WheatYld_Mgha, c(-year),
-                                          names_to = "Model",
-                                          values_to = "yield_val")
-    
+
     ##
     ens_Cstock_Mgha <- merge(ObsC_Mgha[,c("year","cstock")],
                                                APSIMC_Mgha,
@@ -524,36 +438,15 @@ gMG
     # Temporal graphs
     
     
-    MYfit_APSIM <- coef(lm(APSIM ~ year, 
+    SYfit_APSIM <- coef(lm(APSIM ~ year, 
                            data = ens_SorghumYld_Mgha[ens_SorghumYld_Mgha$year>=experiment_end_year,]))
 
-    gMY <- ens_SorghumYld_Mgha_piv[ens_SorghumYld_Mgha_piv$year>=experiment_end_year,] %>%
+    gSY <- ens_SorghumYld_Mgha_piv[ens_SorghumYld_Mgha_piv$year>=experiment_end_year,] %>%
       ggplot(aes(x=year, y=yield_val, color=Model, show.legend=TRUE)) +
       geom_point(show.legend=TRUE) +
       xlab("Year") +
       ylab(expression('Sorghum Yield (Mg ha' ^-1*')')) +
       ggtitle(paste(site_name,"Future Sorghum Yield: ",scenario_descriptor)) +
-      geom_abline(intercept=MYfit_APSIM[1], slope=MYfit_APSIM[2], color="orange") +
-      scale_color_manual(labels=c("APSIM","Observed"),
-                         values=cbPalette9[c(8,1)]) +
-      theme_classic(base_family = "serif", base_size = 15) +
-      theme(panel.background = element_blank(),
-            axis.line = element_line(),
-            legend.position = "right",
-            legend.key = element_blank())
-    
-    gMY
-    
-    #
-    SYfit_APSIM <- coef(lm(APSIM ~ year, 
-                           data = ens_CottonYld_Mgha[ens_CottonYld_Mgha$year>=experiment_end_year,]))
-
-    gSY <- ens_CottonYld_Mgha_piv[ens_CottonYld_Mgha_piv$year>=experiment_end_year,] %>%
-      ggplot(aes(x=year, y=yield_val, color=Model, show.legend=TRUE)) +
-      geom_point(show.legend=TRUE) +
-      xlab("Year") +
-      ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
-      ggtitle(paste(site_name,"Future Cotton Yield: ",scenario_descriptor)) +
       geom_abline(intercept=SYfit_APSIM[1], slope=SYfit_APSIM[2], color="orange") +
       scale_color_manual(labels=c("APSIM","Observed"),
                          values=cbPalette9[c(8,1)]) +
@@ -566,16 +459,16 @@ gMG
     gSY
     
     #
-    WYfit_APSIM <- coef(lm(APSIM ~ year, 
-                           data = ens_WheatYld_Mgha[ens_WheatYld_Mgha$year>=experiment_end_year,]))
+    CYfit_APSIM <- coef(lm(APSIM ~ year, 
+                           data = ens_CottonYld_Mgha[ens_CottonYld_Mgha$year>=experiment_end_year,]))
 
-    gWY <- ens_WheatYld_Mgha_piv[ens_WheatYld_Mgha_piv$year>=experiment_end_year,] %>%
+    gCY <- ens_CottonYld_Mgha_piv[ens_CottonYld_Mgha_piv$year>=experiment_end_year,] %>%
       ggplot(aes(x=year, y=yield_val, color=Model, show.legend=TRUE)) +
       geom_point(show.legend=TRUE) +
       xlab("Year") +
-      ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
-      ggtitle(paste(site_name,"Future Wheat Yield: ",scenario_descriptor)) +
-      geom_abline(intercept=WYfit_APSIM[1], slope=WYfit_APSIM[2], color="orange") +
+      ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
+      ggtitle(paste(site_name,"Future Cotton Yield: ",scenario_descriptor)) +
+      geom_abline(intercept=CYfit_APSIM[1], slope=CYfit_APSIM[2], color="orange") +
       scale_color_manual(labels=c("APSIM","Observed"),
                          values=cbPalette9[c(8,1)]) +
       theme_classic(base_family = "serif", base_size = 15) +
@@ -584,8 +477,9 @@ gMG
             legend.position = "right",
             legend.key = element_blank())
     
-    gWY
+    gCY
     
+
       Cfit_Obs <- coef(lm(Observed ~ year, data = ens_Cstock_Mgha[ens_Cstock_Mgha$year >= experiment_start_year,]))
       ens_Cstock_df <- ens_Cstock_Mgha_piv_adj[ens_Cstock_Mgha_piv_adj$year>=experiment_start_year,]
 
@@ -627,12 +521,12 @@ gMG
     
 }
 
+  if(mgmt_scenario_grp!=7) {
 ggsave(filename=paste0(results_path,"Ensemble_Sorghum_comparison_",scenario_name,".jpg"),
-       plot=gMY, width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"Ensemble_Cotton_comparison_",scenario_name,".jpg"),
        plot=gSY, width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"Ensemble_Wheat_comparison_",scenario_name,".jpg"),
-       plot=gWY, width=9, height=6, dpi=300)
+  }
+ggsave(filename=paste0(results_path,"Ensemble_Cotton_comparison_",scenario_name,".jpg"),
+       plot=gCY, width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"Ensemble_SOC_comparison_",scenario_name,".jpg"),
        plot=gC, width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"Ensemble_N2O_cum_comparison_",scenario_name,".jpg"),

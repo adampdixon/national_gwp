@@ -15,7 +15,7 @@
 
 suppressMessages({
   
-print("Starting 9_Results_RothC-calibration.R")
+print("Starting 9_Results_RothC-calibration2.R")
 
 library(readxl)
 #library(plotly)
@@ -34,10 +34,10 @@ library(ggplot2)
 
 ## SOC experimental period
 
-  Cfit_RothC <- coef(lm(RothC ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% 2003:2021,]))#experiment_year_range,]))
+  Cfit_RothC <- coef(lm(RothC ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% experiment_start_year:end_exp_period_year,]))#experiment_year_range,]))
   Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
   
-  gC <- Cstock_Mgha_piv[Cstock_Mgha_piv$year %in% 2003:2021,] %>%#experiment_year_range,] %>%
+  gC <- Cstock_Mgha_piv[Cstock_Mgha_piv$year %in% experiment_start_year:end_exp_period_year,] %>%#experiment_year_range,] %>%
     ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
     geom_point() +
     geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
@@ -67,8 +67,8 @@ library(ggplot2)
   
   ## SOC with spin-up
   
-  Cfith_RothC <- coef(lm(RothC ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% 2003:2021,]))#experiment_year_range,]))
-  Cfith_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
+  # Cfith_RothC <- coef(lm(RothC ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% experiment_start_year:end_exp_period_year,]))#experiment_year_range,]))
+  # Cfith_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
   
   gCh <- Cstock_Mgha_piv %>%#experiment_year_range,] %>%
     ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
@@ -81,7 +81,7 @@ library(ggplot2)
     #  ylim(0,12) +
     ggtitle(paste(site_name,"Soil Organic Carbon"),
             paste0("Scenario: ",scenario_descriptor)) +
-    geom_abline(intercept=Cfith_RothC[1], slope=Cfith_RothC[2], color="orange") +
+    # geom_abline(intercept=Cfith_RothC[1], slope=Cfith_RothC[2], color="orange") +
     scale_color_manual(labels=c("Observed","RothC"),
                        values=cbPalette9[c(1,8)]) +
     theme_classic(base_family = "serif", base_size = 15) +

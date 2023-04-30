@@ -26,7 +26,7 @@ library(ggplot2)
 #Cfit_RothC <- coef(lm(RothC ~ year, data = Cstock_Mgha))
 #Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha))
 
-gC2 <- Cstock_Mgha_piv[Cstock_Mgha_piv$year>=1989,] %>%
+gC2 <- Cstock_Mgha_piv[Cstock_Mgha_piv$year>=experiment_start_year,] %>%
 ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
   xlab("Year") +

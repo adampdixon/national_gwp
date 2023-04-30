@@ -40,6 +40,10 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
+# large data files
+*.tif
+*.ovr
+
 # All archived file and miscellaneous directories
 Archive/
 Cluster/
