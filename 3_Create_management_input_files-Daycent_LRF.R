@@ -215,9 +215,11 @@ for (i in experiment_start_year:end_exp_period_year) {
       ### use 2004 and 2005 because sorghum dropped out in 2007
       if(i %% 2==0) {
         curr_yr_ops <- rbind(Daycent_conv[Daycent_conv$year==2005,],
-                             Daycent_conv[Daycent_conv$date==as.Date("2009-12-13"),])
+                             Daycent_conv[Daycent_conv$date==as.Date("2009-12-13"),]) %>%
+          mutate(ops_line=paste0("1 ",dayofyear," ",daycent_mgmt_code))
         } else {
-            curr_yr_ops <- Daycent_conv[Daycent_conv$year==2004,]
+            curr_yr_ops <- Daycent_conv[Daycent_conv$year==2004,] %>%
+              mutate(ops_line=paste0("1 ",dayofyear," ",daycent_mgmt_code))
         }
       curr_yr_ops$year <- i
       curr_yr_ops$date <- as.Date(paste0(i,substr(as.character(curr_yr_ops$date),5,10)))
@@ -309,7 +311,7 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
     "1 140 PLTM",
     paste0("1 323 HARV G",resid_adjust_chr,"S"),
     paste0("2 17 CULT K",resid_adjust_chr),
-    "2 133 CROP SORG",
+    "2 133 CROP SORGH",
     "2 133 PLTM",
     paste0("2 315 HARV G",resid_adjust_chr,"S")
   )
@@ -319,7 +321,7 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
            "1 140 CROP COT",
            "1 140 PLTM",
     paste0("1 323 HARV G",resid_adjust_chr,"S"),
-    "2 133 CROP SORG",
+    "2 133 CROP SORGH",
     "2 133 PLTM",
     paste0("2 315 HARV G",resid_adjust_chr,"S")
   )
@@ -338,7 +340,7 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
     paste0("2 119 FERT (",round(2.8*fert_adjust,2),"N)"),
     "2 119 CULT K",
     "2 131 CULT R",
-    "2 135 CROP SORG",
+    "2 135 CROP SORGH",
     "2 135 PLTM",
     paste0("2 306 HARV G",resid_adjust_chr,"S"),
     "2 355 CULT K",
@@ -368,7 +370,7 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
     "1 347 PLTM",
     "2 98 HARV KILL",
     paste0("2 119 FERT (",round(2.8*fert_adjust,2),"N)"),
-    "2 135 CROP SORG",
+    "2 135 CROP SORGH",
     "2 135 PLTM",
     paste0("2 306 HARV G",resid_adjust_chr,"S"),
     "2 355 CROP RGA",

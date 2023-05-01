@@ -167,3 +167,51 @@ Tin_daily_C <-   merge(ObsTemp,
 Min_daily_V <- DayM_V_all[,c("date","year","layer4_pct")] %>%
   mutate(soil_M=layer4_pct/100)
 
+
+## check
+gMC <- ggplot() +
+  geom_line(data=Cin_daily_gm2, #[Cin_daily_gm2$year %in% experiment_year_range,],
+            aes(x=date, y=daily_soilC_gm2), show.legend=TRUE) +
+  xlab("Year") +
+  ggtitle(paste(site_name,"Soil C Input"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  # scale_color_manual(labels=c("Daycent","Observed"),
+  #                    values=cbPalette9[c(8,1)]) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gMC
+
+gMT <- ggplot() +
+  geom_point(data=Tin_daily_C[Tin_daily_C$year %in% c(2003:2050),], #[Tin_daily_C$year %in% experiment_year_range,],
+            aes(x=date, y=mean_3_4), show.legend=TRUE) +
+  xlab("Year") +
+  ggtitle(paste(site_name,"Soil C Input"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  # scale_color_manual(labels=c("Daycent","Observed"),
+  #                    values=cbPalette9[c(8,1)]) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gMT
+
+gMM <- ggplot() +
+  geom_line(data=Min_daily_V[Tin_daily_C$year %in% c(2003:2050),],
+            aes(x=date, y=layer4_pct), show.legend=TRUE) +
+  xlab("Year") +
+  ggtitle(paste(site_name,"Soil C Input"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  # scale_color_manual(labels=c("Daycent","Observed"),
+  #                    values=cbPalette9[c(8,1)]) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gMM
+
+

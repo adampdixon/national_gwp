@@ -236,7 +236,9 @@ LDNDCGM_cum_gha <- LDNDCGM_ghaday %>%
 ### Fe3+ < METRX_FRAC_FE_CH4_PROD (0.3) * (Fe3+ + Fe2+)
 fe_tot <- 0.3 * (LDNDC_metrx_day$fe3_tot + LDNDC_metrx_day$fe2_tot)
 ch4_prod <- data.frame(date=LDNDC_metrx_day$date,
+                       year=LDNDC_metrx_day$year,
                        production=ifelse(LDNDC_metrx_day$fe3_tot<fe_tot,TRUE,FALSE),
+                       wfps=LDNDC_metrx_day$wfps,
                        fe3_tot=LDNDC_metrx_day$fe3_tot,
                        metrx_frac_fe_ch4_prod=0.3,
                        fe_tot=fe_tot,

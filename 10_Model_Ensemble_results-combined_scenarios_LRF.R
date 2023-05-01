@@ -52,7 +52,7 @@ soc_calib_output_df_piv$Source <- soc_calib_output_df_piv$Model
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('Grain Yield (Mg ha ' ^-1*')')) +
-    ylim(0,4) +
+    ylim(0,3) +
     ggtitle(paste(site_name,"Crop Yield Calibration")) +
     geom_errorbar(aes(ymin=yield_val-Obs_sd, ymax=yield_val+Obs_sd),
                   width=.5) + # Width of the error bars
@@ -104,9 +104,9 @@ soc_calib_output_df_piv$Source <- soc_calib_output_df_piv$Model
   gSOC_calib
   
   ggsave(filename=paste0(results_path,"pub_Crop_yield_calibration.jpg"),
-         plot=gY_calib, width=9, height=7, dpi=300)
+         plot=gY_calib, width=19, height=9, dpi=300)
   ggsave(filename=paste0(results_path,"pub_SOC_calibration.jpg"),
-         plot=gSOC_calib, width=14, height=7, dpi=300)
+         plot=gSOC_calib, width=19, height=9, dpi=300)
   
   #*************************************************************
 
@@ -351,7 +351,7 @@ for(clim_num in clim_nums) {
                                    result_name_in="MYfit")
 
   # # use this to get the colors used:
-  g <- ggplot_build(gAllMYexp)
+  g <- ggplot_build(gAllCYexp)
   # colors will repeat, so take the first x number of values, equal to x
   # number of scenarios
 
@@ -680,9 +680,9 @@ for(clim_num in clim_nums) {
   gCYfut
 
   ggsave(filename=paste0(results_path,"scenario_comparison_Cotton_exp_grp_4_",clim_num,".jpg"),
-         plot=gMYexp, width=9, height=6, dpi=300)
+         plot=gCYexp, width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"scenario_comparison_Cotton_fut_grp_4_",clim_num,".jpg"),
-         plot=gMYfut, width=9, height=6, dpi=300)
+         plot=gCYfut, width=9, height=6, dpi=300)
 
 
 
@@ -958,9 +958,9 @@ for(clim_num in clim_nums) {
   gCYfut
 
   ggsave(filename=paste0(results_path,"scenario_comparison_Cotton_exp_grp_5_",clim_num,".jpg"),
-         plot=gMYexp, width=9, height=6, dpi=300)
+         plot=gCYexp, width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"scenario_comparison_Cotton_fut_grp_5_",clim_num,".jpg"),
-         plot=gMYfut, width=9, height=6, dpi=300)
+         plot=gCYfut, width=9, height=6, dpi=300)
 
 
 
@@ -1200,9 +1200,9 @@ for(clim_num in clim_nums) {
   gCYfut
 
   ggsave(filename=paste0(results_path,"scenario_comparison_Cotton_exp_grp_6_",clim_num,".jpg"),
-         plot=gMYexp, width=9, height=6, dpi=300)
+         plot=gCYexp, width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"scenario_comparison_Cotton_fut_grp_6_",clim_num,".jpg"),
-         plot=gMYfut, width=9, height=6, dpi=300)
+         plot=gCYfut, width=9, height=6, dpi=300)
 
 
 

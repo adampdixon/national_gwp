@@ -500,6 +500,22 @@ gCI <- DayCI_gm2yr[DayCI_gm2yr$year <= experiment_end_year,] %>%
 
 gCI
 
+gCI <- DayCI_gm2yr[DayCI_gm2yr$year %in% experiment_year_range,] %>%
+  ggplot(aes(x=year, y=base), show.legend=TRUE) +
+  geom_line(show.legend=TRUE) +
+  xlab("Year") +
+  ylab(expression('C input (g C m' ^-2*' yr' ^-1*')')) +
+  ggtitle(paste(site_name,"Soil C Input"),
+          paste0("Scenario: ",scenario_descriptor)) +
+  # scale_color_manual(labels=c("Daycent","Observed"),
+  #                    values=cbPalette9[c(8,1)]) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gCI
+
 gNI <- DayNI_gm2yr[DayNI_gm2yr$year <= experiment_end_year,] %>%
   ggplot(aes(x=year, y=base), show.legend=TRUE) +
   geom_line(show.legend=TRUE) +

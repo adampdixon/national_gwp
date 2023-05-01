@@ -39,7 +39,7 @@ basic_exp.wth
 C 			 Weather choice
 1 98 HARV KILL
 1 119 FERT (2.2N)
-1 135 CROP SORG
+1 135 CROP SORGH
 1 135 PLTM
 1 306 HARV G0S
 1 355 CROP RGA
@@ -68,7 +68,7 @@ C 			 Weather choice
 1 5 CROP RGA
 1 5 PLTM
 1 97 HARV KILL
-1 153 CROP SORG
+1 153 CROP SORGH
 1 153 PLTM
 -999 -999 X
 14	Block ## Experimental period
@@ -136,7 +136,7 @@ C 			 Weather choice
 C 			 Weather choice
 1 98 HARV KILL
 1 119 FERT (2.2N)
-1 135 CROP SORG
+1 135 CROP SORGH
 1 135 PLTM
 1 306 HARV G0S
 1 355 CROP RGA
@@ -166,7 +166,7 @@ C 			 Weather choice
 C 			 Weather choice
 1 98 HARV KILL
 1 119 FERT (2.2N)
-1 135 CROP SORG
+1 135 CROP SORGH
 1 135 PLTM
 1 306 HARV G0S
 1 355 CROP RGA
@@ -196,7 +196,7 @@ C 			 Weather choice
 C 			 Weather choice
 1 98 HARV KILL
 1 119 FERT (2.2N)
-1 135 CROP SORG
+1 135 CROP SORGH
 1 135 PLTM
 1 306 HARV G0S
 1 355 CROP RGA
@@ -226,7 +226,7 @@ C 			 Weather choice
 C 			 Weather choice
 1 98 HARV KILL
 1 119 FERT (2.2N)
-1 135 CROP SORG
+1 135 CROP SORGH
 1 135 PLTM
 1 306 HARV G0S
 1 355 CROP RGA
@@ -256,7 +256,7 @@ C 			 Weather choice
 C 			 Weather choice
 1 98 HARV KILL
 1 119 FERT (2.2N)
-1 135 CROP SORG
+1 135 CROP SORGH
 1 135 PLTM
 1 306 HARV G0S
 1 355 CROP RGA
@@ -286,7 +286,7 @@ C 			 Weather choice
 C 			 Weather choice
 1 98 HARV KILL
 1 119 FERT (2.2N)
-1 135 CROP SORG
+1 135 CROP SORGH
 1 135 PLTM
 1 306 HARV G0S
 1 355 CROP RGA

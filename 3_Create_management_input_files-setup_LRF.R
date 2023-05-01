@@ -209,7 +209,7 @@ temp_ops <- rbind(obs_tillage, obs_planting, obs_harvest) %>%
                            if_else(obs_code=="rodweed","CULT R",
                            if_else(obs_code=="sweep","CULT S",
                            if_else(obs_code=="plant"&crop=="Cotton","CROP COT",
-                           if_else(obs_code=="plant"&crop=="Sorghum","CROP SORG",
+                           if_else(obs_code=="plant"&crop=="Sorghum","CROP SORGH",
                            if_else(obs_code=="plant"&crop=="Ryegrass",paste("CROP",covercrop_Daycent),
                            ## 0% stover removal is baseline treatment
                            if_else(obs_code=="grain",paste0("HARV G",resid_adjust_chr,"S"),

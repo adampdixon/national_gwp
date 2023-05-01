@@ -11,7 +11,7 @@ site.100  Site file name
 0             OMAD scalar option (0 or 1)
 0             Climate scalar option
 1             Initial system
-GI5           Initial crop ## sorghum
+GI5          Initial crop ## sorghum
               Initial tree
 
 Year Month Option

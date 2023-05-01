@@ -418,6 +418,29 @@ suppressMessages({
   # 
   # gNO3
   
+  gCH4_expl <- ggplot() +
+    geom_line(data=ch4_prod[ch4_prod$year %in% 2010:2011,],
+              aes(x=date, y=wfps, color=cbPalette9[2])) +
+    geom_line(data=ch4_prod[ch4_prod$year %in% 2010:2011,],
+              aes(x=date, y=o2_kgm2/100, color=cbPalette9[5])) +
+    geom_line(data=ch4_prod[ch4_prod$year %in% 2010:2011,],
+              aes(x=date, y=fe_tot/10000, color=cbPalette9[7])) +
+    geom_line(data=LDNDC_soil_chem_day[LDNDC_soil_chem_day$year %in% 2010:2011,],
+              aes(x=date, y=ch4_kgha*100, color=cbPalette9[8])) +
+    geom_line(data=ch4_prod[ch4_prod$year %in% 2010:2011,],
+              aes(x=date, y=fe3_tot/10000, color=cbPalette9[9])) +
+    ggtitle("LDNDC CH4 emissions drivers") +
+    ylab(expression('CH'[4]*' (cg ha' ^'-1'*' day, N'[2]*'O  (cg ha' ^'-1'*' day'^'-1'*')')) +
+    scale_color_manual(name=NULL,
+                       labels=c("WFPS","O2 (kg/m^2/100)","Fe Threshold","CH4","Fe3 Only"),#,"Fe Total","Fe3 Only","CH4"),
+                       values=cbPalette9[c(2,5,7,8,9)])+#,5,7,9,8)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  
+  gCH4_expl
   
   ggsave(filename=paste0(results_path,"Maize_yield_comparison_fut_",scenario_name,"_LDNDC.jpg"),plot=gMY,
          width=9, height=6, dpi=300)
@@ -445,6 +468,8 @@ suppressMessages({
   #        width=9, height=6, dpi=300)
   # ggsave(filename=paste0(results_path,"NO3_input_fut_",scenario_name,"_LDNDC.jpg"),plot=gNO3,
   #        width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"expl_CH4_",scenario_name,"_LDNDC.jpg"),plot=gCH4_expl,
+         width=9, height=6, dpi=300)
   
   
 }) # end suppressMessages

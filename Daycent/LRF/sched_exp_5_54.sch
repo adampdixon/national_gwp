@@ -24,7 +24,7 @@ Year Month Option
 F 			 Weather choice
 basic_exp.wth
 1 97 HARV KILL
-1 147 CROP SORG
+1 147 CROP SORGH
 1 147 PLTM
 1 227 HARV G50S
 -999 -999 X
@@ -48,7 +48,7 @@ C 			 Weather choice
 1  Output interval
 C 			 Weather choice
 1 115 FERT (2.8N)
-1 160 CROP SORG
+1 160 CROP SORGH
 1 160 PLTM
 1 332 HARV G50S
 -999 -999 X
@@ -70,7 +70,7 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 175 CROP SORG
+1 175 CROP SORGH
 1 175 PLTM
 1 226 HARV G50S
 -999 -999 X
@@ -94,7 +94,7 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP SORG
+1 133 CROP SORGH
 1 133 PLTM
 1 315 HARV G50S
 -999 -999 X
@@ -117,7 +117,7 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP SORG
+1 133 CROP SORGH
 1 133 PLTM
 1 315 HARV G50S
 -999 -999 X
@@ -140,7 +140,7 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP SORG
+1 133 CROP SORGH
 1 133 PLTM
 1 315 HARV G50S
 -999 -999 X
@@ -163,7 +163,7 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP SORG
+1 133 CROP SORGH
 1 133 PLTM
 1 315 HARV G50S
 -999 -999 X
@@ -186,7 +186,7 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP SORG
+1 133 CROP SORGH
 1 133 PLTM
 1 315 HARV G50S
 -999 -999 X
@@ -209,7 +209,7 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP SORG
+1 133 CROP SORGH
 1 133 PLTM
 1 315 HARV G50S
 -999 -999 X
@@ -232,7 +232,7 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP SORG
+1 133 CROP SORGH
 1 133 PLTM
 1 315 HARV G50S
 -999 -999 X
