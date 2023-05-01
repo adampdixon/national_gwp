@@ -42,12 +42,12 @@ RothCC_Mgha <- RothCObs_df[,c("year","ModC","CO2")] %>%
 
 # write out results for use later in ensemble results
 
-output_annual_data <- cbind(RothCC_Mgha$year,NA,NA,NA,
+output_annual_data <- cbind(RothCC_Mgha$year,NA,NA,
                             RothCC_Mgha[,"ModC"],
                             "RothC",scenario_name,clim_scenario_num,
                             mgmt_scenario_grp,mgmt_scenario_opt)
-colnames(output_annual_data) <- c("year","MaizeYld_Mgha","SoyYld_Mgha",
-                                  "WheatYld_Mgha","SOC_Mgha","model_name",
+colnames(output_annual_data) <- c("year","SorghumYld_Mgha","CottonYld_Mgha",
+                                  "SOC_Mgha","model_name",
                                   "scenario_name","climate_scenario_num",
                                   "mgmt_scenario_grp_num","mgmt_scenario_opt_num")
 

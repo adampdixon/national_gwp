@@ -41,9 +41,9 @@ crop_calib_output_df_piv$Source <- crop_calib_output_df_piv$Model
 soc_calib_output_df_piv <- read.table(file=paste0(results_path,"calib_soc_df_piv.csv"),
                                       header=TRUE,sep=",")  
 soc_calib_output_df_piv$Source <- soc_calib_output_df_piv$Model
-soc_trendlines_df <- read.table(file=paste0(results_path,"calib_soc_trendline_piv.csv"),
-                                header=TRUE,sep=",")  
-soc_trendlines_df$Source <- soc_trendlines_df$Model
+# soc_trendlines_df <- read.table(file=paste0(results_path,"calib_soc_trendline_piv.csv"),
+#                                 header=TRUE,sep=",")  
+# soc_trendlines_df$Source <- soc_trendlines_df$Model
   
   # Calibration graphs ------------------------------------------------------
 
@@ -52,7 +52,7 @@ soc_trendlines_df$Source <- soc_trendlines_df$Model
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('Grain Yield (Mg ha ' ^-1*')')) +
-    ylim(0,13) +
+    ylim(0,4) +
     ggtitle(paste(site_name,"Crop Yield Calibration")) +
     geom_errorbar(aes(ymin=yield_val-Obs_sd, ymax=yield_val+Obs_sd),
                   width=.5) + # Width of the error bars
@@ -79,17 +79,17 @@ soc_trendlines_df$Source <- soc_trendlines_df$Model
     ggtitle(paste(site_name,"Soil Organic Carbon Calibration")) +
     geom_errorbar(aes(ymin=C_val-Obs_sd, ymax=C_val+Obs_sd),
                   width=.5) +  # Width of the error bars
-    # geom_smooth(method='lm', formula= y~x, se=FALSE, aes(colour = Model)
-    #             ,linewidth=0.75) +
-    stat_smooth(
-      data = soc_trendlines_df, 
-      aes(linetype = Fit, y=value), 
-      #color="black", 
-      method = lm,
-      se = FALSE,
-      show.legend = TRUE,
-      fullrange=TRUE
-    ) +
+    geom_smooth(method='lm', formula= y~x, se=FALSE, aes(colour = Model)
+                ,linewidth=0.75) +
+    # stat_smooth(
+    #   data = soc_trendlines_df, 
+    #   aes(linetype = Fit, y=value), 
+    #   #color="black", 
+    #   method = lm,
+    #   se = FALSE,
+    #   show.legend = TRUE,
+    #   fullrange=TRUE
+    # ) +
     scale_color_manual(labels=c("APSIM","Daycent","Millennial","Observed","RothC"),
                        values=cbPalette9[c(8,2,6,1,3)]) +
     facet_wrap(~treatment_scen,nrow=1) +
@@ -169,9 +169,8 @@ summary_output$GWP=rowSums(summary_output[grep("^CO2e", names(summary_output))],
 
 scenario_means <- summary_output %>%
   group_by(Climate_Scenario,Mgmt_Scenario,Scenario_Name) %>%
-  summarize(mean_MaizeYld_Mgha=round(mean(Maize_Diff_Mgha,na.rm=T),5),
-            mean_SoyYld_Mgha=round(mean(Soybean_Diff_Mgha,na.rm=T),5),
-            mean_WheatYld_Mgha=round(mean(Wheat_Diff_Mgha,na.rm=T),5),
+  summarize(mean_CottonYld_Mgha=round(mean(Cotton_Diff_Mgha,na.rm=T),5),
+            mean_SorghumYld_Mgha=round(mean(Sorghum_Diff_Mgha,na.rm=T),5),
             mean_SOC_Mgha=round(mean(SOC_Diff_Mgha,na.rm=T),5),
             mean_N2O_Mgha=round(mean(N2O_Mgha,na.rm=T),5),
             mean_CH4_Mgha=round(mean(CH4_Mgha,na.rm=T),5),
@@ -179,9 +178,8 @@ scenario_means <- summary_output %>%
             mean_CO2e_N2O=round(mean(CO2e_N2O,na.rm=T),5),
             mean_CO2e_CH4=round(mean(CO2e_CH4,na.rm=T),5),
             mean_GWP=round(mean(GWP,na.rm=T),5),
-            sd_MaizeYld_Mgha=round(sd(Maize_Diff_Mgha,na.rm=T),5),
-            sd_SoyYld_Mgha=round(sd(Soybean_Diff_Mgha,na.rm=T),5),
-            sd_WheatYld_Mgha=round(sd(Wheat_Diff_Mgha,na.rm=T),5),
+            sd_CottonYld_Mgha=round(sd(Cotton_Diff_Mgha,na.rm=T),5),
+            sd_SorghumYld_Mgha=round(sd(Sorghum_Diff_Mgha,na.rm=T),5),
             sd_SOC_Mgha=round(sd(SOC_Diff_Mgha,na.rm=T),5),
             sd_N2O_Mgha=round(sd(N2O_Mgha,na.rm=T),5),
             sd_CH4_Mgha=round(sd(CH4_Mgha,na.rm=T),5),
@@ -232,8 +230,8 @@ for (i in clim_nums) { # climate scenarios
 } # end for-climate scenarios
 
 # fill-in NA yields with 0
-# annual_results[is.na(annual_results$MaizeYld_Mgha),"MaizeYld_Mgha"] <- 0
-# annual_results[is.na(annual_results$SoyYld_Mgha),"SoyYld_Mgha"] <- 0
+# annual_results[is.na(annual_results$CottonYld_Mgha),"CottonYld_Mgha"] <- 0
+# annual_results[is.na(annual_results$SorghumYld_Mgha),"SorghumYld_Mgha"] <- 0
 # annual_results[is.na(annual_results$WheatYld_Mgha),"WheatYld_Mgha"] <- 0
 
 # add scenario abbreviation
@@ -245,9 +243,8 @@ annual_results <- left_join(annual_results,
 mean_annual_results <- annual_results[annual_results<end_fut_period_year,] %>%
   group_by(year,scenario_name,climate_scenario_num,mgmt_scenario_grp_num,
            mgmt_scenario_opt_num,scenario_abbrev) %>%
-  summarize(MaizeYld_Mgha=round(mean(MaizeYld_Mgha,na.rm=T),3),
-            SoyYld_Mgha=round(mean(SoyYld_Mgha,na.rm=T),3),
-            WheatYld_Mgha=round(mean(WheatYld_Mgha,na.rm=T),3),
+  summarize(CottonYld_Mgha=round(mean(CottonYld_Mgha,na.rm=T),3),
+            SorghumYld_Mgha=round(mean(SorghumYld_Mgha,na.rm=T),3),
             SOC_Mgha=round(mean(SOC_Mgha,na.rm=T),3)
   )
 mean_annual_results <- mean_annual_results[!is.na(mean_annual_results$year),]
@@ -322,17 +319,17 @@ for(clim_num in clim_nums) {
 
   ### Mean of all scenarios
 
-  #### Maize
+  #### Cotton
 
-  gAllMYexp <- mean_annual_results[mean_annual_results$year>=experiment_start_year &
-                                     mean_annual_results$MaizeYld_Mgha != 0 &
+  gAllCYexp <- mean_annual_results[mean_annual_results$year>=experiment_start_year &
+                                     mean_annual_results$CottonYld_Mgha != 0 &
                                      mean_annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=MaizeYld_Mgha, color=scenario_abbrev,
+    ggplot(aes(x=year, y=CottonYld_Mgha, color=scenario_abbrev,
                shape=as.factor(mgmt_scenario_grp_num))) +
     geom_point() +
     xlab("Year") +
-    ylab(expression('Maize Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Maize Yield: All Scenarios, Model Means"),
+    ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Cotton Yield: All Scenarios, Model Means"),
             paste("Climate Scenario:",climate_desc)) +
     geom_vline(xintercept=experiment_end_year,linetype="dashed",color="darkgrey") +
     # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
@@ -342,12 +339,12 @@ for(clim_num in clim_nums) {
           legend.position = "right",
           legend.key = element_blank())
 
-  gAllMYexp
+  gAllCYexp
 
 
   # get the slope and intercept for all mgmt scenarios for one climate scenario
   model_mean_coefs <- f_model_coef(df_in=mean_annual_results,
-                                   modeled_element_in="MaizeYld_Mgha",
+                                   modeled_element_in="CottonYld_Mgha",
                                    model_name_in="All",
                                    climate_scen_in=clim_num,
                                    mgmt_group_in=NA,
@@ -358,15 +355,15 @@ for(clim_num in clim_nums) {
   # colors will repeat, so take the first x number of values, equal to x
   # number of scenarios
 
-  gAllMYfut <- mean_annual_results[mean_annual_results$year>=experiment_end_year &
-                                     mean_annual_results$MaizeYld_Mgha != 0 &
+  gAllCYfut <- mean_annual_results[mean_annual_results$year>=experiment_end_year &
+                                     mean_annual_results$CottonYld_Mgha != 0 &
                                      mean_annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=MaizeYld_Mgha, color=scenario_abbrev,
+    ggplot(aes(x=year, y=CottonYld_Mgha, color=scenario_abbrev,
                shape=as.factor(mgmt_scenario_grp_num))) +
     geom_point() +
     xlab("Year") +
-    ylab(expression('Maize Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name," Future Maize Yield: All Scenarios, Model Means"),
+    ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name," Future Cotton Yield: All Scenarios, Model Means"),
             paste("Climate Scenario:",climate_desc)) +
     geom_abline(intercept=model_mean_coefs[1,3], slope=model_mean_coefs[1,4],
                 color=g$data[[1]]$colour[1]) +
@@ -404,25 +401,26 @@ for(clim_num in clim_nums) {
           legend.key = element_blank())
 
 
-  gAllMYfut
+  gAllCYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Maize_exp_",clim_num,".jpg"),
-         plot=gAllMYexp, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Maize_fut_",clim_num,".jpg"),
-         plot=gAllMYfut, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Cotton_exp_",clim_num,".jpg"),
+         plot=gAllCYexp, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Cotton_fut_",clim_num,".jpg"),
+         plot=gAllCYfut, width=9, height=6, dpi=300)
 
 
-  #### Soybean
+  #### Sorghum
 
   gAllSYexp <- mean_annual_results[mean_annual_results$year>=experiment_start_year &
-                                     mean_annual_results$SoyYld_Mgha != 0 &
-                                     mean_annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=SoyYld_Mgha, color=scenario_abbrev,
+                                     mean_annual_results$SorghumYld_Mgha != 0 &
+                                     mean_annual_results$climate_scenario_num==clim_num &
+                                     mean_annual_results$mgmt_scenario_grp_num!=7,] %>%
+    ggplot(aes(x=year, y=SorghumYld_Mgha, color=scenario_abbrev,
                shape=as.factor(mgmt_scenario_grp_num))) +
     geom_point() +
     xlab("Year") +
-    ylab(expression('Soybean Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Soybean Yield: All Scenarios, Model Means"),
+    ylab(expression('Sorghum Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Sorghum Yield: All Scenarios, Model Means"),
             paste("Climate Scenario:",climate_desc)) +
     geom_vline(xintercept=experiment_end_year,linetype="dashed",color="darkgrey") +
     # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
@@ -436,8 +434,8 @@ for(clim_num in clim_nums) {
 
 
   # get the slope and intercept for all mgmt scenarios for one climate scenario
-  model_mean_coefs <- f_model_coef(df_in=mean_annual_results,
-                                   modeled_element_in="SoyYld_Mgha",
+  model_mean_coefs <- f_model_coef(df_in=mean_annual_results[mean_annual_results$mgmt_scenario_grp_num!=7,],
+                                   modeled_element_in="SorghumYld_Mgha",
                                    model_name_in="All",
                                    climate_scen_in=clim_num,
                                    mgmt_group_in=NA,
@@ -449,14 +447,15 @@ for(clim_num in clim_nums) {
   # number of scenarios
 
     gAllSYfut <- mean_annual_results[mean_annual_results$year>=experiment_end_year &
-                                     mean_annual_results$SoyYld_Mgha != 0 &
-                                     mean_annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=SoyYld_Mgha, color=scenario_abbrev,
+                                     mean_annual_results$SorghumYld_Mgha != 0 &
+                                     mean_annual_results$climate_scenario_num==clim_num &
+                                       mean_annual_results$mgmt_scenario_grp_num!=7,] %>%
+    ggplot(aes(x=year, y=SorghumYld_Mgha, color=scenario_abbrev,
                shape=as.factor(mgmt_scenario_grp_num))) +
     geom_point() +
     xlab("Year") +
-    ylab(expression('Soybean Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name," Future Soybean Yield: All Scenarios, Model Means"),
+    ylab(expression('Sorghum Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name," Future Sorghum Yield: All Scenarios, Model Means"),
             paste("Climate Scenario:",climate_desc)) +
       geom_abline(intercept=model_mean_coefs[1,3], slope=model_mean_coefs[1,4],
                   color=g$data[[1]]$colour[1]) +
@@ -495,99 +494,12 @@ for(clim_num in clim_nums) {
 
   gAllSYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Soy_exp_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Sorghum_exp_",clim_num,".jpg"),
          plot=gAllSYexp, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Soy_fut_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Sorghum_fut_",clim_num,".jpg"),
          plot=gAllSYfut, width=9, height=6, dpi=300)
 
 
-  ####Wheat
-
-  gAllWYexp <- mean_annual_results[mean_annual_results$year>=experiment_start_year &
-                                     mean_annual_results$WheatYld_Mgha != 0 &
-                                     mean_annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=WheatYld_Mgha, color=scenario_abbrev,
-               shape=as.factor(mgmt_scenario_grp_num))) +
-    geom_point() +
-    xlab("Year") +
-    ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Wheat Yield: All Scenarios, Model Means"),
-            paste("Climate Scenario:",climate_desc)) +
-    geom_vline(xintercept=experiment_end_year,linetype="dashed",color="darkgrey") +
-    # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-    #                    values=cbPalette9[c(8,2,1)]) +
-    theme(panel.background = element_blank(),
-          axis.line = element_line(),
-          legend.position = "right",
-          legend.key = element_blank())
-
-  gAllWYexp
-
-
-  # get the slope and intercept for all mgmt scenarios for one climate scenario
-  model_mean_coefs <- f_model_coef(df_in=mean_annual_results,
-                                   modeled_element_in="WheatYld_Mgha",
-                                   model_name_in="All",
-                                   climate_scen_in=clim_num,
-                                   mgmt_group_in=NA,
-                                   result_name_in="WYfit")
-
-  # # use this to get the colors used:
-  g <- ggplot_build(gAllWYexp)
-  # colors will repeat, so take the first x number of values, equal to x
-  # number of scenarios
-
-    gAllWYfut <- mean_annual_results[mean_annual_results$year>=experiment_end_year &
-                                     mean_annual_results$WheatYld_Mgha != 0 &
-                                     mean_annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=WheatYld_Mgha, color=scenario_abbrev,
-               shape=as.factor(mgmt_scenario_grp_num))) +
-    geom_point() +
-    xlab("Year") +
-    ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name," Future Wheat Yield: All Scenarios, Model Means"),
-            paste("Climate Scenario:",climate_desc)) +
-      geom_abline(intercept=model_mean_coefs[1,3], slope=model_mean_coefs[1,4],
-                  color=g$data[[1]]$colour[1]) +
-      geom_abline(intercept=model_mean_coefs[2,3], slope=model_mean_coefs[2,4],
-                  color=g$data[[1]]$colour[2]) +
-      geom_abline(intercept=model_mean_coefs[3,3], slope=model_mean_coefs[3,4],
-                  color=g$data[[1]]$colour[3]) +
-      geom_abline(intercept=model_mean_coefs[4,3], slope=model_mean_coefs[4,4],
-                  color=g$data[[1]]$colour[4]) +
-      geom_abline(intercept=model_mean_coefs[5,3], slope=model_mean_coefs[5,4],
-                  color=g$data[[1]]$colour[5]) +
-      geom_abline(intercept=model_mean_coefs[6,3], slope=model_mean_coefs[6,4],
-                  color=g$data[[1]]$colour[6]) +
-      geom_abline(intercept=model_mean_coefs[7,3], slope=model_mean_coefs[7,4],
-                  color=g$data[[1]]$colour[7]) +
-      geom_abline(intercept=model_mean_coefs[8,3], slope=model_mean_coefs[8,4],
-                  color=g$data[[1]]$colour[8]) +
-      geom_abline(intercept=model_mean_coefs[9,3], slope=model_mean_coefs[9,4],
-                  color=g$data[[1]]$colour[9]) +
-      geom_abline(intercept=model_mean_coefs[10,3], slope=model_mean_coefs[10,4],
-                  color=g$data[[1]]$colour[10]) +
-      geom_abline(intercept=model_mean_coefs[11,3], slope=model_mean_coefs[11,4],
-                  color=g$data[[1]]$colour[11]) +
-      geom_abline(intercept=model_mean_coefs[12,3], slope=model_mean_coefs[12,4],
-                  color=g$data[[1]]$colour[12]) +
-      geom_abline(intercept=model_mean_coefs[13,3], slope=model_mean_coefs[13,4],
-                  color=g$data[[1]]$colour[13]) +
-      geom_abline(intercept=model_mean_coefs[14,3], slope=model_mean_coefs[14,4],
-                  color=g$data[[1]]$colour[14]) +
-      # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-    #                    values=cbPalette9[c(8,2,1)]) +
-    theme(panel.background = element_blank(),
-          axis.line = element_line(),
-          legend.position = "right",
-          legend.key = element_blank())
-
-  gAllWYfut
-
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Wheat_exp_",clim_num,".jpg"),
-         plot=gAllWYexp, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"scenario_comparison_mean_Wheat_fut_",clim_num,".jpg"),
-         plot=gAllWYfut, width=9, height=6, dpi=300)
 
 
   ## SOC
@@ -603,6 +515,7 @@ for(clim_num in clim_nums) {
     ggtitle(paste(site_name," Future SOC: All Scenarios, Model Means"),
             paste("Climate Scenario:",climate_desc)) +
     geom_vline(xintercept=experiment_end_year,linetype="dashed",color="darkgrey") +
+    geom_vline(xintercept=end_exp_period_year+1,linetype="dashed",color="darkgrey") +
     # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
     #                    values=cbPalette9[c(8,2,1)]) +
     theme(panel.background = element_blank(),
@@ -689,18 +602,18 @@ for(clim_num in clim_nums) {
 # Scenario group 4 --------------------------------------------------------
 
 
-  #### Maize yield
+  #### Cotton yield
 
-  gMYexp <- annual_results[annual_results$year>=experiment_start_year &
+  gCYexp <- annual_results[annual_results$year>=experiment_start_year &
                              annual_results$model_name %in% c("APSIM","Daycent") &
                              annual_results$mgmt_scenario_grp_num==4 &
-                             annual_results$MaizeYld_Mgha != 0 &
+                             annual_results$CottonYld_Mgha != 0 &
                              annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=MaizeYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=CottonYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
-    ylab(expression('Maize Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Maize Yield: Reducing Fertilizer Input"),
+    ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Cotton Yield: Reducing Fertilizer Input"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM","Daycent"),
                        values=cbPalette9[c(8,2)]) +
@@ -712,32 +625,32 @@ for(clim_num in clim_nums) {
           legend.position = "right",
           legend.key = element_blank())
 
-  gMYexp
+  gCYexp
 
   # get the slope and intercept for all mgmt scenarios for one climate scenario
   APSIM_coefs <- f_model_coef(df_in=annual_results,
-                                   modeled_element_in="MaizeYld_Mgha",
+                                   modeled_element_in="CottonYld_Mgha",
                                    model_name_in="APSIM",
                                    climate_scen_in=clim_num,
                                    mgmt_group_in=4,
                                    result_name_in="MYfit")
   Daycent_coefs <- f_model_coef(df_in=annual_results,
-                              modeled_element_in="MaizeYld_Mgha",
+                              modeled_element_in="CottonYld_Mgha",
                               model_name_in="Daycent",
                               climate_scen_in=clim_num,
                               mgmt_group_in=4,
                               result_name_in="MYfit")
 
-    gMYfut <- annual_results[annual_results$year>=experiment_end_year &
+    gCYfut <- annual_results[annual_results$year>=experiment_end_year &
                              annual_results$model_name %in% c("APSIM","Daycent") &
                              annual_results$mgmt_scenario_grp_num==4 &
-                             annual_results$MaizeYld_Mgha != 0 &
+                             annual_results$CottonYld_Mgha != 0 &
                              annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=MaizeYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=CottonYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
-    ylab(expression('Maize Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Maize Yield: Reducing Fertilizer Input"),
+    ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Cotton Yield: Reducing Fertilizer Input"),
             paste("Climate Scenario:",climate_desc)) +
       geom_abline(intercept=APSIM_coefs[1,3], slope=APSIM_coefs[1,4],
                   color=cbPalette9[8]) +
@@ -764,27 +677,27 @@ for(clim_num in clim_nums) {
           legend.position = "right",
           legend.key = element_blank())
 
-  gMYfut
+  gCYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_exp_grp_4_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_Cotton_exp_grp_4_",clim_num,".jpg"),
          plot=gMYexp, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_fut_grp_4_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_Cotton_fut_grp_4_",clim_num,".jpg"),
          plot=gMYfut, width=9, height=6, dpi=300)
 
 
 
-  #### Soybean yield
+  #### Sorghum yield
 
   gSYexp <- annual_results[annual_results$year>=experiment_start_year &
                              annual_results$model_name %in% c("APSIM","Daycent") &
                              annual_results$mgmt_scenario_grp_num==4 &
-                             annual_results$SoyYld_Mgha != 0 &
+                             annual_results$SorghumYld_Mgha != 0 &
                              annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=SoyYld_Mgha, color=model_name,  shape=scenario_abbrev, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=SorghumYld_Mgha, color=model_name,  shape=scenario_abbrev, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
-    ylab(expression('Soybean Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Soybean Yield: Reducing Fertilizer Input"),
+    ylab(expression('Sorghum Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Sorghum Yield: Reducing Fertilizer Input"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM","Daycent"),
                        values=cbPalette9[c(8,2)]) +
@@ -801,13 +714,13 @@ for(clim_num in clim_nums) {
 
   # get the slope and intercept for all mgmt scenarios for one climate scenario
   APSIM_coefs <- f_model_coef(df_in=annual_results,
-                              modeled_element_in="SoyYld_Mgha",
+                              modeled_element_in="SorghumYld_Mgha",
                               model_name_in="APSIM",
                               climate_scen_in=clim_num,
                               mgmt_group_in=4,
                               result_name_in="SYfit")
   Daycent_coefs <- f_model_coef(df_in=annual_results,
-                                modeled_element_in="SoyYld_Mgha",
+                                modeled_element_in="SorghumYld_Mgha",
                                 model_name_in="Daycent",
                                 climate_scen_in=clim_num,
                                 mgmt_group_in=4,
@@ -816,13 +729,13 @@ for(clim_num in clim_nums) {
     gSYfut <- annual_results[annual_results$year>=experiment_end_year &
                              annual_results$model_name %in% c("APSIM","Daycent") &
                              annual_results$mgmt_scenario_grp_num==4 &
-                             annual_results$SoyYld_Mgha != 0 &
+                             annual_results$SorghumYld_Mgha != 0 &
                              annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=SoyYld_Mgha, color=model_name,  shape=scenario_abbrev, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=SorghumYld_Mgha, color=model_name,  shape=scenario_abbrev, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
-    ylab(expression('Soybean Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Soybean Yield: Reducing Fertilizer Input"),
+    ylab(expression('Sorghum Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Sorghum Yield: Reducing Fertilizer Input"),
             paste("Climate Scenario:",climate_desc)) +
       geom_abline(intercept=APSIM_coefs[1,3], slope=APSIM_coefs[1,4],
                   color=cbPalette9[8]) +
@@ -851,93 +764,12 @@ for(clim_num in clim_nums) {
 
   gSYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_exp_grp_4_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_Sorghum_exp_grp_4_",clim_num,".jpg"),
          plot=gSYexp, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_fut_grp_4_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_Sorghum_fut_grp_4_",clim_num,".jpg"),
          plot=gSYfut, width=9, height=6, dpi=300)
 
 
-  #### Wheat yield
-
-  gWYexp <- annual_results[annual_results$year>=experiment_start_year &
-                             annual_results$model_name %in% c("APSIM","Daycent") &
-                             annual_results$mgmt_scenario_grp_num==4 &
-                             annual_results$WheatYld_Mgha != 0 &
-                             annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=WheatYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
-    geom_point(show.legend=TRUE) +
-    xlab("Year") +
-    ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Wheat Yield: Reducing Fertilizer Input"),
-            paste("Climate Scenario:",climate_desc)) +
-    scale_color_manual(labels=c("APSIM","Daycent"),
-                       values=cbPalette9[c(8,2)]) +
-    geom_vline(xintercept=experiment_end_year,linetype="dashed",color="darkgrey") +
-    # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-    #                    values=cbPalette9[c(8,2,1)]) +
-    theme(panel.background = element_blank(),
-          axis.line = element_line(),
-          legend.position = "right",
-          legend.key = element_blank())
-
-  gWYexp
-
-  # get the slope and intercept for all mgmt scenarios for one climate scenario
-  APSIM_coefs <- f_model_coef(df_in=annual_results,
-                              modeled_element_in="WheatYld_Mgha",
-                              model_name_in="APSIM",
-                              climate_scen_in=clim_num,
-                              mgmt_group_in=4,
-                              result_name_in="WYfit")
-  Daycent_coefs <- f_model_coef(df_in=annual_results,
-                                modeled_element_in="WheatYld_Mgha",
-                                model_name_in="Daycent",
-                                climate_scen_in=clim_num,
-                                mgmt_group_in=4,
-                                result_name_in="WYfit")
-
-    gWYfut <- annual_results[annual_results$year>=experiment_end_year &
-                             annual_results$model_name %in% c("APSIM","Daycent") &
-                             annual_results$mgmt_scenario_grp_num==4 &
-                             annual_results$WheatYld_Mgha != 0 &
-                             annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=WheatYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
-    geom_point(show.legend=TRUE) +
-    xlab("Year") +
-    ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Wheat Yield: Reducing Fertilizer Input"),
-            paste("Climate Scenario:",climate_desc)) +
-      geom_abline(intercept=APSIM_coefs[1,3], slope=APSIM_coefs[1,4],
-                  color=cbPalette9[8]) +
-      geom_abline(intercept=Daycent_coefs[1,3], slope=Daycent_coefs[1,4],
-                  color=cbPalette9[2]) +
-      geom_abline(intercept=APSIM_coefs[2,3], slope=APSIM_coefs[2,4],
-                  color=cbPalette9[8]) +
-      geom_abline(intercept=Daycent_coefs[2,3], slope=Daycent_coefs[2,4],
-                  color=cbPalette9[2]) +
-      geom_abline(intercept=APSIM_coefs[3,3], slope=APSIM_coefs[3,4],
-                  color=cbPalette9[8]) +
-      geom_abline(intercept=Daycent_coefs[3,3], slope=Daycent_coefs[3,4],
-                  color=cbPalette9[2]) +
-      geom_abline(intercept=APSIM_coefs[4,3], slope=APSIM_coefs[4,4],
-                  color=cbPalette9[8]) +
-      geom_abline(intercept=Daycent_coefs[4,3], slope=Daycent_coefs[4,4],
-                  color=cbPalette9[2]) +
-      scale_color_manual(labels=c("APSIM","Daycent"),
-                       values=cbPalette9[c(8,2)]) +
-    # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-    #                    values=cbPalette9[c(8,2,1)]) +
-    theme(panel.background = element_blank(),
-          axis.line = element_line(),
-          legend.position = "right",
-          legend.key = element_blank())
-
-  gWYfut
-
-  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_exp_grp_4_",clim_num,".jpg"),
-         plot=gWYexp, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_fut_grp_4_",clim_num,".jpg"),
-         plot=gWYfut, width=9, height=6, dpi=300)
 
 
   #### SOC
@@ -1052,18 +884,18 @@ for(clim_num in clim_nums) {
 # Scenario group 5 --------------------------------------------------------
 
 
-  #### Maize yield
+  #### Cotton yield
 
-  gMYexp <- annual_results[annual_results$year>=experiment_start_year &
+  gCYexp <- annual_results[annual_results$year>=experiment_start_year &
                              annual_results$model_name %in% c("APSIM","Daycent") &
                              annual_results$mgmt_scenario_grp_num==5 &
-                             annual_results$MaizeYld_Mgha != 0 &
+                             annual_results$CottonYld_Mgha != 0 &
                              annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=MaizeYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=CottonYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
-    ylab(expression('Maize Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Maize Yield: Reducing Residue Removal"),
+    ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Cotton Yield: Reducing Residue Removal"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM","Daycent"),
                        values=cbPalette9[c(8,2)]) +
@@ -1075,32 +907,32 @@ for(clim_num in clim_nums) {
           legend.position = "right",
           legend.key = element_blank())
 
-  gMYexp
+  gCYexp
 
   # get the slope and intercept for all mgmt scenarios for one climate scenario
   APSIM_coefs <- f_model_coef(df_in=annual_results,
-                              modeled_element_in="MaizeYld_Mgha",
+                              modeled_element_in="CottonYld_Mgha",
                               model_name_in="APSIM",
                               climate_scen_in=clim_num,
                               mgmt_group_in=5,
                               result_name_in="MYfit")
   Daycent_coefs <- f_model_coef(df_in=annual_results,
-                                modeled_element_in="MaizeYld_Mgha",
+                                modeled_element_in="CottonYld_Mgha",
                                 model_name_in="Daycent",
                                 climate_scen_in=clim_num,
                                 mgmt_group_in=5,
                                 result_name_in="MYfit")
 
-    gMYfut <- annual_results[annual_results$year>=experiment_end_year &
+    gCYfut <- annual_results[annual_results$year>=experiment_end_year &
                              annual_results$model_name %in% c("APSIM","Daycent") &
                              annual_results$mgmt_scenario_grp_num==5 &
-                             annual_results$MaizeYld_Mgha != 0 &
+                             annual_results$CottonYld_Mgha != 0 &
                              annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=MaizeYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=CottonYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
-    ylab(expression('Maize Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Maize Yield: Reducing Residue Removal"),
+    ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Cotton Yield: Reducing Residue Removal"),
             paste("Climate Scenario:",climate_desc)) +
       geom_abline(intercept=APSIM_coefs[1,3], slope=APSIM_coefs[1,4],
                   color=cbPalette9[8]) +
@@ -1123,27 +955,27 @@ for(clim_num in clim_nums) {
           legend.position = "right",
           legend.key = element_blank())
 
-  gMYfut
+  gCYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_exp_grp_5_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_Cotton_exp_grp_5_",clim_num,".jpg"),
          plot=gMYexp, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_fut_grp_5_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_Cotton_fut_grp_5_",clim_num,".jpg"),
          plot=gMYfut, width=9, height=6, dpi=300)
 
 
 
-  #### Soybean yield
+  #### Sorghum yield
 
   gSYexp <- annual_results[annual_results$year>=experiment_start_year &
                              annual_results$model_name %in% c("APSIM","Daycent") &
                              annual_results$mgmt_scenario_grp_num==5 &
-                             annual_results$SoyYld_Mgha != 0 &
+                             annual_results$SorghumYld_Mgha != 0 &
                              annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=SoyYld_Mgha, color=model_name,  shape=scenario_abbrev, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=SorghumYld_Mgha, color=model_name,  shape=scenario_abbrev, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
-    ylab(expression('Soybean Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Soybean Yield: Reducing Residue Removal"),
+    ylab(expression('Sorghum Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Sorghum Yield: Reducing Residue Removal"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM","Daycent"),
                        values=cbPalette9[c(8,2)]) +
@@ -1159,13 +991,13 @@ for(clim_num in clim_nums) {
 
   # get the slope and intercept for all mgmt scenarios for one climate scenario
   APSIM_coefs <- f_model_coef(df_in=annual_results,
-                              modeled_element_in="SoyYld_Mgha",
+                              modeled_element_in="SorghumYld_Mgha",
                               model_name_in="APSIM",
                               climate_scen_in=clim_num,
                               mgmt_group_in=5,
                               result_name_in="SYfit")
   Daycent_coefs <- f_model_coef(df_in=annual_results,
-                                modeled_element_in="SoyYld_Mgha",
+                                modeled_element_in="SorghumYld_Mgha",
                                 model_name_in="Daycent",
                                 climate_scen_in=clim_num,
                                 mgmt_group_in=5,
@@ -1174,13 +1006,13 @@ for(clim_num in clim_nums) {
   gSYfut <- annual_results[annual_results$year>=experiment_end_year &
                              annual_results$model_name %in% c("APSIM","Daycent") &
                              annual_results$mgmt_scenario_grp_num==5 &
-                             annual_results$SoyYld_Mgha != 0 &
+                             annual_results$SorghumYld_Mgha != 0 &
                              annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=SoyYld_Mgha, color=model_name,  shape=scenario_abbrev, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=SorghumYld_Mgha, color=model_name,  shape=scenario_abbrev, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
-    ylab(expression('Soybean Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Soybean Yield: Reducing Residue Removal"),
+    ylab(expression('Sorghum Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Sorghum Yield: Reducing Residue Removal"),
             paste("Climate Scenario:",climate_desc)) +
     geom_abline(intercept=APSIM_coefs[1,3], slope=APSIM_coefs[1,4],
                 color=cbPalette9[8]) +
@@ -1205,89 +1037,11 @@ for(clim_num in clim_nums) {
 
   gSYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_exp_grp_5_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_Sorghum_exp_grp_5_",clim_num,".jpg"),
          plot=gSYexp, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_fut_grp_5_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_Sorghum_fut_grp_5_",clim_num,".jpg"),
          plot=gSYfut, width=9, height=6, dpi=300)
 
-
-  #### Wheat yield
-
-  gWYexp <- annual_results[annual_results$year>=experiment_start_year &
-                             annual_results$model_name %in% c("APSIM","Daycent") &
-                             annual_results$mgmt_scenario_grp_num==5 &
-                             annual_results$WheatYld_Mgha != 0 &
-                             annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=WheatYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
-    geom_point(show.legend=TRUE) +
-    xlab("Year") +
-    ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Wheat Yield: Reducing Residue Removal"),
-            paste("Climate Scenario:",climate_desc)) +
-    scale_color_manual(labels=c("APSIM","Daycent"),
-                       values=cbPalette9[c(8,2)]) +
-    geom_vline(xintercept=experiment_end_year,linetype="dashed",color="darkgrey") +
-    # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-    #                    values=cbPalette9[c(8,2,1)]) +
-    theme(panel.background = element_blank(),
-          axis.line = element_line(),
-          legend.position = "right",
-          legend.key = element_blank())
-
-  gWYexp
-
-  # get the slope and intercept for all mgmt scenarios for one climate scenario
-  APSIM_coefs <- f_model_coef(df_in=annual_results,
-                              modeled_element_in="WheatYld_Mgha",
-                              model_name_in="APSIM",
-                              climate_scen_in=clim_num,
-                              mgmt_group_in=5,
-                              result_name_in="WYfit")
-  Daycent_coefs <- f_model_coef(df_in=annual_results,
-                                modeled_element_in="WheatYld_Mgha",
-                                model_name_in="Daycent",
-                                climate_scen_in=clim_num,
-                                mgmt_group_in=5,
-                                result_name_in="WYfit")
-
-    gWYfut <- annual_results[annual_results$year>=experiment_end_year &
-                             annual_results$model_name %in% c("APSIM","Daycent") &
-                             annual_results$mgmt_scenario_grp_num==5 &
-                             annual_results$WheatYld_Mgha != 0 &
-                             annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=WheatYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
-    geom_point(show.legend=TRUE) +
-    xlab("Year") +
-    ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Wheat Yield: Reducing Residue Removal"),
-            paste("Climate Scenario:",climate_desc)) +
-      geom_abline(intercept=APSIM_coefs[1,3], slope=APSIM_coefs[1,4],
-                  color=cbPalette9[8]) +
-      geom_abline(intercept=Daycent_coefs[1,3], slope=Daycent_coefs[1,4],
-                  color=cbPalette9[2]) +
-      geom_abline(intercept=APSIM_coefs[2,3], slope=APSIM_coefs[2,4],
-                  color=cbPalette9[8]) +
-      geom_abline(intercept=Daycent_coefs[2,3], slope=Daycent_coefs[2,4],
-                  color=cbPalette9[2]) +
-      geom_abline(intercept=APSIM_coefs[3,3], slope=APSIM_coefs[3,4],
-                  color=cbPalette9[8]) +
-      geom_abline(intercept=Daycent_coefs[3,3], slope=Daycent_coefs[3,4],
-                  color=cbPalette9[2]) +
-      scale_color_manual(labels=c("APSIM","Daycent"),
-                       values=cbPalette9[c(8,2)]) +
-    # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-    #                    values=cbPalette9[c(8,2,1)]) +
-    theme(panel.background = element_blank(),
-          axis.line = element_line(),
-          legend.position = "right",
-          legend.key = element_blank())
-
-  gWYfut
-
-  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_exp_grp_5_",clim_num,".jpg"),
-         plot=gWYexp, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_fut_grp_5_",clim_num,".jpg"),
-         plot=gWYfut, width=9, height=6, dpi=300)
 
 
   #### SOC
@@ -1354,43 +1108,43 @@ for(clim_num in clim_nums) {
 # Scenario group 6 --------------------------------------------------------
 
 
-  #### Maize yield
-  MYfit_APSIM_1_61 <- coef(lm(MaizeYld_Mgha ~ year,
+  #### Cotton yield
+  CYfit_APSIM_1_61 <- coef(lm(CottonYld_Mgha ~ year,
                               data = annual_results[annual_results$year>=experiment_end_year &
-                                                      annual_results$MaizeYld_Mgha != 0 &
+                                                      annual_results$CottonYld_Mgha != 0 &
                                                       annual_results$model_name=="APSIM" &
                                                       annual_results$scenario_name=="1_61",]))
-  MYfit_APSIM_1_62 <- coef(lm(MaizeYld_Mgha ~ year,
+  CYfit_APSIM_1_62 <- coef(lm(CottonYld_Mgha ~ year,
                               data = annual_results[annual_results$year>=experiment_end_year &
-                                                      annual_results$MaizeYld_Mgha != 0 &
+                                                      annual_results$CottonYld_Mgha != 0 &
                                                       annual_results$model_name=="APSIM" &
                                                       annual_results$scenario_name=="1_62",]))
-  MYfit_APSIM_1_63 <- coef(lm(MaizeYld_Mgha ~ year,
+  CYfit_APSIM_1_63 <- coef(lm(CottonYld_Mgha ~ year,
                               data = annual_results[annual_results$year>=experiment_end_year &
-                                                      annual_results$MaizeYld_Mgha != 0 &
+                                                      annual_results$CottonYld_Mgha != 0 &
                                                       annual_results$model_name=="APSIM" &
                                                       annual_results$scenario_name=="1_63",]))
-  MYfit_APSIM_1_64 <- coef(lm(MaizeYld_Mgha ~ year,
+  CYfit_APSIM_1_64 <- coef(lm(CottonYld_Mgha ~ year,
                               data = annual_results[annual_results$year>=experiment_end_year &
-                                                      annual_results$MaizeYld_Mgha != 0 &
+                                                      annual_results$CottonYld_Mgha != 0 &
                                                       annual_results$model_name=="APSIM" &
                                                       annual_results$scenario_name=="1_64",]))
-  MYfit_APSIM_1_65 <- coef(lm(MaizeYld_Mgha ~ year,
+  CYfit_APSIM_1_65 <- coef(lm(CottonYld_Mgha ~ year,
                               data = annual_results[annual_results$year>=experiment_end_year &
-                                                      annual_results$MaizeYld_Mgha != 0 &
+                                                      annual_results$CottonYld_Mgha != 0 &
                                                       annual_results$model_name=="APSIM" &
                                                       annual_results$scenario_name=="1_65",]))
 
-  gMYexp <- annual_results[annual_results$year>=experiment_start_year &
+  gCYexp <- annual_results[annual_results$year>=experiment_start_year &
                              annual_results$model_name %in% c("APSIM") &
                              annual_results$mgmt_scenario_grp_num==6 &
-                             annual_results$MaizeYld_Mgha != 0 &
+                             annual_results$CottonYld_Mgha != 0 &
                              annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=MaizeYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=CottonYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
-    ylab(expression('Maize Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Maize Yield: Biochar Addition"),
+    ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Cotton Yield: Biochar Addition"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM"),
                        values=cbPalette9[c(8)]) +
@@ -1402,27 +1156,27 @@ for(clim_num in clim_nums) {
           legend.position = "right",
           legend.key = element_blank())
 
-  gMYexp
+  gCYexp
 
   # get the slope and intercept for all mgmt scenarios for one climate scenario
   APSIM_coefs <- f_model_coef(df_in=annual_results,
-                              modeled_element_in="MaizeYld_Mgha",
+                              modeled_element_in="CottonYld_Mgha",
                               model_name_in="APSIM",
                               climate_scen_in=clim_num,
                               mgmt_group_in=6,
                               result_name_in="MYfit")
 
-    gMYfut <- annual_results[annual_results$year>=experiment_end_year &
+    gCYfut <- annual_results[annual_results$year>=experiment_end_year &
                              annual_results$model_name %in% c("APSIM") &
                              annual_results$mgmt_scenario_grp_num==6 &
                              #annual_results$scenario_name=="1_61" &
-                             annual_results$MaizeYld_Mgha != 0 &
+                             annual_results$CottonYld_Mgha != 0 &
                              annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=MaizeYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=CottonYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
-    ylab(expression('Maize Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Maize Yield: Biochar Addition"),
+    ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Cotton Yield: Biochar Addition"),
             paste("Climate Scenario:",climate_desc)) +
       geom_abline(intercept=APSIM_coefs[1,3], slope=APSIM_coefs[1,4],
                   color=cbPalette9[8]) +
@@ -1443,27 +1197,27 @@ for(clim_num in clim_nums) {
           legend.position = "right",
           legend.key = element_blank())
 
-  gMYfut
+  gCYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_exp_grp_6_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_Cotton_exp_grp_6_",clim_num,".jpg"),
          plot=gMYexp, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Maize_fut_grp_6_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_Cotton_fut_grp_6_",clim_num,".jpg"),
          plot=gMYfut, width=9, height=6, dpi=300)
 
 
 
-  #### Soybean yield
+  #### Sorghum yield
 
   gSYexp <- annual_results[annual_results$year>=experiment_start_year &
                              annual_results$model_name %in% c("APSIM") &
                              annual_results$mgmt_scenario_grp_num==6 &
-                             annual_results$SoyYld_Mgha != 0 &
+                             annual_results$SorghumYld_Mgha != 0 &
                              annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=SoyYld_Mgha, color=model_name,  shape=scenario_abbrev, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=SorghumYld_Mgha, color=model_name,  shape=scenario_abbrev, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
-    ylab(expression('Soybean Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Soybean Yield: Biochar Addition"),
+    ylab(expression('Sorghum Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Sorghum Yield: Biochar Addition"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM"),
                        values=cbPalette9[c(8)]) +
@@ -1479,7 +1233,7 @@ for(clim_num in clim_nums) {
 
 
   APSIM_coefs <- f_model_coef(df_in=annual_results,
-                              modeled_element_in="SoyYld_Mgha",
+                              modeled_element_in="SorghumYld_Mgha",
                               model_name_in="APSIM",
                               climate_scen_in=clim_num,
                               mgmt_group_in=6,
@@ -1488,13 +1242,13 @@ for(clim_num in clim_nums) {
     gSYfut <- annual_results[annual_results$year>=experiment_end_year &
                              annual_results$model_name %in% c("APSIM") &
                              annual_results$mgmt_scenario_grp_num==6 &
-                             annual_results$SoyYld_Mgha != 0 &
+                             annual_results$SorghumYld_Mgha != 0 &
                              annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=SoyYld_Mgha, color=model_name,  shape=scenario_abbrev, show.legend=TRUE)) +
+    ggplot(aes(x=year, y=SorghumYld_Mgha, color=model_name,  shape=scenario_abbrev, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
     xlab("Year") +
-    ylab(expression('Soybean Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Soybean Yield: Biochar Addition"),
+    ylab(expression('Sorghum Yield (Mg ha' ^-1*')')) +
+    ggtitle(paste(site_name,"Future Sorghum Yield: Biochar Addition"),
             paste("Climate Scenario:",climate_desc)) +
       geom_abline(intercept=APSIM_coefs[1,3], slope=APSIM_coefs[1,4],
                   color=cbPalette9[8]) +
@@ -1517,80 +1271,11 @@ for(clim_num in clim_nums) {
 
   gSYfut
 
-  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_exp_grp_6_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_Sorghum_exp_grp_6_",clim_num,".jpg"),
          plot=gSYexp, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Soybean_fut_grp_6_",clim_num,".jpg"),
+  ggsave(filename=paste0(results_path,"scenario_comparison_Sorghum_fut_grp_6_",clim_num,".jpg"),
          plot=gSYfut, width=9, height=6, dpi=300)
 
-
-  #### Wheat yield
-
-  gWYexp <- annual_results[annual_results$year>=experiment_start_year &
-                             annual_results$model_name %in% c("APSIM") &
-                             annual_results$mgmt_scenario_grp_num==6 &
-                             annual_results$WheatYld_Mgha != 0 &
-                             annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=WheatYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
-    geom_point(show.legend=TRUE) +
-    xlab("Year") +
-    ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Wheat Yield: Biochar Addition"),
-            paste("Climate Scenario:",climate_desc)) +
-    scale_color_manual(labels=c("APSIM"),
-                       values=cbPalette9[c(8)]) +
-    geom_vline(xintercept=experiment_end_year,linetype="dashed",color="darkgrey") +
-    # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-    #                    values=cbPalette9[c(8,2,1)]) +
-    theme(panel.background = element_blank(),
-          axis.line = element_line(),
-          legend.position = "right",
-          legend.key = element_blank())
-
-  gWYexp
-
-  APSIM_coefs <- f_model_coef(df_in=annual_results,
-                              modeled_element_in="WheatYld_Mgha",
-                              model_name_in="APSIM",
-                              climate_scen_in=clim_num,
-                              mgmt_group_in=6,
-                              result_name_in="WYfit")
-
-    gWYfut <- annual_results[annual_results$year>=experiment_end_year &
-                             annual_results$model_name %in% c("APSIM") &
-                             annual_results$mgmt_scenario_grp_num==6 &
-                             annual_results$WheatYld_Mgha != 0 &
-                             annual_results$climate_scenario_num==clim_num,] %>%
-    ggplot(aes(x=year, y=WheatYld_Mgha, color=model_name, shape=scenario_abbrev, show.legend=TRUE)) +
-    geom_point(show.legend=TRUE) +
-    xlab("Year") +
-    ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
-    ggtitle(paste(site_name,"Future Wheat Yield: Biochar Addition"),
-            paste("Climate Scenario:",climate_desc)) +
-      geom_abline(intercept=APSIM_coefs[1,3], slope=APSIM_coefs[1,4],
-                  color=cbPalette9[8]) +
-      geom_abline(intercept=APSIM_coefs[2,3], slope=APSIM_coefs[2,4],
-                  color=cbPalette9[8]) +
-      geom_abline(intercept=APSIM_coefs[3,3], slope=APSIM_coefs[3,4],
-                  color=cbPalette9[8]) +
-      geom_abline(intercept=APSIM_coefs[4,3], slope=APSIM_coefs[4,4],
-                  color=cbPalette9[8]) +
-      geom_abline(intercept=APSIM_coefs[5,3], slope=APSIM_coefs[5,4],
-                  color=cbPalette9[8]) +
-      scale_color_manual(labels=c("APSIM"),
-                       values=cbPalette9[c(8)]) +
-    # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-    #                    values=cbPalette9[c(8,2,1)]) +
-    theme(panel.background = element_blank(),
-          axis.line = element_line(),
-          legend.position = "right",
-          legend.key = element_blank())
-
-  gWYfut
-
-  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_exp_grp_6_",clim_num,".jpg"),
-         plot=gWYexp, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"scenario_comparison_Wheat_fut_grp_6_",clim_num,".jpg"),
-         plot=gWYfut, width=9, height=6, dpi=300)
 
 
   #### SOC
@@ -1687,7 +1372,8 @@ for(clim_num in clim_nums) {
     geom_line(size=1) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
-    ylim(0,100) +
+# KBS   ylim(0,100) +
+    ylim(0,20) +
     ggtitle(paste(site_name," Future N2O Cumulative Emissions: All Scenarios, Model Mean"),
             paste("Climate Scenario:",climate_desc)) +
     geom_vline(xintercept=experiment_end_year,linetype="dashed",color="darkgrey") +
@@ -1706,7 +1392,8 @@ for(clim_num in clim_nums) {
     geom_line(size=1) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
-    ylim(0,100) +
+# KBS    ylim(0,100) +
+    ylim(0,20) +
     ggtitle(paste(site_name," Future N2O Cumulative Emissions: All Scenarios, Model Mean"),
             paste("Climate Scenario:",climate_desc)) +
     # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
@@ -1731,7 +1418,8 @@ for(clim_num in clim_nums) {
     geom_line(size=1) +
     xlab("Year") +
     ylab(expression('CH'[4]*' Emissions (kg ha ' ^-1*')')) +
-    ylim(-85,0) +
+#KBS    ylim(-85,0) +
+    ylim(-175,0) +
     ggtitle(paste(site_name," Future CH4 Cumulative Emissions: All Scenarios, Model Mean"),
             paste("Climate Scenario:",climate_desc)) +
     geom_vline(xintercept=experiment_end_year,linetype="dashed",color="darkgrey") +
@@ -1751,7 +1439,8 @@ for(clim_num in clim_nums) {
     geom_line(size=1) +
     xlab("Year") +
     ylab(expression('CH'[4]*' Emissions (kg ha ' ^-1*')')) +
-    ylim(-85,0) +
+#KBS    ylim(-85,0) +
+    ylim(-175,0) +
     ggtitle(paste(site_name," Future CH4 Cumulative Emissions: All Scenarios, Model Mean"),
             paste("Climate Scenario:",climate_desc)) +
     # scale_color_manual(labels=c("APSIM","Daycent","Observed"),
@@ -1784,7 +1473,8 @@ for(clim_num in clim_nums) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
-    ylim(0,100) +
+#KBS    ylim(0,100) +
+    ylim(0,20) +
     ggtitle(paste(site_name," Cumulative N2O Emissions: Reducing Fertilizer Input"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM","Daycent"),
@@ -1805,7 +1495,8 @@ for(clim_num in clim_nums) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
-    ylim(0,100) +
+#KBS    ylim(0,100) +
+    ylim(0,20) +
     ggtitle(paste(site_name," Cumulative N2O Emissions: Reducing Fertilizer Input"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM","Daycent"),
@@ -1833,7 +1524,8 @@ for(clim_num in clim_nums) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('CH'[4]*' Emissions (kg ha ' ^-1*')')) +
-    ylim(-85, 0) +
+#KBS    ylim(-85, 0) +
+    ylim(-175, 0) +
     ggtitle(paste(site_name," Cumulative Net CH4 Emissions: Reducing Fertilizer Input"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("Daycent"),
@@ -1854,7 +1546,8 @@ for(clim_num in clim_nums) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('CH'[4]*' Emissions (kg ha ' ^-1*')')) +
-    ylim(-85,0) +
+#KBS    ylim(-85,0) +
+    ylim(-200,0) +
     ggtitle(paste(site_name," Cumulative Net CH4 Emissions: Reducing Fertilizer Input"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("Daycent"),
@@ -1887,7 +1580,8 @@ for(clim_num in clim_nums) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
-    ylim(0,100) +
+#    ylim(0,100) +
+    ylim(0,20) +
     ggtitle(paste(site_name," Cumulative N2O Emissions: Reducing Residue Removal"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM","Daycent"),
@@ -1908,7 +1602,8 @@ for(clim_num in clim_nums) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
-    ylim(0,100) +
+#KBS    ylim(0,100) +
+    ylim(0,20) +
     ggtitle(paste(site_name," Cumulative N2O Emissions: Reducing Residue Removal"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM","Daycent"),
@@ -1936,7 +1631,8 @@ for(clim_num in clim_nums) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('CH'[4]*' Emissions (kg ha ' ^-1*')')) +
-    ylim(-85,0) +
+#KBS    ylim(-85,0) +
+    ylim(-200,0) +
     ggtitle(paste(site_name," Cumulative Net CH4 Emissions: Reducing Residue Removal"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("Daycent"),
@@ -1957,7 +1653,8 @@ for(clim_num in clim_nums) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('CH'[4]*' Emissions (kg ha ' ^-1*')')) +
-    ylim(-85,0) +
+#KBS    ylim(-85,0) +
+    ylim(-175,0) +
     ggtitle(paste(site_name," Cumulative Net CH4 Emissions: Reducing Residue Removal"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("Daycent"),
@@ -1990,7 +1687,8 @@ for(clim_num in clim_nums) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
-    ylim(0,100) +
+#KBS    ylim(0,100) +
+    ylim(0,20) +
     ggtitle(paste(site_name," Cumulative N2O Emissions: Biochar Addition"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM"),
@@ -2011,7 +1709,8 @@ for(clim_num in clim_nums) {
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
-    ylim(0,100) +
+#KBS    ylim(0,100) +
+    ylim(0,20) +
     ggtitle(paste(site_name," Cumulative N2O Emissions: Biochar Addition"),
             paste("Climate Scenario:",climate_desc)) +
     scale_color_manual(labels=c("APSIM"),
@@ -2116,10 +1815,15 @@ gGWPam <- summary_output[summary_output$Climate_Scenario==clim_num,] %>%
            ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"GWP"]*1.05, na.rm=T),
            ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"GWP"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
+  annotate("rect", xmin = 15.5, xmax = 18.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"GWP"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"GWP"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
-  #ylim(-35,60) +
-  ylim(-155,90) +
+  #KBS ylim(-35,60) +
+#KBS  ylim(-155,90) +
+  ylim(-15,20) +
   ggtitle(paste0(site_name," Global Warming Potential by ",
                  end_fut_period_year,"-Model Means"),
           paste("Climate Scenario:",climate_desc)) +
@@ -2158,6 +1862,10 @@ gGWPmm <- gwp_means_piv[gwp_means_piv$source %in% c("mean_CO2e_SOC","mean_CO2e_N
            ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 12.5, xmax = 15.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
+  annotate("rect", xmin = 15.5, xmax = 18.5,
            ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
            ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"vals"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
@@ -2222,21 +1930,21 @@ ggsave(filename=paste0(results_path,"pub_GWP_by_source_all_scenarios_",clim_num,
 # Change over time charts -------------------------------------------------
 
 #crop_ylim <- c(-2,1.5)
-crop_ylim <- c(-4,2)
+crop_ylim <- c(-0.5,1)
 
-# ## Maize with error bars
+# ## Cotton with error bars
 # 
 # gMYchg <- scenario_means[scenario_means$Climate_Scenario==clim_num,] %>%
-#   ggplot(aes(x=scenario_abbrev, y=mean_MaizeYld_Mgha, fill=factor(scenario_abbrev))) +
+#   ggplot(aes(x=scenario_abbrev, y=mean_CottonYld_Mgha, fill=factor(scenario_abbrev))) +
 #   geom_col(position="dodge") +
-#   geom_errorbar(aes(ymin=mean_MaizeYld_Mgha-sd_MaizeYld_Mgha,
-#                     ymax=mean_MaizeYld_Mgha+sd_MaizeYld_Mgha),
+#   geom_errorbar(aes(ymin=mean_CottonYld_Mgha-sd_CottonYld_Mgha,
+#                     ymax=mean_CottonYld_Mgha+sd_CottonYld_Mgha),
 #                 width=.2,                    # Width of the error bars
 #                 position=position_dodge(.9)) +
-#   ylab(expression('Maize Yield (Mg ha ' ^-1*')')) +
+#   ylab(expression('Cotton Yield (Mg ha ' ^-1*')')) +
 #   xlab("") +
 #   ylim(crop_ylim) +
-#   ggtitle(paste(site_name,"Change in Maize Yield by ",
+#   ggtitle(paste(site_name,"Change in Cotton Yield by ",
 #                 end_fut_period_year,"-Model Means"),
 #           paste("Climate Scenario:",climate_desc)) +
 #   labs(fill = "Scenario") +
@@ -2250,42 +1958,46 @@ crop_ylim <- c(-4,2)
 # 
 # gMYchg
 
-## Maize all models
-gMYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
-                              !is.na(summary_output$Maize_Diff_Mgha),] %>%
-  ggplot(aes(x=scenario_abbrev,y=Maize_Diff_Mgha,fill=factor(Model))) +
+## Cotton all models
+gCYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
+                              !is.na(summary_output$Cotton_Diff_Mgha),] %>%
+  ggplot(aes(x=scenario_abbrev,y=Cotton_Diff_Mgha,fill=factor(Model))) +
   geom_col(position="dodge") +
   geom_col(data=scenario_means[scenario_means$Climate_Scenario==clim_num,],
-           aes(x=scenario_abbrev, y=mean_MaizeYld_Mgha), color= "black", 
+           aes(x=scenario_abbrev, y=mean_CottonYld_Mgha), color= "black", 
            fill=NA, position="dodge") +
   annotate("rect", xmin = 0.5, xmax = 5.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 5.5, xmax = 6.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 6.5, xmax = 7.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 7.5, xmax = 8.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 8.5, xmax = 12.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 12.5, xmax = 15.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Maize_Diff_Mgha"]*1.05, na.rm=T),
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
+  annotate("rect", xmin = 15.5, xmax = 18.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Cotton_Diff_Mgha"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
   ylim(crop_ylim) +
-  ggtitle(paste0(site_name," Change in Maize Yield by ",
+  ggtitle(paste0(site_name," Change in Cotton Yield by ",
                  end_fut_period_year,"-All Models"),
           paste("Climate Scenario:",climate_desc)) +
   #scale_y_continuous(breaks=crop_ylim) +
@@ -2296,21 +2008,21 @@ gMYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
         axis.text.x = element_text(angle = 45,
                                    hjust = 1))
 
-gMYchg_am
+gCYchg_am
 
-# ## Soybean with error bars
+# ## Sorghum with error bars
 # 
 # gSYchg <- scenario_means[scenario_means$Climate_Scenario==clim_num,] %>%
-#   ggplot(aes(x=scenario_abbrev, y=mean_SoyYld_Mgha, fill=factor(scenario_abbrev))) +
+#   ggplot(aes(x=scenario_abbrev, y=mean_SorghumYld_Mgha, fill=factor(scenario_abbrev))) +
 #   geom_col(position="dodge") +
-#   geom_errorbar(aes(ymin=mean_SoyYld_Mgha-sd_SoyYld_Mgha,
-#                     ymax=mean_SoyYld_Mgha+sd_SoyYld_Mgha),
+#   geom_errorbar(aes(ymin=mean_SorghumYld_Mgha-sd_SorghumYld_Mgha,
+#                     ymax=mean_SorghumYld_Mgha+sd_SorghumYld_Mgha),
 #                 width=.2,                    # Width of the error bars
 #                 position=position_dodge(.9)) +
-#   ylab(expression('Soybean Yield (Mg ha ' ^-1*')')) +
+#   ylab(expression('Sorghum Yield (Mg ha ' ^-1*')')) +
 #   xlab("") +
 #   ylim(crop_ylim) +
-#   ggtitle(paste(site_name,"Change in Soybean Yield by ",
+#   ggtitle(paste(site_name,"Change in Sorghum Yield by ",
 #                 end_fut_period_year,"-Model Means"),
 #           paste("Climate Scenario:",climate_desc)) +
 #   labs(fill = "Scenario") +
@@ -2324,42 +2036,46 @@ gMYchg_am
 # 
 # gSYchg
 
-## Soybean all models
+## Sorghum all models
 gSYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
-                              !is.na(summary_output$Soybean_Diff_Mgha),] %>%
-  ggplot(aes(x=scenario_abbrev,y=Soybean_Diff_Mgha,fill=factor(Model))) +
+                              !is.na(summary_output$Sorghum_Diff_Mgha),] %>%
+  ggplot(aes(x=scenario_abbrev,y=Sorghum_Diff_Mgha,fill=factor(Model))) +
   geom_col(position="dodge") +
   geom_col(data=scenario_means[scenario_means$Climate_Scenario==clim_num,],
-           aes(x=scenario_abbrev, y=mean_SoyYld_Mgha), color= "black", 
+           aes(x=scenario_abbrev, y=mean_SorghumYld_Mgha), color= "black", 
            fill=NA, position="dodge") +
   annotate("rect", xmin = 0.5, xmax = 5.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 5.5, xmax = 6.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 6.5, xmax = 7.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 7.5, xmax = 8.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 8.5, xmax = 12.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 12.5, xmax = 15.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Soybean_Diff_Mgha"]*1.05, na.rm=T),
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
+  annotate("rect", xmin = 15.5, xmax = 18.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Sorghum_Diff_Mgha"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
   ylim(crop_ylim) +
-  ggtitle(paste0(site_name," Change in Soybean Yield by ",
+  ggtitle(paste0(site_name," Change in Sorghum Yield by ",
                  end_fut_period_year,"-All Models"),
           paste("Climate Scenario:",climate_desc)) +
   #scale_y_continuous(breaks=y_breaks) +
@@ -2372,79 +2088,6 @@ gSYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
 
 gSYchg_am
 
-# ## Wheat with error bars
-# 
-# gWYchg <- scenario_means[scenario_means$Climate_Scenario==clim_num,] %>%
-#   ggplot(aes(x=scenario_abbrev, y=mean_WheatYld_Mgha, fill=factor(scenario_abbrev))) +
-#   geom_col(position="dodge") +
-#   geom_errorbar(aes(ymin=mean_WheatYld_Mgha-sd_WheatYld_Mgha,
-#                     ymax=mean_WheatYld_Mgha+sd_WheatYld_Mgha),
-#                 width=.2,                    # Width of the error bars
-#                 position=position_dodge(.9)) +
-#   ylab(expression('Wheat Yield (Mg ha ' ^-1*')')) +
-#   xlab("") +
-#   ylim(crop_ylim) +
-#   ggtitle(paste(site_name,"Change in Wheat Yield by ",
-#                 end_fut_period_year,"-Model Means"),
-#           paste("Climate Scenario:",climate_desc)) +
-#   labs(fill = "Scenario") +
-#   # scale_y_continuous(breaks=y_breaks) +
-#   theme(panel.background = element_blank(),
-#         #        text = element_text(size=16),
-#         axis.line = element_line(colour = "black"),
-#         axis.ticks.x = element_blank(),
-#         axis.text.x = element_text(angle = 45,
-#                                    hjust = 1))
-# 
-# gWYchg
-
-## Wheat all models
-gWYchg_am <- summary_output[summary_output$Climate_Scenario==clim_num &
-                              !is.na(summary_output$Wheat_Diff_Mgha),] %>%
-  ggplot(aes(x=scenario_abbrev,y=Wheat_Diff_Mgha,fill=factor(Model))) +
-  geom_col(position="dodge") +
-  geom_col(data=scenario_means[scenario_means$Climate_Scenario==clim_num,],
-           aes(x=scenario_abbrev, y=mean_WheatYld_Mgha), color= "black", 
-           fill=NA, position="dodge") + 
-  annotate("rect", xmin = 0.5, xmax = 5.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
-           alpha = 0, color= "grey") +
-  annotate("rect", xmin = 5.5, xmax = 6.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
-           alpha = 0, color= "grey") +
-  annotate("rect", xmin = 6.5, xmax = 7.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
-           alpha = 0, color= "grey") +
-  annotate("rect", xmin = 7.5, xmax = 8.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
-           alpha = 0, color= "grey") +
-  annotate("rect", xmin = 8.5, xmax = 12.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
-           alpha = 0, color= "grey") +
-  annotate("rect", xmin = 12.5, xmax = 15.5,
-           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"Wheat_Diff_Mgha"]*1.05, na.rm=T),
-           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
-  ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
-  xlab("") +
-  ylim(crop_ylim) +
-  ggtitle(paste0(site_name," Change in Wheat Yield by ",
-                 end_fut_period_year,"-All Models"),
-          paste("Climate Scenario:",climate_desc)) +
-  #scale_y_continuous(breaks=y_breaks) +
-  theme(panel.background = element_blank(),
-        #        text = element_text(size=16),
-        axis.line = element_line(colour = "black"),
-        axis.ticks.x = element_blank(),
-        axis.text.x = element_text(angle = 45,
-                                   hjust = 1))
-
-gWYchg_am
 
 # ## SOC with error bars
 # 
@@ -2504,10 +2147,15 @@ gSOCchg_am <- summary_output[summary_output$Climate_Scenario==clim_num,] %>%
            ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05, na.rm=T),
            ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
+  annotate("rect", xmin = 15.5, xmax = 18.5, 
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05, na.rm=T),
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_SOC"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
   #ylim(-40,60) +
-  ylim(-155,80) +
+#  ylim(-155,80) +
+  ylim(-25,30) +
   ggtitle(paste0(site_name," Change in CO2e-SOC by ",
                  end_fut_period_year,"-All Models"),
           paste("Climate Scenario:",climate_desc)) +
@@ -2577,9 +2225,13 @@ gN2Ochg_am <- summary_output[summary_output$Climate_Scenario==clim_num,] %>%
   annotate("rect", xmin = 12.5, xmax = 15.5, ymin = 0, 
            ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_N2O"]*1.05, na.rm=T),
            alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
+  annotate("rect", xmin = 15.5, xmax = 18.5, ymin = 0, 
+           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_N2O"]*1.05, na.rm=T),
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
   #ylim(0,9) +
-  ylim(0,30) +
+#KBS  ylim(0,30) +
+  ylim(0,5) +
   ggtitle(paste0(site_name," Change in CO2e-N2O by ",
                  end_fut_period_year,"-All Models"),
           paste("Climate Scenario:",climate_desc)) +
@@ -2650,10 +2302,15 @@ gCH4chg_am <- summary_output[summary_output$Climate_Scenario==clim_num,] %>%
            ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
            ymax = 0, 
            alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
+  annotate("rect", xmin = 15.5, xmax = 18.5, 
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
+           ymax = 0, 
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
   #ylim(-3,0) +
-  ylim(-8,0) +
+#  ylim(-8,0) +
+  ylim(-6,0) +
   ggtitle(paste0(site_name," Change in CH4 by ",
                  end_fut_period_year,"-All Models"),
           paste("Climate Scenario:",climate_desc)) +
@@ -2677,27 +2334,31 @@ gCH4chg_am2 <- summary_output[summary_output$Climate_Scenario==clim_num &
            fill=NA, position="dodge") +
   annotate("rect", xmin = 0.5, xmax = 5.5,
            ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
+           ymax = 0,
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 5.5, xmax = 6.5,
            ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
+           ymax = 0,
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 6.5, xmax = 7.5,
            ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
+           ymax = 0,
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 7.5, xmax = 8.5,
            ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
+           ymax = 0,
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 8.5, xmax = 12.5,
            ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
+           ymax = 0,
            alpha = 0, color= "grey") +
   annotate("rect", xmin = 12.5, xmax = 15.5,
            ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
-           ymax = max(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
+           ymax = 0,
+           alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
+  annotate("rect", xmin = 15.5, xmax = 18.5,
+           ymin = min(summary_output[summary_output$Climate_Scenario==clim_num,"CO2e_CH4"]*1.05, na.rm=T),
+           ymax = 0,
            alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
   xlab("") +
@@ -2714,18 +2375,14 @@ gCH4chg_am2 <- summary_output[summary_output$Climate_Scenario==clim_num &
 
 gCH4chg_am2
 
-# ggsave(filename=paste0(results_path,"pub_change_in_maize_all_scenarios_",clim_num,".jpg"),
+# ggsave(filename=paste0(results_path,"pub_change_in_Cotton_all_scenarios_",clim_num,".jpg"),
 #        plot=gMYchg, width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"pub_change_in_maize_all_scenarios_all_models_",clim_num,".jpg"),
-       plot=gMYchg_am, width=9, height=6, dpi=300)
-# ggsave(filename=paste0(results_path,"pub_change_in_soybean_all_scenarios_",clim_num,".jpg"),
+ggsave(filename=paste0(results_path,"pub_change_in_Cotton_all_scenarios_all_models_",clim_num,".jpg"),
+       plot=gCYchg_am, width=9, height=6, dpi=300)
+# ggsave(filename=paste0(results_path,"pub_change_in_Sorghum_all_scenarios_",clim_num,".jpg"),
 #        plot=gSYchg, width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"pub_change_in_soybean_all_scenarios_all_models_",clim_num,".jpg"),
+ggsave(filename=paste0(results_path,"pub_change_in_Sorghum_all_scenarios_all_models_",clim_num,".jpg"),
        plot=gSYchg_am, width=9, height=6, dpi=300)
-# ggsave(filename=paste0(results_path,"pub_change_in_wheat_all_scenarios_",clim_num,".jpg"),
-#        plot=gWYchg, width=9, height=6, dpi=300)
-ggsave(filename=paste0(results_path,"pub_change_in_wheat_all_scenarios_all_models_",clim_num,".jpg"),
-       plot=gWYchg_am, width=9, height=6, dpi=300)
 # ggsave(filename=paste0(results_path,"pub_change_in_soc_all_scenarios_",clim_num,".jpg"),
 #        plot=gSOCchg, width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"pub_change_in_soc_all_scenarios_all_models_",clim_num,".jpg"),

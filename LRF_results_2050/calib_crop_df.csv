@@ -1,0 +1,46 @@
+year,Observed,Obs_sd,APSIM,Daycent,crop,treatment_scen
+2003,NA,NA,0.947,0,Cotton,"Cover Crop, Crop Rotation"
+2005,0.948555556,0.079492269,0.99,0.942815556,Cotton,"Cover Crop, Crop Rotation"
+2007,1.235592593,0.14007466,1.039,0.263757778,Cotton,"Cover Crop, Crop Rotation"
+2008,0.34137037,0.070165221,0.964,0.437782222,Cotton,"Cover Crop, Crop Rotation"
+2009,NA,NA,0.631,0.344284444,Cotton,"Cover Crop, Crop Rotation"
+2010,0.934777778,0.070981414,0.922,0.605588889,Cotton,"Cover Crop, Crop Rotation"
+2004,0.999701061,0.357088469,2.481,1.086768889,Sorghum,"Cover Crop, Crop Rotation"
+2006,NA,NA,0.961,NA,Sorghum,"Cover Crop, Crop Rotation"
+2007,0.091537037,0.060319564,NA,0.239942222,Sorghum,"Cover Crop, Crop Rotation"
+2003,NA,NA,NA,0,Cotton,"Rmv Resid 0%, Crop Rotation"
+2004,0.599574074,0.109885645,0.654,1.238013333,Cotton,"Rmv Resid 0%, Crop Rotation"
+2006,0.171648148,0.021032621,1.422,0.253297778,Cotton,"Rmv Resid 0%, Crop Rotation"
+2008,0.411814815,0.093019243,0.816,0.500235556,Cotton,"Rmv Resid 0%, Crop Rotation"
+2010,1.006888889,0.047058769,1.098,0.742202222,Cotton,"Rmv Resid 0%, Crop Rotation"
+2003,NA,NA,1.727,NA,Sorghum,"Rmv Resid 0%, Crop Rotation"
+2005,2.51238317,0.473455662,2.139,0.920904444,Sorghum,"Rmv Resid 0%, Crop Rotation"
+2007,NA,NA,2.178,0.077302222,Sorghum,"Rmv Resid 0%, Crop Rotation"
+2009,NA,NA,1.448,0.397375556,Sorghum,"Rmv Resid 0%, Crop Rotation"
+2003,NA,NA,NA,0,Cotton,"Rmv Resid 0%, No Till, Crop Rotation"
+2004,0.582407407,0.141141948,0.632,0.920044444,Cotton,"Rmv Resid 0%, No Till, Crop Rotation"
+2006,0.138925926,0.029314993,1.279,0.288937778,Cotton,"Rmv Resid 0%, No Till, Crop Rotation"
+2008,0.47312963,0.093858596,0.755,0.440233333,Cotton,"Rmv Resid 0%, No Till, Crop Rotation"
+2010,0.974444444,0.074722449,0.808,0.613228889,Cotton,"Rmv Resid 0%, No Till, Crop Rotation"
+2003,NA,NA,1.731,0.144442222,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation"
+2005,2.232084919,0.657792607,2.225,0.771017778,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation"
+2007,NA,NA,2.222,0.073551111,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation"
+2009,NA,NA,1.597,0.301708889,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation"
+2003,NA,NA,0.894,0,Cotton,Continuous Crop
+2004,NA,NA,0.723,1.237733333,Cotton,Continuous Crop
+2005,0.868666667,0.073555157,1.193,0.875155556,Cotton,Continuous Crop
+2006,0.150111111,0.021122877,1.069,0.202324444,Cotton,Continuous Crop
+2007,1.193555556,0.06551788,0.688,0.293077778,Cotton,Continuous Crop
+2008,0.459444444,0.066694439,1.136,0.420506667,Cotton,Continuous Crop
+2009,NA,NA,0.568,0.345333333,Cotton,Continuous Crop
+2010,1.074666667,0.061763887,1.099,0.697517778,Cotton,Continuous Crop
+2003,NA,NA,0.966,0,Cotton,"No Till, Cover Crop, Crop Rotation"
+2003,NA,NA,0.966,0.114937778,Cotton,"No Till, Cover Crop, Crop Rotation"
+2005,0.891259259,0.150672615,0.991,0.750755556,Cotton,"No Till, Cover Crop, Crop Rotation"
+2007,1.192259259,0.106327949,1,0.232895556,Cotton,"No Till, Cover Crop, Crop Rotation"
+2008,0.365518519,0.090169764,1.007,0.369984444,Cotton,"No Till, Cover Crop, Crop Rotation"
+2009,NA,NA,0.735,0.248806667,Cotton,"No Till, Cover Crop, Crop Rotation"
+2010,1.029888889,0.053508826,0.362,0.473004444,Cotton,"No Till, Cover Crop, Crop Rotation"
+2004,0.905833089,0.611270478,2.492,0.870935556,Sorghum,"No Till, Cover Crop, Crop Rotation"
+2006,NA,NA,0.959,NA,Sorghum,"No Till, Cover Crop, Crop Rotation"
+2007,0.258222222,0.192917675,NA,0.298164444,Sorghum,"No Till, Cover Crop, Crop Rotation"

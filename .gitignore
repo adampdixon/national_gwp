@@ -113,7 +113,7 @@ test*
 #Calibration*.csv
 #Daily_results*.csv
 #Summary_output.csv
-#mean_annual_results.csv
+mean_annual_results.csv
 soiln.out
 summary.out
 nflux.out

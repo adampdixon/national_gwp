@@ -1,0 +1,136 @@
+year,Obs_sd,crop,treatment_scen,Model,yield_val
+2003,NA,Cotton,"Cover Crop, Crop Rotation",Observed,NA
+2003,NA,Cotton,"Cover Crop, Crop Rotation",APSIM,0.947
+2003,NA,Cotton,"Cover Crop, Crop Rotation",Daycent,0
+2005,0.079492269,Cotton,"Cover Crop, Crop Rotation",Observed,0.948555556
+2005,NA,Cotton,"Cover Crop, Crop Rotation",APSIM,0.99
+2005,NA,Cotton,"Cover Crop, Crop Rotation",Daycent,0.942815556
+2007,0.14007466,Cotton,"Cover Crop, Crop Rotation",Observed,1.235592593
+2007,NA,Cotton,"Cover Crop, Crop Rotation",APSIM,1.039
+2007,NA,Cotton,"Cover Crop, Crop Rotation",Daycent,0.263757778
+2008,0.070165221,Cotton,"Cover Crop, Crop Rotation",Observed,0.34137037
+2008,NA,Cotton,"Cover Crop, Crop Rotation",APSIM,0.964
+2008,NA,Cotton,"Cover Crop, Crop Rotation",Daycent,0.437782222
+2009,NA,Cotton,"Cover Crop, Crop Rotation",Observed,NA
+2009,NA,Cotton,"Cover Crop, Crop Rotation",APSIM,0.631
+2009,NA,Cotton,"Cover Crop, Crop Rotation",Daycent,0.344284444
+2010,0.070981414,Cotton,"Cover Crop, Crop Rotation",Observed,0.934777778
+2010,NA,Cotton,"Cover Crop, Crop Rotation",APSIM,0.922
+2010,NA,Cotton,"Cover Crop, Crop Rotation",Daycent,0.605588889
+2004,0.357088469,Sorghum,"Cover Crop, Crop Rotation",Observed,0.999701061
+2004,NA,Sorghum,"Cover Crop, Crop Rotation",APSIM,2.481
+2004,NA,Sorghum,"Cover Crop, Crop Rotation",Daycent,1.086768889
+2006,NA,Sorghum,"Cover Crop, Crop Rotation",Observed,NA
+2006,NA,Sorghum,"Cover Crop, Crop Rotation",APSIM,0.961
+2006,NA,Sorghum,"Cover Crop, Crop Rotation",Daycent,NA
+2007,0.060319564,Sorghum,"Cover Crop, Crop Rotation",Observed,0.091537037
+2007,NA,Sorghum,"Cover Crop, Crop Rotation",APSIM,NA
+2007,NA,Sorghum,"Cover Crop, Crop Rotation",Daycent,0.239942222
+2003,NA,Cotton,"Rmv Resid 0%, Crop Rotation",Observed,NA
+2003,NA,Cotton,"Rmv Resid 0%, Crop Rotation",APSIM,NA
+2003,NA,Cotton,"Rmv Resid 0%, Crop Rotation",Daycent,0
+2004,0.109885645,Cotton,"Rmv Resid 0%, Crop Rotation",Observed,0.599574074
+2004,NA,Cotton,"Rmv Resid 0%, Crop Rotation",APSIM,0.654
+2004,NA,Cotton,"Rmv Resid 0%, Crop Rotation",Daycent,1.238013333
+2006,0.021032621,Cotton,"Rmv Resid 0%, Crop Rotation",Observed,0.171648148
+2006,NA,Cotton,"Rmv Resid 0%, Crop Rotation",APSIM,1.422
+2006,NA,Cotton,"Rmv Resid 0%, Crop Rotation",Daycent,0.253297778
+2008,0.093019243,Cotton,"Rmv Resid 0%, Crop Rotation",Observed,0.411814815
+2008,NA,Cotton,"Rmv Resid 0%, Crop Rotation",APSIM,0.816
+2008,NA,Cotton,"Rmv Resid 0%, Crop Rotation",Daycent,0.500235556
+2010,0.047058769,Cotton,"Rmv Resid 0%, Crop Rotation",Observed,1.006888889
+2010,NA,Cotton,"Rmv Resid 0%, Crop Rotation",APSIM,1.098
+2010,NA,Cotton,"Rmv Resid 0%, Crop Rotation",Daycent,0.742202222
+2003,NA,Sorghum,"Rmv Resid 0%, Crop Rotation",Observed,NA
+2003,NA,Sorghum,"Rmv Resid 0%, Crop Rotation",APSIM,1.727
+2003,NA,Sorghum,"Rmv Resid 0%, Crop Rotation",Daycent,NA
+2005,0.473455662,Sorghum,"Rmv Resid 0%, Crop Rotation",Observed,2.51238317
+2005,NA,Sorghum,"Rmv Resid 0%, Crop Rotation",APSIM,2.139
+2005,NA,Sorghum,"Rmv Resid 0%, Crop Rotation",Daycent,0.920904444
+2007,NA,Sorghum,"Rmv Resid 0%, Crop Rotation",Observed,NA
+2007,NA,Sorghum,"Rmv Resid 0%, Crop Rotation",APSIM,2.178
+2007,NA,Sorghum,"Rmv Resid 0%, Crop Rotation",Daycent,0.077302222
+2009,NA,Sorghum,"Rmv Resid 0%, Crop Rotation",Observed,NA
+2009,NA,Sorghum,"Rmv Resid 0%, Crop Rotation",APSIM,1.448
+2009,NA,Sorghum,"Rmv Resid 0%, Crop Rotation",Daycent,0.397375556
+2003,NA,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",Observed,NA
+2003,NA,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",APSIM,NA
+2003,NA,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",Daycent,0
+2004,0.141141948,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",Observed,0.582407407
+2004,NA,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",APSIM,0.632
+2004,NA,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",Daycent,0.920044444
+2006,0.029314993,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",Observed,0.138925926
+2006,NA,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",APSIM,1.279
+2006,NA,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",Daycent,0.288937778
+2008,0.093858596,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",Observed,0.47312963
+2008,NA,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",APSIM,0.755
+2008,NA,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",Daycent,0.440233333
+2010,0.074722449,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",Observed,0.974444444
+2010,NA,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",APSIM,0.808
+2010,NA,Cotton,"Rmv Resid 0%, No Till, Crop Rotation",Daycent,0.613228889
+2003,NA,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation",Observed,NA
+2003,NA,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation",APSIM,1.731
+2003,NA,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation",Daycent,0.144442222
+2005,0.657792607,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation",Observed,2.232084919
+2005,NA,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation",APSIM,2.225
+2005,NA,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation",Daycent,0.771017778
+2007,NA,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation",Observed,NA
+2007,NA,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation",APSIM,2.222
+2007,NA,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation",Daycent,0.073551111
+2009,NA,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation",Observed,NA
+2009,NA,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation",APSIM,1.597
+2009,NA,Sorghum,"Rmv Resid 0%, No Till, Crop Rotation",Daycent,0.301708889
+2003,NA,Cotton,Continuous Crop,Observed,NA
+2003,NA,Cotton,Continuous Crop,APSIM,0.894
+2003,NA,Cotton,Continuous Crop,Daycent,0
+2004,NA,Cotton,Continuous Crop,Observed,NA
+2004,NA,Cotton,Continuous Crop,APSIM,0.723
+2004,NA,Cotton,Continuous Crop,Daycent,1.237733333
+2005,0.073555157,Cotton,Continuous Crop,Observed,0.868666667
+2005,NA,Cotton,Continuous Crop,APSIM,1.193
+2005,NA,Cotton,Continuous Crop,Daycent,0.875155556
+2006,0.021122877,Cotton,Continuous Crop,Observed,0.150111111
+2006,NA,Cotton,Continuous Crop,APSIM,1.069
+2006,NA,Cotton,Continuous Crop,Daycent,0.202324444
+2007,0.06551788,Cotton,Continuous Crop,Observed,1.193555556
+2007,NA,Cotton,Continuous Crop,APSIM,0.688
+2007,NA,Cotton,Continuous Crop,Daycent,0.293077778
+2008,0.066694439,Cotton,Continuous Crop,Observed,0.459444444
+2008,NA,Cotton,Continuous Crop,APSIM,1.136
+2008,NA,Cotton,Continuous Crop,Daycent,0.420506667
+2009,NA,Cotton,Continuous Crop,Observed,NA
+2009,NA,Cotton,Continuous Crop,APSIM,0.568
+2009,NA,Cotton,Continuous Crop,Daycent,0.345333333
+2010,0.061763887,Cotton,Continuous Crop,Observed,1.074666667
+2010,NA,Cotton,Continuous Crop,APSIM,1.099
+2010,NA,Cotton,Continuous Crop,Daycent,0.697517778
+2003,NA,Cotton,"No Till, Cover Crop, Crop Rotation",Observed,NA
+2003,NA,Cotton,"No Till, Cover Crop, Crop Rotation",APSIM,0.966
+2003,NA,Cotton,"No Till, Cover Crop, Crop Rotation",Daycent,0
+2003,NA,Cotton,"No Till, Cover Crop, Crop Rotation",Observed,NA
+2003,NA,Cotton,"No Till, Cover Crop, Crop Rotation",APSIM,0.966
+2003,NA,Cotton,"No Till, Cover Crop, Crop Rotation",Daycent,0.114937778
+2005,0.150672615,Cotton,"No Till, Cover Crop, Crop Rotation",Observed,0.891259259
+2005,NA,Cotton,"No Till, Cover Crop, Crop Rotation",APSIM,0.991
+2005,NA,Cotton,"No Till, Cover Crop, Crop Rotation",Daycent,0.750755556
+2007,0.106327949,Cotton,"No Till, Cover Crop, Crop Rotation",Observed,1.192259259
+2007,NA,Cotton,"No Till, Cover Crop, Crop Rotation",APSIM,1
+2007,NA,Cotton,"No Till, Cover Crop, Crop Rotation",Daycent,0.232895556
+2008,0.090169764,Cotton,"No Till, Cover Crop, Crop Rotation",Observed,0.365518519
+2008,NA,Cotton,"No Till, Cover Crop, Crop Rotation",APSIM,1.007
+2008,NA,Cotton,"No Till, Cover Crop, Crop Rotation",Daycent,0.369984444
+2009,NA,Cotton,"No Till, Cover Crop, Crop Rotation",Observed,NA
+2009,NA,Cotton,"No Till, Cover Crop, Crop Rotation",APSIM,0.735
+2009,NA,Cotton,"No Till, Cover Crop, Crop Rotation",Daycent,0.248806667
+2010,0.053508826,Cotton,"No Till, Cover Crop, Crop Rotation",Observed,1.029888889
+2010,NA,Cotton,"No Till, Cover Crop, Crop Rotation",APSIM,0.362
+2010,NA,Cotton,"No Till, Cover Crop, Crop Rotation",Daycent,0.473004444
+2004,0.611270478,Sorghum,"No Till, Cover Crop, Crop Rotation",Observed,0.905833089
+2004,NA,Sorghum,"No Till, Cover Crop, Crop Rotation",APSIM,2.492
+2004,NA,Sorghum,"No Till, Cover Crop, Crop Rotation",Daycent,0.870935556
+2006,NA,Sorghum,"No Till, Cover Crop, Crop Rotation",Observed,NA
+2006,NA,Sorghum,"No Till, Cover Crop, Crop Rotation",APSIM,0.959
+2006,NA,Sorghum,"No Till, Cover Crop, Crop Rotation",Daycent,NA
+2007,0.192917675,Sorghum,"No Till, Cover Crop, Crop Rotation",Observed,0.258222222
+2007,NA,Sorghum,"No Till, Cover Crop, Crop Rotation",APSIM,NA
+2007,NA,Sorghum,"No Till, Cover Crop, Crop Rotation",Daycent,0.298164444
