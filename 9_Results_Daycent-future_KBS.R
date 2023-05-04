@@ -418,6 +418,156 @@ suppressMessages({
   
   gNO3
   
+  # explain N2O emissions with WFPS, NO3 and N2O
+  # transform_factor <- 200
+  # 
+  # gN2O_expl <- ggplot() +
+  #   geom_hline(aes(yintercept=0.26, color=cbPalette9[6]), linewidth=1) + # DUL, from APSIM surface layer 0-20 cm
+  #   geom_line(data=Day_soiln[Day_soiln$year %in% 2010:2015,],
+  #             aes(x=date,y=NO3_kgha/transform_factor, color=cbPalette9[4]), linewidth=1) +
+  #   geom_line(data=N2O_ghaday[year(N2O_ghaday$date) %in% 2010:2015,],
+  #             aes(x=date, y=Daycent/1000, color=cbPalette9[8]), linewidth=1) +
+  #   geom_line(data=SoilMoist_VSM[SoilMoist_VSM$year %in% 2010:2015,],
+  #             aes(x=date, y=Daycent, color=cbPalette9[2]), linewidth=1) +
+  #   ylab(expression('Soil Water, Field Capacity, N'[2]*'O  (kg ha' ^'-1'*' day'^'-1'*')')) +
+  #   scale_y_continuous(
+  #     sec.axis = sec_axis(trans = ~ .x * transform_factor,
+  #                         name = expression('NO'[3]*' (kg ha' ^'-1'*' day'^'-1'*')'))
+  #   ) +
+  #   scale_color_manual(name=NULL,
+  #                      labels=c("Soil Water","NO3 (kg/ha)","Field Capacity","N2O (kg/ha)"),
+  #                      values=cbPalette9[c(2,4,6,8)]) +
+  #   theme(panel.background = element_blank(),
+  #         axis.line = element_line(),
+  #         legend.position = "right",
+  #         legend.key = element_blank())
+  # 
+  # 
+  # gN2O_expl
+  
+  gN2O_expl_0to10cm <- ggplot() +
+    geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+              aes(x=date, y=wfps_layer1, color=cbPalette9[2]), linewidth=1) +
+    geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+              aes(x=date, y=wfps_layer2, color=cbPalette9[3]), linewidth=1) +
+    geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+              aes(x=date, y=wfps_layer3, color=cbPalette9[4]), linewidth=1) +
+    geom_line(data=Day_exp_soiln[Day_exp_soiln$year %in% 2010:2011,],
+              aes(x=date,y=NO3_hgha/10, color=cbPalette9[6]), linewidth=1) +
+    geom_line(data=N2O_ghaday[year(N2O_ghaday$date) %in% 2010:2011,],
+              aes(x=date, y=Daycent/100, color=cbPalette9[8]), linewidth=1) +
+    ggtitle("Daycent N2O emissions drivers to 10 cm") +
+    ylab(expression('WFPS, NO'[3]*' (dg ha' ^'-1'*' day, N'[2]*'O  (cg ha' ^'-1'*' day'^'-1'*')')) +
+    scale_color_manual(name=NULL,
+                       labels=c("WFPS: 0-2.5cm","WFPS: 2.5-5 cm","WFPS: 5-10 cm",
+                                "NO3 (dg/ha/day)","N2O (cg/ha/day)"),
+                       values=cbPalette9[c(2,3,4,6,8)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  
+  gN2O_expl_0to10cm
+  
+  gN2O_expl_10to60cm <- ggplot() +
+    geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+              aes(x=date, y=wfps_layer4, color=cbPalette9[2]), linewidth=1) +
+    geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+              aes(x=date, y=wfps_layer5, color=cbPalette9[3]), linewidth=1) +
+    geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+              aes(x=date, y=wfps_layer6, color=cbPalette9[4]), linewidth=1) +
+    geom_line(data=Day_exp_soiln[Day_exp_soiln$year %in% 2010:2011,],
+              aes(x=date,y=NO3_hgha_10to60cm/10, color=cbPalette9[6]), linewidth=1) +
+    geom_line(data=N2O_ghaday[year(N2O_ghaday$date) %in% 2010:2011,],
+              aes(x=date, y=Daycent/100, color=cbPalette9[8]), linewidth=1) +
+    ggtitle("Daycent N2O emissions drivers 10 to 60 cm") +
+    ylab(expression('WFPS, NO'[3]*' (dg ha' ^'-1'*' day, N'[2]*'O  (cg ha' ^'-1'*' day'^'-1'*')')) +
+    scale_color_manual(name=NULL,
+                       labels=c("WFPS: 10-20 cm","WFPS: 20-40 cm","WFPS: 40-60 cm",
+                                "NO3 (dg/ha/day)","N2O (cg/ha/day)"),
+                       values=cbPalette9[c(2,3,4,6,8)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  
+  gN2O_expl_10to60cm
+  
+  # explain CH4 emissions with 
+  
+  gCH4_expl_prod_0to10cm <- ggplot() +
+    # geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+    #           aes(x=date, y=wfps_layer1, color=cbPalette9[2]), linewidth=1) +
+    # geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+    #           aes(x=date, y=wfps_layer2, color=cbPalette9[3]), linewidth=1) +
+    # geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+    #           aes(x=date, y=wfps_layer3, color=cbPalette9[4]), linewidth=1) +
+    # geom_line(data=Day_exp_methane[year(Day_exp_methane$date) %in% 2010:2011,],
+    #           aes(x=date, y=Feh*100, color=cbPalette9[5]), linewidth=1) +
+    geom_line(data=Day_exp_methane[year(Day_exp_methane$date) %in% 2010:2011,],
+              aes(x=date, y=COM, color=cbPalette9[6]), linewidth=1) +
+    geom_line(data=Day_exp_methane[year(Day_exp_methane$date) %in% 2010:2011,],
+              aes(x=date, y=TI, color=cbPalette9[7]), linewidth=1) +
+    geom_line(data=Day_exp_methane[year(Day_exp_methane$date) %in% 2010:2011,],
+              aes(x=date, y=Cr, color=cbPalette9[1]), linewidth=1) +
+    geom_line(data=Day_exp_methane[Day_exp_methane$year %in% 2010:2011,],
+              aes(x=date,y=CH4_prod*1000, color=cbPalette9[8]), linewidth=1) +
+    geom_line(data=Day_exp_methane[Day_exp_methane$year %in% 2010:2011,],
+              aes(x=date,y=CH4_oxid*-1000, color=cbPalette9[4]), linewidth=1) +
+    ggtitle("Daycent CH4 production drivers") +
+    ylab('') +
+    scale_color_manual(name=NULL,
+                       # labels=c("WFPS: 0-2.5cm","WFPS: 2.5-5 cm","WFPS: 5-10 cm",
+                       #          "Eh/100","COM","Cr","CH4 (mg/m^2/day)"),
+                       labels=c("Root Exudate C (index)","CH4 oxid (mg/m^2/day)",
+                                "OM Decomp C (index)",
+                                "Soil Temp (index)","CH4 prod (mg/m^2/day)"),
+                       values=cbPalette9[c(1,4,6,7,8)]) + #,6,7,8)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  
+  gCH4_expl_prod_0to10cm
+
+  # CH4 oxidation explained by soil temperature, wfps, vswc in top 15 cm
+  ch4_transform_factor <- 100
+  
+  gCH4_expl_oxid_0to20cm <- ggplot() +
+    geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+              aes(x=date, y=wfps_layer1, color=cbPalette9[2]), linewidth=1) +
+    geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+              aes(x=date, y=wfps_layer2, color=cbPalette9[3]), linewidth=1) +
+    geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+              aes(x=date, y=wfps_layer3, color=cbPalette9[4]), linewidth=1) +
+    geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+              aes(x=date, y=wfps_layer4, color=cbPalette9[5]), linewidth=1) +
+    geom_line(data=Day_exp_soiltavg[Day_exp_soiltavg$year %in% 2010:2011,],
+              aes(x=date, y=layer1/100, color=cbPalette9[7]), linewidth=1) +
+    geom_line(data=Day_exp_methane[Day_exp_methane$year %in% 2010:2011,],
+              aes(x=date,y=CH4_oxid*-1000, color=cbPalette9[8]), linewidth=1) +
+    ggtitle("Daycent CH4 oxidation drivers") +
+    ylab(expression('WFPS, CH'[4]*'  (mg m' ^'-2'*' day'^'-1'*')')) +
+      scale_y_continuous(
+        sec.axis = sec_axis(trans = ~ .x * ch4_transform_factor,
+                            name = expression('Soil Temperature ('^o*'C)'))
+      ) +
+    scale_color_manual(name=NULL,
+                       labels=c("WFPS: 0-2.5cm","WFPS: 2.5-5 cm","WFPS: 5-10 cm",
+                                "WFPS: 10-20cm","Soil Temp","CH4 (mg/m^2/day"),
+                       values=cbPalette9[c(2,3,4,5,7,8)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  
+  gCH4_expl_oxid_0to20cm
+  
+
   
   ggsave(filename=paste0(results_path,"Maize_yield_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gMY,
          width=9, height=6, dpi=300)
@@ -444,6 +594,14 @@ suppressMessages({
   ggsave(filename=paste0(results_path,"NH4_input_fut_",scenario_name,"_Daycent.jpg"),plot=gNH4,
          width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"NO3_input_fut_",scenario_name,"_Daycent.jpg"),plot=gNO3,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"expl_N2O_0to10cm",scenario_name,"_Daycent.jpg"),plot=gN2O_expl_0to10cm,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"expl_N2O_10to60cm",scenario_name,"_Daycent.jpg"),plot=gN2O_expl_10to60cm,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"expl_CH4_prod_0to10cm",scenario_name,"_Daycent.jpg"),plot=gCH4_expl_prod_0to10cm,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"expl_CH4_oxid_0to20cm",scenario_name,"_Daycent.jpg"),plot=gCH4_expl_oxid_0to20cm,
          width=9, height=6, dpi=300)
   
   

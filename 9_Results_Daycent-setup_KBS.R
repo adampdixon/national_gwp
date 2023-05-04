@@ -4,7 +4,7 @@
 # output: html_document
 #test
 
-print("Starting 9_Results_Daycent-setup3.R")
+print(paste0("Starting 9_Results_Daycent-setup_",site_name,".R"))
 
 library(readxl)
 library(magrittr)
@@ -50,25 +50,30 @@ Day_base_soiltavg <- read.fwf(paste0(daycent_path,paste0("soiltavg_base_",scenar
                               col.names=c("time","dayofyear","layer1","layer2","layer3",
                                           "layer4","layer5","layer6","layer7","layer8"),
                               colClasses=c("numeric","numeric","numeric","numeric","numeric",
-                                           "numeric","numeric","numeric","numeric","numeric"))
+                                           "numeric","numeric","numeric","numeric","numeric")) %>%
+  mutate(year=floor(time),
+         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
 Day_exp_soiltavg <- read.fwf(paste0(daycent_path,paste0("soiltavg_exp_",scenario_name,".out")),
                              widths=c(12,5,8,8,8,8,8,8,8,6), 
                              col.names=c("time","dayofyear","layer1","layer2","layer3",
                                          "layer4","layer5","layer6","layer7","layer8"),
                              colClasses=c("numeric","numeric","numeric","numeric","numeric",
-                                          "numeric","numeric","numeric","numeric","numeric"))
+                                          "numeric","numeric","numeric","numeric","numeric")) %>%
+  mutate(year=floor(time),
+         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
 Day_fut_soiltavg <- read.fwf(paste0(daycent_path,paste0("soiltavg_fut_",scenario_name,".out")),
                              widths=c(12,5,8,8,8,8,8,8,8,6), 
                              col.names=c("time","dayofyear","layer1","layer2","layer3",
                                          "layer4","layer5","layer6","layer7","layer8"),
                              colClasses=c("numeric","numeric","numeric","numeric","numeric",
-                                          "numeric","numeric","numeric","numeric","numeric"))
-
-DayT_C_raw <- rbind(Day_exp_soiltavg,Day_fut_soiltavg) %>%
+                                          "numeric","numeric","numeric","numeric","numeric")) %>%
   mutate(year=floor(time),
          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+
+DayT_C_raw <- rbind(Day_exp_soiltavg,Day_fut_soiltavg)
+
 DayT_C_raw <- DayT_C_raw %>%
-         mutate(mean_3_4=round(rowMeans(DayT_C_raw[,c("layer3","layer4")]),2))
+  mutate(mean_3_4=round(rowMeans(DayT_C_raw[,c("layer3","layer4")]),2))
 
 DayT_C <- DayT_C_raw[DayT_C_raw$year <= end_fut_period_year,]
 
@@ -149,7 +154,9 @@ Day_exp_methane <- read.fwf(paste0(daycent_path,paste0("methane_exp_",scenario_n
                                         "COM","ppt","irri","watr2sat","avgst_10cm",
                                         "TI","Cr","Eh","Feh","CH4_prod","CH4_Ep",
                                         "CH4_Ebl","CH4_oxid")
-                            ,skip=1)
+                            ,skip=1) %>%
+  mutate(date=as.Date(DOY,origin=paste0(as.character(year),"-01-01"))-1)
+
 Day_fut_methane <- read.fwf(paste0(daycent_path,paste0("methane_fut_",scenario_name,".out")),
                             widths=c(4,6,12,12,12,12,12,12,12,12,12,12,12,12,12,
                                      12,12,12,12,12,12),
@@ -158,10 +165,11 @@ Day_fut_methane <- read.fwf(paste0(daycent_path,paste0("methane_fut_",scenario_n
                                         "COM","ppt","irri","watr2sat","avgst_10cm",
                                         "TI","Cr","Eh","Feh","CH4_prod","CH4_Ep",
                                         "CH4_Ebl","CH4_oxid")
-                            ,skip=1)
+                            ,skip=1) %>%
+  mutate(date=as.Date(DOY,origin=paste0(as.character(year),"-01-01"))-1)
 
-Day_methane_raw <- rbind(Day_exp_methane[,c("year","DOY","CH4_Ep","CH4_Ebl","CH4_oxid")],
-                     Day_fut_methane[,c("year","DOY","CH4_Ep","CH4_Ebl","CH4_oxid")]) %>%
+Day_methane_raw <- rbind(Day_exp_methane[,c("year","DOY","date","CH4_Ep","CH4_Ebl","CH4_oxid")],
+                     Day_fut_methane[,c("year","DOY","date","CH4_Ep","CH4_Ebl","CH4_oxid")]) %>%
   mutate(CH4_emis_gCmd=CH4_Ep+CH4_Ebl,
          CH4_emis_gChad=CH4_emis_gCmd*10000,
          dayofyear=DOY)
@@ -199,7 +207,17 @@ Day_base_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_base_",scenario_nam
                                        "NO3_ppm2","NO3_ppm3","NO3_ppm4","NO3_ppm5","NO3_ppm6",
                                        "NO3_ppm7","NO3_ppm8","NO3_ppm9","NO3_ppm10",
                                        "NO3_ppm11","NO3_ppm12"),
-                           skip=1)
+                           skip=1) %>%
+  mutate(year=floor(time),
+         NO3_ppm=NO3_ppm0+NO3_ppm1+NO3_ppm2,
+         NO3_ppm_10to60cm=NO3_ppm3+NO3_ppm4+NO3_ppm5,
+         #NO3_kgha=(weight of soil in kg/ha, using bulk density to 10 cm)*ppm which = mg/kg
+         #          then divide by 1000000 mg/kg conversion factor
+         NO3_kgha=((0.10*10000*ObsBD$mean_BD*1000)*NO3_ppm)/1000000, 
+         NO3_hgha=NO3_kgha/10, 
+         NO3_kgha_10to60cm=((0.10*10000*ObsBD$mean_BD*1000)*NO3_ppm_10to60cm)/1000000, 
+         NO3_hgha_10to60cm=NO3_kgha_10to60cm/10, 
+         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
 
 Day_exp_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_exp_",scenario_name,".out")),
                           widths=c(8,6,14,14,14,14,14,14,14,14,14,14,14,14,14,14),
@@ -207,7 +225,17 @@ Day_exp_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_exp_",scenario_name,
                                        "NO3_ppm2","NO3_ppm3","NO3_ppm4","NO3_ppm5","NO3_ppm6",
                                        "NO3_ppm7","NO3_ppm8","NO3_ppm9","NO3_ppm10",
                                        "NO3_ppm11","NO3_ppm12"),
-                           skip=1)
+                           skip=1) %>%
+  mutate(year=floor(time),
+         NO3_ppm=NO3_ppm0+NO3_ppm1+NO3_ppm2,
+         NO3_ppm_10to60cm=NO3_ppm3+NO3_ppm4+NO3_ppm5,
+         #NO3_kgha=(weight of soil in kg/ha, using bulk density to 10 cm)*ppm which = mg/kg
+         #          then divide by 1000000 mg/kg conversion factor
+         NO3_kgha=((0.10*10000*ObsBD$mean_BD*1000)*NO3_ppm)/1000000, 
+         NO3_hgha=NO3_kgha/10, 
+         NO3_kgha_10to60cm=((0.10*10000*ObsBD$mean_BD*1000)*NO3_ppm_10to60cm)/1000000, 
+         NO3_hgha_10to60cm=NO3_kgha_10to60cm/10, 
+         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
 
 Day_fut_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_fut_",scenario_name,".out")),
                           widths=c(8,6,14,14,14,14,14,14,14,14,14,14,14,14,14,14),
@@ -215,17 +243,21 @@ Day_fut_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_fut_",scenario_name,
                                       "NO3_ppm2","NO3_ppm3","NO3_ppm4","NO3_ppm5","NO3_ppm6",
                                       "NO3_ppm7","NO3_ppm8","NO3_ppm9","NO3_ppm10",
                                       "NO3_ppm11","NO3_ppm12"),
-                          skip=1)
-
-Day_soiln_raw <- rbind(Day_base_soiln,Day_exp_soiln) %>%
+                          skip=1) %>%
   mutate(year=floor(time),
-         NO3_ppm=NO3_ppm0+NO3_ppm1+NO3_ppm2+NO3_ppm3,
-         #NO3_kgha=(weight of soil in kg/ha, using bulk density)*ppm which = mg/kg
+         NO3_ppm=NO3_ppm0+NO3_ppm1+NO3_ppm2,
+         NO3_ppm_10to60cm=NO3_ppm3+NO3_ppm4+NO3_ppm5,
+         #NO3_kgha=(weight of soil in kg/ha, using bulk density to 10 cm)*ppm which = mg/kg
          #          then divide by 1000000 mg/kg conversion factor
-         NO3_kgha=((0.20*10000*ObsBD$mean_BD*1000)*NO3_ppm)/1000000, 
+         NO3_kgha=((0.10*10000*ObsBD$mean_BD*1000)*NO3_ppm)/1000000, 
+         NO3_hgha=NO3_kgha/10, 
+         NO3_kgha_10to60cm=((0.10*10000*ObsBD$mean_BD*1000)*NO3_ppm_10to60cm)/1000000, 
+         NO3_hgha_10to60cm=NO3_kgha_10to60cm/10, 
          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+
+Day_soiln_raw <- rbind(Day_base_soiln,Day_exp_soiln) 
   
-Day_soiln <- Day_soiln_raw[Day_soiln_raw$year,]
+Day_soiln <- Day_soiln_raw
 
 Day_soiln_all_raw <- rbind(Day_base_soiln,Day_exp_soiln,Day_fut_soiln) %>%
   mutate(year=floor(time),
@@ -242,7 +274,9 @@ Day_exp_wfps <- read.fwf(paste0(daycent_path,paste0("wfps_exp_",scenario_name,".
                                       "wfps_layer6","wfps_layer7","wfps_layer8",
                                       "wfps_layer9","wfps_layer10","wfps_layer11",
                                       "wfps_layer12","wfps_layer13"),
-                          skip=1)
+                          skip=1) %>%
+  mutate(year=floor(time),
+         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
 
 
 #**********************************************************************

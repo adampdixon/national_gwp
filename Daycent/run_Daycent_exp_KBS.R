@@ -30,14 +30,16 @@ unlink(paste0("sched_exp_",scenario_name,".bin"))
 unlink(paste0("sched_exp_",scenario_name,".lis"))
 unlink("cflows.out")
 unlink(paste0("cflows_exp_",scenario_name,".out"))
-#file.copy("dc_sip.csv", paste0("dc_sip_exp_",scenario_name,".csv"), overwrite=TRUE)
+# unlink("dc_sip.out") # not needed because CO2resp is in summary.out
+# unlink(paste0("dc_sip_exp_",scenario_name,".csv"))
 unlink("harvest.csv")
 unlink(paste0("harvest_exp_",scenario_name,".csv"))
 unlink("livec.out")
 unlink(paste0("livec_exp_",scenario_name,".out"))
 unlink("methane.out")
 unlink(paste0("methane_exp_",scenario_name,".out"))
-#file.copy("nflux.out", paste0("nflux_exp_",scenario_name,".out"), overwrite=TRUE)
+# unlink("nflux.out")
+# unlink(paste0("nflux_exp_",scenario_name,".out"))
 unlink("soiln.out")
 unlink(paste0("soiln_exp_",scenario_name,".out"))
 unlink("soiltavg.out")
@@ -47,14 +49,14 @@ unlink(paste0("summary_exp_",scenario_name,".out"))
 unlink("vswc.out")
 unlink(paste0("vswc_exp_",scenario_name,".out"))
 unlink("wfps.out")
-unlink(paste0("wfps_base_",scenario_name,".out"))
+unlink(paste0("wfps_exp_",scenario_name,".out"))
 
 # Experiment cropping schedule: full experimental period
 file.copy("outfiles_base.in", "outfiles.in", overwrite=TRUE)
 
 system(paste0(daycent_executable," -s sched_exp_",scenario_name,
               " -n sched_exp_",scenario_name,
-              " -e sched_base",scenario_name), wait=TRUE)
+              " -e sched_base_",scenario_name), wait=TRUE)
 system(paste0(daycent_list100," sched_exp_",scenario_name,
               " sched_exp_",scenario_name," outvars.txt"), wait=TRUE)
 
