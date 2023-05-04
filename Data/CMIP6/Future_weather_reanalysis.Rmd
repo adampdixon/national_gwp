@@ -902,7 +902,7 @@ ggsave(filename=paste0(site_name,"/Precipitation-hist vs ukesm high.jpg"),plot=p
 
 ```{r rain_cm_calibrate}
 
-# not enough difference to matter at KBS, but doing this anyway for gridded study
+# not enough difference to matter, but doing this anyway for gridded study
 # and other sites where it might
 
 diff_gfdl_low <- hist_ys[2] - gfdl_low_ys[1]
@@ -910,16 +910,25 @@ diff_gfdl_high <- hist_ys[2] - gfdl_high_ys[1]
 diff_ukesm_low <- hist_ys[2] - ukesm_low_ys[1]
 diff_ukesm_high <- hist_ys[2] - ukesm_high_ys[1]
 
-# need to adjust both _cm and _mm columns
-gfdl_low_reanal$rain_cm <- gfdl_low_raw$rain_cm + diff_gfdl_low
-gfdl_high_reanal$rain_cm <- gfdl_high_raw$rain_cm + diff_gfdl_high
-ukesm_low_reanal$rain_cm <- ukesm_low_raw$rain_cm + diff_ukesm_low
-ukesm_high_reanal$rain_cm <- ukesm_high_raw$rain_cm + diff_ukesm_high
+# need to adjust both _cm and _mm columns. get the difference, then if it results
+# in negative rain, set to 0
+gfdl_low_reanal$rain_cm <- ifelse(gfdl_low_raw$rain_cm + diff_gfdl_low<0,0,
+                                  gfdl_low_raw$rain_cm + diff_gfdl_low)
+gfdl_high_reanal$rain_cm <- ifelse(gfdl_high_raw$rain_cm + diff_gfdl_high<0,0,
+                                   gfdl_high_raw$rain_cm + diff_gfdl_high)
+ukesm_low_reanal$rain_cm <- ifelse(ukesm_low_raw$rain_cm + diff_ukesm_low<0,0,
+                                   ukesm_low_raw$rain_cm + diff_ukesm_low)
+ukesm_high_reanal$rain_cm <- ifelse(ukesm_high_raw$rain_cm + diff_ukesm_high<0,0,
+                                    ukesm_high_raw$rain_cm + diff_ukesm_high)
 
-gfdl_low_reanal$rain_mm <- gfdl_low_raw$rain_mm + ifelse(diff_gfdl_low<0,0,diff_gfdl_low*10)
-gfdl_high_reanal$rain_mm <- gfdl_high_raw$rain_mm + ifelse(diff_gfdl_high<0,0,diff_gfdl_high*10)
-ukesm_low_reanal$rain_mm <- ukesm_low_raw$rain_mm + ifelse(diff_ukesm_low<0,0,diff_ukesm_low*10)
-ukesm_high_reanal$rain_mm <- ukesm_high_raw$rain_mm + ifelse(diff_ukesm_high<0,0,diff_ukesm_high*10)
+gfdl_low_reanal$rain_mm <- ifelse(gfdl_low_raw$rain_mm + diff_gfdl_low*10<0,0,
+                                  gfdl_low_raw$rain_mm + diff_gfdl_low*10)
+gfdl_high_reanal$rain_mm <- ifelse(gfdl_high_raw$rain_mm + diff_gfdl_high*10<0,0,
+                                   gfdl_high_raw$rain_mm + diff_gfdl_high*10)
+ukesm_low_reanal$rain_mm <- ifelse(ukesm_low_raw$rain_mm + diff_ukesm_low*10<0,0,
+                                   ukesm_low_raw$rain_mm + diff_ukesm_low*10)
+ukesm_high_reanal$rain_mm <- ifelse(ukesm_high_raw$rain_mm + diff_ukesm_high*10<0,0,
+                                    ukesm_high_raw$rain_mm + diff_ukesm_high*10)
 
 ```
 
