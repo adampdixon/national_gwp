@@ -167,6 +167,10 @@ left_join(scenario_df[,c("scenario_name","scenario_abbrev")],
 summary_output$GWP=rowSums(summary_output[grep("^CO2e", names(summary_output))], 
                            na.rm=TRUE) # SOC negative for sequestration
 
+# write out summary output for final analysis
+write.csv(summary_output, file=paste0(results_path,"summary_output_final.csv"),
+          row.names=FALSE)
+
 scenario_means <- summary_output %>%
   group_by(Climate_Scenario,Mgmt_Scenario,Scenario_Name) %>%
   summarize(mean_MaizeYld_Mgha=round(mean(Maize_Diff_Mgha,na.rm=T),5),
@@ -196,7 +200,8 @@ scenario_means <- summary_output %>%
 
 
 # write out scenario means
-write.csv(scenario_means, file=paste0(results_path,"scenario_means.csv"))
+write.csv(scenario_means, file=paste0(results_path,"scenario_means.csv"),
+          row.names=FALSE)
 
 gwp_means_piv <- pivot_longer(scenario_means,c(-Climate_Scenario,
                                                -Mgmt_Scenario,
@@ -241,6 +246,9 @@ annual_results <- left_join(annual_results,
                             scenario_df[,c("scenario_name","scenario_abbrev")],
                             by="scenario_name")
 
+write.csv(annual_results, file=paste0(results_path,"annual_results.csv"),
+          row.names=FALSE)
+
 # mean annual results, by scenario
 mean_annual_results <- annual_results[annual_results<end_fut_period_year,] %>%
   group_by(year,scenario_name,climate_scenario_num,mgmt_scenario_grp_num,
@@ -252,7 +260,8 @@ mean_annual_results <- annual_results[annual_results<end_fut_period_year,] %>%
   )
 mean_annual_results <- mean_annual_results[!is.na(mean_annual_results$year),]
 
-write.csv(mean_annual_results, file=paste0(results_path,"mean_annual_results.csv"))
+write.csv(mean_annual_results, file=paste0(results_path,"mean_annual_results.csv"),
+          row.names=FALSE)
 
 
 daily_results <- data.frame()
@@ -289,6 +298,10 @@ daily_results <- left_join(daily_results,
                            scenario_df[,c("scenario_name","scenario_abbrev")],
                            by="scenario_name")
 
+
+write.csv(daily_results, file=paste0(results_path,"daily_results.csv"),
+          row.names=FALSE)
+
 # mean daily results, by scenario
 mean_daily_results <- daily_results[daily_results$year<end_fut_period_year,] %>%
   group_by(year,date,dayofyear,scenario_name,climate_scenario_num,
@@ -302,7 +315,8 @@ mean_daily_results <- daily_results[daily_results$year<end_fut_period_year,] %>%
   )
 
 
-write.csv(mean_daily_results, file=paste0(results_path,"mean_daily_results.csv"))
+write.csv(mean_daily_results, file=paste0(results_path,"mean_daily_results.csv"),
+          row.names=FALSE)
 
 #*************************************************************
 

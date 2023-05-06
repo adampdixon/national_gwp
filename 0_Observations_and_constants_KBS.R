@@ -164,7 +164,27 @@ scenario_df <- data.frame(climate_scenario_num=c(1,1,1,1,1,1,1,1,1,1,
                                                  "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
                                                  "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
                                                  "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
-                                                 "SSP5-8.5","SSP5-8.5","SSP5-8.5")
+                                                 "SSP5-8.5","SSP5-8.5","SSP5-8.5"),
+                          climate_desc=c("Baseline","Baseline","Baseline","Baseline",
+                                         "Baseline","Baseline","Baseline","Baseline",
+                                         "Baseline","Baseline","Baseline","Baseline",
+                                         "Baseline","Baseline","Baseline",
+                                         "GFDL_Low","GFDL_Low","GFDL_Low","GFDL_Low",
+                                         "GFDL_Low","GFDL_Low","GFDL_Low","GFDL_Low",
+                                         "GFDL_Low","GFDL_Low","GFDL_Low","GFDL_Low",
+                                         "GFDL_Low","GFDL_Low","GFDL_Low",
+                                         "GFDL_High","GFDL_High","GFDL_High","GFDL_High",
+                                         "GFDL_High","GFDL_High","GFDL_High","GFDL_High",
+                                         "GFDL_High","GFDL_High","GFDL_High","GFDL_High",
+                                         "GFDL_High","GFDL_High","GFDL_High",
+                                         "UKESM_Low","UKESM_Low","UKESM_Low","UKESM_Low",
+                                         "UKESM_Low","UKESM_Low","UKESM_Low","UKESM_Low",
+                                         "UKESM_Low","UKESM_Low","UKESM_Low","UKESM_Low",
+                                         "UKESM_Low","UKESM_Low","UKESM_Low",
+                                         "UKESM_High","UKESM_High","UKESM_High","UKESM_High",
+                                         "UKESM_High","UKESM_High","UKESM_High","UKESM_High",
+                                         "UKESM_High","UKESM_High","UKESM_High","UKESM_High",
+                                         "UKESM_High","UKESM_High","UKESM_High")
 )
 
 scenario_abbrev <- 
@@ -295,7 +315,14 @@ obs_biomass_filename <- "39-annual+crops+and+alfalfa+biomass+1667489393.csv"
 #[6]pink, [7]red, [8]orange, [9]yellow
 cbPalette9 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
                 "#CC79A7","#D55E00","#E69F00","#F0E442")
-
+# 12-color palette with grey and black. Colors in order are:
+#[1]black, [2]dark blue, [3]mint green, [4]light blue, [5]grey,
+#[6]pink, [7]red, [8]orange, [9]yellow, [10]mauve, [11]royal blue,
+#[12]forest green
+cbPalette12 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
+                 "#CC79A7","#D55E00","#E69F00","#F0E442","#882255",
+                 "#332288","#0B6329"
+)
 
 ###########################################################
 #################### observational data ###################
