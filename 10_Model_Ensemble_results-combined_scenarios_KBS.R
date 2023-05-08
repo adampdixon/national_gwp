@@ -157,9 +157,9 @@ summary_output <- summary_fillin[,-which(names(summary_fillin) %in%
                                            c("model_mean_N2O_kgha","model_mean_CH4_kgha"))] %>%
   mutate(N2O_Mgha=Total_N2O_kgha/1000,
          CH4_Mgha=Total_CH4_kgha/1000,
-         CO2e_SOC=-SOC_Diff_Mgha/0.2727, # convert SOC to CO2e, make negative 
-         CO2e_N2O=N2O_Mgha*298, # convert N2O to CO2e
-         CO2e_CH4=CH4_Mgha*28 # convert CH4 to CO2e
+         CO2e_SOC=-SOC_Diff_Mgha*(44/12), # convert SOC to CO2e (CO2 gas), make negative 
+         CO2e_N2O=N2O_Mgha*(44/28)*273, # convert N2O(N) to N2O gas, then to CO2e
+         CO2e_CH4=CH4_Mgha*(16/12)*27 # convert CH4(C) to CH4 gas, then to CO2e
   ) %>%
 left_join(scenario_df[,c("scenario_name","scenario_abbrev")],
           by=c("Scenario_Name"="scenario_name"))
