@@ -106,6 +106,7 @@ suppressMessages({
     geom_point() +
     xlab("Year") +
     ylab(expression('Sorghum Yield (Mg ha ' ^-1*')')) +
+    ylim(0,4) +
     ggtitle(paste(site_name,"Sorghum Yield"),paste0("Scenario: ",scenario_descriptor_full)) +
     #geom_segment(aes(x = SYxs[1], xend = SYxs[2], y = SYys[1], yend = SYys[2]), color=cbPalette9[8]) +
     #geom_segment(aes(x = SYobsxs[1], xend = SYobsxs[2], y = SYobsys[1], yend = SYobsys[2]), color=cbPalette9[1]) +

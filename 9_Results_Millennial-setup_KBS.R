@@ -4,7 +4,7 @@
 # date: "8/30/2022"
 # output: html_document
 
-print("Starting 9_Results_Millennial-setup.R")
+print(paste0("Starting 9_Results_Millennial-setup_",site_name,".R"))
 
 library(readxl)
 #library(plotly)
@@ -91,16 +91,20 @@ write.table(output_annual_data,file=paste0(results_path,"Annual_results_compilat
 # merge data
 
 # Carbon, full 1 m depth
-Cstock_Mgha <- merge(ObsC_Mgha[,c("year","cstock")],
+Cstock_Mgha <- merge(ObsC_Mgha[,c("year","cstock","sd_cstock")],
                      millC_Mgha,
                      #millC_Mgha_25cm,
                      by="year",
                      all=TRUE)
-colnames(Cstock_Mgha) <- c("year","Observed","Millennial")
+colnames(Cstock_Mgha) <- c("year","Observed","Obs_sd","Millennial")
 
-Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year),
+Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year,-Obs_sd),
                names_to = "source",
                values_to = "C_val")
+
+# remove sd from modeled records; only for observed
+Cstock_Mgha_piv <- Cstock_Mgha_piv %>%
+  mutate(Obs_sd=replace(Obs_sd, source!="Observed", NA))
 
 ## C for full 1 m depth
 Cat1850 <- as.numeric(millC_Mgha[millC_Mgha$year==1850,"TOC_Mgha"])
@@ -108,16 +112,19 @@ Cat1989 <- as.numeric(millC_Mgha[millC_Mgha$year==1989,"TOC_Mgha"])
 Cdiff_1850_1989 <- Cat1850-Cat1989
 
 # Carbon, 25 cm depth
-Cstock_Mgha_25cm <- merge(ObsC_Mgha[,c("year","cstock")],
+Cstock_Mgha_25cm <- merge(ObsC_Mgha[,c("year","cstock","sd_cstock")],
                      millC_Mgha_25cm,
                      by="year",
                      all=TRUE)
-colnames(Cstock_Mgha_25cm) <- c("year","Observed","Millennial")
+colnames(Cstock_Mgha_25cm) <- c("year","Observed","Obs_sd","Millennial")
 
-Cstock_Mgha_piv_25cm <-  pivot_longer(Cstock_Mgha_25cm, c(-year),
+Cstock_Mgha_piv_25cm <-  pivot_longer(Cstock_Mgha_25cm, c(-year,-Obs_sd),
                names_to = "source",
                values_to = "C_val")
 
+# remove sd from modeled records; only for observed
+Cstock_Mgha_piv_25cm <- Cstock_Mgha_piv_25cm %>%
+  mutate(Obs_sd=replace(Obs_sd, source!="Observed", NA))
 
 # Microbial
 #CO2_ghaday <- merge(ObsGas_all[ObsGas_all$Treatment %in% treatment,
@@ -127,14 +134,22 @@ Cstock_Mgha_piv_25cm <-  pivot_longer(Cstock_Mgha_25cm, c(-year),
 #                    all=TRUE)
 
 mbio_gm2_all <- left_join(mill_base_df[,c("year","date","MIC")],
-                      ObsMB_all[ObsMB_all$trt==treatment,c("year","date","trt","mb_gm2")],
+                      ObsMB_all[ObsMB_all$trt==treatment,c("year","date","trt","mb_gm2","sd_gm2")],
                       by=c("date","year"))
-colnames(mbio_gm2_all) <- c("year","date","Millennial","treatment","Observed")
+colnames(mbio_gm2_all) <- c("year","date","Millennial","treatment","Observed","Obs_sd")
 
 mbio_gm2 <- inner_join(mill_base_df[,c("year","date","MIC")],
-                      ObsMB_all[ObsMB_all$trt==treatment,c("year","date","trt","mb_gm2")],
+                      ObsMB_all[ObsMB_all$trt==treatment,c("year","date","trt","mb_gm2","sd_gm2")],
                       by=c("date","year"))
-colnames(mbio_gm2) <- c("year","date","Millennial","treatment","Observed")
+colnames(mbio_gm2) <- c("year","date","Millennial","treatment","Observed","Obs_sd")
+
+mbio_gm2_piv <- pivot_longer(mbio_gm2, c(-date,-year,-treatment,-Obs_sd),
+                             names_to = "source",
+                             values_to = "MB_val")
+
+# remove sd from modeled records; only for observed
+mbio_gm2_piv <- mbio_gm2_piv %>%
+  mutate(Obs_sd=replace(Obs_sd, source!="Observed", NA))
 
 
 #**********************************************************************
@@ -145,4 +160,14 @@ SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha_25cm[!is.na(Cstock_Mgha_25cm$Observed) &
                                           !is.na(Cstock_Mgha_25cm$Millennial),"Observed"] -
                               Cstock_Mgha_25cm[!is.na(Cstock_Mgha_25cm$Observed) &
                                             !is.na(Cstock_Mgha_25cm$Millennial),"Millennial"])
+MBio_obsmod_diff_Mgha <- sum(mbio_gm2[!is.na(mbio_gm2$Observed) &
+                                        !is.na(mbio_gm2$Millennial),"Observed"] -
+                               mbio_gm2[!is.na(mbio_gm2$Observed) &
+                                          !is.na(mbio_gm2$Millennial),"Millennial"])
+
+SOC_obsmod_diff_Mgha_nooutliers <- sum(Cstock_Mgha_25cm[!(Cstock_Mgha_25cm$Observed %in% ObsC_outliers) &
+                                                     !is.na(Cstock_Mgha_25cm$Observed & Cstock_Mgha_25cm$Millennial),"Observed"] -
+                                         Cstock_Mgha_25cm[!(Cstock_Mgha_25cm$Observed %in% ObsC_outliers) &
+                                                       !is.na(Cstock_Mgha_25cm$Observed & Cstock_Mgha_25cm$Millennial),"Millennial"])
+
 

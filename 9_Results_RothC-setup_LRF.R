@@ -84,3 +84,6 @@ SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed) &
                               Cstock_Mgha[!is.na(Cstock_Mgha$Observed) &
                                             !is.na(Cstock_Mgha$RothC),"RothC"])
 
+SOC_obsmod_diff_Mgha_nooutliers <- NA
+
+

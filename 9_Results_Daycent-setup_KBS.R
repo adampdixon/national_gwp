@@ -124,7 +124,7 @@ DayM_V_raw <- rbind(Day_exp_vswc,Day_fut_vswc) %>%
          layer6_pct=layer6*100,
          layer7_pct=layer7*100,
          layer8_pct=layer8*100,
-         mean_20cm=(layer1*0.1)+(layer2*0.15)+(layer3*0.25)+(layer4*0.5)
+         mean_20cm=(layer1_pct*0.1)+(layer2_pct*0.15)+(layer3_pct*0.25)+(layer4_pct*0.5)
   )
 
 DayM_V <- DayM_V_raw[DayM_V_raw$year <= end_fut_period_year,]
@@ -483,7 +483,8 @@ colnames(SoilTemp_C) <- c("date","Observed","Daycent")
 
 SoilTemp_C_piv <- pivot_longer(SoilTemp_C, c(-date),
                                names_to = "source",
-                               values_to = "temp_val")
+                               values_to = "temp_val") %>%
+  mutate(year=year(date))
 
 ##
 SoilMoist_VSM <- merge(ObsVSM[,c("date","year","mean_VSM")],
@@ -637,6 +638,14 @@ SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
                                                  Cstock_Mgha$Daycent),"Observed"] -
                               Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
                                                    Cstock_Mgha$Daycent),"Daycent"])
+SoilT_obsmod_diff_Mgha <- mean(SoilTemp_C[!is.na(SoilTemp_C$Observed) &
+                                            !is.na(SoilTemp_C$Daycent),"Observed"] -
+                                 SoilTemp_C[!is.na(SoilTemp_C$Observed) &
+                                              !is.na(SoilTemp_C$Daycent),"Daycent"])
+SoilM_obsmod_diff_Mgha <- mean(SoilMoist_VSM[!is.na(SoilMoist_VSM$Observed &
+                                                      SoilMoist_VSM$Daycent),"Observed"] -
+                                 SoilMoist_VSM[!is.na(SoilMoist_VSM$Observed &
+                                                        SoilMoist_VSM$Daycent),"Daycent"])
 N2O_obsmod_diff_gha <- sum(N2O_ghaday[!is.na(N2O_ghaday$Observed) &
                                         !is.na(N2O_ghaday$Daycent),"Observed"] -
                              N2O_ghaday[!is.na(N2O_ghaday$Observed) &
@@ -645,3 +654,8 @@ CH4_obsmod_diff_gha <- sum(CH4_ghaday[!is.na(CH4_ghaday$Observed) &
                                         !is.na(CH4_ghaday$Daycent),"Observed"] -
                              CH4_ghaday[!is.na(CH4_ghaday$Observed) &
                                           !is.na(CH4_ghaday$Daycent),"Daycent"])
+
+SOC_obsmod_diff_Mgha_nooutliers <- sum(Cstock_Mgha[!(Cstock_Mgha$Observed %in% ObsC_outliers) &
+                                                     !is.na(Cstock_Mgha$Observed & Cstock_Mgha$Daycent),"Observed"] -
+                                         Cstock_Mgha[!(Cstock_Mgha$Observed %in% ObsC_outliers) &
+                                                       !is.na(Cstock_Mgha$Observed & Cstock_Mgha$Daycent),"Daycent"])

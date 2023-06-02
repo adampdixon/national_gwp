@@ -117,9 +117,10 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP SORGH
-1 133 PLTM
-1 315 HARV G0S
+1 119 FERT (2.2N)
+1 131 CROP COT
+1 131 PLTM
+1 289 HARV G0S
 -999 -999 X
 19	Block ## Experimental period
 2012	Last year
@@ -128,10 +129,10 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 71 FERT (2.8N)
-1 140 CROP COT
-1 140 PLTM
-1 323 HARV G0S
+1 115 FERT (2.8N)
+1 160 CROP SORGH
+1 160 PLTM
+1 332 HARV G0S
 -999 -999 X
 20	Block ## Experimental period
 2013	Last year
@@ -140,9 +141,10 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP SORGH
-1 133 PLTM
-1 315 HARV G0S
+1 119 FERT (2.2N)
+1 131 CROP COT
+1 131 PLTM
+1 289 HARV G0S
 -999 -999 X
 21	Block ## Experimental period
 2014	Last year
@@ -151,10 +153,10 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 71 FERT (2.8N)
-1 140 CROP COT
-1 140 PLTM
-1 323 HARV G0S
+1 115 FERT (2.8N)
+1 160 CROP SORGH
+1 160 PLTM
+1 332 HARV G0S
 -999 -999 X
 22	Block ## Experimental period
 2015	Last year
@@ -163,9 +165,10 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP SORGH
-1 133 PLTM
-1 315 HARV G0S
+1 119 FERT (2.2N)
+1 131 CROP COT
+1 131 PLTM
+1 289 HARV G0S
 -999 -999 X
 23	Block ## Experimental period
 2016	Last year
@@ -174,10 +177,10 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 71 FERT (2.8N)
-1 140 CROP COT
-1 140 PLTM
-1 323 HARV G0S
+1 115 FERT (2.8N)
+1 160 CROP SORGH
+1 160 PLTM
+1 332 HARV G0S
 -999 -999 X
 24	Block ## Experimental period
 2017	Last year
@@ -186,9 +189,10 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP SORGH
-1 133 PLTM
-1 315 HARV G0S
+1 119 FERT (2.2N)
+1 131 CROP COT
+1 131 PLTM
+1 289 HARV G0S
 -999 -999 X
 25	Block ## Experimental period
 2018	Last year
@@ -197,10 +201,10 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 71 FERT (2.8N)
-1 140 CROP COT
-1 140 PLTM
-1 323 HARV G0S
+1 115 FERT (2.8N)
+1 160 CROP SORGH
+1 160 PLTM
+1 332 HARV G0S
 -999 -999 X
 26	Block ## Experimental period
 2019	Last year
@@ -209,9 +213,10 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP SORGH
-1 133 PLTM
-1 315 HARV G0S
+1 119 FERT (2.2N)
+1 131 CROP COT
+1 131 PLTM
+1 289 HARV G0S
 -999 -999 X
 27	Block ## Experimental period
 2020	Last year
@@ -220,10 +225,10 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 71 FERT (2.8N)
-1 140 CROP COT
-1 140 PLTM
-1 323 HARV G0S
+1 115 FERT (2.8N)
+1 160 CROP SORGH
+1 160 PLTM
+1 332 HARV G0S
 -999 -999 X
 28	Block ## Experimental period
 2021	Last year
@@ -232,7 +237,8 @@ C 			 Weather choice
 12  Output starting month
 1  Output interval
 C 			 Weather choice
-1 133 CROP SORGH
-1 133 PLTM
-1 315 HARV G0S
+1 119 FERT (2.2N)
+1 131 CROP COT
+1 131 PLTM
+1 289 HARV G0S
 -999 -999 X

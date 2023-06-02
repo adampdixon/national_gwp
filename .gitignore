@@ -114,11 +114,13 @@ test*
 #Daily_results*.csv
 #Summary_output.csv
 mean_annual_results.csv
+annual_results.csv
 soiln.out
 summary.out
 nflux.out
 soilc.out
 mean_daily_results.csv
+daily_results.csv
 s
 #scenario_means.csv
 #log.txt

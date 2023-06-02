@@ -211,7 +211,7 @@ for (i in experiment_start_year:end_exp_period_year) {
     block_num <- block_num + 1  
   } # end else year is in experiment year range
   else { # Extended experimental period to pad through 2021
-    if(mgmt_scenario_grp %in% c(3,8)) {
+    if(mgmt_scenario_grp %in% c(3,4,5,8)) {
       ### use 2004 and 2005 because sorghum dropped out in 2007
       if(i %% 2==0) {
         curr_yr_ops <- rbind(Daycent_conv[Daycent_conv$year==2005,],
@@ -311,6 +311,7 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
     "1 140 PLTM",
     paste0("1 323 HARV G",resid_adjust_chr,"S"),
     paste0("2 17 CULT K",resid_adjust_chr),
+    paste0("2 119 FERT (",round(2.8*fert_adjust,2),"N)"),
     "2 133 CROP SORGH",
     "2 133 PLTM",
     paste0("2 315 HARV G",resid_adjust_chr,"S")
@@ -321,6 +322,7 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
            "1 140 CROP COT",
            "1 140 PLTM",
     paste0("1 323 HARV G",resid_adjust_chr,"S"),
+    paste0("2 119 FERT (",round(2.8*fert_adjust,2),"N)"),
     "2 133 CROP SORGH",
     "2 133 PLTM",
     paste0("2 315 HARV G",resid_adjust_chr,"S")

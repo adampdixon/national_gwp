@@ -143,7 +143,7 @@ na_find_row <- new[is.na(new$year),]
 ###########################
 
 
-new_dat_2100 <- new_dat
+new_dat_fut <- new_dat
 weather_28yr <- new_dat[new_dat$year %in% 1994:2021,]
 
 for (i in 1:3) {

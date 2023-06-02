@@ -39,7 +39,9 @@ experiment_start_date <- "2003-01-01"
 experiment_end_date <- "2010-12-31"
 end_exp_period_year <- 2021
 end_fut_period_year <- 2050
+max_fut_period_year <- 2100
 calib_mgmt_grps <- c(3,5,7,8)
+calib_mgmt_nums <- c(3,53,56,7,8)
 #
 fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
 obs_path <- paste0("Data/",site_name,"/")
@@ -64,8 +66,8 @@ mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 
 # Loop through the scenarios; set which climate and management
 # scenario numbers to use for this run:
-clim_nums <- c(1:5)
-mgmt_grps <- c(5) #calib_mgmt_grps
+clim_nums <- c(1)
+mgmt_grps <-  calib_mgmt_grps #
 
 
 for (x in clim_nums) { # climate scenarios
@@ -92,12 +94,16 @@ for (x in clim_nums) { # climate scenarios
       mgmt_scenario_opt <- if(max_scenario_options==1) "" else z
       mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
       scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
+      print(paste0("scenario_name: ",scenario_name))
       source("0_Controller2.R")
+      # experiment with: library(gdata)
+      #keep(list-of-objects-not-to-rm) 
       }
   } # end loop through management scenario groups
 } # end loop through climate scenarios
 
-#source("10_Model_Ensemble_results-combined_scenarios2.R")
+#source(paste0("10_Model_Ensemble_results-combined_scenarios_",site_name,".R"))
+# source("10_Model_Ensemble_results-combined_scenarios_and_sites.R")
 
 # end timer
 run_time <- round(toc(echo=TRUE)/60,1)

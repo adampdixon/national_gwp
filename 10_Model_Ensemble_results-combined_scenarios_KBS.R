@@ -30,23 +30,34 @@ library(ggplot2)
 
 source("f_model_coef.R")
 
+
   #*************************************************************
-
-
-# Import calibration data -------------------------------------------------
-
-crop_calib_output_df_piv <- read.table(file=paste0(results_path,"calib_crop_df_piv.csv"),
-                                       header=TRUE,sep=",")  
-crop_calib_output_df_piv$Source <- crop_calib_output_df_piv$Model
-soc_calib_output_df_piv <- read.table(file=paste0(results_path,"calib_soc_df_piv.csv"),
-                                      header=TRUE,sep=",")  
-soc_calib_output_df_piv$Source <- soc_calib_output_df_piv$Model
-soc_trendlines_df <- read.table(file=paste0(results_path,"calib_soc_trendline_piv.csv"),
-                                header=TRUE,sep=",")  
-soc_trendlines_df$Source <- soc_trendlines_df$Model
+  # Calibration
   
-  # Calibration graphs ------------------------------------------------------
+  ## Import calibration data -------------------------------------------------
+  
+  crop_calib_output_df_piv <- read.table(file=paste0(results_path,"calib_crop_df_piv.csv"),
+                                         header=TRUE,sep=",") %>%
+    left_join(unique(scenario_df[,c("scenario_descriptor","scenario_abbrev")]),
+              by=c("treatment_scen"="scenario_descriptor"))
+  crop_calib_output_df_piv$Source <- crop_calib_output_df_piv$Model
+  
+  soc_calib_output_df_piv <- read.table(file=paste0(results_path,"calib_soc_df_piv.csv"),
+                                        header=TRUE,sep=",")  
+  soc_calib_output_df_piv$Source <- soc_calib_output_df_piv$Model
+  
+  soc_trendlines_df <- read.table(file=paste0(results_path,"calib_soc_trendline_piv.csv"),
+                                  header=TRUE,sep=",") %>%
+    left_join(unique(scenario_df[,c("scenario_descriptor","scenario_abbrev")]),
+              by=c("treatment_scen"="scenario_descriptor"))
+  soc_trendlines_df$Source <- soc_trendlines_df$Model
+  soc_trendlines_df_modified <- soc_trendlines_df[,c("year","scenario_abbrev",
+                                                     "Fit","value","Source")]
+  colnames(soc_trendlines_df_modified) <- c("year","scenario_abbrev","Fit",
+                                            "value","Source")
 
+  ## Calibration time series graphs ------------------------------------------------------
+  
   gY_calib <- crop_calib_output_df_piv[crop_calib_output_df_piv$year %in% experiment_year_range,] %>%
     ggplot(aes(x=year, y=yield_val, color=Source, show.legend=TRUE)) +
     geom_point(show.legend=TRUE) +
@@ -55,21 +66,24 @@ soc_trendlines_df$Source <- soc_trendlines_df$Model
     ylim(0,13) +
     ggtitle(paste(site_name,"Crop Yield Calibration")) +
     geom_errorbar(aes(ymin=yield_val-Obs_sd, ymax=yield_val+Obs_sd),
-                  width=.5) + # Width of the error bars
+                  width=1) + # Width of the error bars
     geom_smooth(method='lm', formula= y~x, se=FALSE, aes(colour = Model)
                 ,linewidth=0.75) +
     scale_color_manual(labels=c("APSIM","Daycent","Observed"),
                        values=cbPalette9[c(8,2,1)]) +
-    facet_grid(crop~treatment_scen) +
-    theme_classic(base_family = "serif", base_size = 16) +
+    facet_grid(crop~scenario_abbrev) +
+    theme_classic(base_family = "serif", base_size = 22) +
     theme(panel.background = element_blank(),
           panel.border = element_rect(colour = "darkgrey", fill=NA),
           strip.background = element_blank(),
           axis.line = element_line(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1),
           legend.position = "right",
           legend.key = element_blank())
   
   gY_calib
+  
   
   gSOC_calib <- soc_calib_output_df_piv[soc_calib_output_df_piv$year %in% experiment_year_range,] %>%
     ggplot(aes(x=year, y=C_val, color=Source, show.legend=TRUE)) +
@@ -78,11 +92,9 @@ soc_trendlines_df$Source <- soc_trendlines_df$Model
     ylab(expression('SOC (Mg ha ' ^-1*')')) +
     ggtitle(paste(site_name,"Soil Organic Carbon Calibration")) +
     geom_errorbar(aes(ymin=C_val-Obs_sd, ymax=C_val+Obs_sd),
-                  width=.5) +  # Width of the error bars
-    # geom_smooth(method='lm', formula= y~x, se=FALSE, aes(colour = Model)
-    #             ,linewidth=0.75) +
+                  width=1.5) +  # Width of the error bars
     stat_smooth(
-      data = soc_trendlines_df, 
+      data = soc_trendlines_df_modified, 
       aes(linetype = Fit, y=value), 
       #color="black", 
       method = lm,
@@ -92,8 +104,8 @@ soc_trendlines_df$Source <- soc_trendlines_df$Model
     ) +
     scale_color_manual(labels=c("APSIM","Daycent","Millennial","Observed","RothC"),
                        values=cbPalette9[c(8,2,6,1,3)]) +
-    facet_wrap(~treatment_scen,nrow=1) +
-    theme_classic(base_family = "serif", base_size = 16) +
+    facet_wrap(~scenario_abbrev,nrow=1) +
+    theme_classic(base_family = "serif", base_size = 24) +
     theme(panel.background = element_blank(),
           panel.border = element_rect(colour = "darkgrey", fill=NA),
           strip.background = element_blank(),
@@ -107,6 +119,50 @@ soc_trendlines_df$Source <- soc_trendlines_df$Model
          plot=gY_calib, width=9, height=7, dpi=300)
   ggsave(filename=paste0(results_path,"pub_SOC_calibration.jpg"),
          plot=gSOC_calib, width=14, height=7, dpi=300)
+  
+  ## Calibration box plots ------------------------------------------------------
+  
+  gY1_box <- crop_calib_output_df_piv %>%
+    ggplot(aes(x=Model,y=yield_val)) +
+    stat_boxplot(geom = "errorbar",width=.5) + 
+    geom_boxplot() +
+    xlab("") +
+    ylab(expression('Grain Yield (Mg ha ' ^-1*')')) +
+    facet_wrap(~crop,nrow=1) +
+    theme_classic(base_family = "serif", base_size = 24) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gY1_box
+  
+  gY2_box <- crop_calib_output_df_piv %>%
+    ggplot(aes(x=Model,y=yield_val)) +
+    stat_boxplot(geom = "errorbar",width=.5) + 
+    geom_boxplot() +
+    xlab("") +
+    ylab(expression('Grain Yield (Mg ha ' ^-1*')')) +
+    facet_grid(crop~scenario_abbrev) +
+    theme_classic(base_family = "serif", base_size = 30) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1))
+  
+  gY2_box
+  
+
+  ggsave(filename=paste0(results_path,"pub_Crop_yield_calib_boxplots_all.jpg"),
+         plot=gY1_box, width=12, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"pub_Crop_yield_calib_boxplots_bytreat.jpg"),
+         plot=gY2_box, width=10, height=10, dpi=300)
   
   #*************************************************************
 

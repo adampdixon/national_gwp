@@ -41,9 +41,10 @@ experiment_end_year <- 2021
 experiment_year_range <- experiment_start_year:experiment_end_year
 experiment_start_date <- "1989-01-01"
 experiment_end_date <- "2021-12-31"
-end_fut_period_year <- 2100
+end_fut_period_year <- 2050
 max_fut_period_year <- 2100
 calib_mgmt_grps <- c(1,2,3)
+calib_mgmt_nums <- c(1,2,3)
 #
 obs_path <- paste0("Data/",site_name,"/Calibration/")
 hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
@@ -69,7 +70,7 @@ mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 # Loop through the scenarios; set which climate and management
 # scenario numbers to use for this run:
 clim_nums <- c(1)
-mgmt_grps <- 1 #calib_mgmt_grps #c(1:3)
+mgmt_grps <- c(1:3) #calib_mgmt_grps #
 
 for (x in clim_nums) { # climate scenarios
   print("************************************")

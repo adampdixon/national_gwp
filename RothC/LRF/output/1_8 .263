@@ -8926,9 +8926,9 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0024     -588.99       76.06
- RPM          0.1962     -771.35      100.76
- BIO          0.0508     -250.32       32.78
+ DPM          0.0023     -588.99       76.06
+ RPM          0.1963     -771.32      100.75
+ BIO          0.0508     -250.39       32.79
  HUM         10.6199       97.55      -12.07
  IOM          2.1000    50000.00     -998.02
 
@@ -8998,17 +8998,17 @@
  JANUARY        COVERED        0.00
  FEBRUARY       COVERED        0.01
  MARCH          COVERED        0.01
- APRIL          COVERED        0.00
+ APRIL          COVERED        0.01
  MAY            COVERED        0.02
- JUNE           COVERED        0.05
- JULY           COVERED        0.13
- AUGUST         COVERED        0.09
- SEPTEMBER      COVERED        0.04
- OCTOBER        COVERED        0.03
+ JUNE           COVERED        0.07
+ JULY           COVERED        0.19
+ AUGUST         COVERED        0.15
+ SEPTEMBER      COVERED        0.06
+ OCTOBER        COVERED        0.05
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.38
+ Total                         0.58
 
 
  ( From 005_1_8.dat   )
@@ -9061,17 +9061,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0204     -565.71       72.94
- RPM          0.3169     -677.83       88.02
- BIO          0.0683     -314.16       40.84
- HUM         10.5689       96.65      -11.96
+ DPM          0.0319     -565.70       72.94
+ RPM          0.3931     -656.19       85.09
+ BIO          0.0782     -346.12       44.92
+ HUM         10.5817       95.82      -11.85
  IOM          2.1000    50000.00     -998.02
 
- Total       13.0744     1472.69     -167.47
+ Total       13.1849     1453.27     -165.45
 
 
 
- The accumulated CO2 lost to the atmosphere is     22.9053 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     22.9954 tonnes / ha
 
 
  *******************************************************************************
@@ -9132,7 +9132,7 @@
  -----          -----        -------
  JANUARY        COVERED        0.00
  FEBRUARY       COVERED        0.01
- MARCH          COVERED        0.03
+ MARCH          COVERED        0.02
  APRIL          COVERED        0.01
  MAY            COVERED        0.00
  JUNE           COVERED        0.02
@@ -9140,10 +9140,10 @@
  AUGUST         COVERED        0.04
  SEPTEMBER      COVERED        0.06
  OCTOBER        COVERED        0.04
- NOVEMBER       COVERED        0.00
+ NOVEMBER       COVERED        0.01
  DECEMBER       COVERED        0.00
 
- Total                         0.25
+ Total                         0.24
 
 
  ( From 006_1_8.dat   )
@@ -9196,17 +9196,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0186     -550.97       70.98
- RPM          0.3751     -644.64       83.53
- BIO          0.0777     -330.23       42.84
- HUM         10.5136       96.08      -11.89
+ DPM          0.0188     -551.10       70.99
+ RPM          0.4361     -633.70       82.06
+ BIO          0.0862     -353.59       45.82
+ HUM         10.5277       95.16      -11.77
  IOM          2.1000    50000.00     -998.02
 
- Total       13.0850     1467.54     -166.93
+ Total       13.1688     1452.83     -165.41
 
 
 
- The accumulated CO2 lost to the atmosphere is     23.1478 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     23.2476 tonnes / ha
 
 
  *******************************************************************************
@@ -9272,13 +9272,13 @@
  MAY            COVERED        0.00
  JUNE           COVERED        0.00
  JULY           COVERED        0.01
- AUGUST         COVERED        0.01
+ AUGUST         COVERED        0.02
  SEPTEMBER      COVERED        0.02
  OCTOBER        COVERED        0.01
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.06
+ Total                         0.07
 
 
  ( From 007_1_8.dat   )
@@ -9331,17 +9331,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0046     -529.44       68.11
- RPM          0.3532     -636.12       82.39
- BIO          0.0762     -314.38       40.77
- HUM         10.4477       96.24      -11.91
+ DPM          0.0052     -529.33       68.10
+ RPM          0.4092     -626.22       81.05
+ BIO          0.0838     -336.90       43.65
+ HUM         10.4631       95.23      -11.78
  IOM          2.1000    50000.00     -998.02
 
- Total       12.9817     1482.50     -168.48
+ Total       13.0613     1468.32     -167.02
 
 
 
- The accumulated CO2 lost to the atmosphere is     23.3116 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     23.4217 tonnes / ha
 
 
  *******************************************************************************
@@ -9405,15 +9405,15 @@
  MARCH          COVERED        0.00
  APRIL          COVERED        0.00
  MAY            COVERED        0.01
- JUNE           COVERED        0.02
- JULY           COVERED        0.04
- AUGUST         COVERED        0.05
- SEPTEMBER      COVERED        0.04
+ JUNE           COVERED        0.03
+ JULY           COVERED        0.06
+ AUGUST         COVERED        0.06
+ SEPTEMBER      COVERED        0.05
  OCTOBER        COVERED        0.03
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.19
+ Total                         0.25
 
 
  ( From 008_1_8.dat   )
@@ -9466,17 +9466,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0138     -513.21       65.96
- RPM          0.3854     -611.66       79.10
- BIO          0.0802     -313.80       40.63
- HUM         10.3887       96.03      -11.88
+ DPM          0.0175     -513.20       65.95
+ RPM          0.4555     -601.86       77.78
+ BIO          0.0894     -337.82       43.70
+ HUM         10.4084       94.74      -11.72
  IOM          2.1000    50000.00     -998.02
 
- Total       12.9680     1481.91     -168.42
+ Total       13.0709     1463.76     -166.54
 
 
 
- The accumulated CO2 lost to the atmosphere is     23.5203 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     23.6617 tonnes / ha
 
 
  *******************************************************************************
@@ -9541,14 +9541,14 @@
  APRIL          COVERED        0.00
  MAY            COVERED        0.01
  JUNE           COVERED        0.02
- JULY           COVERED        0.02
+ JULY           COVERED        0.03
  AUGUST         COVERED        0.02
  SEPTEMBER      COVERED        0.02
  OCTOBER        COVERED        0.01
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.10
+ Total                         0.11
 
 
  ( From 009_1_8.dat   )
@@ -9601,17 +9601,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0069     -498.46       64.00
- RPM          0.3774     -599.32       77.44
- BIO          0.0798     -302.97       39.21
- HUM         10.3259       96.09      -11.89
+ DPM          0.0073     -498.54       64.01
+ RPM          0.4415     -591.46       76.39
+ BIO          0.0882     -326.07       42.16
+ HUM         10.3474       94.68      -11.71
  IOM          2.1000    50000.00     -998.02
 
- Total       12.8898     1492.68     -169.54
+ Total       12.9845     1475.78     -167.79
 
 
 
- The accumulated CO2 lost to the atmosphere is     23.6989 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     23.8547 tonnes / ha
 
 
  *******************************************************************************
@@ -9736,17 +9736,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0045     -483.24       61.99
- RPM          0.3626     -588.66       76.01
- BIO          0.0778     -288.97       37.38
- HUM         10.2615       96.28      -11.91
+ DPM          0.0047     -483.25       61.99
+ RPM          0.4196     -582.52       75.19
+ BIO          0.0852     -310.83       40.18
+ HUM         10.2842       94.80      -11.73
  IOM          2.1000    50000.00     -998.02
 
- Total       12.8065     1504.51     -170.76
+ Total       12.8937     1488.74     -169.13
 
 
 
- The accumulated CO2 lost to the atmosphere is     23.8631 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     24.0280 tonnes / ha
 
 
  *******************************************************************************
@@ -9807,16 +9807,16 @@
  -----          -----        -------
  JANUARY        COVERED        0.00
  FEBRUARY       COVERED        0.01
- MARCH          COVERED        0.02
- APRIL          COVERED        0.01
- MAY            COVERED        0.01
- JUNE           COVERED        0.03
- JULY           COVERED        0.02
- AUGUST         COVERED        0.04
- SEPTEMBER      COVERED        0.07
- OCTOBER        COVERED        0.06
+ MARCH          COVERED        0.01
+ APRIL          COVERED        0.00
+ MAY            COVERED        0.02
+ JUNE           COVERED        0.04
+ JULY           COVERED        0.05
+ AUGUST         COVERED        0.11
+ SEPTEMBER      COVERED        0.03
+ OCTOBER        COVERED        0.02
  NOVEMBER       COVERED        0.00
- DECEMBER       COVERED        0.01
+ DECEMBER       COVERED        0.00
 
  Total                         0.28
 
@@ -9871,17 +9871,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0251     -467.90       59.96
- RPM          0.4270     -557.52       71.85
- BIO          0.0851     -296.11       38.22
- HUM         10.2089       95.85      -11.86
+ DPM          0.0161     -467.83       59.95
+ RPM          0.4769     -555.97       71.64
+ BIO          0.0923     -314.47       40.57
+ HUM         10.2336       94.24      -11.66
  IOM          2.1000    50000.00     -998.02
 
- Total       12.8461     1495.01     -169.78
+ Total       12.9190     1481.86     -168.42
 
 
 
- The accumulated CO2 lost to the atmosphere is     24.1055 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     24.2863 tonnes / ha
 
 
  *******************************************************************************
@@ -9944,16 +9944,16 @@
  FEBRUARY       COVERED        0.00
  MARCH          COVERED        0.01
  APRIL          COVERED        0.00
- MAY            COVERED        0.00
- JUNE           COVERED        0.02
- JULY           COVERED        0.01
- AUGUST         COVERED        0.05
- SEPTEMBER      COVERED        0.04
- OCTOBER        COVERED        0.01
+ MAY            COVERED        0.01
+ JUNE           COVERED        0.04
+ JULY           COVERED        0.03
+ AUGUST         COVERED        0.12
+ SEPTEMBER      COVERED        0.09
+ OCTOBER        COVERED        0.02
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.15
+ Total                         0.33
 
 
  ( From 012_1_8.dat   )
@@ -10006,17 +10006,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0096     -460.45       58.98
- RPM          0.4322     -543.99       70.05
- BIO          0.0872     -292.67       37.74
- HUM         10.1525       95.67      -11.84
+ DPM          0.0216     -460.28       58.96
+ RPM          0.5441     -533.39       68.64
+ BIO          0.1012     -320.25       41.26
+ HUM         10.1880       93.44      -11.56
  IOM          2.1000    50000.00     -998.02
 
- Total       12.7815     1503.63     -170.67
+ Total       12.9549     1473.29     -167.53
 
 
 
- The accumulated CO2 lost to the atmosphere is     24.3185 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     24.5763 tonnes / ha
 
 
  *******************************************************************************
@@ -10077,18 +10077,18 @@
  -----          -----        -------
  JANUARY        COVERED        0.01
  FEBRUARY       COVERED        0.01
- MARCH          COVERED        0.02
+ MARCH          COVERED        0.01
  APRIL          COVERED        0.00
  MAY            COVERED        0.02
- JUNE           COVERED        0.05
- JULY           COVERED        0.09
- AUGUST         COVERED        0.08
+ JUNE           COVERED        0.06
+ JULY           COVERED        0.06
+ AUGUST         COVERED        0.05
  SEPTEMBER      COVERED        0.02
- OCTOBER        COVERED        0.02
+ OCTOBER        COVERED        0.01
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.32
+ Total                         0.25
 
 
  ( From 013_1_8.dat   )
@@ -10141,17 +10141,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0154     -445.10       56.96
- RPM          0.5006     -519.53       66.79
- BIO          0.0962     -300.25       38.65
- HUM         10.1063       94.97      -11.75
+ DPM          0.0112     -445.34       56.99
+ RPM          0.5718     -518.22       66.62
+ BIO          0.1057     -318.60       41.00
+ HUM         10.1403       92.82      -11.49
  IOM          2.1000    50000.00     -998.02
 
- Total       12.8184     1494.85     -169.76
+ Total       12.9289     1475.35     -167.74
 
 
 
- The accumulated CO2 lost to the atmosphere is     24.6001 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     24.8491 tonnes / ha
 
 
  *******************************************************************************
@@ -10214,16 +10214,16 @@
  FEBRUARY       COVERED        0.00
  MARCH          COVERED        0.01
  APRIL          COVERED        0.00
- MAY            COVERED        0.02
- JUNE           COVERED        0.04
- JULY           COVERED        0.04
- AUGUST         COVERED        0.03
- SEPTEMBER      COVERED        0.08
- OCTOBER        COVERED        0.03
+ MAY            COVERED        0.03
+ JUNE           COVERED        0.06
+ JULY           COVERED        0.06
+ AUGUST         COVERED        0.05
+ SEPTEMBER      COVERED        0.13
+ OCTOBER        COVERED        0.04
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.26
+ Total                         0.41
 
 
  ( From 014_1_8.dat   )
@@ -10276,17 +10276,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0175     -437.51       55.96
- RPM          0.5406     -503.56       64.68
- BIO          0.1012     -301.00       38.71
- HUM         10.0580       94.43      -11.68
+ DPM          0.0274     -437.47       55.95
+ RPM          0.6576     -498.53       64.01
+ BIO          0.1159     -322.97       41.51
+ HUM         10.1013       91.76      -11.35
  IOM          2.1000    50000.00     -998.02
 
- Total       12.8174     1492.67     -169.54
+ Total       13.0022     1460.93     -166.25
 
 
 
- The accumulated CO2 lost to the atmosphere is     24.8639 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     25.1809 tonnes / ha
 
 
  *******************************************************************************
@@ -10345,20 +10345,20 @@
                 Soil         Residue
  Month          Cover        Input
  -----          -----        -------
- JANUARY        COVERED        0.01
+ JANUARY        COVERED        0.00
  FEBRUARY       COVERED        0.01
  MARCH          COVERED        0.01
- APRIL          COVERED        0.01
- MAY            COVERED        0.03
- JUNE           COVERED        0.03
- JULY           COVERED        0.05
+ APRIL          COVERED        0.00
+ MAY            COVERED        0.02
+ JUNE           COVERED        0.05
+ JULY           COVERED        0.06
  AUGUST         COVERED        0.04
  SEPTEMBER      COVERED        0.02
- OCTOBER        COVERED        0.05
+ OCTOBER        COVERED        0.04
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.27
+ Total                         0.26
 
 
  ( From 015_1_8.dat   )
@@ -10411,17 +10411,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0177     -429.92       54.96
- RPM          0.5774     -489.78       62.85
- BIO          0.1058     -301.09       38.68
- HUM         10.0114       93.84      -11.61
+ DPM          0.0156     -429.97       54.97
+ RPM          0.6767     -487.75       62.58
+ BIO          0.1189     -319.95       41.09
+ HUM         10.0571       91.02      -11.26
  IOM          2.1000    50000.00     -998.02
 
- Total       12.8123     1491.22     -169.39
+ Total       12.9683     1464.33     -166.60
 
 
 
- The accumulated CO2 lost to the atmosphere is     25.1368 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     25.4733 tonnes / ha
 
 
  *******************************************************************************
@@ -10480,20 +10480,20 @@
                 Soil         Residue
  Month          Cover        Input
  -----          -----        -------
- JANUARY        COVERED        0.00
- FEBRUARY       COVERED        0.00
- MARCH          COVERED        0.01
+ JANUARY        COVERED        0.01
+ FEBRUARY       COVERED        0.01
+ MARCH          COVERED        0.02
  APRIL          COVERED        0.00
- MAY            COVERED        0.01
- JUNE           COVERED        0.02
- JULY           COVERED        0.02
- AUGUST         COVERED        0.06
- SEPTEMBER      COVERED        0.10
- OCTOBER        COVERED        0.00
+ MAY            COVERED        0.02
+ JUNE           COVERED        0.04
+ JULY           COVERED        0.03
+ AUGUST         COVERED        0.08
+ SEPTEMBER      COVERED        0.15
+ OCTOBER        COVERED        0.01
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.24
+ Total                         0.36
 
 
  ( From 016_1_8.dat   )
@@ -10546,17 +10546,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0150     -414.79       52.98
- RPM          0.5980     -477.66       61.25
- BIO          0.1083     -297.84       38.24
- HUM          9.9638       93.34      -11.55
+ DPM          0.0225     -414.70       52.97
+ RPM          0.7311     -473.39       60.69
+ BIO          0.1253     -318.75       40.90
+ HUM         10.0182       90.06      -11.15
  IOM          2.1000    50000.00     -998.02
 
- Total       12.7850     1493.69     -169.64
+ Total       12.9971     1457.64     -165.91
 
 
 
- The accumulated CO2 lost to the atmosphere is     25.3999 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     25.8005 tonnes / ha
 
 
  *******************************************************************************
@@ -10615,16 +10615,16 @@
                 Soil         Residue
  Month          Cover        Input
  -----          -----        -------
- JANUARY        COVERED        0.01
+ JANUARY        COVERED        0.00
  FEBRUARY       COVERED        0.01
  MARCH          COVERED        0.01
- APRIL          COVERED        0.01
- MAY            COVERED        0.00
- JUNE           COVERED        0.03
+ APRIL          COVERED        0.00
+ MAY            COVERED        0.01
+ JUNE           COVERED        0.04
  JULY           COVERED        0.05
  AUGUST         COVERED        0.07
  SEPTEMBER      COVERED        0.04
- OCTOBER        COVERED        0.04
+ OCTOBER        COVERED        0.03
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
@@ -10681,17 +10681,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0165     -407.02       51.96
- RPM          0.6258     -465.59       59.66
- BIO          0.1115     -295.29       37.88
- HUM          9.9183       92.78      -11.48
+ DPM          0.0159     -407.06       51.97
+ RPM          0.7414     -463.75       59.41
+ BIO          0.1265     -313.72       40.23
+ HUM          9.9752       89.36      -11.06
  IOM          2.1000    50000.00     -998.02
 
- Total       12.7721     1493.78     -169.65
+ Total       12.9590     1461.88     -166.35
 
 
 
- The accumulated CO2 lost to the atmosphere is     25.6749 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     26.0965 tonnes / ha
 
 
  *******************************************************************************
@@ -10751,19 +10751,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.00
- FEBRUARY       COVERED        0.00
- MARCH          COVERED        0.01
+ FEBRUARY       COVERED        0.01
+ MARCH          COVERED        0.02
  APRIL          COVERED        0.01
- MAY            COVERED        0.01
- JUNE           COVERED        0.03
- JULY           COVERED        0.04
- AUGUST         COVERED        0.05
- SEPTEMBER      COVERED        0.13
- OCTOBER        COVERED        0.06
+ MAY            COVERED        0.02
+ JUNE           COVERED        0.06
+ JULY           COVERED        0.07
+ AUGUST         COVERED        0.09
+ SEPTEMBER      COVERED        0.21
+ OCTOBER        COVERED        0.10
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.01
 
- Total                         0.36
+ Total                         0.58
 
 
  ( From 018_1_8.dat   )
@@ -10816,17 +10816,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0300     -399.40       50.96
- RPM          0.6876     -451.62       57.82
- BIO          0.1184     -296.20       37.96
- HUM          9.8788       91.95      -11.38
+ DPM          0.0489     -399.38       50.96
+ RPM          0.8732     -446.74       57.17
+ BIO          0.1416     -317.68       40.69
+ HUM          9.9503       87.78      -10.86
  IOM          2.1000    50000.00     -998.02
 
- Total       12.8148     1484.67     -168.71
+ Total       13.1140     1435.31     -163.59
 
 
 
- The accumulated CO2 lost to the atmosphere is     25.9893 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     26.5173 tonnes / ha
 
 
  *******************************************************************************
@@ -10886,19 +10886,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.00
- FEBRUARY       COVERED        0.01
- MARCH          COVERED        0.02
- APRIL          COVERED        0.01
+ FEBRUARY       COVERED        0.00
+ MARCH          COVERED        0.01
+ APRIL          COVERED        0.00
  MAY            COVERED        0.01
- JUNE           COVERED        0.03
- JULY           COVERED        0.04
- AUGUST         COVERED        0.04
- SEPTEMBER      COVERED        0.04
+ JUNE           COVERED        0.04
+ JULY           COVERED        0.05
+ AUGUST         COVERED        0.03
+ SEPTEMBER      COVERED        0.03
  OCTOBER        COVERED        0.03
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.23
+ Total                         0.22
 
 
  ( From 019_1_8.dat   )
@@ -10951,17 +10951,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0149     -391.84       49.98
- RPM          0.6914     -443.27       56.72
- BIO          0.1196     -292.07       37.41
- HUM          9.8348       91.38      -11.31
+ DPM          0.0139     -391.98       49.99
+ RPM          0.8509     -440.51       56.35
+ BIO          0.1406     -311.98       39.94
+ HUM          9.9106       86.98      -10.77
  IOM          2.1000    50000.00     -998.02
 
- Total       12.7607     1491.71     -169.44
+ Total       13.0160     1449.02     -165.01
 
 
 
- The accumulated CO2 lost to the atmosphere is     26.2704 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     26.8325 tonnes / ha
 
 
  *******************************************************************************
@@ -11020,20 +11020,20 @@
                 Soil         Residue
  Month          Cover        Input
  -----          -----        -------
- JANUARY        COVERED        0.00
+ JANUARY        COVERED        0.01
  FEBRUARY       COVERED        0.01
- MARCH          COVERED        0.03
+ MARCH          COVERED        0.04
  APRIL          COVERED        0.01
- MAY            COVERED        0.02
- JUNE           COVERED        0.06
- JULY           COVERED        0.09
- AUGUST         COVERED        0.04
- SEPTEMBER      COVERED        0.05
- OCTOBER        COVERED        0.00
+ MAY            COVERED        0.03
+ JUNE           COVERED        0.08
+ JULY           COVERED        0.14
+ AUGUST         COVERED        0.06
+ SEPTEMBER      COVERED        0.08
+ OCTOBER        COVERED        0.01
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.31
+ Total                         0.47
 
 
  ( From 020_1_8.dat   )
@@ -11086,17 +11086,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0139     -391.57       49.94
- RPM          0.7256     -434.10       55.51
- BIO          0.1239     -291.23       37.28
- HUM          9.7958       90.59      -11.21
+ DPM          0.0211     -391.57       49.94
+ RPM          0.9255     -430.36       55.02
+ BIO          0.1497     -312.55       39.99
+ HUM          9.8840       85.56      -10.59
  IOM          2.1000    50000.00     -998.02
 
- Total       12.7591     1489.98     -169.26
+ Total       13.0803     1437.01     -163.76
 
 
 
- The accumulated CO2 lost to the atmosphere is     26.5831 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     27.2374 tonnes / ha
 
 
  *******************************************************************************
@@ -11157,18 +11157,18 @@
  -----          -----        -------
  JANUARY        COVERED        0.00
  FEBRUARY       COVERED        0.00
- MARCH          COVERED        0.03
- APRIL          COVERED        0.01
+ MARCH          COVERED        0.02
+ APRIL          COVERED        0.00
  MAY            COVERED        0.02
  JUNE           COVERED        0.03
- JULY           COVERED        0.05
- AUGUST         COVERED        0.05
+ JULY           COVERED        0.06
+ AUGUST         COVERED        0.06
  SEPTEMBER      COVERED        0.02
- OCTOBER        COVERED        0.03
+ OCTOBER        COVERED        0.02
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.24
+ Total                         0.23
 
 
  ( From 021_1_8.dat   )
@@ -11221,17 +11221,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0128     -384.07       48.96
- RPM          0.7274     -427.09       54.59
- BIO          0.1234     -286.57       36.67
- HUM          9.7522       90.05      -11.15
+ DPM          0.0121     -384.12       48.97
+ RPM          0.9006     -425.02       54.32
+ BIO          0.1458     -306.14       39.15
+ HUM          9.8435       84.86      -10.51
  IOM          2.1000    50000.00     -998.02
 
- Total       12.7158     1495.24     -169.80
+ Total       13.0021     1447.56     -164.86
 
 
 
- The accumulated CO2 lost to the atmosphere is     26.8618 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     27.5432 tonnes / ha
 
 
  *******************************************************************************
@@ -11294,16 +11294,16 @@
  FEBRUARY       COVERED        0.00
  MARCH          COVERED        0.00
  APRIL          COVERED        0.00
- MAY            COVERED        0.02
- JUNE           COVERED        0.03
- JULY           COVERED        0.08
- AUGUST         COVERED        0.07
- SEPTEMBER      COVERED        0.14
- OCTOBER        COVERED        0.02
+ MAY            COVERED        0.04
+ JUNE           COVERED        0.05
+ JULY           COVERED        0.12
+ AUGUST         COVERED        0.11
+ SEPTEMBER      COVERED        0.21
+ OCTOBER        COVERED        0.03
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.36
+ Total                         0.56
 
 
  ( From 022_1_8.dat   )
@@ -11356,17 +11356,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0245     -376.38       47.96
- RPM          0.7770     -417.34       53.31
- BIO          0.1289     -286.10       36.58
- HUM          9.7159       89.20      -11.04
+ DPM          0.0383     -376.37       47.96
+ RPM          1.0067     -413.89       52.86
+ BIO          0.1579     -307.21       39.26
+ HUM          9.8221       83.28      -10.31
  IOM          2.1000    50000.00     -998.02
 
- Total       12.7463     1488.37     -169.09
+ Total       13.1250     1426.75     -162.69
 
 
 
- The accumulated CO2 lost to the atmosphere is     27.1892 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     27.9806 tonnes / ha
 
 
  *******************************************************************************
@@ -11427,18 +11427,18 @@
  -----          -----        -------
  JANUARY        COVERED        0.00
  FEBRUARY       COVERED        0.00
- MARCH          COVERED        0.01
+ MARCH          COVERED        0.00
  APRIL          COVERED        0.00
  MAY            COVERED        0.01
- JUNE           COVERED        0.02
- JULY           COVERED        0.01
+ JUNE           COVERED        0.03
+ JULY           COVERED        0.03
  AUGUST         COVERED        0.03
- SEPTEMBER      COVERED        0.04
+ SEPTEMBER      COVERED        0.03
  OCTOBER        COVERED        0.02
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.15
+ Total                         0.14
 
 
  ( From 023_1_8.dat   )
@@ -11491,17 +11491,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0100     -368.90       46.98
- RPM          0.7403     -412.70       52.70
- BIO          0.1243     -278.49       35.60
- HUM          9.6691       88.89      -11.00
+ DPM          0.0095     -369.04       47.00
+ RPM          0.9406     -410.32       52.39
+ BIO          0.1501     -299.32       38.25
+ HUM          9.7797       82.74      -10.24
  IOM          2.1000    50000.00     -998.02
 
- Total       12.6438     1503.57     -170.66
+ Total       12.9799     1447.69     -164.87
 
 
 
- The accumulated CO2 lost to the atmosphere is     27.4404 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     28.2695 tonnes / ha
 
 
  *******************************************************************************
@@ -11564,16 +11564,16 @@
  FEBRUARY       COVERED        0.00
  MARCH          COVERED        0.01
  APRIL          COVERED        0.00
- MAY            COVERED        0.02
- JUNE           COVERED        0.05
- JULY           COVERED        0.06
- AUGUST         COVERED        0.11
- SEPTEMBER      COVERED        0.09
- OCTOBER        COVERED        0.00
+ MAY            COVERED        0.03
+ JUNE           COVERED        0.08
+ JULY           COVERED        0.10
+ AUGUST         COVERED        0.19
+ SEPTEMBER      COVERED        0.17
+ OCTOBER        COVERED        0.01
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.35
+ Total                         0.59
 
 
  ( From 024_1_8.dat   )
@@ -11626,17 +11626,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0200     -368.62       46.95
- RPM          0.7845     -404.41       51.62
- BIO          0.1292     -278.22       35.55
- HUM          9.6334       88.06      -10.90
+ DPM          0.0340     -368.63       46.95
+ RPM          1.0510     -400.68       51.13
+ BIO          0.1631     -301.10       38.45
+ HUM          9.7616       81.07      -10.04
  IOM          2.1000    50000.00     -998.02
 
- Total       12.6671     1497.86     -170.07
+ Total       13.1097     1425.90     -162.61
 
 
 
- The accumulated CO2 lost to the atmosphere is     27.7666 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     28.7262 tonnes / ha
 
 
  *******************************************************************************
@@ -11700,15 +11700,15 @@
  MARCH          COVERED        0.01
  APRIL          COVERED        0.00
  MAY            COVERED        0.02
- JUNE           COVERED        0.05
- JULY           COVERED        0.05
- AUGUST         COVERED        0.10
- SEPTEMBER      COVERED        0.04
- OCTOBER        COVERED        0.02
+ JUNE           COVERED        0.06
+ JULY           COVERED        0.07
+ AUGUST         COVERED        0.07
+ SEPTEMBER      COVERED        0.03
+ OCTOBER        COVERED        0.01
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.31
+ Total                         0.30
 
 
  ( From 025_1_8.dat   )
@@ -11761,17 +11761,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0171     -361.07       45.96
- RPM          0.8087     -397.20       50.68
- BIO          0.1324     -276.40       35.30
- HUM          9.5976       87.27      -10.80
+ DPM          0.0152     -361.15       45.97
+ RPM          1.0387     -395.43       50.45
+ BIO          0.1622     -296.77       37.88
+ HUM          9.7305       80.06       -9.91
  IOM          2.1000    50000.00     -998.02
 
- Total       12.6558     1498.00     -170.09
+ Total       13.0466     1434.08     -163.46
 
 
 
- The accumulated CO2 lost to the atmosphere is     28.0903 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     29.0906 tonnes / ha
 
 
  *******************************************************************************
@@ -11831,19 +11831,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.01
- FEBRUARY       COVERED        0.01
- MARCH          COVERED        0.02
+ FEBRUARY       COVERED        0.02
+ MARCH          COVERED        0.03
  APRIL          COVERED        0.01
  MAY            COVERED        0.01
- JUNE           COVERED        0.03
- JULY           COVERED        0.02
- AUGUST         COVERED        0.14
- SEPTEMBER      COVERED        0.06
- OCTOBER        COVERED        0.04
+ JUNE           COVERED        0.05
+ JULY           COVERED        0.04
+ AUGUST         COVERED        0.23
+ SEPTEMBER      COVERED        0.10
+ OCTOBER        COVERED        0.07
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.35
+ Total                         0.57
 
 
  ( From 026_1_8.dat   )
@@ -11896,17 +11896,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0236     -360.98       45.95
- RPM          0.8455     -390.62       49.82
- BIO          0.1365     -275.74       35.20
- HUM          9.5641       86.40      -10.70
+ DPM          0.0385     -360.99       45.95
+ RPM          1.1312     -388.01       49.47
+ BIO          0.1726     -297.35       37.94
+ HUM          9.7133       78.42       -9.71
  IOM          2.1000    50000.00     -998.02
 
- Total       12.6697     1493.94     -169.67
+ Total       13.1555     1415.87     -161.56
 
 
 
- The accumulated CO2 lost to the atmosphere is     28.4277 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     29.5511 tonnes / ha
 
 
  *******************************************************************************
@@ -11970,15 +11970,15 @@
  MARCH          COVERED        0.02
  APRIL          COVERED        0.01
  MAY            COVERED        0.02
- JUNE           COVERED        0.04
- JULY           COVERED        0.04
+ JUNE           COVERED        0.05
+ JULY           COVERED        0.06
  AUGUST         COVERED        0.04
- SEPTEMBER      COVERED        0.06
+ SEPTEMBER      COVERED        0.04
  OCTOBER        COVERED        0.01
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.27
+ Total                         0.25
 
 
  ( From 027_1_8.dat   )
@@ -12031,17 +12031,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0138     -353.43       44.97
- RPM          0.8444     -385.29       49.12
- BIO          0.1367     -272.37       34.76
- HUM          9.5274       85.71      -10.61
+ DPM          0.0122     -353.54       44.98
+ RPM          1.0912     -384.04       48.96
+ BIO          0.1684     -292.29       37.28
+ HUM          9.6814       77.50       -9.60
  IOM          2.1000    50000.00     -998.02
 
- Total       12.6223     1500.08     -170.30
+ Total       13.0531     1429.95     -163.03
 
 
 
- The accumulated CO2 lost to the atmosphere is     28.7411 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     29.9073 tonnes / ha
 
 
  *******************************************************************************
@@ -12101,19 +12101,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.00
- FEBRUARY       COVERED        0.01
- MARCH          COVERED        0.03
+ FEBRUARY       COVERED        0.02
+ MARCH          COVERED        0.04
  APRIL          COVERED        0.01
- MAY            COVERED        0.02
- JUNE           COVERED        0.10
- JULY           COVERED        0.09
- AUGUST         COVERED        0.06
- SEPTEMBER      COVERED        0.02
- OCTOBER        COVERED        0.00
+ MAY            COVERED        0.03
+ JUNE           COVERED        0.16
+ JULY           COVERED        0.14
+ AUGUST         COVERED        0.09
+ SEPTEMBER      COVERED        0.03
+ OCTOBER        COVERED        0.01
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.34
+ Total                         0.53
 
 
  ( From 028_1_8.dat   )
@@ -12166,17 +12166,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0126     -353.18       44.94
- RPM          0.8696     -379.76       48.40
- BIO          0.1398     -271.25       34.60
- HUM          9.4951       84.83      -10.50
+ DPM          0.0200     -353.19       44.94
+ RPM          1.1589     -377.92       48.16
+ BIO          0.1767     -292.09       37.24
+ HUM          9.6648       75.90       -9.40
  IOM          2.1000    50000.00     -998.02
 
- Total       12.6172     1499.19     -170.21
+ Total       13.1203     1418.21     -161.80
 
 
 
- The accumulated CO2 lost to the atmosphere is     29.0832 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     30.3690 tonnes / ha
 
 
  *******************************************************************************
@@ -12236,19 +12236,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.01
- FEBRUARY       COVERED        0.02
- MARCH          COVERED        0.04
+ FEBRUARY       COVERED        0.01
+ MARCH          COVERED        0.02
  APRIL          COVERED        0.01
- MAY            COVERED        0.02
+ MAY            COVERED        0.01
  JUNE           COVERED        0.02
- JULY           COVERED        0.03
- AUGUST         COVERED        0.06
- SEPTEMBER      COVERED        0.06
+ JULY           COVERED        0.07
+ AUGUST         COVERED        0.07
+ SEPTEMBER      COVERED        0.03
  OCTOBER        COVERED        0.00
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.27
+ Total                         0.25
 
 
  ( From 029_1_8.dat   )
@@ -12301,17 +12301,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0126     -345.65       43.96
- RPM          0.8651     -374.92       47.77
- BIO          0.1386     -267.28       34.08
- HUM          9.4582       84.20      -10.42
+ DPM          0.0113     -345.70       43.96
+ RPM          1.1145     -374.26       47.68
+ BIO          0.1702     -286.51       36.52
+ HUM          9.6315       75.10       -9.30
  IOM          2.1000    50000.00     -998.02
 
- Total       12.5744     1504.62     -170.77
+ Total       13.0276     1430.85     -163.12
 
 
 
- The accumulated CO2 lost to the atmosphere is     29.3911 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     30.7128 tonnes / ha
 
 
  *******************************************************************************
@@ -12371,19 +12371,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.00
- FEBRUARY       COVERED        0.02
+ FEBRUARY       COVERED        0.03
  MARCH          COVERED        0.04
  APRIL          COVERED        0.01
- MAY            COVERED        0.00
- JUNE           COVERED        0.03
- JULY           COVERED        0.05
- AUGUST         COVERED        0.06
- SEPTEMBER      COVERED        0.05
- OCTOBER        COVERED        0.01
+ MAY            COVERED        0.01
+ JUNE           COVERED        0.07
+ JULY           COVERED        0.11
+ AUGUST         COVERED        0.12
+ SEPTEMBER      COVERED        0.11
+ OCTOBER        COVERED        0.02
  NOVEMBER       COVERED        0.00
- DECEMBER       COVERED        0.00
+ DECEMBER       COVERED        0.01
 
- Total                         0.29
+ Total                         0.55
 
 
  ( From 030_1_8.dat   )
@@ -12436,17 +12436,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0160     -345.60       43.95
- RPM          0.8709     -370.34       47.17
- BIO          0.1386     -264.48       33.72
- HUM          9.4229       83.51      -10.34
+ DPM          0.0338     -345.62       43.95
+ RPM          1.1877     -368.42       46.92
+ BIO          0.1781     -286.21       36.47
+ HUM          9.6150       73.57       -9.11
  IOM          2.1000    50000.00     -998.02
 
- Total       12.5485     1507.25     -171.04
+ Total       13.1147     1416.20     -161.59
 
 
 
- The accumulated CO2 lost to the atmosphere is     29.7077 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     31.1719 tonnes / ha
 
 
  *******************************************************************************
@@ -12506,19 +12506,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.00
- FEBRUARY       COVERED        0.01
- MARCH          COVERED        0.03
- APRIL          COVERED        0.01
- MAY            COVERED        0.04
+ FEBRUARY       COVERED        0.00
+ MARCH          COVERED        0.02
+ APRIL          COVERED        0.00
+ MAY            COVERED        0.03
  JUNE           COVERED        0.09
- JULY           COVERED        0.05
- AUGUST         COVERED        0.08
- SEPTEMBER      COVERED        0.08
- OCTOBER        COVERED        0.03
+ JULY           COVERED        0.07
+ AUGUST         COVERED        0.04
+ SEPTEMBER      COVERED        0.04
+ OCTOBER        COVERED        0.02
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.41
+ Total                         0.32
 
 
  ( From 031_1_8.dat   )
@@ -12571,17 +12571,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0220     -337.95       42.96
- RPM          0.9215     -364.04       46.35
- BIO          0.1450     -264.70       33.73
- HUM          9.3960       82.47      -10.21
+ DPM          0.0154     -338.07       42.97
+ RPM          1.1664     -364.35       46.39
+ BIO          0.1762     -282.33       35.96
+ HUM          9.5886       72.51       -8.98
  IOM          2.1000    50000.00     -998.02
 
- Total       12.5845     1499.76     -170.27
+ Total       13.0466     1425.11     -162.52
 
 
 
- The accumulated CO2 lost to the atmosphere is     30.0817 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     31.5612 tonnes / ha
 
 
  *******************************************************************************
@@ -12642,18 +12642,18 @@
  -----          -----        -------
  JANUARY        COVERED        0.01
  FEBRUARY       COVERED        0.01
- MARCH          COVERED        0.02
- APRIL          COVERED        0.00
+ MARCH          COVERED        0.03
+ APRIL          COVERED        0.01
  MAY            COVERED        0.01
- JUNE           COVERED        0.05
- JULY           COVERED        0.05
- AUGUST         COVERED        0.10
- SEPTEMBER      COVERED        0.06
- OCTOBER        COVERED        0.04
+ JUNE           COVERED        0.08
+ JULY           COVERED        0.09
+ AUGUST         COVERED        0.18
+ SEPTEMBER      COVERED        0.11
+ OCTOBER        COVERED        0.08
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.36
+ Total                         0.60
 
 
  ( From 032_1_8.dat   )
@@ -12706,17 +12706,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0232     -337.91       42.95
- RPM          0.9468     -359.43       45.75
- BIO          0.1480     -263.63       33.58
- HUM          9.3669       81.55      -10.10
+ DPM          0.0404     -337.92       42.95
+ RPM          1.2551     -358.70       45.65
+ BIO          0.1861     -282.56       35.98
+ HUM          9.5766       70.85       -8.78
  IOM          2.1000    50000.00     -998.02
 
- Total       12.5849     1498.10     -170.10
+ Total       13.1582     1407.02     -160.64
 
 
 
- The accumulated CO2 lost to the atmosphere is     30.4384 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     32.0497 tonnes / ha
 
 
  *******************************************************************************
@@ -12776,19 +12776,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.01
- FEBRUARY       COVERED        0.02
+ FEBRUARY       COVERED        0.01
  MARCH          COVERED        0.02
  APRIL          COVERED        0.00
  MAY            COVERED        0.02
- JUNE           COVERED        0.04
- JULY           COVERED        0.10
- AUGUST         COVERED        0.07
+ JUNE           COVERED        0.08
+ JULY           COVERED        0.08
+ AUGUST         COVERED        0.06
  SEPTEMBER      COVERED        0.03
- OCTOBER        COVERED        0.06
+ OCTOBER        COVERED        0.04
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.37
+ Total                         0.35
 
 
  ( From 033_1_8.dat   )
@@ -12841,17 +12841,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0222     -337.90       42.95
- RPM          0.9737     -355.45       45.23
- BIO          0.1514     -263.20       33.52
- HUM          9.3397       80.55       -9.98
+ DPM          0.0191     -337.86       42.95
+ RPM          1.2363     -355.58       45.25
+ BIO          0.1848     -279.76       35.62
+ HUM          9.5540       69.67       -8.63
  IOM          2.1000    50000.00     -998.02
 
- Total       12.5871     1496.11     -169.89
+ Total       13.0941     1415.13     -161.48
 
 
 
- The accumulated CO2 lost to the atmosphere is     30.8071 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     32.4626 tonnes / ha
 
 
  *******************************************************************************
@@ -12911,19 +12911,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.00
- FEBRUARY       COVERED        0.00
+ FEBRUARY       COVERED        0.01
  MARCH          COVERED        0.02
  APRIL          COVERED        0.01
- MAY            COVERED        0.02
- JUNE           COVERED        0.02
- JULY           COVERED        0.03
- AUGUST         COVERED        0.08
- SEPTEMBER      COVERED        0.14
- OCTOBER        COVERED        0.02
+ MAY            COVERED        0.03
+ JUNE           COVERED        0.04
+ JULY           COVERED        0.04
+ AUGUST         COVERED        0.13
+ SEPTEMBER      COVERED        0.23
+ OCTOBER        COVERED        0.03
  NOVEMBER       COVERED        0.00
- DECEMBER       COVERED        0.00
+ DECEMBER       COVERED        0.01
 
- Total                         0.34
+ Total                         0.54
 
 
  ( From 034_1_8.dat   )
@@ -12976,17 +12976,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0257     -337.93       42.95
- RPM          0.9877     -352.25       44.81
- BIO          0.1526     -261.99       33.36
- HUM          9.3106       79.66       -9.87
+ DPM          0.0412     -337.94       42.96
+ RPM          1.2953     -351.91       44.77
+ BIO          0.1906     -279.62       35.59
+ HUM          9.5395       68.15       -8.45
  IOM          2.1000    50000.00     -998.02
 
- Total       12.5766     1496.17     -169.90
+ Total       13.1667     1402.90     -160.21
 
 
 
- The accumulated CO2 lost to the atmosphere is     31.1599 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     32.9322 tonnes / ha
 
 
  *******************************************************************************
@@ -13045,20 +13045,20 @@
                 Soil         Residue
  Month          Cover        Input
  -----          -----        -------
- JANUARY        COVERED        0.01
+ JANUARY        COVERED        0.00
  FEBRUARY       COVERED        0.00
- MARCH          COVERED        0.02
+ MARCH          COVERED        0.01
  APRIL          COVERED        0.00
  MAY            COVERED        0.02
- JUNE           COVERED        0.03
- JULY           COVERED        0.02
- AUGUST         COVERED        0.08
- SEPTEMBER      COVERED        0.04
+ JUNE           COVERED        0.04
+ JULY           COVERED        0.05
+ AUGUST         COVERED        0.06
+ SEPTEMBER      COVERED        0.03
  OCTOBER        COVERED        0.03
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.26
+ Total                         0.25
 
 
  ( From 035_1_8.dat   )
@@ -13111,17 +13111,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0160     -330.36       41.97
- RPM          0.9674     -349.11       44.41
- BIO          0.1500     -258.55       32.91
- HUM          9.2776       78.98       -9.78
+ DPM          0.0150     -330.45       41.98
+ RPM          1.2359     -349.29       44.43
+ BIO          0.1839     -275.26       35.03
+ HUM          9.5116       67.25       -8.33
  IOM          2.1000    50000.00     -998.02
 
- Total       12.5110     1505.41     -170.85
+ Total       13.0465     1419.42     -161.93
 
 
 
- The accumulated CO2 lost to the atmosphere is     31.4841 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     33.3057 tonnes / ha
 
 
  *******************************************************************************
@@ -13181,19 +13181,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.00
- FEBRUARY       COVERED        0.00
+ FEBRUARY       COVERED        0.01
  MARCH          COVERED        0.01
  APRIL          COVERED        0.00
- MAY            COVERED        0.01
- JUNE           COVERED        0.04
- JULY           COVERED        0.08
- AUGUST         COVERED        0.11
- SEPTEMBER      COVERED        0.07
- OCTOBER        COVERED        0.01
+ MAY            COVERED        0.02
+ JUNE           COVERED        0.06
+ JULY           COVERED        0.12
+ AUGUST         COVERED        0.18
+ SEPTEMBER      COVERED        0.12
+ OCTOBER        COVERED        0.02
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.35
+ Total                         0.55
 
 
  ( From 036_1_8.dat   )
@@ -13246,17 +13246,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0202     -330.17       41.95
- RPM          0.9841     -345.68       43.96
- BIO          0.1517     -257.36       32.75
- HUM          9.2492       78.10       -9.67
+ DPM          0.0324     -330.18       41.95
+ RPM          1.2973     -345.36       43.92
+ BIO          0.1908     -275.10       35.00
+ HUM          9.4987       65.73       -8.15
  IOM          2.1000    50000.00     -998.02
 
- Total       12.5052     1504.80     -170.79
+ Total       13.1192     1407.23     -160.66
 
 
 
- The accumulated CO2 lost to the atmosphere is     31.8389 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     33.7836 tonnes / ha
 
 
  *******************************************************************************
@@ -13320,15 +13320,15 @@
  MARCH          COVERED        0.01
  APRIL          COVERED        0.00
  MAY            COVERED        0.01
- JUNE           COVERED        0.07
- JULY           COVERED        0.10
+ JUNE           COVERED        0.09
+ JULY           COVERED        0.11
  AUGUST         COVERED        0.07
- SEPTEMBER      COVERED        0.07
- OCTOBER        COVERED        0.01
+ SEPTEMBER      COVERED        0.05
+ OCTOBER        COVERED        0.00
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.36
+ Total                         0.35
 
 
  ( From 037_1_8.dat   )
@@ -13381,17 +13381,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0190     -330.15       41.95
- RPM          1.0039     -342.68       43.57
- BIO          0.1543     -256.95       32.70
- HUM          9.2231       77.14       -9.55
+ DPM          0.0167     -330.11       41.94
+ RPM          1.2750     -342.86       43.59
+ BIO          0.1886     -272.60       34.67
+ HUM          9.4770       64.60       -8.01
  IOM          2.1000    50000.00     -998.02
 
- Total       12.5003     1504.00     -170.71
+ Total       13.0573     1415.03     -161.47
 
 
 
- The accumulated CO2 lost to the atmosphere is     32.2079 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     34.1986 tonnes / ha
 
 
  *******************************************************************************
@@ -13452,18 +13452,18 @@
  -----          -----        -------
  JANUARY        COVERED        0.00
  FEBRUARY       COVERED        0.01
- MARCH          COVERED        0.02
- APRIL          COVERED        0.00
- MAY            COVERED        0.01
- JUNE           COVERED        0.04
- JULY           COVERED        0.09
- AUGUST         COVERED        0.10
- SEPTEMBER      COVERED        0.03
- OCTOBER        COVERED        0.00
+ MARCH          COVERED        0.03
+ APRIL          COVERED        0.01
+ MAY            COVERED        0.02
+ JUNE           COVERED        0.06
+ JULY           COVERED        0.15
+ AUGUST         COVERED        0.17
+ SEPTEMBER      COVERED        0.05
+ OCTOBER        COVERED        0.01
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.30
+ Total                         0.51
 
 
  ( From 038_1_8.dat   )
@@ -13516,17 +13516,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0143     -330.13       41.94
- RPM          0.9959     -340.37       43.27
- BIO          0.1532     -255.03       32.45
- HUM          9.1933       76.36       -9.46
+ DPM          0.0248     -330.14       41.94
+ RPM          1.3164     -340.12       43.24
+ BIO          0.1934     -272.52       34.66
+ HUM          9.4637       63.12       -7.83
  IOM          2.1000    50000.00     -998.02
 
- Total       12.4567     1509.60     -171.28
+ Total       13.0983     1407.51     -160.69
 
 
 
- The accumulated CO2 lost to the atmosphere is     32.5491 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     34.6714 tonnes / ha
 
 
  *******************************************************************************
@@ -13586,19 +13586,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.00
- FEBRUARY       COVERED        0.02
- MARCH          COVERED        0.04
- APRIL          COVERED        0.01
+ FEBRUARY       COVERED        0.01
+ MARCH          COVERED        0.02
+ APRIL          COVERED        0.00
  MAY            COVERED        0.01
- JUNE           COVERED        0.02
- JULY           COVERED        0.02
- AUGUST         COVERED        0.04
- SEPTEMBER      COVERED        0.07
- OCTOBER        COVERED        0.05
+ JUNE           COVERED        0.03
+ JULY           COVERED        0.05
+ AUGUST         COVERED        0.11
+ SEPTEMBER      COVERED        0.03
+ OCTOBER        COVERED        0.02
  NOVEMBER       COVERED        0.00
- DECEMBER       COVERED        0.01
+ DECEMBER       COVERED        0.00
 
- Total                         0.31
+ Total                         0.29
 
 
  ( From 039_1_8.dat   )
@@ -13651,17 +13651,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0251     -322.62       40.97
- RPM          0.9929     -337.38       42.88
- BIO          0.1514     -252.24       32.09
- HUM          9.1623       75.65       -9.37
+ DPM          0.0179     -322.62       40.97
+ RPM          1.2683     -337.68       42.92
+ BIO          0.1867     -268.52       34.14
+ HUM          9.4370       62.25       -7.72
  IOM          2.1000    50000.00     -998.02
 
- Total       12.4316     1512.26     -171.56
+ Total       13.0099     1419.37     -161.93
 
 
 
- The accumulated CO2 lost to the atmosphere is     32.8803 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     35.0492 tonnes / ha
 
 
  *******************************************************************************
@@ -13721,19 +13721,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.00
- FEBRUARY       COVERED        0.00
+ FEBRUARY       COVERED        0.01
  MARCH          COVERED        0.02
  APRIL          COVERED        0.00
- MAY            COVERED        0.00
- JUNE           COVERED        0.02
- JULY           COVERED        0.01
- AUGUST         COVERED        0.07
- SEPTEMBER      COVERED        0.06
- OCTOBER        COVERED        0.01
+ MAY            COVERED        0.01
+ JUNE           COVERED        0.05
+ JULY           COVERED        0.03
+ AUGUST         COVERED        0.14
+ SEPTEMBER      COVERED        0.13
+ OCTOBER        COVERED        0.03
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.20
+ Total                         0.43
 
 
  ( From 040_1_8.dat   )
@@ -13786,17 +13786,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0131     -322.47       40.95
- RPM          0.9487     -335.28       42.61
- BIO          0.1459     -247.87       31.53
- HUM          9.1263       75.19       -9.31
+ DPM          0.0291     -322.49       40.95
+ RPM          1.2790     -334.86       42.56
+ BIO          0.1870     -266.72       33.91
+ HUM          9.4172       61.11       -7.58
  IOM          2.1000    50000.00     -998.02
 
- Total       12.3339     1527.06     -173.08
+ Total       13.0122     1417.69     -161.75
 
 
 
- The accumulated CO2 lost to the atmosphere is     33.1745 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     35.4736 tonnes / ha
 
 
  *******************************************************************************
@@ -13855,20 +13855,20 @@
                 Soil         Residue
  Month          Cover        Input
  -----          -----        -------
- JANUARY        COVERED        0.01
+ JANUARY        COVERED        0.00
  FEBRUARY       COVERED        0.01
- MARCH          COVERED        0.02
+ MARCH          COVERED        0.01
  APRIL          COVERED        0.00
  MAY            COVERED        0.02
- JUNE           COVERED        0.06
- JULY           COVERED        0.10
- AUGUST         COVERED        0.10
+ JUNE           COVERED        0.07
+ JULY           COVERED        0.09
+ AUGUST         COVERED        0.07
  SEPTEMBER      COVERED        0.02
- OCTOBER        COVERED        0.02
+ OCTOBER        COVERED        0.01
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.36
+ Total                         0.30
 
 
  ( From 041_1_8.dat   )
@@ -13921,17 +13921,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0179     -322.43       40.94
- RPM          0.9721     -332.59       42.26
- BIO          0.1488     -247.91       31.53
- HUM          9.0997       74.32       -9.21
+ DPM          0.0137     -322.39       40.94
+ RPM          1.2382     -332.82       42.29
+ BIO          0.1824     -263.68       33.52
+ HUM          9.3918       60.21       -7.47
  IOM          2.1000    50000.00     -998.02
 
- Total       12.3385     1524.73     -172.84
+ Total       12.9262     1429.27     -162.96
 
 
 
- The accumulated CO2 lost to the atmosphere is     33.5330 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     35.8581 tonnes / ha
 
 
  *******************************************************************************
@@ -13991,19 +13991,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.00
- FEBRUARY       COVERED        0.00
+ FEBRUARY       COVERED        0.01
  MARCH          COVERED        0.01
  APRIL          COVERED        0.00
- MAY            COVERED        0.02
- JUNE           COVERED        0.04
- JULY           COVERED        0.05
- AUGUST         COVERED        0.04
- SEPTEMBER      COVERED        0.12
- OCTOBER        COVERED        0.04
+ MAY            COVERED        0.04
+ JUNE           COVERED        0.07
+ JULY           COVERED        0.08
+ AUGUST         COVERED        0.06
+ SEPTEMBER      COVERED        0.21
+ OCTOBER        COVERED        0.07
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.33
+ Total                         0.54
 
 
  ( From 042_1_8.dat   )
@@ -14056,17 +14056,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0236     -322.50       40.95
- RPM          0.9820     -330.41       41.98
- BIO          0.1496     -247.13       31.42
- HUM          9.0712       73.54       -9.11
+ DPM          0.0394     -322.51       40.95
+ RPM          1.2978     -330.31       41.97
+ BIO          0.1886     -264.31       33.59
+ HUM          9.3784       58.83       -7.30
  IOM          2.1000    50000.00     -998.02
 
- Total       12.3265     1525.17     -172.89
+ Total       13.0041     1416.16     -161.59
 
 
 
- The accumulated CO2 lost to the atmosphere is     33.8764 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     36.3248 tonnes / ha
 
 
  *******************************************************************************
@@ -14128,17 +14128,17 @@
  JANUARY        COVERED        0.01
  FEBRUARY       COVERED        0.01
  MARCH          COVERED        0.01
- APRIL          COVERED        0.01
+ APRIL          COVERED        0.00
  MAY            COVERED        0.03
- JUNE           COVERED        0.04
- JULY           COVERED        0.06
+ JUNE           COVERED        0.05
+ JULY           COVERED        0.07
  AUGUST         COVERED        0.04
  SEPTEMBER      COVERED        0.03
- OCTOBER        COVERED        0.07
+ OCTOBER        COVERED        0.05
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.31
+ Total                         0.29
 
 
  ( From 043_1_8.dat   )
@@ -14191,17 +14191,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0213     -322.50       40.95
- RPM          0.9815     -328.57       41.74
- BIO          0.1496     -246.16       31.29
- HUM          9.0426       72.79       -9.02
+ DPM          0.0180     -322.46       40.95
+ RPM          1.2538     -328.69       41.76
+ BIO          0.1841     -261.74       33.26
+ HUM          9.3540       57.92       -7.18
  IOM          2.1000    50000.00     -998.02
 
- Total       12.2949     1528.91     -173.27
+ Total       12.9099     1428.94     -162.92
 
 
 
- The accumulated CO2 lost to the atmosphere is     34.2168 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     36.7138 tonnes / ha
 
 
  *******************************************************************************
@@ -14261,19 +14261,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.01
- FEBRUARY       COVERED        0.00
- MARCH          COVERED        0.02
+ FEBRUARY       COVERED        0.01
+ MARCH          COVERED        0.03
  APRIL          COVERED        0.00
  MAY            COVERED        0.02
- JUNE           COVERED        0.03
- JULY           COVERED        0.02
- AUGUST         COVERED        0.06
- SEPTEMBER      COVERED        0.13
- OCTOBER        COVERED        0.00
+ JUNE           COVERED        0.05
+ JULY           COVERED        0.04
+ AUGUST         COVERED        0.10
+ SEPTEMBER      COVERED        0.20
+ OCTOBER        COVERED        0.01
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.29
+ Total                         0.46
 
 
  ( From 044_1_8.dat   )
@@ -14326,17 +14326,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0187     -322.47       40.95
- RPM          0.9747     -326.98       41.53
- BIO          0.1487     -244.93       31.14
- HUM          9.0129       72.09       -8.93
+ DPM          0.0295     -322.48       40.95
+ RPM          1.2794     -326.97       41.53
+ BIO          0.1866     -261.66       33.25
+ HUM          9.3370       56.72       -7.03
  IOM          2.1000    50000.00     -998.02
 
- Total       12.2550     1534.08     -173.80
+ Total       12.9326     1424.08     -162.42
 
 
 
- The accumulated CO2 lost to the atmosphere is     34.5480 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     37.1532 tonnes / ha
 
 
  *******************************************************************************
@@ -14395,16 +14395,16 @@
                 Soil         Residue
  Month          Cover        Input
  -----          -----        -------
- JANUARY        COVERED        0.01
+ JANUARY        COVERED        0.00
  FEBRUARY       COVERED        0.01
  MARCH          COVERED        0.01
  APRIL          COVERED        0.01
- MAY            COVERED        0.00
- JUNE           COVERED        0.03
- JULY           COVERED        0.04
- AUGUST         COVERED        0.09
+ MAY            COVERED        0.01
+ JUNE           COVERED        0.04
+ JULY           COVERED        0.06
+ AUGUST         COVERED        0.08
  SEPTEMBER      COVERED        0.04
- OCTOBER        COVERED        0.04
+ OCTOBER        COVERED        0.03
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
@@ -14461,17 +14461,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0186     -314.87       39.97
- RPM          0.9661     -324.72       41.24
- BIO          0.1474     -242.87       30.87
- HUM          8.9825       71.45       -8.85
+ DPM          0.0176     -314.92       39.97
+ RPM          1.2335     -324.98       41.27
+ BIO          0.1810     -258.40       32.83
+ HUM          9.3107       55.93       -6.94
  IOM          2.1000    50000.00     -998.02
 
- Total       12.2146     1539.48     -174.36
+ Total       12.8428     1436.41     -163.70
 
 
 
- The accumulated CO2 lost to the atmosphere is     34.8731 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     37.5258 tonnes / ha
 
 
  *******************************************************************************
@@ -14531,19 +14531,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.00
- FEBRUARY       COVERED        0.00
- MARCH          COVERED        0.02
+ FEBRUARY       COVERED        0.01
+ MARCH          COVERED        0.03
  APRIL          COVERED        0.01
- MAY            COVERED        0.02
- JUNE           COVERED        0.04
- JULY           COVERED        0.05
- AUGUST         COVERED        0.06
- SEPTEMBER      COVERED        0.16
- OCTOBER        COVERED        0.08
+ MAY            COVERED        0.03
+ JUNE           COVERED        0.07
+ JULY           COVERED        0.08
+ AUGUST         COVERED        0.10
+ SEPTEMBER      COVERED        0.26
+ OCTOBER        COVERED        0.13
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.01
 
- Total                         0.45
+ Total                         0.74
 
 
  ( From 046_1_8.dat   )
@@ -14596,17 +14596,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0393     -314.83       39.96
- RPM          1.0237     -322.19       40.91
- BIO          0.1537     -244.61       31.08
- HUM          8.9615       70.41       -8.73
+ DPM          0.0647     -314.83       39.96
+ RPM          1.3686     -322.07       40.90
+ BIO          0.1961     -261.42       33.21
+ HUM          9.3087       54.16       -6.72
  IOM          2.1000    50000.00     -998.02
 
- Total       12.2782     1527.19     -173.10
+ Total       13.0381     1405.85     -160.51
 
 
 
- The accumulated CO2 lost to the atmosphere is     35.2618 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     38.0684 tonnes / ha
 
 
  *******************************************************************************
@@ -14667,18 +14667,18 @@
  -----          -----        -------
  JANUARY        COVERED        0.00
  FEBRUARY       COVERED        0.00
- MARCH          COVERED        0.02
- APRIL          COVERED        0.01
+ MARCH          COVERED        0.01
+ APRIL          COVERED        0.00
  MAY            COVERED        0.01
- JUNE           COVERED        0.02
- JULY           COVERED        0.04
- AUGUST         COVERED        0.04
+ JUNE           COVERED        0.04
+ JULY           COVERED        0.05
+ AUGUST         COVERED        0.03
  SEPTEMBER      COVERED        0.04
- OCTOBER        COVERED        0.04
+ OCTOBER        COVERED        0.03
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.23
+ Total                         0.22
 
 
  ( From 047_1_8.dat   )
@@ -14731,17 +14731,17 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0159     -314.75       39.95
- RPM          0.9899     -320.61       40.71
- BIO          0.1508     -242.22       30.78
- HUM          8.9315       69.78       -8.65
+ DPM          0.0148     -314.72       39.95
+ RPM          1.2893     -320.65       40.71
+ BIO          0.1891     -258.20       32.79
+ HUM          9.2842       53.32       -6.61
  IOM          2.1000    50000.00     -998.02
 
- Total       12.1880     1541.01     -174.52
+ Total       12.8774     1428.53     -162.88
 
 
 
- The accumulated CO2 lost to the atmosphere is     35.5860 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     38.4527 tonnes / ha
 
 
  *******************************************************************************
@@ -14801,19 +14801,19 @@
  Month          Cover        Input
  -----          -----        -------
  JANUARY        COVERED        0.01
- FEBRUARY       COVERED        0.01
- MARCH          COVERED        0.04
+ FEBRUARY       COVERED        0.02
+ MARCH          COVERED        0.07
  APRIL          COVERED        0.01
- MAY            COVERED        0.03
- JUNE           COVERED        0.06
- JULY           COVERED        0.11
- AUGUST         COVERED        0.05
- SEPTEMBER      COVERED        0.06
+ MAY            COVERED        0.04
+ JUNE           COVERED        0.10
+ JULY           COVERED        0.17
+ AUGUST         COVERED        0.08
+ SEPTEMBER      COVERED        0.09
  OCTOBER        COVERED        0.01
  NOVEMBER       COVERED        0.00
  DECEMBER       COVERED        0.00
 
- Total                         0.38
+ Total                         0.60
 
 
  ( From 048_1_8.dat   )
@@ -14866,16 +14866,16 @@
                            Radio       Delta
               Amount        Age        Value
               ------       -----       -----
- DPM          0.0165     -314.69       39.94
- RPM          1.0133     -318.91       40.49
- BIO          0.1539     -242.87       30.86
- HUM          8.9087       68.85       -8.53
+ DPM          0.0261     -314.70       39.94
+ RPM          1.3590     -318.81       40.48
+ BIO          0.1978     -259.76       32.99
+ HUM          9.2782       51.75       -6.42
  IOM          2.1000    50000.00     -998.02
 
- Total       12.1924     1538.73     -174.28
+ Total       12.9611     1414.65     -161.43
 
 
 
- The accumulated CO2 lost to the atmosphere is     35.9596 tonnes / ha
+ The accumulated CO2 lost to the atmosphere is     38.9650 tonnes / ha
 
 

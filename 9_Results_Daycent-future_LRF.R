@@ -58,8 +58,8 @@ suppressMessages({
     ylab(expression('Cotton Yield (Mg ha ' ^-1*')')) +
     ggtitle(paste(site_name,"Cotton Yield"),paste0("Scenario: ",scenario_descriptor_full)) +
     #    geom_abline(intercept=CYfit_[1], slope=CYfit_Day[2], color="orange") +
-    geom_segment(aes(x = CYxs[1], xend = CYxs[2], y = CYys[1], yend = CYys[2]), color=cbPalette9[8]) +
-    geom_segment(aes(x = CYobsxs[1], xend = CYobsxs[2], y = CYobsys[1], yend = CYobsys[2]), color=cbPalette9[1]) +
+#    geom_segment(aes(x = CYxs[1], xend = CYxs[2], y = CYys[1], yend = CYys[2]), color=cbPalette9[8]) +
+#    geom_segment(aes(x = CYobsxs[1], xend = CYobsxs[2], y = CYobsys[1], yend = CYobsys[2]), color=cbPalette9[1]) +
     scale_color_manual(labels=c("Daycent","Historical","Observed"),
                        values=cbPalette9[c(8,4,1)]) +
     theme_classic(base_family = "serif", base_size = 15) +
@@ -87,8 +87,9 @@ suppressMessages({
       geom_point() +
       xlab("Year") +
       ylab(expression('Sorghum Yield (Mg ha ' ^-1*')')) +
+      ylim(0,4) +
       ggtitle(paste(site_name,"Sorghum Yield"),paste0("Scenario: ",scenario_descriptor_full)) +
-      geom_segment(aes(x = SYxs[1], xend = SYxs[2], y = SYys[1], yend = SYys[2]), color=cbPalette9[8]) +
+      # geom_segment(aes(x = SYxs[1], xend = SYxs[2], y = SYys[1], yend = SYys[2]), color=cbPalette9[8]) +
 #      geom_segment(aes(x = SYobsxs[1], xend = SYobsxs[2], y = SYobsys[1], yend = SYobsys[2]), color=cbPalette9[1]) +
       scale_color_manual(labels=c("Daycent","Historical","Observed"),
                          values=cbPalette9[c(8,4,1)]) +
@@ -401,8 +402,10 @@ suppressMessages({
   
   ggsave(filename=paste0(results_path,"Cotton_yield_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gCY,
          width=9, height=6, dpi=300)
+  if(mgmt_scenario_grp != 7) {
   ggsave(filename=paste0(results_path,"Sorghum_yield_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gSY,
          width=9, height=6, dpi=300)
+  }
   ggsave(filename=paste0(results_path,"SOC_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gC,
          width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"Soil_Temp_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gT,

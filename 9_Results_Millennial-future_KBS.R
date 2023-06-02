@@ -6,7 +6,7 @@
 
 suppressMessages({
   
-print("Starting 9_Results_Millennial-future.R")
+print(paste0("Starting 9_Results_Millennial-future_",site_name,".R"))
 
 library(readxl)
 #library(plotly)
@@ -30,16 +30,16 @@ library(ggplot2)
 
 if(scenario_name=="1_3") {
   # remove 1998 observation from regression, looks like bad data
-  Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha_10cm[Cstock_Mgha_10cm$year >= experiment_start_year &
-                                                                 Cstock_Mgha_10cm$year != 1998,]))
+  Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha_25cm[Cstock_Mgha_25cm$year >= experiment_start_year &
+                                                                 Cstock_Mgha_25cm$year != 1998,]))
 } else {
-  Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha_10cm[Cstock_Mgha_10cm$year >= experiment_start_year,]))
+  Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha_25cm[Cstock_Mgha_25cm$year >= experiment_start_year,]))
 }
 
 
-input_data <- if(scenario_name=="1_3") { Cstock_Mgha_piv_10cm[Cstock_Mgha_piv_10cm$year>=1989 & 
-                                                         Cstock_Mgha_piv_10cm$year!=1998,] 
-} else { Cstock_Mgha_piv_10cm[Cstock_Mgha_piv_10cm$year>=1989,] }
+input_data <- if(scenario_name=="1_3") { Cstock_Mgha_piv_25cm[Cstock_Mgha_piv_25cm$year>=1989 & 
+                                                         Cstock_Mgha_piv_25cm$year!=1998,] 
+} else { Cstock_Mgha_piv_25cm[Cstock_Mgha_piv_25cm$year>=1989,] }
 
 # 10 cm experimental through future 
 gC4 <- input_data %>%

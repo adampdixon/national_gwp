@@ -26,50 +26,70 @@ library(ggplot2)
 
 #first(SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=="KBS_Observed"&!is.na(SoilMoist_VSM_piv$h2o_val),"date"])
 
-gM <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='Daycent'
-                        & SoilMoist_VSM_piv$date>="2003-01-01"
-                        & SoilMoist_VSM_piv$date<experiment_end_date,] %>%
-  ggplot(aes(x=date, y=h2o_val, color=source)) +
-  geom_point() +
-  geom_point(data=SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='Observed'
-                                    & SoilMoist_VSM_piv$date>="2003-01-01"
-                                    & SoilMoist_VSM_piv$date<experiment_end_date,],
-             aes(x=date, y=h2o_val, color=source)) +
-  xlab("Year") +
-  ylab("Volumetric soil moisture (%)") +
-  ggtitle(paste0(site_name," Soil Moisture"),
-          paste0("Scenario: ",scenario_descriptor)) +
-  scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
-  theme(panel.background = element_blank(),
-        axis.line = element_line(),
-        legend.position = "right",
-        legend.key = element_blank())
+    Moist_this_piv <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$year %in% experiment_year_range,]
 
-gM
+    Moist_this <- SoilMoist_VSM[year(SoilMoist_VSM$date) %in% experiment_year_range,]
+    Mfit_time <- lm(Daycent ~ date, data = Moist_this)
+    Mfit_coef_time <- coef(Mfit_time)
+    Mfit_r2_time <- round(summary(Mfit_time)$r.squared,2)
+    M_rmse_error_time <- Moist_this$Observed-Moist_this$Daycent
+    M_rmse_time <- round(sqrt(mean(M_rmse_error_time^2,na.rm=TRUE)),2)
+  
+  gM <- Moist_this_piv[Moist_this_piv$source=='Daycent' 
+                       & Moist_this_piv$year %in% ObsVSM$year,] %>%
+    ggplot(aes(x=date, y=h2o_val, color=source, show.legend=TRUE)) +
+    geom_point() +
+    geom_point(data=Moist_this_piv[Moist_this_piv$source=='Observed' 
+                                   & Moist_this_piv$year %in% ObsVSM$year,],
+               aes(x=date, y=h2o_val, color=source)) +
+    xlab("Year") +
+    ylab("Volumetric soil moisture") +
+    ggtitle(paste0(site_name," Soil Moisture"),
+            paste0("Scenario: ",scenario_descriptor)) +
+    scale_color_manual(labels=c("Daycent","Observed"),
+                       values=cbPalette9[c(2,1)]) +
+    theme_classic(base_family = "serif", base_size = 15) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gM
+  
+# Maize_this <- MaizeYld_Mgha_piv[MaizeYld_Mgha_piv$year %in% experiment_year_range &
+#                                   MaizeYld_Mgha_piv$source!='Historical',]
+# 
+# MY_rmse_error <- pull(Maize_this[Maize_this$source=="Observed",],yield_val)-
+#   pull(Maize_this[Maize_this$source=="Daycent",],"yield_val")
+# MY_rmse <- round(sqrt(mean(MY_rmse_error^2,na.rm=TRUE)),2)
 
+Maize_this_piv <- MaizeYld_Mgha_piv[MaizeYld_Mgha_piv$year %in% experiment_year_range &
+                                      MaizeYld_Mgha_piv$source!='Historical',]
+Maize_this <- MaizeYld_Mgha[MaizeYld_Mgha$year %in% experiment_year_range &
+                              MaizeYld_Mgha_piv$source!='Historical',]
 
-Maize_this <- MaizeYld_Mgha_piv[MaizeYld_Mgha_piv$year %in% experiment_year_range &
-                                  MaizeYld_Mgha_piv$source!='Historical',]
+MYfit_time <- lm(Daycent ~ year, data = Maize_this)
+MYfit_coef_time <- coef(MYfit_time)
+MYfit_r2_time <- round(summary(MYfit_time)$r.squared,2)
 
-MY_rmse_error <- pull(Maize_this[Maize_this$source=="Observed",],yield_val)-
-  pull(Maize_this[Maize_this$source=="Daycent",],"yield_val")
-MY_rmse <- round(sqrt(mean(MY_rmse_error^2,na.rm=TRUE)),2)
+MY_rmse_error_time <- Maize_this$Observed-Maize_this$Daycent
+MY_rmse_time <- round(sqrt(mean(MY_rmse_error_time^2,na.rm=TRUE)),2)
 
-gMY <- Maize_this %>%
-  ggplot(aes(x=year, y=yield_val, color=source)) +
+gMY <- Maize_this_piv %>%
+  ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
   geom_point() +
   annotate("text", # RMSE
-           x=min(Maize_this$year, na.rm=T),
-           y=max(Maize_this$yield_val, na.rm=T),
+           x=min(Maize_this_piv$year, na.rm=T),
+           y=max(Maize_this_piv$yield_val, na.rm=T),
            hjust=0, family="serif", color="gray31",
-           label=bquote("RMSE =" ~.(MY_rmse))) +
+           label=bquote("RMSE =" ~.(MY_rmse_time))) +
   xlab("Year") +
-  ylab(expression('Maize Yield (Mg ha' ^-1*')')) +
+  ylab(expression('Maize Yield (Mg ha ' ^-1*')')) +
   ggtitle(paste(site_name,"Maize Yield"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
+                     values=cbPalette9[c(2,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -84,7 +104,8 @@ gMhY <- MaizeYld_Mgha_piv[MaizeYld_Mgha_piv$year <= experiment_end_year,] %>%
   ggtitle(paste(site_name,"Maize Yield"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Historical","Observed"),
-                     values=cbPalette9[c(8,4,1)]) +
+                     values=cbPalette9[c(2,4,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -92,27 +113,40 @@ gMhY <- MaizeYld_Mgha_piv[MaizeYld_Mgha_piv$year <= experiment_end_year,] %>%
 
 gMhY
 
-Soy_this <- SoyYld_Mgha_piv[SoyYld_Mgha_piv$year %in% experiment_year_range &
-                              SoyYld_Mgha_piv$source!='Historical',]
+# Soy_this <- SoyYld_Mgha_piv[SoyYld_Mgha_piv$year %in% experiment_year_range &
+#                               SoyYld_Mgha_piv$source!='Historical',]
+# 
+# SY_rmse_error <- pull(Soy_this[Soy_this$source=="Observed",],yield_val)-
+#   pull(Soy_this[Soy_this$source=="Daycent",],"yield_val")
+# SY_rmse <- round(sqrt(mean(SY_rmse_error^2,na.rm=TRUE)),2)
 
-SY_rmse_error <- pull(Soy_this[Soy_this$source=="Observed",],yield_val)-
-  pull(Soy_this[Soy_this$source=="Daycent",],"yield_val")
-SY_rmse <- round(sqrt(mean(SY_rmse_error^2,na.rm=TRUE)),2)
+Soy_this_piv <- SoyYld_Mgha_piv[SoyYld_Mgha_piv$year %in% experiment_year_range &
+                                  SoyYld_Mgha_piv$source!='Historical',]
+Soy_this <- SoyYld_Mgha[SoyYld_Mgha$year %in% experiment_year_range &
+                          SoyYld_Mgha_piv$source!='Historical',]
 
-gSY <- Soy_this %>%
+SYfit_time <- lm(Daycent ~ year, data = Soy_this)
+SYfit_coef_time <- coef(SYfit_time)
+SYfit_r2_time <- round(summary(SYfit_time)$r.squared,2)
+
+SY_rmse_error_time <- Soy_this$Observed-Soy_this$Daycent
+SY_rmse_time <- round(sqrt(mean(SY_rmse_error_time^2,na.rm=TRUE)),2)
+
+gSY <- Soy_this_piv %>%
   ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
-  geom_point(show.legend=TRUE) +
+  geom_point() +
   annotate("text", # RMSE
-           x=min(Soy_this$year, na.rm=T),
-           y=max(Soy_this$yield_val, na.rm=T),
+           x=min(Soy_this_piv$year, na.rm=T),
+           y=max(Soy_this_piv$yield_val, na.rm=T),
            hjust=0, family="serif", color="gray31",
-           label=bquote("RMSE =" ~.(SY_rmse))) +
+           label=bquote("RMSE =" ~.(SY_rmse_time))) +
   xlab("Year") +
-  ylab(expression('Soybean Yield (Mg ha' ^-1*')')) +
+  ylab(expression('Soybean Yield (Mg ha ' ^-1*')')) +
   ggtitle(paste(site_name,"Soybean Yield"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
+                     values=cbPalette9[c(2,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -128,7 +162,8 @@ gShY <- SoyYld_Mgha_piv[SoyYld_Mgha_piv$year <= experiment_end_year,] %>%
   ggtitle(paste(site_name,"Soybean Yield"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Historical","Observed"),
-                     values=cbPalette9[c(8,4,1)]) +
+                     values=cbPalette9[c(2,4,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -136,27 +171,46 @@ gShY <- SoyYld_Mgha_piv[SoyYld_Mgha_piv$year <= experiment_end_year,] %>%
 
 gShY
 
-Wheat_this <- WheatYld_Mgha_piv[WheatYld_Mgha_piv$year %in% experiment_year_range &
-                                  WheatYld_Mgha_piv$source!='Historical',]
+# Wheat_this <- WheatYld_Mgha_piv[WheatYld_Mgha_piv$year %in% experiment_year_range &
+#                                   WheatYld_Mgha_piv$source!='Historical',]
+# 
+# WY_rmse_error <- pull(Wheat_this[Wheat_this$source=="Observed",],yield_val)-
+#   pull(Wheat_this[Wheat_this$source=="Daycent",],"yield_val")
+# WY_rmse <- round(sqrt(mean(WY_rmse_error^2,na.rm=TRUE)),2)
 
-WY_rmse_error <- pull(Wheat_this[Wheat_this$source=="Observed",],yield_val)-
-  pull(Wheat_this[Wheat_this$source=="Daycent",],"yield_val")
-WY_rmse <- round(sqrt(mean(WY_rmse_error^2,na.rm=TRUE)),2)
+Wheat_this_piv <- WheatYld_Mgha_piv[WheatYld_Mgha_piv$year %in% experiment_year_range &
+                                      WheatYld_Mgha_piv$source!='Historical',]
+Wheat_this <- WheatYld_Mgha[WheatYld_Mgha$year %in% experiment_year_range &
+                              WheatYld_Mgha_piv$source!='Historical',]
 
-gWY <- Wheat_this %>%
+WYfit_time <- lm(Daycent ~ year, data = Wheat_this)
+WYfit_coef_time <- coef(WYfit_time)
+WYfit_r2_time <- round(summary(WYfit_time)$r.squared,2)
+
+WY_rmse_error_time <- Wheat_this$Observed-Wheat_this$Daycent
+WY_rmse_time <- round(sqrt(mean(WY_rmse_error_time^2,na.rm=TRUE)),2)
+
+# Wheat_this <- WheatYld_Mgha_piv[WheatYld_Mgha_piv$year %in% experiment_year_range,]
+# 
+# WY_rmse_error <- pull(Wheat_this[Wheat_this$source=="Observed",],yield_val)-
+#   pull(Wheat_this[Wheat_this$source=="Daycent",],"yield_val")
+# WY_rmse <- round(sqrt(mean(WY_rmse_error^2,na.rm=TRUE)),2)
+
+gWY <- Wheat_this_piv%>%
   ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
-  geom_point(show.legend=TRUE) +
+  geom_point() +
   annotate("text", # RMSE
-           x=min(Wheat_this$year, na.rm=T),
-           y=max(Wheat_this$yield_val, na.rm=T),
+           x=min(Wheat_this_piv$year, na.rm=T),
+           y=max(Wheat_this_piv$yield_val, na.rm=T),
            hjust=0, family="serif", color="gray31",
-           label=bquote("RMSE =" ~.(WY_rmse))) +
+           label=bquote("RMSE =" ~.(WY_rmse_time))) +
   xlab("Year") +
-  ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
+  ylab(expression('Wheat Yield (Mg ha ' ^-1*')')) +
   ggtitle(paste(site_name,"Wheat Yield"),
-          paste0("Scenario: ",scenario_descriptor)) +
+          paste("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
+                     values=cbPalette9[c(2,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -172,7 +226,8 @@ gWhY <- WheatYld_Mgha_piv[WheatYld_Mgha_piv$year <= experiment_end_year,] %>%
   ggtitle(paste(site_name,"Wheat Yield"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Historical","Observed"),
-                     values=cbPalette9[c(8,4,1)]) +
+                     values=cbPalette9[c(2,4,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -181,16 +236,27 @@ gWhY <- WheatYld_Mgha_piv[WheatYld_Mgha_piv$year <= experiment_end_year,] %>%
 gWhY
 
 ##
-Cfit_Daycent <- coef(lm(Daycent ~ year, data = Cstock_Mgha))
+SOC_this_piv <- Cstock_Mgha_piv[Cstock_Mgha_piv$year %in% experiment_year_range,]
 
-if(mgmt_scenario_grp!=3) {
-Cfit_Obs <- coef(lm(Observed ~ year, 
-                    data = Cstock_Mgha[Cstock_Mgha$year %in% experiment_year_range,]))
-} else {
-  Cfit_Obs <- coef(lm(Observed ~ year, 
-                      data = Cstock_Mgha[Cstock_Mgha$year %in% experiment_year_range &
-                                           Cstock_Mgha$year!=1998,]))
-}
+## calculate stats with outliers
+SOC_this <- Cstock_Mgha[Cstock_Mgha$year %in% experiment_year_range,]
+Cfit_time <- lm(Daycent ~ year, data = SOC_this)
+Cfit_coef_time <- coef(Cfit_time)
+Cfit_r2_time <- round(summary(Cfit_time)$r.squared,2)
+C_rmse_error_time <- SOC_this$Observed-SOC_this$Daycent
+C_rmse_time <- round(sqrt(mean(C_rmse_error_time^2,na.rm=TRUE)),2)
+## calculate stats without outliers
+SOC_this_noout <- Cstock_Mgha[Cstock_Mgha$year %in% experiment_year_range &
+                                !(Cstock_Mgha$Observed %in% ObsC_outliers),]
+Cfit_time_noout <- lm(Daycent ~ year, data = SOC_this_noout)
+Cfit_coef_time_noout <- coef(Cfit_time_noout)
+Cfit_r2_time_noout <- round(summary(Cfit_time_noout)$r.squared,2)
+C_rmse_error_time_noout <- SOC_this_noout$Observed-SOC_this_noout$Daycent
+C_rmse_time_noout <- round(sqrt(mean(C_rmse_error_time_noout^2,na.rm=TRUE)),2)
+
+
+## include outliers in trend line here
+ObsCfit_all <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
 
 # gCb <- Cstock_Mgha_piv[Cstock_Mgha_piv$year <= experiment_end_year,] %>%
 #   ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
@@ -217,9 +283,10 @@ gCb <- Cstock_Mgha[Cstock_Mgha$year <= experiment_end_year,] %>%
   ggtitle(paste(site_name,"Soil Organic Carbon"),
           paste0("Scenario: ",scenario_descriptor)) +
   #geom_abline(intercept=Cfit_Daycent[1], slope=Cfit_Daycent[2], color="orange") +
-  geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
+  geom_abline(intercept=ObsCfit_all[1], slope=ObsCfit_all[2], color="black") +
   scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
+                     values=cbPalette9[c(2,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -234,26 +301,27 @@ Cdiff_1850_1989 <- lis_output[lis_output$time==1850,"somsc_gm2"]-lis_output[lis_
 
 ##
 
-gC <- Cstock_Mgha[Cstock_Mgha$year %in% experiment_year_range,] %>%
-  ggplot(aes(x=year, y=Observed, color=cbPalette9[8]), show.legend=TRUE) +
-  geom_point(show.legend=TRUE) +
-  geom_line(data=Cstock_Mgha[Cstock_Mgha$year %in% experiment_year_range,],
-            aes(x=year, y=Daycent, color=cbPalette9[1]), show.legend=TRUE) +
+
+gC <- SOC_this_piv %>%
+  ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
+  geom_point() +
   xlab("Year") +
-  ylab(expression('SOC stock (Mg C ha' ^-1*')')) +
+  ylab(expression('SOC stock (Mg C ha ' ^-1*')')) +
+  #ylim(10,35) +
   ggtitle(paste(site_name,"Soil Organic Carbon"),
           paste0("Scenario: ",scenario_descriptor)) +
-  #geom_abline(intercept=Cfit_Daycent[1], slope=Cfit_Daycent[2], color="orange") +
-  #geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
+  #  geom_abline(intercept=Cfit_Daycent[1], slope=Cfit_Daycent[2], color="orange") +
+  geom_abline(intercept=ObsCfit_all[1], slope=ObsCfit_all[2], color="black") +
   scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
+                     values=cbPalette9[c(2,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
         legend.key = element_blank())
 
-
 gC 
+
 
 SOC_diff <- lis_output[lis_output$time==1850,"somsc_gm2"]-lis_output[lis_output$time==1988,"somsc_gm2"]
 SOC_1850 <- lis_output[lis_output$time==1850,"somsc_gm2"]
@@ -261,57 +329,90 @@ SOC_1989 <- unique(lis_output[lis_output$time==1989,"somsc_gm2"])
 
 #first(SoilTemp_C_piv[SoilTemp_C_piv$source=="KBS_Observed"&!is.na(SoilTemp_C_piv$temp_val),"date"])
 
-m_Tfit_Daycent_pre2010 <- lm(temp_val ~ date, 
-                             data = SoilTemp_C_piv[SoilTemp_C_piv$date<="2010-01-01"&
-                                                     SoilTemp_C_piv$date>="1999-01-01"&
-                                                     SoilTemp_C_piv$source=="Daycent",])
-m_Tfit_Obs_pre2010 <- lm(temp_val ~ date, 
-                         data = SoilTemp_C_piv[SoilTemp_C_piv$date<="2010-01-01"&
-                                                 SoilTemp_C_piv$source=="Observed",])
-Tfit_Daycent_aug_pre2010 <- augment(m_Tfit_Daycent_pre2010, 
-                                    SoilTemp_C_piv[SoilTemp_C_piv$date<="2010-01-01"&
-                                                     SoilTemp_C_piv$date>="1999-01-01"&
-                                                     SoilTemp_C_piv$source=="Daycent",])
-Tfit_Obs_aug_pre2010 <- augment(m_Tfit_Obs_pre2010, 
-                                SoilTemp_C_piv[SoilTemp_C_piv$date<="2010-01-01"&
-                                                 SoilTemp_C_piv$source=="Observed"&
-                                                 !is.na(SoilTemp_C_piv$temp_val),])
-m_Tfit_Daycent <- lm(temp_val ~ date, data = SoilTemp_C_piv[SoilTemp_C_piv$date>="2010-01-01"&
-                                                              SoilTemp_C_piv$source=="Daycent",])
-m_Tfit_Obs <- lm(temp_val ~ date, data = SoilTemp_C_piv[SoilTemp_C_piv$date>="2010-01-01"&
-                                                          SoilTemp_C_piv$source=="Observed",])
-Tfit_Daycent_aug <- augment(m_Tfit_Daycent, SoilTemp_C_piv[SoilTemp_C_piv$date>="2010-01-01"&
-                                                             SoilTemp_C_piv$source=="Daycent",])
-Tfit_Obs_aug <- augment(m_Tfit_Obs, SoilTemp_C_piv[SoilTemp_C_piv$date>="2010-01-01"&
-                                                     SoilTemp_C_piv$source=="Observed"&
-                                                     !is.na(SoilTemp_C_piv$temp_val),])
+# m_Tfit_Daycent_pre2010 <- lm(temp_val ~ date, 
+#                              data = SoilTemp_C_piv[SoilTemp_C_piv$date<="2010-01-01"&
+#                                                      SoilTemp_C_piv$date>="1999-01-01"&
+#                                                      SoilTemp_C_piv$source=="Daycent",])
+# m_Tfit_Obs_pre2010 <- lm(temp_val ~ date, 
+#                          data = SoilTemp_C_piv[SoilTemp_C_piv$date<="2010-01-01"&
+#                                                  SoilTemp_C_piv$source=="Observed",])
+# Tfit_Daycent_aug_pre2010 <- augment(m_Tfit_Daycent_pre2010, 
+#                                     SoilTemp_C_piv[SoilTemp_C_piv$date<="2010-01-01"&
+#                                                      SoilTemp_C_piv$date>="1999-01-01"&
+#                                                      SoilTemp_C_piv$source=="Daycent",])
+# Tfit_Obs_aug_pre2010 <- augment(m_Tfit_Obs_pre2010, 
+#                                 SoilTemp_C_piv[SoilTemp_C_piv$date<="2010-01-01"&
+#                                                  SoilTemp_C_piv$source=="Observed"&
+#                                                  !is.na(SoilTemp_C_piv$temp_val),])
+# m_Tfit_Daycent <- lm(temp_val ~ date, data = SoilTemp_C_piv[SoilTemp_C_piv$date>="2010-01-01"&
+#                                                               SoilTemp_C_piv$source=="Daycent",])
+# m_Tfit_Obs <- lm(temp_val ~ date, data = SoilTemp_C_piv[SoilTemp_C_piv$date>="2010-01-01"&
+#                                                           SoilTemp_C_piv$source=="Observed",])
+# Tfit_Daycent_aug <- augment(m_Tfit_Daycent, SoilTemp_C_piv[SoilTemp_C_piv$date>="2010-01-01"&
+#                                                              SoilTemp_C_piv$source=="Daycent",])
+# Tfit_Obs_aug <- augment(m_Tfit_Obs, SoilTemp_C_piv[SoilTemp_C_piv$date>="2010-01-01"&
+#                                                      SoilTemp_C_piv$source=="Observed"&
+#                                                      !is.na(SoilTemp_C_piv$temp_val),])
+# 
+# gT <- SoilTemp_C_piv[SoilTemp_C_piv$source=='Daycent'
+#                      & SoilTemp_C_piv$date>="1999-01-01"
+#                      & SoilTemp_C_piv$date<experiment_end_date,] %>%
+#   ggplot(aes(x=date, y=temp_val, color=source)) +
+#   geom_point(show.legend=TRUE) +
+#   geom_point(data=SoilTemp_C_piv[SoilTemp_C_piv$source=='Observed'
+#                                  & SoilTemp_C_piv$date>="1999-01-01"
+#                                  & SoilTemp_C_piv$date<experiment_end_date,],
+#              aes(x=date, y=temp_val, color=source)) +
+#   xlab("Year") +
+#   ylab(expression('Soil temperature (' ^o*'C)')) +
+#   ggtitle(paste0(site_name," Soil Temperature"),
+#           paste0("Scenario: ",scenario_descriptor)) +
+#   #geom_line(data=Tfit_Daycent_aug_pre2010, aes(y=.fitted),show.legend=F) + 
+#   #geom_line(data=Tfit_Obs_aug_pre2010, aes(y=.fitted),show.legend=F) + 
+#   #geom_line(data=Tfit_Daycent_aug, aes(y=.fitted),show.legend=F) + 
+#   #geom_line(data=Tfit_Obs_aug, aes(y=.fitted),show.legend=F) + 
+#   #geom_abline(intercept=Tfit_Daycent[1], slope=Tfit_Daycent[2], color="orange") +
+#   scale_color_manual(labels=c("Daycent","Observed"),
+#                      values=cbPalette9[c(8,1)]) +
+#   theme_classic(base_family = "serif", base_size = 15) +
+#   theme(panel.background = element_blank(),
+#         axis.line = element_line(),
+#         legend.position = "right",
+#         legend.key = element_blank())
+# 
+# gT
 
-gT <- SoilTemp_C_piv[SoilTemp_C_piv$source=='Daycent'
-                     & SoilTemp_C_piv$date>="1999-01-01"
-                     & SoilTemp_C_piv$date<experiment_end_date,] %>%
-  ggplot(aes(x=date, y=temp_val, color=source)) +
-  geom_point(show.legend=TRUE) +
-  geom_point(data=SoilTemp_C_piv[SoilTemp_C_piv$source=='Observed'
-                                 & SoilTemp_C_piv$date>="1999-01-01"
-                                 & SoilTemp_C_piv$date<experiment_end_date,],
+Temp_this_piv <- SoilTemp_C_piv[SoilTemp_C_piv$year %in% experiment_year_range,]
+Temp_this <- SoilTemp_C[year(SoilTemp_C$date) %in% experiment_year_range,]
+
+Tfit_time <- lm(Daycent ~ date, data = Temp_this)
+Tfit_coef_time <- coef(Tfit_time)
+Tfit_r2_time <- round(summary(Tfit_time)$r.squared,2)
+
+T_rmse_error_time <- Temp_this$Observed-Temp_this$Daycent
+T_rmse_time <- round(sqrt(mean(T_rmse_error_time^2,na.rm=TRUE)),2)
+
+gT <- Temp_this_piv[Temp_this_piv$source=='Daycent'
+                    & Temp_this_piv$year %in% ObsTemp$year,] %>%
+  ggplot(aes(x=date, y=temp_val, color=source, show.legend=TRUE)) +
+  geom_point() +
+  geom_point(data=Temp_this_piv[Temp_this_piv$source=='Observed'
+                                & Temp_this_piv$date %in% ObsTemp$date,],
              aes(x=date, y=temp_val, color=source)) +
   xlab("Year") +
-  ylab(expression('Soil temperature (' ^o*'C)')) +
+  ylab(expression('Soil temperature ( '*degree*C*")")) +
   ggtitle(paste0(site_name," Soil Temperature"),
           paste0("Scenario: ",scenario_descriptor)) +
-  #geom_line(data=Tfit_Daycent_aug_pre2010, aes(y=.fitted),show.legend=F) + 
-  #geom_line(data=Tfit_Obs_aug_pre2010, aes(y=.fitted),show.legend=F) + 
-  #geom_line(data=Tfit_Daycent_aug, aes(y=.fitted),show.legend=F) + 
-  #geom_line(data=Tfit_Obs_aug, aes(y=.fitted),show.legend=F) + 
-  #geom_abline(intercept=Tfit_Daycent[1], slope=Tfit_Daycent[2], color="orange") +
   scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
+                     values=cbPalette9[c(2,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
         legend.key = element_blank())
 
 gT
+
 
 mean_soilT_obs <- mean(SoilTemp_C[,"Observed"],na.rm=TRUE)
 mean_soilT_day <- mean(SoilTemp_C[,"Daycent"],na.rm=TRUE)
@@ -331,15 +432,25 @@ mean_soilT_day <- mean(SoilTemp_C[,"Daycent"],na.rm=TRUE)
 #first(N2O_ghaday_piv[N2O_ghaday_piv$source=="KBS_Observed"&!is.na(N2O_ghaday_piv$n2o_val),"date"])
 #last(N2O_ghaday_piv[N2O_ghaday_piv$source=="KBS_Observed"&!is.na(N2O_ghaday_piv$n2o_val),"date"])
 
-gNG <- N2O_ghaday_piv[N2O_ghaday_piv$source=='Daycent'
-                      &year(N2O_ghaday_piv$date) %in% 1991:2014,] %>%
+N2O_this_piv <- N2O_ghaday_piv[year(N2O_ghaday_piv$date) %in% experiment_year_range,]
+
+N2O_this <- N2O_ghaday[year(N2O_ghaday$date) %in% experiment_year_range,]
+Nfit_time <- lm(Daycent ~ date, data = N2O_this)
+Nfit_coef_time <- coef(Nfit_time)
+Nfit_r2_time <- round(summary(Nfit_time)$r.squared,2)
+N_rmse_error_time <- N2O_this$Observed-N2O_this$Daycent
+N_rmse_time <- round(sqrt(mean(N_rmse_error_time^2,na.rm=TRUE)),2)
+
+gNG <- N2O_this_piv[N2O_this_piv$source=='Daycent' &
+                      year(N2O_this_piv$date) %in% year(ObsGas$date),] %>%
   ggplot(aes(x=date, y=n2o_val, color=source)) +
   geom_line(show.legend=TRUE) +
-  geom_point(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='Observed'
-                                 &year(N2O_ghaday_piv$date) %in% 1991:2014,],
-             aes(x=date, y=n2o_val, color=source), size=.5) +
-  geom_segment(data=Fert[Fert$treatment=="T1"&Fert$n_rate_kg_ha>10
-                         &year(Fert$date) %in% 1991:2014,],
+  geom_point(data=N2O_this_piv[N2O_this_piv$source=='Observed'&
+                                 year(N2O_this_piv$date) %in% year(ObsGas$date),],
+             aes(x=date, y=n2o_val, color=source), size=1) +
+  geom_segment(data=Fert[Fert$treatment==treatment & 
+                           year(Fert$date) %in% year(ObsGas$date) &
+                           Fert$n_rate_kg_ha>10,],
                aes(x = date, y = 200,
                    xend = date, yend = 175),
                colour=cbPalette9[7],
@@ -347,14 +458,15 @@ gNG <- N2O_ghaday_piv[N2O_ghaday_piv$source=='Daycent'
                lineend = "round",
                linejoin = "round",
                arrow = arrow(length = unit(0.3, "cm"))
-               # colour = "black"
-  ) +
+               # colour = "black" 
+  ) + 
   xlab("Year") +
-  ylab(expression('N'[2]*'O Emissions (g N ha ' ^-1*'day ' ^-1*')')) +
+  ylab(expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')')) +
   ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Observed","Fertilizer"),
-                     values=cbPalette9[c(8,1,7)]) +
+                     values=cbPalette9[c(2,1,7)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -373,7 +485,8 @@ gGC <- grainC_gm2_piv[grainC_gm2_piv$source=='Daycent'
   xlab("Year") +
   ylab(expression('Grain C (g N m' ^-2*')')) +
   scale_color_manual(labels=c("Corn","Soybean","Wheat"),
-                     values=cbPalette9[c(8,3,4)]) +
+                     values=cbPalette9[c(2,3,4)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -391,7 +504,8 @@ gSC <- stoverC_gm2_piv[stoverC_gm2_piv$source=='Daycent'
   xlab("Year") +
   ylab(expression('Stover C (g C m' ^-2*')')) +
   scale_color_manual(labels=c("Corn","Soybean","Wheat"),
-                     values=cbPalette9[c(8,3,4)]) +
+                     values=cbPalette9[c(2,3,4)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -409,7 +523,8 @@ gGN <- grainN_gm2_piv[grainN_gm2_piv$source=='Daycent'
   xlab("Year") +
   ylab(expression('Grain N (g N m' ^-2*')')) +
   scale_color_manual(labels=c("Corn","Soybean","Wheat"),
-                     values=cbPalette9[c(8,3,4)]) +
+                     values=cbPalette9[c(2,3,4)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -427,7 +542,8 @@ gSN <- stoverN_gm2_piv[stoverN_gm2_piv$source=='Daycent'
   xlab("Year") +
   ylab(expression('Stover N (g N m' ^-2*')')) +
   scale_color_manual(labels=c("Corn","Soybean","Wheat"),
-                     values=cbPalette9[c(8,3,4)]) +
+                     values=cbPalette9[c(2,3,4)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -445,7 +561,8 @@ gGCN <- grainCN_piv[grainCN_piv$source=='Daycent'
   xlab("Year") +
   ylab(expression('Grain C:N ratio')) +
   scale_color_manual(labels=c("Corn","Soybean","Wheat"),
-                     values=cbPalette9[c(8,3,4)]) +
+                     values=cbPalette9[c(2,3,4)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -463,7 +580,8 @@ gSCN <- stoverCN_piv[stoverCN_piv$source=='Daycent'
   xlab("Year") +
   ylab(expression('Stover C:N ratio')) +
   scale_color_manual(labels=c("Corn","Soybean","Wheat"),
-                     values=cbPalette9[c(8,3,4)]) +
+                     values=cbPalette9[c(2,3,4)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -481,19 +599,29 @@ gSCN
 #   pull(Wheat_this[Wheat_this$source=="Daycent",],"yield_val")
 # WY_rmse <- round(sqrt(mean(WY_rmse_error^2,na.rm=TRUE)),2)
 
-gMG <- CH4_ghaday_piv[CH4_ghaday_piv$source=='Daycent'
-                      &year(CH4_ghaday_piv$date) %in% 1992:2014,] %>%
+CH4_this_piv <- CH4_ghaday_piv[year(CH4_ghaday_piv$date) %in% experiment_year_range,]
+
+CH4_this <- CH4_ghaday[year(CH4_ghaday$date) %in% experiment_year_range,]
+Hfit_time <- lm(Daycent ~ date, data = CH4_this)
+Hfit_coef_time <- coef(Hfit_time)
+Hfit_r2_time <- round(summary(Hfit_time)$r.squared,2)
+H_rmse_error_time <- CH4_this$Observed-CH4_this$Daycent
+H_rmse_time <- round(sqrt(mean(H_rmse_error_time^2,na.rm=TRUE)),2)
+
+gMG <- CH4_this_piv[CH4_this_piv$source=='Daycent'
+                      &year(CH4_this_piv$date) %in% 1992:2014,] %>%
   ggplot(aes(x=date, y=ch4_val, color=source)) +
   geom_line(show.legend=TRUE) +
-  geom_point(data=CH4_ghaday_piv[CH4_ghaday_piv$source=='Observed'
-                                 &year(CH4_ghaday_piv$date) %in% 1992:2014,],
-             aes(x=date, y=ch4_val, color=source)) +
+  geom_point(data=CH4_this_piv[CH4_this_piv$source=='Observed'
+                                 &year(CH4_this_piv$date) %in% 1992:2014,],
+             aes(x=date, y=ch4_val, color=source), size=1) +
   xlab("Year") +
   ylab(expression('CH'[4]*' Emissions (g C ha ' ^-1*'day ' ^-1*')')) +
   ggtitle(bquote(.(site_name)~"CH"["4"]*"O Emissions"),
           paste0("Scenario: ",scenario_descriptor)) +
-  scale_color_manual(labels=c("Daycent","Observed","Fertilizer"),
-                     values=cbPalette9[c(8,1,7)]) +
+  scale_color_manual(labels=c("Daycent","Observed"),
+                     values=cbPalette9[c(2,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -509,7 +637,8 @@ gCI <- DayCI_gm2yr[DayCI_gm2yr$year <= experiment_end_year,] %>%
   ggtitle(paste(site_name,"Soil C Input"),
           paste0("Scenario: ",scenario_descriptor)) +
   # scale_color_manual(labels=c("Daycent","Observed"),
-  #                    values=cbPalette9[c(8,1)]) +
+  #                    values=cbPalette9[c(2,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -526,7 +655,8 @@ gNI <- DayNI_gm2yr[DayNI_gm2yr$year <= experiment_end_year,] %>%
   ggtitle(paste(site_name,"Soil N Input"),
           paste0("Scenario: ",scenario_descriptor)) +
   # scale_color_manual(labels=c("Daycent","Observed"),
-  #                    values=cbPalette9[c(8,1)]) +
+  #                    values=cbPalette9[c(2,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -543,7 +673,8 @@ gNH4 <- Day_soiln[Day_soiln$year <= experiment_end_year,] %>%
   ggtitle(bquote(.(site_name)~"Soil NH"["4"]*" - top 10 cm"),
           paste0("Scenario: ",scenario_descriptor)) +
   # scale_color_manual(labels=c("Daycent","Observed"),
-  #                    values=cbPalette9[c(8,1)]) +
+  #                    values=cbPalette9[c(2,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -560,7 +691,8 @@ gNO3 <- Day_soiln[Day_soiln$year <= experiment_end_year,] %>%
   ggtitle(bquote(.(site_name)~"Soil NO"["3"]*" - top 20 cm"),
           paste0("Scenario: ",scenario_descriptor)) +
   # scale_color_manual(labels=c("Daycent","Observed"),
-  #                    values=cbPalette9[c(8,1)]) +
+  #                    values=cbPalette9[c(2,1)]) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -636,7 +768,7 @@ ggsave(filename=paste0(results_path,"calib_NH4_input_exp_",scenario_name,"_Dayce
        width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_NO3_input_exp_",scenario_name,"_Daycent.jpg"),plot=gNO3,
        width=9, height=6, dpi=300)
-# ggsave(filename=paste0(results_path,"calib_N2O_comparison_20ghd_exp_",scenario_name,"_APSIM.jpg"),plot=gNG_20ghd,
+# ggsave(filename=paste0(results_path,"calib_N2O_comparison_20ghd_exp_",scenario_name,"_Daycent.jpg"),plot=gNG_20ghd,
 #        width=9, height=6, dpi=300)
 
 
@@ -664,10 +796,10 @@ gMY_121 <- MaizeYld_Mgha %>%
   annotate("text",x=1,y=0,label=paste0("R^2=",MYfit_r2)) +
   ggtitle(bquote(.(site_name)~"Maize Yield (Mg ha" ^"-1"*")"),
           paste0("Scenario: ",scenario_descriptor)) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.line = element_line(),
-        plot.title = element_text(hjust = 0.5))
+        axis.line = element_line())
 
 gMY_121
 
@@ -689,10 +821,10 @@ gSY_121 <- SoyYld_Mgha %>%
   annotate("text",x=2,y=1.5,label=paste0("R^2=",SYfit_r2)) +
   ggtitle(bquote(.(site_name)~"Soybean Yield (Mg ha" ^"-1"*")"),
           paste0("Scenario: ",scenario_descriptor)) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.line = element_line(),
-        plot.title = element_text(hjust = 0.5))
+        axis.line = element_line())
 
 gSY_121
 
@@ -717,10 +849,10 @@ gWY_121 <- WheatYld_Mgha %>%
   #expression('N'[2]*'O Emissions (g ha ' ^-1*' day '^-1*')')
   ggtitle(bquote(.(site_name)~"Wheat Yield (Mg ha" ^"-1"*")"),
           paste0("Scenario: ",scenario_descriptor)) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.line = element_line(),
-        plot.title = element_text(hjust = 0.5))
+        axis.line = element_line())
 
 gWY_121
 
@@ -742,10 +874,10 @@ gC_121 <- Cstock_Mgha[Cstock_Mgha$year>=experiment_start_date,] %>%
   geom_abline(intercept=Cfit_coef[1], slope=Cfit_coef[2], color="blue") +
   ggtitle(bquote(.(site_name)~"SOC Stock (Mg C ha" ^"-1"*")"),
           paste0("Scenario: ",scenario_descriptor)) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.line = element_line(),
-        plot.title = element_text(hjust = 0.5))
+        axis.line = element_line())
 
 gC_121
 
@@ -764,40 +896,67 @@ gT_121 <- SoilTemp_C %>%
   geom_point() +
   geom_abline() +
   geom_abline(intercept=Tfit_coef[1], slope=Tfit_coef[2], color="blue") +
-  annotate("text",x=-3,y=-10,label=paste0("R^2=",Tfit_r2)) +
+  annotate("text", # line equation
+           x=min(SoilTemp_C$Observed, SoilTemp_C$Daycent, na.rm=T)*1.1,
+           y=max(SoilTemp_C$Observed, SoilTemp_C$Daycent, na.rm=T)*1,
+           hjust=0, family="serif", color="gray31",
+           label=bquote("y =" ~.(round(Tfit_coef[2],4))~"x" ~+ ~.(round(Tfit_coef[1],4)))) +
+  annotate("text", # R^2
+           x=min(SoilTemp_C$Observed, SoilTemp_C$Daycent, na.rm=T)*1.1,
+           y=max(SoilTemp_C$Observed, SoilTemp_C$Daycent, na.rm=T)*0.92,
+           hjust=0, family="serif", color="gray31",
+           label=bquote(R^2 ~"=" ~.(Tfit_r2))) +
+  annotate("text", # RMSE
+           x=min(SoilTemp_C$Observed, SoilTemp_C$Daycent, na.rm=T)*1.1,
+           y=max(SoilTemp_C$Observed, SoilTemp_C$Daycent, na.rm=T)*0.82,
+           hjust=0, family="serif", color="gray31",
+           label=bquote("RMSE =" ~.(T_rmse))) +
   ggtitle(bquote(.(site_name)~"Soil Temperature ("*degree*"C)"),
           paste0("Scenario: ",scenario_descriptor)) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.line = element_line(),
-        plot.title = element_text(hjust = 0.5))
+        axis.line = element_line())
 
 gT_121
 
-## soil temperature - calibrated
-Tfit <- lm(Daycent ~ Observed, data = SoilTemp_C)
-Tfit_coef <- coef(Tfit)
-Tfit_r2 <- round(summary(Tfit)$r.squared,2)
-
-T_rmse_error <- SoilTemp_C$Observed-SoilTemp_C$Daycent
-T_rmse <- round(sqrt(mean(T_rmse_error^2,na.rm=TRUE)),2)
-
-gTc_121 <- SoilTemp_C %>%
-  ggplot(aes(x=Observed, y=Daycent,
-             xmin=min(Observed, Daycent, na.rm=T), xmax=max(Observed, Daycent, na.rm=T),
-             ymin=min(Observed, Daycent, na.rm=T), ymax=max(Observed, Daycent, na.rm=T))) +
-  geom_point() +
-  geom_abline() +
-  geom_abline(intercept=Tfit_coef[1], slope=Tfit_coef[2], color="blue") +
-  annotate("text",x=-3,y=-10,label=paste0("R^2=",Tfit_r2)) +
-  ggtitle(bquote(.(site_name)~"Soil Temperature ("*degree*"C)"),
-          paste0("Scenario: ",scenario_descriptor)) +
-  theme(panel.background = element_blank(),
-        axis.ticks.x = element_blank(),
-        axis.line = element_line(),
-        plot.title = element_text(hjust = 0.5))
-
-gTc_121
+# ## soil temperature - calibrated
+# Tfit <- lm(Daycent ~ Observed, data = SoilTemp_C)
+# Tfit_coef <- coef(Tfit)
+# Tfit_r2 <- round(summary(Tfit)$r.squared,2)
+# 
+# T_rmse_error <- SoilTemp_C$Observed-SoilTemp_C$Daycent
+# T_rmse <- round(sqrt(mean(T_rmse_error^2,na.rm=TRUE)),2)
+# 
+# gTc_121 <- SoilTemp_C %>%
+#   ggplot(aes(x=Observed, y=Daycent,
+#              xmin=min(Observed, Daycent, na.rm=T), xmax=max(Observed, Daycent, na.rm=T),
+#              ymin=min(Observed, Daycent, na.rm=T), ymax=max(Observed, Daycent, na.rm=T))) +
+#   geom_point() +
+#   geom_abline() +
+#   geom_abline(intercept=Tfit_coef[1], slope=Tfit_coef[2], color="blue") +
+#   annotate("text", # line equation
+#            x=min(SoilTemp_C$Observed, SoilTemp_C$Daycent, na.rm=T)*1.1,
+#            y=max(SoilTemp_C$Observed, SoilTemp_C$Daycent, na.rm=T)*1,
+#            hjust=0, family="serif", color="gray31",
+#            label=bquote("y =" ~.(round(Tfit_coef[2],4))~"x" ~+ ~.(round(Tfit_coef[1],4)))) +
+#   annotate("text", # R^2
+#            x=min(SoilTemp_C$Observed, SoilTemp_C$Daycent, na.rm=T)*1.1,
+#            y=max(SoilTemp_C$Observed, SoilTemp_C$Daycent, na.rm=T)*0.92,
+#            hjust=0, family="serif", color="gray31",
+#            label=bquote(R^2 ~"=" ~.(Tfit_r2))) +
+#   annotate("text", # RMSE
+#            x=min(SoilTemp_C$Observed, SoilTemp_C$Daycent, na.rm=T)*1.1,
+#            y=max(SoilTemp_C$Observed, SoilTemp_C$Daycent, na.rm=T)*0.82,
+#            hjust=0, family="serif", color="gray31",
+#            label=bquote("RMSE =" ~.(T_rmse))) +
+#   ggtitle(bquote(.(site_name)~"Soil Temperature ("*degree*"C)"),
+#           paste0("Scenario: ",scenario_descriptor)) +
+#   theme(panel.background = element_blank(),
+#         axis.ticks.x = element_blank(),
+#         axis.line = element_line())
+# 
+# gTc_121
 
 ## soil moisture
 Mfit <- lm(Daycent ~ Observed, data = SoilMoist_VSM)
@@ -813,14 +972,28 @@ gM_121 <- SoilMoist_VSM %>%
              ymin=min(Observed, Daycent, na.rm=T), ymax=max(Observed, Daycent, na.rm=T))) +
   geom_point() +
   geom_abline() +
+  annotate("text", # line equation
+           x=min(SoilMoist_VSM$Observed, SoilMoist_VSM$Daycent, na.rm=T)*1.1,
+           y=max(SoilMoist_VSM$Observed, SoilMoist_VSM$Daycent, na.rm=T)*1,
+           hjust=0, family="serif", color="gray31",
+           label=bquote("y =" ~.(round(Mfit_coef[2],4))~"x" ~+ ~.(round(Mfit_coef[1],4)))) +
+  annotate("text", # R^2
+           x=min(SoilMoist_VSM$Observed, SoilMoist_VSM$Daycent, na.rm=T)*1.1,
+           y=max(SoilMoist_VSM$Observed, SoilMoist_VSM$Daycent, na.rm=T)*0.95,
+           hjust=0, family="serif", color="gray31",
+           label=bquote(R^2 ~"=" ~.(Mfit_r2))) +
+  annotate("text", # RMSE
+           x=min(SoilMoist_VSM$Observed, SoilMoist_VSM$Daycent, na.rm=T)*1.1,
+           y=max(SoilMoist_VSM$Observed, SoilMoist_VSM$Daycent, na.rm=T)*0.89,
+           hjust=0, family="serif", color="gray31",
+           label=bquote("RMSE =" ~.(M_rmse))) +
   geom_abline(intercept=Mfit_coef[1], slope=Mfit_coef[2], color="blue") +
-  annotate("text",x=-3,y=-10,label=paste0("R^2=",Mfit_r2)) +
   ggtitle(paste0(site_name," Volumetric Soil Moisture"),
           paste0("Scenario: ",scenario_descriptor)) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.line = element_line(),
-        plot.title = element_text(hjust = 0.5))
+        axis.line = element_line())
 
 gM_121
 
@@ -842,10 +1015,10 @@ gNG_121 <- N2O_ghaday[N2O_ghaday$Observed!=0,] %>%
   annotate("text",x=-3,y=-10,label=paste0("R^2=",Nfit_r2)) +
   ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions (g ha" ^"-1"*" day"^"-1"*")"),
           paste0("Scenario: ",scenario_descriptor)) +
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.line = element_line(),
-        plot.title = element_text(hjust = 0.5))
+        axis.line = element_line())
 
 gNG_121
 
@@ -866,10 +1039,10 @@ gMG_121 <- CH4_ghaday[CH4_ghaday$Observed!=0,] %>%
   geom_abline(intercept=Hfit_coef[1], slope=Hfit_coef[2], color="blue") +
   ggtitle(bquote(.(site_name)~"CH"["4"]*"O Emissions (g ha" ^"-1"*" day"^"-1"*")"),
           paste0("Scenario: ",scenario_descriptor)) +  
+  theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.ticks.x = element_blank(),
-        axis.line = element_line(),
-        plot.title = element_text(hjust = 0.5))
+        axis.line = element_line())
 
 gMG_121
 
@@ -1055,20 +1228,65 @@ calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                        WYfit_coef[2], WYfit_coef[1], WYfit_r2, WY_rmse,
                        Wheat_obsmod_diff_Mgha,
                        Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
-                       SOC_obsmod_diff_Mgha,
+                       SOC_obsmod_diff_Mgha,SOC_obsmod_diff_Mgha_nooutliers,
                        Tfit_coef[2], Tfit_coef[1], Tfit_r2, T_rmse,
+                       SoilT_obsmod_diff_Mgha,
                        Mfit_coef[2], Mfit_coef[1], Mfit_r2, M_rmse,
+                       SoilM_obsmod_diff_Mgha,
                        Nfit_coef[2], Nfit_coef[1], Nfit_r2, N_rmse,
                        N2O_obsmod_diff_gha,
                        Hfit_coef[2], Hfit_coef[1], Hfit_r2, H_rmse,
                        CH4_obsmod_diff_gha,
+                       NA, NA, NA, NA, # M Bio
+                       NA,
                        NA, NA, NA, NA, # Cotton
                        NA,
                        NA, NA, NA, NA, # Sorghum
-                       NA)
+                       NA,
+                       NA,NA,NA,NA,NA, # M,S,W,C,S cultivars
+                       MYfit_coef_time[2], MYfit_coef_time[1], MYfit_r2_time, MY_rmse_time,
+                       SYfit_coef_time[2], SYfit_coef_time[1], SYfit_r2_time, SY_rmse_time,
+                       WYfit_coef_time[2], WYfit_coef_time[1], WYfit_r2_time, WY_rmse_time,
+                       Cfit_coef_time[2], Cfit_coef_time[1], Cfit_r2_time, C_rmse_time,
+                       Cfit_coef_time_noout[2], Cfit_coef_time_noout[1], Cfit_r2_time_noout, C_rmse_time_noout,
+                       Tfit_coef_time[2], Tfit_coef_time[1], Tfit_r2_time, T_rmse_time,
+                       Mfit_coef_time[2], Mfit_coef_time[1], Mfit_r2_time, M_rmse_time,
+                       Nfit_coef_time[2], Nfit_coef_time[1], Nfit_r2_time, N_rmse_time,
+                       Hfit_coef_time[2], Hfit_coef_time[1], Hfit_r2_time, H_rmse_time, # methane
+                       NA, NA, NA, NA, # microbio
+                       NA, NA, NA, NA, # cotton
+                       NA, NA, NA, NA # sorghum
+                       )
 
 
 source("p_Edit_calib_file.R")
 p_Edit_calib_file(calib_log_tab,model_name,scenario_name)
+
+rm(calib_log_tab,
+   MYfit_coef, MYfit_r2, MY_rmse,
+   Maize_obsmod_diff_Mgha,
+   SYfit_coef, SYfit_r2, SY_rmse,
+   Soybean_obsmod_diff_Mgha,
+   WYfit_coef, WYfit_r2, WY_rmse,
+   Wheat_obsmod_diff_Mgha,
+   Cfit_coef, Cfit_r2, C_rmse,
+   SOC_obsmod_diff_Mgha,SOC_obsmod_diff_Mgha_nooutliers,
+   Tfit_coef, Tfit_r2, T_rmse,
+   SoilT_obsmod_diff_Mgha,
+   Mfit_coef, Mfit_r2, M_rmse,
+   SoilM_obsmod_diff_Mgha,
+   Nfit_coef, Nfit_r2, N_rmse,
+   N2O_obsmod_diff_gha,
+   Hfit_coef, Hfit_r2, H_rmse,
+   CH4_obsmod_diff_gha,
+   MYfit_coef_time, MYfit_r2_time, MY_rmse_time,
+   SYfit_coef_time, SYfit_r2_time, SY_rmse_time,
+   WYfit_coef_time, WYfit_r2_time, WY_rmse_time,
+   Cfit_coef_time, Cfit_r2_time, C_rmse_time,
+   Cfit_coef_time_noout, Cfit_r2_time_noout, C_rmse_time_noout,
+   Tfit_coef_time, Tfit_r2_time, T_rmse_time,
+   Mfit_coef_time, Mfit_r2_time, M_rmse_time,
+   Nfit_coef_time, Nfit_r2_time, N_rmse_time,
+   Hfit_coef_time, Hfit_r2_time, H_rmse_time)
 
 }) # end suppressMessages

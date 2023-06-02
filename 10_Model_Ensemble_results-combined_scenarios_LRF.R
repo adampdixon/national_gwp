@@ -30,20 +30,34 @@ library(ggplot2)
 
 source("f_model_coef.R")
 
+
   #*************************************************************
 
 
 # Import calibration data -------------------------------------------------
 
 crop_calib_output_df_piv <- read.table(file=paste0(results_path,"calib_crop_df_piv.csv"),
-                                       header=TRUE,sep=",")  
+                                       header=TRUE,sep=",") %>%
+  left_join(unique(scenario_df[,c("scenario_descriptor","scenario_abbrev")]),
+            by=c("treatment_scen"="scenario_descriptor"))
 crop_calib_output_df_piv$Source <- crop_calib_output_df_piv$Model
+
 soc_calib_output_df_piv <- read.table(file=paste0(results_path,"calib_soc_df_piv.csv"),
-                                      header=TRUE,sep=",")  
+                                      header=TRUE,sep=",") %>%
+  left_join(unique(scenario_df[,c("scenario_descriptor","scenario_abbrev")]),
+            by=c("treatment_scen"="scenario_descriptor"))
 soc_calib_output_df_piv$Source <- soc_calib_output_df_piv$Model
 # soc_trendlines_df <- read.table(file=paste0(results_path,"calib_soc_trendline_piv.csv"),
 #                                 header=TRUE,sep=",")  
 # soc_trendlines_df$Source <- soc_trendlines_df$Model
+
+## for sorghum - historical observed and future modeled yields
+
+his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_Mgha_piv.csv"),
+                                       header=TRUE,sep=",") %>%
+  left_join(unique(scenario_df[,c("scenario_descriptor","scenario_abbrev")]),
+            by=c("treatment_scen"="scenario_descriptor"))
+  
   
   # Calibration graphs ------------------------------------------------------
 
@@ -60,12 +74,14 @@ soc_calib_output_df_piv$Source <- soc_calib_output_df_piv$Model
                 ,linewidth=0.75) +
     scale_color_manual(labels=c("APSIM","Daycent","Observed"),
                        values=cbPalette9[c(8,2,1)]) +
-    facet_grid(crop~treatment_scen) +
-    theme_classic(base_family = "serif", base_size = 16) +
+    facet_grid(crop~scenario_abbrev) +
+    theme_classic(base_family = "serif", base_size = 24) +
     theme(panel.background = element_blank(),
           panel.border = element_rect(colour = "darkgrey", fill=NA),
           strip.background = element_blank(),
           axis.line = element_line(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1),
           legend.position = "right",
           legend.key = element_blank())
   
@@ -92,8 +108,34 @@ soc_calib_output_df_piv$Source <- soc_calib_output_df_piv$Model
     # ) +
     scale_color_manual(labels=c("APSIM","Daycent","Millennial","Observed","RothC"),
                        values=cbPalette9[c(8,2,6,1,3)]) +
-    facet_wrap(~treatment_scen,nrow=1) +
-    theme_classic(base_family = "serif", base_size = 16) +
+    facet_wrap(~scenario_abbrev,nrow=1) +
+    theme_classic(base_family = "serif", base_size = 24) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gSOC_calib
+  
+  ggsave(filename=paste0(results_path,"pub_Crop_yield_calibration.jpg"),
+         plot=gY_calib, width=15, height=7, dpi=300)
+  ggsave(filename=paste0(results_path,"pub_SOC_calibration.jpg"),
+         plot=gSOC_calib, width=19, height=9, dpi=300)
+  
+  ## Calibration box plots ------------------------------------------------------
+  
+  gY1_box <- crop_calib_output_df_piv %>%
+    ggplot(aes(x=Model,y=yield_val)) +
+    stat_boxplot(geom = "errorbar",width=.5) + 
+    geom_boxplot() +
+    xlab("") +
+    ylab(expression('Crop Yield (Mg ha ' ^-1*')')) +
+    facet_wrap(~crop,ncol=2) +
+    theme_classic(base_family = "serif", base_size = 24) +
     theme(panel.background = element_blank(),
           panel.border = element_rect(colour = "darkgrey", fill=NA),
           strip.background = element_blank(),
@@ -101,14 +143,56 @@ soc_calib_output_df_piv$Source <- soc_calib_output_df_piv$Model
           legend.position = "right",
           legend.key = element_blank())
   
-  gSOC_calib
+  gY1_box
   
-  ggsave(filename=paste0(results_path,"pub_Crop_yield_calibration.jpg"),
-         plot=gY_calib, width=19, height=9, dpi=300)
-  ggsave(filename=paste0(results_path,"pub_SOC_calibration.jpg"),
-         plot=gSOC_calib, width=19, height=9, dpi=300)
+  gY2_box <- crop_calib_output_df_piv %>%
+    ggplot(aes(x=Model,y=yield_val)) +
+    stat_boxplot(geom = "errorbar",width=.5) + 
+    geom_boxplot() +
+    xlab("") +
+    ylab(expression('Crop Yield (Mg ha ' ^-1*')')) +
+    facet_grid(crop~scenario_abbrev) +
+    theme_classic(base_family = "serif", base_size = 24) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1))
   
-  #*************************************************************
+  gY2_box
+  
+  ## historical for sorghum
+  gY3_box <- his_SorghumYld_Mgha_piv %>%
+    ggplot(aes(x=Model,y=yield_val)) +
+    stat_boxplot(geom = "errorbar",width=.5) + 
+    geom_boxplot() +
+    xlab("") +
+    ylab(expression('Sorghum Yield (Mg ha ' ^-1*')')) +
+    facet_wrap(~scenario_abbrev,nrow=1) +
+    theme_classic(base_family = "serif", base_size = 24) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1))
+  
+  gY3_box
+  
+
+  ggsave(filename=paste0(results_path,"pub_Crop_yield_calib_boxplots_all.jpg"),
+         plot=gY1_box, width=12, height=7, dpi=300)
+  ggsave(filename=paste0(results_path,"pub_Crop_yield_calib_boxplots_bytreat.jpg"),
+         plot=gY2_box, width=12, height=7, dpi=300)
+  ggsave(filename=paste0(results_path,"pub_Crop_his_yield_calib_boxplots_bytreat.jpg"),
+         plot=gY3_box, width=12, height=7, dpi=300)
+  
+    #*************************************************************
 
     # Import summarized data -------------------------------------------------
 

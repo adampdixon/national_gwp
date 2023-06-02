@@ -133,14 +133,22 @@ CO2_ghaday <- merge(ObsGas_all[ObsGas_all$Treatment %in% treatment,
                    all=TRUE)
 
 mbio_gm2_all <- left_join(mill_base_df[,c("year","date","MIC")],
-                      ObsMB_all[ObsMB_all$treatment==treatment,c("year","date","treatment","mb_gm2")],
+                      ObsMB_all[ObsMB_all$treatment==treatment,c("year","date","treatment","mb_gm2","sd_gm2")],
                       by=c("date","year"))
-colnames(mbio_gm2_all) <- c("year","date","Millennial","treatment","Observed")
+colnames(mbio_gm2_all) <- c("year","date","Millennial","treatment","Observed","Obs_sd")
 
 mbio_gm2 <- inner_join(mill_base_df[,c("year","date","MIC")],
-                      ObsMB_all[ObsMB_all$treatment==treatment,c("year","date","treatment","mb_gm2")],
+                      ObsMB_all[ObsMB_all$treatment==treatment,c("year","date","treatment","mb_gm2","sd_gm2")],
                       by=c("date","year"))
-colnames(mbio_gm2) <- c("year","date","Millennial","treatment","Observed")
+colnames(mbio_gm2) <- c("year","date","Millennial","treatment","Observed","Obs_sd")
+
+mbio_gm2_piv <- pivot_longer(mbio_gm2, c(-date,-year,-treatment,-Obs_sd),
+                             names_to = "source",
+                             values_to = "MB_val")
+
+# remove sd from modeled records; only for observed
+mbio_gm2_piv <- mbio_gm2_piv %>%
+  mutate(Obs_sd=replace(Obs_sd, source!="Observed", NA))
 
 
 #**********************************************************************
@@ -152,4 +160,10 @@ SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha_10cm[!is.na(Cstock_Mgha_10cm$Observed) &
                                           !is.na(Cstock_Mgha_10cm$Millennial),"Observed"] -
                               Cstock_Mgha_10cm[!is.na(Cstock_Mgha_10cm$Observed) &
                                             !is.na(Cstock_Mgha_10cm$Millennial),"Millennial"])
+MBio_obsmod_diff_Mgha <- sum(mbio_gm2[!is.na(mbio_gm2$Observed) &
+                                               !is.na(mbio_gm2$Millennial),"Observed"] -
+                               mbio_gm2[!is.na(mbio_gm2$Observed) &
+                                                 !is.na(mbio_gm2$Millennial),"Millennial"])
+
+SOC_obsmod_diff_Mgha_nooutliers <- NA
 

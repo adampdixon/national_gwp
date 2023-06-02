@@ -314,7 +314,20 @@ SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
                                                      Cstock_Mgha$APSIM),"Observed"] -
                                 Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
                                                        Cstock_Mgha$APSIM),"APSIM"])
+SoilT_obsmod_diff_Mgha <- mean(SoilTemp_C[!is.na(SoilTemp_C$Observed) &
+                                                  !is.na(SoilTemp_C$APSIM),"Observed"] -
+                                SoilTemp_C[!is.na(SoilTemp_C$Observed) &
+                                                    !is.na(SoilTemp_C$APSIM),"APSIM"])
+SoilM_obsmod_diff_Mgha <- mean(SoilMoist_VSM[!is.na(SoilMoist_VSM$Observed &
+                                                     SoilMoist_VSM$APSIM),"Observed"] -
+                                SoilMoist_VSM[!is.na(SoilMoist_VSM$Observed &
+                                                       SoilMoist_VSM$APSIM),"APSIM"])
 N2O_obsmod_diff_gha <- sum(N2O_ghaday[!is.na(N2O_ghaday$Observed) &
                                          !is.na(N2O_ghaday$APSIM),"Observed"] -
                               N2O_ghaday[!is.na(N2O_ghaday$Observed) &
                                            !is.na(N2O_ghaday$APSIM),"APSIM"])
+
+SOC_obsmod_diff_Mgha_nooutliers <- sum(Cstock_Mgha[!(Cstock_Mgha$Observed %in% ObsC_outliers) &
+                                                     !is.na(Cstock_Mgha$Observed & Cstock_Mgha$APSIM),"Observed"] -
+                                         Cstock_Mgha[!(Cstock_Mgha$Observed %in% ObsC_outliers) &
+                                                       !is.na(Cstock_Mgha$Observed & Cstock_Mgha$APSIM),"APSIM"])

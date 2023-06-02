@@ -26,6 +26,15 @@ library(ggplot2)
 
 #first(SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=="KBS_Observed"&!is.na(SoilMoist_VSM_piv$h2o_val),"date"])
 
+  Moist_this_piv <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$year %in% experiment_year_range,]
+  
+  Moist_this <- SoilMoist_VSM[year(SoilMoist_VSM$date) %in% experiment_year_range,]
+  Mfit_time <- lm(Daycent ~ date, data = Moist_this)
+  Mfit_coef_time <- coef(Mfit_time)
+  Mfit_r2_time <- round(summary(Mfit_time)$r.squared,2)
+  M_rmse_error_time <- Moist_this$Observed-Moist_this$Daycent
+  M_rmse_time <- round(sqrt(mean(M_rmse_error_time^2,na.rm=TRUE)),2)
+  
 gM <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='Daycent'
                         & SoilMoist_VSM_piv$date>="2003-01-01"
                         & SoilMoist_VSM_piv$date<experiment_end_date,] %>%
@@ -49,21 +58,31 @@ gM <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='Daycent'
 gM
 
 
-Cotton_this <- CottonYld_Mgha_piv[CottonYld_Mgha_piv$year %in% experiment_year_range &
-                                  CottonYld_Mgha_piv$source!='Historical',]
+# Cotton_this <- CottonYld_Mgha_piv[CottonYld_Mgha_piv$year %in% experiment_year_range &
+#                                   CottonYld_Mgha_piv$source!='Historical',]
+# 
+# CY_rmse_error <- pull(Cotton_this[Cotton_this$source=="Observed",],yield_val)-
+#   pull(Cotton_this[Cotton_this$source=="Daycent",],"yield_val")
+# CY_rmse <- round(sqrt(mean(CY_rmse_error^2,na.rm=TRUE)),2)
 
-CY_rmse_error <- pull(Cotton_this[Cotton_this$source=="Observed",],yield_val)-
-  pull(Cotton_this[Cotton_this$source=="Daycent",],"yield_val")
-CY_rmse <- round(sqrt(mean(CY_rmse_error^2,na.rm=TRUE)),2)
+Cotton_this_piv <- CottonYld_Mgha_piv[CottonYld_Mgha_piv$year %in% experiment_year_range &
+                                        CottonYld_Mgha_piv$source %in% c("Daycent","Observed"),]
 
-gCY <- Cotton_this %>%
+Cotton_this <- CottonYld_Mgha[CottonYld_Mgha$year %in% experiment_year_range,]
+CYfit_time <- lm(Daycent ~ year, data = Cotton_this)
+CYfit_coef_time <- coef(CYfit_time)
+CYfit_r2_time <- round(summary(CYfit_time)$r.squared,2)
+CY_rmse_error_time <- Cotton_this$Observed-Cotton_this$Daycent
+CY_rmse_time <- round(sqrt(mean(CY_rmse_error_time^2,na.rm=TRUE)),2)
+
+gCY <- Cotton_this_piv %>%
   ggplot(aes(x=year, y=yield_val, color=source)) +
   geom_point() +
   annotate("text", # RMSE
-           x=min(Cotton_this$year, na.rm=T),
-           y=max(Cotton_this$yield_val, na.rm=T),
+           x=min(Cotton_this_piv$year, na.rm=T),
+           y=max(Cotton_this_piv$yield_val, na.rm=T),
            hjust=0, family="serif", color="gray31",
-           label=bquote("RMSE =" ~.(CY_rmse))) +
+           label=bquote("RMSE =" ~.(CY_rmse_time))) +
   xlab("Year") +
   ylab(expression('Cotton Yield (Mg ha' ^-1*')')) +
   ggtitle(paste(site_name,"Cotton Yield"),
@@ -92,21 +111,32 @@ gChY <- CottonYld_Mgha_piv[CottonYld_Mgha_piv$year <= experiment_end_year,] %>%
 
 gChY
 
-Sorghum_this <- SorghumYld_Mgha_piv[SorghumYld_Mgha_piv$year %in% experiment_year_range &
-                              SorghumYld_Mgha_piv$source!='Historical',]
+if(mgmt_scenario_grp != 7) {
+# Sorghum_this <- SorghumYld_Mgha_piv[SorghumYld_Mgha_piv$year %in% experiment_year_range &
+#                               SorghumYld_Mgha_piv$source!='Historical',]
+# 
+# SY_rmse_error <- pull(Sorghum_this[Sorghum_this$source=="Observed",],yield_val)-
+#   pull(Sorghum_this[Sorghum_this$source=="Daycent",],"yield_val")
+# SY_rmse <- round(sqrt(mean(SY_rmse_error^2,na.rm=TRUE)),2)
 
-SY_rmse_error <- pull(Sorghum_this[Sorghum_this$source=="Observed",],yield_val)-
-  pull(Sorghum_this[Sorghum_this$source=="Daycent",],"yield_val")
-SY_rmse <- round(sqrt(mean(SY_rmse_error^2,na.rm=TRUE)),2)
+Sorghum_this_piv <- SorghumYld_Mgha_piv[SorghumYld_Mgha_piv$year %in% experiment_year_range &
+                                          SorghumYld_Mgha_piv$source %in% c("Daycent","Observed"),]
 
-gSY <- Sorghum_this %>%
+Sorghum_this <- SorghumYld_Mgha[SorghumYld_Mgha$year %in% experiment_year_range,]
+SYfit_time <- lm(Daycent ~ year, data = Sorghum_this)
+SYfit_coef_time <- coef(SYfit_time)
+SYfit_r2_time <- round(summary(SYfit_time)$r.squared,2)
+SY_rmse_error_time <- Sorghum_this$Observed-Sorghum_this$Daycent
+SY_rmse_time <- round(sqrt(mean(SY_rmse_error_time^2,na.rm=TRUE)),2)
+
+gSY <- Sorghum_this_piv %>%
   ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
   annotate("text", # RMSE
-           x=min(Sorghum_this$year, na.rm=T),
-           y=max(Sorghum_this$yield_val, na.rm=T),
+           x=min(Sorghum_this_piv$year, na.rm=T),
+           y=max(Sorghum_this_piv$yield_val, na.rm=T),
            hjust=0, family="serif", color="gray31",
-           label=bquote("RMSE =" ~.(SY_rmse))) +
+           label=bquote("RMSE =" ~.(SY_rmse_time))) +
   xlab("Year") +
   ylab(expression('Sorghum Yield (Mg ha' ^-1*')')) +
   ggtitle(paste(site_name,"Sorghum Yield"),
@@ -120,7 +150,9 @@ gSY <- Sorghum_this %>%
 
 gSY
 
-gShY <- SorghumYld_Mgha_piv[SorghumYld_Mgha_piv$year <= experiment_end_year,] %>%
+}
+
+gShY <- SorghumYld_Mgha_piv[SorghumYld_Mgha_piv$year <= end_exp_period_year,] %>%
   ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
   geom_point(show.legend=TRUE) +
   xlab("Year") +
@@ -136,60 +168,27 @@ gShY <- SorghumYld_Mgha_piv[SorghumYld_Mgha_piv$year <= experiment_end_year,] %>
 
 gShY
 
-# Wheat_this <- WheatYld_Mgha_piv[WheatYld_Mgha_piv$year %in% experiment_year_range &
-#                                   WheatYld_Mgha_piv$source!='Historical',]
-# 
-# WY_rmse_error <- pull(Wheat_this[Wheat_this$source=="Observed",],yield_val)-
-#   pull(Wheat_this[Wheat_this$source=="Daycent",],"yield_val")
-# WY_rmse <- round(sqrt(mean(WY_rmse_error^2,na.rm=TRUE)),2)
-# 
-# gWY <- Wheat_this %>%
-#   ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
-#   geom_point(show.legend=TRUE) +
-#   annotate("text", # RMSE
-#            x=min(Wheat_this$year, na.rm=T),
-#            y=max(Wheat_this$yield_val, na.rm=T),
-#            hjust=0, family="serif", color="gray31",
-#            label=bquote("RMSE =" ~.(WY_rmse))) +
-#   xlab("Year") +
-#   ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
-#   ggtitle(paste(site_name,"Wheat Yield"),
-#           paste0("Scenario: ",scenario_descriptor)) +
-#   scale_color_manual(labels=c("Daycent","Observed"),
-#                      values=cbPalette9[c(8,1)]) +
-#   theme(panel.background = element_blank(),
-#         axis.line = element_line(),
-#         legend.position = "right",
-#         legend.key = element_blank())
-# 
-# gWY
-# 
-# gWhY <- WheatYld_Mgha_piv[WheatYld_Mgha_piv$year <= experiment_end_year,] %>%
-#   ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
-#   geom_point(show.legend=TRUE) +
-#   xlab("Year") +
-#   ylab(expression('Wheat Yield (Mg ha' ^-1*')')) +
-#   ggtitle(paste(site_name,"Wheat Yield"),
-#           paste0("Scenario: ",scenario_descriptor)) +
-#   scale_color_manual(labels=c("Daycent","Historical","Observed"),
-#                      values=cbPalette9[c(8,4,1)]) +
-#   theme(panel.background = element_blank(),
-#         axis.line = element_line(),
-#         legend.position = "right",
-#         legend.key = element_blank())
-# 
-# gWhY
-
 
 ## SOC
 
-Cfit_Daycent <- coef(lm(Daycent ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% 2003:2021,]))#experiment_year_range,]))
-Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
+# Cfit_Daycent <- coef(lm(Daycent ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% 2003:2021,]))#experiment_year_range,]))
+# Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
 
-gC <- Cstock_Mgha_piv[Cstock_Mgha_piv$year %in% 2003:2021,] %>%#experiment_year_range,] %>%
+SOC_this_piv <- Cstock_Mgha_piv[Cstock_Mgha_piv$year %in% experiment_year_range,]
+
+SOC_this <- Cstock_Mgha[Cstock_Mgha$year %in% experiment_year_range,]
+Cfit_time <- lm(Daycent ~ year, data = SOC_this)
+Cfit_coef_time <- coef(Cfit_time)
+Cfit_r2_time <- round(summary(Cfit_time)$r.squared,2)
+C_rmse_error_time <- SOC_this$Observed-SOC_this$Daycent
+C_rmse_time <- round(sqrt(mean(C_rmse_error_time^2,na.rm=TRUE)),2)
+
+ObsCfit_all <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
+
+gC <- SOC_this_piv[SOC_this_piv$year %in% experiment_year_range,] %>%#experiment_year_range,] %>%
   ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point() +
-  geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
+  geom_abline(intercept=ObsCfit_all[1], slope=ObsCfit_all[2], color="black") +
   geom_errorbar(aes(ymin=C_val-Obs_sd, ymax=C_val+Obs_sd),
                 width=.2) + # Width of the error bars
   xlab("Year") +
@@ -197,7 +196,7 @@ gC <- Cstock_Mgha_piv[Cstock_Mgha_piv$year %in% 2003:2021,] %>%#experiment_year_
   ylim(3,12) +
   ggtitle(paste(site_name,"Soil Organic Carbon"),
           paste0("Scenario: ",scenario_descriptor)) +
-  geom_abline(intercept=Cfit_Daycent[1], slope=Cfit_Daycent[2], color="orange") +
+  geom_abline(intercept=Cfit_coef_time[1], slope=Cfit_coef_time[2], color="orange") +
   scale_color_manual(labels=c("Daycent","Observed"),
                      values=cbPalette9[c(8,1)]) +
   theme_classic(base_family = "serif", base_size = 15) +
@@ -216,7 +215,7 @@ SOC_startexp <- unique(lis_output[lis_output$time==experiment_start_year,"somsc_
 
 ## SOC with spin-up
 
-Cfith_Daycent <- coef(lm(Daycent ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% 2003:2021,]))#experiment_year_range,]))
+Cfith_Daycent <- coef(lm(Daycent ~ year, data = Cstock_Mgha[Cstock_Mgha$year %in% experiment_year_range,]))
 Cfith_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
 
 gCh <- Cstock_Mgha_piv %>%#experiment_year_range,] %>%
@@ -274,14 +273,21 @@ Cdiff_landconv_startexp <- lis_output[lis_output$time==land_conversion_year,"som
 #                                                      SoilTemp_C_piv$source=="Observed"&
 #                                                      !is.na(SoilTemp_C_piv$temp_val),])
 
-gT <- SoilTemp_C_piv[SoilTemp_C_piv$source=='Daycent'
-                     & SoilTemp_C_piv$date>="1999-01-01"
-                     & SoilTemp_C_piv$date<experiment_end_date,] %>%
+Temp_this_piv <- SoilTemp_C_piv[SoilTemp_C_piv$year %in% experiment_year_range,]
+
+Temp_this <- SoilTemp_C[year(SoilTemp_C$date) %in% experiment_year_range,]
+Tfit_time <- lm(Daycent ~ date, data = Temp_this)
+Tfit_coef_time <- coef(Tfit_time)
+Tfit_r2_time <- round(summary(Tfit_time)$r.squared,2)
+T_rmse_error_time <- Temp_this$Observed-Temp_this$Daycent
+T_rmse_time <- round(sqrt(mean(T_rmse_error_time^2,na.rm=TRUE)),2)
+
+gT <- Temp_this_piv[Temp_this_piv$source=='Daycent'
+                     & Temp_this_piv$year %in% ObsTemp$year,] %>%
   ggplot(aes(x=date, y=temp_val, color=source)) +
   geom_point(show.legend=TRUE) +
-  geom_point(data=SoilTemp_C_piv[SoilTemp_C_piv$source=='Observed'
-                                 & SoilTemp_C_piv$date>="1999-01-01"
-                                 & SoilTemp_C_piv$date<experiment_end_date,],
+  geom_point(data=Temp_this_piv[Temp_this_piv$source=='Observed'
+                                 & Temp_this_piv$year %in% ObsTemp$year,],
              aes(x=date, y=temp_val, color=source)) +
   xlab("Year") +
   ylab(expression('Soil temperature (' ^o*'C)')) +
@@ -319,8 +325,18 @@ mean_soilT_day <- mean(SoilTemp_C[,"Daycent"],na.rm=TRUE)
 #first(N2O_ghaday_piv[N2O_ghaday_piv$source=="KBS_Observed"&!is.na(N2O_ghaday_piv$n2o_val),"date"])
 #last(N2O_ghaday_piv[N2O_ghaday_piv$source=="KBS_Observed"&!is.na(N2O_ghaday_piv$n2o_val),"date"])
 
-gNG <- N2O_ghaday_piv[N2O_ghaday_piv$source=='Daycent' &
-                        year(N2O_ghaday_piv$date) %in% year(ObsGas$date),] %>%
+
+N2O_this_piv <- N2O_ghaday_piv[year(N2O_ghaday_piv$date) %in% experiment_year_range,]
+
+N2O_this <- N2O_ghaday[year(N2O_ghaday$date) %in% experiment_year_range,]
+Nfit_time <- lm(Daycent ~ date, data = N2O_this)
+Nfit_coef_time <- coef(Nfit_time)
+Nfit_r2_time <- round(summary(Nfit_time)$r.squared,2)
+N_rmse_error_time <- N2O_this$Observed-N2O_this$Daycent
+N_rmse_time <- round(sqrt(mean(N_rmse_error_time^2,na.rm=TRUE)),2)
+
+gNG <- N2O_this_piv[N2O_this_piv$source=='Daycent' &
+                        year(N2O_this_piv$date) %in% year(ObsGas$date),] %>%
   ggplot(aes(x=date, y=n2o_val, color=source)) +
   geom_line(show.legend=TRUE) +
   # geom_point(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='Observed'&
@@ -329,8 +345,8 @@ gNG <- N2O_ghaday_piv[N2O_ghaday_piv$source=='Daycent' &
   geom_segment(data=Fert[Fert$treatment==treatment & 
                            year(Fert$date) %in% year(ObsGas$date) &
                            Fert$totalN_kgha>10,],
-               aes(x = date, y = 40,
-                   xend = date, yend = 35),
+               aes(x = date, y = 20,
+                   xend = date, yend = 16),
                colour=cbPalette9[7],
                show.legend=F,
                lineend = "round",
@@ -462,14 +478,21 @@ gNG
 # gSCN
 
 
-#first(CH4_ghaday_piv[CH4_ghaday_piv$source=="KBS_Observed"&!is.na(CH4_ghaday_piv$ch4_val),"date"])
-#last(CH4_ghaday_piv[CH4_ghaday_piv$source=="KBS_Observed"&!is.na(CH4_ghaday_piv$ch4_val),"date"])
-gMG <- CH4_ghaday_piv[CH4_ghaday_piv$source=='Daycent'
-                      &year(CH4_ghaday_piv$date) %in% 1992:2014,] %>%
+CH4_this_piv <- CH4_ghaday_piv[year(CH4_ghaday_piv$date) %in% experiment_year_range,]
+
+CH4_this <- CH4_ghaday[year(CH4_ghaday$date) %in% experiment_year_range,]
+Hfit_time <- lm(Daycent ~ date, data = CH4_this)
+Hfit_coef_time <- coef(Hfit_time)
+Hfit_r2_time <- round(summary(Hfit_time)$r.squared,2)
+H_rmse_error_time <- CH4_this$Observed-CH4_this$Daycent
+H_rmse_time <- round(sqrt(mean(H_rmse_error_time^2,na.rm=TRUE)),2)
+
+gMG <- CH4_this_piv[CH4_this_piv$source=='Daycent'
+                      &year(CH4_this_piv$date) %in% 1992:2014,] %>%
   ggplot(aes(x=date, y=ch4_val, color=source)) +
   geom_line(show.legend=TRUE) +
-  geom_point(data=CH4_ghaday_piv[CH4_ghaday_piv$source=='Observed'
-                                 &year(CH4_ghaday_piv$date) %in% 1992:2014,],
+  geom_point(data=CH4_this_piv[CH4_this_piv$source=='Observed'
+                                 &year(CH4_this_piv$date) %in% 1992:2014,],
              aes(x=date, y=ch4_val, color=source)) +
   xlab("Year") +
   ylab(expression('CH'[4]*' Emissions (g C ha ' ^-1*'day ' ^-1*')')) +
@@ -632,8 +655,10 @@ ggsave(filename=paste0(results_path,"calib_Cotton_yield_comparison_exp_",scenari
        width=6, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_Cotton_hist_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gChY,
        width=9, height=6, dpi=300)
+if(mgmt_scenario_grp != 7) {
 ggsave(filename=paste0(results_path,"calib_Sorghum_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gSY,
        width=6, height=6, dpi=300)
+}
 ggsave(filename=paste0(results_path,"calib_Sorghum_hist_yield_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gShY,
        width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_SOC_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gC,
@@ -1068,85 +1093,183 @@ ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_1to1_",scenario_
 
 
 # add this run's results to model log file and file collecting all final
-# model runs
-if(mgmt_scenario_grp == 3) {
+# model runs. scenario 7 is continuous cotton, so no sorghum; scenario 5
+# is a cotton-sorghum rotation, but sorghum failed early and there aren't
+# enough data points to generate these stats
+if(mgmt_scenario_grp == 7 | mgmt_scenario_grp == 5) {
   calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                          clim_scenario_num,mgmt_scenario_num, scenario_name,
                          scenario_abbrev,
-                         NA, NA, NA, NA, # Maize
+                         NA, NA, NA, NA, # Maize 1 to 1
                          NA,
-                         NA, NA, NA, NA, # Soybean
+                         NA, NA, NA, NA, # Soybean 1 to 1
                          NA,
-                         NA, NA, NA, NA, # Wheat
-                         NA,
-                         Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
-                         SOC_obsmod_diff_Mgha,
-                         Tfit_coef[2], Tfit_coef[1], Tfit_r2, T_rmse,
-                         NA, NA, NA, NA, # Moisture
-                         NA, NA, NA, NA, # N2O
-                         NA,
-                         NA, NA, NA, NA, # CH4
-                         NA,
-                         NA, NA, NA, NA, # Cotton
-                         NA,
-                         SYfit_coef[2], SYfit_coef[1], SYfit_r2, SY_rmse, # Sorghum
-                         Sorghum_obsmod_diff_Mgha,
-                         NA, NA, NA, # maize, soybean, wheat cultivars
-                         NA, NA # cotton, sorghum cultivars
-                         )
-} else if(mgmt_scenario_grp == 7 | mgmt_scenario_grp == 5) {
-  calib_log_tab <- cbind(as.character(Sys.time()),model_name,
-                         clim_scenario_num,mgmt_scenario_num, scenario_name,
-                         scenario_abbrev,
-                         NA, NA, NA, NA, # Maize
-                         NA,
-                         NA, NA, NA, NA, # Soybean
-                         NA,
-                         NA, NA, NA, NA, # Wheat
+                         NA, NA, NA, NA, # Wheat 1 to 1
                          NA,
                          Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
-                         SOC_obsmod_diff_Mgha,
+                         SOC_obsmod_diff_Mgha,NA,
                          Tfit_coef[2], Tfit_coef[1], Tfit_r2, T_rmse,
-                         NA, NA, NA, NA, # Moisture
-                         NA, NA, NA, NA, # N2O
+                         SoilT_obsmod_diff_Mgha,
+                         NA, NA, NA, NA, # Moisture 1 to 1
                          NA,
-                         NA, NA, NA, NA, # CH4
+                         NA, NA, NA, NA, # N2O 1 to 1
+                         NA,
+                         NA, NA, NA, NA, # CH4 1 to 1
+                         NA,
+                         NA, NA, NA, NA, # M Bio 1 to 1
                          NA,
                          CYfit_coef[2], CYfit_coef[1], CYfit_r2, CY_rmse,
                          Cotton_obsmod_diff_Mgha,
-                         NA, NA, NA, NA, # Sorghum
+                         NA, NA, NA, NA, # Sorghum 1 to 1
                          NA,
                          NA, NA, NA, # maize, soybean, wheat cultivars
-                         NA, NA # cotton, sorghum cultivars
-                         )
+                         NA, NA, # cotton, sorghum cultivars
+                         NA, NA, NA, NA, # Maize time series
+                         NA, NA, NA, NA, # Soybean time series
+                         NA, NA, NA, NA, # Wheat time series
+                         Cfit_coef_time[2], Cfit_coef_time[1], Cfit_r2_time, NA,
+                         NA, NA, NA, NA, # SOC w/o outliers
+                         Tfit_coef_time[2], Tfit_coef_time[1], Tfit_r2_time, NA,
+                         Mfit_coef_time[2], Mfit_coef_time[1], Mfit_r2_time, NA, # moist time series
+                         Nfit_coef_time[2], Nfit_coef_time[1], Nfit_r2_time, NA, # n2o time series
+                         Hfit_coef_time[2], Hfit_coef_time[1], Hfit_r2_time, NA, # CH4 time series
+                         NA, NA, NA, NA, # M Bio time series
+                         CYfit_coef[2], CYfit_coef[1], CYfit_r2, NA,
+                         NA, NA, NA, NA # Sorghum time series
+  )
 } else {
   calib_log_tab <- cbind(as.character(Sys.time()),model_name,
                          clim_scenario_num,mgmt_scenario_num, scenario_name,
                          scenario_abbrev,
-                         NA, NA, NA, NA, # Maize
+                         NA, NA, NA, NA, # Maize 1 to 1
                          NA,
-                         NA, NA, NA, NA, # Soybean
+                         NA, NA, NA, NA, # Soybean 1 to 1
                          NA,
-                         NA, NA, NA, NA, # Wheat
+                         NA, NA, NA, NA, # Wheat 1 to 1
                          NA,
-                         Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse,
-                         SOC_obsmod_diff_Mgha,
+                         Cfit_coef[2], Cfit_coef[1], Cfit_r2, C_rmse, # SOC 1 to 1
+                         SOC_obsmod_diff_Mgha, NA,
                          Tfit_coef[2], Tfit_coef[1], Tfit_r2, T_rmse,
-                         NA, NA, NA, NA, # Moisture
-                         NA, NA, NA, NA, # N2O
+                         SoilT_obsmod_diff_Mgha,
+                         NA, NA, NA, NA, # Moisture 1 to 1
                          NA,
-                         NA, NA, NA, NA, # CH4
+                         NA, NA, NA, NA, # N2O 1 to 1
+                         NA,
+                         NA, NA, NA, NA, # CH4 1 to 1
+                         NA,
+                         NA, NA, NA, NA, # M Bio 1 to 1
                          NA,
                          CYfit_coef[2], CYfit_coef[1], CYfit_r2, CY_rmse,
                          Cotton_obsmod_diff_Mgha,
                          SYfit_coef[2], SYfit_coef[1], SYfit_r2, SY_rmse,
                          Sorghum_obsmod_diff_Mgha,
                          NA, NA, NA, # maize, soybean, wheat cultivars
-                         NA, NA # cotton, sorghum cultivars
+                         NA, NA, # cotton, sorghum cultivars
+                         NA, NA, NA, NA, # Maize time series
+                         NA, NA, NA, NA, # Soybean time series
+                         NA, NA, NA, NA, # Wheat time series
+                         Cfit_coef_time[2], Cfit_coef_time[1], Cfit_r2_time, NA,
+                         NA, NA, NA, NA, # SOC w/o outliers
+                         Tfit_coef_time[2], Tfit_coef_time[1], Tfit_r2_time, NA,
+                         Mfit_coef_time[2], Mfit_coef_time[1], Mfit_r2_time, NA, # moist time series
+                         Nfit_coef_time[2], Nfit_coef_time[1], Nfit_r2_time, NA, # n2o time series
+                         Hfit_coef_time[2], Hfit_coef_time[1], Hfit_r2_time, NA, # CH4 time series
+                         NA, NA, NA, NA, # M Bio time series
+                         CYfit_coef[2], CYfit_coef[1], CYfit_r2, NA,
+                         SYfit_coef_time[2], SYfit_coef_time[1], SYfit_r2_time, NA # Sorghum time series
                          )
 }
 
 source("p_Edit_calib_file.R")
 p_Edit_calib_file(calib_log_tab,model_name,scenario_name)
+
+
+rm(calib_log_tab,
+   Cotton_this_piv,
+   Cotton_this,
+   CYfit_time,
+   CYfit_coef_time,
+   CYfit_r2_time,
+   CY_rmse_error_time,
+   CY_rmse_time,
+   gCY,
+   gChY,
+   gShY,
+   SOC_this_piv,
+   SOC_this,
+   Cfit_time,
+   Cfit_coef_time,
+   Cfit_r2_time,
+   C_rmse_error_time,
+   C_rmse_time,
+   ObsCfit_all,
+   gC,
+   Temp_this_piv,
+   Temp_this,
+   Tfit_time,
+   Tfit_coef_time,
+   Tfit_r2_time,
+   T_rmse_error_time,
+   T_rmse_time,
+   gT,
+   gM,
+   N2O_this_piv,
+   N2O_this,
+   Nfit_time,
+   Nfit_coef_time,
+   Nfit_r2_time,
+   N_rmse_error_time,
+   N_rmse_time,
+   gNG,
+   CYfit,
+   CYfit_coef,
+   CYfit_r2,
+   CY_rmse_error,
+   CY_rmse,
+   gCY_121,
+   Cfit,
+   Cfit_coef,
+   Cfit_r2,
+   C_rmse_error,
+   C_rmse,
+   gC_121,
+   Tfit,
+   Tfit_coef,
+   Tfit_r2,
+   T_rmse_error,
+   T_rmse,
+   gT_121,
+   gTc_121,
+CH4_this_piv,
+CH4_this,
+Hfit_time,
+Hfit_coef_time,
+Hfit_r2_time,
+H_rmse_error_time,
+H_rmse_time,
+gMG,
+gCI,
+gNI,
+gNH4,
+gNO3,
+transform_factor)
+
+if(mgmt_scenario_grp != 7 & mgmt_scenario_grp != 5) {
+  rm(
+    Sorghum_this_piv,
+    Sorghum_this,
+    SYfit_time,
+    SYfit_coef_time,
+    SYfit_r2_time,
+    SY_rmse_error_time,
+    SY_rmse_time ,
+    gSY,
+     SYfit,
+     SYfit_coef,
+     SYfit_r2,
+     SY_rmse_error,
+     SY_rmse,
+     gSY_121)
+}
 
 }) # end suppressMessages

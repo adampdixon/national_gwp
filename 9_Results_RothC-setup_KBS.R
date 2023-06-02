@@ -61,16 +61,19 @@ write.table(output_annual_data,file=paste0(results_path,"Annual_results_compilat
 # merge observed and modeled data
 
 ##
-Cstock_Mgha <- merge(ObsC_Mgha[,c("year","cstock")],
-             RothCC_Mgha[c("year","ModC")],
-             by="year",
-             all=TRUE)
-colnames(Cstock_Mgha) <- c("year","Observed","RothC")
+Cstock_Mgha <- merge(ObsC_Mgha[,c("year","cstock","sd_cstock")],
+                     RothCC_Mgha[,c("year","ModC")],
+                     by="year",
+                     all=TRUE)
+colnames(Cstock_Mgha) <- c("year","Observed","Obs_sd","RothC")
 
-Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year),
-               names_to = "source",
-               values_to = "C_val")
+Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year,-Obs_sd),
+                                 names_to = "source",
+                                 values_to = "C_val")
 
+# remove sd from modeled records; only for observed
+Cstock_Mgha_piv <- Cstock_Mgha_piv %>%
+  mutate(Obs_sd=replace(Obs_sd, source!="Observed", NA))
 #**********************************************************************
 
 # calculate mean differences between observed and modeled results
@@ -79,4 +82,10 @@ SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed) &
                                           !is.na(Cstock_Mgha$RothC),"Observed"] -
                               Cstock_Mgha[!is.na(Cstock_Mgha$Observed) &
                                             !is.na(Cstock_Mgha$RothC),"RothC"])
+
+SOC_obsmod_diff_Mgha_nooutliers <- sum(Cstock_Mgha[!(Cstock_Mgha$Observed %in% ObsC_outliers) &
+                                                     !is.na(Cstock_Mgha$Observed & Cstock_Mgha$RothC),"Observed"] -
+                                         Cstock_Mgha[!(Cstock_Mgha$Observed %in% ObsC_outliers) &
+                                                       !is.na(Cstock_Mgha$Observed & Cstock_Mgha$RothC),"RothC"])
+
 

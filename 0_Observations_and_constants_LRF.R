@@ -63,7 +63,7 @@ library(stringr)
                                                   "Biochar 57 Mgha, No Till, Crop Rotation",
                                                   "Biochar 76 Mgha, No Till, Crop Rotation",
                                                   "Biochar 96 Mgha, No Till, Crop Rotation",
-                                                  "Contintuous Crop", #LRF CCct
+                                                  "Continuous Crop", #LRF CCct
                                                   "No Till, Cover Crop, Crop Rotation"), #LRF CRSnt
                             climate_scenario_num=c(1,1,1,1,1,1,1,1,1,1,
                                                    1,1,1,1,1,1,1,1,1,1,
@@ -490,6 +490,12 @@ cbPalette12 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
                  "#332288","#0B6329"
 )
 
+APSIM_color <- cbPalette9[8]
+Daycent_color <- cbPalette9[2]
+Millennial_color <- cbPalette9[6]
+RothC_color <- cbPalette9[3]
+Observed_color <- cbPalette9[1]
+Fertilizer_color <- cbPalette9[7]
 
 #**********************************************************************
 # Observational data ------------------------------------------------------
@@ -732,6 +738,11 @@ ObsC_Mgha_all <- ObsC_pct %>%
 ### calculate just for the current treatment
 ObsC_Mgha <- ObsC_Mgha_all[ObsC_Mgha_all$treatment==treatment,]
 
+ObsCfit <- lm(cstock ~ year, data = ObsC_Mgha)
+ObsCfit_coef <- coef(ObsCfit)
+ObsCfit_r2 <- round(summary(ObsCfit)$r.squared,2)
+
+
 ### The following is commented out for LRF; no true control from native
 ### ecosystem is available, so need to eliminate
 
@@ -775,6 +786,15 @@ ObsYield_mean <- ObsYield_raw[,c("date","year","treatment","treatment_num",
 
 ObsYield <- ObsYield_mean[ObsYield_mean$treatment_num==treatment_num,]
 
+ObsCYfit <- lm(mean_yield ~ year, data = ObsYield[ObsYield$crop=="Cotton",])
+ObsCYfit_coef <- coef(ObsCYfit)
+ObsCYfit_r2 <- round(summary(ObsCYfit)$r.squared,2)
+
+if(mgmt_scenario_grp %in% c(3,8)) {
+ObsSYfit <- lm(mean_yield ~ year, data = ObsYield[ObsYield$crop=="Sorghum",])
+ObsSYfit_coef <- coef(ObsSYfit)
+ObsSYfit_r2 <- round(summary(ObsSYfit)$r.squared,2)
+}
 
 ## Biomass yield
 ## whole plant biomass (used in addition to grain measurements)
@@ -808,6 +828,9 @@ ObsTemp_all <- obs_soiltemp_raw[,c("date","year","soil_temperature")]
 ObsTemp <- ObsTemp_all %>%
   mutate(date=as.Date(date))
 
+ObsTfit <- lm(soil_temperature ~ date, data = ObsTemp)
+ObsTfit_coef <- coef(ObsTfit)
+ObsTfit_r2 <- round(summary(ObsTfit)$r.squared,2)
 
 #********************************************************************
 #* Liberty Research Farm data does not include gases or soil moisture
@@ -843,30 +866,29 @@ ObsMB_raw <- obs_soilbio_raw[substr(obs_soilbio_raw$treatment,1,1)=='C',
                              c("date","year","treatment","treatment_num",
                                "replicate","Microbe Bio C mgC/kg",
                                "Microbe Bio N mgN/kg")] %>%
-  mutate(mb_mgkg=`Microbe Bio C mgC/kg`,
+  mutate(date=as.Date(date),
+         mb_mgkg=`Microbe Bio C mgC/kg`,
          mbn_mgkg=`Microbe Bio N mgN/kg`)
 
 ObsMB_mean <- ObsMB_raw %>%
   group_by(year,treatment,treatment_num,date) %>%
-  summarize(mean_MB_ugg=round(mean(mb_mgkg,na.rm=T),0))
-
-# ObsMB <- ObsBD[,c("Treatment","mean_BD")] %>%
-#   merge(ObsMB_mean[ObsMB_mean$trt==treatment,],
-#         by.x = "Treatment",
-#         by.y = "trt",
-#         all=T) %>%
-#   mutate(mean_MB_gm2=mean_MB_ugg * mean_BD / 100)
+  summarize(mean_MB_mgkg=round(mean(mb_mgkg,na.rm=T),0),
+            sd_MB_mgkg=sd(mb_mgkg,na.rm=T))
 
 ### using the control bulk density here
 ObsMB_all <- ObsMB_mean %>%
   mutate(bd=ObsBD_ctrl$mean_BD,
-         mb_gm2=mean_MB_ugg*bd/100,
-         mb_mgha=mb_gm2/100)
+         mb_gm2=mean_MB_mgkg*bd/100,
+         mb_mgha=mb_gm2/100,
+         sd_gm2=sd_MB_mgkg*bd/100,
+         sd_mgha=sd_gm2/100)
 
-ObsMB <- ObsMB_mean[ObsMB_mean$treatment_num==treatment_num,] %>%
-  mutate(bd=ObsBD_ctrl$mean_BD,
-         mb_gm2=mean_MB_ugg*bd/100,
-         mb_mgha=mb_gm2/100)
+ObsMB <- ObsMB_all[ObsMB_all$treatment==treatment,] 
+
+ObsMBfit <- lm(mb_gm2 ~ year, data = ObsMB)
+ObsMBfit_coef <- coef(ObsMBfit)
+ObsMBfit_r2 <- round(summary(ObsMBfit)$r.squared,2)
+
 
 #**********************************************************************
 #* Plant tissue was for troubleshooting Daycent, which LRF doesn't have
@@ -969,43 +991,160 @@ ObsWth <- read.table(paste0(apsim_path,"basic_wth_",clim_scenario_num,".met"),
 # write calibration header file ---------------------------------------
 
 # make separate file with column headers (empty table with NA row)
-dummy<-data.frame(matrix(ncol=59))
 log_col_headers <- c("Date_time","Model",
                      "Climate_Scenario","Mgmt_Scenario","Scenario_Name",
                      "Scenario_Abbr",
-                     "Maize_slope","Maize_yint","Maize_R2","Maize_RMSE",
+                     "Maize_slope_1to1","Maize_yint_1to1","Maize_R2_1to1","Maize_RMSE_1to1",
                      "Maize_diff",
-                     "Soy_slope","Soy_yint","Soy_R2","Soy_RMSE",
+                     "Soy_slope_1to1","Soy_yint_1to1","Soy_R2_1to1","Soy_RMSE_1to1",
                      "Soy_diff",
-                     "Wheat_slope","Wheat_yint","Wheat_R2","Wheat_RMSE",
+                     "Wheat_slope_1to1","Wheat_yint_1to1","Wheat_R2_1to1","Wheat_RMSE_1to1",
                      "Wheat_diff",
-                     "SOC_slope","SOC_yint","SOC_R2","SOC_RMSE",
-                     "SOC_diff",
-                     "Temp_slope","Temp_yint","Temp_R2","Temp_RMSE",
-                     "Moist_slope","Moist_yint","Moist_R2","Moist_RMSE",
-                     "N2O_slope","N2O_yint","N2O_R2","N2O_RMSE",
+                     "SOC_slope_1to1","SOC_yint_1to1","SOC_R2_1to1","SOC_RMSE_1to1",
+                     "SOC_diff","SOC_diff_noout",
+                     "Temp_slope_1to1","Temp_yint_1to1","Temp_R2_1to1","Temp_RMSE_1to1",
+                     "Temp_diff",
+                     "Moist_slope_1to1","Moist_yint_1to1","Moist_R2_1to1","Moist_RMSE_1to1",
+                     "Moist_diff",
+                     "N2O_slope_1to1","N2O_yint_1to1","N2O_R2_1to1","N2O_RMSE_1to1",
                      "N2O_diff",
-                     "CH4_slope","CH4_yint","CH4_R2","CH4_RMSE",
+                     "CH4_slope_1to1","CH4_yint_1to1","CH4_R2_1to1","CH4_RMSE_1to1",
                      "CH4_diff",
-                     "Cotton_slope","Cotton_yint","Cotton_R2","Cotton_RMSE",
+                     "MBio_slope_1to1","MBio_yint_1to1","MBio_R2_1to1","MBio_RMSE_1to1",
+                     "MBio_diff",
+                     "Cotton_slope_1to1","Cotton_yint_1to1","Cotton_R2_1to1","Cotton_RMSE_1to1",
                      "Cotton_diff",
-                     "Sorghum_slope","Sorghum_yint","Sorghum_R2","Sorghum_RMSE",
+                     "Sorghum_slope_1to1","Sorghum_yint_1to1","Sorghum_R2_1to1","Sorghum_RMSE_1to1",
                      "Sorghum_diff",
                      "Maize_cultivar","Soybean_cultivar","Wheat_cultivar",
-                     "Cotton_cultivar","Sorghum_cultivar")
+                     "Cotton_cultivar","Sorghum_cultivar",
+                     "Maize_slope_time","Maize_yint_time","Maize_R2_time","Maize_RMSE_time",
+                     "Soy_slope_time","Soy_yint_time","Soy_R2_time","Soy_RMSE_time",
+                     "Wheat_slope_time","Wheat_yint_time","Wheat_R2_time","Wheat_RMSE_time",
+                     "SOC_slope_time","SOC_yint_time","SOC_R2_time","SOC_RMSE_time",
+                     "SOC_slope_time_noout","SOC_yint_time_noout","SOC_R2_time_noout","SOC_RMSE_time_noout",
+                     "Temp_slope_time","Temp_yint_time","Temp_R2_time","Temp_RMSE_time",
+                     "Moist_slope_time","Moist_yint_time","Moist_R2_time","Moist_RMSE_time",
+                     "N2O_slope_time","N2O_yint_time","N2O_R2_time","N2O_RMSE_time",
+                     "CH4_slope_time","CH4_yint_time","CH4_R2_time","CH4_RMSE_time",
+                     "MBio_slope_time","MBio_yint_time","MBio_R2_time","MBio_RMSE_time",
+                     "Cotton_slope_time","Cotton_yint_time","Cotton_R2_time","Cotton_RMSE_time",
+                     "Sorghum_slope_time","Sorghum_yint_time","Sorghum_R2_time","Sorghum_RMSE_time"
+)
+dummy<-data.frame(matrix(ncol=length(log_col_headers)))
 colnames(dummy) <- log_col_headers
 
 write.table(dummy,file=paste0(results_path,"Calibration_log_columns.csv"),
             append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
 
 
+# Log results -------------------------------------------------------------
+
+if(clim_scenario_num == 1 & mgmt_scenario_num %in% calib_mgmt_nums) {
+# add this run's results to model log file and file collecting all final
+# model runs
+  if(mgmt_scenario_grp %in% c(3,8)) {
+calib_log_tab <- cbind(as.character(Sys.time()),'Observed',
+                       clim_scenario_num,mgmt_scenario_num, scenario_name,
+                       scenario_abbrev,
+                       NA, NA, NA, NA, # Maize 1 to 1
+                       NA, # Maize diff
+                       NA, NA, NA, NA, # Soybean 1 to 1
+                       NA,
+                       NA, NA, NA, NA, # Wheat 1 to 1
+                       NA,
+                       NA, NA, NA, NA, # SOC 1 to 1
+                       NA, NA, # SOC diff
+                       NA, NA, NA, NA, # Temp 1 to 1
+                       NA,
+                       NA, NA, NA, NA, # Moist 1 to 1
+                       NA,
+                       NA, NA, NA, NA, # N2O 1 to 1
+                       NA,
+                       NA, NA, NA, NA, # CH4 1 to 1
+                       NA,
+                       NA, NA, NA, NA, # M Bio 1 to 1
+                       NA, # MB diff
+                       NA, NA, NA, NA, # Cotton 1 to 1
+                       NA,
+                       NA, NA, NA, NA, # Sorghum 1 to 1
+                       NA,
+                       NA, NA, NA, # maize, soybean, wheat cultivars
+                       NA, NA, # cotton, sorghum cultivars
+                       NA, NA, NA, NA, # Corn time series
+                       NA, NA, NA, NA, # Soybeans time series
+                       NA, NA, NA, NA, # Wheat time series
+                       ObsCfit_coef[2], NA, ObsCfit_r2, NA, # SOC time series
+                       NA, NA, NA, NA, # SOC w/o outliers
+                       ObsTfit_coef[2], NA, ObsTfit_r2, NA, # Temperature time series
+                       NA, NA, NA, NA, # Moisture time series
+                       NA, NA, NA, NA, # N2O time series
+                       NA, NA, NA, NA, # CH4 time series
+                       ObsMBfit_coef[2], NA, ObsMBfit_r2, NA, # M Bio time series
+                       ObsCYfit_coef[2], NA, ObsCYfit_r2, NA, # Cotton time series
+                       ObsSYfit_coef[2], NA, ObsSYfit_r2, NA # Sorghum time series
+)
+  } else {
+    calib_log_tab <- cbind(as.character(Sys.time()),'Observed',
+                           clim_scenario_num,mgmt_scenario_num, scenario_name,
+                           scenario_abbrev,
+                           NA, NA, NA, NA, # Maize 1 to 1
+                           NA,
+                           NA, NA, NA, NA, # Soybean 1 to 1
+                           NA,
+                           NA, NA, NA, NA, # Wheat 1 to 1
+                           NA,
+                           NA, NA, NA, NA, # SOC 1 to 1
+                           NA, NA, # SOC diff
+                           NA, NA, NA, NA, # Temp 1 to 1
+                           NA,
+                           NA, NA, NA, NA, # Moist 1 to 1
+                           NA,
+                           NA, NA, NA, NA, # N2O 1 to 1
+                           NA,
+                           NA, NA, NA, NA, # CH4 1 to 1
+                           NA,
+                           NA, NA, NA, NA, # M Bio 1 to 1
+                           NA, # MB diff
+                           NA, NA, NA, NA, # Cotton 1 to 1
+                           NA,
+                           NA, NA, NA, NA, # Sorghum 1 to 1
+                           NA,
+                           NA, NA, NA, # maize, soybean, wheat cultivars
+                           NA, NA, # cotton, sorghum cultivars
+                           NA, NA, NA, NA, # Maize time series
+                           NA, NA, NA, NA, # Soybean time series
+                           NA, NA, NA, NA, # Wheat time series
+                           ObsCfit_coef[2], NA, ObsCfit_r2, NA, # SOC time series
+                           NA, NA, NA, NA, # SOC w/o outliers
+                           ObsTfit_coef[2], NA, ObsTfit_r2, NA, # Temp time series
+                           NA, NA, NA, NA, # Moist time series
+                           NA, NA, NA, NA, # N2O time series
+                           NA, NA, NA, NA, # CH4 time series
+                           ObsMBfit_coef[2], NA, ObsMBfit_r2, NA, # M Bio time series
+                           ObsCYfit_coef[2], NA, ObsCYfit_r2, NA, # Cotton time series
+                           NA, NA, NA, NA # Sorghum time series
+    )
+}
+
+source("p_Edit_calib_file.R")
+p_Edit_calib_file(calib_log_tab,'Observed',scenario_name)
+}
+
 #**********************************************************************
 # Clean up ----------------------------------------------------------------
 
 rm(obs_biomass_raw,obs_fert_raw,
    obs_soilbio_raw,obs_soilchem_raw,obs_soilphys_raw,obs_soiltemp_raw,
-   obs_treatments_raw,ObsMB_raw,ObsYield_raw,ObsBiomass_raw
+   obs_treatments_raw,ObsMB_raw,ObsYield_raw,ObsBiomass_raw,
+   ObsCfit,ObsCfit_coef,ObsCfit_r2,
+   ObsCYfit,ObsCYfit_coef,ObsCYfit_r2,
+   ObsMBfit,ObsMBfit_coef,ObsMBfit_r2
    )
+if(mgmt_scenario_grp %in% c(3,8)) {
+  rm(ObsSYfit,ObsSYfit_coef,ObsSYfit_r2)
+} 
+
 ## don't remove obs_tillage_raw, obs_harvest_raw, or obs_planting_raw as
 ## they are used by other scripts
 

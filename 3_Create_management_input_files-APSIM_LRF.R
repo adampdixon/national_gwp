@@ -199,7 +199,7 @@ suppressMessages({
   APSIM_ops_fut <- data.frame()
   
 
-    if(mgmt_scenario_grp %in% c(3,8)) {
+    if(mgmt_scenario_grp %in% c(3,4,5,8)) {
       # sorghum dropped out of rotation in 2007, so need to cobble a rotation
       # together for the future, including rye planting in early winter after
       # both sorghum and cotton, mowing the following spring

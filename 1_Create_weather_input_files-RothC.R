@@ -17,7 +17,7 @@ rothc_weather_path <- paste0(rothc_path,"weather/")
   
 if(clim_scenario_num==1) {
   
-  # create initial 28-year average for spin-up and 1920-1949 timeframe
+  # create initial 28-year average for spin-up
   Monthly_init <- Hist_site_mon[Hist_site_mon$year %in% 1950:1977, 
                                 c("month","PRCP","Calc_TAVG","TM_OPE")]
   

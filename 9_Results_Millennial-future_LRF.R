@@ -30,7 +30,7 @@ library(ggplot2)
 
   Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha_10cm[Cstock_Mgha_10cm$year >= experiment_start_year,]))
 
-input_data <- Cstock_Mgha_piv_10cm[Cstock_Mgha_piv_10cm$year>=experiment_start_year,] }
+input_data <- Cstock_Mgha_piv_10cm[Cstock_Mgha_piv_10cm$year>=experiment_start_year,]
 
 # 10 cm experimental through future 
 gC4 <- input_data %>%

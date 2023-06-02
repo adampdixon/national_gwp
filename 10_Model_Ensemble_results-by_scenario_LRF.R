@@ -16,6 +16,8 @@ suppressMessages({
   library(graphics)
   library(ggplot2)
   
+  source("p_Edit_calib_data_file.R")
+  
   # read in calibration stats
   calib_summary_raw <- read.csv(paste0(results_path,"Calibration_summary.csv"))
   calib_summary_df <- calib_summary_raw[calib_summary_raw$Scenario_Name==scenario_name]
@@ -25,7 +27,7 @@ suppressMessages({
   #[1]black, [2]dark blue, [3]green, [4]light blue, [5]grey,
   #[6]pink, [7]red, [8]orange, [9]yellow
   
-  if(mgmt_scenario_grp!=6) {
+  if(mgmt_scenario_num %in% calib_mgmt_nums) {
     
     if(mgmt_scenario_grp!=7) {
       # merge observed and modeled data
@@ -52,6 +54,33 @@ suppressMessages({
       # remove sd from modeled records; only for observed
       ens_SorghumYld_Mgha_piv <- ens_SorghumYld_Mgha_piv %>%
         mutate(Obs_sd=replace(Obs_sd, Model!="Observed", NA))
+      
+      ## make another version including historical yields
+      his_SorghumYld_Mgha <- merge(merge(HistY_Mgha[HistY_Mgha$Year >= 1980,
+                                                    c("year","sorghum_yield_mgha")],
+                                         APSIMY_Mgha[APSIMY_Mgha$SorghumYield_Mgha != 0 &
+                                                       APSIMY_Mgha$year > end_exp_period_year,
+                                                     c("year","SorghumYield_Mgha")],
+                                         by="year",
+                                         all=TRUE),
+                                   DayY_Mgha[DayY_Mgha$crop=="Sorghum" &
+                                               DayY_Mgha$yield !=0 &
+                                               DayY_Mgha$year > end_exp_period_year,
+                                             c("year","yield")],
+                                   by="year",
+                                   all=TRUE) %>%
+        mutate(crop="Sorghum",
+               treatment_scen=scenario_descriptor)
+      colnames(his_SorghumYld_Mgha) <- c("year","Historical","APSIM","Daycent",
+                                         "crop","treatment_scen")
+      
+      his_SorghumYld_Mgha_piv <- pivot_longer(his_SorghumYld_Mgha, c(-year,-crop,
+                                                                     -treatment_scen),
+                                              names_to = "Model",
+                                              values_to = "yield_val")
+      
+      p_Edit_calib_data_file(his_SorghumYld_Mgha_piv,
+                             paste0(results_path,"his_SorghumYld_Mgha_piv.csv"))
       
     }
     
@@ -272,7 +301,7 @@ suppressMessages({
         crop_calib_output_df <- rbind(ens_CottonYld_Mgha[ens_CottonYld_Mgha$year %in% experiment_year_range,])
       }
       soc_calib_output_df <- rbind(ens_Cstock_Mgha[ens_Cstock_Mgha$year %in% experiment_year_range,])
-      source("p_Edit_calib_data_file.R")
+
       p_Edit_calib_data_file(crop_calib_output_df,
                              paste0(results_path,"calib_crop_df.csv"))
       p_Edit_calib_data_file(soc_calib_output_df,

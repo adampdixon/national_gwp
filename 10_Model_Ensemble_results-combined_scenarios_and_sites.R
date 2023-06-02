@@ -28,9 +28,13 @@ library(tidyverse)
 library(graphics)
 library(ggplot2)
 
+
+  #*************************************************************
+
+  
     pub_comb_results_path <- paste0("Comb_results_",end_fut_period_year,"/")
 
-    # Import summarized data -------------------------------------------------
+    ## Import summarized data -------------------------------------------------
 
     kbs_summary_output <- read.csv(paste0("KBS_results_",end_fut_period_year,
                                           "/summary_output_final.csv")) %>%
@@ -71,7 +75,7 @@ library(ggplot2)
       mutate(site_name="LRF")
     
 
-# Rearrange data for output -----------------------------------------------
+## Rearrange data for output -----------------------------------------------
 
     
 kbs_summary_output_piv <- pivot_longer(kbs_summary_output,
@@ -214,7 +218,7 @@ gwp_summary_output_piv <- pivot_longer(gwp_summary_output,c(-scenario_abbrev,
 
 #*************************************************************
 
-# GWP bar charts ----------------------------------------------------------
+## GWP bar charts ----------------------------------------------------------
 
 g_gwp <- summary_output_piv[summary_output_piv$source == "GWP",] %>%
   ggplot(aes(x=scenario_abbrev, y=vals, fill=Model)) +
@@ -269,7 +273,7 @@ g_gwp
 ggsave(filename="Comb_results_2050/pub_all_GWP.jpg",
        plot=g_gwp, width=18, height=14, dpi=300)
 
-# GWP components  ------------------------------------------------------------
+## GWP components  ------------------------------------------------------------
 
 g_n2oe <- summary_output_piv[summary_output_piv$source == "CO2e_N2O",] %>%
   ggplot(aes(x=scenario_abbrev, y=vals, fill=Model)) +
@@ -431,7 +435,7 @@ ggsave(filename="Comb_results_2050/pub_all_soce.jpg",
 
 #*******************************************************************
 
-# GWP by source -----------------------------------------------------------
+## GWP by source -----------------------------------------------------------
 
 
 g_gwp_source <- gwp_scenario_means_piv[gwp_scenario_means_piv$source %in% 

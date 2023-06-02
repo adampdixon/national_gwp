@@ -43,6 +43,14 @@ Day_harvest_raw <- rbind(Day_base_harvest,Day_exp_harvest,Day_fut_harvest) %>%
 #limit to future scenario time period
 Day_harvest <- Day_harvest_raw[Day_harvest_raw$year <= end_fut_period_year,]
 
+##############  NOTE #############
+#there is a leap-year issue with soiln_base.out which incorrectly
+#reports leap years from 1942-2002 (should be 1940-2000). if use "date" to
+#select by, will include 2002 day 366, which translates to 2003-01-01
+#in addition to the actual 2003-01-01. this appears to be an issue with
+#.out files in base period. oddly, the _exp extended files are fine.
+##################################
+
 ## soil temperature
 
 Day_base_soiltavg <- read.fwf(paste0(daycent_path,paste0("soiltavg_base.out")),
@@ -364,41 +372,6 @@ DayNI_gm2yr <- lis_output[!((lis_output$cinput == 0 &
          base=`elitad.2.1.`
   )
 
-#**********************************************************************
-
-# write out results for use later in ensemble results
-output_annual_data <- cbind(merge(DayY_Mgha_pivwid[,c("year","Sorghum","Cotton")],
-                           DayC_Mgha[,c("time","base")],
-                           by.x="year", by.y="time",
-                           all=TRUE),
-                           "Daycent",scenario_name,clim_scenario_num,
-                           mgmt_scenario_grp,mgmt_scenario_opt)
-                           
-
-colnames(output_annual_data) <- c("year","SorghumYld_Mgha","CottonYld_Mgha",
-                                  "SOC_Mgha","model_name",
-                                  "scenario_name","climate_scenario_num",
-                                  "mgmt_scenario_grp_num","mgmt_scenario_opt_num")
-
-output_daily_data <- cbind(DayGN_ghaday[,c("date","year","dayofyear","N2O_gNhad")],
-                           DayGN_cum_gha[,"N2O_gha"],
-                           DayGM_ghaday[,"CH4_net_gChad"],
-                           DayGM_cum_gha[,"CH4_gha"],
-                           "Daycent",scenario_name,clim_scenario_num,
-                           mgmt_scenario_grp,mgmt_scenario_opt)
-
-colnames(output_daily_data) <- c("date","year","dayofyear","N2O_emit_gha","N2O_cum_gha",
-                                 "CH4_net_gha","CH4_cum_gha",
-                                 "model_name","scenario_name","climate_scenario_num",
-                                 "mgmt_scenario_grp_num","mgmt_scenario_opt_num")
-
-write.table(output_annual_data,file=paste0(results_path,"Annual_results_compilation_",
-                                           scenario_name,"_Daycent.csv"),
-            col.names=T,row.names=F,sep=",",append=F)
-write.table(output_daily_data,file=paste0(results_path,"Daily_results_compilation_",
-                                          scenario_name,"_Daycent.csv"),
-            col.names=T,row.names=F,sep=",",append=F)
-
 
 #**********************************************************************
 
@@ -507,7 +480,8 @@ colnames(SoilTemp_C) <- c("date","Observed","Daycent")
 
 SoilTemp_C_piv <- pivot_longer(SoilTemp_C, c(-date),
                                names_to = "source",
-                               values_to = "temp_val")
+                               values_to = "temp_val") %>%
+  mutate(year=year(date))
 
 ##
 SoilMoist_VSM <- merge(ObsVSM[,c("date","year","mean_VSM")],
@@ -658,6 +632,14 @@ SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
                                                  Cstock_Mgha$Daycent),"Observed"] -
                               Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
                                                    Cstock_Mgha$Daycent),"Daycent"])
+SoilT_obsmod_diff_Mgha <- mean(SoilTemp_C[!is.na(SoilTemp_C$Observed) &
+                                            !is.na(SoilTemp_C$Daycent),"Observed"] -
+                                 SoilTemp_C[!is.na(SoilTemp_C$Observed) &
+                                              !is.na(SoilTemp_C$Daycent),"Daycent"])
+SoilM_obsmod_diff_Mgha <- mean(SoilMoist_VSM[!is.na(SoilMoist_VSM$Observed &
+                                                      SoilMoist_VSM$Daycent),"Observed"] -
+                                 SoilMoist_VSM[!is.na(SoilMoist_VSM$Observed &
+                                                        SoilMoist_VSM$Daycent),"Daycent"])
 N2O_obsmod_diff_gha <- sum(N2O_ghaday[!is.na(N2O_ghaday$Observed) &
                                         !is.na(N2O_ghaday$Daycent),"Observed"] -
                              N2O_ghaday[!is.na(N2O_ghaday$Observed) &
@@ -666,6 +648,80 @@ CH4_obsmod_diff_gha <- sum(CH4_ghaday[!is.na(CH4_ghaday$Observed) &
                                         !is.na(CH4_ghaday$Daycent),"Observed"] -
                              CH4_ghaday[!is.na(CH4_ghaday$Observed) &
                                           !is.na(CH4_ghaday$Daycent),"Daycent"])
+
+SOC_obsmod_diff_Mgha_nooutliers <- NA
+
+
+#**********************************************************************
+# write results -----------------------------------------------------------
+
+
+# write out results for use later in ensemble results
+output_annual_data <- cbind(merge(DayY_Mgha_pivwid[,c("year","Sorghum","Cotton")],
+                                  DayC_Mgha[,c("time","base")],
+                                  by.x="year", by.y="time",
+                                  all=TRUE),
+                            "Daycent",scenario_name,clim_scenario_num,
+                            mgmt_scenario_grp,mgmt_scenario_opt)
+
+colnames(output_annual_data) <- c("year","SorghumYld_Mgha","CottonYld_Mgha",
+                                  "SOC_Mgha","model_name",
+                                  "scenario_name","climate_scenario_num",
+                                  "mgmt_scenario_grp_num","mgmt_scenario_opt_num")
+
+output_annual_data2 <- cbind(DayCI_gm2yr[DayCI_gm2yr$year>=experiment_start_year &
+                                           DayCI_gm2yr$year<=end_fut_period_year,c("year","base")],
+                             DayNI_gm2yr[DayNI_gm2yr$year>=experiment_start_year &
+                                           DayNI_gm2yr$year<=end_fut_period_year,"base"],
+                            "Daycent",scenario_name,clim_scenario_num,
+                            mgmt_scenario_grp,mgmt_scenario_opt,scenario_abbrev,
+                            scenario_descriptor)
+
+colnames(output_annual_data2) <- c("year","Cinput","Ninput","model_name",
+                                  "scenario_name","climate_scenario_num",
+                                  "mgmt_scenario_grp_num","mgmt_scenario_opt_num",
+                                  "scenario_abbrev","scenario_description")
+
+output_daily_data <- cbind(DayGN_ghaday[,c("date","year","dayofyear","N2O_gNhad")],
+                           DayGN_cum_gha[,"N2O_gha"],
+                           DayGM_ghaday[,"CH4_net_gChad"],
+                           DayGM_cum_gha[,"CH4_gha"],
+                           "Daycent",scenario_name,clim_scenario_num,
+                           mgmt_scenario_grp,mgmt_scenario_opt)
+
+colnames(output_daily_data) <- c("date","year","dayofyear","N2O_emit_gha","N2O_cum_gha",
+                                 "CH4_net_gha","CH4_cum_gha",
+                                 "model_name","scenario_name","climate_scenario_num",
+                                 "mgmt_scenario_grp_num","mgmt_scenario_opt_num")
+
+output_daily_data2 <- cbind(Day_soiln[Day_soiln$year>=experiment_start_year &
+                                        Day_soiln$year<=end_fut_period_year,
+                                      c("date","year","dayofyear","NO3_ppm")],
+                            SoilTemp_C[,c("Observed","Daycent")],
+                            SoilMoist_VSM[,c("Observed","Daycent")],
+                            "Daycent",scenario_name,clim_scenario_num,
+                            mgmt_scenario_grp,mgmt_scenario_opt,scenario_abbrev,
+                            scenario_descriptor)
+
+colnames(output_daily_data2) <- c("date","year","dayofyear","NO3_ppm_20cm",
+                                  "SoilTemp_C_Obs","SoilTemp_C_Day",
+                                  "VolSoilMoist_Obs","VolSoilMoist_Day",
+                                  "model_name","scenario_name","climate_scenario_num",
+                                  "mgmt_scenario_grp_num","mgmt_scenario_opt_num",
+                                  "scenario_abbrev","scenario_description")
+
+write.table(output_annual_data,file=paste0(results_path,"Annual_results_compilation_",
+                                           scenario_name,"_Daycent.csv"),
+            col.names=T,row.names=F,sep=",",append=F)
+write.table(output_annual_data2,file=paste0(results_path,"Annual_results_compilation2_",
+                                           scenario_name,"_Daycent.csv"),
+            col.names=T,row.names=F,sep=",",append=F)
+write.table(output_daily_data,file=paste0(results_path,"Daily_results_compilation_",
+                                          scenario_name,"_Daycent.csv"),
+            col.names=T,row.names=F,sep=",",append=F)
+write.table(output_daily_data2,file=paste0(results_path,"Daily_results_compilation2_",
+                                          scenario_name,"_Daycent.csv"),
+            col.names=T,row.names=F,sep=",",append=F)
 
 #**********************************************************************
 # Clean up ----------------------------------------------------------------

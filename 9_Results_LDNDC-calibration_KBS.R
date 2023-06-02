@@ -327,7 +327,7 @@ suppressMessages({
                aes(x=date, y=ch4_val, color=source)) +
     xlab("Year") +
     ylab(expression('CH'[4]*' Emissions (g C ha ' ^-1*'day ' ^-1*')')) +
-    ggtitle(bquote(.(site_name)~"CH"["4"]*"O Emissions"),
+    ggtitle(bquote(.(site_name)~"CH"["4"]*" Emissions"),
             paste0("Scenario: ",scenario_descriptor)) +
     scale_color_manual(labels=c("LDNDC","Observed","Fertilizer"),
                        values=cbPalette9[c(8,1,7)]) +

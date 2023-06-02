@@ -1,0 +1,607 @@
+# title: "9_Results_Daycent-future.R"
+# author: "Ellen Maas"
+# date: "8/8/2022"
+# output: html_document
+# ---
+
+suppressMessages({
+  
+  print("Starting 9_Results_Daycent-future.R")
+  
+  library(readxl)
+  library(magrittr)
+  library(lubridate)
+  library(tidyverse)
+  library(graphics)
+  library(ggplot2)
+  library(broom)
+  
+
+# CT vs NT ----------------------------------------------------------------
+# future period only
+
+  # daily data
+  scen_RR0CTCR_daily_fut <- read.csv(paste0(results_path,"Daily_results_compilation2_1_53_Daycent.csv")) %>%
+    filter(year>experiment_end_year) %>%
+    #NO3_kgha=(weight of soil in kg/ha, using bulk density)*ppm which = mg/kg
+    #          then divide by 1000000 mg/kg conversion factor
+    mutate(NO3_kgha_20cm=((0.20*10000*ObsBD*1000)*NO3_ppm_20cm)/1000000)
+  scen_RR0NTCR_daily_fut <- read.csv(paste0(results_path,"Daily_results_compilation2_1_56_Daycent.csv")) %>%
+    filter(year>experiment_end_year) %>%
+    #NO3_kgha=(weight of soil in kg/ha, using bulk density)*ppm which = mg/kg
+    #          then divide by 1000000 mg/kg conversion factor
+    mutate(NO3_kgha_20cm=((0.20*10000*ObsBD*1000)*NO3_ppm_20cm)/1000000)
+  scen_RR0CTCR_daily_fut_agg <- scen_RR0CTCR_daily_fut %>%
+    group_by(year) %>%
+    summarize(sum_no3_ppm=sum(NO3_ppm_20cm),
+              sum_no3_kgha=sum(NO3_kgha_20cm),
+              mean_vsm=mean(VolSoilMoist_Day),
+              mean_soilt=mean(SoilTemp_C_Day))
+  scen_RR0NTCR_daily_fut_agg <- scen_RR0NTCR_daily_fut %>%
+    group_by(year) %>%
+    summarize(sum_no3_ppm=sum(NO3_ppm_20cm),
+              sum_no3_kgha=sum(NO3_kgha_20cm),
+              mean_vsm=mean(VolSoilMoist_Day),
+              mean_soilt=mean(SoilTemp_C_Day))
+  # annual data
+  scen_RR0CTCR_annual_fut <- read.csv(paste0(results_path,"Annual_results_compilation2_1_53_Daycent.csv")) %>%
+    filter(year>experiment_end_year)
+  scen_RR0NTCR_annual_fut <- read.csv(paste0(results_path,"Annual_results_compilation2_1_56_Daycent.csv")) %>%
+    filter(year>experiment_end_year)
+  scen_RR0CTCR_annual_fut_agg <- scen_RR0CTCR_annual_fut %>%
+    group_by(year) %>%
+    summarize(sum_cinput_gm2=sum(Cinput),
+              sum_ninput_gm2=sum(Ninput))
+  scen_RR0NTCR_annual_fut_agg <- scen_RR0NTCR_annual_fut %>%
+    group_by(year) %>%
+    summarize(sum_cinput_gm2=sum(Cinput),
+              sum_ninput_gm2=sum(Ninput))  
+  
+  
+  # compare total NO3 ppm
+  ct_no3ppm_tot_fut <- round(sum(scen_RR0CTCR_daily_fut$NO3_ppm_20cm),0)
+  nt_no3ppm_tot_fut <- round(sum(scen_RR0NTCR_daily_fut$NO3_ppm_20cm),0)
+  diff_tot_no3_ppm <- round(ct_no3ppm_tot_fut-nt_no3ppm_tot_fut,0)
+  mean_1yrsum_ct_no3_ppm <- round(mean(scen_RR0CTCR_daily_fut_agg$sum_no3_ppm),0)
+  mean_1yrsum_nt_no3_ppm <- round(mean(scen_RR0NTCR_daily_fut_agg$sum_no3_ppm),0)
+  diff_mean_1yrsum_no3_ppm <- mean_1yrsum_ct_no3_ppm-mean_1yrsum_nt_no3_ppm
+  
+  # compare total NO3 kgha
+  ct_no3kgha_tot_fut <- round(sum(scen_RR0CTCR_daily_fut$NO3_kgha_20cm),0)
+  nt_no3kgha_tot_fut <- round(sum(scen_RR0NTCR_daily_fut$NO3_kgha_20cm),0)
+  diff_tot_no3_kgha <- round(ct_no3kgha_tot_fut-nt_no3kgha_tot_fut,0)
+  mean_1yrsum_ct_no3_kgha <- round(mean(scen_RR0CTCR_daily_fut_agg$sum_no3_kgha),0)
+  mean_1yrsum_nt_no3_kgha <- round(mean(scen_RR0NTCR_daily_fut_agg$sum_no3_kgha),0)
+  diff_mean_1yrsum_no3_kgha <- mean_1yrsum_ct_no3_kgha-mean_1yrsum_nt_no3_kgha
+
+  # compare mean soil temp
+  ct_soilt_mean <- round(mean(scen_RR0CTCR_daily_fut$SoilTemp_C_Day),1)
+  nt_soilt_mean <- round(mean(scen_RR0NTCR_daily_fut$SoilTemp_C_Day),1)
+  diff_mean_soilt_C <- round(ct_soilt_mean-nt_soilt_mean,1)
+  mean_1yrmean_ct_soilt <- round(mean(scen_RR0CTCR_daily_fut_agg$mean_soilt),1)
+  mean_1yrmean_nt_soilt <- round(mean(scen_RR0NTCR_daily_fut_agg$mean_soilt),1)
+  diff_mean_1yrmean_soilt <- mean_1yrmean_ct_soilt-mean_1yrmean_nt_soilt
+  
+  # compare mean soil moist
+  ct_soilm_mean <- round(mean(scen_RR0CTCR_daily_fut$VolSoilMoist_Day),2)
+  nt_soilm_mean <- round(mean(scen_RR0NTCR_daily_fut$VolSoilMoist_Day),2)
+  diff_mean_soilm_v <- round(ct_soilm_mean-nt_soilm_mean,2)
+  mean_1yrmean_ct_soilm <- round(mean(scen_RR0CTCR_daily_fut_agg$mean_vsm),2)
+  mean_1yrmean_nt_soilm <- round(mean(scen_RR0NTCR_daily_fut_agg$mean_vsm),2)
+  diff_mean_1yrmean_soilm <- mean_1yrmean_ct_soilm-mean_1yrmean_nt_soilm
+  
+  # compare C input for plant productivity (gm2)
+  ct_cinput_fut <- round(sum(scen_RR0CTCR_annual_fut$Cinput),0)
+  nt_cinput_fut <- round(sum(scen_RR0NTCR_annual_fut$Cinput),0)
+  diff_tot_cinput_gm2 <- round(ct_cinput_fut-nt_cinput_fut,0)
+  mean_1yrsum_ct_cinput_gm2 <- round(mean(scen_RR0CTCR_annual_fut_agg$sum_cinput_gm2),0)
+  mean_1yrsum_nt_cinput_gm2 <- round(mean(scen_RR0NTCR_annual_fut_agg$sum_cinput_gm2),0)
+  diff_mean_1yrsum_cinput_gm2 <- round(mean_1yrsum_ct_cinput_gm2-mean_1yrsum_nt_cinput_gm2,0)
+  
+  # compare C input for plant productivity (kgha)
+  ct_cinput_fut_kgha <- round(sum(scen_RR0CTCR_annual_fut$Cinput),0)*10
+  nt_cinput_fut_kgha <- round(sum(scen_RR0NTCR_annual_fut$Cinput),0)*10
+  diff_tot_cinput_kgha <- round(ct_cinput_fut_kgha-nt_cinput_fut_kgha,0)
+  mean_1yrsum_ct_cinput_kgha <- round(mean(scen_RR0CTCR_annual_fut_agg$sum_cinput_gm2),0)*10
+  mean_1yrsum_nt_cinput_kgha <- round(mean(scen_RR0NTCR_annual_fut_agg$sum_cinput_gm2),0)*10
+  diff_mean_1yrsum_cinput_kgha <- round(mean_1yrsum_ct_cinput_kgha-mean_1yrsum_nt_cinput_kgha,0)
+
+  # compare N input for plant productivity (gm2)
+  ct_ninput_fut <- round(sum(scen_RR0CTCR_annual_fut$Ninput),0)
+  nt_ninput_fut <- round(sum(scen_RR0NTCR_annual_fut$Ninput),0)
+  diff_tot_ninput_gm2 <- round(ct_ninput_fut-nt_ninput_fut,0)
+  mean_1yrsum_ct_ninput_gm2 <- round(mean(scen_RR0CTCR_annual_fut_agg$sum_ninput_gm2),0)
+  mean_1yrsum_nt_ninput_gm2 <- round(mean(scen_RR0NTCR_annual_fut_agg$sum_ninput_gm2),0)
+  diff_mean_1yrsum_ninput_gm2 <- round(mean_1yrsum_ct_ninput_gm2-mean_1yrsum_nt_ninput_gm2,0)
+
+  # compare N input for plant productivity (kgha)
+  ct_ninput_fut_kgha <- round(sum(scen_RR0CTCR_annual_fut$Ninput),0)*10
+  nt_ninput_fut_kgha <- round(sum(scen_RR0NTCR_annual_fut$Ninput),0)*10
+  diff_tot_ninput_kgha <- round(ct_ninput_fut_kgha-nt_ninput_fut_kgha,0)
+  mean_1yrsum_ct_ninput_kgha <- round(mean(scen_RR0CTCR_annual_fut_agg$sum_ninput_gm2),0)*10
+  mean_1yrsum_nt_ninput_kgha <- round(mean(scen_RR0NTCR_annual_fut_agg$sum_ninput_gm2),0)*10
+  diff_mean_1yrsum_ninput_kgha <- round(mean_1yrsum_ct_ninput_kgha-mean_1yrsum_nt_ninput_kgha,0)
+
+    # comparison_df <- data.frame(model_name=c("Daycent"),
+    #                             scenario_name=c(unique(scen_RR0CTCR_annual_fut$scenario_description),
+    #                                      unique(scen_RR0NTCR_annual_fut$scenario_description),
+    #                                      "Total Difference (CT-NT)",
+    #                                      "Mean Annual Difference"),
+    #                           scenario_abbrev=c(unique(scen_RR0CTCR_annual_fut$scenario_abbrev),
+    #                                             unique(scen_RR0NTCR_annual_fut$scenario_abbrev),
+    #                                             NA,
+    #                                             NA),
+    #                           tot_fut_NO3_kgha=c(ct_no3kgha_tot_fut,
+    #                                              nt_no3kgha_tot_fut,
+    #                                              diff_tot_no3_kgha,
+    #                                              diff_mean_1yrsum_no3_kgha),
+    #                           mean_soil_temp=c(ct_soilt_mean,
+    #                                            nt_soilt_mean,
+    #                                            diff_mean_soilt_C,
+    #                                            diff_mean_1yrmean_soilt),
+    #                           mean_soil_moist=c(ct_soilm_mean,
+    #                                             nt_soilm_mean,
+    #                                             diff_mean_soilm_v,
+    #                                             diff_mean_1yrmean_soilm),
+    #                           tot_fut_Cinput_kgha=c(ct_cinput_fut_kgha,
+    #                                                 nt_cinput_fut_kgha,
+    #                                                 diff_tot_cinput_kgha,
+    #                                                 diff_mean_1yrsum_cinput_kgha),
+    #                           tot_fut_Ninput_kgha=c(ct_ninput_fut_kgha,
+    #                                                 nt_ninput_fut_kgha,
+    #                                                 diff_tot_ninput_kgha,
+    #                                                 diff_mean_1yrsum_ninput_kgha)
+    #                           )
+    # colnames(comparison_df) <- c("Model","Scenario Name","Scenario Abbrev",
+    #                                   "Total Future NO3 (kgha)","Mean Future Soil Temp (C)",
+    #                                   "Mean Future Soil Moisture (%)",
+    #                                   "Total Future C input (kgha)",
+    #                                   "Total Future N input (kgha)")
+    
+  comparison_df <- data.frame(model_name=c("Daycent"),
+                              sys_attribute=c("Total Future NO3 (kgha)",
+                                              "Mean Future Soil Temp (C)",
+                                              "Mean Future Soil Moisture (%)",
+                                              "Total Future C input (kgha)",
+                                              "Total Future N input (kgha)"),
+                              RR00_CR=c(ct_no3kgha_tot_fut,
+                                         ct_soilt_mean,
+                                         ct_soilm_mean,
+                                         ct_cinput_fut_kgha,
+                                         ct_ninput_fut_kgha),
+                              RR00_NT_CR=c(nt_no3kgha_tot_fut,
+                                           nt_soilt_mean,
+                                           nt_soilm_mean,
+                                           nt_cinput_fut_kgha,
+                                           nt_ninput_fut_kgha),
+                              tot_difference=c(diff_tot_no3_kgha,
+                                               diff_mean_soilt_C,
+                                               diff_mean_soilm_v,
+                                               diff_tot_cinput_kgha,
+                                               diff_tot_ninput_kgha),
+                              mean_ann_diff=c(diff_mean_1yrsum_no3_kgha,
+                                              diff_mean_1yrmean_soilt,
+                                              diff_mean_1yrmean_soilm,
+                                              diff_mean_1yrsum_cinput_kgha,
+                                              diff_mean_1yrsum_ninput_kgha)
+                              )
+  
+  colnames(comparison_df) <- c("Model","System Attribute","RR00-CR","RR00-NT-CR",
+                               "Total Difference (CT-NT)","Mean Annual Difference")
+  
+    # write results
+  
+    write.table(comparison_df,file=paste0(results_path,"Analysis_tillage.csv"),
+                col.names=T,row.names=F,sep=",",append=F)
+    
+    
+  # Future temporal graphs
+  
+  ## Soil Moisture
+  
+  gM <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='Daycent'
+                          &SoilMoist_VSM_piv$date>=experiment_start_date,] %>%
+    ggplot(aes(x=date, y=h2o_val, color=source)) +
+    geom_point() +
+    geom_point(data=SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='Observed'
+                                      &SoilMoist_VSM_piv$date>=experiment_start_date,],
+               aes(x=date, y=h2o_val, color=source)) +
+    xlab("Year") +
+    ylab("Volumetric soil moisture (%)") +
+    ggtitle(paste0(site_name," Volumetric soil moisture with ",soil_moist_bias,"% correction"),
+            paste0("Scenario: ",scenario_descriptor_full)) +
+    scale_color_manual(labels=c("Daycent","Observed"),
+                       values=cbPalette9[c(8,1)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gM
+  
+  ## Cotton
+  
+  CYfit_Day <- coef(lm(Daycent ~ year, 
+                         data = CottonYld_Mgha[CottonYld_Mgha$year>end_exp_period_year,]))
+  CYfit_Obs <- coef(lm(Observed ~ year, 
+                       data = CottonYld_Mgha[CottonYld_Mgha$year %in% experiment_year_range,]))
+  CYxs <- c(end_exp_period_year+1, end_fut_period_year)
+  CYys <- cbind(1, CYxs) %*% CYfit_Day
+  CYobsxs <- c(experiment_start_year, experiment_end_year)
+  CYobsys <- cbind(1, CYobsxs) %*% CYfit_Obs
+  
+  gCY <- CottonYld_Mgha_piv %>%
+    ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
+    geom_point() +
+    xlab("Year") +
+    ylab(expression('Cotton Yield (Mg ha ' ^-1*')')) +
+    ggtitle(paste(site_name,"Cotton Yield"),paste0("Scenario: ",scenario_descriptor_full)) +
+    #    geom_abline(intercept=CYfit_[1], slope=CYfit_Day[2], color="orange") +
+    geom_segment(aes(x = CYxs[1], xend = CYxs[2], y = CYys[1], yend = CYys[2]), color=cbPalette9[8]) +
+    geom_segment(aes(x = CYobsxs[1], xend = CYobsxs[2], y = CYobsys[1], yend = CYobsys[2]), color=cbPalette9[1]) +
+    scale_color_manual(labels=c("Daycent","Historical","Observed"),
+                       values=cbPalette9[c(8,4,1)]) +
+    theme_classic(base_family = "serif", base_size = 15) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gCY
+  
+  if(mgmt_scenario_grp!=7) {
+    ## Sorghum
+    
+    SYfit_Day <- coef(lm(Daycent ~ year, 
+                           data = SorghumYld_Mgha[SorghumYld_Mgha$year>end_exp_period_year,]))
+    SYfit_Obs <- coef(lm(Observed ~ year, 
+                         data = SorghumYld_Mgha[SorghumYld_Mgha$year %in% experiment_year_range,]))
+    SYxs <- c(end_exp_period_year+1, end_fut_period_year)
+    SYys <- cbind(1, SYxs) %*% SYfit_Day
+    SYobsxs <- c(experiment_start_year, experiment_end_year)
+    SYobsys <- cbind(1, SYobsxs) %*% SYfit_Obs
+    
+    gSY <- SorghumYld_Mgha_piv %>%
+      ggplot(aes(x=year, y=yield_val, color=source, show.legend=TRUE)) +
+      geom_point() +
+      xlab("Year") +
+      ylab(expression('Sorghum Yield (Mg ha ' ^-1*')')) +
+      ggtitle(paste(site_name,"Sorghum Yield"),paste0("Scenario: ",scenario_descriptor_full)) +
+      geom_segment(aes(x = SYxs[1], xend = SYxs[2], y = SYys[1], yend = SYys[2]), color=cbPalette9[8]) +
+#      geom_segment(aes(x = SYobsxs[1], xend = SYobsxs[2], y = SYobsys[1], yend = SYobsys[2]), color=cbPalette9[1]) +
+      scale_color_manual(labels=c("Daycent","Historical","Observed"),
+                         values=cbPalette9[c(8,4,1)]) +
+      theme_classic(base_family = "serif", base_size = 15) +
+      theme(panel.background = element_blank(),
+            axis.line = element_line(),
+            legend.position = "right",
+            legend.key = element_blank())
+    
+    gSY
+  }
+  
+
+  ## SOC
+  
+  Cfit_Day <- coef(lm(Daycent ~ year, data = Cstock_Mgha))
+  if(mgmt_scenario_grp==3) {
+    Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year!=1998 &
+                                                              Cstock_Mgha$year >= experiment_start_year,]))
+  } else {
+    Cfit_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= experiment_start_year,]))
+  }
+  
+  Cxs <- c(end_exp_period_year+1, end_fut_period_year)
+  Cys <- cbind(1, Cxs) %*% Cfit_Day
+  Cobsxs <- c(experiment_start_year, experiment_end_year)
+  Cobsys <- cbind(1, Cobsxs) %*% Cfit_Obs
+  
+  gC <- Cstock_Mgha_piv[Cstock_Mgha_piv$year>=experiment_start_year,] %>%
+    ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
+    geom_point() +
+    xlab("Year") +
+    ylab(expression('SOC stock (Mg C ha' ^-1*')')) +
+    # geom_abline(intercept=Cfit_Daycent[1], slope=Cfit_Daycent[2], color="orange") +
+    # geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
+    ggtitle(paste(site_name,"Soil Organic Carbon"),paste0("Scenario: ",scenario_descriptor_full)) +
+#    geom_segment(aes(x = Cxs[1], xend = Cxs[2], y = Cys[1], yend = Cys[2]), color=cbPalette9[8]) +
+    geom_segment(aes(x = Cobsxs[1], xend = Cobsxs[2], y = Cobsys[1], yend = Cobsys[2]), color=cbPalette9[1]) +
+    scale_color_manual(labels=c("Daycent","Observed"),
+                       values=cbPalette9[c(8,1)]) +
+    theme_classic(base_family = "serif", base_size = 15) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gC 
+  
+  # #first(SoilTemp_C_piv[SoilTemp_C_piv$source=="Observed"&!is.na(SoilTemp_C_piv$temp_val),"date"])
+  # 
+  # m_Tfit_Daycent_pre2010 <- lm(temp_val ~ date, 
+  #                              data = SoilTemp_C_piv[SoilTemp_C_piv$date<="2010-01-01"&
+  #                                                      SoilTemp_C_piv$date>="1999-01-01"&
+  #                                                      SoilTemp_C_piv$source=="Daycent",])
+  # m_Tfit_Obs_pre2010 <- lm(temp_val ~ date, 
+  #                          data = SoilTemp_C_piv[SoilTemp_C_piv$date<="2010-01-01"&
+  #                                                  SoilTemp_C_piv$source=="Observed",])
+  # Tfit_Daycent_aug_pre2010 <- augment(m_Tfit_Daycent_pre2010, 
+  #                                     SoilTemp_C_piv[SoilTemp_C_piv$date<="2010-01-01"&
+  #                                                      SoilTemp_C_piv$date>="1999-01-01"&
+  #                                                      SoilTemp_C_piv$source=="Daycent",])
+  # Tfit_Obs_aug_pre2010 <- augment(m_Tfit_Obs_pre2010, 
+  #                                 SoilTemp_C_piv[SoilTemp_C_piv$date<="2010-01-01"&
+  #                                                  SoilTemp_C_piv$source=="Observed"&
+  #                                                  !is.na(SoilTemp_C_piv$temp_val),])
+  # m_Tfit_Daycent <- lm(temp_val ~ date, data = SoilTemp_C_piv[SoilTemp_C_piv$date>="2010-01-01"&
+  #                                                              SoilTemp_C_piv$source=="Daycent",])
+  # m_Tfit_Obs <- lm(temp_val ~ date, data = SoilTemp_C_piv[SoilTemp_C_piv$date>="2010-01-01"&
+  #                                                              SoilTemp_C_piv$source=="Observed",])
+  # Tfit_Daycent_aug <- augment(m_Tfit_Daycent, SoilTemp_C_piv[SoilTemp_C_piv$date>="2010-01-01"&
+  #                                                              SoilTemp_C_piv$source=="Daycent",])
+  # Tfit_Obs_aug <- augment(m_Tfit_Obs, SoilTemp_C_piv[SoilTemp_C_piv$date>="2010-01-01"&
+  #                                                  SoilTemp_C_piv$source=="Observed"&
+  #                                                  !is.na(SoilTemp_C_piv$temp_val),])
+  
+  gT <- SoilTemp_C_piv[SoilTemp_C_piv$source=='Daycent'
+                       &SoilTemp_C_piv$date>=experiment_start_date,] %>%
+    ggplot(aes(x=date, y=temp_val, color=source)) +
+    geom_point(show.legend=TRUE) +
+    geom_point(data=SoilTemp_C_piv[SoilTemp_C_piv$source=='Observed'
+                                   &SoilTemp_C_piv$date>=experiment_start_date,],
+               aes(x=date, y=temp_val, color=source)) +
+    xlab("Year") +
+    ylab(expression('Soil temperature (' ^o*'C)')) +
+    # geom_line(data=Tfit_Daycent_aug_pre2010, aes(y=.fitted),show.legend=F) + 
+    # geom_line(data=Tfit_Obs_aug_pre2010, aes(y=.fitted),show.legend=F) + 
+    # geom_line(data=Tfit_Daycent_aug, aes(y=.fitted),show.legend=F) + 
+    # geom_line(data=Tfit_Obs_aug, aes(y=.fitted),show.legend=F) + 
+    #geom_abline(intercept=Tfit_Daycent[1], slope=Tfit_Daycent[2], color="orange") +
+    scale_color_manual(labels=c("Daycent","Observed"),
+                       values=cbPalette9[c(8,1)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gT
+  
+  gTfull <- SoilTemp_C_piv[SoilTemp_C_piv$source=='Daycent',] %>%
+    ggplot(aes(x=date, y=temp_val, color=source)) +
+    geom_point(show.legend=TRUE) +
+    geom_point(data=SoilTemp_C_piv[SoilTemp_C_piv$source=='Observed'
+                                   &SoilTemp_C_piv$date>=experiment_start_date,],
+               aes(x=date, y=temp_val, color=source)) +
+    xlab("Year") +
+    ylab(expression('Soil temperature (' ^o*'C)')) +
+    # geom_line(data=Tfit_Daycent_aug_pre2010, aes(y=.fitted),show.legend=F) + 
+    # geom_line(data=Tfit_Obs_aug_pre2010, aes(y=.fitted),show.legend=F) + 
+    # geom_line(data=Tfit_Daycent_aug, aes(y=.fitted),show.legend=F) + 
+    # geom_line(data=Tfit_Obs_aug, aes(y=.fitted),show.legend=F) + 
+    #geom_abline(intercept=Tfit_Daycent[1], slope=Tfit_Daycent[2], color="orange") +
+    scale_color_manual(labels=c("Daycent","Observed"),
+                       values=cbPalette9[c(8,1)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gT
+  
+  
+  # gB <- SoilBD_gcc_piv %>%
+  #   ggplot(aes(x=source,y=bd_val, fill=factor(year))) +
+  #   geom_col(position="dodge") +
+  #   ylab(expression('Bulk density (g cc' ^-1*')')) +
+  #   labs(fill="Year") +
+  #   theme(panel.background = element_blank(),
+  #         axis.ticks.x = element_blank(),
+  #         axis.line = element_line())
+  # 
+  # gB
+  
+  # Daily N2O
+  
+  gNG <- N2O_ghaday_piv[N2O_ghaday_piv$source=='Daycent'
+                        &year(N2O_ghaday_piv$date) >= experiment_start_date,] %>%
+    ggplot(aes(x=date, y=n2o_val, color=source)) +
+    geom_line(show.legend=TRUE) +
+    geom_point(data=N2O_ghaday_piv[N2O_ghaday_piv$source=='Observed'
+                                   &year(N2O_ghaday_piv$date) >= experiment_start_date,],
+               aes(x=date, y=n2o_val, color=source)) +
+    # geom_segment(data=Fert[Fert$treatment=="T1"&Fert$n_rate_kg_ha>10
+    #                        &year(Fert$date) >= experiment_start_date,],
+    #              aes(x = date, y = 200,
+    #                  xend = date, yend = 175),
+    #                  colour=cbPalette9[7],
+    #                  show.legend=F,
+    #                  lineend = "round",
+    #                  linejoin = "round",
+    #                  arrow = arrow(length = unit(0.3, "cm"))
+    # colour = "black" 
+    #                 ) + 
+  xlab("Year") +
+    ylab(expression('N'[2]*'O Emissions (g N ha ' ^-1*'day ' ^-1*')')) +
+    # scale_color_manual(labels=c("Daycent","Observed","Fertilizer"),
+    #                    values=cbPalette9[c(8,1,7)]) +
+    scale_color_manual(labels=c("Daycent","Observed"),
+                       values=cbPalette9[c(8,1)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gNG
+  
+  # Annual N2O
+  
+  NGfit_Day <- coef(lm(N2OEmissions_ghayr ~ year, 
+                       data = DayGN_ann_gha[DayGN_ann_gha$year>end_exp_period_year,]))
+  NGxs <- c(end_exp_period_year+1, end_fut_period_year)
+  NGys <- cbind(1, NGxs) %*% NGfit_Day
+  
+  gNGann <- N2O_ghayr_piv %>%
+    ggplot(aes(x=year, y=n2o_val, color=source)) +
+    geom_point() +
+    xlab("Year") +
+    ylab(expression('N'[2]*'O Emissions (g ha ' ^-1*'yr ' ^-1*')')) +
+    ggtitle(bquote(.(site_name)~"Annual Cumulative N"["2"]*"O Emissions"),
+            paste0("Scenario: ",scenario_descriptor_full)) +
+    geom_segment(aes(x = NGxs[1], xend = NGxs[2], y = NGys[1], yend = NGys[2]), color=cbPalette9[8]) +
+    scale_color_manual(labels=c("Daycent"),
+                       values=cbPalette9[c(8)]) +
+    theme_classic(base_family = "serif", base_size = 15) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gNGann
+  
+  ## Daily CH4
+  
+  #first(CH4_ghaday_piv[CH4_ghaday_piv$source=="Observed"&!is.na(CH4_ghaday_piv$ch4_val),"date"])
+  #last(CH4_ghaday_piv[CH4_ghaday_piv$source=="Observed"&!is.na(CH4_ghaday_piv$ch4_val),"date"])
+  
+  gMG <- CH4_ghaday_piv[CH4_ghaday_piv$source=='Daycent'
+                        &year(CH4_ghaday_piv$date) >= experiment_start_date,] %>%
+    ggplot(aes(x=date, y=ch4_val, color=source)) +
+    geom_line(show.legend=TRUE) +
+    geom_point(data=CH4_ghaday_piv[CH4_ghaday_piv$source=='Observed'
+                                   &year(CH4_ghaday_piv$date) >= experiment_start_date,],
+               aes(x=date, y=ch4_val, color=source)) +
+    xlab("Year") +
+    ylab(expression('CH'[4]*' Emissions (g C ha ' ^-1*'day ' ^-1*')')) +
+    ggtitle(bquote(.(site_name)~"Total Cumulative CH"["4"]*" Emissions"),
+            paste0("Scenario: ",scenario_descriptor_full)) +
+    scale_color_manual(labels=c("Daycent","Observed"),
+                       values=cbPalette9[c(8,1)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gMG
+  
+  ## Annual CH4
+  
+  MGfit_Day <- coef(lm(CH4Emissions_ghayr ~ year, 
+                       data = DayGM_ann_gha[DayGM_ann_gha$year>end_exp_period_year+1,]))
+  MGxs <- c(end_exp_period_year+1, end_fut_period_year)
+  MGys <- cbind(1, MGxs) %*% MGfit_Day
+  
+  gMGann <- CH4_ghayr_piv %>%
+    ggplot(aes(x=year, y=ch4_val, color=source)) +
+    geom_point() +
+    xlab("Year") +
+    ylab(expression('CH'[4]*' Emissions (g ha ' ^-1*'yr ' ^-1*')')) +
+    ggtitle(bquote(.(site_name)~"Annual Cumulative CH"["4"]*" Emissions"),
+            paste0("Scenario: ",scenario_descriptor_full)) +
+    geom_segment(aes(x = MGxs[1], xend = MGxs[2], y = MGys[1], yend = MGys[2]), color=cbPalette9[8]) +
+    scale_color_manual(labels=c("Daycent"),
+                       values=cbPalette9[c(8)]) +
+    theme_classic(base_family = "serif", base_size = 15) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gMGann
+  
+  ## Carbon Input
+  
+  gCI <- DayCI_gm2yr %>%
+    ggplot(aes(x=year, y=base), show.legend=TRUE) +
+    geom_line(show.legend=TRUE) +
+    xlab("Year") +
+    ylab(expression('C input (g C m' ^-2*' yr' ^-1*')')) +
+    ggtitle(paste(site_name,"Soil C Input"),
+            paste0("Scenario: ",scenario_descriptor)) +
+    # scale_color_manual(labels=c("Daycent","Observed"),
+    #                    values=cbPalette9[c(8,1)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gCI
+  
+  gNI <- DayNI_gm2yr[DayNI_gm2yr$year >= experiment_start_date,] %>%
+    ggplot(aes(x=year, y=base), show.legend=TRUE) +
+    geom_line(show.legend=TRUE) +
+    xlab("Year") +
+    ylab(expression('N input (g C m' ^-2*' yr' ^-1*')')) +
+    ylim(0,12) +
+    ggtitle(paste(site_name,"Soil N Input"),
+            paste0("Scenario: ",scenario_descriptor)) +
+    # scale_color_manual(labels=c("Daycent","Observed"),
+    #                    values=cbPalette9[c(8,1)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gNI
+  
+  gNH4 <- Day_soiln_all[Day_soiln_all$year >= experiment_start_date,] %>%
+    ggplot(aes(x=year, y=ammonium)) +
+    geom_line() +
+    xlab("Year") +
+    ylab(expression('NH4 ppm per day')) +  
+    ylim(0,125) +
+    ggtitle(bquote(.(site_name)~"Soil NH"["4"]*" - top 10 cm"),
+            paste0("Scenario: ",scenario_descriptor)) +
+    # scale_color_manual(labels=c("Daycent","Observed"),
+    #                    values=cbPalette9[c(8,1)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gNH4
+  
+  gNO3 <- Day_soiln_all[Day_soiln_all$year >= experiment_start_date,] %>%
+    ggplot(aes(x=year, y=NO3_ppm)) +
+    geom_line() +
+    xlab("Year") +
+    ylab(expression('NO3 ppm per day')) +  
+    ylim(0,125) +
+    ggtitle(bquote(.(site_name)~"Soil NO"["3"]*" - top 20 cm"),
+            paste0("Scenario: ",scenario_descriptor)) +
+    # scale_color_manual(labels=c("Daycent","Observed"),
+    #                    values=cbPalette9[c(8,1)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  gNO3
+  
+  
+  ggsave(filename=paste0(results_path,"Cotton_yield_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gCY,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"Sorghum_yield_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gSY,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"SOC_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gC,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"Soil_Temp_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gT,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"Soil_Moist_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gM,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"N2O_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gNG,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"N2O_ann_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+         plot=gNGann, width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"CH4_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gMG,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"CH4_ann_comparison_fut_",scenario_name,"_Daycent.jpg"),plot=gMGann,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"C_input_fut_",scenario_name,"_Daycent.jpg"),plot=gCI,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"NH4_input_fut_",scenario_name,"_Daycent.jpg"),plot=gNH4,
+         width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"NO3_input_fut_",scenario_name,"_Daycent.jpg"),plot=gNO3,
+         width=9, height=6, dpi=300)
+  
+  
+}) # end suppressMessages
