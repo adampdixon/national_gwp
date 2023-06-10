@@ -16,9 +16,13 @@ suppressMessages({
   library(graphics)
   library(ggplot2)
   
+  source("p_Edit_calib_data_file.R")
+  
   # read in calibration stats
   calib_summary_raw <- read.csv(paste0(results_path,"Calibration_summary.csv"))
   calib_summary_df <- calib_summary_raw[calib_summary_raw$Scenario_Name==scenario_name]
+  
+  
   
   
   # 9-color palette with grey and black. Colors in order are:
@@ -123,6 +127,21 @@ suppressMessages({
     ens_Cstock_Mgha_piv_adj <- ens_Cstock_Mgha_piv %>%
       mutate(Obs_sd=replace(Obs_sd, Model!="Observed", NA))
     
+    ## soil moisture
+    
+    ens_VM <- merge(merge(ObsVSM[,c("date","mean_VSM")],
+                          APSIMM_V[,c("date","VolH2O_20cm")],
+                          by="date",
+                          all=TRUE),
+                    DayM_V[,c("date","mean_20cm")],
+                    by="date",
+                    all=TRUE)
+    colnames(ens_VM) <- c("date","Observed","APSIM","Daycent")
+    
+    ens_VM_piv <- pivot_longer(ens_VM, c(-date),
+                               names_to = "Source",
+                               values_to = "vm_val")
+    
     ## N2O
     
     ens_N2O_ghaday <- merge(merge(ObsGas[,c("date","N2O_N")],
@@ -152,6 +171,55 @@ suppressMessages({
                                          names_to = "Model",
                                          values_to = "n2o_val")
     
+    ### N2O calibration comparison
+    ens_N2O_comp_ghayr <- merge(merge(ObsGas_N2O_calib,
+                                      APSIMGN_profile_cum_calib,
+                                      by="year",
+                                      all=TRUE),
+                                DayGN_cum_calib,
+                                by="year",
+                                all=TRUE)
+    colnames(ens_N2O_comp_ghayr) <- c("year","Observed", "APSIM","Daycent")
+    
+    ens_N2O_comp_ghayr_piv <- pivot_longer(ens_N2O_comp_ghayr, c(-year),
+                                           names_to = "Source",
+                                           values_to = "n2o_val")
+    
+    ens_N2O_comp_gtot <- merge(merge((ObsGas_N2O_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr))),
+                                     (APSIMGN_cum_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr))),
+                                      all=TRUE),
+                                (DayGN_cum_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr))),
+                                all=TRUE)
+    colnames(ens_N2O_comp_ghayr) <- c("year","Observed", "APSIM","Daycent")
+    
+    ens_N2O_comp_ghayr_piv <- pivot_longer(ens_N2O_comp_ghayr, c(-year),
+                                           names_to = "Source",
+                                           values_to = "n2o_val")
+
+    #### whole profile
+    ens_N2O_profile_comp_ghayr <- merge(merge(ObsGas_N2O_calib,
+                                      APSIMGN_profile_cum_calib,
+                                      by="year",
+                                      all=TRUE),
+                                DayGN_cum_calib,
+                                by="year",
+                                all=TRUE)
+    colnames(ens_N2O_profile_comp_ghayr) <- c("year","Observed", "APSIM","Daycent")
+    
+    ens_N2O_profile_comp_ghayr_piv <- pivot_longer(ens_N2O_comp_ghayr, c(-year),
+                                           names_to = "Source",
+                                           values_to = "n2o_val")
+    
+    #### totals over the whole sampling period
+    ens_N2O_profile_comp_gtot <- cbind(cbind(ObsGas_N2O_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr)),
+                                             APSIMGN_profile_cum_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr))),
+                                       DayGN_cum_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr)))
+    colnames(ens_N2O_profile_comp_gtot) <- c("Observed", "APSIM","Daycent")
+    
+    ens_N2O_profile_comp_gtot_piv <- pivot_longer(ens_N2O_profile_comp_gtot, 
+                                                  everything(),
+                                                  names_to = "Source",
+                                                  values_to = "n2o_val")
     
     ## CH4
     
@@ -171,6 +239,36 @@ suppressMessages({
     ens_CH4_cum_kgha_piv <- pivot_longer(ens_CH4_cum_kgha, c(-date,-Observed),
                                          names_to = "Model",
                                          values_to = "ch4_val")
+    
+    ### CH4 calibration comparison
+    ens_CH4_comp_ghayr <- merge(ObsGas_CH4_calib,
+                                DayGM_cum_calib,
+                                by="year",
+                                all=TRUE)
+    colnames(ens_CH4_comp_ghayr) <- c("year","Observed","Daycent")
+    
+    ens_CH4_comp_ghayr_piv <- pivot_longer(ens_CH4_comp_ghayr, c(-year),
+                                           names_to = "Source",
+                                           values_to = "ch4_val")
+    ## Micro biomass
+    
+    ens_MB_gm2 <- merge(ObsMB_all[,c("year","date","mb_gm2","sd_gm2")],
+                        mill_base_df[,c("year","date","MIC")],
+                        by=c("year","date"),
+                        all=TRUE) %>%
+      mutate(treatment_scen=scenario_descriptor)
+    
+    colnames(ens_MB_gm2) <- c("year","date","Observed","Obs_sd","Millennial",
+                              "treatment_scen")
+    
+    ens_MB_gm2_piv <- pivot_longer(ens_MB_gm2, c(-year,-date,-Obs_sd,
+                                                 -treatment_scen),
+                                   names_to = "Model",
+                                   values_to = "mb_val")
+    
+    ### remove sd's from models, since it's only for observations
+    ens_MB_gm2_piv_adj <- ens_MB_gm2_piv %>%
+      mutate(Obs_sd=replace(Obs_sd, Model!="Observed", NA))
     
     
     # Calibration temporal graphs ---------------------------------------------
@@ -317,6 +415,74 @@ suppressMessages({
       
       gC_calib 
       
+      ## Soil Moisture
+      
+      gVh <- ens_VM_piv %>%
+        ggplot(aes(x=vm_val, color=Source)) +
+        geom_histogram(fill="white", alpha=0.5, position="identity") +
+        xlab("Volumetric Water Content (%)") +
+        ggtitle(paste(site_name,"Volumetric Water Content Histograms"),
+                paste0("Scenario: ",scenario_descriptor)) +
+        scale_color_manual(labels=c("APSIM","Daycent","Observed"),
+                           values=cbPalette9[c(8,2,1)]) +
+        theme_classic(base_family = "serif", base_size = 15) +
+        theme(panel.background = element_blank(),
+              axis.line = element_line(),
+              legend.position = "right",
+              legend.key = element_blank())
+      
+      gVh
+      
+      
+      gVd_calib <- ens_VM_piv %>%
+        ggplot(aes(x=vm_val, color=Source, fill=Source)) +
+        geom_density(alpha=0.3) +
+        xlab("Volumetric Water Content (%)") +
+        xlim(0,60) +
+        ylim(0,0.6) +
+        ggtitle(paste(site_name,"Volumetric Water Content Density"),
+                paste0("Scenario: ",scenario_descriptor)) +
+        scale_color_manual(labels=c("APSIM","Daycent","Observed"),
+                          values=cbPalette9[c(8,2,1)]) +
+        scale_fill_manual(labels=c("APSIM","Daycent","Observed"),
+                           values=cbPalette9[c(8,2,1)]) +
+        theme_classic(base_family = "serif", base_size = 15) +
+        theme(panel.background = element_blank(),
+              axis.line = element_line(),
+              legend.position = "right",
+              legend.key = element_blank())
+      
+      gVd_calib
+      
+      vwc_pct_over_fc_APSIM <- length(ens_VM[ens_VM$APSIM>=26,"APSIM"])/nrow(ens_VM)
+      vwc_pct_over_fc_Daycent <- length(ens_VM[ens_VM$Daycent>=26,"Daycent"])/nrow(ens_VM)
+      vwc_pct_over_fc_df <- cbind(vwc_pct_over_fc_APSIM,vwc_pct_over_fc_Daycent)
+      colnames(vwc_pct_over_fc_df) <- c("APSIM","Daycent")
+      write.table(vwc_pct_over_fc_df,file=paste0(results_path,"pub_vwc_pct_at_or_over_fc_",scenario_name,".txt"),
+                  row.names = F,quote=F)
+      
+      ## N2O
+      
+      gN_calib <- ens_N2O_profile_comp_gtot_piv %>%
+        ggplot(aes(x=Source, y=n2o_val, color=Source, fill=Source)) +
+        geom_col(position="stack") +
+        ylim(0,1000) +
+        ylab(expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')')) +
+        ggtitle(paste(site_name,"Total Modeled N2O Emissions vs. Observations"),
+                paste0("Scenario: ",scenario_descriptor)) +
+        scale_color_manual(labels=c("APSIM","Daycent","Observed"),
+                           values=cbPalette9[c(8,2,1)]) +
+        scale_fill_manual(labels=c("APSIM","Daycent","Observed"),
+                          values=cbPalette9[c(8,2,1)]) +
+        theme_classic(base_family = "serif", base_size = 15) +
+        theme(panel.background = element_blank(),
+              axis.line = element_line(),
+              legend.position = "right",
+              legend.key = element_blank())
+      
+      
+      gN_calib
+      
       ggsave(filename=paste0(results_path,"pub_Ensemble_Maize_calibration_",scenario_name,".jpg"),
              plot=gMY_calib, width=9, height=6, dpi=300)
       ggsave(filename=paste0(results_path,"pub_Ensemble_Soybean_calibration_",scenario_name,".jpg"),
@@ -325,6 +491,10 @@ suppressMessages({
              plot=gWY_calib, width=9, height=6, dpi=300)
       ggsave(filename=paste0(results_path,"pub_Ensemble_SOC_calibration_",scenario_name,".jpg"),
              plot=gC_calib, width=9, height=6, dpi=300)
+      ggsave(filename=paste0(results_path,"pub_Ensemble_VWC_density_calibration_",scenario_name,".jpg"),
+             plot=gVd_calib, width=9, height=6, dpi=300)
+      ggsave(filename=paste0(results_path,"pub_Ensemble_N2O_calibration_",scenario_name,".jpg"),
+             plot=gN_calib, width=9, height=6, dpi=300)
       
       
       
@@ -343,22 +513,28 @@ suppressMessages({
                                     ens_SoyYld_Mgha[ens_SoyYld_Mgha$year %in% experiment_year_range,],
                                     ens_WheatYld_Mgha[ens_WheatYld_Mgha$year %in% experiment_year_range,])
       soc_calib_output_df <- rbind(ens_Cstock_Mgha[ens_Cstock_Mgha$year %in% experiment_year_range,])
-      source("p_Edit_calib_data_file.R")
+      mb_calib_output_df <- ens_MB_gm2[ens_MB_gm2$year %in% experiment_year_range,]
+
       p_Edit_calib_data_file(crop_calib_output_df,
                              paste0(results_path,"calib_crop_df.csv"))
       p_Edit_calib_data_file(soc_calib_output_df,
                              paste0(results_path,"calib_soc_df.csv"))
+      p_Edit_calib_data_file(mb_calib_output_df,
+                             paste0(results_path,"calib_mb_df.csv"))
       
 
       crop_calib_output_df_piv <- rbind(ens_MaizeYld_Mgha_piv[ens_MaizeYld_Mgha_piv$year %in% experiment_year_range,],
                                         ens_SoyYld_Mgha_piv[ens_SoyYld_Mgha_piv$year %in% experiment_year_range,],
                                         ens_WheatYld_Mgha_piv[ens_WheatYld_Mgha_piv$year %in% experiment_year_range,])
       soc_calib_output_df_piv <- rbind(ens_Cstock_Mgha_piv_adj[ens_Cstock_Mgha_piv_adj$year %in% experiment_year_range,])
+      mb_calib_output_df_piv <- ens_MB_gm2_piv_adj[ens_MB_gm2_piv_adj$year %in% experiment_year_range,]
       
       p_Edit_calib_data_file(crop_calib_output_df_piv,
                              paste0(results_path,"calib_crop_df_piv.csv"))
       p_Edit_calib_data_file(soc_calib_output_df_piv,
                              paste0(results_path,"calib_soc_df_piv.csv"))
+      p_Edit_calib_data_file(mb_calib_output_df_piv,
+                             paste0(results_path,"calib_mb_df_piv.csv"))
       
       ## for trendlines
       
@@ -375,6 +551,7 @@ suppressMessages({
       p_Edit_calib_data_file(obs_SOC_trendline_dat,
                              paste0(results_path,"calib_soc_trendline_piv.csv"))
 
+      
       
     } # end if mgmt_scenario is a calibration treatment
       

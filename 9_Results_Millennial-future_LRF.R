@@ -44,7 +44,7 @@ gC4 <- input_data %>%
   #  geom_abline(intercept=Cfit_RothC[1], slope=Cfit_RothC[2], color="orange") +
   #  geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
   scale_color_manual(labels=c("Millennial","Observed-10cm"),
-                     values=cbPalette9[c(8,1)]) +
+                     values=c(Millennial_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",

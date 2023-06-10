@@ -77,6 +77,8 @@ DayT_C_raw <- DayT_C_raw %>%
 
 DayT_C <- DayT_C_raw[DayT_C_raw$year <= end_fut_period_year,]
 
+DayT_C_range <- range(DayT_C[DayT_C$date %in% ObsTemp$date, "mean_3_4"],na.rm=T)
+
 # additional version including base phase data
 DayT_C_all_raw <- rbind(Day_base_soiltavg,Day_exp_soiltavg,Day_fut_soiltavg) %>%
   mutate(year=floor(time),
@@ -123,9 +125,11 @@ DayM_V_raw <- rbind(Day_exp_vswc,Day_fut_vswc) %>%
          layer5_pct=layer5*100,
          layer6_pct=layer6*100,
          layer7_pct=layer7*100,
-         layer8_pct=layer8*100,
-         mean_20cm=(layer1_pct*0.1)+(layer2_pct*0.15)+(layer3_pct*0.25)+(layer4_pct*0.5)
+         layer8_pct=layer8*100
+         #mean_20cm=(layer1_pct*0.1)+(layer2_pct*0.15)+(layer3_pct*0.25)+(layer4_pct*0.5)
   )
+DayM_V_raw$mean_20cm=rowMeans(DayM_V_raw[,c("layer1_pct","layer2_pct",
+                                            "layer3_pct","layer4_pct")])
 
 DayM_V <- DayM_V_raw[DayM_V_raw$year <= end_fut_period_year,]
 
@@ -340,6 +344,11 @@ DayGN_cum_gha <- DayGN_ghaday[,c("year","dayofyear","date","N2O_gNhad")] %>%
   mutate(N2O_gha = cumsum(N2O_gNhad)) %>%
   select(-N2O_gNhad)
 
+DayGN_cum_calib <- DayGN_ghaday[DayGN_ghaday$date %in% pull(ObsGas[!is.na(ObsGas$N2O_N),], date),] %>%
+  group_by(year) %>%
+  summarize(tot_N2O_ghayr=sum(N2O_gNhad))
+
+
 #DayGC_ghaday <- Day_summary_base[,c("time","dayofyear","N2Oflux")] %>%
 #  mutate(year=floor(time))
 
@@ -354,6 +363,11 @@ DayGM_ann_gha <- DayGM_ghaday %>%
 DayGM_cum_gha <- DayGM_ghaday[,c("year","dayofyear","date","CH4_net_gChad")] %>%
   mutate(CH4_gha = cumsum(CH4_net_gChad)) %>%
   select(-CH4_net_gChad)
+
+DayGM_cum_calib <- DayGM_ghaday[DayGM_ghaday$date %in% pull(ObsGas[!is.na(ObsGas$CH4_C),], date),] %>%
+  group_by(year) %>%
+  summarize(tot_CH4_ghayr=sum(CH4_net_gChad))
+
 
 DayPltCN <- Day_harvest[substr(Day_harvest$crpval,2,5)!="CLVC" &
                           substr(Day_harvest$crpval,2,4)!="OAT",] %>%

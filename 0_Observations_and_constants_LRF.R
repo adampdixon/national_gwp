@@ -495,6 +495,7 @@ Daycent_color <- cbPalette9[2]
 Millennial_color <- cbPalette9[6]
 RothC_color <- cbPalette9[3]
 Observed_color <- cbPalette9[1]
+Historical_color <- cbPalette9[4]
 Fertilizer_color <- cbPalette9[7]
 
 #**********************************************************************
@@ -831,6 +832,8 @@ ObsTemp <- ObsTemp_all %>%
 ObsTfit <- lm(soil_temperature ~ date, data = ObsTemp)
 ObsTfit_coef <- coef(ObsTfit)
 ObsTfit_r2 <- round(summary(ObsTfit)$r.squared,2)
+
+ObsTemp_range <- range(ObsTemp$soil_temperature,na.rm=T)
 
 #********************************************************************
 #* Liberty Research Farm data does not include gases or soil moisture

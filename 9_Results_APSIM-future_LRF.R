@@ -40,7 +40,7 @@ suppressMessages({
     geom_segment(aes(x = CYxs[1], xend = CYxs[2], y = CYys[1], yend = CYys[2]), color=cbPalette9[8]) +
     geom_segment(aes(x = CYobsxs[1], xend = CYobsxs[2], y = CYobsys[1], yend = CYobsys[2]), color=cbPalette9[1]) +
     scale_color_manual(labels=c("APSIM","Observed"),
-                       values=cbPalette9[c(8,1)]) +
+                       values=c(APSIM_color,Observed_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -62,7 +62,7 @@ suppressMessages({
     geom_vline(xintercept=2003,linetype=2) +
     geom_vline(xintercept=2010,linetype=2) +
     scale_color_manual(labels=c("APSIM","Historical","Observed"),
-                       values=cbPalette9[c(8,4,1)]) +
+                       values=c(APSIM_color,Historical_color,Observed_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -92,7 +92,7 @@ suppressMessages({
     geom_segment(aes(x = SYxs[1], xend = SYxs[2], y = SYys[1], yend = SYys[2]), color=cbPalette9[8]) +
     geom_segment(aes(x = SYobsxs[1], xend = SYobsxs[2], y = SYobsys[1], yend = SYobsys[2]), color=cbPalette9[1]) +
     scale_color_manual(labels=c("APSIM","Observed"),
-                       values=cbPalette9[c(8,1)]) +
+                       values=c(APSIM_color,Observed_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -111,7 +111,7 @@ suppressMessages({
     #geom_segment(aes(x = SYxs[1], xend = SYxs[2], y = SYys[1], yend = SYys[2]), color=cbPalette9[8]) +
     #geom_segment(aes(x = SYobsxs[1], xend = SYobsxs[2], y = SYobsys[1], yend = SYobsys[2]), color=cbPalette9[1]) +
     scale_color_manual(labels=c("APSIM","Historical","Observed"),
-                       values=cbPalette9[c(8,4,1)]) +
+                       values=c(APSIM_color,Historical_color,Observed_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -148,7 +148,7 @@ suppressMessages({
     geom_segment(aes(x = Cxs[1], xend = Cxs[2], y = Cys[1], yend = Cys[2]), color=cbPalette9[8]) +
     geom_segment(aes(x = Cobsxs[1], xend = Cobsxs[2], y = Cobsys[1], yend = Cobsys[2]), color=cbPalette9[1]) +
     scale_color_manual(labels=c("APSIM","Observed"),
-                       values=cbPalette9[c(8,1)]) +
+                       values=c(APSIM_color,Observed_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -168,7 +168,7 @@ suppressMessages({
     ylab(expression('Soil temperature (' ^o*'C)')) +
     ggtitle(paste0(site_name," Soil Temperature"),paste0("Scenario: ",scenario_descriptor_full)) +
     scale_color_manual(labels=c("APSIM","Observed"),
-                       values=cbPalette9[c(8,1)]) +
+                       values=c(APSIM_color,Observed_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -207,7 +207,7 @@ suppressMessages({
     ylab("Volumetric soil moisture (%)") +
     ggtitle(paste0(site_name," Soil Moisture"),paste0("Scenario: ",scenario_descriptor_full)) +
     scale_color_manual(labels=c("APSIM","Observed"),
-                       values=cbPalette9[c(8,1)]) +
+                       values=c(APSIM_color,Observed_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -271,7 +271,7 @@ suppressMessages({
     ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions"),
             paste0("Scenario: ",scenario_descriptor_full)) +
     scale_color_manual(labels=c("APSIM","Observed","Fertilizer"),
-                       values=cbPalette9[c(8,1,7)]) +
+                       values=c(APSIM_color,Observed_color,Fertilizer_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -296,7 +296,7 @@ suppressMessages({
             paste0("Scenario: ",scenario_descriptor_full)) +
     geom_segment(aes(x = NGxs[1], xend = NGxs[2], y = NGys[1], yend = NGys[2]), color=cbPalette9[8]) +
     scale_color_manual(labels=c("APSIM"),
-                       values=cbPalette9[c(8)]) +
+                       values=c(APSIM_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),

@@ -41,12 +41,52 @@ crop_calib_output_df_piv <- read.table(file=paste0(results_path,"calib_crop_df_p
   left_join(unique(scenario_df[,c("scenario_descriptor","scenario_abbrev")]),
             by=c("treatment_scen"="scenario_descriptor"))
 crop_calib_output_df_piv$Source <- crop_calib_output_df_piv$Model
+### calculate range of yield values as +- Obs_sd (proxy for using all obs reps),
+### but exclude RR00 treatments (only one year of observations) 
+crop_calib_output_df_piv_withsd1 <- crop_calib_output_df_piv[crop_calib_output_df_piv$Model=="Observed" &
+                                                               !(crop_calib_output_df_piv$scenario_abbrev %in% 
+                                                                   c("RR00-CR","RR00-NT-CR")),] %>%
+  mutate(yield_val = yield_val + Obs_sd)
+crop_calib_output_df_piv_withsd2 <- crop_calib_output_df_piv[crop_calib_output_df_piv$Model=="Observed" &
+                                                               !(crop_calib_output_df_piv$scenario_abbrev %in% 
+                                                                   c("RR00-CR","RR00-NT-CR")),] %>%
+  mutate(yield_val = yield_val - Obs_sd)
+crop_calib_output_df_piv_withsd <- rbind(crop_calib_output_df_piv_withsd1,crop_calib_output_df_piv_withsd2) %>%
+  rbind(crop_calib_output_df_piv[crop_calib_output_df_piv$Model!="Observed" |
+                                   (crop_calib_output_df_piv$Model=="Observed" &
+                                    crop_calib_output_df_piv$scenario_abbrev %in% 
+                                       c("RR00-CR","RR00-NT-CR")),])
+
 
 soc_calib_output_df_piv <- read.table(file=paste0(results_path,"calib_soc_df_piv.csv"),
                                       header=TRUE,sep=",") %>%
   left_join(unique(scenario_df[,c("scenario_descriptor","scenario_abbrev")]),
             by=c("treatment_scen"="scenario_descriptor"))
 soc_calib_output_df_piv$Source <- soc_calib_output_df_piv$Model
+### calculate range of yield values as +- Obs_sd (proxy for using all obs reps),
+### but don't include outliers in recalculation: leave as-is
+soc_calib_output_df_piv_withsd1 <- soc_calib_output_df_piv[soc_calib_output_df_piv$Model=="Observed",] %>%
+  mutate(C_val = C_val + Obs_sd)
+soc_calib_output_df_piv_withsd2 <- soc_calib_output_df_piv[soc_calib_output_df_piv$Model=="Observed",] %>%
+  mutate(C_val = C_val - Obs_sd)
+soc_calib_output_df_piv_withsd <- rbind(soc_calib_output_df_piv_withsd1,soc_calib_output_df_piv_withsd2) %>%
+  rbind(soc_calib_output_df_piv[soc_calib_output_df_piv$Model!="Observed",])
+
+
+mb_calib_output_df_piv <- read.table(file=paste0(results_path,"calib_mb_df_piv.csv"),
+                                      header=TRUE,sep=",") %>%
+  left_join(unique(scenario_df[,c("scenario_descriptor","scenario_abbrev")]),
+            by=c("treatment_scen"="scenario_descriptor"))
+mb_calib_output_df_piv$Source <- mb_calib_output_df_piv$Model
+### calculate range of yield values as +- Obs_sd (proxy for using all obs reps),
+### but don't include outliers in recalculation: leave as-is
+mb_calib_output_df_piv_withsd1 <- mb_calib_output_df_piv[mb_calib_output_df_piv$Model=="Observed",] %>%
+  mutate(mb_val = mb_val + Obs_sd)
+mb_calib_output_df_piv_withsd2 <- mb_calib_output_df_piv[mb_calib_output_df_piv$Model=="Observed",] %>%
+  mutate(mb_val = mb_val - Obs_sd)
+mb_calib_output_df_piv_withsd <- rbind(mb_calib_output_df_piv_withsd1,mb_calib_output_df_piv_withsd2) %>%
+  rbind(mb_calib_output_df_piv[mb_calib_output_df_piv$Model!="Observed",])
+
 # soc_trendlines_df <- read.table(file=paste0(results_path,"calib_soc_trendline_piv.csv"),
 #                                 header=TRUE,sep=",")  
 # soc_trendlines_df$Source <- soc_trendlines_df$Model
@@ -128,7 +168,7 @@ his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_M
   
   ## Calibration box plots ------------------------------------------------------
   
-  gY1_box <- crop_calib_output_df_piv %>%
+  gY1_box <- crop_calib_output_df_piv_withsd %>%
     ggplot(aes(x=Model,y=yield_val)) +
     stat_boxplot(geom = "errorbar",width=.5) + 
     geom_boxplot() +
@@ -145,7 +185,8 @@ his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_M
   
   gY1_box
   
-  gY2_box <- crop_calib_output_df_piv %>%
+  
+  gY2_box <- crop_calib_output_df_piv_withsd %>%
     ggplot(aes(x=Model,y=yield_val)) +
     stat_boxplot(geom = "errorbar",width=.5) + 
     geom_boxplot() +
@@ -163,6 +204,34 @@ his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_M
                                      hjust = 1))
   
   gY2_box
+  
+  # get stats from boxplots
+  Y2box_bytreat <- ggplot_build(gY2_box)[[1]][[1]]
+  Y2box_cotton_Obs_rows <- which(as.numeric(rownames(Y2box_bytreat)) %% 3 == 0 &
+                                  as.numeric(rownames(Y2box_bytreat)) <= 15  )
+  Y2box_cotton_APSIM_rows <- which(as.numeric(rownames(Y2box_bytreat)) %% 3 == 1 &
+                                    as.numeric(rownames(Y2box_bytreat)) <= 15 )
+  Y2box_cotton_Daycent_rows <- which(as.numeric(rownames(Y2box_bytreat)) %% 3 == 2 &
+                                      as.numeric(rownames(Y2box_bytreat)) <= 15 )
+  Y2box_sorghum_Obs_rows <- which(as.numeric(rownames(Y2box_bytreat)) %% 3 == 0 &
+                                  as.numeric(rownames(Y2box_bytreat)) > 15  )
+  Y2box_sorghum_APSIM_rows <- which(as.numeric(rownames(Y2box_bytreat)) %% 3 == 1 &
+                                    as.numeric(rownames(Y2box_bytreat)) > 15 )
+  Y2box_sorghum_Daycent_rows <- which(as.numeric(rownames(Y2box_bytreat)) %% 3 == 2 &
+                                      as.numeric(rownames(Y2box_bytreat)) > 15 )
+  # calculate difference in medians between APSIM and Observed
+  Y2box_cotton_APSIM_Obs_med_diff <- Y2box_bytreat[Y2box_cotton_APSIM_rows,"middle"] - 
+    Y2box_bytreat[Y2box_cotton_Obs_rows,"middle"]
+  Y2box_cotton_Daycent_Obs_med_diff <- Y2box_bytreat[Y2box_cotton_Daycent_rows,"middle"] -
+    Y2box_bytreat[Y2box_cotton_Obs_rows,"middle"]
+  Y2box_cotton_APSIM_Obs_diff_range <- range(Y2box_cotton_APSIM_Obs_med_diff)
+  Y2box_cotton_Daycent_Obs_diff_range <- range(Y2box_cotton_Daycent_Obs_med_diff)
+  Y2box_sorghum_APSIM_Obs_med_diff <- Y2box_bytreat[Y2box_sorghum_APSIM_rows,"middle"] - 
+    Y2box_bytreat[Y2box_sorghum_Obs_rows,"middle"]
+  Y2box_sorghum_Daycent_Obs_med_diff <- Y2box_bytreat[Y2box_sorghum_Daycent_rows,"middle"] -
+    Y2box_bytreat[Y2box_sorghum_Obs_rows,"middle"]
+  Y2box_sorghum_APSIM_Obs_diff_range <- range(Y2box_sorghum_APSIM_Obs_med_diff)
+  Y2box_sorghum_Daycent_Obs_diff_range <- range(Y2box_sorghum_Daycent_Obs_med_diff)
   
   ## historical for sorghum
   gY3_box <- his_SorghumYld_Mgha_piv %>%
@@ -184,13 +253,142 @@ his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_M
   
   gY3_box
   
+  # get stats from boxplots
+  Y3box_bytreat <- ggplot_build(gY3_box)[[1]][[1]]
+  Y3box_sorghum_Obs_rows <- which(as.numeric(rownames(Y3box_bytreat)) %% 3 == 0)
+  Y3box_sorghum_APSIM_rows <- which(as.numeric(rownames(Y3box_bytreat)) %% 3 == 1)
+  Y3box_sorghum_Daycent_rows <- which(as.numeric(rownames(Y3box_bytreat)) %% 3 == 2)
+  # calculate difference in medians between APSIM and Observed
+  Y3box_sorghum_APSIM_Obs_med_diff <- Y3box_bytreat[Y3box_sorghum_APSIM_rows,"middle"] - 
+    Y3box_bytreat[Y3box_sorghum_Obs_rows,"middle"]
+  Y3box_sorghum_Daycent_Obs_med_diff <- Y3box_bytreat[Y3box_sorghum_Daycent_rows,"middle"] -
+    Y3box_bytreat[Y3box_sorghum_Obs_rows,"middle"]
+  Y3box_sorghum_APSIM_Obs_diff_range <- range(Y3box_sorghum_APSIM_Obs_med_diff)
+  Y3box_sorghum_Daycent_Obs_diff_range <- range(Y3box_sorghum_Daycent_Obs_med_diff)
+  
+  
+  
+  gS1_box <- soc_calib_output_df_piv_withsd[soc_calib_output_df_piv_withsd$year %in%
+                                              soc_calib_output_df_piv_withsd[soc_calib_output_df_piv_withsd$Model=="Observed" &
+                                                                               !is.na(soc_calib_output_df_piv_withsd$C_val),"year"],] %>%
+    ggplot(aes(x=Model,y=C_val)) +
+    stat_boxplot(geom = "errorbar",width=.5) + 
+    geom_boxplot() +
+    xlab("") +
+    ylab(expression('SOC (Mg C ha ' ^-1*')')) +
+    facet_grid(~scenario_abbrev) +
+    theme_classic(base_family = "serif", base_size = 25) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1))
+  
+  gS1_box
+  
+  
+  # get stats from boxplots
+  S1box_bytreat <- ggplot_build(gS1_box)[[1]][[1]]
+  S1box_soc_Obs_rows <- which(as.numeric(rownames(S1box_bytreat)) %% 5 == 4)
+  S1box_soc_APSIM_rows <- which(as.numeric(rownames(S1box_bytreat)) %% 5 == 1)
+  S1box_soc_Daycent_rows <- which(as.numeric(rownames(S1box_bytreat)) %% 5 == 2)
+  S1box_soc_Millennial_rows <- which(as.numeric(rownames(S1box_bytreat)) %% 5 == 3)
+  S1box_soc_RothC_rows <- which(as.numeric(rownames(S1box_bytreat)) %% 5 == 0)
+  # calculate difference in medians between models and Observed
+  S1box_soc_APSIM_Obs_med_diff <- S1box_bytreat[S1box_soc_APSIM_rows,"middle"] - 
+    S1box_bytreat[S1box_soc_Obs_rows,"middle"]
+  S1box_soc_Daycent_Obs_med_diff <- S1box_bytreat[S1box_soc_Daycent_rows,"middle"] -
+    S1box_bytreat[S1box_soc_Obs_rows,"middle"]
+  S1box_soc_Millennial_Obs_med_diff <- S1box_bytreat[S1box_soc_Millennial_rows,"middle"] -
+    S1box_bytreat[S1box_soc_Obs_rows,"middle"]
+  S1box_soc_RothC_Obs_med_diff <- S1box_bytreat[S1box_soc_RothC_rows,"middle"] -
+    S1box_bytreat[S1box_soc_Obs_rows,"middle"]
+  S1box_soc_APSIM_Obs_diff_range <- range(S1box_soc_APSIM_Obs_med_diff)
+  S1box_soc_Daycent_Obs_diff_range <- range(S1box_soc_Daycent_Obs_med_diff)
+  S1box_soc_Millennial_Obs_diff_range <- range(S1box_soc_Millennial_Obs_med_diff)
+  S1box_soc_RothC_Obs_diff_range <- range(S1box_soc_RothC_Obs_med_diff)
+  # calculate IQRs
+  S1box_soc_Obs_iqrs <- S1box_bytreat[S1box_soc_Obs_rows,"upper"] - 
+    S1box_bytreat[S1box_soc_Obs_rows,"lower"]
+  S1box_soc_APSIM_iqrs <- S1box_bytreat[S1box_soc_APSIM_rows,"upper"] - 
+    S1box_bytreat[S1box_soc_APSIM_rows,"lower"]
+  S1box_soc_Daycent_iqrs <- S1box_bytreat[S1box_soc_Daycent_rows,"upper"] - 
+    S1box_bytreat[S1box_soc_Daycent_rows,"lower"]
+  S1box_soc_Millennial_iqrs <- S1box_bytreat[S1box_soc_Millennial_rows,"upper"] - 
+    S1box_bytreat[S1box_soc_Millennial_rows,"lower"]
+  S1box_soc_RothC_iqrs <- S1box_bytreat[S1box_soc_RothC_rows,"upper"] - 
+    S1box_bytreat[S1box_soc_RothC_rows,"lower"]
+  
 
+  gMB1_box <- mb_calib_output_df_piv_withsd[mb_calib_output_df_piv_withsd$year %in%
+                                              mb_calib_output_df_piv_withsd[mb_calib_output_df_piv_withsd$Model=="Observed" &
+                                                                              !is.na(mb_calib_output_df_piv_withsd$mb_val),"year"],] %>%
+    ggplot(aes(x=Source,y=mb_val)) +
+    stat_boxplot(geom = "errorbar",width=.5) + 
+    geom_boxplot() +
+    xlab("") +
+    ylab(expression('Micro Biomass (g C m ' ^-2*')')) +
+    facet_grid(~scenario_abbrev) +
+    theme_classic(base_family = "serif", base_size = 25) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1))
+  
+  gMB1_box
+  
+  
+  # get stats from boxplots
+  MB1box_bytreat <- ggplot_build(gMB1_box)[[1]][[1]]
+  MB1box_soc_Obs_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 5 == 4)
+  MB1box_soc_APSIM_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 5 == 1)
+  MB1box_soc_Daycent_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 5 == 2)
+  MB1box_soc_Millennial_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 5 == 3)
+  MB1box_soc_RothC_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 5 == 0)
+  # calculate difference in medians between models and Observed
+  MB1box_soc_APSIM_Obs_med_diff <- MB1box_bytreat[MB1box_soc_APSIM_rows,"middle"] - 
+    MB1box_bytreat[MB1box_soc_Obs_rows,"middle"]
+  MB1box_soc_Daycent_Obs_med_diff <- MB1box_bytreat[MB1box_soc_Daycent_rows,"middle"] -
+    MB1box_bytreat[MB1box_soc_Obs_rows,"middle"]
+  MB1box_soc_Millennial_Obs_med_diff <- MB1box_bytreat[MB1box_soc_Millennial_rows,"middle"] -
+    MB1box_bytreat[MB1box_soc_Obs_rows,"middle"]
+  MB1box_soc_RothC_Obs_med_diff <- MB1box_bytreat[MB1box_soc_RothC_rows,"middle"] -
+    MB1box_bytreat[MB1box_soc_Obs_rows,"middle"]
+  MB1box_soc_APSIM_Obs_diff_range <- range(MB1box_soc_APSIM_Obs_med_diff)
+  MB1box_soc_Daycent_Obs_diff_range <- range(MB1box_soc_Daycent_Obs_med_diff)
+  MB1box_soc_Millennial_Obs_diff_range <- range(MB1box_soc_Millennial_Obs_med_diff)
+  MB1box_soc_RothC_Obs_diff_range <- range(MB1box_soc_RothC_Obs_med_diff)
+  # calculate IQRs
+  MB1box_soc_Obs_iqrs <- MB1box_bytreat[MB1box_soc_Obs_rows,"upper"] - 
+    MB1box_bytreat[MB1box_soc_Obs_rows,"lower"]
+  MB1box_soc_APSIM_iqrs <- MB1box_bytreat[MB1box_soc_APSIM_rows,"upper"] - 
+    MB1box_bytreat[MB1box_soc_APSIM_rows,"lower"]
+  MB1box_soc_Daycent_iqrs <- MB1box_bytreat[MB1box_soc_Daycent_rows,"upper"] - 
+    MB1box_bytreat[MB1box_soc_Daycent_rows,"lower"]
+  MB1box_soc_Millennial_iqrs <- MB1box_bytreat[MB1box_soc_Millennial_rows,"upper"] - 
+    MB1box_bytreat[MB1box_soc_Millennial_rows,"lower"]
+  MB1box_soc_RothC_iqrs <- MB1box_bytreat[MB1box_soc_RothC_rows,"upper"] - 
+    MB1box_bytreat[MB1box_soc_RothC_rows,"lower"]
+  
+    
   ggsave(filename=paste0(results_path,"pub_Crop_yield_calib_boxplots_all.jpg"),
          plot=gY1_box, width=12, height=7, dpi=300)
   ggsave(filename=paste0(results_path,"pub_Crop_yield_calib_boxplots_bytreat.jpg"),
          plot=gY2_box, width=12, height=7, dpi=300)
   ggsave(filename=paste0(results_path,"pub_Crop_his_yield_calib_boxplots_bytreat.jpg"),
          plot=gY3_box, width=12, height=7, dpi=300)
+  ggsave(filename=paste0(results_path,"pub_SOC_calib_boxplots_bytreat.jpg"),
+         plot=gS1_box, width=10, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"pub_MB_calib_boxplots_bytreat.jpg"),
+         plot=gMB1_box, width=12, height=6, dpi=300)
+  
   
     #*************************************************************
 

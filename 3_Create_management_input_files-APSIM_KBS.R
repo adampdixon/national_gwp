@@ -181,7 +181,7 @@ suppressMessages({
   if(site_name=="KBS") {
     
     APSIM_ops_3yr <- as.data.frame(APSIM_ops[str_sub(APSIM_ops[,"V1"],-4,-1) %in% 
-                                               experiment_end_year-2:experiment_end_year,])
+                                               (experiment_end_year-2):experiment_end_year,])
     colnames(APSIM_ops_3yr) <- c("V1","V2")
     
     # Add conventional tillage back in for future scenario

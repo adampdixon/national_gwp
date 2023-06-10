@@ -32,7 +32,7 @@ suppressMessages({
     ggtitle(paste0(site_name," Volumetric soil moisture with ",soil_moist_bias,"% correction"),
             paste0("Scenario: ",scenario_descriptor_full)) +
     scale_color_manual(labels=c("Daycent","Observed"),
-                       values=cbPalette9[c(8,1)]) +
+                       values=c(Daycent_color,Observed_color)) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
           legend.position = "right",
@@ -61,7 +61,7 @@ suppressMessages({
 #    geom_segment(aes(x = CYxs[1], xend = CYxs[2], y = CYys[1], yend = CYys[2]), color=cbPalette9[8]) +
 #    geom_segment(aes(x = CYobsxs[1], xend = CYobsxs[2], y = CYobsys[1], yend = CYobsys[2]), color=cbPalette9[1]) +
     scale_color_manual(labels=c("Daycent","Historical","Observed"),
-                       values=cbPalette9[c(8,4,1)]) +
+                       values=c(Daycent_color,Historical_color,Observed_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -92,7 +92,7 @@ suppressMessages({
       # geom_segment(aes(x = SYxs[1], xend = SYxs[2], y = SYys[1], yend = SYys[2]), color=cbPalette9[8]) +
 #      geom_segment(aes(x = SYobsxs[1], xend = SYobsxs[2], y = SYobsys[1], yend = SYobsys[2]), color=cbPalette9[1]) +
       scale_color_manual(labels=c("Daycent","Historical","Observed"),
-                         values=cbPalette9[c(8,4,1)]) +
+                         values=c(Daycent_color,Historical_color,Observed_color)) +
       theme_classic(base_family = "serif", base_size = 15) +
       theme(panel.background = element_blank(),
             axis.line = element_line(),
@@ -129,7 +129,7 @@ suppressMessages({
 #    geom_segment(aes(x = Cxs[1], xend = Cxs[2], y = Cys[1], yend = Cys[2]), color=cbPalette9[8]) +
     geom_segment(aes(x = Cobsxs[1], xend = Cobsxs[2], y = Cobsys[1], yend = Cobsys[2]), color=cbPalette9[1]) +
     scale_color_manual(labels=c("Daycent","Observed"),
-                       values=cbPalette9[c(8,1)]) +
+                       values=c(Daycent_color,Observed_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -180,7 +180,7 @@ suppressMessages({
     # geom_line(data=Tfit_Obs_aug, aes(y=.fitted),show.legend=F) + 
     #geom_abline(intercept=Tfit_Daycent[1], slope=Tfit_Daycent[2], color="orange") +
     scale_color_manual(labels=c("Daycent","Observed"),
-                       values=cbPalette9[c(8,1)]) +
+                       values=c(Daycent_color,Observed_color)) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
           legend.position = "right",
@@ -202,7 +202,7 @@ suppressMessages({
     # geom_line(data=Tfit_Obs_aug, aes(y=.fitted),show.legend=F) + 
     #geom_abline(intercept=Tfit_Daycent[1], slope=Tfit_Daycent[2], color="orange") +
     scale_color_manual(labels=c("Daycent","Observed"),
-                       values=cbPalette9[c(8,1)]) +
+                       values=c(Daycent_color,Observed_color)) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
           legend.position = "right",
@@ -247,7 +247,7 @@ suppressMessages({
     # scale_color_manual(labels=c("Daycent","Observed","Fertilizer"),
     #                    values=cbPalette9[c(8,1,7)]) +
     scale_color_manual(labels=c("Daycent","Observed"),
-                       values=cbPalette9[c(8,1)]) +
+                       values=c(Daycent_color,Observed_color)) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
           legend.position = "right",
@@ -271,7 +271,7 @@ suppressMessages({
             paste0("Scenario: ",scenario_descriptor_full)) +
     geom_segment(aes(x = NGxs[1], xend = NGxs[2], y = NGys[1], yend = NGys[2]), color=cbPalette9[8]) +
     scale_color_manual(labels=c("Daycent"),
-                       values=cbPalette9[c(8)]) +
+                       values=c(Daycent_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -297,7 +297,7 @@ suppressMessages({
     ggtitle(bquote(.(site_name)~"Total Cumulative CH"["4"]*" Emissions"),
             paste0("Scenario: ",scenario_descriptor_full)) +
     scale_color_manual(labels=c("Daycent","Observed"),
-                       values=cbPalette9[c(8,1)]) +
+                       values=c(Daycent_color,Observed_color)) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
           legend.position = "right",
@@ -321,7 +321,7 @@ suppressMessages({
             paste0("Scenario: ",scenario_descriptor_full)) +
     geom_segment(aes(x = MGxs[1], xend = MGxs[2], y = MGys[1], yend = MGys[2]), color=cbPalette9[8]) +
     scale_color_manual(labels=c("Daycent"),
-                       values=cbPalette9[c(8)]) +
+                       values=c(Daycent_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),

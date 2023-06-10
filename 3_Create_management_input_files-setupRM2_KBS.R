@@ -47,14 +47,12 @@ mill_eqilinput_filename <- "siteenviron_eq_in.txt"
 mill_baseinput_filename <- "siteenviron_base_in.txt"
 mill_futinput_filename <- "siteenviron_in"
 
-soil_temp_bias <- 0
-  #if_else(mgmt_scenario_num==1 | mgmt_scenario_grp %in% c(4,5), 5,
-  #              if_else(mgmt_scenario_num==2, 4.5,
-  #              0))
-soil_moist_bias <- 0
-  #if_else(mgmt_scenario_num==1 | mgmt_scenario_grp %in% c(4,5), 2,
-  #              if_else(mgmt_scenario_num==2, 0,
-  #              0))
+soil_temp_bias <- if_else(mgmt_scenario_num==1 | mgmt_scenario_grp %in% c(4,5), 5,
+                if_else(mgmt_scenario_num==2, 4.5,
+                0))
+soil_moist_bias <- if_else(mgmt_scenario_num==1 | mgmt_scenario_grp %in% c(4,5), 2,
+                if_else(mgmt_scenario_num==2, 0,
+                0))
 
 
 #**********************************************************************

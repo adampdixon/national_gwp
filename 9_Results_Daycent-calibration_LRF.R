@@ -49,7 +49,7 @@ gM <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='Daycent'
   ggtitle(paste0(site_name," Soil Moisture"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
+                     values=c(Daycent_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -88,7 +88,7 @@ gCY <- Cotton_this_piv %>%
   ggtitle(paste(site_name,"Cotton Yield"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
+                     values=c(Daycent_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -103,7 +103,7 @@ gChY <- CottonYld_Mgha_piv[CottonYld_Mgha_piv$year <= experiment_end_year,] %>%
   ggtitle(paste(site_name,"Cotton Yield"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Historical","Observed"),
-                     values=cbPalette9[c(8,4,1)]) +
+                     values=c(Daycent_color,Historical_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -142,7 +142,7 @@ gSY <- Sorghum_this_piv %>%
   ggtitle(paste(site_name,"Sorghum Yield"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
+                     values=c(Daycent_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -160,7 +160,7 @@ gShY <- SorghumYld_Mgha_piv[SorghumYld_Mgha_piv$year <= end_exp_period_year,] %>
   ggtitle(paste(site_name,"Sorghum Yield"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Historical","Observed"),
-                     values=cbPalette9[c(8,4,1)]) +
+                     values=c(Daycent_color,Historical_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -188,7 +188,7 @@ ObsCfit_all <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= e
 gC <- SOC_this_piv[SOC_this_piv$year %in% experiment_year_range,] %>%#experiment_year_range,] %>%
   ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point() +
-  geom_abline(intercept=ObsCfit_all[1], slope=ObsCfit_all[2], color="black") +
+  geom_abline(intercept=ObsCfit_all[1], slope=ObsCfit_all[2], color=Observed_color) +
   geom_errorbar(aes(ymin=C_val-Obs_sd, ymax=C_val+Obs_sd),
                 width=.2) + # Width of the error bars
   xlab("Year") +
@@ -196,9 +196,9 @@ gC <- SOC_this_piv[SOC_this_piv$year %in% experiment_year_range,] %>%#experiment
   ylim(3,12) +
   ggtitle(paste(site_name,"Soil Organic Carbon"),
           paste0("Scenario: ",scenario_descriptor)) +
-  geom_abline(intercept=Cfit_coef_time[1], slope=Cfit_coef_time[2], color="orange") +
+  geom_abline(intercept=Cfit_coef_time[1], slope=Cfit_coef_time[2], color=Daycent_color) +
   scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
+                     values=c(Daycent_color,Observed_color)) +
   theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
@@ -221,7 +221,7 @@ Cfith_Obs <- coef(lm(Observed ~ year, data = Cstock_Mgha[Cstock_Mgha$year >= exp
 gCh <- Cstock_Mgha_piv %>%#experiment_year_range,] %>%
   ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   geom_point() +
-  geom_abline(intercept=Cfith_Obs[1], slope=Cfith_Obs[2], color="black") +
+  geom_abline(intercept=Cfith_Obs[1], slope=Cfith_Obs[2], color=Observed_color) +
   geom_errorbar(aes(ymin=C_val-Obs_sd, ymax=C_val+Obs_sd),
                 width=.2) + # Width of the error bars
   xlab("Year") +
@@ -229,9 +229,9 @@ gCh <- Cstock_Mgha_piv %>%#experiment_year_range,] %>%
 #  ylim(0,12) +
   ggtitle(paste(site_name,"Soil Organic Carbon"),
           paste0("Scenario: ",scenario_descriptor)) +
-  geom_abline(intercept=Cfith_Daycent[1], slope=Cfith_Daycent[2], color="orange") +
+  geom_abline(intercept=Cfith_Daycent[1], slope=Cfith_Daycent[2], color=Daycent_color) +
   scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
+                     values=c(Daycent_color,Observed_color)) +
   theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
@@ -297,9 +297,9 @@ gT <- Temp_this_piv[Temp_this_piv$source=='Daycent'
   #geom_line(data=Tfit_Obs_aug_pre2010, aes(y=.fitted),show.legend=F) + 
   #geom_line(data=Tfit_Daycent_aug, aes(y=.fitted),show.legend=F) + 
   #geom_line(data=Tfit_Obs_aug, aes(y=.fitted),show.legend=F) + 
-  #geom_abline(intercept=Tfit_Daycent[1], slope=Tfit_Daycent[2], color="orange") +
+  #geom_abline(intercept=Tfit_Daycent[1], slope=Tfit_Daycent[2], color=Daycent_color) +
   scale_color_manual(labels=c("Daycent","Observed"),
-                     values=cbPalette9[c(8,1)]) +
+                     values=c(Daycent_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -359,7 +359,7 @@ gNG <- N2O_this_piv[N2O_this_piv$source=='Daycent' &
   ggtitle(bquote(.(site_name)~"N"["2"]*"O Emissions"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Fertilizer"),
-                     values=cbPalette9[c(8,7)]) +
+                     values=c(Daycent_color,Fertilizer_color)) +
   theme_classic(base_family = "serif", base_size = 15) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
@@ -499,7 +499,7 @@ gMG <- CH4_this_piv[CH4_this_piv$source=='Daycent'
   ggtitle(bquote(.(site_name)~"CH"["4"]*"O Emissions"),
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Observed","Fertilizer"),
-                     values=cbPalette9[c(8,1,7)]) +
+                     values=c(Daycent_color,Observed_color,Fertilizer_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",

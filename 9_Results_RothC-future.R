@@ -35,7 +35,7 @@ ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
 #  geom_abline(intercept=Cfit_RothC[1], slope=Cfit_RothC[2], color="orange") +
 #  geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
   scale_color_manual(labels=c("RothC","Observed"),
-                     values=cbPalette9[c(1,8)]) +
+                     values=c(RothC_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",

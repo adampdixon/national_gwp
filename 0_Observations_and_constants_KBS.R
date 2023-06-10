@@ -324,6 +324,14 @@ cbPalette12 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
                  "#332288","#0B6329"
 )
 
+APSIM_color <- cbPalette9[8]
+Daycent_color <- cbPalette9[2]
+Millennial_color <- cbPalette9[6]
+RothC_color <- cbPalette9[3]
+Observed_color <- cbPalette9[1]
+Historical_color <- cbPalette9[4]
+Fertilizer_color <- cbPalette9[7]
+
 ###########################################################
 #################### observational data ###################
 ###########################################################
@@ -461,6 +469,8 @@ ObsTfit <- lm(soil_temperature ~ date, data = ObsTemp)
 ObsTfit_coef <- coef(ObsTfit)
 ObsTfit_r2 <- round(summary(ObsTfit)$r.squared,2)
 
+ObsTemp_range <- range(ObsTemp$soil_temperature,na.rm=T)
+
 ## Soil gases - all in g ha-1 d-1
 ObsGas_raw <- read.csv(paste0(obs_path,obs_ghg_filename),
                    skip=36) %>%
@@ -482,6 +492,14 @@ ObsN2Ofit_r2 <- round(summary(ObsN2Ofit)$r.squared,2)
 ObsCH4fit <- lm(CH4_C ~ date, data = ObsGas)
 ObsCH4fit_coef <- coef(ObsCH4fit)
 ObsCH4fit_r2 <- round(summary(ObsCH4fit)$r.squared,2)
+
+ObsGas_N2O_calib <- ObsGas[!is.na(ObsGas$N2O_N),] %>%
+  group_by(year) %>%
+  summarize(tot_N2O_ghayr=sum(N2O_N))
+
+ObsGas_CH4_calib <- ObsGas[!is.na(ObsGas$CH4_C),] %>%
+  group_by(year) %>%
+  summarize(tot_N2O_ghayr=sum(CH4_C))
 
 ## Soil moisture
 ObsGSM <- read.csv(paste0(obs_path,obs_soilmoist_filename),

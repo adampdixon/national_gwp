@@ -33,7 +33,7 @@ mill_scen_df_raw <- read.csv(file=paste0(mill_path,"scenario_out_",scenario_name
 mill_scen_df <- mill_scen_df_raw[mill_scen_df_raw$year <= end_fut_period_year,]
 
 mill_daily_df <- rbind(mill_base_df_raw,mill_scen_df)
-mill_df <- mill_daily_df[month(mill_daily_df$date)==1 & day(mill_daily_df$date)==1,] %>%
+mill_df <- mill_daily_df[month(mill_daily_df$date)==1 & day(mill_daily_df$date)==2,] %>%
   mutate(TOC_Mgha=TOC/100)
 
 millC_Mgha <- mill_df[,c("year","TOC_Mgha")]

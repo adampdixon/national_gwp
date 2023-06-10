@@ -28,7 +28,7 @@ print("Starting 9_Results_APSIM-setup.R")
 if(mgmt_scenario_grp!=3) {
 APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4,
                       widths = c(15,15,22,20,20,15,15,24,22,22,15,15,15,15,
-                                 20,20,20,20,20,19,19,19,19,19),
+                                 20,20,20,20,20,19,19,19,19,19,20,20,20,20,20),
                       col.names = c("Date","BulkDensity_gcc(1)","SoyYield_kgha",
                                     "WheatYield_kgha","MaizeYield_kgha",
                                     "VolH2O_20cm","SoilTemp_20cm_C",
@@ -39,12 +39,16 @@ APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4
                                     "N2O_bylayer_kgha(3)","N2O_bylayer_kgha(4)",
                                     "N2O_bylayer_kgha(5)","oc_bylayer_kgha(1)",
                                     "oc_bylayer_kgha(2)","oc_bylayer_kgha(3)",
-                                    "oc_bylayer_kgha(4)","oc_bylayer_kgha(5)"),
+                                    "oc_bylayer_kgha(4)","oc_bylayer_kgha(5)",
+                                    "N2O_bylayer_kgha(6)","N2O_bylayer_kgha(7)",
+                                    "N2O_bylayer_kgha(8)","N2O_bylayer_kgha(9)",
+                                    "N2O_bylayer_kgha(10)"),
                       colClasses = c("character","numeric","numeric","numeric","numeric",
                                      "numeric","numeric","numeric","numeric","numeric",
                                      "numeric","numeric","numeric","numeric","numeric",
                                      "numeric","numeric","numeric","numeric","numeric",
-                                     "numeric","numeric","numeric","numeric"),
+                                     "numeric","numeric","numeric","numeric",
+                                     "numeric","numeric","numeric","numeric","numeric"),
                       check.names = FALSE, header=FALSE) %>%
   mutate(date=as.Date(Date, "%d/%m/%Y"),
          year=year(date),
@@ -55,11 +59,15 @@ APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4
          WheatYield_gm2=WheatYield_kgha/10,
          TotalSOC_25cm_Mgha=(`BulkDensity_gcc(1)`*20*`oc_bylayer_kgha(1)`) +
            (`BulkDensity_gcc(1)`*5*`oc_bylayer_kgha(2)`),
-         N2O_25cm_kgha=`N2O_bylayer_kgha(1)`+(`N2O_bylayer_kgha(2)`*0.25))
+         N2O_25cm_kgha=`N2O_bylayer_kgha(1)`+(`N2O_bylayer_kgha(2)`*0.25),
+         N2O_profile_kgha=`N2O_bylayer_kgha(1)`+`N2O_bylayer_kgha(2)`+
+           `N2O_bylayer_kgha(3)`+`N2O_bylayer_kgha(4)`+`N2O_bylayer_kgha(5)` +
+           `N2O_bylayer_kgha(6)`+`N2O_bylayer_kgha(7)`+
+           `N2O_bylayer_kgha(8)`+`N2O_bylayer_kgha(9)`) #+`N2O_bylayer_kgha(10)`)
 } else { # includes cover crop columns
   APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4,
                         widths = c(15,15,22,20,19,20,15,15,24,22,21,22,28,15,15,15,14,
-                                   20,20,20,20,20,19,19,19,19,19),
+                                   20,20,20,20,20,19,19,19,19,19,20,20,20,20,20),
                         col.names = c("Date","BulkDensity_gcc(1)","SoyYield_kgha",
                                       "WheatYield_kgha","OatsYield_kgha","MaizeYield_kgha",
                                       "VolH2O_20cm","SoilTemp_20cm_C",
@@ -70,13 +78,17 @@ APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4
                                       "N2O_bylayer_kgha(3)","N2O_bylayer_kgha(4)",
                                       "N2O_bylayer_kgha(5)","oc_bylayer_kgha(1)",
                                       "oc_bylayer_kgha(2)","oc_bylayer_kgha(3)",
-                                      "oc_bylayer_kgha(4)","oc_bylayer_kgha(5)"),
+                                      "oc_bylayer_kgha(4)","oc_bylayer_kgha(5)",
+                                      "N2O_bylayer_kgha(6)","N2O_bylayer_kgha(7)",
+                                      "N2O_bylayer_kgha(8)","N2O_bylayer_kgha(9)",
+                                      "N2O_bylayer_kgha(10)"),
                         colClasses = c("character","numeric","numeric","numeric","numeric",
                                        "numeric","numeric","numeric","numeric","numeric",
                                        "numeric","numeric","numeric","numeric","numeric",
                                        "numeric","numeric","numeric","numeric","numeric",
                                        "numeric","numeric","numeric","numeric","numeric",
-                                       "numeric","numeric"),
+                                       "numeric","numeric",
+                                       "numeric","numeric","numeric","numeric","numeric"),
                         check.names = FALSE, header=FALSE) %>%
     mutate(date=as.Date(Date, "%d/%m/%Y"),
            year=year(date),
@@ -87,7 +99,13 @@ APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4
            WheatYield_gm2=WheatYield_kgha/10,
            TotalSOC_25cm_Mgha=(`BulkDensity_gcc(1)`*20*`oc_bylayer_kgha(1)`) +
              (`BulkDensity_gcc(1)`*5*`oc_bylayer_kgha(2)`),
-           N2O_25cm_kgha=`N2O_bylayer_kgha(1)`+(`N2O_bylayer_kgha(2)`*0.25))
+           N2O_25cm_kgha=`N2O_bylayer_kgha(1)`+(`N2O_bylayer_kgha(2)`*0.25),
+           N2O_profile_kgha=`N2O_bylayer_kgha(1)`+`N2O_bylayer_kgha(2)`+
+             `N2O_bylayer_kgha(3)`+`N2O_bylayer_kgha(4)`+`N2O_bylayer_kgha(5)` +
+             `N2O_bylayer_kgha(6)`+`N2O_bylayer_kgha(7)`+
+             `N2O_bylayer_kgha(8)`+`N2O_bylayer_kgha(9)`) #+`N2O_bylayer_kgha(10)`)
+  # N2O_profile_kgha=`N2O_bylayer_kgha(1)`+`N2O_bylayer_kgha(2)`+
+  #   `N2O_bylayer_kgha(3)`+`N2O_bylayer_kgha(4)`+`N2O_bylayer_kgha(5)`)
 }
 
 # limit to future scenario time period
@@ -110,6 +128,8 @@ APSIMY_Mgha <- APSIM_out[,c("year","MaizeYield_kgha","SoyYield_kgha",
 APSIMT_C <- APSIM_out[,c("date","year","SoilTemp_20cm_C")] %>%
   mutate(SoilTemp_20cm_C=round(SoilTemp_20cm_C,1)) 
 
+APSIMT_C_range <- range(APSIMT_C[APSIMT_C$year %in% ObsTemp$year, "SoilTemp_20cm_C"],na.rm=T)
+
 ## soil temperature with bias correction
 APSIMT_C_calib <- APSIM_out[,c("date","year","SoilTemp_20cm_C")] %>%
   mutate(SoilTemp_20cm_C=round(SoilTemp_20cm_C,1)-soil_temp_bias) 
@@ -127,8 +147,20 @@ APSIMB_gcc <- APSIM_out[,c("date","year","BulkDensity_gcc(1)")] %>%
   mutate(BulkDensity_gcc=round(APSIM_out$`BulkDensity_gcc(1)`,2))
 
 ## N2O emissions
-APSIMGN_ghaday <- APSIM_out[,c("date","year","N2O_25cm_kgha")] %>%
-  mutate(N2OEmissions_ghaday = round(N2O_25cm_kgha*1000,2),
+# APSIMGN_ghaday <- APSIM_out[,c("date","year","N2O_25cm_kgha")] %>%
+#   mutate(N2OEmissions_ghaday = round(N2O_25cm_kgha*1000,2),
+#          dayofyear = yday(date))
+# 
+# APSIMGN_ann_gha <- APSIMGN_ghaday %>%
+#   group_by(year) %>%
+#   summarize(N2OEmissions_ghayr=sum(N2OEmissions_ghaday))
+# 
+# APSIMGN_cum_gha <- APSIMGN_ghaday %>%
+#   mutate(N2O_gha = cumsum(round(N2O_25cm_kgha*1000,2))) %>%
+#   select(date,year,N2O_gha)
+
+APSIMGN_ghaday <- APSIM_out[,c("date","year","N2O_profile_kgha")] %>%
+  mutate(N2OEmissions_ghaday = round(N2O_profile_kgha*1000,2),
          dayofyear = yday(date))
 
 APSIMGN_ann_gha <- APSIMGN_ghaday %>%
@@ -136,8 +168,30 @@ APSIMGN_ann_gha <- APSIMGN_ghaday %>%
   summarize(N2OEmissions_ghayr=sum(N2OEmissions_ghaday))
 
 APSIMGN_cum_gha <- APSIMGN_ghaday %>%
-  mutate(N2O_gha = cumsum(round(N2O_25cm_kgha*1000,2))) %>%
+  mutate(N2O_gha = cumsum(round(N2O_profile_kgha*1000,2))) %>%
   select(date,year,N2O_gha)
+
+APSIMGN_cum_calib <- APSIMGN_ghaday[APSIMGN_ghaday$date %in% pull(ObsGas[!is.na(ObsGas$N2O_N),], date),] %>%
+  group_by(year) %>%
+  summarize(tot_N2O_ghayr=sum(N2OEmissions_ghaday))
+
+APSIMGN_profile_ghaday <- APSIM_out[,c("date","year","N2O_profile_kgha")] %>%
+  mutate(N2OEmissions_ghaday = round(N2O_profile_kgha*1000,2),
+         dayofyear = yday(date))
+
+APSIMGN_profile_ann_gha <- APSIMGN_profile_ghaday %>%
+  group_by(year) %>%
+  summarize(N2OEmissions_ghayr=sum(N2OEmissions_ghaday))
+
+APSIMGN_profile_cum_gha <- APSIMGN_profile_ghaday %>%
+  mutate(N2O_gha = cumsum(round(N2O_profile_kgha*1000,2))) %>%
+  select(date,year,N2O_gha)
+
+APSIMGN_profile_cum_calib <- APSIMGN_profile_ghaday[APSIMGN_profile_ghaday$date %in% 
+                                                      pull(ObsGas[!is.na(ObsGas$N2O_N),], date),] %>%
+  group_by(year) %>%
+  summarize(tot_N2O_ghayr=sum(N2OEmissions_ghaday))
+
 
 #**********************************************************************
 

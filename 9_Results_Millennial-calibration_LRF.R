@@ -42,7 +42,7 @@ ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
 #  geom_abline(intercept=Cfit_RothC[1], slope=Cfit_RothC[2], color="orange") +
 #  geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
   scale_color_manual(labels=c("Millennial","Observed-10cm"),
-                     values=cbPalette9[c(6,1)]) +
+                     values=c(Millennial_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -66,7 +66,7 @@ ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
 #  geom_abline(intercept=Cfit_RothC[1], slope=Cfit_RothC[2], color="orange") +
 #  geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
   scale_color_manual(labels=c("Millennial","Observed-10cm"),
-                     values=cbPalette9[c(6,1)]) +
+                     values=c(Millennial_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -92,7 +92,7 @@ ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
   ylab(expression('SOC stock (Mg C ha ' ^-1*')')) +
   ggtitle(paste(site_name,"Soil Organic Carbon: Scenario ",scenario_name)) +
   scale_color_manual(labels=c("Millennial","Observed"),
-                     values=cbPalette9[c(6,1)]) +
+                     values=c(Millennial_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -132,7 +132,7 @@ gC4 <- SOC_this_piv[SOC_this_piv$year %in% experiment_year_range,] %>%
   ylab(expression('SOC stock (Mg C ha ' ^-1*')')) +
   ggtitle(paste(site_name,"Soil Organic Carbon: Scenario ",scenario_name)) +
   scale_color_manual(labels=c("Millennial","Observed"),
-                     values=cbPalette9[c(6,1)]) +
+                     values=c(Millennial_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -204,7 +204,7 @@ ggplot(aes(x=date, y=Millennial, color=cbPalette9[6])) +
 #  geom_abline(intercept=Cfit_RothC[1], slope=Cfit_RothC[2], color="orange") +
 #  geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
   scale_color_manual(labels=c("Millennial","Observed"),
-                     values=cbPalette9[c(6,1)]) +
+                     values=c(Millennial_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -227,7 +227,7 @@ ggplot(aes(x=date, y=Millennial, color=cbPalette9[6])) +
 #  geom_abline(intercept=Cfit_RothC[1], slope=Cfit_RothC[2], color="orange") +
 #  geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
   scale_color_manual(labels=c("Millennial","Observed"),
-                     values=cbPalette9[c(6,1)]) +
+                     values=c(Millennial_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -349,7 +349,7 @@ gMB_121 <- mbio_gm2 %>%
   geom_abline(intercept=MBfit_coef[1], slope=MBfit_coef[2], color="blue") +
   ggtitle(paste0('Microbial biomass: Scenario ',scenario_name)) +
   scale_color_manual(labels=c("Millennial","Observed"),
-                     values=cbPalette9[c(6,1)]) +
+                     values=c(Millennial_color,Observed_color)) +
   theme(panel.background = element_blank(),
         axis.ticks.x = element_blank(),
         axis.line = element_line(),

@@ -62,7 +62,7 @@ library(ggplot2)
             paste0("Scenario: ",scenario_descriptor)) +
     geom_abline(intercept=Cfit_coef_time[1], slope=Cfit_coef_time[2], color=cbPalette9[3]) +
     scale_color_manual(labels=c("Observed","RothC"),
-                       values=cbPalette9[c(1,3)]) +
+                       values=c(Observed_color,RothC_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -95,7 +95,7 @@ library(ggplot2)
             paste0("Scenario: ",scenario_descriptor)) +
     # geom_abline(intercept=Cfith_RothC[1], slope=Cfith_RothC[2], color="orange") +
     scale_color_manual(labels=c("Observed","RothC"),
-                       values=cbPalette9[c(1,3)]) +
+                       values=c(Observed_color,RothC_color)) +
     theme_classic(base_family = "serif", base_size = 15) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
@@ -128,7 +128,7 @@ ggplot(aes(x=year, y=C_val, color=source, show.legend=TRUE)) +
 #  geom_abline(intercept=Cfit_RothC[1], slope=Cfit_RothC[2], color="orange") +
 #  geom_abline(intercept=Cfit_Obs[1], slope=Cfit_Obs[2], color="black") +
   scale_color_manual(labels=c("RothC","Observed"),
-                     values=cbPalette9[c(3,1)]) +
+                     values=c(Observed_color,RothC_color)) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",

@@ -36,7 +36,7 @@ setwd(apsim_path)
 # scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
 
 # Other needed constants
-sim_filename <- paste0("scen_",scenario_name,".apsimx")
+sim_filename <- paste0("scen_",scenario_name,".apsim")
 
 # --------------- Step 1: Copy generic file into site folder --------------- 
 #
@@ -58,7 +58,7 @@ sim_filename <- paste0("scen_",scenario_name,".apsimx")
 
 # set source directory to full path
 sim.dir <- getwd()
-sim <- apsimx(sim_filename, src.dir = sim.dir, value = "report")
+sim <- apsim(sim_filename, src.dir = sim.dir, value = "report")
 
 # Linux: ?
 
