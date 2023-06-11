@@ -179,16 +179,16 @@ source(paste0("3_Create_management_input_files-APSIM_",site_name,".R"))
 # # APSIM
 
 source(paste0("9_Results_APSIM-setup_",site_name,".R"))
-# model_name <- "APSIM"
-# 
+model_name <- "APSIM"
+
 # need to first run:
 # 3_Create_management_input_files-setup_",site_name,".R"
 # 3_Create_management_input_files-APSIM_",site_name,".R"
-# if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
-# source(paste0("9_Results_APSIM-calibration2_",site_name,".R"))
-# }
-# source(paste0("9_Results_APSIM-future_",site_name,".R"))
- # source("p_Results_analysis.R")
+if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
+source(paste0("9_Results_APSIM-calibration2_",site_name,".R"))
+}
+source(paste0("9_Results_APSIM-future_",site_name,".R"))
+source("p_Results_analysis.R")
 
 #*************************************************************
 

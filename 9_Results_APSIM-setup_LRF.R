@@ -148,8 +148,8 @@ APSIMB_gcc <- APSIM_out[,c("date","year","BulkDensity_gcc(1)")] %>%
   mutate(BulkDensity_gcc=round(APSIM_out$`BulkDensity_gcc(1)`,2))
 
 ## N2O emissions
-APSIMGN_ghaday <- APSIM_out[,c("date","year","N2O_10cm_kgha")] %>%
-  mutate(N2OEmissions_ghaday = round(N2O_10cm_kgha*1000,2),
+APSIMGN_ghaday <- APSIM_out[,c("date","year","N2O_profile_kgha")] %>%
+  mutate(N2OEmissions_ghaday = round(N2O_profile_kgha*1000,2),
          dayofyear = yday(date))
 
 APSIMGN_ann_gha <- APSIMGN_ghaday %>%
@@ -157,7 +157,7 @@ APSIMGN_ann_gha <- APSIMGN_ghaday %>%
   summarize(N2OEmissions_ghayr=sum(N2OEmissions_ghaday))
 
 APSIMGN_cum_gha <- APSIMGN_ghaday %>%
-  mutate(N2O_gha = cumsum(round(N2O_10cm_kgha*1000,2))) %>%
+  mutate(N2O_gha = cumsum(round(N2O_profile_kgha*1000,2))) %>%
   select(date,year,N2O_gha)
 
 APSIMGN_cum_calib <- APSIMGN_ghaday[APSIMGN_ghaday$date %in% pull(ObsGas[!is.na(ObsGas$N2O_N),], date),] %>%
