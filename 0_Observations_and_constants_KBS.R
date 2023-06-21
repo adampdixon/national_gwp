@@ -499,7 +499,7 @@ ObsGas_N2O_calib <- ObsGas[!is.na(ObsGas$N2O_N),] %>%
 
 ObsGas_CH4_calib <- ObsGas[!is.na(ObsGas$CH4_C),] %>%
   group_by(year) %>%
-  summarize(tot_N2O_ghayr=sum(CH4_C))
+  summarize(tot_CH4_ghayr=sum(CH4_C))
 
 ## Soil moisture
 ObsGSM <- read.csv(paste0(obs_path,obs_soilmoist_filename),

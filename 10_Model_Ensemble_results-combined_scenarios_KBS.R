@@ -80,6 +80,20 @@ source("f_model_coef.R")
   colnames(soc_trendlines_df_modified) <- c("year","scenario_abbrev","Fit",
                                             "value","Source")
 
+  mb_calib_output_df_piv <- read.table(file=paste0(results_path,"calib_mb_df_piv.csv"),
+                                       header=TRUE,sep=",") %>%
+    left_join(unique(scenario_df[,c("scenario_descriptor","scenario_abbrev")]),
+              by=c("treatment_scen"="scenario_descriptor"))
+  mb_calib_output_df_piv$Source <- mb_calib_output_df_piv$Model
+  ### calculate range of yield values as +- Obs_sd (proxy for using all obs reps),
+  ### but don't include outliers in recalculation: leave as-is
+  mb_calib_output_df_piv_withsd1 <- mb_calib_output_df_piv[mb_calib_output_df_piv$Model=="Observed",] %>%
+    mutate(mb_val = mb_val + Obs_sd)
+  mb_calib_output_df_piv_withsd2 <- mb_calib_output_df_piv[mb_calib_output_df_piv$Model=="Observed",] %>%
+    mutate(mb_val = mb_val - Obs_sd)
+  mb_calib_output_df_piv_withsd <- rbind(mb_calib_output_df_piv_withsd1,mb_calib_output_df_piv_withsd2) %>%
+    rbind(mb_calib_output_df_piv[mb_calib_output_df_piv$Model!="Observed",])
+  
   ## Calibration time series graphs ------------------------------------------------------
   
   gY_calib <- crop_calib_output_df_piv[crop_calib_output_df_piv$year %in% experiment_year_range,] %>%
@@ -281,12 +295,53 @@ source("f_model_coef.R")
     S1box_bytreat[S1box_soc_RothC_rows,"lower"]
   
   
+  gMB1_box <- mb_calib_output_df_piv_withsd[mb_calib_output_df_piv_withsd$year %in%
+                                              mb_calib_output_df_piv_withsd[mb_calib_output_df_piv_withsd$Model=="Observed" &
+                                                                              !is.na(mb_calib_output_df_piv_withsd$mb_val),"year"],] %>%
+    ggplot(aes(x=Source,y=mb_val)) +
+    stat_boxplot(geom = "errorbar",width=.5) + 
+    geom_boxplot() +
+    xlab("") +
+    ylab(expression('Microbial Biomass (g C m ' ^-2*')')) +
+    facet_grid(~scenario_abbrev) +
+    theme_classic(base_family = "serif", base_size = 25) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1))
+  
+  gMB1_box
+  
+  
+  # get stats from boxplots
+  MB1box_bytreat <- ggplot_build(gMB1_box)[[1]][[1]]
+  ## models are in alphabetical order in the plot, so rows are grouped in this order
+  MB1box_Millennial_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 2 == 1)
+  MB1box_Obs_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 2 == 0)
+  # calculate difference in medians between models and Observed
+  MB1box_Millennial_Obs_med_diff <- MB1box_bytreat[MB1box_Millennial_rows,"middle"] -
+    MB1box_bytreat[MB1box_Obs_rows,"middle"]
+  MB1box_Millennial_Obs_diff_range <- range(MB1box_Millennial_Obs_med_diff)
+  # calculate IQRs
+  MB1box_Obs_iqrs <- MB1box_bytreat[MB1box_Obs_rows,"upper"] - 
+    MB1box_bytreat[MB1box_Obs_rows,"lower"]
+  MB1box_Millennial_iqrs <- MB1box_bytreat[MB1box_Millennial_rows,"upper"] - 
+    MB1box_bytreat[MB1box_Millennial_rows,"lower"]
+  
+  
+  
   ggsave(filename=paste0(results_path,"pub_Crop_yield_calib_boxplots_all.jpg"),
          plot=gY1_box, width=12, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"pub_Crop_yield_calib_boxplots_bytreat.jpg"),
          plot=gY2_box, width=10, height=10, dpi=300)
   ggsave(filename=paste0(results_path,"pub_SOC_calib_boxplots_bytreat.jpg"),
          plot=gS1_box, width=10, height=10, dpi=300)
+  ggsave(filename=paste0(results_path,"pub_MB_calib_boxplots_bytreat.jpg"),
+         plot=gMB1_box, width=12, height=6, dpi=300)
   
   #*************************************************************
 

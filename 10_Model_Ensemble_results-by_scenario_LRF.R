@@ -147,8 +147,8 @@ suppressMessages({
     ens_VM_piv <- pivot_longer(ens_VM, c(-date),
                                names_to = "Source",
                                values_to = "vm_val")
-
-        ## N2O
+    
+    ## N2O
     
     ens_N2O_ghaday <- merge(APSIMGN_ghaday[,c("date","N2OEmissions_ghaday")],
                             DayGN_ghaday[,c("date","N2O_gNhad")],
@@ -218,9 +218,8 @@ suppressMessages({
     ## Micro biomass
     
     ens_MB_gm2 <- merge(ObsMB_all[,c("year","date","mb_gm2","sd_gm2")],
-                        mill_base_df[,c("year","date","MIC")],
-                        by=c("year","date"),
-                        all=TRUE) %>%
+                        mbio_gm2[,c("year","date","Millennial")],
+                        by=c("year","date")) %>%
       mutate(treatment_scen=scenario_descriptor)
     
     colnames(ens_MB_gm2) <- c("year","date","Observed","Obs_sd","Millennial",
@@ -336,18 +335,21 @@ suppressMessages({
       
       ## Soil Moisture (no observations, just models)
       
+      #test_density_APSIM <- density(ens_VM$APSIM)
+      #test_density_APSIM[[2]]
+      
       gVd_calib <- ens_VM_piv %>%
         ggplot(aes(x=vm_val, color=Source, fill=Source)) +
         geom_density(alpha=0.3) +
         xlab("Volumetric Water Content (%)") +
         xlim(0,60) +
-        ylim(0,0.6) +
+        ylim(0,1.5) +
         ggtitle(paste(site_name,"Volumetric Water Content Density"),
                 paste0("Scenario: ",scenario_descriptor)) +
-        scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-                           values=c(APSIM_color,Daycent_color,Observed_color)) +
-        scale_fill_manual(labels=c("APSIM","Daycent","Observed"),
-                          values=c(APSIM_color,Daycent_color,Observed_color)) +
+        scale_color_manual(labels=c("APSIM","Daycent"),
+                           values=c(APSIM_color,Daycent_color)) +
+        scale_fill_manual(labels=c("APSIM","Daycent"),
+                          values=c(APSIM_color,Daycent_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -356,23 +358,41 @@ suppressMessages({
       
       gVd_calib
       
-      vwc_pct_over_fc_APSIM <- length(ens_VM[ens_VM$APSIM>=18,"APSIM"])/nrow(ens_VM)
-      vwc_pct_over_fc_Daycent <- length(ens_VM[ens_VM$Daycent>=18,"Daycent"])/nrow(ens_VM)
-      vwc_pct_over_fc_df <- cbind(vwc_pct_over_fc_APSIM,vwc_pct_over_fc_Daycent)
-      colnames(vwc_pct_over_fc_df) <- c("APSIM","Daycent")
-      write.table(vwc_pct_over_fc_df,file=paste0(results_path,"pub_vwc_pct_at_or_over_fc_",scenario_name,".txt"),
+      
+      vwc_frctn_atover_fc_APSIM <- nrow(filter(ens_VM, APSIM>=18))/nrow(ens_VM)
+      vwc_frctn_atover_fc_Daycent <- nrow(filter(ens_VM, Daycent>=18))/nrow(ens_VM)
+      vwc_frctn_atover_fc_df <- cbind(vwc_frctn_atover_fc_APSIM,vwc_frctn_atover_fc_Daycent)
+      colnames(vwc_frctn_atover_fc_df) <- c("APSIM","Daycent")
+      write.table(vwc_frctn_atover_fc_df,file=paste0(results_path,"pub_vwc_frctn_at_or_over_fc_",scenario_name,".txt"),
                   row.names = F,quote=F)
       
+      vwc_frctn_over_5_APSIM <- nrow(filter(ens_VM, APSIM>=5))/nrow(ens_VM)
+      vwc_frctn_over_10_APSIM <- nrow(filter(ens_VM, APSIM>=10))/nrow(ens_VM)
+      vwc_frctn_over_15_APSIM <- nrow(filter(ens_VM, APSIM>=15))/nrow(ens_VM)
+      vwc_frctn_under_10_APSIM <- nrow(filter(ens_VM, APSIM<10))/nrow(ens_VM)
+      vwc_frctn_under_11_APSIM <- nrow(filter(ens_VM, APSIM<11))/nrow(ens_VM)
+      vwc_frctn_under_12_APSIM <- nrow(filter(ens_VM, APSIM<12))/nrow(ens_VM)
       
+      vwc_frctn_over_5_Daycent <- nrow(filter(ens_VM, Daycent>=5))/nrow(ens_VM)
+      vwc_frctn_over_10_Daycent <- nrow(filter(ens_VM, Daycent>=10))/nrow(ens_VM)
+      vwc_frctn_over_15_Daycent <- nrow(filter(ens_VM, Daycent>=15))/nrow(ens_VM)
+      vwc_frctn_under_10_Daycent <- nrow(filter(ens_VM, Daycent<10))/nrow(ens_VM)
+      vwc_frctn_under_11_Daycent <- nrow(filter(ens_VM, Daycent<11))/nrow(ens_VM)
+      vwc_frctn_under_12_Daycent <- nrow(filter(ens_VM, Daycent<12))/nrow(ens_VM)
       
-            ## N2O
+      vwc_frctn_under_10_df <- cbind(vwc_frctn_under_10_APSIM,vwc_frctn_under_10_Daycent)
+      colnames(vwc_frctn_under_10_df) <- c("APSIM","Daycent")
+      write.table(vwc_frctn_under_10_df,file=paste0(results_path,"pub_vwc_frctn_under_10_",scenario_name,".txt"),
+                  row.names = F,quote=F)
+      
+      ## N2O
       
       gN_calib <- ens_N2O_profile_comp_gtot_piv %>%
         ggplot(aes(x=Source, y=n2o_val, color=Source, fill=Source)) +
         geom_col(position="stack") +
         ylim(0,2000) +
-        ylab(expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')')) +
-        ggtitle(paste(site_name,"Total Modeled N2O Emissions vs. Observations"),
+        ylab(expression('N'[2]*'O (g N ha' ^'-1'*' day'^'-1'*')')) +
+        ggtitle(paste(site_name,"Total Modeled N2O Emissions"),
                 paste0("Scenario: ",scenario_descriptor)) +
         scale_color_manual(labels=c("APSIM","Daycent"),
                            values=c(APSIM_color,Daycent_color)) +
@@ -387,6 +407,8 @@ suppressMessages({
       
       gN_calib
       
+      frctn_diff_N2O_APSIM_Daycent <- (ens_N2O_profile_comp_gtot$APSIM-ens_N2O_profile_comp_gtot$Daycent)/ens_N2O_profile_comp_gtot$Daycent
+      
       
       ggsave(filename=paste0(results_path,"pub_Ensemble_Sorghum_calibration_",scenario_name,".jpg"),
              plot=gSY_calib, width=9, height=6, dpi=300)
@@ -399,18 +421,18 @@ suppressMessages({
       ggsave(filename=paste0(results_path,"pub_Ensemble_N2O_comparison_",scenario_name,".jpg"),
              plot=gN_calib, width=9, height=6, dpi=300)
       
-    
+      
       ## Save data for later use combining graphs
       
       if(mgmt_scenario_grp!=7) {
         crop_calib_output_df <- rbind(ens_CottonYld_Mgha[ens_CottonYld_Mgha$year %in% experiment_year_range,],
-                                    ens_SorghumYld_Mgha[ens_SorghumYld_Mgha$year %in% experiment_year_range,])
+                                      ens_SorghumYld_Mgha[ens_SorghumYld_Mgha$year %in% experiment_year_range,])
       } else {
         crop_calib_output_df <- ens_CottonYld_Mgha[ens_CottonYld_Mgha$year %in% experiment_year_range,]
       }
       soc_calib_output_df <- ens_Cstock_Mgha[ens_Cstock_Mgha$year %in% experiment_year_range,]
       mb_calib_output_df <- ens_MB_gm2[ens_MB_gm2$year %in% experiment_year_range,]
-
+      
       p_Edit_calib_data_file(crop_calib_output_df,
                              paste0(results_path,"calib_crop_df.csv"))
       p_Edit_calib_data_file(soc_calib_output_df,
@@ -422,7 +444,7 @@ suppressMessages({
       
       if(mgmt_scenario_grp!=7) {
         crop_calib_output_df_piv <- rbind(ens_CottonYld_Mgha_piv[ens_CottonYld_Mgha_piv$year %in% experiment_year_range,],
-                                        ens_SorghumYld_Mgha_piv[ens_SorghumYld_Mgha_piv$year %in% experiment_year_range,])
+                                          ens_SorghumYld_Mgha_piv[ens_SorghumYld_Mgha_piv$year %in% experiment_year_range,])
       }else {
         crop_calib_output_df_piv <- rbind(ens_CottonYld_Mgha_piv[ens_CottonYld_Mgha_piv$year %in% experiment_year_range,])
       }
@@ -452,7 +474,7 @@ suppressMessages({
       #                        paste0(results_path,"calib_soc_trendline_piv.csv"))
       
       
-      } # end if mgmt_scenario is a calibration treatment
+    } # end if mgmt_scenario is a calibration treatment
     
     
     
@@ -734,6 +756,16 @@ suppressMessages({
   #   ggsave(filename=paste0(results_path,"Ensemble_CH4_cum_comparison_",scenario_name,".jpg"),
   #          plot=gMG, width=9, height=6, dpi=300)
   # }
+  
+  rm(vwc_pct_over_fc_APSIM,vwc_pct_over_fc_Daycent,vwc_pct_over_fc_df,
+     calib_summary_raw,calib_summary_df,
+     vwc_frctn_atover_fc_APSIM,vwc_frctn_atover_fc_Daycent,vwc_frctn_under_fc_Daycent,
+     vwc_frctn_atover_fc_df,
+     vwc_frctn_over_5_APSIM,vwc_frctn_over_10_APSIM,vwc_frctn_over_15_APSIM,
+     vwc_frctn_under_10_APSIM,vwc_frctn_under_11_APSIM,vwc_frctn_under_12_APSIM,
+     vwc_frctn_over_5_Daycent,vwc_frctn_over_10_Daycent,vwc_frctn_over_15_Daycent,
+     vwc_frctn_under_10_Daycent,vwc_frctn_under_11_Daycent,vwc_frctn_under_12_Daycent,
+     vwc_frctn_under_10_df)
   
 }) # end suppressMessages
 

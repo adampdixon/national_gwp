@@ -131,11 +131,9 @@ suppressMessages({
     
     ens_VM <- merge(merge(ObsVSM[,c("date","mean_VSM")],
                           APSIMM_V[,c("date","VolH2O_20cm")],
-                          by="date",
-                          all=TRUE),
+                          by="date"),
                     DayM_V[,c("date","mean_20cm")],
-                    by="date",
-                    all=TRUE)
+                    by="date")
     colnames(ens_VM) <- c("date","Observed","APSIM","Daycent")
     
     ens_VM_piv <- pivot_longer(ens_VM, c(-date),
@@ -185,16 +183,16 @@ suppressMessages({
                                            names_to = "Source",
                                            values_to = "n2o_val")
     
-    ens_N2O_comp_gtot <- merge(merge((ObsGas_N2O_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr))),
-                                     (APSIMGN_cum_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr))),
-                                      all=TRUE),
-                                (DayGN_cum_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr))),
-                                all=TRUE)
-    colnames(ens_N2O_comp_ghayr) <- c("year","Observed", "APSIM","Daycent")
-    
-    ens_N2O_comp_ghayr_piv <- pivot_longer(ens_N2O_comp_ghayr, c(-year),
-                                           names_to = "Source",
-                                           values_to = "n2o_val")
+    # ens_N2O_comp_gtot <- merge(merge((ObsGas_N2O_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr))),
+    #                                  (APSIMGN_cum_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr))),
+    #                                   all=TRUE),
+    #                             (DayGN_cum_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr))),
+    #                             all=TRUE)
+    # colnames(ens_N2O_comp_ghayr) <- c("year","Observed", "APSIM","Daycent")
+    # 
+    # ens_N2O_comp_gtot_piv <- pivot_longer(ens_N2O_comp_gtot, c(-year),
+    #                                        names_to = "Source",
+    #                                        values_to = "n2o_val")
 
     #### whole profile
     ens_N2O_profile_comp_ghayr <- merge(merge(ObsGas_N2O_calib,
@@ -250,12 +248,22 @@ suppressMessages({
     ens_CH4_comp_ghayr_piv <- pivot_longer(ens_CH4_comp_ghayr, c(-year),
                                            names_to = "Source",
                                            values_to = "ch4_val")
-    ## Micro biomass
     
-    ens_MB_gm2 <- merge(ObsMB_all[,c("year","date","mb_gm2","sd_gm2")],
-                        mill_base_df[,c("year","date","MIC")],
-                        by=c("year","date"),
-                        all=TRUE) %>%
+    #### totals over the whole sampling period
+    ens_CH4_profile_comp_gtot <- cbind(ObsGas_CH4_calib %>% summarize(tot_CH4_gha=sum(tot_CH4_ghayr)),
+                                       DayGM_cum_calib %>% summarize(tot_CH4_gha=sum(tot_CH4_ghayr)))
+    colnames(ens_CH4_profile_comp_gtot) <- c("Observed", "Daycent")
+    
+    ens_CH4_profile_comp_gtot_piv <- pivot_longer(ens_CH4_profile_comp_gtot, 
+                                                  everything(),
+                                                  names_to = "Source",
+                                                  values_to = "ch4_val")
+
+        ## Micro biomass
+    
+    ens_MB_gm2 <- merge(ObsMB[,c("year","date","mb_gm2","sd_gm2")],
+                        mbio_gm2[,c("year","date","Millennial")],
+                        by=c("year","date")) %>%
       mutate(treatment_scen=scenario_descriptor)
     
     colnames(ens_MB_gm2) <- c("year","date","Observed","Obs_sd","Millennial",
@@ -296,7 +304,7 @@ suppressMessages({
         geom_errorbar(aes(ymin=yield_val-Obs_sd, ymax=yield_val+Obs_sd),
                       width=.2) + # Width of the error bars
         scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-                           values=cbPalette9[c(8,2,1)]) +
+                           values=c(APSIM_color,Daycent_color,Observed_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -327,7 +335,7 @@ suppressMessages({
         geom_errorbar(aes(ymin=yield_val-Obs_sd, ymax=yield_val+Obs_sd),
                       width=.2) + # Width of the error bars
         scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-                           values=cbPalette9[c(8,2,1)]) +
+                           values=c(APSIM_color,Daycent_color,Observed_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -358,7 +366,7 @@ suppressMessages({
         geom_errorbar(aes(ymin=yield_val-Obs_sd, ymax=yield_val+Obs_sd),
                       width=.2) +  # Width of the error bars
         scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-                           values=cbPalette9[c(8,2,1)]) +
+                           values=c(APSIM_color,Daycent_color,Observed_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -406,7 +414,8 @@ suppressMessages({
         ggtitle(paste(site_name,"Soil Organic Carbon Calibration"),
                 paste0("Scenario: ",scenario_descriptor)) +
         scale_color_manual(labels=c("APSIM","Daycent","Millennial","Observed","RothC"),
-                           values=cbPalette9[c(8,2,6,1,3)]) +
+                           values=c(APSIM_color,Daycent_color,Millennial_color,
+                                    Observed_color,RothC_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -424,7 +433,7 @@ suppressMessages({
         ggtitle(paste(site_name,"Volumetric Water Content Histograms"),
                 paste0("Scenario: ",scenario_descriptor)) +
         scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-                           values=cbPalette9[c(8,2,1)]) +
+                           values=c(APSIM_color,Daycent_color,Observed_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -443,9 +452,9 @@ suppressMessages({
         ggtitle(paste(site_name,"Volumetric Water Content Density"),
                 paste0("Scenario: ",scenario_descriptor)) +
         scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-                          values=cbPalette9[c(8,2,1)]) +
+                          values=c(APSIM_color,Daycent_color,Observed_color)) +
         scale_fill_manual(labels=c("APSIM","Daycent","Observed"),
-                           values=cbPalette9[c(8,2,1)]) +
+                           values=c(APSIM_color,Daycent_color,Observed_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -454,12 +463,31 @@ suppressMessages({
       
       gVd_calib
       
-      vwc_pct_over_fc_APSIM <- length(ens_VM[ens_VM$APSIM>=26,"APSIM"])/nrow(ens_VM)
-      vwc_pct_over_fc_Daycent <- length(ens_VM[ens_VM$Daycent>=26,"Daycent"])/nrow(ens_VM)
-      vwc_pct_over_fc_df <- cbind(vwc_pct_over_fc_APSIM,vwc_pct_over_fc_Daycent)
-      colnames(vwc_pct_over_fc_df) <- c("APSIM","Daycent")
-      write.table(vwc_pct_over_fc_df,file=paste0(results_path,"pub_vwc_pct_at_or_over_fc_",scenario_name,".txt"),
+
+      vwc_frctn_atover_fc_APSIM <- nrow(filter(ens_VM, APSIM>=26))/nrow(ens_VM)
+      vwc_frctn_atover_fc_Daycent <- nrow(filter(ens_VM, Daycent>=26))/nrow(ens_VM)
+      vwc_frctn_atover_fc_Observed <- nrow(filter(ens_VM, Observed>=26))/nrow(ens_VM)
+      vwc_frctn_atover_fc_df <- cbind(vwc_frctn_atover_fc_APSIM,vwc_frctn_atover_fc_Daycent,
+                                      vwc_frctn_atover_fc_Observed)
+      colnames(vwc_frctn_atover_fc_df) <- c("APSIM","Daycent","Observed")
+      write.table(vwc_frctn_atover_fc_df,file=paste0(results_path,"pub_vwc_frctn_at_or_over_fc_",scenario_name,".txt"),
                   row.names = F,quote=F)
+      
+      vwc_frctn_over_30_APSIM <- nrow(filter(ens_VM, APSIM>=30))/nrow(ens_VM)
+      vwc_frctn_over_35_APSIM <- nrow(filter(ens_VM, APSIM>=35))/nrow(ens_VM)
+
+      vwc_frctn_over_30_Daycent <- nrow(filter(ens_VM, Daycent>=30))/nrow(ens_VM)
+      vwc_frctn_over_35_Daycent <- nrow(filter(ens_VM, Daycent>=35))/nrow(ens_VM)
+
+      vwc_frctn_over_30_Observed <- nrow(filter(ens_VM, Observed>=30))/nrow(ens_VM)
+      vwc_frctn_over_35_Observed <- nrow(filter(ens_VM, Observed>=35))/nrow(ens_VM)
+
+      vwc_frctn_over_30_df <- cbind(vwc_frctn_over_30_APSIM,vwc_frctn_over_30_Daycent,
+                                    vwc_frctn_over_30_Observed)
+      colnames(vwc_frctn_over_30_df) <- c("APSIM","Daycent","Observed")
+      write.table(vwc_frctn_over_30_df,file=paste0(results_path,"pub_vwc_frctn_over_30_",scenario_name,".txt"),
+                  row.names = F,quote=F)
+      
       
       ## N2O
       
@@ -471,9 +499,9 @@ suppressMessages({
         ggtitle(paste(site_name,"Total Modeled N2O Emissions vs. Observations"),
                 paste0("Scenario: ",scenario_descriptor)) +
         scale_color_manual(labels=c("APSIM","Daycent","Observed"),
-                           values=cbPalette9[c(8,2,1)]) +
+                           values=c(APSIM_color,Daycent_color,Observed_color)) +
         scale_fill_manual(labels=c("APSIM","Daycent","Observed"),
-                          values=cbPalette9[c(8,2,1)]) +
+                          values=c(APSIM_color,Daycent_color,Observed_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -483,6 +511,31 @@ suppressMessages({
       
       gN_calib
       
+      frctn_diff_N2O_APSIM_Daycent <- (ens_N2O_profile_comp_gtot$APSIM-ens_N2O_profile_comp_gtot$Daycent)/ens_N2O_profile_comp_gtot$Daycent
+      
+      ## CH4
+      
+      gM_calib <- ens_CH4_profile_comp_gtot_piv %>%
+        ggplot(aes(x=Source, y=ch4_val, color=Source, fill=Source)) +
+        geom_col(position="stack") +
+        #ylim(0,1000) +
+        ylab(expression('CH'[4]*' (g C ha' ^'-1'*')')) +
+        ggtitle(paste(site_name,"Total Modeled CH4 Emissions vs. Observations"),
+                paste0("Scenario: ",scenario_descriptor)) +
+        scale_color_manual(labels=c("Daycent","Observed"),
+                           values=c(Daycent_color,Observed_color)) +
+        scale_fill_manual(labels=c("Daycent","Observed"),
+                          values=c(Daycent_color,Observed_color)) +
+        theme_classic(base_family = "serif", base_size = 15) +
+        theme(panel.background = element_blank(),
+              axis.line = element_line(),
+              legend.position = "right",
+              legend.key = element_blank())
+      
+      
+      gM_calib
+
+
       ggsave(filename=paste0(results_path,"pub_Ensemble_Maize_calibration_",scenario_name,".jpg"),
              plot=gMY_calib, width=9, height=6, dpi=300)
       ggsave(filename=paste0(results_path,"pub_Ensemble_Soybean_calibration_",scenario_name,".jpg"),
@@ -495,6 +548,8 @@ suppressMessages({
              plot=gVd_calib, width=9, height=6, dpi=300)
       ggsave(filename=paste0(results_path,"pub_Ensemble_N2O_calibration_",scenario_name,".jpg"),
              plot=gN_calib, width=9, height=6, dpi=300)
+      ggsave(filename=paste0(results_path,"pub_Ensemble_CH4_calibration_",scenario_name,".jpg"),
+             plot=gM_calib, width=9, height=6, dpi=300)
       
       
       
@@ -574,7 +629,7 @@ suppressMessages({
         geom_abline(intercept=MYfit_APSIM[1], slope=MYfit_APSIM[2], color="orange") +
         geom_abline(intercept=MYfit_Daycent[1], slope=MYfit_Daycent[2], color="#0072B2") +
         scale_color_manual(labels=c("APSIM","Daycent"),
-                           values=cbPalette9[c(8,2)]) +
+                           values=c(APSIM_color,Daycent_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -599,7 +654,7 @@ suppressMessages({
         geom_abline(intercept=SYfit_APSIM[1], slope=SYfit_APSIM[2], color="orange") +
         geom_abline(intercept=SYfit_Daycent[1], slope=SYfit_Daycent[2], color="#0072B2") +
         scale_color_manual(labels=c("APSIM","Daycent"),
-                           values=cbPalette9[c(8,2)]) +
+                           values=c(APSIM_color,Daycent_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -624,7 +679,7 @@ suppressMessages({
         geom_abline(intercept=WYfit_APSIM[1], slope=WYfit_APSIM[2], color="orange") +
         geom_abline(intercept=WYfit_Daycent[1], slope=WYfit_Daycent[2], color="#0072B2") +
         scale_color_manual(labels=c("APSIM","Daycent"),
-                           values=cbPalette9[c(8,2)]) +
+                           values=c(APSIM_color,Daycent_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -654,7 +709,8 @@ suppressMessages({
         ylab(expression('SOC stock (Mg C ha' ^-1*')')) +
         ggtitle(paste(site_name,"Soil Organic Carbon: ",scenario_descriptor)) +
         scale_color_manual(labels=c("APSIM","Daycent","Millennial","Observed","RothC"),
-                           values=cbPalette9[c(8,2,6,1,3)]) +
+                           values=c(APSIM_color,Daycent_color,Millennial_color,
+                                    Observed_color,RothC_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -671,7 +727,7 @@ suppressMessages({
         ylim(0,100) +
         ggtitle(paste(site_name,"N2O Emissions: ",scenario_descriptor)) +
         scale_color_manual(labels=c("APSIM","Daycent"),
-                           values=cbPalette9[c(8,2)]) +
+                           values=c(APSIM_color,Daycent_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -689,7 +745,7 @@ suppressMessages({
         ylim(-85,0) +
         ggtitle(paste(site_name,expression('CH'[4]*' Emissions: '),scenario_descriptor)) +
         scale_color_manual(labels=c("Daycent"),
-                           values=cbPalette9[c(2)]) +
+                           values=Daycent_color) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -789,7 +845,7 @@ suppressMessages({
         ggtitle(paste(site_name,"Future Maize Yield: ",scenario_descriptor)) +
         geom_abline(intercept=MYfit_APSIM[1], slope=MYfit_APSIM[2], color="orange") +
         scale_color_manual(labels=c("APSIM","Observed"),
-                           values=cbPalette9[c(8,1)]) +
+                           values=c(APSIM_color,Daycent_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -810,7 +866,7 @@ suppressMessages({
         ggtitle(paste(site_name,"Future Soybean Yield: ",scenario_descriptor)) +
         geom_abline(intercept=SYfit_APSIM[1], slope=SYfit_APSIM[2], color="orange") +
         scale_color_manual(labels=c("APSIM","Observed"),
-                           values=cbPalette9[c(8,1)]) +
+                           values=c(APSIM_color,Daycent_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -831,7 +887,7 @@ suppressMessages({
         ggtitle(paste(site_name,"Future Wheat Yield: ",scenario_descriptor)) +
         geom_abline(intercept=WYfit_APSIM[1], slope=WYfit_APSIM[2], color="orange") +
         scale_color_manual(labels=c("APSIM","Observed"),
-                           values=cbPalette9[c(8,1)]) +
+                           values=c(APSIM_color,Daycent_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -854,7 +910,7 @@ suppressMessages({
         ylab(expression('SOC stock (Mg C ha' ^-1*')')) +
         ggtitle(paste(site_name,"Soil Organic Carbon: ",scenario_descriptor)) +
         scale_color_manual(labels=c("APSIM","Observed"),
-                           values=cbPalette9[c(8,1)]) +
+                           values=c(APSIM_color,Daycent_color)) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
@@ -870,7 +926,7 @@ suppressMessages({
         ylab(expression('N'[2]*'O Emissions (kg ha ' ^-1*')')) +
         ggtitle(paste(site_name,"N2O Emissions: ",scenario_descriptor)) +
         scale_color_manual(labels=c("APSIM"),
-                           values=cbPalette9[c(8)]) +
+                           values=APSIM_color) +
         theme_classic(base_family = "serif", base_size = 15) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),

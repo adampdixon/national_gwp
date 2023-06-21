@@ -61,7 +61,7 @@ APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4
           # (`BulkDensity_gcc(1)`*5*`oc_bylayer_pct(2)`),
          N2O_10cm_kgha=`N2O_bylayer_kgha(1)`+(`N2O_bylayer_kgha(2)`*0.5),
          N2O_profile_kgha=`N2O_bylayer_kgha(1)`+`N2O_bylayer_kgha(2)`+
-            `N2O_bylayer_kgha(3)`) #+`N2O_bylayer_kgha(4)`+
+            (`N2O_bylayer_kgha(3)`*0.5)) #+`N2O_bylayer_kgha(4)`+
            #`N2O_bylayer_kgha(5)`+`N2O_bylayer_kgha(6)`)
 } else { # includes cover crop columns
   APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4,

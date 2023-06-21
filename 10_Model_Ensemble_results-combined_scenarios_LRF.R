@@ -207,6 +207,7 @@ his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_M
   
   # get stats from boxplots
   Y2box_bytreat <- ggplot_build(gY2_box)[[1]][[1]]
+  ## models are in alphabetical order in the plot, so rows are grouped in this order
   Y2box_cotton_Obs_rows <- which(as.numeric(rownames(Y2box_bytreat)) %% 3 == 0 &
                                   as.numeric(rownames(Y2box_bytreat)) <= 15  )
   Y2box_cotton_APSIM_rows <- which(as.numeric(rownames(Y2box_bytreat)) %% 3 == 1 &
@@ -255,6 +256,7 @@ his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_M
   
   # get stats from boxplots
   Y3box_bytreat <- ggplot_build(gY3_box)[[1]][[1]]
+  ## models are in alphabetical order in the plot, so rows are grouped in this order
   Y3box_sorghum_Obs_rows <- which(as.numeric(rownames(Y3box_bytreat)) %% 3 == 0)
   Y3box_sorghum_APSIM_rows <- which(as.numeric(rownames(Y3box_bytreat)) %% 3 == 1)
   Y3box_sorghum_Daycent_rows <- which(as.numeric(rownames(Y3box_bytreat)) %% 3 == 2)
@@ -292,6 +294,7 @@ his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_M
   
   # get stats from boxplots
   S1box_bytreat <- ggplot_build(gS1_box)[[1]][[1]]
+  ## models are in alphabetical order in the plot, so rows are grouped in this order
   S1box_soc_Obs_rows <- which(as.numeric(rownames(S1box_bytreat)) %% 5 == 4)
   S1box_soc_APSIM_rows <- which(as.numeric(rownames(S1box_bytreat)) %% 5 == 1)
   S1box_soc_Daycent_rows <- which(as.numeric(rownames(S1box_bytreat)) %% 5 == 2)
@@ -347,36 +350,19 @@ his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_M
   
   # get stats from boxplots
   MB1box_bytreat <- ggplot_build(gMB1_box)[[1]][[1]]
-  MB1box_soc_Obs_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 5 == 4)
-  MB1box_soc_APSIM_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 5 == 1)
-  MB1box_soc_Daycent_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 5 == 2)
-  MB1box_soc_Millennial_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 5 == 3)
-  MB1box_soc_RothC_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 5 == 0)
+  ## models are in alphabetical order in the plot, so rows are grouped in this order
+  MB1box_Millennial_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 2 == 1)
+  MB1box_Obs_rows <- which(as.numeric(rownames(MB1box_bytreat)) %% 2 == 0)
   # calculate difference in medians between models and Observed
-  MB1box_soc_APSIM_Obs_med_diff <- MB1box_bytreat[MB1box_soc_APSIM_rows,"middle"] - 
-    MB1box_bytreat[MB1box_soc_Obs_rows,"middle"]
-  MB1box_soc_Daycent_Obs_med_diff <- MB1box_bytreat[MB1box_soc_Daycent_rows,"middle"] -
-    MB1box_bytreat[MB1box_soc_Obs_rows,"middle"]
-  MB1box_soc_Millennial_Obs_med_diff <- MB1box_bytreat[MB1box_soc_Millennial_rows,"middle"] -
-    MB1box_bytreat[MB1box_soc_Obs_rows,"middle"]
-  MB1box_soc_RothC_Obs_med_diff <- MB1box_bytreat[MB1box_soc_RothC_rows,"middle"] -
-    MB1box_bytreat[MB1box_soc_Obs_rows,"middle"]
-  MB1box_soc_APSIM_Obs_diff_range <- range(MB1box_soc_APSIM_Obs_med_diff)
-  MB1box_soc_Daycent_Obs_diff_range <- range(MB1box_soc_Daycent_Obs_med_diff)
-  MB1box_soc_Millennial_Obs_diff_range <- range(MB1box_soc_Millennial_Obs_med_diff)
-  MB1box_soc_RothC_Obs_diff_range <- range(MB1box_soc_RothC_Obs_med_diff)
+  MB1box_Millennial_Obs_med_diff <- MB1box_bytreat[MB1box_Millennial_rows,"middle"] -
+    MB1box_bytreat[MB1box_Obs_rows,"middle"]
+  MB1box_Millennial_Obs_diff_range <- range(MB1box_Millennial_Obs_med_diff)
   # calculate IQRs
-  MB1box_soc_Obs_iqrs <- MB1box_bytreat[MB1box_soc_Obs_rows,"upper"] - 
-    MB1box_bytreat[MB1box_soc_Obs_rows,"lower"]
-  MB1box_soc_APSIM_iqrs <- MB1box_bytreat[MB1box_soc_APSIM_rows,"upper"] - 
-    MB1box_bytreat[MB1box_soc_APSIM_rows,"lower"]
-  MB1box_soc_Daycent_iqrs <- MB1box_bytreat[MB1box_soc_Daycent_rows,"upper"] - 
-    MB1box_bytreat[MB1box_soc_Daycent_rows,"lower"]
-  MB1box_soc_Millennial_iqrs <- MB1box_bytreat[MB1box_soc_Millennial_rows,"upper"] - 
-    MB1box_bytreat[MB1box_soc_Millennial_rows,"lower"]
-  MB1box_soc_RothC_iqrs <- MB1box_bytreat[MB1box_soc_RothC_rows,"upper"] - 
-    MB1box_bytreat[MB1box_soc_RothC_rows,"lower"]
-  
+  MB1box_Obs_iqrs <- MB1box_bytreat[MB1box_Obs_rows,"upper"] - 
+    MB1box_bytreat[MB1box_Obs_rows,"lower"]
+  MB1box_Millennial_iqrs <- MB1box_bytreat[MB1box_Millennial_rows,"upper"] - 
+    MB1box_bytreat[MB1box_Millennial_rows,"lower"]
+
     
   ggsave(filename=paste0(results_path,"pub_Crop_yield_calib_boxplots_all.jpg"),
          plot=gY1_box, width=12, height=7, dpi=300)

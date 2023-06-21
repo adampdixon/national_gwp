@@ -66,8 +66,8 @@ mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 
 # Loop through the scenarios; set which climate and management
 # scenario numbers to use for this run:
-clim_nums <- c(1:5)
-mgmt_grps <- c(3:8) # calib_mgmt_grps #
+clim_nums <- c(1)
+mgmt_grps <- calib_mgmt_grps #
 
 
 for (x in clim_nums) { # climate scenarios
@@ -102,8 +102,8 @@ for (x in clim_nums) { # climate scenarios
   } # end loop through management scenario groups
 } # end loop through climate scenarios
 
-source(paste0("10_Model_Ensemble_results-combined_scenarios_",site_name,".R"))
-source("10_Model_Ensemble_results-combined_scenarios_and_sites.R")
+# source(paste0("10_Model_Ensemble_results-combined_scenarios_",site_name,".R"))
+# source("10_Model_Ensemble_results-combined_scenarios_and_sites.R")
 
 # end timer
 run_time <- round(toc(echo=TRUE)/60,1)
