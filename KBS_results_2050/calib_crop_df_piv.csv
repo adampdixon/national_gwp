@@ -1,18 +1,18 @@
 "year","Obs_sd","crop","treatment_scen","Model","yield_val"
 1989,1.07450405614249,"Maize","Crop Rotation","Observed",7.906
-1989,NA,"Maize","Crop Rotation","APSIM",7.106
+1989,NA,"Maize","Crop Rotation","APSIM",7.103
 1989,NA,"Maize","Crop Rotation","Daycent",7.57438222222222
 1991,1.06759964406139,"Maize","Crop Rotation","Observed",8.326
-1991,NA,"Maize","Crop Rotation","APSIM",7.817
+1991,NA,"Maize","Crop Rotation","APSIM",7.811
 1991,NA,"Maize","Crop Rotation","Daycent",5.68198222222222
 1993,0.862294915714262,"Maize","Crop Rotation","Observed",7.113
-1993,NA,"Maize","Crop Rotation","APSIM",7.502
+1993,NA,"Maize","Crop Rotation","APSIM",7.499
 1993,NA,"Maize","Crop Rotation","Daycent",5.83758222222222
 1996,1.11360669298755,"Maize","Crop Rotation","Observed",3.201
 1996,NA,"Maize","Crop Rotation","APSIM",8.171
 1996,NA,"Maize","Crop Rotation","Daycent",7.13587333333333
 1999,0.482018466105466,"Maize","Crop Rotation","Observed",4.013
-1999,NA,"Maize","Crop Rotation","APSIM",7.812
+1999,NA,"Maize","Crop Rotation","APSIM",7.808
 1999,NA,"Maize","Crop Rotation","Daycent",3.24295333333333
 2002,1.43045399320169,"Maize","Crop Rotation","Observed",5.398
 2002,NA,"Maize","Crop Rotation","APSIM",7.316
@@ -21,16 +21,16 @@
 2005,NA,"Maize","Crop Rotation","APSIM",6.066
 2005,NA,"Maize","Crop Rotation","Daycent",6.13277777777778
 2008,1.23505972163293,"Maize","Crop Rotation","Observed",5.277
-2008,NA,"Maize","Crop Rotation","APSIM",8.642
+2008,NA,"Maize","Crop Rotation","APSIM",8.646
 2008,NA,"Maize","Crop Rotation","Daycent",6.17023333333333
 2011,0.757556378760024,"Maize","Crop Rotation","Observed",10.995
-2011,NA,"Maize","Crop Rotation","APSIM",9.113
+2011,NA,"Maize","Crop Rotation","APSIM",9.124
 2011,NA,"Maize","Crop Rotation","Daycent",7.70772444444444
 2014,0.966263714348555,"Maize","Crop Rotation","Observed",9.725
-2014,NA,"Maize","Crop Rotation","APSIM",9.372
+2014,NA,"Maize","Crop Rotation","APSIM",9.378
 2014,NA,"Maize","Crop Rotation","Daycent",6.13710666666667
 2017,0.5046824136689,"Maize","Crop Rotation","Observed",7.963
-2017,NA,"Maize","Crop Rotation","APSIM",8.849
+2017,NA,"Maize","Crop Rotation","APSIM",8.855
 2017,NA,"Maize","Crop Rotation","Daycent",6.86192222222222
 2020,1.37874513187415,"Maize","Crop Rotation","Observed",6.617
 2020,NA,"Maize","Crop Rotation","APSIM",8.279
@@ -72,64 +72,64 @@
 2021,NA,"Soybean","Crop Rotation","APSIM",3.661
 2021,NA,"Soybean","Crop Rotation","Daycent",3.30865333333333
 1995,0.192045221237083,"Wheat","Crop Rotation","Observed",3.302
-1995,NA,"Wheat","Crop Rotation","APSIM",3.985
+1995,NA,"Wheat","Crop Rotation","APSIM",3.978
 1995,NA,"Wheat","Crop Rotation","Daycent",4.04731555555556
 1998,0.358558774354591,"Wheat","Crop Rotation","Observed",3.014
-1998,NA,"Wheat","Crop Rotation","APSIM",3.208
+1998,NA,"Wheat","Crop Rotation","APSIM",3.219
 1998,NA,"Wheat","Crop Rotation","Daycent",3.02387333333333
 2001,0.335893495024837,"Wheat","Crop Rotation","Observed",4.203
-2001,NA,"Wheat","Crop Rotation","APSIM",4.375
+2001,NA,"Wheat","Crop Rotation","APSIM",4.426
 2001,NA,"Wheat","Crop Rotation","Daycent",2.97758444444444
 2004,0.127139382831075,"Wheat","Crop Rotation","Observed",4.075
-2004,NA,"Wheat","Crop Rotation","APSIM",4.041
+2004,NA,"Wheat","Crop Rotation","APSIM",4.067
 2004,NA,"Wheat","Crop Rotation","Daycent",3.74432666666667
 2007,0.344201658431023,"Wheat","Crop Rotation","Observed",3.109
-2007,NA,"Wheat","Crop Rotation","APSIM",3.377
+2007,NA,"Wheat","Crop Rotation","APSIM",3.403
 2007,NA,"Wheat","Crop Rotation","Daycent",3.21542
 2010,0.351083334836617,"Wheat","Crop Rotation","Observed",2.671
-2010,NA,"Wheat","Crop Rotation","APSIM",3.695
+2010,NA,"Wheat","Crop Rotation","APSIM",3.7
 2010,NA,"Wheat","Crop Rotation","Daycent",4.38425777777778
 2013,0.139644190713398,"Wheat","Crop Rotation","Observed",3.716
-2013,NA,"Wheat","Crop Rotation","APSIM",2.918
+2013,NA,"Wheat","Crop Rotation","APSIM",2.944
 2013,NA,"Wheat","Crop Rotation","Daycent",3.68242222222222
 2016,0.267291456404178,"Wheat","Crop Rotation","Observed",5.798
-2016,NA,"Wheat","Crop Rotation","APSIM",4.778
+2016,NA,"Wheat","Crop Rotation","APSIM",4.793
 2016,NA,"Wheat","Crop Rotation","Daycent",2.66746888888889
 2019,0.181421616683349,"Wheat","Crop Rotation","Observed",5.584
-2019,NA,"Wheat","Crop Rotation","APSIM",5.17
+2019,NA,"Wheat","Crop Rotation","APSIM",5.18
 2019,NA,"Wheat","Crop Rotation","Daycent",3.83659777777778
 1989,0.43773587926968,"Maize","No Till, Crop Rotation","Observed",8.112
-1989,NA,"Maize","No Till, Crop Rotation","APSIM",7.24
+1989,NA,"Maize","No Till, Crop Rotation","APSIM",7.238
 1989,NA,"Maize","No Till, Crop Rotation","Daycent",7.87505111111111
 1991,0.330753054911566,"Maize","No Till, Crop Rotation","Observed",8.026
-1991,NA,"Maize","No Till, Crop Rotation","APSIM",7.497
+1991,NA,"Maize","No Till, Crop Rotation","APSIM",7.499
 1991,NA,"Maize","No Till, Crop Rotation","Daycent",11.2186622222222
 1993,0.633050629886741,"Maize","No Till, Crop Rotation","Observed",7.09
-1993,NA,"Maize","No Till, Crop Rotation","APSIM",7.47
+1993,NA,"Maize","No Till, Crop Rotation","APSIM",7.483
 1993,NA,"Maize","No Till, Crop Rotation","Daycent",5.37587555555556
 1996,0.990027019833297,"Maize","No Till, Crop Rotation","Observed",4.041
-1996,NA,"Maize","No Till, Crop Rotation","APSIM",7.722
+1996,NA,"Maize","No Till, Crop Rotation","APSIM",7.718
 1996,NA,"Maize","No Till, Crop Rotation","Daycent",6.50975333333333
 1999,0.284180915967276,"Maize","No Till, Crop Rotation","Observed",3.804
-1999,NA,"Maize","No Till, Crop Rotation","APSIM",7.803
+1999,NA,"Maize","No Till, Crop Rotation","APSIM",7.798
 1999,NA,"Maize","No Till, Crop Rotation","Daycent",4.27695777777778
 2002,0.376830103627616,"Maize","No Till, Crop Rotation","Observed",5.221
 2002,NA,"Maize","No Till, Crop Rotation","APSIM",7.315
 2002,NA,"Maize","No Till, Crop Rotation","Daycent",7.46644222222222
 2005,0.858893626514173,"Maize","No Till, Crop Rotation","Observed",8.805
-2005,NA,"Maize","No Till, Crop Rotation","APSIM",5.95
+2005,NA,"Maize","No Till, Crop Rotation","APSIM",5.951
 2005,NA,"Maize","No Till, Crop Rotation","Daycent",5.50320666666667
 2008,0.475627456804868,"Maize","No Till, Crop Rotation","Observed",6.516
-2008,NA,"Maize","No Till, Crop Rotation","APSIM",8.672
+2008,NA,"Maize","No Till, Crop Rotation","APSIM",8.678
 2008,NA,"Maize","No Till, Crop Rotation","Daycent",5.67757111111111
 2011,0.736637942728086,"Maize","No Till, Crop Rotation","Observed",11.52
-2011,NA,"Maize","No Till, Crop Rotation","APSIM",8.691
+2011,NA,"Maize","No Till, Crop Rotation","APSIM",8.693
 2011,NA,"Maize","No Till, Crop Rotation","Daycent",7.78906444444444
 2014,0.456625193128894,"Maize","No Till, Crop Rotation","Observed",11.437
-2014,NA,"Maize","No Till, Crop Rotation","APSIM",9.654
+2014,NA,"Maize","No Till, Crop Rotation","APSIM",9.658
 2014,NA,"Maize","No Till, Crop Rotation","Daycent",6.59862222222222
 2017,0.979473257759836,"Maize","No Till, Crop Rotation","Observed",9.927
-2017,NA,"Maize","No Till, Crop Rotation","APSIM",8.896
+2017,NA,"Maize","No Till, Crop Rotation","APSIM",8.899
 2017,NA,"Maize","No Till, Crop Rotation","Daycent",6.66040666666667
 2020,0.646018590031794,"Maize","No Till, Crop Rotation","Observed",10.293
 2020,NA,"Maize","No Till, Crop Rotation","APSIM",8.26
@@ -150,7 +150,7 @@
 2000,NA,"Soybean","No Till, Crop Rotation","APSIM",2.715
 2000,NA,"Soybean","No Till, Crop Rotation","Daycent",2.73552222222222
 2003,0.0875255334173977,"Soybean","No Till, Crop Rotation","Observed",1.855
-2003,NA,"Soybean","No Till, Crop Rotation","APSIM",2.61
+2003,NA,"Soybean","No Till, Crop Rotation","APSIM",2.611
 2003,NA,"Soybean","No Till, Crop Rotation","Daycent",2.05424444444444
 2006,0.0830034396877625,"Soybean","No Till, Crop Rotation","Observed",3.602
 2006,NA,"Soybean","No Till, Crop Rotation","APSIM",2.176
@@ -171,64 +171,64 @@
 2021,NA,"Soybean","No Till, Crop Rotation","APSIM",2.689
 2021,NA,"Soybean","No Till, Crop Rotation","Daycent",3.37213777777778
 1995,0.219579627925725,"Wheat","No Till, Crop Rotation","Observed",3.485
-1995,NA,"Wheat","No Till, Crop Rotation","APSIM",3.738
+1995,NA,"Wheat","No Till, Crop Rotation","APSIM",3.75
 1995,NA,"Wheat","No Till, Crop Rotation","Daycent",4.06708444444444
 1998,0.0972404596862849,"Wheat","No Till, Crop Rotation","Observed",2.802
-1998,NA,"Wheat","No Till, Crop Rotation","APSIM",2.84
+1998,NA,"Wheat","No Till, Crop Rotation","APSIM",2.843
 1998,NA,"Wheat","No Till, Crop Rotation","Daycent",3.11378888888889
 2001,0.285547276295888,"Wheat","No Till, Crop Rotation","Observed",3.726
-2001,NA,"Wheat","No Till, Crop Rotation","APSIM",4.241
+2001,NA,"Wheat","No Till, Crop Rotation","APSIM",4.274
 2001,NA,"Wheat","No Till, Crop Rotation","Daycent",3.42364666666667
 2004,0.150016514646444,"Wheat","No Till, Crop Rotation","Observed",4.162
-2004,NA,"Wheat","No Till, Crop Rotation","APSIM",3.924
+2004,NA,"Wheat","No Till, Crop Rotation","APSIM",3.956
 2004,NA,"Wheat","No Till, Crop Rotation","Daycent",3.85297333333333
 2007,0.219504797214093,"Wheat","No Till, Crop Rotation","Observed",4.199
-2007,NA,"Wheat","No Till, Crop Rotation","APSIM",3.268
+2007,NA,"Wheat","No Till, Crop Rotation","APSIM",3.289
 2007,NA,"Wheat","No Till, Crop Rotation","Daycent",3.32545111111111
 2010,0.144821109188774,"Wheat","No Till, Crop Rotation","Observed",3.646
-2010,NA,"Wheat","No Till, Crop Rotation","APSIM",3.572
+2010,NA,"Wheat","No Till, Crop Rotation","APSIM",3.535
 2010,NA,"Wheat","No Till, Crop Rotation","Daycent",5.03564
 2013,0.27859969430469,"Wheat","No Till, Crop Rotation","Observed",3.033
-2013,NA,"Wheat","No Till, Crop Rotation","APSIM",2.738
+2013,NA,"Wheat","No Till, Crop Rotation","APSIM",2.741
 2013,NA,"Wheat","No Till, Crop Rotation","Daycent",4.0614
 2016,0.170595139633774,"Wheat","No Till, Crop Rotation","Observed",5.886
-2016,NA,"Wheat","No Till, Crop Rotation","APSIM",4.76
+2016,NA,"Wheat","No Till, Crop Rotation","APSIM",4.768
 2016,NA,"Wheat","No Till, Crop Rotation","Daycent",2.88273777777778
 2019,0.151472686206678,"Wheat","No Till, Crop Rotation","Observed",5.192
-2019,NA,"Wheat","No Till, Crop Rotation","APSIM",5.138
+2019,NA,"Wheat","No Till, Crop Rotation","APSIM",5.158
 2019,NA,"Wheat","No Till, Crop Rotation","Daycent",4.11442444444444
 1990,1.29169253307434,"Maize","Cover Crop, Crop Rotation","Observed",4.546
-1990,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.051
+1990,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.028
 1990,NA,"Maize","Cover Crop, Crop Rotation","Daycent",7.18142666666667
 1993,0.669948256708432,"Maize","Cover Crop, Crop Rotation","Observed",5.049
-1993,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.951
+1993,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.938
 1993,NA,"Maize","Cover Crop, Crop Rotation","Daycent",6.1431
 1996,0.489029651452752,"Maize","Cover Crop, Crop Rotation","Observed",4.178
-1996,NA,"Maize","Cover Crop, Crop Rotation","APSIM",5.043
+1996,NA,"Maize","Cover Crop, Crop Rotation","APSIM",5.003
 1996,NA,"Maize","Cover Crop, Crop Rotation","Daycent",5.44316888888889
 1999,0.320954647367298,"Maize","Cover Crop, Crop Rotation","Observed",4.414
-1999,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.649
+1999,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.634
 1999,NA,"Maize","Cover Crop, Crop Rotation","Daycent",5.56827555555556
 2002,0.895819615026746,"Maize","Cover Crop, Crop Rotation","Observed",6.472
-2002,NA,"Maize","Cover Crop, Crop Rotation","APSIM",4.974
+2002,NA,"Maize","Cover Crop, Crop Rotation","APSIM",4.963
 2002,NA,"Maize","Cover Crop, Crop Rotation","Daycent",7.13952444444444
 2005,0.489972829518808,"Maize","Cover Crop, Crop Rotation","Observed",7.627
-2005,NA,"Maize","Cover Crop, Crop Rotation","APSIM",5.285
+2005,NA,"Maize","Cover Crop, Crop Rotation","APSIM",5.294
 2005,NA,"Maize","Cover Crop, Crop Rotation","Daycent",8.00956666666667
 2008,0.353644493806987,"Maize","Cover Crop, Crop Rotation","Observed",5.08
-2008,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.624
+2008,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.676
 2008,NA,"Maize","Cover Crop, Crop Rotation","Daycent",1.79929111111111
 2011,0.627287549427427,"Maize","Cover Crop, Crop Rotation","Observed",11.85
-2011,NA,"Maize","Cover Crop, Crop Rotation","APSIM",5.561
+2011,NA,"Maize","Cover Crop, Crop Rotation","APSIM",5.596
 2011,NA,"Maize","Cover Crop, Crop Rotation","Daycent",10.09328
 2014,0.651878127924742,"Maize","Cover Crop, Crop Rotation","Observed",8.915
-2014,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.741
+2014,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.814
 2014,NA,"Maize","Cover Crop, Crop Rotation","Daycent",5.97480888888889
 2017,0.77829674974695,"Maize","Cover Crop, Crop Rotation","Observed",7.692
-2017,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.968
+2017,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.972
 2017,NA,"Maize","Cover Crop, Crop Rotation","Daycent",7.04950444444444
 2020,0.924560541374477,"Maize","Cover Crop, Crop Rotation","Observed",8.486
-2020,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.189
+2020,NA,"Maize","Cover Crop, Crop Rotation","APSIM",6.241
 2020,NA,"Maize","Cover Crop, Crop Rotation","Daycent",5.86224666666667
 1991,0.24718656921443,"Soybean","Cover Crop, Crop Rotation","Observed",3.177
 1991,NA,"Soybean","Cover Crop, Crop Rotation","APSIM",4.18
@@ -267,32 +267,32 @@
 1989,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",NA
 1989,NA,"Wheat","Cover Crop, Crop Rotation","Daycent",NA
 1992,0.58560384789264,"Wheat","Cover Crop, Crop Rotation","Observed",2.283
-1992,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",0.861
+1992,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",0.856
 1992,NA,"Wheat","Cover Crop, Crop Rotation","Daycent",1.21958
 1995,0.097616878663477,"Wheat","Cover Crop, Crop Rotation","Observed",3.177
-1995,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",2.981
+1995,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",2.979
 1995,NA,"Wheat","Cover Crop, Crop Rotation","Daycent",3.37618888888889
 1998,0.155551068784499,"Wheat","Cover Crop, Crop Rotation","Observed",2.209
-1998,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",2.274
+1998,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",2.27
 1998,NA,"Wheat","Cover Crop, Crop Rotation","Daycent",2.10411333333333
 2001,0.182797654981312,"Wheat","Cover Crop, Crop Rotation","Observed",3.676
-2001,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",3.219
+2001,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",3.248
 2001,NA,"Wheat","Cover Crop, Crop Rotation","Daycent",2.10913777777778
 2004,0.166491701494899,"Wheat","Cover Crop, Crop Rotation","Observed",3.847
-2004,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",3.247
+2004,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",3.263
 2004,NA,"Wheat","Cover Crop, Crop Rotation","Daycent",3.86904222222222
 2007,0.0817207052506686,"Wheat","Cover Crop, Crop Rotation","Observed",2.54
-2007,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",2.463
+2007,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",2.503
 2007,NA,"Wheat","Cover Crop, Crop Rotation","Daycent",3.74221777777778
 2010,0.398985269987084,"Wheat","Cover Crop, Crop Rotation","Observed",3.12
-2010,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",3.473
+2010,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",3.485
 2010,NA,"Wheat","Cover Crop, Crop Rotation","Daycent",5.89135111111111
 2013,0.288822159814651,"Wheat","Cover Crop, Crop Rotation","Observed",3.319
-2013,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",2.548
+2013,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",2.566
 2013,NA,"Wheat","Cover Crop, Crop Rotation","Daycent",2.56191555555556
 2016,0.259653772679441,"Wheat","Cover Crop, Crop Rotation","Observed",5.137
-2016,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",4.195
+2016,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",4.208
 2016,NA,"Wheat","Cover Crop, Crop Rotation","Daycent",3.17618222222222
 2019,0.179026981206744,"Wheat","Cover Crop, Crop Rotation","Observed",4.814
-2019,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",4.563
+2019,NA,"Wheat","Cover Crop, Crop Rotation","APSIM",4.58
 2019,NA,"Wheat","Cover Crop, Crop Rotation","Daycent",3.70683777777778

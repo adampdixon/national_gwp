@@ -1,97 +1,97 @@
 "year","date","Obs_sd","treatment_scen","Model","mb_val"
-1989,"1989-04-24",0.566488004286057,"Crop Rotation","Observed",2.4087
-1989,"1989-04-24",NA,"Crop Rotation","Millennial",1.71509863699615
-1989,"1989-05-22",0.498771802530977,"Crop Rotation","Observed",2.2422
-1989,"1989-05-22",NA,"Crop Rotation","Millennial",1.79696090948791
-1989,"1989-07-25",0.613355775223483,"Crop Rotation","Observed",0.8325
-1989,"1989-07-25",NA,"Crop Rotation","Millennial",4.03805083721742
-1989,"1989-09-19",0.56119987081253,"Crop Rotation","Observed",1.8537
-1989,"1989-09-19",NA,"Crop Rotation","Millennial",6.07211665065163
-1989,"1989-11-11",0.846797361828673,"Crop Rotation","Observed",1.9314
-1989,"1989-11-11",NA,"Crop Rotation","Millennial",4.4267451135891
-1990,"1990-04-24",0.870992888604723,"Crop Rotation","Observed",3.2967
-1990,"1990-04-24",NA,"Crop Rotation","Millennial",1.58196847103387
-1990,"1990-05-30",0.677033275400848,"Crop Rotation","Observed",2.1312
-1990,"1990-05-30",NA,"Crop Rotation","Millennial",1.69247185090677
-1990,"1990-06-18",0.636137504003655,"Crop Rotation","Observed",2.4753
-1990,"1990-06-18",NA,"Crop Rotation","Millennial",2.21033968633951
-1990,"1990-07-19",0.429308434578218,"Crop Rotation","Observed",1.9758
-1990,"1990-07-19",NA,"Crop Rotation","Millennial",3.49801052095863
-1990,"1990-08-18",0.81507565293045,"Crop Rotation","Observed",2.0424
-1990,"1990-08-18",NA,"Crop Rotation","Millennial",5.98024852283807
-1990,"1990-09-18",0.8293911284792,"Crop Rotation","Observed",1.998
-1990,"1990-09-18",NA,"Crop Rotation","Millennial",7.62950457358657
-1990,"1990-10-23",0.401471312798312,"Crop Rotation","Observed",1.8981
-1990,"1990-10-23",NA,"Crop Rotation","Millennial",6.68673641012934
-1991,"1991-08-12",0.493257323311069,"Crop Rotation","Observed",1.3986
-1991,"1991-08-12",NA,"Crop Rotation","Millennial",4.6712898310717
-1993,"1993-07-20",0.962053292754617,"Crop Rotation","Observed",1.9536
-1993,"1993-07-20",NA,"Crop Rotation","Millennial",3.51127341769716
-1995,"1995-08-21",0.993773438968863,"Crop Rotation","Observed",2.0646
-1995,"1995-08-21",NA,"Crop Rotation","Millennial",6.8268788700219
-1996,"1996-05-07",1.1376227489814,"Crop Rotation","Observed",2.6862
-1996,"1996-05-07",NA,"Crop Rotation","Millennial",1.62317362395589
-1989,"7053",0.398776930125101,"No Till, Crop Rotation","Observed",2.442
-1989,"7053",NA,"No Till, Crop Rotation","Millennial",1.56118336932869
-1989,"7081",0.873838643572141,"No Till, Crop Rotation","Observed",3.3966
-1989,"7081",NA,"No Till, Crop Rotation","Millennial",1.61905912285342
-1989,"7145",0.253767137352337,"No Till, Crop Rotation","Observed",2.0424
-1989,"7145",NA,"No Till, Crop Rotation","Millennial",2.37755165915193
-1989,"7201",0.818714359529623,"No Till, Crop Rotation","Observed",2.0091
-1989,"7201",NA,"No Till, Crop Rotation","Millennial",3.31414683459942
-1989,"7254",0.721696357895757,"No Till, Crop Rotation","Observed",1.7538
-1989,"7254",NA,"No Till, Crop Rotation","Millennial",3.05218283090096
-1990,"7418",0.40588173647012,"No Till, Crop Rotation","Observed",1.8537
-1990,"7418",NA,"No Till, Crop Rotation","Millennial",1.47422158164031
-1990,"7454",0.367302114069604,"No Till, Crop Rotation","Observed",1.5762
-1990,"7454",NA,"No Till, Crop Rotation","Millennial",1.57527877321653
-1990,"7473",0.456339166629383,"No Till, Crop Rotation","Observed",2.4531
-1990,"7473",NA,"No Till, Crop Rotation","Millennial",1.81878390701564
-1990,"7504",0.285372919177696,"No Till, Crop Rotation","Observed",2.1978
-1990,"7504",NA,"No Till, Crop Rotation","Millennial",2.19426830547882
-1990,"7534",0.548479294048554,"No Till, Crop Rotation","Observed",2.5086
-1990,"7534",NA,"No Till, Crop Rotation","Millennial",2.92237172128356
-1990,"7565",0.731410549554763,"No Till, Crop Rotation","Observed",2.4198
-1990,"7565",NA,"No Till, Crop Rotation","Millennial",3.67100090442233
-1990,"7600",0.451289289702293,"No Till, Crop Rotation","Observed",2.0424
-1990,"7600",NA,"No Till, Crop Rotation","Millennial",3.88957489252731
-1991,"7893",0.648250136907043,"No Till, Crop Rotation","Observed",2.0868
-1991,"7893",NA,"No Till, Crop Rotation","Millennial",2.61071056451237
-1993,"8601",0.878402131144956,"No Till, Crop Rotation","Observed",2.2422
-1993,"8601",NA,"No Till, Crop Rotation","Millennial",2.25506214718069
-1995,"9363",1.5556918290587,"No Till, Crop Rotation","Observed",1.2876
-1995,"9363",NA,"No Till, Crop Rotation","Millennial",3.56203571751054
-1996,"9623",1.81256803017156,"No Till, Crop Rotation","Observed",2.6085
-1996,"9623",NA,"No Till, Crop Rotation","Millennial",1.5044230833144
-1989,"7053",1.6624141586861,"Cover Crop, Crop Rotation","Observed",3.3855
-1989,"7053",NA,"Cover Crop, Crop Rotation","Millennial",1.44223703483587
-1989,"7081",0.992085851123783,"Cover Crop, Crop Rotation","Observed",2.5974
-1989,"7081",NA,"Cover Crop, Crop Rotation","Millennial",1.46543918865714
-1989,"7145",2.54428530004007,"Cover Crop, Crop Rotation","Observed",2.6196
-1989,"7145",NA,"Cover Crop, Crop Rotation","Millennial",1.6521158988324
-1989,"7201",0.449063255009804,"Cover Crop, Crop Rotation","Observed",1.443
-1989,"7201",NA,"Cover Crop, Crop Rotation","Millennial",1.69771461991537
-1989,"7254",0.175623375437326,"Cover Crop, Crop Rotation","Observed",2.331
-1989,"7254",NA,"Cover Crop, Crop Rotation","Millennial",2.11863605095635
-1990,"7418",0.868575295527106,"Cover Crop, Crop Rotation","Observed",3.0303
-1990,"7418",NA,"Cover Crop, Crop Rotation","Millennial",1.28737815646816
-1990,"7454",0.678523912622098,"Cover Crop, Crop Rotation","Observed",2.1867
-1990,"7454",NA,"Cover Crop, Crop Rotation","Millennial",1.38099058239302
-1990,"7473",0.439112221419536,"Cover Crop, Crop Rotation","Observed",2.8749
-1990,"7473",NA,"Cover Crop, Crop Rotation","Millennial",1.42240893454816
-1990,"7504",0.276543752415418,"Cover Crop, Crop Rotation","Observed",2.1312
-1990,"7504",NA,"Cover Crop, Crop Rotation","Millennial",1.46152835174232
-1990,"7534",0.868130709052502,"Cover Crop, Crop Rotation","Observed",2.0424
-1990,"7534",NA,"Cover Crop, Crop Rotation","Millennial",1.58315226846586
-1990,"7565",0.619989073290812,"Cover Crop, Crop Rotation","Observed",3.1857
-1990,"7565",NA,"Cover Crop, Crop Rotation","Millennial",1.72037448761004
-1990,"7600",0.294404701049423,"Cover Crop, Crop Rotation","Observed",2.3976
-1990,"7600",NA,"Cover Crop, Crop Rotation","Millennial",1.8871015841246
-1991,"7893",0.248963539499261,"Cover Crop, Crop Rotation","Observed",2.0313
-1991,"7893",NA,"Cover Crop, Crop Rotation","Millennial",2.96541350940848
-1993,"8601",1.84337104349613,"Cover Crop, Crop Rotation","Observed",2.2533
-1993,"8601",NA,"Cover Crop, Crop Rotation","Millennial",2.16789799977276
-1995,"9363",1.21051594413291,"Cover Crop, Crop Rotation","Observed",2.4864
-1995,"9363",NA,"Cover Crop, Crop Rotation","Millennial",3.87313971789402
-1996,"9623",1.08213140375834,"Cover Crop, Crop Rotation","Observed",3.3522
-1996,"9623",NA,"Cover Crop, Crop Rotation","Millennial",1.5103207292547
+1989,7053,0.566488004286057,"Crop Rotation","Observed",2.4087
+1989,7053,NA,"Crop Rotation","Millennial",1.71509863699615
+1989,7081,0.498771802530977,"Crop Rotation","Observed",2.2422
+1989,7081,NA,"Crop Rotation","Millennial",1.79696090948791
+1989,7145,0.613355775223483,"Crop Rotation","Observed",0.8325
+1989,7145,NA,"Crop Rotation","Millennial",4.03805083721742
+1989,7201,0.56119987081253,"Crop Rotation","Observed",1.8537
+1989,7201,NA,"Crop Rotation","Millennial",6.07211665065163
+1989,7254,0.846797361828673,"Crop Rotation","Observed",1.9314
+1989,7254,NA,"Crop Rotation","Millennial",4.4267451135891
+1990,7418,0.870992888604723,"Crop Rotation","Observed",3.2967
+1990,7418,NA,"Crop Rotation","Millennial",1.58196847103387
+1990,7454,0.677033275400848,"Crop Rotation","Observed",2.1312
+1990,7454,NA,"Crop Rotation","Millennial",1.69247185090677
+1990,7473,0.636137504003655,"Crop Rotation","Observed",2.4753
+1990,7473,NA,"Crop Rotation","Millennial",2.21033968633951
+1990,7504,0.429308434578218,"Crop Rotation","Observed",1.9758
+1990,7504,NA,"Crop Rotation","Millennial",3.49801052095863
+1990,7534,0.81507565293045,"Crop Rotation","Observed",2.0424
+1990,7534,NA,"Crop Rotation","Millennial",5.98024852283807
+1990,7565,0.8293911284792,"Crop Rotation","Observed",1.998
+1990,7565,NA,"Crop Rotation","Millennial",7.62950457358657
+1990,7600,0.401471312798312,"Crop Rotation","Observed",1.8981
+1990,7600,NA,"Crop Rotation","Millennial",6.68673641012934
+1991,7893,0.493257323311069,"Crop Rotation","Observed",1.3986
+1991,7893,NA,"Crop Rotation","Millennial",4.6712898310717
+1993,8601,0.962053292754617,"Crop Rotation","Observed",1.9536
+1993,8601,NA,"Crop Rotation","Millennial",3.51127341769716
+1995,9363,0.993773438968863,"Crop Rotation","Observed",2.0646
+1995,9363,NA,"Crop Rotation","Millennial",6.8268788700219
+1996,9623,1.1376227489814,"Crop Rotation","Observed",2.6862
+1996,9623,NA,"Crop Rotation","Millennial",1.62317362395589
+1989,7053,0.398776930125101,"No Till, Crop Rotation","Observed",2.442
+1989,7053,NA,"No Till, Crop Rotation","Millennial",1.56118336932869
+1989,7081,0.873838643572141,"No Till, Crop Rotation","Observed",3.3966
+1989,7081,NA,"No Till, Crop Rotation","Millennial",1.61905912285342
+1989,7145,0.253767137352337,"No Till, Crop Rotation","Observed",2.0424
+1989,7145,NA,"No Till, Crop Rotation","Millennial",2.37755165915193
+1989,7201,0.818714359529623,"No Till, Crop Rotation","Observed",2.0091
+1989,7201,NA,"No Till, Crop Rotation","Millennial",3.31414683459942
+1989,7254,0.721696357895757,"No Till, Crop Rotation","Observed",1.7538
+1989,7254,NA,"No Till, Crop Rotation","Millennial",3.05218283090096
+1990,7418,0.40588173647012,"No Till, Crop Rotation","Observed",1.8537
+1990,7418,NA,"No Till, Crop Rotation","Millennial",1.47422158164031
+1990,7454,0.367302114069604,"No Till, Crop Rotation","Observed",1.5762
+1990,7454,NA,"No Till, Crop Rotation","Millennial",1.57527877321653
+1990,7473,0.456339166629383,"No Till, Crop Rotation","Observed",2.4531
+1990,7473,NA,"No Till, Crop Rotation","Millennial",1.81878390701564
+1990,7504,0.285372919177696,"No Till, Crop Rotation","Observed",2.1978
+1990,7504,NA,"No Till, Crop Rotation","Millennial",2.19426830547882
+1990,7534,0.548479294048554,"No Till, Crop Rotation","Observed",2.5086
+1990,7534,NA,"No Till, Crop Rotation","Millennial",2.92237172128356
+1990,7565,0.731410549554763,"No Till, Crop Rotation","Observed",2.4198
+1990,7565,NA,"No Till, Crop Rotation","Millennial",3.67100090442233
+1990,7600,0.451289289702293,"No Till, Crop Rotation","Observed",2.0424
+1990,7600,NA,"No Till, Crop Rotation","Millennial",3.88957489252731
+1991,7893,0.648250136907043,"No Till, Crop Rotation","Observed",2.0868
+1991,7893,NA,"No Till, Crop Rotation","Millennial",2.61071056451237
+1993,8601,0.878402131144956,"No Till, Crop Rotation","Observed",2.2422
+1993,8601,NA,"No Till, Crop Rotation","Millennial",2.25506214718069
+1995,9363,1.5556918290587,"No Till, Crop Rotation","Observed",1.2876
+1995,9363,NA,"No Till, Crop Rotation","Millennial",3.56203571751054
+1996,9623,1.81256803017156,"No Till, Crop Rotation","Observed",2.6085
+1996,9623,NA,"No Till, Crop Rotation","Millennial",1.5044230833144
+1989,7053,1.6624141586861,"Cover Crop, Crop Rotation","Observed",3.3855
+1989,7053,NA,"Cover Crop, Crop Rotation","Millennial",1.44223703483587
+1989,7081,0.992085851123783,"Cover Crop, Crop Rotation","Observed",2.5974
+1989,7081,NA,"Cover Crop, Crop Rotation","Millennial",1.46543918865714
+1989,7145,2.54428530004007,"Cover Crop, Crop Rotation","Observed",2.6196
+1989,7145,NA,"Cover Crop, Crop Rotation","Millennial",1.6521158988324
+1989,7201,0.449063255009804,"Cover Crop, Crop Rotation","Observed",1.443
+1989,7201,NA,"Cover Crop, Crop Rotation","Millennial",1.69771461991537
+1989,7254,0.175623375437326,"Cover Crop, Crop Rotation","Observed",2.331
+1989,7254,NA,"Cover Crop, Crop Rotation","Millennial",2.11863605095635
+1990,7418,0.868575295527106,"Cover Crop, Crop Rotation","Observed",3.0303
+1990,7418,NA,"Cover Crop, Crop Rotation","Millennial",1.28737815646816
+1990,7454,0.678523912622098,"Cover Crop, Crop Rotation","Observed",2.1867
+1990,7454,NA,"Cover Crop, Crop Rotation","Millennial",1.38099058239302
+1990,7473,0.439112221419536,"Cover Crop, Crop Rotation","Observed",2.8749
+1990,7473,NA,"Cover Crop, Crop Rotation","Millennial",1.42240893454816
+1990,7504,0.276543752415418,"Cover Crop, Crop Rotation","Observed",2.1312
+1990,7504,NA,"Cover Crop, Crop Rotation","Millennial",1.46152835174232
+1990,7534,0.868130709052502,"Cover Crop, Crop Rotation","Observed",2.0424
+1990,7534,NA,"Cover Crop, Crop Rotation","Millennial",1.58315226846586
+1990,7565,0.619989073290812,"Cover Crop, Crop Rotation","Observed",3.1857
+1990,7565,NA,"Cover Crop, Crop Rotation","Millennial",1.72037448761004
+1990,7600,0.294404701049423,"Cover Crop, Crop Rotation","Observed",2.3976
+1990,7600,NA,"Cover Crop, Crop Rotation","Millennial",1.8871015841246
+1991,7893,0.248963539499261,"Cover Crop, Crop Rotation","Observed",2.0313
+1991,7893,NA,"Cover Crop, Crop Rotation","Millennial",2.96541350940848
+1993,8601,1.84337104349613,"Cover Crop, Crop Rotation","Observed",2.2533
+1993,8601,NA,"Cover Crop, Crop Rotation","Millennial",2.16789799977276
+1995,9363,1.21051594413291,"Cover Crop, Crop Rotation","Observed",2.4864
+1995,9363,NA,"Cover Crop, Crop Rotation","Millennial",3.87313971789402
+1996,9623,1.08213140375834,"Cover Crop, Crop Rotation","Observed",3.3522
+1996,9623,NA,"Cover Crop, Crop Rotation","Millennial",1.5103207292547
