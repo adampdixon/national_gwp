@@ -1,14 +1,14 @@
 X     Fixed_values  10/25/19 Add Ram 30cm Param w/Ken F-T Opt Param TESTING
-2.000        'ADEP(1)'   #  2
-3.000        'ADEP(2)'   #  5
-5.000        'ADEP(3)'   #  10
-10.000        'ADEP(4)'   #  20
-10.000        'ADEP(5)'   #  30
-15.000        'ADEP(6)'   # 45
-15.000        'ADEP(7)'   # 60
-30.000        'ADEP(8)'   # 90
-0.000        'ADEP(9)'   # 
-0.000        'ADEP(10)'  # 
+10.000        'ADEP(1)'   # 10
+20.000        'ADEP(2)'   # 30
+15.000        'ADEP(3)'   # 45
+15.000        'ADEP(4)'   # 60
+30.000        'ADEP(5)'   # 90
+30.000        'ADEP(6)'   # 120
+30.000        'ADEP(7)'   # 150
+30.000		  'ADEP(8)'   # 180
+30.000		  'ADEP(9)'   # 210
+30.000		  'ADEP(10)'  # not used
 -40.00        'AGPPA'
 7.7000        'AGPPB'
 1.5000        'ANEREF(1)'
@@ -49,7 +49,7 @@ X     Fixed_values  10/25/19 Add Ram 30cm Param w/Ken F-T Opt Param TESTING
 10.000        'DEC2(2)'
 9.0000        'DEC3(1)'
 5.0000        'DEC3(2)'
-0.0080        'DEC4'
+0.0090        'DEC4' # was 0.008 in last calibration
 0.50          'DEC5(1)'
 0.0500        'DEC5(2)' # Bill says try reducing 0.15 to 0.12  24Jan
 5.0           'DECK5'

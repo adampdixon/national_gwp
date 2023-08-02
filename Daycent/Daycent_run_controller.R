@@ -28,7 +28,7 @@ source(paste0("Daycent/run_Daycent_setup_",site_name,".R"))
 # source(paste0("Daycent/run_Daycent_base_",site_name,".R"))
 
 # --------------- Step 3: Run experimental period simulations  ---------------
-# source(paste0("Daycent/run_Daycent_exp_",site_name,".R"))
+source(paste0("Daycent/run_Daycent_exp_",site_name,".R"))
 
 # --------------- Step 4: Run future emissions scenarios (end exp-2100) ---------------
 #### NOTE: results for calibration and future graphs both are based on the 

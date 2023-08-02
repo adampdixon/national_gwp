@@ -1018,7 +1018,7 @@ SORG  sorghum_Based_on_dryland_corn_9/14/01_KP
 2.0               'CAFUE'
 1.4               'EMAX'
 SORG1  sorghum_Based_on_dryland_corn_9/14/01_KP
-2.25               'PRDX(1)'   2/4/13 new
+2.10               'PRDX(1)'   2/4/13 new  edm-was 2.25
 30.0              'PPDF(1)'
 45.0              'PPDF(2)'
 1.0               'PPDF(3)'
@@ -1131,7 +1131,7 @@ SORG1  sorghum_Based_on_dryland_corn_9/14/01_KP
 2.0               'CAFUE'
 1.4               'EMAX'
 SORL  sorghum_Based_on_dryland_corn_low_yield
-1.65               'PRDX(1)'  # 2/4/13 3.0 saw
+1.95               'PRDX(1)'  # 2/4/13 3.0 saw  edm-was 1.65
 30.0              'PPDF(1)'
 45.0              'PPDF(2)'
 1.0               'PPDF(3)'
@@ -1809,7 +1809,7 @@ COT   Cotton_(based_on_low-yield_Corn_c2)
 2.0               'CAFUE'
 0.65              'EMAX'
 COTL   Cotton_(based_on_COTL but lower-yielding for historical use)
-0.75               'PRDX(1)'   2/4/13 3.0 saw
+0.5               'PRDX(1)'   2/4/13 3.0 saw  edm-was 0.75
 27.0              'PPDF(1)'  6/15/10 SAW 30
 40.0              'PPDF(2)'  6/15/10 SAW 45
 1.0               'PPDF(3)'
