@@ -1,383 +1,383 @@
 "year","date","Obs_sd","treatment_scen","Model","mb_val"
-2003,"2003-11-01",0.239488280269968,"Cover Crop, Crop Rotation","Observed",0.702
-2003,"2003-11-01",NA,"Cover Crop, Crop Rotation","Millennial",0.489490126068964
-2003,"2003-11-01",0.0471409469569715,"Cover Crop, Crop Rotation","Observed",0.7839
-2003,"2003-11-01",NA,"Cover Crop, Crop Rotation","Millennial",0.489490126068964
-2003,"2003-11-01",0.170175149272742,"Cover Crop, Crop Rotation","Observed",0.6084
-2003,"2003-11-01",NA,"Cover Crop, Crop Rotation","Millennial",0.489490126068964
-2003,"2003-11-01",0.134231623646094,"Cover Crop, Crop Rotation","Observed",0.7839
-2003,"2003-11-01",NA,"Cover Crop, Crop Rotation","Millennial",0.489490126068964
-2005,"2005-07-05",0.0476396938837074,"Cover Crop, Crop Rotation","Observed",0.6903
-2005,"2005-07-05",NA,"Cover Crop, Crop Rotation","Millennial",1.69874668902331
-2005,"2005-07-05",0.220990593917479,"Cover Crop, Crop Rotation","Observed",1.0296
-2005,"2005-07-05",NA,"Cover Crop, Crop Rotation","Millennial",1.69874668902331
-2005,"2005-07-05",0.195982089147623,"Cover Crop, Crop Rotation","Observed",1.2285
-2005,"2005-07-05",NA,"Cover Crop, Crop Rotation","Millennial",1.69874668902331
-2005,"2005-07-05",0.0659826864159582,"Cover Crop, Crop Rotation","Observed",0.6552
-2005,"2005-07-05",NA,"Cover Crop, Crop Rotation","Millennial",1.69874668902331
-2005,"2005-07-05",0.0874911396656827,"Cover Crop, Crop Rotation","Observed",0.7488
-2005,"2005-07-05",NA,"Cover Crop, Crop Rotation","Millennial",1.69874668902331
-2005,"2005-11-05",0.102200071495148,"Cover Crop, Crop Rotation","Observed",0.6084
-2005,"2005-11-05",NA,"Cover Crop, Crop Rotation","Millennial",2.70025627954294
-2005,"2005-11-05",0.191934101790172,"Cover Crop, Crop Rotation","Observed",0.819
-2005,"2005-11-05",NA,"Cover Crop, Crop Rotation","Millennial",2.70025627954294
-2005,"2005-11-05",0.146031882238092,"Cover Crop, Crop Rotation","Observed",0.8658
-2005,"2005-11-05",NA,"Cover Crop, Crop Rotation","Millennial",2.70025627954294
-2005,"2005-11-05",0.121251523371873,"Cover Crop, Crop Rotation","Observed",0.6318
-2005,"2005-11-05",NA,"Cover Crop, Crop Rotation","Millennial",2.70025627954294
-2005,"2005-11-05",0.194276934091518,"Cover Crop, Crop Rotation","Observed",0.8073
-2005,"2005-11-05",NA,"Cover Crop, Crop Rotation","Millennial",2.70025627954294
-2007,"2007-02-07",0.225923389109376,"Cover Crop, Crop Rotation","Observed",0.7605
-2007,"2007-02-07",NA,"Cover Crop, Crop Rotation","Millennial",1.44704282000645
-2007,"2007-02-07",0.231232362174383,"Cover Crop, Crop Rotation","Observed",1.2987
-2007,"2007-02-07",NA,"Cover Crop, Crop Rotation","Millennial",1.44704282000645
-2007,"2007-02-07",0.192173831185423,"Cover Crop, Crop Rotation","Observed",0.9594
-2007,"2007-02-07",NA,"Cover Crop, Crop Rotation","Millennial",1.44704282000645
-2007,"2007-02-07",0.219532917026645,"Cover Crop, Crop Rotation","Observed",1.1115
-2007,"2007-02-07",NA,"Cover Crop, Crop Rotation","Millennial",1.44704282000645
-2007,"2007-02-07",0.208517953148157,"Cover Crop, Crop Rotation","Observed",0.9711
-2007,"2007-02-07",NA,"Cover Crop, Crop Rotation","Millennial",1.44704282000645
-2007,"2007-11-07",0.0559594857936942,"Cover Crop, Crop Rotation","Observed",0.351
-2007,"2007-11-07",NA,"Cover Crop, Crop Rotation","Millennial",2.04526257112204
-2007,"2007-11-07",0.0758603059610089,"Cover Crop, Crop Rotation","Observed",0.6552
-2007,"2007-11-07",NA,"Cover Crop, Crop Rotation","Millennial",2.04526257112204
-2007,"2007-11-07",0.0879938097276665,"Cover Crop, Crop Rotation","Observed",0.5967
-2007,"2007-11-07",NA,"Cover Crop, Crop Rotation","Millennial",2.04526257112204
-2007,"2007-11-07",0.0893748334070293,"Cover Crop, Crop Rotation","Observed",0.6552
-2007,"2007-11-07",NA,"Cover Crop, Crop Rotation","Millennial",2.04526257112204
-2007,"2007-11-07",0.0534201802238856,"Cover Crop, Crop Rotation","Observed",0.6084
-2007,"2007-11-07",NA,"Cover Crop, Crop Rotation","Millennial",2.04526257112204
-2008,"2008-11-06",0.133632757910127,"Cover Crop, Crop Rotation","Observed",0.4563
-2008,"2008-11-06",NA,"Cover Crop, Crop Rotation","Millennial",1.4348030646483
-2008,"2008-11-06",0.115470750238344,"Cover Crop, Crop Rotation","Observed",0.7722
-2008,"2008-11-06",NA,"Cover Crop, Crop Rotation","Millennial",1.4348030646483
-2008,"2008-11-06",0.124447197939528,"Cover Crop, Crop Rotation","Observed",0.7722
-2008,"2008-11-06",NA,"Cover Crop, Crop Rotation","Millennial",1.4348030646483
-2008,"2008-11-06",0.104392214965746,"Cover Crop, Crop Rotation","Observed",0.8541
-2008,"2008-11-06",NA,"Cover Crop, Crop Rotation","Millennial",1.4348030646483
-2008,"2008-11-06",0.303713428201153,"Cover Crop, Crop Rotation","Observed",1.0647
-2008,"2008-11-06",NA,"Cover Crop, Crop Rotation","Millennial",1.4348030646483
-2009,"2009-12-03",0.0768560538327378,"Cover Crop, Crop Rotation","Observed",0.4329
-2009,"2009-12-03",NA,"Cover Crop, Crop Rotation","Millennial",1.0468801299081
-2009,"2009-12-03",0.165823202492441,"Cover Crop, Crop Rotation","Observed",0.6318
-2009,"2009-12-03",NA,"Cover Crop, Crop Rotation","Millennial",1.0468801299081
-2009,"2009-12-03",0.15694487297948,"Cover Crop, Crop Rotation","Observed",0.7605
-2009,"2009-12-03",NA,"Cover Crop, Crop Rotation","Millennial",1.0468801299081
-2009,"2009-12-03",0.244705672751506,"Cover Crop, Crop Rotation","Observed",0.7371
-2009,"2009-12-03",NA,"Cover Crop, Crop Rotation","Millennial",1.0468801299081
-2009,"2009-12-03",0.191095709607923,"Cover Crop, Crop Rotation","Observed",0.7137
-2009,"2009-12-03",NA,"Cover Crop, Crop Rotation","Millennial",1.0468801299081
-2010,"2010-10-28",0.163402453551551,"Cover Crop, Crop Rotation","Observed",0.7722
-2010,"2010-10-28",NA,"Cover Crop, Crop Rotation","Millennial",1.1200209718127
-2010,"2010-10-28",0.251347750422446,"Cover Crop, Crop Rotation","Observed",1.053
-2010,"2010-10-28",NA,"Cover Crop, Crop Rotation","Millennial",1.1200209718127
-2010,"2010-10-28",0.195825698895031,"Cover Crop, Crop Rotation","Observed",1.1115
-2010,"2010-10-28",NA,"Cover Crop, Crop Rotation","Millennial",1.1200209718127
-2010,"2010-10-28",0.275757064592599,"Cover Crop, Crop Rotation","Observed",1.0179
-2010,"2010-10-28",NA,"Cover Crop, Crop Rotation","Millennial",1.1200209718127
-2010,"2010-10-28",0.21889168406723,"Cover Crop, Crop Rotation","Observed",1.0296
-2010,"2010-10-28",NA,"Cover Crop, Crop Rotation","Millennial",1.1200209718127
-2003,"12357",0.239488280269968,"Rmv Resid 0%, Crop Rotation","Observed",0.702
-2003,"12357",NA,"Rmv Resid 0%, Crop Rotation","Millennial",0.574009950146863
-2003,"12357",0.0471409469569715,"Rmv Resid 0%, Crop Rotation","Observed",0.7839
-2003,"12357",NA,"Rmv Resid 0%, Crop Rotation","Millennial",0.574009950146863
-2003,"12357",0.170175149272742,"Rmv Resid 0%, Crop Rotation","Observed",0.6084
-2003,"12357",NA,"Rmv Resid 0%, Crop Rotation","Millennial",0.574009950146863
-2003,"12357",0.134231623646094,"Rmv Resid 0%, Crop Rotation","Observed",0.7839
-2003,"12357",NA,"Rmv Resid 0%, Crop Rotation","Millennial",0.574009950146863
-2005,"12969",0.0476396938837074,"Rmv Resid 0%, Crop Rotation","Observed",0.6903
-2005,"12969",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.76008836571065
-2005,"12969",0.220990593917479,"Rmv Resid 0%, Crop Rotation","Observed",1.0296
-2005,"12969",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.76008836571065
-2005,"12969",0.195982089147623,"Rmv Resid 0%, Crop Rotation","Observed",1.2285
-2005,"12969",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.76008836571065
-2005,"12969",0.0659826864159582,"Rmv Resid 0%, Crop Rotation","Observed",0.6552
-2005,"12969",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.76008836571065
-2005,"12969",0.0874911396656827,"Rmv Resid 0%, Crop Rotation","Observed",0.7488
-2005,"12969",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.76008836571065
-2005,"13092",0.102200071495148,"Rmv Resid 0%, Crop Rotation","Observed",0.6084
-2005,"13092",NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.41208439909785
-2005,"13092",0.191934101790172,"Rmv Resid 0%, Crop Rotation","Observed",0.819
-2005,"13092",NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.41208439909785
-2005,"13092",0.146031882238092,"Rmv Resid 0%, Crop Rotation","Observed",0.8658
-2005,"13092",NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.41208439909785
-2005,"13092",0.121251523371873,"Rmv Resid 0%, Crop Rotation","Observed",0.6318
-2005,"13092",NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.41208439909785
-2005,"13092",0.194276934091518,"Rmv Resid 0%, Crop Rotation","Observed",0.8073
-2005,"13092",NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.41208439909785
-2007,"13551",0.225923389109376,"Rmv Resid 0%, Crop Rotation","Observed",0.7605
-2007,"13551",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.49039330704606
-2007,"13551",0.231232362174383,"Rmv Resid 0%, Crop Rotation","Observed",1.2987
-2007,"13551",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.49039330704606
-2007,"13551",0.192173831185423,"Rmv Resid 0%, Crop Rotation","Observed",0.9594
-2007,"13551",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.49039330704606
-2007,"13551",0.219532917026645,"Rmv Resid 0%, Crop Rotation","Observed",1.1115
-2007,"13551",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.49039330704606
-2007,"13551",0.208517953148157,"Rmv Resid 0%, Crop Rotation","Observed",0.9711
-2007,"13551",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.49039330704606
-2007,"13824",0.0559594857936942,"Rmv Resid 0%, Crop Rotation","Observed",0.351
-2007,"13824",NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.02784759325234
-2007,"13824",0.0758603059610089,"Rmv Resid 0%, Crop Rotation","Observed",0.6552
-2007,"13824",NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.02784759325234
-2007,"13824",0.0879938097276665,"Rmv Resid 0%, Crop Rotation","Observed",0.5967
-2007,"13824",NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.02784759325234
-2007,"13824",0.0893748334070293,"Rmv Resid 0%, Crop Rotation","Observed",0.6552
-2007,"13824",NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.02784759325234
-2007,"13824",0.0534201802238856,"Rmv Resid 0%, Crop Rotation","Observed",0.6084
-2007,"13824",NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.02784759325234
-2008,"14189",0.133632757910127,"Rmv Resid 0%, Crop Rotation","Observed",0.4563
-2008,"14189",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.34771614613023
-2008,"14189",0.115470750238344,"Rmv Resid 0%, Crop Rotation","Observed",0.7722
-2008,"14189",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.34771614613023
-2008,"14189",0.124447197939528,"Rmv Resid 0%, Crop Rotation","Observed",0.7722
-2008,"14189",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.34771614613023
-2008,"14189",0.104392214965746,"Rmv Resid 0%, Crop Rotation","Observed",0.8541
-2008,"14189",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.34771614613023
-2008,"14189",0.303713428201153,"Rmv Resid 0%, Crop Rotation","Observed",1.0647
-2008,"14189",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.34771614613023
-2009,"14581",0.0768560538327378,"Rmv Resid 0%, Crop Rotation","Observed",0.4329
-2009,"14581",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.08639127372451
-2009,"14581",0.165823202492441,"Rmv Resid 0%, Crop Rotation","Observed",0.6318
-2009,"14581",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.08639127372451
-2009,"14581",0.15694487297948,"Rmv Resid 0%, Crop Rotation","Observed",0.7605
-2009,"14581",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.08639127372451
-2009,"14581",0.244705672751506,"Rmv Resid 0%, Crop Rotation","Observed",0.7371
-2009,"14581",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.08639127372451
-2009,"14581",0.191095709607923,"Rmv Resid 0%, Crop Rotation","Observed",0.7137
-2009,"14581",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.08639127372451
-2010,"14910",0.163402453551551,"Rmv Resid 0%, Crop Rotation","Observed",0.7722
-2010,"14910",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.23308520846596
-2010,"14910",0.251347750422446,"Rmv Resid 0%, Crop Rotation","Observed",1.053
-2010,"14910",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.23308520846596
-2010,"14910",0.195825698895031,"Rmv Resid 0%, Crop Rotation","Observed",1.1115
-2010,"14910",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.23308520846596
-2010,"14910",0.275757064592599,"Rmv Resid 0%, Crop Rotation","Observed",1.0179
-2010,"14910",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.23308520846596
-2010,"14910",0.21889168406723,"Rmv Resid 0%, Crop Rotation","Observed",1.0296
-2010,"14910",NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.23308520846596
-2003,"12357",0.239488280269968,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.702
-2003,"12357",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",0.581535407704638
-2003,"12357",0.0471409469569715,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7839
-2003,"12357",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",0.581535407704638
-2003,"12357",0.170175149272742,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6084
-2003,"12357",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",0.581535407704638
-2003,"12357",0.134231623646094,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7839
-2003,"12357",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",0.581535407704638
-2005,"12969",0.0476396938837074,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6903
-2005,"12969",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.39558862591254
-2005,"12969",0.220990593917479,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.0296
-2005,"12969",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.39558862591254
-2005,"12969",0.195982089147623,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.2285
-2005,"12969",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.39558862591254
-2005,"12969",0.0659826864159582,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6552
-2005,"12969",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.39558862591254
-2005,"12969",0.0874911396656827,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7488
-2005,"12969",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.39558862591254
-2005,"13092",0.102200071495148,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6084
-2005,"13092",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.01962041290705
-2005,"13092",0.191934101790172,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.819
-2005,"13092",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.01962041290705
-2005,"13092",0.146031882238092,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.8658
-2005,"13092",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.01962041290705
-2005,"13092",0.121251523371873,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6318
-2005,"13092",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.01962041290705
-2005,"13092",0.194276934091518,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.8073
-2005,"13092",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.01962041290705
-2007,"13551",0.225923389109376,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7605
-2007,"13551",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.42408606947324
-2007,"13551",0.231232362174383,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.2987
-2007,"13551",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.42408606947324
-2007,"13551",0.192173831185423,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.9594
-2007,"13551",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.42408606947324
-2007,"13551",0.219532917026645,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.1115
-2007,"13551",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.42408606947324
-2007,"13551",0.208517953148157,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.9711
-2007,"13551",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.42408606947324
-2007,"13824",0.0559594857936942,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.351
-2007,"13824",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.06662748863525
-2007,"13824",0.0758603059610089,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6552
-2007,"13824",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.06662748863525
-2007,"13824",0.0879938097276665,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.5967
-2007,"13824",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.06662748863525
-2007,"13824",0.0893748334070293,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6552
-2007,"13824",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.06662748863525
-2007,"13824",0.0534201802238856,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6084
-2007,"13824",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.06662748863525
-2008,"14189",0.133632757910127,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.4563
-2008,"14189",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.65823164927863
-2008,"14189",0.115470750238344,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7722
-2008,"14189",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.65823164927863
-2008,"14189",0.124447197939528,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7722
-2008,"14189",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.65823164927863
-2008,"14189",0.104392214965746,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.8541
-2008,"14189",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.65823164927863
-2008,"14189",0.303713428201153,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.0647
-2008,"14189",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.65823164927863
-2009,"14581",0.0768560538327378,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.4329
-2009,"14581",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.46515448716029
-2009,"14581",0.165823202492441,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6318
-2009,"14581",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.46515448716029
-2009,"14581",0.15694487297948,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7605
-2009,"14581",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.46515448716029
-2009,"14581",0.244705672751506,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7371
-2009,"14581",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.46515448716029
-2009,"14581",0.191095709607923,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7137
-2009,"14581",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.46515448716029
-2010,"14910",0.163402453551551,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7722
-2010,"14910",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.65373750485708
-2010,"14910",0.251347750422446,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.053
-2010,"14910",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.65373750485708
-2010,"14910",0.195825698895031,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.1115
-2010,"14910",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.65373750485708
-2010,"14910",0.275757064592599,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.0179
-2010,"14910",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.65373750485708
-2010,"14910",0.21889168406723,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.0296
-2010,"14910",NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.65373750485708
-2005,"12969",0.0476396938837074,"Continuous Crop","Observed",0.6903
-2005,"12969",NA,"Continuous Crop","Millennial",1.41841412402715
-2005,"12969",0.220990593917479,"Continuous Crop","Observed",1.0296
-2005,"12969",NA,"Continuous Crop","Millennial",1.41841412402715
-2005,"12969",0.195982089147623,"Continuous Crop","Observed",1.2285
-2005,"12969",NA,"Continuous Crop","Millennial",1.41841412402715
-2005,"12969",0.0659826864159582,"Continuous Crop","Observed",0.6552
-2005,"12969",NA,"Continuous Crop","Millennial",1.41841412402715
-2005,"12969",0.0874911396656827,"Continuous Crop","Observed",0.7488
-2005,"12969",NA,"Continuous Crop","Millennial",1.41841412402715
-2005,"13092",0.102200071495148,"Continuous Crop","Observed",0.6084
-2005,"13092",NA,"Continuous Crop","Millennial",2.18483518788877
-2005,"13092",0.191934101790172,"Continuous Crop","Observed",0.819
-2005,"13092",NA,"Continuous Crop","Millennial",2.18483518788877
-2005,"13092",0.146031882238092,"Continuous Crop","Observed",0.8658
-2005,"13092",NA,"Continuous Crop","Millennial",2.18483518788877
-2005,"13092",0.121251523371873,"Continuous Crop","Observed",0.6318
-2005,"13092",NA,"Continuous Crop","Millennial",2.18483518788877
-2005,"13092",0.194276934091518,"Continuous Crop","Observed",0.8073
-2005,"13092",NA,"Continuous Crop","Millennial",2.18483518788877
-2007,"13551",0.225923389109376,"Continuous Crop","Observed",0.7605
-2007,"13551",NA,"Continuous Crop","Millennial",1.35736991188502
-2007,"13551",0.231232362174383,"Continuous Crop","Observed",1.2987
-2007,"13551",NA,"Continuous Crop","Millennial",1.35736991188502
-2007,"13551",0.192173831185423,"Continuous Crop","Observed",0.9594
-2007,"13551",NA,"Continuous Crop","Millennial",1.35736991188502
-2007,"13551",0.219532917026645,"Continuous Crop","Observed",1.1115
-2007,"13551",NA,"Continuous Crop","Millennial",1.35736991188502
-2007,"13551",0.208517953148157,"Continuous Crop","Observed",0.9711
-2007,"13551",NA,"Continuous Crop","Millennial",1.35736991188502
-2007,"13824",0.0559594857936942,"Continuous Crop","Observed",0.351
-2007,"13824",NA,"Continuous Crop","Millennial",2.01390302884315
-2007,"13824",0.0758603059610089,"Continuous Crop","Observed",0.6552
-2007,"13824",NA,"Continuous Crop","Millennial",2.01390302884315
-2007,"13824",0.0879938097276665,"Continuous Crop","Observed",0.5967
-2007,"13824",NA,"Continuous Crop","Millennial",2.01390302884315
-2007,"13824",0.0893748334070293,"Continuous Crop","Observed",0.6552
-2007,"13824",NA,"Continuous Crop","Millennial",2.01390302884315
-2007,"13824",0.0534201802238856,"Continuous Crop","Observed",0.6084
-2007,"13824",NA,"Continuous Crop","Millennial",2.01390302884315
-2008,"14189",0.133632757910127,"Continuous Crop","Observed",0.4563
-2008,"14189",NA,"Continuous Crop","Millennial",1.28505967419225
-2008,"14189",0.115470750238344,"Continuous Crop","Observed",0.7722
-2008,"14189",NA,"Continuous Crop","Millennial",1.28505967419225
-2008,"14189",0.124447197939528,"Continuous Crop","Observed",0.7722
-2008,"14189",NA,"Continuous Crop","Millennial",1.28505967419225
-2008,"14189",0.104392214965746,"Continuous Crop","Observed",0.8541
-2008,"14189",NA,"Continuous Crop","Millennial",1.28505967419225
-2008,"14189",0.303713428201153,"Continuous Crop","Observed",1.0647
-2008,"14189",NA,"Continuous Crop","Millennial",1.28505967419225
-2009,"14581",0.0768560538327378,"Continuous Crop","Observed",0.4329
-2009,"14581",NA,"Continuous Crop","Millennial",0.990726100627557
-2009,"14581",0.165823202492441,"Continuous Crop","Observed",0.6318
-2009,"14581",NA,"Continuous Crop","Millennial",0.990726100627557
-2009,"14581",0.15694487297948,"Continuous Crop","Observed",0.7605
-2009,"14581",NA,"Continuous Crop","Millennial",0.990726100627557
-2009,"14581",0.244705672751506,"Continuous Crop","Observed",0.7371
-2009,"14581",NA,"Continuous Crop","Millennial",0.990726100627557
-2009,"14581",0.191095709607923,"Continuous Crop","Observed",0.7137
-2009,"14581",NA,"Continuous Crop","Millennial",0.990726100627557
-2010,"14910",0.163402453551551,"Continuous Crop","Observed",0.7722
-2010,"14910",NA,"Continuous Crop","Millennial",1.11360254907641
-2010,"14910",0.251347750422446,"Continuous Crop","Observed",1.053
-2010,"14910",NA,"Continuous Crop","Millennial",1.11360254907641
-2010,"14910",0.195825698895031,"Continuous Crop","Observed",1.1115
-2010,"14910",NA,"Continuous Crop","Millennial",1.11360254907641
-2010,"14910",0.275757064592599,"Continuous Crop","Observed",1.0179
-2010,"14910",NA,"Continuous Crop","Millennial",1.11360254907641
-2010,"14910",0.21889168406723,"Continuous Crop","Observed",1.0296
-2010,"14910",NA,"Continuous Crop","Millennial",1.11360254907641
-2003,"12357",0.239488280269968,"No Till, Cover Crop, Crop Rotation","Observed",0.702
-2003,"12357",NA,"No Till, Cover Crop, Crop Rotation","Millennial",0.498634984117286
-2003,"12357",0.0471409469569715,"No Till, Cover Crop, Crop Rotation","Observed",0.7839
-2003,"12357",NA,"No Till, Cover Crop, Crop Rotation","Millennial",0.498634984117286
-2003,"12357",0.170175149272742,"No Till, Cover Crop, Crop Rotation","Observed",0.6084
-2003,"12357",NA,"No Till, Cover Crop, Crop Rotation","Millennial",0.498634984117286
-2003,"12357",0.134231623646094,"No Till, Cover Crop, Crop Rotation","Observed",0.7839
-2003,"12357",NA,"No Till, Cover Crop, Crop Rotation","Millennial",0.498634984117286
-2005,"12969",0.0476396938837074,"No Till, Cover Crop, Crop Rotation","Observed",0.6903
-2005,"12969",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.35393540711149
-2005,"12969",0.220990593917479,"No Till, Cover Crop, Crop Rotation","Observed",1.0296
-2005,"12969",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.35393540711149
-2005,"12969",0.195982089147623,"No Till, Cover Crop, Crop Rotation","Observed",1.2285
-2005,"12969",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.35393540711149
-2005,"12969",0.0659826864159582,"No Till, Cover Crop, Crop Rotation","Observed",0.6552
-2005,"12969",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.35393540711149
-2005,"12969",0.0874911396656827,"No Till, Cover Crop, Crop Rotation","Observed",0.7488
-2005,"12969",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.35393540711149
-2005,"13092",0.102200071495148,"No Till, Cover Crop, Crop Rotation","Observed",0.6084
-2005,"13092",NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.24583355464025
-2005,"13092",0.191934101790172,"No Till, Cover Crop, Crop Rotation","Observed",0.819
-2005,"13092",NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.24583355464025
-2005,"13092",0.146031882238092,"No Till, Cover Crop, Crop Rotation","Observed",0.8658
-2005,"13092",NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.24583355464025
-2005,"13092",0.121251523371873,"No Till, Cover Crop, Crop Rotation","Observed",0.6318
-2005,"13092",NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.24583355464025
-2005,"13092",0.194276934091518,"No Till, Cover Crop, Crop Rotation","Observed",0.8073
-2005,"13092",NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.24583355464025
-2007,"13551",0.225923389109376,"No Till, Cover Crop, Crop Rotation","Observed",0.7605
-2007,"13551",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.37536481848204
-2007,"13551",0.231232362174383,"No Till, Cover Crop, Crop Rotation","Observed",1.2987
-2007,"13551",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.37536481848204
-2007,"13551",0.192173831185423,"No Till, Cover Crop, Crop Rotation","Observed",0.9594
-2007,"13551",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.37536481848204
-2007,"13551",0.219532917026645,"No Till, Cover Crop, Crop Rotation","Observed",1.1115
-2007,"13551",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.37536481848204
-2007,"13551",0.208517953148157,"No Till, Cover Crop, Crop Rotation","Observed",0.9711
-2007,"13551",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.37536481848204
-2007,"13824",0.0559594857936942,"No Till, Cover Crop, Crop Rotation","Observed",0.351
-2007,"13824",NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.02978137768414
-2007,"13824",0.0758603059610089,"No Till, Cover Crop, Crop Rotation","Observed",0.6552
-2007,"13824",NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.02978137768414
-2007,"13824",0.0879938097276665,"No Till, Cover Crop, Crop Rotation","Observed",0.5967
-2007,"13824",NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.02978137768414
-2007,"13824",0.0893748334070293,"No Till, Cover Crop, Crop Rotation","Observed",0.6552
-2007,"13824",NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.02978137768414
-2007,"13824",0.0534201802238856,"No Till, Cover Crop, Crop Rotation","Observed",0.6084
-2007,"13824",NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.02978137768414
-2008,"14189",0.133632757910127,"No Till, Cover Crop, Crop Rotation","Observed",0.4563
-2008,"14189",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.812985719392
-2008,"14189",0.115470750238344,"No Till, Cover Crop, Crop Rotation","Observed",0.7722
-2008,"14189",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.812985719392
-2008,"14189",0.124447197939528,"No Till, Cover Crop, Crop Rotation","Observed",0.7722
-2008,"14189",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.812985719392
-2008,"14189",0.104392214965746,"No Till, Cover Crop, Crop Rotation","Observed",0.8541
-2008,"14189",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.812985719392
-2008,"14189",0.303713428201153,"No Till, Cover Crop, Crop Rotation","Observed",1.0647
-2008,"14189",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.812985719392
-2009,"14581",0.0768560538327378,"No Till, Cover Crop, Crop Rotation","Observed",0.4329
-2009,"14581",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.44529447471307
-2009,"14581",0.165823202492441,"No Till, Cover Crop, Crop Rotation","Observed",0.6318
-2009,"14581",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.44529447471307
-2009,"14581",0.15694487297948,"No Till, Cover Crop, Crop Rotation","Observed",0.7605
-2009,"14581",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.44529447471307
-2009,"14581",0.244705672751506,"No Till, Cover Crop, Crop Rotation","Observed",0.7371
-2009,"14581",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.44529447471307
-2009,"14581",0.191095709607923,"No Till, Cover Crop, Crop Rotation","Observed",0.7137
-2009,"14581",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.44529447471307
-2010,"14910",0.163402453551551,"No Till, Cover Crop, Crop Rotation","Observed",0.7722
-2010,"14910",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.53250994509138
-2010,"14910",0.251347750422446,"No Till, Cover Crop, Crop Rotation","Observed",1.053
-2010,"14910",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.53250994509138
-2010,"14910",0.195825698895031,"No Till, Cover Crop, Crop Rotation","Observed",1.1115
-2010,"14910",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.53250994509138
-2010,"14910",0.275757064592599,"No Till, Cover Crop, Crop Rotation","Observed",1.0179
-2010,"14910",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.53250994509138
-2010,"14910",0.21889168406723,"No Till, Cover Crop, Crop Rotation","Observed",1.0296
-2010,"14910",NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.53250994509138
+2003,12357,0.239488280269968,"Cover Crop, Crop Rotation","Observed",0.702
+2003,12357,NA,"Cover Crop, Crop Rotation","Millennial",0.875947307024232
+2003,12357,0.0471409469569715,"Cover Crop, Crop Rotation","Observed",0.7839
+2003,12357,NA,"Cover Crop, Crop Rotation","Millennial",0.875947307024232
+2003,12357,0.170175149272742,"Cover Crop, Crop Rotation","Observed",0.6084
+2003,12357,NA,"Cover Crop, Crop Rotation","Millennial",0.875947307024232
+2003,12357,0.134231623646094,"Cover Crop, Crop Rotation","Observed",0.7839
+2003,12357,NA,"Cover Crop, Crop Rotation","Millennial",0.875947307024232
+2005,12969,0.0476396938837074,"Cover Crop, Crop Rotation","Observed",0.6903
+2005,12969,NA,"Cover Crop, Crop Rotation","Millennial",3.19144617435058
+2005,12969,0.220990593917479,"Cover Crop, Crop Rotation","Observed",1.0296
+2005,12969,NA,"Cover Crop, Crop Rotation","Millennial",3.19144617435058
+2005,12969,0.195982089147623,"Cover Crop, Crop Rotation","Observed",1.2285
+2005,12969,NA,"Cover Crop, Crop Rotation","Millennial",3.19144617435058
+2005,12969,0.0659826864159582,"Cover Crop, Crop Rotation","Observed",0.6552
+2005,12969,NA,"Cover Crop, Crop Rotation","Millennial",3.19144617435058
+2005,12969,0.0874911396656827,"Cover Crop, Crop Rotation","Observed",0.7488
+2005,12969,NA,"Cover Crop, Crop Rotation","Millennial",3.19144617435058
+2005,13092,0.102200071495148,"Cover Crop, Crop Rotation","Observed",0.6084
+2005,13092,NA,"Cover Crop, Crop Rotation","Millennial",3.42461127763196
+2005,13092,0.191934101790172,"Cover Crop, Crop Rotation","Observed",0.819
+2005,13092,NA,"Cover Crop, Crop Rotation","Millennial",3.42461127763196
+2005,13092,0.146031882238092,"Cover Crop, Crop Rotation","Observed",0.8658
+2005,13092,NA,"Cover Crop, Crop Rotation","Millennial",3.42461127763196
+2005,13092,0.121251523371873,"Cover Crop, Crop Rotation","Observed",0.6318
+2005,13092,NA,"Cover Crop, Crop Rotation","Millennial",3.42461127763196
+2005,13092,0.194276934091518,"Cover Crop, Crop Rotation","Observed",0.8073
+2005,13092,NA,"Cover Crop, Crop Rotation","Millennial",3.42461127763196
+2007,13551,0.225923389109376,"Cover Crop, Crop Rotation","Observed",0.7605
+2007,13551,NA,"Cover Crop, Crop Rotation","Millennial",1.62566957555129
+2007,13551,0.231232362174383,"Cover Crop, Crop Rotation","Observed",1.2987
+2007,13551,NA,"Cover Crop, Crop Rotation","Millennial",1.62566957555129
+2007,13551,0.192173831185423,"Cover Crop, Crop Rotation","Observed",0.9594
+2007,13551,NA,"Cover Crop, Crop Rotation","Millennial",1.62566957555129
+2007,13551,0.219532917026645,"Cover Crop, Crop Rotation","Observed",1.1115
+2007,13551,NA,"Cover Crop, Crop Rotation","Millennial",1.62566957555129
+2007,13551,0.208517953148157,"Cover Crop, Crop Rotation","Observed",0.9711
+2007,13551,NA,"Cover Crop, Crop Rotation","Millennial",1.62566957555129
+2007,13824,0.0559594857936942,"Cover Crop, Crop Rotation","Observed",0.351
+2007,13824,NA,"Cover Crop, Crop Rotation","Millennial",2.11901190014523
+2007,13824,0.0758603059610089,"Cover Crop, Crop Rotation","Observed",0.6552
+2007,13824,NA,"Cover Crop, Crop Rotation","Millennial",2.11901190014523
+2007,13824,0.0879938097276665,"Cover Crop, Crop Rotation","Observed",0.5967
+2007,13824,NA,"Cover Crop, Crop Rotation","Millennial",2.11901190014523
+2007,13824,0.0893748334070293,"Cover Crop, Crop Rotation","Observed",0.6552
+2007,13824,NA,"Cover Crop, Crop Rotation","Millennial",2.11901190014523
+2007,13824,0.0534201802238856,"Cover Crop, Crop Rotation","Observed",0.6084
+2007,13824,NA,"Cover Crop, Crop Rotation","Millennial",2.11901190014523
+2008,14189,0.133632757910127,"Cover Crop, Crop Rotation","Observed",0.4563
+2008,14189,NA,"Cover Crop, Crop Rotation","Millennial",2.86461515339139
+2008,14189,0.115470750238344,"Cover Crop, Crop Rotation","Observed",0.7722
+2008,14189,NA,"Cover Crop, Crop Rotation","Millennial",2.86461515339139
+2008,14189,0.124447197939528,"Cover Crop, Crop Rotation","Observed",0.7722
+2008,14189,NA,"Cover Crop, Crop Rotation","Millennial",2.86461515339139
+2008,14189,0.104392214965746,"Cover Crop, Crop Rotation","Observed",0.8541
+2008,14189,NA,"Cover Crop, Crop Rotation","Millennial",2.86461515339139
+2008,14189,0.303713428201153,"Cover Crop, Crop Rotation","Observed",1.0647
+2008,14189,NA,"Cover Crop, Crop Rotation","Millennial",2.86461515339139
+2009,14581,0.0768560538327378,"Cover Crop, Crop Rotation","Observed",0.4329
+2009,14581,NA,"Cover Crop, Crop Rotation","Millennial",1.44189447023362
+2009,14581,0.165823202492441,"Cover Crop, Crop Rotation","Observed",0.6318
+2009,14581,NA,"Cover Crop, Crop Rotation","Millennial",1.44189447023362
+2009,14581,0.15694487297948,"Cover Crop, Crop Rotation","Observed",0.7605
+2009,14581,NA,"Cover Crop, Crop Rotation","Millennial",1.44189447023362
+2009,14581,0.244705672751506,"Cover Crop, Crop Rotation","Observed",0.7371
+2009,14581,NA,"Cover Crop, Crop Rotation","Millennial",1.44189447023362
+2009,14581,0.191095709607923,"Cover Crop, Crop Rotation","Observed",0.7137
+2009,14581,NA,"Cover Crop, Crop Rotation","Millennial",1.44189447023362
+2010,14910,0.163402453551551,"Cover Crop, Crop Rotation","Observed",0.7722
+2010,14910,NA,"Cover Crop, Crop Rotation","Millennial",1.82399150480519
+2010,14910,0.251347750422446,"Cover Crop, Crop Rotation","Observed",1.053
+2010,14910,NA,"Cover Crop, Crop Rotation","Millennial",1.82399150480519
+2010,14910,0.195825698895031,"Cover Crop, Crop Rotation","Observed",1.1115
+2010,14910,NA,"Cover Crop, Crop Rotation","Millennial",1.82399150480519
+2010,14910,0.275757064592599,"Cover Crop, Crop Rotation","Observed",1.0179
+2010,14910,NA,"Cover Crop, Crop Rotation","Millennial",1.82399150480519
+2010,14910,0.21889168406723,"Cover Crop, Crop Rotation","Observed",1.0296
+2010,14910,NA,"Cover Crop, Crop Rotation","Millennial",1.82399150480519
+2003,12357,0.239488280269968,"Rmv Resid 0%, Crop Rotation","Observed",0.702
+2003,12357,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.09090595971716
+2003,12357,0.0471409469569715,"Rmv Resid 0%, Crop Rotation","Observed",0.7839
+2003,12357,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.09090595971716
+2003,12357,0.170175149272742,"Rmv Resid 0%, Crop Rotation","Observed",0.6084
+2003,12357,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.09090595971716
+2003,12357,0.134231623646094,"Rmv Resid 0%, Crop Rotation","Observed",0.7839
+2003,12357,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.09090595971716
+2005,12969,0.0476396938837074,"Rmv Resid 0%, Crop Rotation","Observed",0.6903
+2005,12969,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.10567078840739
+2005,12969,0.220990593917479,"Rmv Resid 0%, Crop Rotation","Observed",1.0296
+2005,12969,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.10567078840739
+2005,12969,0.195982089147623,"Rmv Resid 0%, Crop Rotation","Observed",1.2285
+2005,12969,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.10567078840739
+2005,12969,0.0659826864159582,"Rmv Resid 0%, Crop Rotation","Observed",0.6552
+2005,12969,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.10567078840739
+2005,12969,0.0874911396656827,"Rmv Resid 0%, Crop Rotation","Observed",0.7488
+2005,12969,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.10567078840739
+2005,13092,0.102200071495148,"Rmv Resid 0%, Crop Rotation","Observed",0.6084
+2005,13092,NA,"Rmv Resid 0%, Crop Rotation","Millennial",3.27162658167377
+2005,13092,0.191934101790172,"Rmv Resid 0%, Crop Rotation","Observed",0.819
+2005,13092,NA,"Rmv Resid 0%, Crop Rotation","Millennial",3.27162658167377
+2005,13092,0.146031882238092,"Rmv Resid 0%, Crop Rotation","Observed",0.8658
+2005,13092,NA,"Rmv Resid 0%, Crop Rotation","Millennial",3.27162658167377
+2005,13092,0.121251523371873,"Rmv Resid 0%, Crop Rotation","Observed",0.6318
+2005,13092,NA,"Rmv Resid 0%, Crop Rotation","Millennial",3.27162658167377
+2005,13092,0.194276934091518,"Rmv Resid 0%, Crop Rotation","Observed",0.8073
+2005,13092,NA,"Rmv Resid 0%, Crop Rotation","Millennial",3.27162658167377
+2007,13551,0.225923389109376,"Rmv Resid 0%, Crop Rotation","Observed",0.7605
+2007,13551,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.89388284602392
+2007,13551,0.231232362174383,"Rmv Resid 0%, Crop Rotation","Observed",1.2987
+2007,13551,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.89388284602392
+2007,13551,0.192173831185423,"Rmv Resid 0%, Crop Rotation","Observed",0.9594
+2007,13551,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.89388284602392
+2007,13551,0.219532917026645,"Rmv Resid 0%, Crop Rotation","Observed",1.1115
+2007,13551,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.89388284602392
+2007,13551,0.208517953148157,"Rmv Resid 0%, Crop Rotation","Observed",0.9711
+2007,13551,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.89388284602392
+2007,13824,0.0559594857936942,"Rmv Resid 0%, Crop Rotation","Observed",0.351
+2007,13824,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.13957969998238
+2007,13824,0.0758603059610089,"Rmv Resid 0%, Crop Rotation","Observed",0.6552
+2007,13824,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.13957969998238
+2007,13824,0.0879938097276665,"Rmv Resid 0%, Crop Rotation","Observed",0.5967
+2007,13824,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.13957969998238
+2007,13824,0.0893748334070293,"Rmv Resid 0%, Crop Rotation","Observed",0.6552
+2007,13824,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.13957969998238
+2007,13824,0.0534201802238856,"Rmv Resid 0%, Crop Rotation","Observed",0.6084
+2007,13824,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.13957969998238
+2008,14189,0.133632757910127,"Rmv Resid 0%, Crop Rotation","Observed",0.4563
+2008,14189,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.25415460898407
+2008,14189,0.115470750238344,"Rmv Resid 0%, Crop Rotation","Observed",0.7722
+2008,14189,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.25415460898407
+2008,14189,0.124447197939528,"Rmv Resid 0%, Crop Rotation","Observed",0.7722
+2008,14189,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.25415460898407
+2008,14189,0.104392214965746,"Rmv Resid 0%, Crop Rotation","Observed",0.8541
+2008,14189,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.25415460898407
+2008,14189,0.303713428201153,"Rmv Resid 0%, Crop Rotation","Observed",1.0647
+2008,14189,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.25415460898407
+2009,14581,0.0768560538327378,"Rmv Resid 0%, Crop Rotation","Observed",0.4329
+2009,14581,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.41851777385082
+2009,14581,0.165823202492441,"Rmv Resid 0%, Crop Rotation","Observed",0.6318
+2009,14581,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.41851777385082
+2009,14581,0.15694487297948,"Rmv Resid 0%, Crop Rotation","Observed",0.7605
+2009,14581,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.41851777385082
+2009,14581,0.244705672751506,"Rmv Resid 0%, Crop Rotation","Observed",0.7371
+2009,14581,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.41851777385082
+2009,14581,0.191095709607923,"Rmv Resid 0%, Crop Rotation","Observed",0.7137
+2009,14581,NA,"Rmv Resid 0%, Crop Rotation","Millennial",1.41851777385082
+2010,14910,0.163402453551551,"Rmv Resid 0%, Crop Rotation","Observed",0.7722
+2010,14910,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.02442392857254
+2010,14910,0.251347750422446,"Rmv Resid 0%, Crop Rotation","Observed",1.053
+2010,14910,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.02442392857254
+2010,14910,0.195825698895031,"Rmv Resid 0%, Crop Rotation","Observed",1.1115
+2010,14910,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.02442392857254
+2010,14910,0.275757064592599,"Rmv Resid 0%, Crop Rotation","Observed",1.0179
+2010,14910,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.02442392857254
+2010,14910,0.21889168406723,"Rmv Resid 0%, Crop Rotation","Observed",1.0296
+2010,14910,NA,"Rmv Resid 0%, Crop Rotation","Millennial",2.02442392857254
+2003,12357,0.239488280269968,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.702
+2003,12357,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.21868104528762
+2003,12357,0.0471409469569715,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7839
+2003,12357,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.21868104528762
+2003,12357,0.170175149272742,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6084
+2003,12357,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.21868104528762
+2003,12357,0.134231623646094,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7839
+2003,12357,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.21868104528762
+2005,12969,0.0476396938837074,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6903
+2005,12969,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.67818413226317
+2005,12969,0.220990593917479,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.0296
+2005,12969,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.67818413226317
+2005,12969,0.195982089147623,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.2285
+2005,12969,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.67818413226317
+2005,12969,0.0659826864159582,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6552
+2005,12969,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.67818413226317
+2005,12969,0.0874911396656827,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7488
+2005,12969,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.67818413226317
+2005,13092,0.102200071495148,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6084
+2005,13092,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.57743709624776
+2005,13092,0.191934101790172,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.819
+2005,13092,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.57743709624776
+2005,13092,0.146031882238092,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.8658
+2005,13092,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.57743709624776
+2005,13092,0.121251523371873,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6318
+2005,13092,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.57743709624776
+2005,13092,0.194276934091518,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.8073
+2005,13092,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.57743709624776
+2007,13551,0.225923389109376,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7605
+2007,13551,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.7048203301847
+2007,13551,0.231232362174383,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.2987
+2007,13551,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.7048203301847
+2007,13551,0.192173831185423,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.9594
+2007,13551,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.7048203301847
+2007,13551,0.219532917026645,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.1115
+2007,13551,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.7048203301847
+2007,13551,0.208517953148157,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.9711
+2007,13551,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",1.7048203301847
+2007,13824,0.0559594857936942,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.351
+2007,13824,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.11639836585944
+2007,13824,0.0758603059610089,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6552
+2007,13824,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.11639836585944
+2007,13824,0.0879938097276665,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.5967
+2007,13824,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.11639836585944
+2007,13824,0.0893748334070293,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6552
+2007,13824,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.11639836585944
+2007,13824,0.0534201802238856,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6084
+2007,13824,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.11639836585944
+2008,14189,0.133632757910127,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.4563
+2008,14189,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.33233499379193
+2008,14189,0.115470750238344,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7722
+2008,14189,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.33233499379193
+2008,14189,0.124447197939528,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7722
+2008,14189,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.33233499379193
+2008,14189,0.104392214965746,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.8541
+2008,14189,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.33233499379193
+2008,14189,0.303713428201153,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.0647
+2008,14189,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.33233499379193
+2009,14581,0.0768560538327378,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.4329
+2009,14581,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.05166609238811
+2009,14581,0.165823202492441,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.6318
+2009,14581,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.05166609238811
+2009,14581,0.15694487297948,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7605
+2009,14581,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.05166609238811
+2009,14581,0.244705672751506,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7371
+2009,14581,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.05166609238811
+2009,14581,0.191095709607923,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7137
+2009,14581,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.05166609238811
+2010,14910,0.163402453551551,"Rmv Resid 0%, No Till, Crop Rotation","Observed",0.7722
+2010,14910,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.20745721367402
+2010,14910,0.251347750422446,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.053
+2010,14910,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.20745721367402
+2010,14910,0.195825698895031,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.1115
+2010,14910,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.20745721367402
+2010,14910,0.275757064592599,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.0179
+2010,14910,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.20745721367402
+2010,14910,0.21889168406723,"Rmv Resid 0%, No Till, Crop Rotation","Observed",1.0296
+2010,14910,NA,"Rmv Resid 0%, No Till, Crop Rotation","Millennial",2.20745721367402
+2005,12969,0.0476396938837074,"Continuous Crop","Observed",0.6903
+2005,12969,NA,"Continuous Crop","Millennial",2.0650032106575
+2005,12969,0.220990593917479,"Continuous Crop","Observed",1.0296
+2005,12969,NA,"Continuous Crop","Millennial",2.0650032106575
+2005,12969,0.195982089147623,"Continuous Crop","Observed",1.2285
+2005,12969,NA,"Continuous Crop","Millennial",2.0650032106575
+2005,12969,0.0659826864159582,"Continuous Crop","Observed",0.6552
+2005,12969,NA,"Continuous Crop","Millennial",2.0650032106575
+2005,12969,0.0874911396656827,"Continuous Crop","Observed",0.7488
+2005,12969,NA,"Continuous Crop","Millennial",2.0650032106575
+2005,13092,0.102200071495148,"Continuous Crop","Observed",0.6084
+2005,13092,NA,"Continuous Crop","Millennial",2.9903919847565
+2005,13092,0.191934101790172,"Continuous Crop","Observed",0.819
+2005,13092,NA,"Continuous Crop","Millennial",2.9903919847565
+2005,13092,0.146031882238092,"Continuous Crop","Observed",0.8658
+2005,13092,NA,"Continuous Crop","Millennial",2.9903919847565
+2005,13092,0.121251523371873,"Continuous Crop","Observed",0.6318
+2005,13092,NA,"Continuous Crop","Millennial",2.9903919847565
+2005,13092,0.194276934091518,"Continuous Crop","Observed",0.8073
+2005,13092,NA,"Continuous Crop","Millennial",2.9903919847565
+2007,13551,0.225923389109376,"Continuous Crop","Observed",0.7605
+2007,13551,NA,"Continuous Crop","Millennial",1.50540032165558
+2007,13551,0.231232362174383,"Continuous Crop","Observed",1.2987
+2007,13551,NA,"Continuous Crop","Millennial",1.50540032165558
+2007,13551,0.192173831185423,"Continuous Crop","Observed",0.9594
+2007,13551,NA,"Continuous Crop","Millennial",1.50540032165558
+2007,13551,0.219532917026645,"Continuous Crop","Observed",1.1115
+2007,13551,NA,"Continuous Crop","Millennial",1.50540032165558
+2007,13551,0.208517953148157,"Continuous Crop","Observed",0.9711
+2007,13551,NA,"Continuous Crop","Millennial",1.50540032165558
+2007,13824,0.0559594857936942,"Continuous Crop","Observed",0.351
+2007,13824,NA,"Continuous Crop","Millennial",2.12801128218594
+2007,13824,0.0758603059610089,"Continuous Crop","Observed",0.6552
+2007,13824,NA,"Continuous Crop","Millennial",2.12801128218594
+2007,13824,0.0879938097276665,"Continuous Crop","Observed",0.5967
+2007,13824,NA,"Continuous Crop","Millennial",2.12801128218594
+2007,13824,0.0893748334070293,"Continuous Crop","Observed",0.6552
+2007,13824,NA,"Continuous Crop","Millennial",2.12801128218594
+2007,13824,0.0534201802238856,"Continuous Crop","Observed",0.6084
+2007,13824,NA,"Continuous Crop","Millennial",2.12801128218594
+2008,14189,0.133632757910127,"Continuous Crop","Observed",0.4563
+2008,14189,NA,"Continuous Crop","Millennial",1.91534529045828
+2008,14189,0.115470750238344,"Continuous Crop","Observed",0.7722
+2008,14189,NA,"Continuous Crop","Millennial",1.91534529045828
+2008,14189,0.124447197939528,"Continuous Crop","Observed",0.7722
+2008,14189,NA,"Continuous Crop","Millennial",1.91534529045828
+2008,14189,0.104392214965746,"Continuous Crop","Observed",0.8541
+2008,14189,NA,"Continuous Crop","Millennial",1.91534529045828
+2008,14189,0.303713428201153,"Continuous Crop","Observed",1.0647
+2008,14189,NA,"Continuous Crop","Millennial",1.91534529045828
+2009,14581,0.0768560538327378,"Continuous Crop","Observed",0.4329
+2009,14581,NA,"Continuous Crop","Millennial",1.36844732905252
+2009,14581,0.165823202492441,"Continuous Crop","Observed",0.6318
+2009,14581,NA,"Continuous Crop","Millennial",1.36844732905252
+2009,14581,0.15694487297948,"Continuous Crop","Observed",0.7605
+2009,14581,NA,"Continuous Crop","Millennial",1.36844732905252
+2009,14581,0.244705672751506,"Continuous Crop","Observed",0.7371
+2009,14581,NA,"Continuous Crop","Millennial",1.36844732905252
+2009,14581,0.191095709607923,"Continuous Crop","Observed",0.7137
+2009,14581,NA,"Continuous Crop","Millennial",1.36844732905252
+2010,14910,0.163402453551551,"Continuous Crop","Observed",0.7722
+2010,14910,NA,"Continuous Crop","Millennial",1.80537986886181
+2010,14910,0.251347750422446,"Continuous Crop","Observed",1.053
+2010,14910,NA,"Continuous Crop","Millennial",1.80537986886181
+2010,14910,0.195825698895031,"Continuous Crop","Observed",1.1115
+2010,14910,NA,"Continuous Crop","Millennial",1.80537986886181
+2010,14910,0.275757064592599,"Continuous Crop","Observed",1.0179
+2010,14910,NA,"Continuous Crop","Millennial",1.80537986886181
+2010,14910,0.21889168406723,"Continuous Crop","Observed",1.0296
+2010,14910,NA,"Continuous Crop","Millennial",1.80537986886181
+2003,12357,0.239488280269968,"No Till, Cover Crop, Crop Rotation","Observed",0.702
+2003,12357,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.00393424403604
+2003,12357,0.0471409469569715,"No Till, Cover Crop, Crop Rotation","Observed",0.7839
+2003,12357,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.00393424403604
+2003,12357,0.170175149272742,"No Till, Cover Crop, Crop Rotation","Observed",0.6084
+2003,12357,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.00393424403604
+2003,12357,0.134231623646094,"No Till, Cover Crop, Crop Rotation","Observed",0.7839
+2003,12357,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.00393424403604
+2005,12969,0.0476396938837074,"No Till, Cover Crop, Crop Rotation","Observed",0.6903
+2005,12969,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.34650058787993
+2005,12969,0.220990593917479,"No Till, Cover Crop, Crop Rotation","Observed",1.0296
+2005,12969,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.34650058787993
+2005,12969,0.195982089147623,"No Till, Cover Crop, Crop Rotation","Observed",1.2285
+2005,12969,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.34650058787993
+2005,12969,0.0659826864159582,"No Till, Cover Crop, Crop Rotation","Observed",0.6552
+2005,12969,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.34650058787993
+2005,12969,0.0874911396656827,"No Till, Cover Crop, Crop Rotation","Observed",0.7488
+2005,12969,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.34650058787993
+2005,13092,0.102200071495148,"No Till, Cover Crop, Crop Rotation","Observed",0.6084
+2005,13092,NA,"No Till, Cover Crop, Crop Rotation","Millennial",3.39488969015914
+2005,13092,0.191934101790172,"No Till, Cover Crop, Crop Rotation","Observed",0.819
+2005,13092,NA,"No Till, Cover Crop, Crop Rotation","Millennial",3.39488969015914
+2005,13092,0.146031882238092,"No Till, Cover Crop, Crop Rotation","Observed",0.8658
+2005,13092,NA,"No Till, Cover Crop, Crop Rotation","Millennial",3.39488969015914
+2005,13092,0.121251523371873,"No Till, Cover Crop, Crop Rotation","Observed",0.6318
+2005,13092,NA,"No Till, Cover Crop, Crop Rotation","Millennial",3.39488969015914
+2005,13092,0.194276934091518,"No Till, Cover Crop, Crop Rotation","Observed",0.8073
+2005,13092,NA,"No Till, Cover Crop, Crop Rotation","Millennial",3.39488969015914
+2007,13551,0.225923389109376,"No Till, Cover Crop, Crop Rotation","Observed",0.7605
+2007,13551,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.50843845795645
+2007,13551,0.231232362174383,"No Till, Cover Crop, Crop Rotation","Observed",1.2987
+2007,13551,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.50843845795645
+2007,13551,0.192173831185423,"No Till, Cover Crop, Crop Rotation","Observed",0.9594
+2007,13551,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.50843845795645
+2007,13551,0.219532917026645,"No Till, Cover Crop, Crop Rotation","Observed",1.1115
+2007,13551,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.50843845795645
+2007,13551,0.208517953148157,"No Till, Cover Crop, Crop Rotation","Observed",0.9711
+2007,13551,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.50843845795645
+2007,13824,0.0559594857936942,"No Till, Cover Crop, Crop Rotation","Observed",0.351
+2007,13824,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.08031578231107
+2007,13824,0.0758603059610089,"No Till, Cover Crop, Crop Rotation","Observed",0.6552
+2007,13824,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.08031578231107
+2007,13824,0.0879938097276665,"No Till, Cover Crop, Crop Rotation","Observed",0.5967
+2007,13824,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.08031578231107
+2007,13824,0.0893748334070293,"No Till, Cover Crop, Crop Rotation","Observed",0.6552
+2007,13824,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.08031578231107
+2007,13824,0.0534201802238856,"No Till, Cover Crop, Crop Rotation","Observed",0.6084
+2007,13824,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.08031578231107
+2008,14189,0.133632757910127,"No Till, Cover Crop, Crop Rotation","Observed",0.4563
+2008,14189,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.89502605105236
+2008,14189,0.115470750238344,"No Till, Cover Crop, Crop Rotation","Observed",0.7722
+2008,14189,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.89502605105236
+2008,14189,0.124447197939528,"No Till, Cover Crop, Crop Rotation","Observed",0.7722
+2008,14189,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.89502605105236
+2008,14189,0.104392214965746,"No Till, Cover Crop, Crop Rotation","Observed",0.8541
+2008,14189,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.89502605105236
+2008,14189,0.303713428201153,"No Till, Cover Crop, Crop Rotation","Observed",1.0647
+2008,14189,NA,"No Till, Cover Crop, Crop Rotation","Millennial",2.89502605105236
+2009,14581,0.0768560538327378,"No Till, Cover Crop, Crop Rotation","Observed",0.4329
+2009,14581,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.99543095398292
+2009,14581,0.165823202492441,"No Till, Cover Crop, Crop Rotation","Observed",0.6318
+2009,14581,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.99543095398292
+2009,14581,0.15694487297948,"No Till, Cover Crop, Crop Rotation","Observed",0.7605
+2009,14581,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.99543095398292
+2009,14581,0.244705672751506,"No Till, Cover Crop, Crop Rotation","Observed",0.7371
+2009,14581,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.99543095398292
+2009,14581,0.191095709607923,"No Till, Cover Crop, Crop Rotation","Observed",0.7137
+2009,14581,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.99543095398292
+2010,14910,0.163402453551551,"No Till, Cover Crop, Crop Rotation","Observed",0.7722
+2010,14910,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.92736867312878
+2010,14910,0.251347750422446,"No Till, Cover Crop, Crop Rotation","Observed",1.053
+2010,14910,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.92736867312878
+2010,14910,0.195825698895031,"No Till, Cover Crop, Crop Rotation","Observed",1.1115
+2010,14910,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.92736867312878
+2010,14910,0.275757064592599,"No Till, Cover Crop, Crop Rotation","Observed",1.0179
+2010,14910,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.92736867312878
+2010,14910,0.21889168406723,"No Till, Cover Crop, Crop Rotation","Observed",1.0296
+2010,14910,NA,"No Till, Cover Crop, Crop Rotation","Millennial",1.92736867312878

@@ -1,433 +1,4 @@
 "year","crop","treatment_scen","Model","yield_val"
-1980,"Sorghum","Cover Crop, Crop Rotation","Historical",0.978435463835284
-1980,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1980,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1981,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-1981,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1981,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1982,"Sorghum","Cover Crop, Crop Rotation","Historical",2.89696421803191
-1982,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1982,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1983,"Sorghum","Cover Crop, Crop Rotation","Historical",1.62739159617805
-1983,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1983,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1984,"Sorghum","Cover Crop, Crop Rotation","Historical",2.59415052086769
-1984,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1984,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1985,"Sorghum","Cover Crop, Crop Rotation","Historical",1.9606302680462
-1985,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1985,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1986,"Sorghum","Cover Crop, Crop Rotation","Historical",2.59819649413184
-1986,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1986,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1987,"Sorghum","Cover Crop, Crop Rotation","Historical",2.593020431222
-1987,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1987,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1988,"Sorghum","Cover Crop, Crop Rotation","Historical",2.73894798795744
-1988,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1988,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1989,"Sorghum","Cover Crop, Crop Rotation","Historical",2.27865256220348
-1989,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1989,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1990,"Sorghum","Cover Crop, Crop Rotation","Historical",2.2919668927005
-1990,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1990,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1991,"Sorghum","Cover Crop, Crop Rotation","Historical",2.81856224990898
-1991,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1991,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1992,"Sorghum","Cover Crop, Crop Rotation","Historical",3.39459660844584
-1992,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1992,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1993,"Sorghum","Cover Crop, Crop Rotation","Historical",1.80346223150718
-1993,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1993,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1994,"Sorghum","Cover Crop, Crop Rotation","Historical",1.43468704131104
-1994,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1994,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1995,"Sorghum","Cover Crop, Crop Rotation","Historical",2.0254405289097
-1995,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1995,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1996,"Sorghum","Cover Crop, Crop Rotation","Historical",2.34490122553903
-1996,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1996,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1997,"Sorghum","Cover Crop, Crop Rotation","Historical",2.14357132233619
-1997,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1997,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1998,"Sorghum","Cover Crop, Crop Rotation","Historical",1.13911494252242
-1998,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1998,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-1999,"Sorghum","Cover Crop, Crop Rotation","Historical",2.03438113703636
-1999,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-1999,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-2000,"Sorghum","Cover Crop, Crop Rotation","Historical",1.24372753928469
-2000,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-2000,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-2001,"Sorghum","Cover Crop, Crop Rotation","Historical",1.4013539592371
-2001,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-2001,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-2002,"Sorghum","Cover Crop, Crop Rotation","Historical",1.85977949799579
-2002,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-2002,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-2003,"Sorghum","Cover Crop, Crop Rotation","Historical",1.97863295598029
-2003,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-2003,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
-2023,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2023,"Sorghum","Cover Crop, Crop Rotation","APSIM",1.476
-2023,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.55364444444444
-2025,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2025,"Sorghum","Cover Crop, Crop Rotation","APSIM",2.6
-2025,"Sorghum","Cover Crop, Crop Rotation","Daycent",1.86576888888889
-2027,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2027,"Sorghum","Cover Crop, Crop Rotation","APSIM",2.109
-2027,"Sorghum","Cover Crop, Crop Rotation","Daycent",1.71433555555556
-2029,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2029,"Sorghum","Cover Crop, Crop Rotation","APSIM",1.44
-2029,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.20958
-2031,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2031,"Sorghum","Cover Crop, Crop Rotation","APSIM",1.811
-2031,"Sorghum","Cover Crop, Crop Rotation","Daycent",1.97628888888889
-2033,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2033,"Sorghum","Cover Crop, Crop Rotation","APSIM",2.306
-2033,"Sorghum","Cover Crop, Crop Rotation","Daycent",1.93894222222222
-2035,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2035,"Sorghum","Cover Crop, Crop Rotation","APSIM",2.49
-2035,"Sorghum","Cover Crop, Crop Rotation","Daycent",1.82935111111111
-2037,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2037,"Sorghum","Cover Crop, Crop Rotation","APSIM",1.687
-2037,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.20732
-2039,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2039,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
-2039,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.12004888888889
-2041,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2041,"Sorghum","Cover Crop, Crop Rotation","APSIM",1.556
-2041,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.05
-2043,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2043,"Sorghum","Cover Crop, Crop Rotation","APSIM",2.732
-2043,"Sorghum","Cover Crop, Crop Rotation","Daycent",1.62392
-2045,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2045,"Sorghum","Cover Crop, Crop Rotation","APSIM",2.274
-2045,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.87690666666667
-2047,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2047,"Sorghum","Cover Crop, Crop Rotation","APSIM",1.886
-2047,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.29297777777778
-2049,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
-2049,"Sorghum","Cover Crop, Crop Rotation","APSIM",2.576
-2049,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.27372888888889
-1980,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",0.978435463835284
-1980,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1980,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1981,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-1981,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1981,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1982,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.89696421803191
-1982,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1982,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1983,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.62739159617805
-1983,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1983,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1984,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.59415052086769
-1984,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1984,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1985,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.9606302680462
-1985,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1985,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1986,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.59819649413184
-1986,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1986,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1987,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.593020431222
-1987,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1987,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1988,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.73894798795744
-1988,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1988,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1989,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.27865256220348
-1989,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1989,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1990,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.2919668927005
-1990,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1990,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1991,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.81856224990898
-1991,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1991,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1992,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",3.39459660844584
-1992,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1992,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1993,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.80346223150718
-1993,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1993,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1994,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.43468704131104
-1994,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1994,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1995,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.0254405289097
-1995,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1995,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1996,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.34490122553903
-1996,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1996,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1997,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.14357132233619
-1997,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1997,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1998,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.13911494252242
-1998,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1998,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1999,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.03438113703636
-1999,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-1999,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2000,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.24372753928469
-2000,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2000,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2001,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.4013539592371
-2001,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2001,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2002,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.85977949799579
-2002,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2002,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2003,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.97863295598029
-2003,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2003,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2022,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2022,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.32
-2022,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2023,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2023,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2023,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",3.16962
-2024,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2024,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",2.428
-2024,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2025,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2025,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2025,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.19826
-2026,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2026,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.591
-2026,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2027,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2027,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2027,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",1.90966666666667
-2028,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2028,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.493
-2028,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2029,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2029,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2029,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.46422
-2030,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2030,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",2.032
-2030,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2031,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2031,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2031,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.46739333333333
-2032,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2032,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",2.529
-2032,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2033,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2033,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2033,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.40742666666667
-2035,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2035,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2035,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.38788888888889
-2036,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2036,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",2.61
-2036,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2037,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2037,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2037,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.33758
-2038,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2038,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",2.605
-2038,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2039,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2039,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2039,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.41678444444444
-2040,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2040,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.649
-2040,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2041,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2041,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2041,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.60296444444444
-2042,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2042,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.895
-2042,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2043,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2043,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2043,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.09227555555556
-2044,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2044,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.483
-2044,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2045,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2045,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2045,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",4.07808888888889
-2046,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2046,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",0.707
-2046,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2047,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2047,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2047,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",3.06674
-2048,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2048,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.516
-2048,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-2049,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2049,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
-2049,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",3.45610666666667
-2050,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
-2050,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.317
-2050,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
-1980,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",0.978435463835284
-1980,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1980,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1981,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-1981,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1981,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1982,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.89696421803191
-1982,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1982,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1983,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.62739159617805
-1983,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1983,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1984,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.59415052086769
-1984,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1984,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1985,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.9606302680462
-1985,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1985,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1986,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.59819649413184
-1986,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1986,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1987,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.593020431222
-1987,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1987,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1988,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.73894798795744
-1988,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1988,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1989,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.27865256220348
-1989,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1989,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1990,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.2919668927005
-1990,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1990,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1991,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.81856224990898
-1991,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1991,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1992,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",3.39459660844584
-1992,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1992,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1993,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.80346223150718
-1993,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1993,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1994,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.43468704131104
-1994,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1994,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1995,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.0254405289097
-1995,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1995,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1996,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.34490122553903
-1996,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1996,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1997,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.14357132233619
-1997,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1997,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1998,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.13911494252242
-1998,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1998,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-1999,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.03438113703636
-1999,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-1999,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2000,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.24372753928469
-2000,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2000,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2001,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.4013539592371
-2001,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2001,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2002,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.85977949799579
-2002,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2002,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2003,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.97863295598029
-2003,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2003,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2022,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2022,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.387
-2022,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2023,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2023,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2023,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.87763777777778
-2024,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2024,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",2.455
-2024,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2025,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2025,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2025,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.02031111111111
-2026,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2026,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.716
-2026,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2027,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2027,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2027,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",1.65318
-2028,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2028,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.496
-2028,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2029,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2029,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2029,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",1.79500444444444
-2030,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2030,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",2.034
-2030,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2031,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2031,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2031,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.08448222222222
-2032,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2032,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",2.534
-2032,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2033,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2033,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2033,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",1.95282
-2034,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2034,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.104
-2034,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2035,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2035,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2035,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.10654
-2036,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2036,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",2.66
-2036,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2037,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2037,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2037,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",1.76557333333333
-2038,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2038,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",2.669
-2038,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2039,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2039,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2039,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",1.88015333333333
-2040,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2040,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.657
-2040,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2041,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2041,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2041,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",1.98974444444444
-2042,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2042,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",2.005
-2042,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2043,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2043,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2043,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",1.77862222222222
-2044,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2044,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.53
-2044,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2045,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2045,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2045,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",3.48458222222222
-2046,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2046,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",0.843
-2046,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2047,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2047,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2047,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.40514222222222
-2048,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2048,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.52
-2048,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
-2049,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2049,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
-2049,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.75635555555556
-2050,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
-2050,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.388
-2050,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
 1980,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",0.978435463835284
 1980,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",NA
 1980,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",NA
@@ -502,43 +73,469 @@
 2003,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",NA
 2023,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2023,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",1.565
-2023,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",2.54774222222222
+2023,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",2.49711555555556
 2025,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2025,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",2.637
-2025,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.87296888888889
+2025,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",2.07104666666667
 2027,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2027,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",2.119
-2027,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.53353111111111
+2027,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",2.21916222222222
 2029,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2029,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",1.44
-2029,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.61643555555556
+2029,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.26625111111111
 2031,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2031,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",1.829
-2031,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.80108666666667
+2031,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.98444888888889
 2033,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2033,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",2.386
-2033,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.67814888888889
+2033,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.85980666666667
 2035,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2035,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",2.497
-2035,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.86770444444444
+2035,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",2.50136444444444
 2037,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2037,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",1.772
-2037,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.69665333333333
+2037,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.48120666666667
 2039,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2039,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",NA
-2039,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.68195777777778
+2039,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.37222
 2041,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2041,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",1.996
-2041,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.70502444444444
+2041,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.55466666666667
 2043,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2043,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",2.739
-2043,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",1.54335111111111
+2043,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",2.08899777777778
 2045,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2045,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",2.246
-2045,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",3.23148444444444
+2045,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",3.24198888888889
 2047,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2047,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",1.896
-2047,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",2.17090666666667
+2047,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",2.80597333333333
 2049,"Sorghum","No Till, Cover Crop, Crop Rotation","Historical",NA
 2049,"Sorghum","No Till, Cover Crop, Crop Rotation","APSIM",2.594
-2049,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",2.31050444444444
+2049,"Sorghum","No Till, Cover Crop, Crop Rotation","Daycent",2.90067111111111
+1980,"Sorghum","Cover Crop, Crop Rotation","Historical",0.978435463835284
+1980,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1980,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1981,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+1981,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1981,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1982,"Sorghum","Cover Crop, Crop Rotation","Historical",2.89696421803191
+1982,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1982,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1983,"Sorghum","Cover Crop, Crop Rotation","Historical",1.62739159617805
+1983,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1983,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1984,"Sorghum","Cover Crop, Crop Rotation","Historical",2.59415052086769
+1984,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1984,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1985,"Sorghum","Cover Crop, Crop Rotation","Historical",1.9606302680462
+1985,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1985,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1986,"Sorghum","Cover Crop, Crop Rotation","Historical",2.59819649413184
+1986,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1986,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1987,"Sorghum","Cover Crop, Crop Rotation","Historical",2.593020431222
+1987,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1987,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1988,"Sorghum","Cover Crop, Crop Rotation","Historical",2.73894798795744
+1988,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1988,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1989,"Sorghum","Cover Crop, Crop Rotation","Historical",2.27865256220348
+1989,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1989,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1990,"Sorghum","Cover Crop, Crop Rotation","Historical",2.2919668927005
+1990,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1990,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1991,"Sorghum","Cover Crop, Crop Rotation","Historical",2.81856224990898
+1991,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1991,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1992,"Sorghum","Cover Crop, Crop Rotation","Historical",3.39459660844584
+1992,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1992,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1993,"Sorghum","Cover Crop, Crop Rotation","Historical",1.80346223150718
+1993,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1993,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1994,"Sorghum","Cover Crop, Crop Rotation","Historical",1.43468704131104
+1994,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1994,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1995,"Sorghum","Cover Crop, Crop Rotation","Historical",2.0254405289097
+1995,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1995,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1996,"Sorghum","Cover Crop, Crop Rotation","Historical",2.34490122553903
+1996,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1996,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1997,"Sorghum","Cover Crop, Crop Rotation","Historical",2.14357132233619
+1997,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1997,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1998,"Sorghum","Cover Crop, Crop Rotation","Historical",1.13911494252242
+1998,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1998,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+1999,"Sorghum","Cover Crop, Crop Rotation","Historical",2.03438113703636
+1999,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+1999,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+2000,"Sorghum","Cover Crop, Crop Rotation","Historical",1.24372753928469
+2000,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+2000,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+2001,"Sorghum","Cover Crop, Crop Rotation","Historical",1.4013539592371
+2001,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+2001,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+2002,"Sorghum","Cover Crop, Crop Rotation","Historical",1.85977949799579
+2002,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+2002,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+2003,"Sorghum","Cover Crop, Crop Rotation","Historical",1.97863295598029
+2003,"Sorghum","Cover Crop, Crop Rotation","APSIM",NA
+2003,"Sorghum","Cover Crop, Crop Rotation","Daycent",NA
+2023,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2023,"Sorghum","Cover Crop, Crop Rotation","APSIM",1.904
+2023,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.35899777777778
+2025,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2025,"Sorghum","Cover Crop, Crop Rotation","APSIM",1.575
+2025,"Sorghum","Cover Crop, Crop Rotation","Daycent",1.98275111111111
+2027,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2027,"Sorghum","Cover Crop, Crop Rotation","APSIM",2.34
+2027,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.51589555555556
+2029,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2029,"Sorghum","Cover Crop, Crop Rotation","APSIM",1.471
+2029,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.31124222222222
+2031,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2031,"Sorghum","Cover Crop, Crop Rotation","APSIM",2.388
+2031,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.12908
+2033,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2033,"Sorghum","Cover Crop, Crop Rotation","APSIM",2.156
+2033,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.5662
+2035,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2035,"Sorghum","Cover Crop, Crop Rotation","APSIM",2.693
+2035,"Sorghum","Cover Crop, Crop Rotation","Daycent",1.94916222222222
+2037,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2037,"Sorghum","Cover Crop, Crop Rotation","APSIM",1.66
+2037,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.13373555555556
+2039,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2039,"Sorghum","Cover Crop, Crop Rotation","APSIM",0.72
+2039,"Sorghum","Cover Crop, Crop Rotation","Daycent",1.60762
+2041,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2041,"Sorghum","Cover Crop, Crop Rotation","APSIM",2.687
+2041,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.93900666666667
+2043,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2043,"Sorghum","Cover Crop, Crop Rotation","APSIM",2.326
+2043,"Sorghum","Cover Crop, Crop Rotation","Daycent",2.10377555555556
+2045,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2045,"Sorghum","Cover Crop, Crop Rotation","APSIM",1.915
+2045,"Sorghum","Cover Crop, Crop Rotation","Daycent",3.1099
+2047,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2047,"Sorghum","Cover Crop, Crop Rotation","APSIM",1.743
+2047,"Sorghum","Cover Crop, Crop Rotation","Daycent",1.70044888888889
+2049,"Sorghum","Cover Crop, Crop Rotation","Historical",NA
+2049,"Sorghum","Cover Crop, Crop Rotation","APSIM",1.638
+2049,"Sorghum","Cover Crop, Crop Rotation","Daycent",1.89182444444444
+1980,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",0.978435463835284
+1980,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1980,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1981,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+1981,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1981,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1982,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.89696421803191
+1982,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1982,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1983,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.62739159617805
+1983,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1983,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1984,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.59415052086769
+1984,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1984,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1985,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.9606302680462
+1985,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1985,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1986,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.59819649413184
+1986,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1986,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1987,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.593020431222
+1987,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1987,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1988,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.73894798795744
+1988,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1988,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1989,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.27865256220348
+1989,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1989,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1990,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.2919668927005
+1990,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1990,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1991,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.81856224990898
+1991,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1991,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1992,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",3.39459660844584
+1992,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1992,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1993,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.80346223150718
+1993,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1993,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1994,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.43468704131104
+1994,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1994,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1995,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.0254405289097
+1995,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1995,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1996,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.34490122553903
+1996,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1996,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1997,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.14357132233619
+1997,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1997,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1998,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.13911494252242
+1998,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1998,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1999,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",2.03438113703636
+1999,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+1999,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2000,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.24372753928469
+2000,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2000,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2001,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.4013539592371
+2001,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2001,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2002,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.85977949799579
+2002,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2002,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2003,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",1.97863295598029
+2003,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2003,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2022,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2022,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",2.133
+2022,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2023,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2023,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2023,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",3.06126888888889
+2024,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2024,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",2.186
+2024,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2025,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2025,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2025,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.44306666666667
+2026,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2026,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",2.276
+2026,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2027,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2027,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2027,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",3.08902888888889
+2028,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2028,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",2.244
+2028,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2029,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2029,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2029,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",3.14223333333333
+2030,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2030,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.451
+2030,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2031,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2031,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2031,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.39368888888889
+2032,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2032,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.789
+2032,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2033,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2033,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2033,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.46455111111111
+2034,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2034,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.617
+2034,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2035,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2035,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2035,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.78528
+2036,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2036,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",2.411
+2036,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2037,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2037,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2037,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.79945333333333
+2038,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2038,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.646
+2038,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2039,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2039,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2039,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",1.90627555555556
+2040,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2040,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",0.359
+2040,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2041,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2041,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2041,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",3.73844222222222
+2042,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2042,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.613
+2042,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2043,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2043,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2043,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.51001555555556
+2044,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2044,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.358
+2044,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2045,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2045,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2045,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",3.79904222222222
+2047,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2047,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2047,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.35838222222222
+2048,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2048,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.629
+2048,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+2049,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2049,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",NA
+2049,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",2.88727333333333
+2050,"Sorghum","Rmv Resid 0%, Crop Rotation","Historical",NA
+2050,"Sorghum","Rmv Resid 0%, Crop Rotation","APSIM",1.587
+2050,"Sorghum","Rmv Resid 0%, Crop Rotation","Daycent",NA
+1980,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",0.978435463835284
+1980,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1980,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1981,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+1981,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1981,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1982,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.89696421803191
+1982,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1982,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1983,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.62739159617805
+1983,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1983,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1984,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.59415052086769
+1984,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1984,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1985,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.9606302680462
+1985,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1985,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1986,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.59819649413184
+1986,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1986,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1987,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.593020431222
+1987,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1987,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1988,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.73894798795744
+1988,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1988,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1989,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.27865256220348
+1989,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1989,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1990,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.2919668927005
+1990,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1990,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1991,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.81856224990898
+1991,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1991,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1992,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",3.39459660844584
+1992,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1992,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1993,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.80346223150718
+1993,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1993,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1994,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.43468704131104
+1994,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1994,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1995,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.0254405289097
+1995,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1995,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1996,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.34490122553903
+1996,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1996,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1997,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.14357132233619
+1997,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1997,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1998,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.13911494252242
+1998,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1998,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+1999,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",2.03438113703636
+1999,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+1999,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2000,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.24372753928469
+2000,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2000,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2001,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.4013539592371
+2001,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2001,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2002,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.85977949799579
+2002,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2002,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2003,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",1.97863295598029
+2003,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2003,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2022,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2022,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",2.37
+2022,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2023,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2023,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2023,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",3.32821777777778
+2024,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2024,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",2.254
+2024,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2025,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2025,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2025,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.07393111111111
+2026,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2026,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",2.305
+2026,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2027,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2027,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2027,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.84830444444444
+2028,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2028,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",2.252
+2028,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2029,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2029,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2029,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",3.11611333333333
+2030,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2030,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.467
+2030,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2031,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2031,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2031,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",1.93417333333333
+2032,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2032,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.816
+2032,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2033,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2033,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2033,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",1.86979777777778
+2034,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2034,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.627
+2034,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2035,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2035,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2035,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.38587111111111
+2036,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2036,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",2.411
+2036,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2037,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2037,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2037,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.44023333333333
+2038,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2038,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.65
+2038,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2039,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2039,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2039,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",1.49608444444444
+2040,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2040,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",0.36
+2040,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2041,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2041,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2041,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.74537111111111
+2042,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2042,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.647
+2042,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2043,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2043,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2043,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.02788444444444
+2044,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2044,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.359
+2044,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2045,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2045,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2045,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.99564444444444
+2047,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2047,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2047,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",1.80664666666667
+2048,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2048,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.631
+2048,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
+2049,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2049,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",NA
+2049,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",2.37893333333333
+2050,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Historical",NA
+2050,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","APSIM",1.588
+2050,"Sorghum","Rmv Resid 0%, No Till, Crop Rotation","Daycent",NA
