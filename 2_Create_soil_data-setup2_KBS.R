@@ -1,5 +1,5 @@
 #######################################
-# Function: "2_Create_soil_data-setup_KBS"
+# Function: "2_Create_soil_data-setup2_KBS"
 # Author: "Ellen Maas"
 # Date: "July 11, 2022"
 # Description: Downloads the closest SSURGO soil profile for the site and updates

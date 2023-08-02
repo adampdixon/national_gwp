@@ -311,17 +311,27 @@ obs_plant_cn_filename <- "73-tissue+carbon+and+nitrogen+1667424583.csv"
 obs_biomass_filename <- "39-annual+crops+and+alfalfa+biomass+1667489393.csv"
 
 # 9-color palette with grey and black. Colors in order are:
-#[1]black, [2]dark blue, [3]green, [4]light blue, [5]grey,
+#[1]black, [2]dark blue, [3]green, [4]light blue, [5]lightest grey,
 #[6]pink, [7]red, [8]orange, [9]yellow
 cbPalette9 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
                 "#CC79A7","#D55E00","#E69F00","#F0E442")
 # 12-color palette with grey and black. Colors in order are:
-#[1]black, [2]dark blue, [3]mint green, [4]light blue, [5]grey,
-#[6]pink, [7]red, [8]orange, [9]yellow, [10]mauve, [11]royal blue,
-#[12]forest green
+#[1]black, [2]dark blue, [3]mint green, [4]light blue, [5]lightest grey,
+#[6]pink, [7]red, [8]orange, [9]yellow, [10]mauve, 
+#[11]royal blue, [12]forest green
 cbPalette12 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
                  "#CC79A7","#D55E00","#E69F00","#F0E442","#882255",
                  "#332288","#0B6329"
+)
+# 20-color palette with more grey and black. Colors in order are:
+#[1]black, [2]dark blue, [3]mint green, [4]light blue, [5]lightest grey,
+#[6]pink, [7]red, [8]orange, [9]yellow, [10]mauve, 
+#[11]royal blue, [12]forest green, [13]dark grey, [14]med grey, [15]light grey,
+#[16]bright blue, [17]cotton candy, [18]lime green, [19]brick red, #[20]dark mauve
+cbPalette20 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
+                 "#CC79A7","#D55E00","#E69F00","#F0E442","#882255",
+                 "#332288","#0B6329","#333333","#555555","#777777",
+                 "#4948DD","#D832BC","#71C4A6","#5F2A01","#48122D"
 )
 
 APSIM_color <- cbPalette9[8]
@@ -331,6 +341,67 @@ RothC_color <- cbPalette9[3]
 Observed_color <- cbPalette9[1]
 Historical_color <- cbPalette9[4]
 Fertilizer_color <- cbPalette9[7]
+
+N2O_color <- cbPalette12[8]
+NO3_color <- cbPalette12[6]
+SoilT_color <- cbPalette12[7]
+SW_20cm_color <- cbPalette12[2]
+SW_25cm_color <- cbPalette12[2]
+SW_40cm_color <- cbPalette12[3]
+SW_60cm_color <- cbPalette12[4]
+WFPS_20cm_color <- cbPalette12[2]
+WFPS_40cm_color <- cbPalette12[3]
+WFPS_60cm_color <- cbPalette12[4]
+WFPS_2cm_color <- cbPalette12[11]
+WFPS_5cm_color <- cbPalette12[12]
+WFPS_10cm_color <- cbPalette12[2]
+CH4_color <- cbPalette12[10]
+
+BiomC_25cm_color <- cbPalette20[10]
+#BiomC_40cm_color <- cbPalette20[]
+#BiomC_60cm_color <- cbPalette20[]
+BiomN_25cm_color <- cbPalette20[6]
+#BiomN_40cm_color <- cbPalette20[]
+#BiomN_60cm_color <- cbPalette20[]
+HumC_25cm_color <- cbPalette20[19]
+#HumC_40cm_color <- cbPalette20[]
+#HumC_60cm_color <- cbPalette20[]
+HumN_25cm_color <- cbPalette20[8]
+#HumN_40cm_color <- cbPalette20[]
+#HumN_60cm_color <- cbPalette20[]
+CtoBiom_25cm_color <- cbPalette20[5]
+CtoHum_25cm_color <- cbPalette20[15]
+CBtoHum_25cm_color <- cbPalette20[14]
+TotalSOC_25cm_color <- cbPalette20[1]
+Cin_25cm_color <- cbPalette20[15]
+
+GFDL_L_color <- cbPalette12[4]
+GFDL_H_color <- cbPalette12[11]
+UKESM_L_color <- cbPalette12[8]
+UKESM_H_color <- cbPalette12[7]
+
+BC19_color <- cbPalette20[1]
+BC38_color <- cbPalette20[13]
+BC57_color <- cbPalette20[14]
+BC76_color <- cbPalette20[15]
+BC96_color <- cbPalette20[5]
+CC_color <- cbPalette20[6]
+CC_NT_color <- cbPalette20[10]
+CN_color <- cbPalette20[16]
+CR_color <- cbPalette20[17]
+NT_color <- cbPalette20[20]
+RF05_color <- cbPalette20[19]
+RF15_color <- cbPalette20[9]
+RF25_color <- cbPalette20[8]
+RF35_color <- cbPalette20[7]
+RR00_color <- cbPalette20[2]
+RR00_NT_color <- cbPalette20[3]
+RR25_color <- cbPalette20[4]
+RR25_NT_color <- cbPalette20[11]
+RR50_color <- cbPalette20[12]
+RR50_NT_color <- cbPalette20[18]
+
+
 
 ###########################################################
 #################### observational data ###################
@@ -509,7 +580,8 @@ ObsGSM <- read.csv(paste0(obs_path,obs_soilmoist_filename),
 ObsVSM_mean <- left_join(ObsGSM[,c("date","moisture","treatment","replicate")],
                 ObsBD_mean,
                 by=c("treatment" = "Treatment","replicate" = "Replicate"),
-                all=TRUE) %>%
+                relationship="many-to-many") %>% #,
+                #all=TRUE) %>%
   mutate(VSM=round(moisture*mean_BD,2)) %>%
   group_by(date,treatment) %>%
   summarize(mean_VSM=round(mean(VSM*100),0)) %>%

@@ -18,10 +18,10 @@
 
 source(paste0("1_Create_weather_input_files-setup_",site_name,".R"))
 #
-source("1_Create_weather_input_files-APSIM3.R")
-source("1_Create_weather_input_files-Daycent4.R")
-source("1_Create_weather_input_files-LDNDC.R")
-source("1_Create_weather_input_files-RothC.R")
+source(paste0("1_Create_weather_input_files-APSIM_",site_name,".R"))
+source(paste0("1_Create_weather_input_files-Daycent_",site_name,".R"))
+#source(paste0("1_Create_weather_input_files-LDNDC_",site_name,".R"))
+source(paste0("1_Create_weather_input_files-RothC_",site_name,".R"))
 # Millennial doesn't use climate data as inputs.
 # Uses soil temperature and moisture together
 # with daily NPP (C input). Generated in

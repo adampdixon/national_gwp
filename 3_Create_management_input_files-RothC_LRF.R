@@ -24,14 +24,14 @@ library(dplyr)
 # C_multiplier <- if_else(mgmt_scenario_grp %in% c(1,4,5), .43,
 #                 if_else(mgmt_scenario_grp==2, 0.88,
 #                 if_else(mgmt_scenario_grp==3, 0.60, 0.43)))
-C_multiplier <- 1
+C_multiplier <- 0.8
 
 #constructed for shortgrass prairie ecosystem (Eqinit.dat)
 
 eqil <- round(eqinit[1]/100*equil_C_input,2) # convert g/m^2 to Mg ha-1
 eqil[,2:3] <- eqinit[,2:3]
 
-cat(paste0("'",site_name," equilibrium (tallgrass prairie ecosystem)- based on 1.5 Mg C/ha-1 annually for 30 Mg ha-1 in top 10 cm'"),
+cat(paste0("'",site_name," equilibrium (shortgrass prairie ecosystem)- based on 1.5 Mg C/ha-1 annually for 30 Mg ha-1 in top 10 cm'"),
           file=paste0(rothc_path,rothc_eqil_filename), sep="\n",append=FALSE) 
 write.table(eqil, file=paste0(rothc_path,rothc_eqil_filename),sep="\t",
             col.names=FALSE, row.names=FALSE, quote=FALSE, append=TRUE)

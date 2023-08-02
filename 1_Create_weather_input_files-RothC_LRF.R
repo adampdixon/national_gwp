@@ -108,7 +108,7 @@ if(clim_scenario_num==1) {
   fut_dat <- read.csv(file=paste0(fut_weather_path,"fut_clim_scenario_",clim_scenario_num,'_reanal.csv'))
   
   # bind experimental and future data together
-  exp_dat <- new_dat[,c("month","year","rain_mm.x","tavg")]
+  exp_dat <- new_dat[,c("month","year","rain_mm","tavg")]
   colnames(exp_dat) <- c("month","year","rain_mm","tavg")
   OPE_all <- rbind(exp_dat,fut_dat[,c("month","year","rain_mm","tavg")])
   

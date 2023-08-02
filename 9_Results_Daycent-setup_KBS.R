@@ -73,7 +73,10 @@ Day_fut_soiltavg <- read.fwf(paste0(daycent_path,paste0("soiltavg_fut_",scenario
 DayT_C_raw <- rbind(Day_exp_soiltavg,Day_fut_soiltavg)
 
 DayT_C_raw <- DayT_C_raw %>%
-  mutate(mean_3_4=round(rowMeans(DayT_C_raw[,c("layer3","layer4")]),2))
+  mutate(mean_3_4=round(rowMeans(DayT_C_raw[,c("layer3","layer4")]),2),
+         mean_15cm=round(((layer1*2)+(layer2*3)+(layer3*5)+(layer4*5))/15,2), # weighted average
+         mean_25cm=round(((layer1*2)+(layer2*3)+(layer3*5)+(layer4*10)+(layer5*5))/25,2)
+         )
 
 DayT_C <- DayT_C_raw[DayT_C_raw$year <= end_fut_period_year,]
 
@@ -113,7 +116,7 @@ Day_fut_vswc <- read.fwf(paste0(daycent_path,paste0("vswc_fut_",scenario_name,".
                          col.names=c("time","dayofyear","layer1","layer2","layer3",
                                      "layer4","layer5","layer6","layer7","layer8"),
                          colClasses=c("numeric","numeric","numeric","numeric","numeric",
-                                      "numeric","numeric","numeric","numeric","numeric")) 
+                                      "numeric","numeric","numeric","numeric","numeric"))
 
 DayM_V_raw <- rbind(Day_exp_vswc,Day_fut_vswc) %>%
   mutate(year=floor(time),
@@ -126,12 +129,21 @@ DayM_V_raw <- rbind(Day_exp_vswc,Day_fut_vswc) %>%
          layer6_pct=layer6*100,
          layer7_pct=layer7*100,
          layer8_pct=layer8*100
-         #mean_20cm=(layer1_pct*0.1)+(layer2_pct*0.15)+(layer3_pct*0.25)+(layer4_pct*0.5)
   )
 DayM_V_raw$mean_20cm=rowMeans(DayM_V_raw[,c("layer1_pct","layer2_pct",
                                             "layer3_pct","layer4_pct")])
 
-DayM_V <- DayM_V_raw[DayM_V_raw$year <= end_fut_period_year,]
+DayM_V <- DayM_V_raw[DayM_V_raw$year <= end_fut_period_year,] %>%
+  mutate(SW_25cm=((layer1*2)+(layer2*3)+(layer3*5)+(layer4*10)+(layer5*5))/25, # weighted average
+         DW_2cm=layer1*2, # mult by layer depth (cm)
+         DW_5cm=layer2*3,
+         DW_10cm=layer3*5,
+         DW_20cm=layer4*10,
+         DW_40cm=layer5*20,
+         DW_60cm=layer6*20,
+         DW_25cm=(layer1*2)+(layer2*3)+(layer3*5)+(layer4*10)+(layer5*5),
+         DW_0to60cm=(layer1*2)+(layer2*3)+(layer3*5)+(layer4*10)+(layer5*20)+(layer6*20)
+  )
 
 DayM_V_all_raw <- rbind(Day_base_vswc,Day_exp_vswc,Day_fut_vswc) %>%
   mutate(year=floor(time),
@@ -214,14 +226,23 @@ Day_base_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_base_",scenario_nam
                            skip=1) %>%
   mutate(year=floor(time),
          NO3_ppm=NO3_ppm0+NO3_ppm1+NO3_ppm2,
-         NO3_ppm_10to60cm=NO3_ppm3+NO3_ppm4+NO3_ppm5,
-         #NO3_kgha=(weight of soil in kg/ha, using bulk density to 10 cm)*ppm which = mg/kg
+         NO3_10to60cm_ppm=NO3_ppm3+NO3_ppm4+NO3_ppm5,
+         #NO3_kgha=(weight of soil in kg/ha, using bulk density from 
+         # 2_Create_soil_data-setup2_KBS to soil depth in m)*ppm which = mg/kg
          #          then divide by 1000000 mg/kg conversion factor
          NO3_kgha=((0.10*10000*ObsBD$mean_BD*1000)*NO3_ppm)/1000000, 
          NO3_hgha=NO3_kgha/10, 
-         NO3_kgha_10to60cm=((0.10*10000*ObsBD$mean_BD*1000)*NO3_ppm_10to60cm)/1000000, 
-         NO3_hgha_10to60cm=NO3_kgha_10to60cm/10, 
-         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+         NO3_10to60cm_kgha=((0.50*10000*ObsBD$mean_BD*1000)*NO3_10to60cm_ppm)/1000000, 
+         NO3_10to60cm_hgha=NO3_10to60cm_kgha/10, 
+         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1,
+         NO3_2cm_kgha=((0.02*10000*ObsBD$mean_BD*1000)*NO3_ppm0)/1000000,
+         NO3_5cm_kgha=((0.03*10000*ObsBD$mean_BD*1000)*NO3_ppm1)/1000000,
+         NO3_10cm_kgha=((0.05*10000*ObsBD$mean_BD*1000)*NO3_ppm2)/1000000,
+         NO3_20cm_kgha=((0.1*10000*ObsBD$mean_BD*1000)*NO3_ppm3)/1000000,
+         NO3_40cm_kgha=((0.2*10000*1.2*1000)*NO3_ppm4)/1000000,
+         NO3_60cm_kgha=((0.2*10000*1.6*1000)*NO3_ppm5)/1000000,
+         NO3_0to60cm_kgha=NO3_2cm_kgha+NO3_5cm_kgha+NO3_10cm_kgha+
+           NO3_20cm_kgha+NO3_40cm_kgha+NO3_60cm_kgha)
 
 Day_exp_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_exp_",scenario_name,".out")),
                           widths=c(8,6,14,14,14,14,14,14,14,14,14,14,14,14,14,14),
@@ -232,14 +253,23 @@ Day_exp_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_exp_",scenario_name,
                            skip=1) %>%
   mutate(year=floor(time),
          NO3_ppm=NO3_ppm0+NO3_ppm1+NO3_ppm2,
-         NO3_ppm_10to60cm=NO3_ppm3+NO3_ppm4+NO3_ppm5,
-         #NO3_kgha=(weight of soil in kg/ha, using bulk density to 10 cm)*ppm which = mg/kg
+         NO3_10to60cm_ppm=NO3_ppm3+NO3_ppm4+NO3_ppm5,
+         #NO3_kgha=(weight of soil in kg/ha, using bulk density from 
+         # 2_Create_soil_data-setup2_KBS to soil depth in m)*ppm which = mg/kg
          #          then divide by 1000000 mg/kg conversion factor
          NO3_kgha=((0.10*10000*ObsBD$mean_BD*1000)*NO3_ppm)/1000000, 
          NO3_hgha=NO3_kgha/10, 
-         NO3_kgha_10to60cm=((0.10*10000*ObsBD$mean_BD*1000)*NO3_ppm_10to60cm)/1000000, 
-         NO3_hgha_10to60cm=NO3_kgha_10to60cm/10, 
-         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+         NO3_10to60cm_kgha=((0.50*10000*ObsBD$mean_BD*1000)*NO3_10to60cm_ppm)/1000000, 
+         NO3_10to60cm_hgha=NO3_10to60cm_kgha/10, 
+         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1,
+         NO3_2cm_kgha=((0.02*10000*ObsBD$mean_BD*1000)*NO3_ppm0)/1000000,
+         NO3_5cm_kgha=((0.03*10000*ObsBD$mean_BD*1000)*NO3_ppm1)/1000000,
+         NO3_10cm_kgha=((0.05*10000*ObsBD$mean_BD*1000)*NO3_ppm2)/1000000,
+         NO3_20cm_kgha=((0.1*10000*ObsBD$mean_BD*1000)*NO3_ppm3)/1000000,
+         NO3_40cm_kgha=((0.2*10000*1.2*1000)*NO3_ppm4)/1000000,
+         NO3_60cm_kgha=((0.2*10000*1.6*1000)*NO3_ppm5)/1000000,
+         NO3_0to60cm_kgha=NO3_2cm_kgha+NO3_5cm_kgha+NO3_10cm_kgha+
+           NO3_20cm_kgha+NO3_40cm_kgha+NO3_60cm_kgha)
 
 Day_fut_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_fut_",scenario_name,".out")),
                           widths=c(8,6,14,14,14,14,14,14,14,14,14,14,14,14,14,14),
@@ -250,14 +280,23 @@ Day_fut_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_fut_",scenario_name,
                           skip=1) %>%
   mutate(year=floor(time),
          NO3_ppm=NO3_ppm0+NO3_ppm1+NO3_ppm2,
-         NO3_ppm_10to60cm=NO3_ppm3+NO3_ppm4+NO3_ppm5,
-         #NO3_kgha=(weight of soil in kg/ha, using bulk density to 10 cm)*ppm which = mg/kg
+         NO3_10to60cm_ppm=NO3_ppm3+NO3_ppm4+NO3_ppm5,
+         #NO3_kgha=(weight of soil in kg/ha, using bulk density from 
+         # 2_Create_soil_data-setup2_KBS to soil depth in m)*ppm which = mg/kg
          #          then divide by 1000000 mg/kg conversion factor
          NO3_kgha=((0.10*10000*ObsBD$mean_BD*1000)*NO3_ppm)/1000000, 
          NO3_hgha=NO3_kgha/10, 
-         NO3_kgha_10to60cm=((0.10*10000*ObsBD$mean_BD*1000)*NO3_ppm_10to60cm)/1000000, 
-         NO3_hgha_10to60cm=NO3_kgha_10to60cm/10, 
-         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+         NO3_10to60cm_kgha=((0.50*10000*ObsBD$mean_BD*1000)*NO3_10to60cm_ppm)/1000000, 
+         NO3_10to60cm_hgha=NO3_10to60cm_kgha/10, 
+         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1,
+         NO3_2cm_kgha=((0.02*10000*ObsBD$mean_BD*1000)*NO3_ppm0)/1000000,
+         NO3_5cm_kgha=((0.03*10000*ObsBD$mean_BD*1000)*NO3_ppm1)/1000000,
+         NO3_10cm_kgha=((0.05*10000*ObsBD$mean_BD*1000)*NO3_ppm2)/1000000,
+         NO3_20cm_kgha=((0.1*10000*ObsBD$mean_BD*1000)*NO3_ppm3)/1000000,
+         NO3_40cm_kgha=((0.2*10000*1.2*1000)*NO3_ppm4)/1000000,
+         NO3_60cm_kgha=((0.2*10000*1.6*1000)*NO3_ppm5)/1000000,
+         NO3_0to60cm_kgha=NO3_2cm_kgha+NO3_5cm_kgha+NO3_10cm_kgha+
+           NO3_20cm_kgha+NO3_40cm_kgha+NO3_60cm_kgha)
 
 Day_soiln_raw <- rbind(Day_base_soiln,Day_exp_soiln) 
   
@@ -279,6 +318,17 @@ Day_exp_wfps <- read.fwf(paste0(daycent_path,paste0("wfps_exp_",scenario_name,".
                                       "wfps_layer9","wfps_layer10","wfps_layer11",
                                       "wfps_layer12","wfps_layer13"),
                           skip=1) %>%
+  mutate(year=floor(time),
+         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+
+Day_fut_wfps <- read.fwf(paste0(daycent_path,paste0("wfps_fut_",scenario_name,".out")),
+                         widths=c(8,5,9,9,9,9,9,9,9,9,9,9,9,9,9),
+                         col.names=c("time","dayofyear","wfps_layer1","wfps_layer2",
+                                     "wfps_layer3","wfps_layer4","wfps_layer5",
+                                     "wfps_layer6","wfps_layer7","wfps_layer8",
+                                     "wfps_layer9","wfps_layer10","wfps_layer11",
+                                     "wfps_layer12","wfps_layer13"),
+                         skip=1) %>%
   mutate(year=floor(time),
          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
 
@@ -529,10 +579,11 @@ SoilBD_gcc_piv <- pivot_longer(SoilBD_gcc, c(-year),
 N2O_ghaday <- merge(ObsGas[,c("date","N2O_N")],
                     DayGN_ghaday[,c("date","N2O_gNhad")],
                     by="date",
-                    all=TRUE)
-colnames(N2O_ghaday) <- c("date","Observed","Daycent")
+                    all=TRUE) %>%
+  mutate(year=year(date))
+colnames(N2O_ghaday) <- c("date","Observed","Daycent","year")
 
-N2O_ghaday_piv <- pivot_longer(N2O_ghaday, c(-date),
+N2O_ghaday_piv <- pivot_longer(N2O_ghaday, c(-date, -year),
                                names_to = "source",
                                values_to = "n2o_val")
 

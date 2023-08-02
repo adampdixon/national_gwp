@@ -28,28 +28,56 @@ library(tidyr)
 if(mgmt_scenario_grp!=3 & mgmt_scenario_grp!=8) {
 APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4,
                       widths = c(15,15,22,21,15,15,24,23,15,15,15,
-                                 20,20,20,20,20,20,19,19,19,19,19,15),
+                                 20,20,20,20,20,20,19,19,19,19,19,15,
+                                 15,15,15,15,15,15,15,15,15,15,15,15,
+                                 15,15,15,15,15,15,15,15,15,15,15,15,
+                                 15,15,15,15,15,23,23,23,23,23,23,23,
+                                 23,23,23,23,23,15,15,15),
                       col.names = c("Date","BulkDensity_gcc(1)","SorghumYield_kgha",
                                     "CottonYield_kgha","VolH2O_5cm","SoilTemp_5cm_C",
                                     "sorghum_biomass_kgha","cotton_biomass_kgha",
-                                    "dul_10cm","sat_10cm","ph_10cm",
+                                    "dul_5cm","sat_5cm","ph_5cm",
                                     "N2O_bylayer_kgha(1)","N2O_bylayer_kgha(2)",
                                     "N2O_bylayer_kgha(3)","N2O_bylayer_kgha(4)",
                                     "N2O_bylayer_kgha(5)","N2O_bylayer_kgha(6)",
                                     "oc_bylayer_pct(1)",
                                     "oc_bylayer_pct(2)","oc_bylayer_pct(3)",
                                     "oc_bylayer_pct(4)","oc_bylayer_pct(5)",
-                                    "BulkDensity_gcc(2)"),
-                      colClasses = c("character","numeric","numeric",
-                                     "numeric","numeric","numeric",
-                                     "numeric","numeric",
-                                     "numeric","numeric","numeric",
-                                     "numeric","numeric","numeric",
-                                     "numeric","numeric",
-                                     "numeric","numeric",
-                                     "numeric","numeric",
-                                     "numeric","numeric",
-                                     "numeric"),
+                                    "BulkDensity_gcc(2)",
+                                    "NO3_5cm","NO3_15cm","NO3_35cm","NO3_60cm",
+                                    "VolH2O_15cm","VolH2O_35cm","VolH2O_60cm",
+                                    "dul_15cm","dul_35cm","dul_60cm",
+                                    "sat_15cm","sat_35cm","sat_60cm",
+                                    "biomc_bylayer_kgha(1)","biomc_bylayer_kgha(2)",
+                                    "biomc_bylayer_kgha(3)","biomc_bylayer_kgha(4)",
+                                    "biomn_bylayer_kgha(1)","biomn_bylayer_kgha(2)",
+                                    "biomn_bylayer_kgha(3)","biomn_bylayer_kgha(4)",
+                                    "humc_bylayer_kgha(1)","humc_bylayer_kgha(2)",
+                                    "humc_bylayer_kgha(3)","humc_bylayer_kgha(4)",
+                                    "humn_bylayer_kgha(1)","humn_bylayer_kgha(2)",
+                                    "humn_bylayer_kgha(3)","humn_bylayer_kgha(4)",
+                                    "dlt_res_c_biom(1-2)(1)","dlt_res_c_biom(1-2)(2)",
+                                    "dlt_res_c_biom(1-2)(3)","dlt_res_c_biom(1-2)(4)",
+                                    "dlt_res_c_hum(1-2)(1)","dlt_res_c_hum(1-2)(2)",
+                                    "dlt_res_c_hum(1-2)(3)","dlt_res_c_hum(1-2)(4)",
+                                    "dlt_biom_c_hum(1-2)(1)","dlt_biom_c_hum(1-2)(2)",
+                                    "dlt_biom_c_hum(1-2)(3)","dlt_biom_c_hum(1-2)(4)",
+                                    "SoilTemp_15cm_C","SoilTemp_35cm_C","SoilTemp_60cm_C"),
+                      colClasses = c("character","numeric","numeric","numeric","numeric","numeric",
+                                     "numeric","numeric","numeric","numeric","numeric",
+                                     "numeric","numeric","numeric","numeric","numeric",
+                                     "numeric","numeric","numeric","numeric","numeric",
+                                     "numeric","numeric","numeric","numeric","numeric",
+                                     "numeric","numeric","numeric","numeric","numeric",
+                                     "numeric","numeric","numeric","numeric","numeric",
+                                     "numeric","numeric","numeric","numeric","numeric",
+                                     "numeric","numeric","numeric","numeric","numeric",
+                                     "numeric","numeric","numeric","numeric","numeric",
+                                     "numeric","numeric","numeric","numeric","numeric",
+                                     "numeric","numeric","numeric","numeric","numeric",
+                                     "numeric","numeric","numeric","numeric","numeric",
+                                     "numeric"
+                                     ),
                       check.names = FALSE, header=FALSE) %>%
   mutate(date=as.Date(Date, "%d/%m/%Y"),
          year=year(date),
@@ -61,12 +89,34 @@ APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4
           # (`BulkDensity_gcc(1)`*5*`oc_bylayer_pct(2)`),
          N2O_10cm_kgha=`N2O_bylayer_kgha(1)`+(`N2O_bylayer_kgha(2)`*0.5),
          N2O_profile_kgha=`N2O_bylayer_kgha(1)`+`N2O_bylayer_kgha(2)`+
-            (`N2O_bylayer_kgha(3)`*0.5)) #+`N2O_bylayer_kgha(4)`+
-           #`N2O_bylayer_kgha(5)`+`N2O_bylayer_kgha(6)`)
+           `N2O_bylayer_kgha(3)`+`N2O_bylayer_kgha(4)`,
+         BiomC_profile_kgha=`biomc_bylayer_kgha(1)` + `biomc_bylayer_kgha(2)` +
+           `biomc_bylayer_kgha(3)`+`biomc_bylayer_kgha(4)`,
+         BiomN_profile_kgha=`biomn_bylayer_kgha(1)` + `biomn_bylayer_kgha(2)` +
+           `biomn_bylayer_kgha(3)`+`biomn_bylayer_kgha(4)`,
+         HumC_profile_kgha=`humc_bylayer_kgha(1)` + `humc_bylayer_kgha(2)` +
+           `humc_bylayer_kgha(3)`+`humc_bylayer_kgha(4)`,
+         HumN_profile_kgha=`humn_bylayer_kgha(1)` + `humn_bylayer_kgha(2)` +
+           `humn_bylayer_kgha(3)`+`humn_bylayer_kgha(4)`,
+BiomC_10cm_kgha=`biomc_bylayer_kgha(1)` + (`biomc_bylayer_kgha(2)`*0.5),
+BiomN_10cm_kgha=`biomn_bylayer_kgha(1)` + (`biomn_bylayer_kgha(2)`*0.5),
+HumC_10cm_kgha=`humc_bylayer_kgha(1)` + (`humc_bylayer_kgha(2)`*0.5),
+HumN_10cm_kgha=`humn_bylayer_kgha(1)` + (`humn_bylayer_kgha(2)`*0.5),
+VolH2O_10cm=((VolH2O_5cm*5) + (VolH2O_15cm*5)) / 10, # weighted average
+DH2O_10cm=((VolH2O_5cm*5)+(VolH2O_15cm*5)), # depth of water
+CtoBiom_10cm_kgha=`dlt_res_c_biom(1-2)(1)` + (`dlt_res_c_biom(1-2)(2)`*0.5),
+CtoHum_10cm_kgha=`dlt_res_c_hum(1-2)(1)` + (`dlt_res_c_hum(1-2)(2)`*0.5),
+CBiomtoHum_10cm_kgha=`dlt_biom_c_hum(1-2)(1)` + (`dlt_biom_c_hum(1-2)(2)`*0.5),
+SoilTemp_10cm_C=((SoilTemp_5cm_C*5)+(SoilTemp_15cm_C*5))/10 # weighted average
+)
 } else { # includes cover crop columns
-  APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4,
+APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4,
                         widths = c(15,15,22,21,15,15,24,24,23,15,15,15,
-                                   20,20,20,20,20,20,18,18,18,18,18,15),
+                                   20,20,20,20,20,20,18,18,18,18,18,15,
+                                   15,15,15,15,15,15,15,15,15,15,15,15,
+                                   15,15,15,15,15,15,15,15,15,15,15,15,
+                                   15,15,15,15,15,23,23,23,23,23,23,23,
+                                   23,23,23,23,23,15,15,15),
                         col.names = c("Date","BulkDensity_gcc(1)","SorghumYield_kgha",
                                       "CottonYield_kgha",
                                       "VolH2O_5cm","SoilTemp_5cm_C",
@@ -79,12 +129,40 @@ APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4
                                       "oc_bylayer_pct(1)",
                                       "oc_bylayer_pct(2)","oc_bylayer_pct(3)",
                                       "oc_bylayer_pct(4)","oc_bylayer_pct(5)",
-                                      "BulkDensity_gcc(2)"),
+                                      "BulkDensity_gcc(2)",
+                                      "NO3_5cm","NO3_15cm","NO3_35cm","NO3_60cm",
+                                      "VolH2O_15cm","VolH2O_35cm","VolH2O_60cm",
+                                      "dul_15cm","dul_35cm","dul_60cm",
+                                      "sat_15cm","sat_35cm","sat_60cm",
+                                      "biomc_bylayer_kgha(1)","biomc_bylayer_kgha(2)",
+                                      "biomc_bylayer_kgha(3)","biomc_bylayer_kgha(4)",
+                                      "biomn_bylayer_kgha(1)","biomn_bylayer_kgha(2)",
+                                      "biomn_bylayer_kgha(3)","biomn_bylayer_kgha(4)",
+                                      "humc_bylayer_kgha(1)","humc_bylayer_kgha(2)",
+                                      "humc_bylayer_kgha(3)","humc_bylayer_kgha(4)",
+                                      "humn_bylayer_kgha(1)","humn_bylayer_kgha(2)",
+                                      "humn_bylayer_kgha(3)","humn_bylayer_kgha(4)",
+                                      "dlt_res_c_biom(1-2)(1)","dlt_res_c_biom(1-2)(2)",
+                                      "dlt_res_c_biom(1-2)(3)","dlt_res_c_biom(1-2)(4)",
+                                      "dlt_res_c_hum(1-2)(1)","dlt_res_c_hum(1-2)(2)",
+                                      "dlt_res_c_hum(1-2)(3)","dlt_res_c_hum(1-2)(4)",
+                                      "dlt_biom_c_hum(1-2)(1)","dlt_biom_c_hum(1-2)(2)",
+                                      "dlt_biom_c_hum(1-2)(3)","dlt_biom_c_hum(1-2)(4)",
+                                      "SoilTemp_15cm_C","SoilTemp_35cm_C","SoilTemp_60cm_C"),
                         colClasses = c("character","numeric","numeric","numeric","numeric",
                                        "numeric","numeric","numeric","numeric","numeric",
                                        "numeric","numeric","numeric","numeric","numeric",
                                        "numeric","numeric","numeric","numeric","numeric",
-                                       "numeric","numeric","numeric","numeric"),
+                                       "numeric","numeric","numeric","numeric","numeric",
+                                       "numeric","numeric","numeric","numeric","numeric",
+                                       "numeric","numeric","numeric","numeric","numeric",
+                                       "numeric","numeric","numeric","numeric","numeric",
+                                       "numeric","numeric","numeric","numeric","numeric",
+                                       "numeric","numeric","numeric","numeric","numeric",
+                                       "numeric","numeric","numeric","numeric","numeric",
+                                       "numeric","numeric","numeric","numeric","numeric",
+                                       "numeric","numeric","numeric","numeric","numeric",
+                                       "numeric","numeric","numeric"),
                         check.names = FALSE, header=FALSE) %>%
     mutate(date=as.Date(Date, "%d/%m/%Y"),
            year=year(date),
@@ -96,8 +174,26 @@ APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4
              #(`BulkDensity_gcc(1)`*5*`oc_bylayer_pct(2)`),
            N2O_10cm_kgha=`N2O_bylayer_kgha(1)`+(`N2O_bylayer_kgha(2)`*0.5),
            N2O_profile_kgha=`N2O_bylayer_kgha(1)`+`N2O_bylayer_kgha(2)`+
-             `N2O_bylayer_kgha(3)`) #+`N2O_bylayer_kgha(4)`) #+
-             #`N2O_bylayer_kgha(5)`) #+`N2O_bylayer_kgha(6)`)
+             `N2O_bylayer_kgha(3)`+`N2O_bylayer_kgha(4)`,
+           BiomC_profile_kgha=`biomc_bylayer_kgha(1)` + `biomc_bylayer_kgha(2)` +
+             `biomc_bylayer_kgha(3)`+`biomc_bylayer_kgha(4)`,
+           BiomN_profile_kgha=`biomn_bylayer_kgha(1)` + `biomn_bylayer_kgha(2)` +
+             `biomn_bylayer_kgha(3)`+`biomn_bylayer_kgha(4)`,
+           HumC_profile_kgha=`humc_bylayer_kgha(1)` + `humc_bylayer_kgha(2)` +
+             `humc_bylayer_kgha(3)`+`humc_bylayer_kgha(4)`,
+           HumN_profile_kgha=`humn_bylayer_kgha(1)` + `humn_bylayer_kgha(2)` +
+             `humn_bylayer_kgha(3)`+`humn_bylayer_kgha(4)`,
+           BiomC_10cm_kgha=`biomc_bylayer_kgha(1)` + (`biomc_bylayer_kgha(2)`*0.5),
+           BiomN_10cm_kgha=`biomn_bylayer_kgha(1)` + (`biomn_bylayer_kgha(2)`*0.5),
+           HumC_10cm_kgha=`humc_bylayer_kgha(1)` + (`humc_bylayer_kgha(2)`*0.5),
+           HumN_10cm_kgha=`humn_bylayer_kgha(1)` + (`humn_bylayer_kgha(2)`*0.5),
+           VolH2O_10cm=((VolH2O_5cm*5) + (VolH2O_15cm*5)) / 10, # weighted average
+           DH2O_10cm=((VolH2O_5cm*5)+(VolH2O_15cm*5)), # depth of water
+           CtoBiom_10cm_kgha=`dlt_res_c_biom(1-2)(1)` + (`dlt_res_c_biom(1-2)(2)`*0.5),
+           CtoHum_10cm_kgha=`dlt_res_c_hum(1-2)(1)` + (`dlt_res_c_hum(1-2)(2)`*0.5),
+           CBiomtoHum_10cm_kgha=`dlt_biom_c_hum(1-2)(1)` + (`dlt_biom_c_hum(1-2)(2)`*0.5),
+           SoilTemp_10cm_C=((SoilTemp_5cm_C*5)+(SoilTemp_15cm_C*5))/10 # weighted average
+    )
 }
 
 # limit to future scenario time period
@@ -107,6 +203,30 @@ APSIM_out <- APSIM_out_raw[APSIM_out_raw$year <= end_fut_period_year,]
 APSIMC_Mgha <- APSIM_out[APSIM_out$month==7 & APSIM_out$day==15,
                          c("year","TotalSOC_10cm_Mgha")] %>%
   mutate(TotalSOC_10cm_Mgha=round(TotalSOC_10cm_Mgha,1))
+
+## biomass c and n stock by layer (for explanatory graphs)
+APSIMSoilCN_kgha <- APSIM_out[,c("date","year","biomc_bylayer_kgha(1)",
+                                 "biomc_bylayer_kgha(2)","biomc_bylayer_kgha(3)",
+                                 "biomn_bylayer_kgha(1)","biomn_bylayer_kgha(2)",
+                                 "biomn_bylayer_kgha(3)","humc_bylayer_kgha(1)",
+                                 "humc_bylayer_kgha(2)","humc_bylayer_kgha(3)",
+                                 "humn_bylayer_kgha(1)","humn_bylayer_kgha(2)",
+                                 "humn_bylayer_kgha(3)",
+                                 "BiomC_10cm_kgha","BiomN_10cm_kgha",
+                                 "HumC_10cm_kgha","HumN_10cm_kgha",
+                                 "TotalSOC_10cm_Mgha",
+                                 "CtoBiom_10cm_kgha","CtoHum_10cm_kgha",
+                                 "CBiomtoHum_10cm_kgha")]
+colnames(APSIMSoilCN_kgha) <- c("date","year","biomc_20cm","biomc_40cm",
+                                "biomc_60cm","biomn_20cm","biomn_40cm",
+                                "biomn_60cm","humc_20cm","humc_40cm",
+                                "humc_60cm","humn_20cm","humn_40cm",
+                                "humn_60cm",
+                                "BiomC_10cm","BiomN_10cm",
+                                "HumC_10cm","HumN_10cm",
+                                "TotalSOC_10cm",
+                                "CtoBiom_10cm","CtoHum_10cm",
+                                "CBiomtoHum_10cm")
 
 # grain yield
 APSIMY_Mgha <- APSIM_out[,c("year","SorghumYield_kgha","CottonYield_kgha")] %>%
@@ -126,8 +246,13 @@ APSIMBY_Mgha <- APSIM_out[APSIM_out$date %in% date_list,
             CottonYield_Mgha=cotton_biomass_kgha/1000)
 
 ## soil temperature
-APSIMT_C <- APSIM_out[,c("date","year","SoilTemp_5cm_C")] %>%
-  mutate(SoilTemp_5cm_C=round(SoilTemp_5cm_C,1)) 
+APSIMT_C <- APSIM_out[,c("date","year","SoilTemp_5cm_C","SoilTemp_15cm_C",
+                         "SoilTemp_35cm_C","SoilTemp_60cm_C","SoilTemp_10cm_C")] %>%
+  mutate(SoilTemp_5cm_C=round(SoilTemp_5cm_C,1),
+         SoilTemp_15cm_C=round(SoilTemp_15cm_C,1),
+         SoilTemp_35cm_C=round(SoilTemp_35cm_C,1),
+         SoilTemp_60cm_C=round(SoilTemp_60cm_C,1),
+         SoilTemp_10cm_C=round(SoilTemp_10cm_C,1)) 
 
 APSIMT_C_range <- range(APSIMT_C[APSIMT_C$date %in% ObsTemp$date, "SoilTemp_5cm_C"],na.rm=T)
 
@@ -136,8 +261,21 @@ APSIMT_C_range <- range(APSIMT_C[APSIMT_C$date %in% ObsTemp$date, "SoilTemp_5cm_
 #   mutate(SoilTemp_5cm_C=round(SoilTemp_5cm_C,1)-soil_temp_bias) 
 
 ## volumetric soil moisture
-APSIMM_V <- APSIM_out[,c("date","year","VolH2O_5cm")] %>%
-  mutate(VolH2O_5cm=round(VolH2O_5cm*100,0))
+APSIMM_V <- APSIM_out[,c("date","year","VolH2O_5cm","VolH2O_15cm","VolH2O_35cm",
+                         "VolH2O_60cm","dul_5cm","dul_15cm","dul_35cm","dul_60cm",
+                         "sat_5cm","sat_15cm","sat_35cm","sat_60cm",
+                         "DH2O_10cm","VolH2O_10cm")] %>%
+  mutate(VolH2O_5cm=round(VolH2O_5cm*100,0),
+         VolH2O_15cm=round(VolH2O_15cm*100,0),
+         VolH2O_35cm=round(VolH2O_35cm*100,0),
+         VolH2O_60cm=round(VolH2O_60cm*100,0),
+         VolH2O_10cm=round(VolH2O_10cm*100,0),
+         DW_5cm=round((VolH2O_5cm/100)*5,0), #convert to fraction, mult by layer depth (cm)
+         DW_15cm=round((VolH2O_15cm/100)*10,0),
+         DW_35cm=round((VolH2O_35cm/100)*20,),
+         DW_60cm=round(VolH2O_60cm/100*25,0),
+         DW_10cm=round(DH2O_10cm*100,0)
+  )
 
 # ## volumetric soil moisture with bias correction
 # APSIMM_V_calib <- APSIM_out[,c("date","year","VolH2O_10cm")] %>%
@@ -182,6 +320,13 @@ APSIMGN_profile_cum_calib <- APSIMGN_profile_ghaday[APSIMGN_profile_ghaday$date 
                                                       experiment_end_date,] %>%
   group_by(year) %>%
   summarize(tot_N2O_ghayr=sum(N2OEmissions_ghaday))
+
+APSIMNO3_ghaday <- APSIM_out[,c("date","year","NO3_5cm","NO3_15cm","NO3_35cm",
+                                "NO3_60cm")] %>%
+  mutate(NO3_5cm = round(NO3_5cm*1000,2),
+         NO3_15cm = round(NO3_15cm*1000,2),
+         NO3_35cm = round(NO3_35cm*1000,2),
+         NO3_60cm = round(NO3_60cm*1000,2))
 
 #**********************************************************************
 
@@ -406,3 +551,4 @@ SoilT_obsmod_diff_Mgha <- mean(SoilTemp_C[!is.na(SoilTemp_C$Observed) &
 #                                            !is.na(N2O_ghaday$APSIM),"APSIM"])
 
 SOC_obsmod_diff_Mgha_nooutliers <- NA
+

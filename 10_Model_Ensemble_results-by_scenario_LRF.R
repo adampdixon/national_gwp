@@ -410,8 +410,10 @@ suppressMessages({
       frctn_diff_N2O_APSIM_Daycent <- (ens_N2O_profile_comp_gtot$APSIM-ens_N2O_profile_comp_gtot$Daycent)/ens_N2O_profile_comp_gtot$Daycent
       
       
-      ggsave(filename=paste0(results_path,"pub_Ensemble_Sorghum_calibration_",scenario_name,".jpg"),
+      if(mgmt_scenario_grp!=7) {
+        ggsave(filename=paste0(results_path,"pub_Ensemble_Sorghum_calibration_",scenario_name,".jpg"),
              plot=gSY_calib, width=9, height=6, dpi=300)
+      }
       ggsave(filename=paste0(results_path,"pub_Ensemble_Cotton_calibration_",scenario_name,".jpg"),
              plot=gCY_calib, width=9, height=6, dpi=300)
       ggsave(filename=paste0(results_path,"pub_Ensemble_SOC_calibration_",scenario_name,".jpg"),

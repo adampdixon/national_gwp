@@ -850,6 +850,228 @@ ggsave(filename=paste0(results_path,"calib_N2O_comparison_1to1_",scenario_name,"
 
 #**********************************************************************
 
+# explain graphs ----------------------------------------------------------
+
+
+## keep for easy visual explanation
+if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
+
+  gN2O_expl_exp <- ggplot() +
+    geom_line(data=APSIMM_V[APSIMM_V$year %in% 2010:2011,],
+              aes(x=date, y=VolH2O_20cm/100, color=cbPalette12[2]), linewidth=1) +
+    geom_line(data=APSIMM_V[APSIMM_V$year %in% 2010:2011,],
+              aes(x=date, y=VolH2O_40cm/100, color=cbPalette12[3]), linewidth=1) +
+    geom_line(data=APSIMM_V[APSIMM_V$year %in% 2010:2011,],
+              aes(x=date, y=VolH2O_60cm/100, color=cbPalette12[4]), linewidth=1) +
+    geom_line(data=APSIMM_V[APSIMM_V$year %in% 2010:2011,],
+              aes(x=date, y=dul_20cm, color=cbPalette12[9]), linewidth=1) +
+    geom_line(data=APSIMM_V[APSIMM_V$year %in% 2010:2011,],
+              aes(x=date, y=sat_20cm, color=cbPalette12[7]), linewidth=1) +
+    geom_line(data=APSIMNO3_ghaday[APSIMNO3_ghaday$year %in% 2010:2011,],
+              aes(x=date,y=NO3_20cm/1000000, color=cbPalette12[6]), linewidth=1) +
+    geom_line(data=APSIMGN_ghaday[year(APSIMGN_ghaday$date) %in% 2010:2011,],
+              aes(x=date, y=N2OEmissions_ghaday/1000, color=cbPalette12[8]), linewidth=1) +
+    # geom_abline(intercept=SW20cm_fit_coef_time[1], slope=SW20cm_fit_coef_time[2], color=cbPalette9[2]) +
+    # geom_abline(intercept=SW40cm_fit_coef_time[1], slope=SW40cm_fit_coef_time[2], color=cbPalette9[3]) +
+    # geom_abline(intercept=SW60cm_fit_coef_time[1], slope=SW60cm_fit_coef_time[2], color=cbPalette9[4]) +
+    # geom_abline(intercept=NO3fit_coef_time[1], slope=NO3fit_coef_time[2], color=cbPalette9[6]) +
+    # geom_abline(intercept=N2Ofit_coef_time[1], slope=N2Ofit_coef_time[2], color=cbPalette9[8]) +
+    ggtitle(bquote(.(site_name)~"N"["2"]*"O emissions drivers to 20 cm in APSIM"),
+            paste0("Scenario: ",scenario_descriptor_full)) +      
+    ylab(expression('VWC, DUL, SAT, NO'[3]*' (dg ha' ^'-1'*' day' ^'-1'*', N'[2]*'O  (cg ha' ^'-1'*' day'^'-1'*')')) +
+    scale_color_manual(name=NULL,
+                       labels=c("VWC: 0-20 cm","VWC: 20-40 cm","VWC: 40-60 cm",
+                                "NO3 (dg/ha/day)","SAT","N2O (cg/ha/day)","DUL"), #),
+                       values=cbPalette9[c(2,3,4,6,7,8,9)])+ #,7,6,8)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  
+  gN2O_expl_exp
+  
+  ggsave(filename=paste0(results_path,"expl_N2O_exp_",scenario_name,"_APSIM.jpg"),
+         plot=gN2O_expl_exp, width=6, height=6, dpi=300)
+  
+}
+
+
+## N2O
+
+
+### limit to years when observations were taken
+obs_n2o_years <- unique(ObsGas$year)
+
+SMoist_this_exp <- APSIMM_V[APSIMM_V$year %in% obs_n2o_years,]
+SW20cm_fit_time_exp <- lm(VolH2O_20cm/100 ~ date, data = SMoist_this_exp) # convert to fraction
+SW20cm_fit_coef_time_exp <- coef(SW20cm_fit_time_exp)
+SW40cm_fit_time_exp <- lm(VolH2O_40cm/100 ~ date, data = SMoist_this_exp) # convert to fraction
+SW40cm_fit_coef_time_exp <- coef(SW40cm_fit_time_exp)
+SW60cm_fit_time_exp <- lm(VolH2O_60cm/100 ~ date, data = SMoist_this_exp) # convert to fraction
+SW60cm_fit_coef_time_exp <- coef(SW60cm_fit_time_exp)
+#
+NO3_this_exp <- APSIMNO3_ghaday[APSIMNO3_ghaday$year %in% obs_n2o_years,]
+NO3fit_time_exp <- lm(NO3_20cm/1000000 ~ date, data = NO3_this_exp)
+NO3fit_coef_time_exp <- coef(NO3fit_time_exp)
+#
+N2O_this_exp <- APSIM_out[APSIM_out$year %in% obs_n2o_years,
+                          c("date","year","N2O_bylayer_kgha(1)")] %>%
+  mutate(N2O_20cm_ghaday = round(`N2O_bylayer_kgha(1)`*1000,2))
+N2Ofit_time_exp <- lm(N2O_20cm_ghaday/1000 ~ date, data = N2O_this_exp)
+N2Ofit_coef_time_exp <- coef(N2Ofit_time_exp)
+# N2Ofit_r2_time <- round(summary(WYfit_time)$r.squared,2)
+# N2O_rmse_error_time <- N2O_this$Observed-N2O_this$Daycent
+# N2O_rmse_time <- round(sqrt(mean(N2O_rmse_error_time^2,na.rm=TRUE)),2)
+
+## not used? but calculating anyway
+SoilT_this_exp <- SoilTemp_C[year(SoilTemp_C$date) %in% obs_n2o_years,]
+SoilT_fit_time_exp <- lm(APSIM ~ date, data = SoilT_this_exp) # convert to fraction
+SoilTfit_coef_time_exp <- coef(SoilT_fit_time_exp)
+
+gN2O_expl_exp <- ggplot() +
+  geom_line(data=APSIMM_V[APSIMM_V$year %in% obs_n2o_years,],
+            aes(x=date, y=VolH2O_20cm/100, color=cbPalette12[2]), linewidth=1) +
+  geom_line(data=APSIMM_V[APSIMM_V$year %in% obs_n2o_years,],
+            aes(x=date, y=VolH2O_40cm/100, color=cbPalette12[3]), linewidth=1) +
+  geom_line(data=APSIMM_V[APSIMM_V$year %in% obs_n2o_years,],
+            aes(x=date, y=VolH2O_60cm/100, color=cbPalette12[4]), linewidth=1) +
+  geom_line(data=APSIMM_V[APSIMM_V$year %in% obs_n2o_years,],
+            aes(x=date, y=dul_20cm, color=cbPalette12[9]), linewidth=1) +
+  geom_line(data=APSIMM_V[APSIMM_V$year %in% obs_n2o_years,],
+            aes(x=date, y=sat_20cm, color=cbPalette12[7]), linewidth=1) +
+  geom_line(data=APSIMNO3_ghaday[APSIMNO3_ghaday$year %in% obs_n2o_years,],
+            aes(x=date,y=NO3_20cm/1000000, color=cbPalette12[6]), linewidth=1) +
+  geom_line(data=APSIMGN_ghaday[year(APSIMGN_ghaday$date) %in% obs_n2o_years,],
+            aes(x=date, y=N2OEmissions_ghaday/1000, color=cbPalette12[8]), linewidth=1) +
+  # geom_abline(intercept=SW20cm_fit_coef_time[1], slope=SW20cm_fit_coef_time[2], color=cbPalette9[2]) +
+  # geom_abline(intercept=SW40cm_fit_coef_time[1], slope=SW40cm_fit_coef_time[2], color=cbPalette9[3]) +
+  # geom_abline(intercept=SW60cm_fit_coef_time[1], slope=SW60cm_fit_coef_time[2], color=cbPalette9[4]) +
+  # geom_abline(intercept=NO3fit_coef_time[1], slope=NO3fit_coef_time[2], color=cbPalette9[6]) +
+  # geom_abline(intercept=N2Ofit_coef_time[1], slope=N2Ofit_coef_time[2], color=cbPalette9[8]) +
+  ggtitle(bquote(.(site_name)~"N"["2"]*"O emissions drivers to 20 cm in APSIM"),
+          paste0("Scenario: ",scenario_descriptor_full)) +      
+  ylab(expression('VWC, DUL, SAT, NO'[3]*' (dg ha' ^'-1'*' day' ^'-1'*'), N'[2]*'O  (cg ha' ^'-1'*' day'^'-1'*')')) +
+  scale_color_manual(name=NULL,
+                     labels=c("VWC: 0-20 cm","VWC: 20-40 cm","VWC: 40-60 cm",
+                              "NO3 (dg/ha/day)","SAT","N2O (cg/ha/day)","DUL"), #),
+                     values=cbPalette9[c(2,3,4,6,7,8,9)])+ #,7,6,8)]) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+
+gN2O_expl_exp
+
+
+
+## SOC
+
+
+### limit to years when observations were taken
+obs_soc_years <- pull(ObsC_Mgha[ObsC_Mgha$year!=land_conversion_year,],year)
+
+SMoist_this_exp <- APSIMM_V[APSIMM_V$year %in% obs_soc_years,]
+SW20cm_fit_time_exp <- lm(VolH2O_20cm/100 ~ date, data = SMoist_this_exp) # convert to fraction
+SW20cm_fit_coef_time_exp <- coef(SW20cm_fit_time_exp)
+SW40cm_fit_time_exp <- lm(VolH2O_40cm/100 ~ date, data = SMoist_this_exp) # convert to fraction
+SW40cm_fit_coef_time_exp <- coef(SW40cm_fit_time_exp)
+SW60cm_fit_time_exp <- lm(VolH2O_60cm/100 ~ date, data = SMoist_this_exp) # convert to fraction
+SW60cm_fit_coef_time_exp <- coef(SW60cm_fit_time_exp)
+
+SoilT_this_exp <- SoilTemp_C[year(SoilTemp_C$date) %in% obs_soc_years,]
+SoilT_fit_time_exp <- lm(APSIM ~ date, data = SoilT_this_exp) # convert to fraction
+SoilTfit_coef_time_exp <- coef(SoilT_fit_time_exp)
+
+SoilCN_this_exp <- APSIMSoilCN_kgha[APSIMSoilCN_kgha$year %in% obs_soc_years,]
+BC20cm_fit_time_exp <- lm(biomc_20cm ~ date, data = SoilCN_this_exp)
+BC20cm_fit_coef_time_exp <- coef(BC20cm_fit_time_exp)
+BC40cm_fit_time_exp <- lm(biomc_40cm ~ date, data = SoilCN_this_exp)
+BC40cm_fit_coef_time_exp <- coef(BC40cm_fit_time_exp)
+BC60cm_fit_time_exp <- lm(biomc_60cm ~ date, data = SoilCN_this_exp)
+BC60cm_fit_coef_time_exp <- coef(BC60cm_fit_time_exp)
+BN20cm_fit_time_exp <- lm(biomn_20cm ~ date, data = SoilCN_this_exp)
+BN20cm_fit_coef_time_exp <- coef(BN20cm_fit_time_exp)
+BN40cm_fit_time_exp <- lm(biomn_40cm ~ date, data = SoilCN_this_exp)
+BN40cm_fit_coef_time_exp <- coef(BN40cm_fit_time_exp)
+BN60cm_fit_time_exp <- lm(biomn_60cm ~ date, data = SoilCN_this_exp)
+BN60cm_fit_coef_time_exp <- coef(BN60cm_fit_time_exp)
+
+HC20cm_fit_time_exp <- lm(humc_20cm ~ date, data = SoilCN_this_exp)
+HC20cm_fit_coef_time_exp <- coef(HC20cm_fit_time_exp)
+HC40cm_fit_time_exp <- lm(humc_40cm ~ date, data = SoilCN_this_exp)
+HC40cm_fit_coef_time_exp <- coef(HC40cm_fit_time_exp)
+HC60cm_fit_time_exp <- lm(humc_60cm ~ date, data = SoilCN_this_exp)
+HC60cm_fit_coef_time_exp <- coef(HC60cm_fit_time_exp)
+HN20cm_fit_time_exp <- lm(humn_20cm ~ date, data = SoilCN_this_exp)
+HN20cm_fit_coef_time_exp <- coef(HN20cm_fit_time_exp)
+HN40cm_fit_time_exp <- lm(humn_40cm ~ date, data = SoilCN_this_exp)
+HN40cm_fit_coef_time_exp <- coef(HN40cm_fit_time_exp)
+HN60cm_fit_time_exp <- lm(humn_60cm ~ date, data = SoilCN_this_exp)
+HN60cm_fit_coef_time_exp <- coef(HN60cm_fit_time_exp)
+
+soilT_transform_factor <- 100
+
+cols <- c("BiomC" = BiomC_20cm_color, "BiomN" = BiomN_20cm_color, "HumC" = HumC_20cm_color,
+          "HumN" = HumN_20cm_color, "SoilT" = SoilT_color, "TotalC" = TotalSOC_20cm_color,
+          "VWC" = SW_20cm_color)
+
+gBioC_expl_exp <- ggplot() +
+  geom_line(data=APSIMM_V[APSIMM_V$year %in% obs_soc_years,],
+            aes(x=date, y=VolH2O_20cm/100, color="VWC"), linewidth=1) +
+  # geom_line(data=APSIMM_V[APSIMM_V$year %in% obs_soc_years,],
+  #           aes(x=date, y=VolH2O_40cm/100, color=cbPalette20[3]), linewidth=1) +
+  # geom_line(data=APSIMM_V[APSIMM_V$year %in% obs_soc_years,],
+  #           aes(x=date, y=VolH2O_60cm/100, color=cbPalette20[4]), linewidth=1) +
+  geom_line(data=APSIMSoilCN_kgha[APSIMSoilCN_kgha$year %in% obs_soc_years,],
+            aes(x=date, y=biomc_20cm/1000, color="BiomC"), linewidth=1) +
+  geom_line(data=APSIMSoilCN_kgha[APSIMSoilCN_kgha$year %in% obs_soc_years,],
+            aes(x=date, y=biomn_20cm/1000, color="BiomN"), linewidth=1) +
+  geom_line(data=APSIMSoilCN_kgha[APSIMSoilCN_kgha$year %in% obs_soc_years,],
+            aes(x=date, y=humc_20cm/10000, color="HumC"), linewidth=1) +
+  geom_line(data=APSIMSoilCN_kgha[APSIMSoilCN_kgha$year %in% obs_soc_years,],
+            aes(x=date, y=humn_20cm/10000, color="HumN"), linewidth=1) +
+  # geom_line(data=APSIMT_C[APSIMT_C$year %in% obs_soc_years,],
+  #           aes(x=date, y=SoilTemp_20cm_C, color="SoilT"), linewidth=1) +
+  geom_line(data=APSIMSoilCN_kgha[APSIMSoilCN_kgha$year %in% obs_soc_years,],
+            aes(x=date, y=TotalSOC_20cm_Mgha/10, color="TotalC"), linewidth=1) +
+  # geom_line(data=APSIMSoilCN_kgha[APSIMSoilCN_kgha$year %in% obs_soc_years,],
+  #           aes(x=date, y=biomc_40cm, color=cbPalette20[7]), linewidth=1) +
+  # geom_line(data=APSIMSoilCN_kgha[APSIMSoilCN_kgha$year %in% obs_soc_years,],
+  #           aes(x=date, y=biomc_60cm, color=cbPalette20[8]), linewidth=1) +
+  geom_abline(intercept=SoilTfit_coef_time_exp[1], slope=SoilTfit_coef_time_exp[2], colour=SoilT_color) +
+  # geom_abline(intercept=SW40cm_fit_coef_time[1], slope=SW40cm_fit_coef_time[2], color=cbPalette9[3]) +
+  # geom_abline(intercept=SW60cm_fit_coef_time[1], slope=SW60cm_fit_coef_time[2], color=cbPalette9[4]) +
+  # geom_abline(intercept=NO3fit_coef_time[1], slope=NO3fit_coef_time[2], color=cbPalette9[6]) +
+  # geom_abline(intercept=N2Ofit_coef_time[1], slope=N2Ofit_coef_time[2], color=cbPalette9[8]) +
+  ggtitle(bquote(.(site_name)~"N"["2"]*"O emissions drivers to 20 cm in APSIM"),
+          paste0("Scenario: ",scenario_descriptor_full)) +      
+  ylab(expression('VWC, Bio C (g ha' ^'-1'*'), Bio N (g ha' ^'-1'*'), Hum C (), Hum N ()')) +
+  scale_y_continuous(
+    sec.axis = sec_axis(trans = ~ .x * soilT_transform_factor,
+                        name = expression('Soil Temperature ('^o*'C)'))
+  ) +
+  scale_color_manual(name=NULL,
+                     values=cols,
+                     labels=c("Biomass C: 0-20 cm","Biomass N: 0-20 cm",
+                              "Humic C: 0-20 cm","Humic N: 0-20 cm","Soil Temp: 0-20 cm",
+                              "Total SOC: 0-20 cm","VWC: 0-20 cm")
+                     ) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+
+gBioC_expl_exp
+
+ggsave(filename=paste0(results_path,"expl_SOC_0to20cm_exp_",scenario_name,"_APSIM.jpg"),
+       plot=gN2O_expl_exp, width=9, height=6, dpi=300)
+
+
+#**********************************************************************
+
 # Log results -------------------------------------------------------------
 
 

@@ -49,7 +49,7 @@ if(clim_scenario_num==1) {
   #
   OPEMonthly_fut <- OPEMonthly_sub_fut %>%
     group_by(year,month) %>% 
-    summarize(PRCP = round(sum(rain_mm, na.rm=TRUE),2), 
+    summarize(PRCP = round(sum(rain_mm.x, na.rm=TRUE),2), 
               Calc_TAVG = round(mean(tavg, na.rm=TRUE),2)
     )
   colnames(OPEMonthly_fut) <- c("year","month","PRCP","Calc_TAVG")

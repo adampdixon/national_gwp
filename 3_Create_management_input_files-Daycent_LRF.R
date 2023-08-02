@@ -61,7 +61,7 @@ init_base1 <- c(paste0(land_conversion_year,"          Starting year ## start wi
                 "1 89 CULT K			## Mar 30",
                 "1 120 CULT I		## Apr 30",
                 "1 145 CULT C		## May 25",
-                "1 161 CROP SORG	## Jun 10 - Grain sorghum",
+                "1 161 CROP SORG1	## Jun 10 - Grain sorghum",
                 "1 161 PLTM 			## Jun 10",
                 #"1 161 FERT (16.8N)	## Jun 10",
                 "1 319 HARV G90S	## Oct 23 - Harvest grains and 90% straw",

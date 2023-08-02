@@ -26,7 +26,7 @@ p_Create_future_weather_files <- function(clim_scenario_num,latitude,longitude,
   # Extract data at lat/lon for this site/cell and climate scenario num
   
   curwd <- getwd()
-  setwd('D:/CMIP6')
+  setwd('E:/CMIP6')
   
   i <- if_else(clim_scenario_num==2 | clim_scenario_num==3, "GFDL-ESM4",
                "UKESM1-0-LL")
@@ -81,7 +81,7 @@ p_Create_future_weather_files <- function(clim_scenario_num,latitude,longitude,
   # Build data frame replicating structure of new_df from current weather data
   
   # convert data to alternative units
-  rsds_df$radn_MJm2 <- rsds_df$val*(60*60*24)/1000000 # convert fr# om watts/m^2 to MJ/m^2 
+  rsds_df$radn_MJm2 <- rsds_df$val*(60*60*24)/1000000 # convert from watts/m^2 to MJ/m^2 
   rsds_df$radn_Ld <- rsds_df$val/0.484583 # convert from watts/m^2 to Langley/day
   rsds_df$radn_Wm2 <- rsds_df$val
   pr_df$rain_mm <- pr_df$val*10 # convert from cm/day to mm/day
@@ -101,5 +101,6 @@ p_Create_future_weather_files <- function(clim_scenario_num,latitude,longitude,
   # Write out file
   
   write.csv(fut_clim_dat,file=paste0(fut_weather_path,"fut_clim_scenario_",clim_scenario_num,'.csv'),row.names=F)
+  
   
 } # end function

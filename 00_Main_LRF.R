@@ -45,6 +45,7 @@ calib_mgmt_nums <- c(3,53,56,7,8)
 #
 fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
 obs_path <- paste0("Data/",site_name,"/")
+obs_mgmt_path <- paste0("Data/",site_name,"/Management/")
 obs_filename <- "LibertyResearchFarm_adj.xlsx"
 curr_wth_tab <- "WeatherDaily"
 wth_path <- paste0("Data/",site_name,"/Weather/") 
@@ -62,12 +63,31 @@ if(Sys.info()['sysname']=='Linux') {
 rothc_path <- paste0("RothC/",site_name,"/")
 mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 
+#**********************************************************************
+
+# # create future climate files (scenarios 2-5)
+# ## ******** comment this section out after first run 
+# 
+# print("**Create future CMIP6 climate files**")
 # source("p_Create_future_weather_files.R")
+# for (x in 2:5) {
+#   print("************************************")
+#   print("####### New climate scenario #######")
+#   print("************************************")
+#   print(paste0("climate scenario: ",x))
+#   clim_scenario_num <- x
+#   p_Create_future_weather_files(clim_scenario_num,latitude,longitude,
+#                                 experiment_end_year)
+# }
+# source("p_Future_weather_reanalysis.R")
+
+#**********************************************************************
+
 
 # Loop through the scenarios; set which climate and management
 # scenario numbers to use for this run:
-clim_nums <- c(1)
-mgmt_grps <- calib_mgmt_grps #
+clim_nums <- c(1:5)
+mgmt_grps <- c(3:8) #calib_mgmt_grps #
 
 
 for (x in clim_nums) { # climate scenarios
@@ -76,11 +96,7 @@ for (x in clim_nums) { # climate scenarios
   print("************************************")
   print(paste0("climate scenario: ",x))
   clim_scenario_num <- x
-  # if(clim_scenario_num!=1) {
-  #   p_Create_future_weather_files(clim_scenario_num,latitude,longitude,
-  #                                 experiment_end_year)
-  # }
-  # source("1_Create_weather_input_files.R")
+   # source("1_Create_weather_input_files.R")
   for (y in mgmt_grps) { # management scenario groups
     mgmt_scenario_grp <- y # scenario group number
     max_scenario_options <- if_else(y==4, 4, # option numbers for those with incremental adjustments
@@ -95,15 +111,17 @@ for (x in clim_nums) { # climate scenarios
       mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
       scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
       print(paste0("scenario_name: ",scenario_name))
+      #if(mgmt_scenario_num %in% calib_mgmt_nums) {
       source("0_Controller2.R")
+      #}
       # experiment with: library(gdata)
-      #keep(list-of-objects-not-to-rm) 
+      #keep(list-of-objects-not-to-rm)
       }
   } # end loop through management scenario groups
 } # end loop through climate scenarios
 
-# source(paste0("10_Model_Ensemble_results-combined_scenarios_",site_name,".R"))
-# source("10_Model_Ensemble_results-combined_scenarios_and_sites.R")
+source(paste0("10_Model_Ensemble_results-combined_scenarios_",site_name,".R"))
+source("10_Model_Ensemble_results-combined_scenarios_and_sites_compbaseline.R")
 
 # end timer
 run_time <- round(toc(echo=TRUE)/60,1)

@@ -142,7 +142,8 @@ suppressMessages({
   
   gC 
   
-  gT <- SoilTemp_C_piv[SoilTemp_C_piv$source=='APSIM' & SoilTemp_C_piv$year %in% ObsTemp$year,] %>%
+ 
+  gT <- SoilTemp_C_piv %>%
     ggplot(aes(x=date, y=temp_val, color=source, show.legend=TRUE)) +
     geom_point() +
     geom_point(data=SoilTemp_C_piv[SoilTemp_C_piv$source=='Observed' & SoilTemp_C_piv$year %in% ObsTemp$year,],
@@ -160,28 +161,28 @@ suppressMessages({
   
   gT
   
-  gT_calib <- SoilTemp_C_piv_calib[SoilTemp_C_piv_calib$source=='APSIM' & SoilTemp_C_piv$year %in% ObsTemp$year,] %>%
-    ggplot(aes(x=date, y=temp_val, color=source, show.legend=TRUE)) +
-    geom_point() +
-    geom_point(data=SoilTemp_C_piv_calib[SoilTemp_C_piv_calib$source=='Observed' & SoilTemp_C_piv$year %in% ObsTemp$year,],
-               aes(x=date, y=temp_val, color=source)) +
-    ggtitle(paste0("APSIM and Observed Soil Temperature with ",soil_temp_bias,
-                   " deg C correction")) +
-    xlab("Year") +
-    ylab(expression('Soil temperature (' ^o*'C)')) +
-    ggtitle(paste0(site_name," Soil Temperature with ",soil_temp_bias,
-                   " deg C correction"),paste0("Scenario: ",scenario_descriptor_full)) +
-    scale_color_manual(labels=c("APSIM","Observed"),
-                       values=cbPalette9[c(8,1)]) +
-    theme_classic(base_family = "serif", base_size = 15) +
-    theme(panel.background = element_blank(),
-          axis.line = element_line(),
-          legend.position = "right",
-          legend.key = element_blank())
+  # gT_calib <- SoilTemp_C_piv_calib[SoilTemp_C_piv_calib$source=='APSIM' & SoilTemp_C_piv$year %in% ObsTemp$year,] %>%
+  #   ggplot(aes(x=date, y=temp_val, color=source, show.legend=TRUE)) +
+  #   geom_point() +
+  #   geom_point(data=SoilTemp_C_piv_calib[SoilTemp_C_piv_calib$source=='Observed' & SoilTemp_C_piv$year %in% ObsTemp$year,],
+  #              aes(x=date, y=temp_val, color=source)) +
+  #   ggtitle(paste0("APSIM and Observed Soil Temperature with ",soil_temp_bias,
+  #                  " deg C correction")) +
+  #   xlab("Year") +
+  #   ylab(expression('Soil temperature (' ^o*'C)')) +
+  #   ggtitle(paste0(site_name," Soil Temperature with ",soil_temp_bias,
+  #                  " deg C correction"),paste0("Scenario: ",scenario_descriptor_full)) +
+  #   scale_color_manual(labels=c("APSIM","Observed"),
+  #                      values=cbPalette9[c(8,1)]) +
+  #   theme_classic(base_family = "serif", base_size = 15) +
+  #   theme(panel.background = element_blank(),
+  #         axis.line = element_line(),
+  #         legend.position = "right",
+  #         legend.key = element_blank())
+  # 
+  # gT_calib
   
-  gT_calib
-  
-  gM <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='APSIM' & SoilMoist_VSM_piv$year %in% ObsVSM$year,] %>%
+  gM <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='APSIM',] %>%
     ggplot(aes(x=date, y=h2o_val, color=source, show.legend=TRUE)) +
     geom_point() +
     geom_point(data=SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='Observed' & SoilMoist_VSM_piv$year %in% ObsVSM$year,],
@@ -199,26 +200,26 @@ suppressMessages({
   
   gM
   
-  gM_calib <- SoilMoist_VSM_piv_calib[SoilMoist_VSM_piv_calib$source=='APSIM' & 
-                                        SoilMoist_VSM_piv$year %in% ObsVSM$year,] %>%
-    ggplot(aes(x=date, y=h2o_val, color=source, show.legend=TRUE)) +
-    geom_point() +
-    geom_point(data=SoilMoist_VSM_piv_calib[SoilMoist_VSM_piv_calib$source=='Observed' & 
-                                              SoilMoist_VSM_piv$year %in% ObsVSM$year,],
-               aes(x=date, y=h2o_val, color=source)) +
-    xlab("Year") +
-    ylab("Volumetric soil moisture (%)") +
-    ggtitle(paste0(site_name," Volumetric soil moisture with ",soil_moist_bias,"% correction"),
-            paste0("Scenario: ",scenario_descriptor_full)) +
-    scale_color_manual(labels=c("APSIM","Observed"),
-                       values=cbPalette9[c(8,1)]) +
-    theme_classic(base_family = "serif", base_size = 15) +
-    theme(panel.background = element_blank(),
-          axis.line = element_line(),
-          legend.position = "right",
-          legend.key = element_blank())
-  
-  gM_calib
+  # gM_calib <- SoilMoist_VSM_piv_calib[SoilMoist_VSM_piv_calib$source=='APSIM' & 
+  #                                       SoilMoist_VSM_piv$year %in% ObsVSM$year,] %>%
+  #   ggplot(aes(x=date, y=h2o_val, color=source, show.legend=TRUE)) +
+  #   geom_point() +
+  #   geom_point(data=SoilMoist_VSM_piv_calib[SoilMoist_VSM_piv_calib$source=='Observed' & 
+  #                                             SoilMoist_VSM_piv$year %in% ObsVSM$year,],
+  #              aes(x=date, y=h2o_val, color=source)) +
+  #   xlab("Year") +
+  #   ylab("Volumetric soil moisture (%)") +
+  #   ggtitle(paste0(site_name," Volumetric soil moisture with ",soil_moist_bias,"% correction"),
+  #           paste0("Scenario: ",scenario_descriptor_full)) +
+  #   scale_color_manual(labels=c("APSIM","Observed"),
+  #                      values=cbPalette9[c(8,1)]) +
+  #   theme_classic(base_family = "serif", base_size = 15) +
+  #   theme(panel.background = element_blank(),
+  #         axis.line = element_line(),
+  #         legend.position = "right",
+  #         legend.key = element_blank())
+  # 
+  # gM_calib
   
   gB <- SoilBD_gcc_piv %>%
     ggplot(aes(x=source,y=bd_val, fill=factor(year))) +
@@ -298,16 +299,415 @@ suppressMessages({
          plot=gC, width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"Soil_Temp_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
          plot=gT, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"Soil_Temp_comparison_calib_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
-         plot=gT_calib, width=9, height=6, dpi=300)
+  # ggsave(filename=paste0(results_path,"Soil_Temp_comparison_calib_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+  #        plot=gT_calib, width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"Soil_Moist_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
          plot=gM, width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"Soil_Moist_comparison_calib_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
-         plot=gM_calib, width=9, height=6, dpi=300)
+  # ggsave(filename=paste0(results_path,"Soil_Moist_comparison_calib_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
+  #        plot=gM_calib, width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"N2O_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
          plot=gNG, width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"N2O_ann_comparison_fut_",clim_scenario_num,"_",mgmt_scenario_num,"_APSIM.jpg"),
          plot=gNGann, width=9, height=6, dpi=300)
   
+  
+  #**********************************************************************
+  
+  # explain graphs ----------------------------
+  
+    
+  ## explain N2O to 60 cm to end of future time period
+  
+  SMoist_this <- APSIMM_V[APSIMM_V$year %in% (end_exp_period_year+1):end_fut_period_year,]
+  ## volumetric soil water content (convert to fraction)
+  SW20cm_fit_time <- lm(VolH2O_20cm/100 ~ date, data = SMoist_this)
+  SW20cm_fit_coef_time <- coef(SW20cm_fit_time)
+  SW40cm_fit_time <- lm(VolH2O_40cm/100 ~ date, data = SMoist_this)
+  SW40cm_fit_coef_time <- coef(SW40cm_fit_time)
+  SW60cm_fit_time <- lm(VolH2O_60cm/100 ~ date, data = SMoist_this)
+  SW60cm_fit_coef_time <- coef(SW60cm_fit_time)
+  ## depth of water 
+  DW20cm_fit_time <- lm(DW_20cm ~ date, data = SMoist_this) 
+  DW20cm_fit_coef_time <- coef(DW20cm_fit_time)
+  DW40cm_fit_time <- lm(DW_40cm ~ date, data = SMoist_this)
+  DW40cm_fit_coef_time <- coef(DW40cm_fit_time)
+  DW60cm_fit_time <- lm(DW_60cm ~ date, data = SMoist_this)
+  DW60cm_fit_coef_time <- coef(DW60cm_fit_time)
+  DW0to60cm_fit_time <- lm((DW_20cm+DW_40cm+DW_60cm) ~ date, data = SMoist_this)
+  DW0to60cm_fit_coef_time <- coef(DW0to60cm_fit_time)
+  #
+  NO3_this <- APSIMNO3_ghaday[APSIMNO3_ghaday$year %in% (end_exp_period_year+1):end_fut_period_year,] %>%
+    mutate(NO3_0to60cm=NO3_20cm+NO3_40cm+NO3_60cm)
+  NO320cm_fit_time <- lm(NO3_20cm/1000000 ~ date, data = NO3_this)
+  NO320cm_fit_coef_time <- coef(NO320cm_fit_time)
+  NO340cm_fit_time <- lm(NO3_40cm/1000000 ~ date, data = NO3_this)
+  NO340cm_fit_coef_time <- coef(NO340cm_fit_time)
+  NO360cm_fit_time <- lm(NO3_60cm/1000000 ~ date, data = NO3_this)
+  NO360cm_fit_coef_time <- coef(NO360cm_fit_time)
+  NO30to60cm_fit_time <- lm(NO3_0to60cm/1000000 ~ date, data = NO3_this)
+  NO30to60cm_fit_coef_time <- coef(NO30to60cm_fit_time)
+  #
+  N2O_this <- APSIM_out[APSIM_out$year %in% (end_exp_period_year+1):end_fut_period_year,
+                          c("date","year","N2O_bylayer_kgha(1)",
+                            "N2O_bylayer_kgha(2)","N2O_bylayer_kgha(3)",
+                            "N2O_profile_kgha")] %>%
+    mutate(N2O_20cm_ghaday = round(`N2O_bylayer_kgha(1)`*1000,2),
+           N2O_40cm_ghaday = round(`N2O_bylayer_kgha(2)`*1000,2),
+           N2O_60cm_ghaday = round(`N2O_bylayer_kgha(3)`*1000,2),
+           N2O_0to60cm_ghaday = N2O_20cm_ghaday + N2O_40cm_ghaday + N2O_60cm_ghaday)
+  N2O20cm_fit_time <- lm(N2O_20cm_ghaday/1000 ~ date, data = N2O_this)
+  N2O20cm_fit_coef_time <- coef(N2O20cm_fit_time)
+  N2O40cm_fit_time <- lm(N2O_40cm_ghaday/1000 ~ date, data = N2O_this)
+  N2O40cm_fit_coef_time <- coef(N2O40cm_fit_time)
+  N2O60cm_fit_time <- lm(N2O_60cm_ghaday/1000 ~ date, data = N2O_this)
+  N2O60cm_fit_coef_time <- coef(N2O60cm_fit_time)
+  N2O0to60cm_fit_time <- lm(N2O_0to60cm_ghaday/1000 ~ date, data = N2O_this)
+  N2O0to60cm_fit_coef_time <- coef(N2O0to60cm_fit_time)
+  N2Oprofile_fit_time <- lm(N2O_profile_kgha/1000 ~ date, data = N2O_this)
+  N2Oprofile_fit_coef_time <- coef(N2Oprofile_fit_time)
+  # N2Ofit_r2_time <- round(summary(WYfit_time)$r.squared,2)
+  # N2O_rmse_error_time <- N2O_this$Observed-N2O_this$Daycent
+  # N2O_rmse_time <- round(sqrt(mean(N2O_rmse_error_time^2,na.rm=TRUE)),2)
+  
+  
+  
+  gN2O_expl_fut <- ggplot() +
+    geom_line(data=SMoist_this,
+              aes(x=date, y=VolH2O_20cm/100, color=cbPalette12[2]), linewidth=1) +
+    geom_line(data=SMoist_this,
+              aes(x=date, y=VolH2O_40cm/100, color=cbPalette12[3]), linewidth=1) +
+    geom_line(data=SMoist_this,
+              aes(x=date, y=VolH2O_60cm/100, color=cbPalette12[4]), linewidth=1) +
+    geom_line(data=SMoist_this,
+              aes(x=date, y=dul_20cm, color=cbPalette12[9]), linewidth=1) +
+    geom_line(data=SMoist_this,
+              aes(x=date, y=sat_20cm, color=cbPalette12[7]), linewidth=1) +
+    geom_line(data=NO3_this,
+              aes(x=date,y=NO3_20cm/1000000, color=cbPalette12[6]), linewidth=1) +
+    geom_line(data=N2O_this,
+              aes(x=date, y=N2O_20cm_ghaday/1000, color=cbPalette12[8]), linewidth=1) +
+    # geom_abline(intercept=SW20cm_fit_coef_time[1], slope=SW20cm_fit_coef_time[2], color=cbPalette9[2]) +
+    # geom_abline(intercept=SW40cm_fit_coef_time[1], slope=SW40cm_fit_coef_time[2], color=cbPalette9[3]) +
+    # geom_abline(intercept=SW60cm_fit_coef_time[1], slope=SW60cm_fit_coef_time[2], color=cbPalette9[4]) +
+    # geom_abline(intercept=NO3fit_coef_time[1], slope=NO3fit_coef_time[2], color=cbPalette9[6]) +
+    # geom_abline(intercept=N2Ofit_coef_time[1], slope=N2Ofit_coef_time[2], color=cbPalette9[8]) +
+    ggtitle(bquote(.(site_name)~"N"["2"]*"O emissions drivers to 60 cm in APSIM"),
+            paste0("Scenario: ",scenario_descriptor_full)) +      
+    ylab(expression('VWC, DUL, SAT, NO'[3]*' (dg ha' ^'-1'*' day' ^'-1'*', N'[2]*'O  (cg ha' ^'-1'*' day'^'-1'*')')) +
+    scale_color_manual(name=NULL,
+                       labels=c("VWC: 0-20 cm","VWC: 20-40 cm","VWC: 40-60 cm",
+                                "NO3 (dg/ha/day)","SAT","N2O (cg/ha/day)","DUL"), #),
+                       values=cbPalette9[c(2,3,4,6,7,8,9)])+ #,7,6,8)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  
+  gN2O_expl_fut
+  
+  ggsave(filename=paste0(results_path,"expl_N2O_0to60cm_fut_",scenario_name,"_APSIM.jpg"),
+         plot=gN2O_expl_fut, width=9, height=6, dpi=300)
+  
+  
+  ## change in each over future period
+  
+  SW20cm_first <- as.numeric(lapply(SW20cm_fit_time["fitted.values"],dplyr::first))
+  SW40cm_first <- as.numeric(lapply(SW40cm_fit_time["fitted.values"],dplyr::first))
+  SW60cm_first <- as.numeric(lapply(SW60cm_fit_time["fitted.values"],dplyr::first))
+  DW20cm_first <- as.numeric(lapply(DW20cm_fit_time["fitted.values"],dplyr::first))
+  DW40cm_first <- as.numeric(lapply(DW40cm_fit_time["fitted.values"],dplyr::first))
+  DW60cm_first <- as.numeric(lapply(DW60cm_fit_time["fitted.values"],dplyr::first))
+  DW0to60cm_first <- as.numeric(lapply(DW0to60cm_fit_time["fitted.values"],dplyr::first))
+  NO320cm_first <- as.numeric(lapply(NO320cm_fit_time["fitted.values"],dplyr::first))
+  NO340cm_first <- as.numeric(lapply(NO340cm_fit_time["fitted.values"],dplyr::first))
+  NO360cm_first <- as.numeric(lapply(NO360cm_fit_time["fitted.values"],dplyr::first))
+  NO30to60cm_first <- as.numeric(lapply(NO30to60cm_fit_time["fitted.values"],dplyr::first))
+  N2O20cm_first <- as.numeric(lapply(N2O20cm_fit_time["fitted.values"],dplyr::first))
+  N2O40cm_first <- as.numeric(lapply(N2O40cm_fit_time["fitted.values"],dplyr::first))
+  N2O60cm_first <- as.numeric(lapply(N2O60cm_fit_time["fitted.values"],dplyr::first))
+  N2O0to60cm_first <- as.numeric(lapply(N2O0to60cm_fit_time["fitted.values"],dplyr::first))
+  N2Oprofile_first <- as.numeric(lapply(N2Oprofile_fit_time["fitted.values"],dplyr::first))
+#
+  SW20cm_last <- as.numeric(lapply(SW20cm_fit_time["fitted.values"],dplyr::last))
+  SW40cm_last <- as.numeric(lapply(SW40cm_fit_time["fitted.values"],dplyr::last))
+  SW60cm_last <- as.numeric(lapply(SW60cm_fit_time["fitted.values"],dplyr::last))
+  DW20cm_last <- as.numeric(lapply(DW20cm_fit_time["fitted.values"],dplyr::last))
+  DW40cm_last <- as.numeric(lapply(DW40cm_fit_time["fitted.values"],dplyr::last))
+  DW60cm_last <- as.numeric(lapply(DW60cm_fit_time["fitted.values"],dplyr::last))
+  DW0to60cm_last <- as.numeric(lapply(DW0to60cm_fit_time["fitted.values"],dplyr::last))
+  NO320cm_last <- as.numeric(lapply(NO320cm_fit_time["fitted.values"],dplyr::last))
+  NO340cm_last <- as.numeric(lapply(NO340cm_fit_time["fitted.values"],dplyr::last))
+  NO360cm_last <- as.numeric(lapply(NO360cm_fit_time["fitted.values"],dplyr::last))
+  NO30to60cm_last <- as.numeric(lapply(NO30to60cm_fit_time["fitted.values"],dplyr::last))
+  N2O20cm_last <- as.numeric(lapply(N2O20cm_fit_time["fitted.values"],dplyr::last))
+  N2O40cm_last <- as.numeric(lapply(N2O40cm_fit_time["fitted.values"],dplyr::last))
+  N2O60cm_last <- as.numeric(lapply(N2O60cm_fit_time["fitted.values"],dplyr::last))
+  N2O0to60cm_last <- as.numeric(lapply(N2O0to60cm_fit_time["fitted.values"],dplyr::last))
+  N2Oprofile_last <- as.numeric(lapply(N2Oprofile_fit_time["fitted.values"],dplyr::last))
+  #
+  SW20cm_change <- SW20cm_last - SW20cm_first 
+  SW40cm_change <- SW40cm_last - SW40cm_first 
+  SW60cm_change <- SW60cm_last - SW60cm_first 
+  DW20cm_change <- DW20cm_last - DW20cm_first 
+  DW40cm_change <- DW40cm_last - DW40cm_first 
+  DW60cm_change <- DW60cm_last - DW60cm_first 
+  DW0to60cm_change <- DW0to60cm_last - DW0to60cm_first
+  NO320cm_change <- NO320cm_last - NO320cm_first
+  NO340cm_change <- NO340cm_last - NO340cm_first 
+  NO360cm_change <- NO360cm_last - NO360cm_first 
+  NO30to60cm_change <- NO30to60cm_last - NO30to60cm_first
+  N2O20cm_change <- N2O20cm_last - N2O20cm_first 
+  N2O40cm_change <- N2O40cm_last - N2O40cm_first 
+  N2O60cm_change <- N2O60cm_last - N2O60cm_first 
+  N2O0to60cm_change <- N2O0to60cm_last - N2O0to60cm_first
+  N2Oprofile_change <- N2Oprofile_last - N2Oprofile_first 
+  
+  
+  
+  
+  ## explain SOC to 25 cm to end of future time period
+  
+  SMoist_this <- APSIMM_V[APSIMM_V$year %in% (end_exp_period_year+1):end_fut_period_year,]
+  SW25cm_fit_time <- lm(VolH2O_25cm/100 ~ date, data = SMoist_this) # convert to fraction
+  SW25cm_fit_coef_time <- coef(SW25cm_fit_time)
+  DW25cm_fit_time <- lm(DH2O_25cm/100 ~ date, data = SMoist_this) # convert to fraction
+  DW25cm_fit_coef_time <- coef(DW25cm_fit_time)
+  
+  SoilT_this <- APSIMT_C[year(APSIMT_C$date) %in% (end_exp_period_year+1):end_fut_period_year,]
+  SoilT20cm_fit_time <- lm(SoilTemp_20cm_C ~ date, data = SoilT_this) # convert to fraction
+  SoilT20cm_fit_coef_time <- coef(SoilT20cm_fit_time)
+  SoilT40cm_fit_time <- lm(SoilTemp_40cm_C ~ date, data = SoilT_this) # convert to fraction
+  SoilT40cm_fit_coef_time <- coef(SoilT40cm_fit_time)
+  SoilT60cm_fit_time <- lm(SoilTemp_60cm_C ~ date, data = SoilT_this) # convert to fraction
+  SoilT60cm_fit_coef_time <- coef(SoilT60cm_fit_time)
+  SoilT25cm_fit_time <- lm(SoilTemp_25cm_C ~ date, data = SoilT_this) # convert to fraction
+  SoilT25cm_fit_coef_time <- coef(SoilT25cm_fit_time)
+  
+  SoilCN_this <- APSIMSoilCN_kgha[APSIMSoilCN_kgha$year %in% (end_exp_period_year+1):end_fut_period_year,]
+  BC25cm_fit_time <- lm(BiomC_25cm ~ date, data = SoilCN_this)
+  BC25cm_fit_coef_time <- coef(BC25cm_fit_time)
+  BN25cm_fit_time <- lm(BiomN_25cm ~ date, data = SoilCN_this)
+  BN25cm_fit_coef_time <- coef(BN25cm_fit_time)
+  
+  HC25cm_fit_time <- lm(HumC_25cm ~ date, data = SoilCN_this)
+  HC25cm_fit_coef_time <- coef(HC25cm_fit_time)
+  HN25cm_fit_time <- lm(HumN_25cm ~ date, data = SoilCN_this)
+  HN25cm_fit_coef_time <- coef(HN25cm_fit_time)
+  
+  CinB25cm_fit_time <- lm(CtoBiom_25cm ~ date, data = SoilCN_this)
+  CinB25cm_fit_coef_time <- coef(CinB25cm_fit_time)
+  CinH25cm_fit_time <- lm(CtoHum_25cm ~ date, data = SoilCN_this)
+  CinH25cm_fit_coef_time <- coef(CinH25cm_fit_time)
+  CinBtoH25cm_fit_time <- lm(CBiomtoHum_25cm ~ date, data = SoilCN_this)
+  CinBtoH25cm_fit_coef_time <- coef(CinBtoH25cm_fit_time)
+  
+  SOC25cm_fit_time <- lm(TotalSOC_25cm ~ year, data = SoilCN_this) # convert to fraction
+  SOC25cm_fit_coef_time <- coef(SOC25cm_fit_time)
+  
+  soilT_transform_factor <- 10
+  
+  cols <- c("BiomC" = BiomC_25cm_color, "BiomN" = BiomN_25cm_color, "CBtoH" = CBtoHum_25cm_color,
+            "CtoB"= CtoBiom_25cm_color, "CtoH" = CtoHum_25cm_color, 
+            "HumC" = HumC_25cm_color,  "HumN" = HumN_25cm_color, "SoilT" = SoilT_color, 
+            "TotalC" = TotalSOC_25cm_color, "VWC" = SW_25cm_color)
+  
+  gBioC_expl_fut <- ggplot() +
+    geom_line(data=SMoist_this,
+              aes(x=date, y=VolH2O_20cm/100, color="VWC"), linewidth=1) +
+    # geom_line(data=APSIMM_V[APSIMM_V$year %in% obs_soc_years,],
+    #           aes(x=date, y=VolH2O_40cm/100, color=cbPalette20[3]), linewidth=1) +
+    # geom_line(data=APSIMM_V[APSIMM_V$year %in% obs_soc_years,],
+    #           aes(x=date, y=VolH2O_60cm/100, color=cbPalette20[4]), linewidth=1) +
+    geom_line(data=SoilCN_this,
+              aes(x=date, y=BiomC_25cm/1000, color="BiomC"), linewidth=1) +
+    geom_line(data=SoilCN_this,
+              aes(x=date, y=BiomN_25cm/1000, color="BiomN"), linewidth=1) +
+    geom_line(data=SoilCN_this,
+              aes(x=date, y=HumC_25cm/10000, color="HumC"), linewidth=1) +
+    geom_line(data=SoilCN_this,
+              aes(x=date, y=HumN_25cm/10000, color="HumN"), linewidth=1) +
+    # geom_line(data=APSIMT_C[APSIMT_C$year %in% obs_soc_years,],
+    #           aes(x=date, y=SoilTemp_20cm_C, color="SoilT"), linewidth=1) +
+    # geom_line(data=APSIMSoilCN_kgha[APSIMSoilCN_kgha$year %in% end_exp_period_year:end_fut_period_year,],
+    #           aes(x=date, y=CtoBiom_25cm/10, color="CtoB"), linewidth=1) +
+    # geom_line(data=APSIMSoilCN_kgha[APSIMSoilCN_kgha$year %in% end_exp_period_year:end_fut_period_year,],
+    #           aes(x=date, y=CtoHum_25cm/10, color="CtoH"), linewidth=1) +
+    geom_smooth(data=SoilCN_this,
+              aes(x=date, y=CtoBiom_25cm, color="CtoB"), 
+              linewidth=1,
+              se=FALSE,
+              method=lm)+
+    geom_smooth(data=SoilCN_this,
+              aes(x=date, y=CtoHum_25cm, color="CtoH"), 
+              linewidth=1,
+              se=FALSE,
+              method=lm) +
+    geom_smooth(data=SoilCN_this,
+                aes(x=date, y=CBiomtoHum_25cm, color="CBtoH"),
+                linewidth=1,
+                se=FALSE,
+                method=lm) +
+    geom_line(data=SoilCN_this,
+              aes(x=date, y=TotalSOC_25cm/10, color="TotalC"), linewidth=1) +
+    # geom_line(data=APSIMSoilCN_kgha[APSIMSoilCN_kgha$year %in% obs_soc_years,],
+    #           aes(x=date, y=biomc_40cm, color=cbPalette20[7]), linewidth=1) +
+    # geom_line(data=APSIMSoilCN_kgha[APSIMSoilCN_kgha$year %in% obs_soc_years,],
+    #           aes(x=date, y=biomc_60cm, color=cbPalette20[8]), linewidth=1) +
+    geom_smooth(data=SoilT_this,
+                aes(x=date, y=SoilTemp_25cm_C/10, color="SoilT"),
+                method=lm,
+                se=FALSE) +
+    # geom_abline(intercept=SW40cm_fit_coef_time[1], slope=SW40cm_fit_coef_time[2], color=cbPalette9[3]) +
+    # geom_abline(intercept=SW60cm_fit_coef_time[1], slope=SW60cm_fit_coef_time[2], color=cbPalette9[4]) +
+    # geom_abline(intercept=NO3fit_coef_time[1], slope=NO3fit_coef_time[2], color=cbPalette9[6]) +
+    # geom_abline(intercept=N2Ofit_coef_time[1], slope=N2Ofit_coef_time[2], color=cbPalette9[8]) +
+    ggtitle(bquote(.(site_name)~"SOC drivers to 25 cm in APSIM"),
+            paste0("Scenario: ",scenario_descriptor_full)) +      
+    ylab(expression('VWC, Bio C (g ha' ^'-1'*'), Bio N (g ha' ^'-1'*'), Hum C (hg ha' ^'-1'*'), Hum N (hg ha' ^'-1'*')')) +
+    scale_y_continuous(
+      sec.axis = sec_axis(trans = ~ .x * soilT_transform_factor,
+                          name = expression('Soil Temperature ('^o*'C)'))
+    ) +
+    scale_color_manual(name=NULL,
+                       values=cols,
+                       labels=c("Biomass C","Biomass N", "C input Biom to Hum",
+                                "C input to Biom", "C input to Hum", 
+                                "Humic C","Humic N","Soil Temp",
+                                "Total SOC","VWC")
+    ) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  
+  gBioC_expl_fut
+  
+  ggsave(filename=paste0(results_path,"expl_SOC_0to25cm_exp_",scenario_name,"_APSIM.jpg"),
+         plot=gBioC_expl_fut, width=9, height=6, dpi=300)
+  
+  
+  
+  ## change in each over future period
+  
+  SW25cm_first <- as.numeric(lapply(SW25cm_fit_time["fitted.values"],dplyr::first))
+  DW25cm_first <- as.numeric(lapply(DW25cm_fit_time["fitted.values"],dplyr::first))
+  BC25cm_first <- as.numeric(lapply(BC25cm_fit_time["fitted.values"],dplyr::first))
+  BN25cm_first <- as.numeric(lapply(BN25cm_fit_time["fitted.values"],dplyr::first))
+  HC25cm_first <- as.numeric(lapply(HC25cm_fit_time["fitted.values"],dplyr::first))
+  HN25cm_first <- as.numeric(lapply(HN25cm_fit_time["fitted.values"],dplyr::first))
+  CinB25cm_first <- as.numeric(lapply(CinB25cm_fit_time["fitted.values"],dplyr::first))
+  CinH25cm_first <- as.numeric(lapply(CinH25cm_fit_time["fitted.values"],dplyr::first))
+  CinBtoH25cm_first <- as.numeric(lapply(CinBtoH25cm_fit_time["fitted.values"],dplyr::first))
+  SOC25cm_first <- as.numeric(lapply(SOC25cm_fit_time["fitted.values"],dplyr::first))
+  SoilT20cm_first <- as.numeric(lapply(SoilT20cm_fit_time["fitted.values"],dplyr::first))
+  SoilT40cm_first <- as.numeric(lapply(SoilT40cm_fit_time["fitted.values"],dplyr::first))
+  SoilT60cm_first <- as.numeric(lapply(SoilT60cm_fit_time["fitted.values"],dplyr::first))
+  SoilT25cm_first <- as.numeric(lapply(SoilT25cm_fit_time["fitted.values"],dplyr::first))
+  #
+  SW25cm_last <- as.numeric(lapply(SW25cm_fit_time["fitted.values"],dplyr::last))
+  DW25cm_last <- as.numeric(lapply(DW25cm_fit_time["fitted.values"],dplyr::last))
+  BC25cm_last <- as.numeric(lapply(BC25cm_fit_time["fitted.values"],dplyr::last))
+  BN25cm_last <- as.numeric(lapply(BN25cm_fit_time["fitted.values"],dplyr::last))
+  HC25cm_last <- as.numeric(lapply(HC25cm_fit_time["fitted.values"],dplyr::last))
+  HN25cm_last <- as.numeric(lapply(HN25cm_fit_time["fitted.values"],dplyr::last))
+  CinB25cm_last <- as.numeric(lapply(CinB25cm_fit_time["fitted.values"],dplyr::last))
+  CinH25cm_last <- as.numeric(lapply(CinH25cm_fit_time["fitted.values"],dplyr::last))
+  CinBtoH25cm_last <- as.numeric(lapply(CinBtoH25cm_fit_time["fitted.values"],dplyr::last))
+  SOC25cm_last <- as.numeric(lapply(SOC25cm_fit_time["fitted.values"],dplyr::last))
+  SoilT20cm_last <- as.numeric(lapply(SoilT20cm_fit_time["fitted.values"],dplyr::last))
+  SoilT40cm_last <- as.numeric(lapply(SoilT40cm_fit_time["fitted.values"],dplyr::last))
+  SoilT60cm_last <- as.numeric(lapply(SoilT60cm_fit_time["fitted.values"],dplyr::last))
+  SoilT25cm_last <- as.numeric(lapply(SoilT25cm_fit_time["fitted.values"],dplyr::last))
+  #
+  SW25cm_change <-  - SW25cm_last - SW25cm_first
+  DW25cm_change <- DW25cm_last - DW25cm_first
+  BC25cm_change <- BC25cm_last - BC25cm_first
+  BN25cm_change <- BN25cm_last - BN25cm_first
+  HC25cm_change <- HC25cm_last - HC25cm_first
+  HN25cm_change <- HN25cm_last - HN25cm_first
+  CinB25cm_change <- CinB25cm_last - CinB25cm_first
+  CinH25cm_change <- CinH25cm_last - CinH25cm_first
+  CinBtoH25cm_change <- CinBtoH25cm_last - CinBtoH25cm_first
+  SOC25cm_change <- SOC25cm_last - SOC25cm_first
+  SoilT20cm_change <- SoilT20cm_last - SoilT20cm_first
+  SoilT40cm_change <- SoilT40cm_last - SoilT40cm_first
+  SoilT60cm_change <- SoilT60cm_last - SoilT60cm_first
+  SoilT25cm_change <- SoilT25cm_last - SoilT25cm_first
+  
+  
+  #**********************************************************************
+  
+  # Log results -------------------------------------------------------------
+  
+  # add this run's results to file collecting all final model runs
+  fut_log_tab <- cbind(model_name,
+                       clim_scenario_num,mgmt_scenario_num, 
+                       scenario_name,scenario_abbrev,
+                       SW20cm_first,SW20cm_change,
+                       SW40cm_first,SW40cm_change,
+                       SW60cm_first,SW60cm_change,
+                       DW20cm_first,DW20cm_change,
+                       DW40cm_first,DW40cm_change,
+                       DW60cm_first,DW60cm_change,
+                       DW0to60cm_first,DW0to60cm_change,
+                       SW25cm_first,SW25cm_change,
+                       DW25cm_first,DW25cm_change,
+                       SoilT20cm_first,SoilT20cm_change,
+                       SoilT40cm_first,SoilT40cm_change,
+                       SoilT60cm_first,SoilT60cm_change,
+                       SoilT25cm_first,SoilT25cm_change,
+                       NO320cm_first,NO320cm_change,
+                       NO340cm_first,NO340cm_change,
+                       NO360cm_first,NO360cm_change,
+                       NO30to60cm_first,NO30to60cm_change,
+                       N2O20cm_first,N2O20cm_change,
+                       N2O40cm_first,N2O40cm_change,
+                       N2O60cm_first,N2O60cm_change,
+                       N2O0to60cm_first,N2O0to60cm_change,
+                       N2Oprofile_first,N2Oprofile_change,
+                       BC25cm_first,BC25cm_change,
+                       BN25cm_first,BN25cm_change,
+                       HC25cm_first,HC25cm_change,
+                       HN25cm_first,HN25cm_change,
+                       CinB25cm_first,CinB25cm_change,
+                       CinH25cm_first,CinH25cm_change,
+                       CinBtoH25cm_first, CinBtoH25cm_change,
+                       SOC25cm_first,SOC25cm_change,
+                       # Additional Daycent-only fields
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA,
+                       NA, NA
+  )
+  
+  
+  source(paste0("p_Edit_future_file_",site_name,".R"))
+  p_Edit_future_file(fut_log_tab,model_name,scenario_name)
+  
+  #**********************************************************************
+
+    rm(SMoist_this,SW20cm_fit_time,SW20cm_fit_coef_time,SW40cm_fit_time,
+     SW40cm_fit_coef_time ,SW60cm_fit_time,
+     NO3_this,NO3fit_time,NO3fit_coef_time,
+     N2O_this,N2Ofit_time,N2Ofit_coef_time,fut_log_tab
+  )
   
 }) # end suppressMessages

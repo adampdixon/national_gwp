@@ -20,7 +20,7 @@
 # 1/31/2023: Rewrote to use APISM Classic met file format.
 #######################################
 
-print(paste0("Starting 1_Create_weather_input_files-setup_LRF_",site_name,".R"))
+print(paste0("Starting 1_Create_weather_input_files-setup_",site_name,".R"))
 
 library(readxl)
 library(readr)

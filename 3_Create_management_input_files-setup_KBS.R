@@ -106,8 +106,8 @@ temp_ops_ext_adj <- ops_ext_adj[(ops_ext_adj$observation_type!="Fertilizer appli
                            ## assuming all-in-one event, ignore "stover" events
                            #if_else(obs_code=="stover"&crop=="Wheat","HARV G90S", 
 						               if_else(obs_code %in% c("winterkill","mow"),"HARV KILL", 
-                           NULL))))))))))))))),
-         daycent_mgmt_code2=if_else(obs_code=="plant","PLTM",NULL)
+                           NA))))))))))))))),
+         daycent_mgmt_code2=if_else(obs_code=="plant","PLTM",NA)
          ) 
 
 # create separate rows for secondary Daycent codes
@@ -141,8 +141,8 @@ temp2_fert <- temp1_fert %>%
          crop=NA,
          # APSIM codes for Fertiliser and crop modules
          obs_code=if_else(material %like% "lime", "CalciteCA",
-                  if_else(n_rate_kg_ha>0, "NO3N", NULL)),
-         obs_code2=if_else(p_rate_kg_ha>0, "RockP", NULL),
+                  if_else(n_rate_kg_ha>0, "NO3N", NA)),
+         obs_code2=if_else(p_rate_kg_ha>0, "RockP", NA),
          rate_seeds_ha=NA,
          rate_seeds_m2=NA,
          row_spacing_mm=NA,
@@ -151,8 +151,8 @@ temp2_fert <- temp1_fert %>%
          n_rate_g_m2=n_rate_kg_ha/10,
          p_rate_g_m2=p_rate_kg_ha/10,
          k_rate_g_m2=k_rate_kg_ha/10,
-         daycent_mgmt_code=if_else(n_rate_g_m2>0,paste0("FERT (",n_rate_g_m2,"N)"),NULL),
-         daycent_mgmt_code2=if_else(p_rate_g_m2>0,paste0("FERT (",p_rate_g_m2,"P)"),NULL)
+         daycent_mgmt_code=if_else(n_rate_g_m2>0,paste0("FERT (",n_rate_g_m2,"N)"),NA),
+         daycent_mgmt_code2=if_else(p_rate_g_m2>0,paste0("FERT (",p_rate_g_m2,"P)"),NA)
     ) 
 
 # save fertilizer for other use

@@ -42,7 +42,9 @@ Hist_site <- read_csv(paste0(wth_path,hist_wth_filename),
          prec_cm=PRCP/10)
 
 Hist_site_mon <- read_csv(paste0(wth_path,hist_wth_mon_filename),
-                          show_col_types = F) 
+                          show_col_types = F)  %>%
+  mutate(month=Month,
+         year=Year)
 
 # import observed data at or near site for experimental period
 Raw_site <- read_csv(paste0(wth_path,curr_local_wth_filename),
@@ -69,6 +71,11 @@ Clean_site <- temp_site[order(nrow(temp_site):1),] %>%
          rain_mm = precipitation, # mm
          rain_cm = precipitation/10 # cm
   ) 
+
+
+# for RothC
+soil_depth_cm <- 25 
+clay_content <- 19
 
 
 ###########################
@@ -148,7 +155,7 @@ weather_28yr <- new_dat[new_dat$year %in% 1994:2021,]
 
 for (i in 1:3) {
   weather_28yr$year <- weather_28yr$year+28
-  new_dat_2100 <- rbind(new_dat_2100, weather_28yr)
+  new_dat_fut <- rbind(new_dat_fut, weather_28yr)
 }
 
 
