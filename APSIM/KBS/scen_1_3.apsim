@@ -916,6 +916,18 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <variable>n2o_atm_denitrification(1-5) format 8 as n2o_bylayer_kgha</variable>
             <variable>oc(1-5) format 8 as oc_bylayer_kgha</variable>
             <variable>n2o_atm_denitrification(6-10) format 8 as n2o_bylayer_kgha</variable>
+            <variable>no3(1-3)</variable>
+            <variable>sw(2-3)</variable>
+            <variable>dul(2-3)</variable>
+            <variable>sat(2-3)</variable>
+            <variable>biom_c(1-3)</variable>
+            <variable>biom_n(1-3)</variable>
+            <variable>hum_c(1-3)</variable>
+            <variable>hum_n(1-3)</variable>
+            <variable>dlt_res_c_biom(1-2)</variable>
+            <variable>dlt_res_c_hum(1-2)</variable>
+            <variable>dlt_biom_c_hum(1-2)</variable>
+            <variable>st(2-3)</variable>
           </variables>
           <Graph name="XY">
             <Legend>

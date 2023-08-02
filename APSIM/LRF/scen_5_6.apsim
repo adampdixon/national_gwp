@@ -45,17 +45,18 @@ Archontoulis, S.V., Huber, I., Miguez, F.E., Thorburn, P.J., Rogovska, N., Laird
             <variable>n2o_atm_denitrification format 8 as n2o_bylayer_kgha</variable>
             <variable>oc(1-5) format 8 as oc_bylayer_pct</variable>
             <variable>bd(2)</variable>
-            <variable>dlt_biom_c_hum(1-2)</variable>
-            <variable>dlt_fom_c_hum(1-2)</variable>
-            <variable>dlt_res_c_hum(1-2)</variable>
-            <variable>fom_c_pool1(1-2)</variable>
-            <variable>fom_c_pool2(1-2)</variable>
-            <variable>fom_c_pool3(1-2)</variable>
-            <variable>fr_carb</variable>
-            <variable>fr_cell</variable>
-            <variable>fr_lign</variable>
-            <variable>hum_c(1-2)</variable>
-            <variable>soilp_dlt_res_c_hum(1-2)</variable>
+            <variable>no3(1-4)</variable>
+            <variable>sw(2-4)</variable>
+            <variable>dul(2-4)</variable>
+            <variable>sat(2-4)</variable>
+            <variable>biom_c(1-4)</variable>
+            <variable>biom_n(1-4)</variable>
+            <variable>hum_c(1-4)</variable>
+            <variable>hum_n(1-4)</variable>
+            <variable>dlt_res_c_biom(1-4)</variable>
+            <variable>dlt_res_c_hum(1-4)</variable>
+            <variable>dlt_biom_c_hum(1-4)</variable>
+            <variable>st(2-4)</variable>
           </variables>
           <Graph name="XY">
             <Legend>
@@ -3526,17 +3527,18 @@ public class Script
             <variable>n2o_atm_denitrification format 8 as n2o_bylayer_kgha</variable>
             <variable>oc(1-5) format 8 as oc_bylayer_pct</variable>
             <variable>bd(2)</variable>
-            <variable>dlt_biom_c_hum(1-2)</variable>
-            <variable>dlt_fom_c_hum(1-2)</variable>
-            <variable>dlt_res_c_hum(1-2)</variable>
-            <variable>fom_c_pool1(1-2)</variable>
-            <variable>fom_c_pool2(1-2)</variable>
-            <variable>fom_c_pool3(1-2)</variable>
-            <variable>fr_carb</variable>
-            <variable>fr_cell</variable>
-            <variable>fr_lign</variable>
-            <variable>hum_c(1-2)</variable>
-            <variable>soilp_dlt_res_c_hum(1-2)</variable>
+            <variable>no3(1-4)</variable>
+            <variable>sw(2-4)</variable>
+            <variable>dul(2-4)</variable>
+            <variable>sat(2-4)</variable>
+            <variable>biom_c(1-4)</variable>
+            <variable>biom_n(1-4)</variable>
+            <variable>hum_c(1-4)</variable>
+            <variable>hum_n(1-4)</variable>
+            <variable>dlt_res_c_biom(1-4)</variable>
+            <variable>dlt_res_c_hum(1-4)</variable>
+            <variable>dlt_biom_c_hum(1-4)</variable>
+            <variable>st(2-4)</variable>
           </variables>
           <Graph name="XY" shortcut="/simulations/LFR/scen_5_61/paddock/outputfile/XY">
             <Plot shortcut="/simulations/LFR/scen_5_61/paddock/outputfile/XY/Plot">
@@ -6999,17 +7001,18 @@ public class Script
             <variable>n2o_atm_denitrification format 8 as n2o_bylayer_kgha</variable>
             <variable>oc(1-5) format 8 as oc_bylayer_pct</variable>
             <variable>bd(2)</variable>
-            <variable>dlt_biom_c_hum(1-2)</variable>
-            <variable>dlt_fom_c_hum(1-2)</variable>
-            <variable>dlt_res_c_hum(1-2)</variable>
-            <variable>fom_c_pool1(1-2)</variable>
-            <variable>fom_c_pool2(1-2)</variable>
-            <variable>fom_c_pool3(1-2)</variable>
-            <variable>fr_carb</variable>
-            <variable>fr_cell</variable>
-            <variable>fr_lign</variable>
-            <variable>hum_c(1-2)</variable>
-            <variable>soilp_dlt_res_c_hum(1-2)</variable>
+            <variable>no3(1-4)</variable>
+            <variable>sw(2-4)</variable>
+            <variable>dul(2-4)</variable>
+            <variable>sat(2-4)</variable>
+            <variable>biom_c(1-4)</variable>
+            <variable>biom_n(1-4)</variable>
+            <variable>hum_c(1-4)</variable>
+            <variable>hum_n(1-4)</variable>
+            <variable>dlt_res_c_biom(1-4)</variable>
+            <variable>dlt_res_c_hum(1-4)</variable>
+            <variable>dlt_biom_c_hum(1-4)</variable>
+            <variable>st(2-4)</variable>
           </variables>
           <Graph name="XY" shortcut="/simulations/LFR/scen_5_61/paddock/outputfile/XY">
             <Plot shortcut="/simulations/LFR/scen_5_61/paddock/outputfile/XY/Plot">
@@ -10472,17 +10475,18 @@ public class Script
             <variable>n2o_atm_denitrification format 8 as n2o_bylayer_kgha</variable>
             <variable>oc(1-5) format 8 as oc_bylayer_pct</variable>
             <variable>bd(2)</variable>
-            <variable>dlt_biom_c_hum(1-2)</variable>
-            <variable>dlt_fom_c_hum(1-2)</variable>
-            <variable>dlt_res_c_hum(1-2)</variable>
-            <variable>fom_c_pool1(1-2)</variable>
-            <variable>fom_c_pool2(1-2)</variable>
-            <variable>fom_c_pool3(1-2)</variable>
-            <variable>fr_carb</variable>
-            <variable>fr_cell</variable>
-            <variable>fr_lign</variable>
-            <variable>hum_c(1-2)</variable>
-            <variable>soilp_dlt_res_c_hum(1-2)</variable>
+            <variable>no3(1-4)</variable>
+            <variable>sw(2-4)</variable>
+            <variable>dul(2-4)</variable>
+            <variable>sat(2-4)</variable>
+            <variable>biom_c(1-4)</variable>
+            <variable>biom_n(1-4)</variable>
+            <variable>hum_c(1-4)</variable>
+            <variable>hum_n(1-4)</variable>
+            <variable>dlt_res_c_biom(1-4)</variable>
+            <variable>dlt_res_c_hum(1-4)</variable>
+            <variable>dlt_biom_c_hum(1-4)</variable>
+            <variable>st(2-4)</variable>
           </variables>
           <Graph name="XY" shortcut="/simulations/LFR/scen_5_61/paddock/outputfile/XY">
             <Plot shortcut="/simulations/LFR/scen_5_61/paddock/outputfile/XY/Plot">
@@ -13945,17 +13949,18 @@ public class Script
             <variable>n2o_atm_denitrification format 8 as n2o_bylayer_kgha</variable>
             <variable>oc(1-5) format 8 as oc_bylayer_pct</variable>
             <variable>bd(2)</variable>
-            <variable>dlt_biom_c_hum(1-2)</variable>
-            <variable>dlt_fom_c_hum(1-2)</variable>
-            <variable>dlt_res_c_hum(1-2)</variable>
-            <variable>fom_c_pool1(1-2)</variable>
-            <variable>fom_c_pool2(1-2)</variable>
-            <variable>fom_c_pool3(1-2)</variable>
-            <variable>fr_carb</variable>
-            <variable>fr_cell</variable>
-            <variable>fr_lign</variable>
-            <variable>hum_c(1-2)</variable>
-            <variable>soilp_dlt_res_c_hum(1-2)</variable>
+            <variable>no3(1-4)</variable>
+            <variable>sw(2-4)</variable>
+            <variable>dul(2-4)</variable>
+            <variable>sat(2-4)</variable>
+            <variable>biom_c(1-4)</variable>
+            <variable>biom_n(1-4)</variable>
+            <variable>hum_c(1-4)</variable>
+            <variable>hum_n(1-4)</variable>
+            <variable>dlt_res_c_biom(1-4)</variable>
+            <variable>dlt_res_c_hum(1-4)</variable>
+            <variable>dlt_biom_c_hum(1-4)</variable>
+            <variable>st(2-4)</variable>
           </variables>
           <Graph name="XY" shortcut="/simulations/LFR/scen_5_61/paddock/outputfile/XY">
             <Plot shortcut="/simulations/LFR/scen_5_61/paddock/outputfile/XY/Plot">
