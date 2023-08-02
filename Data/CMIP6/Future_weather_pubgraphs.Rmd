@@ -336,7 +336,7 @@ alldata_piv <- rbind(tmin_piv,tmax_piv,rain_cm_piv) %>%
                 ,linewidth=0.75) +
     scale_color_manual(labels=c("Baseline","GFDL_High","GFDL_Low",
                                 "Historical","UKESM_High","UKESM_Low"),
-                       values=cbPalette12[c(2,4,6,8,10,12)],
+                       values=cbPalette12[c(8,2,4,1,10,6)],
                        name="Climate Model") +
     facet_grid(ClimateVariable~SiteName) +
     theme_classic(base_family = "serif", base_size = 16) +
@@ -361,7 +361,7 @@ alldata_piv <- rbind(tmin_piv,tmax_piv,rain_cm_piv) %>%
                 ,linewidth=0.75,na.rm=TRUE) +
     scale_color_manual(labels=c("Baseline","GFDL_High","GFDL_Low",
                                 "Historical","UKESM_High","UKESM_Low"),
-                       values=cbPalette12[c(2,4,6,8,10,12)],
+                       values=cbPalette12[c(8,2,4,1,10,6)],
                        name="Climate Model") +
     facet_wrap(~SiteName) +
     theme_classic(base_family = "serif", base_size = 16) +
