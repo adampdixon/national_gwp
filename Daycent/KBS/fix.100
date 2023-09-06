@@ -49,7 +49,7 @@ X     Fixed_values   Aug 2015 Inventory 2014 format satdec with optional paramet
 18.500        'DEC2(2)'
 6.0000        'DEC3(1)'
 7.0000        'DEC3(2)' # edm was 7.3
-0.0025         'DEC4' # edm was 0.0043
+0.002         'DEC4' # edm was 0.0043
 0.10          'DEC5(1)'
 0.0866        'DEC5(2)' # Bill says try reducing 0.15 to 0.12  24Jan
 5.0           'DECK5'
@@ -58,14 +58,14 @@ X     Fixed_values   Aug 2015 Inventory 2014 format satdec with optional paramet
 0.2           'EDEPTH'
 0.4           'ELITST'
 2.0           'ENRICH'
-0.15          'FAVAIL(1)' # edm was 0.15
+0.15          'FAVAIL(1)'
 0.5000        'FAVAIL(3)'
 0.2000        'FAVAIL(4)'
 0.4000        'FAVAIL(5)'
 2.0000        'FAVAIL(6)'
 0.50          'FLEACH(1)' # improve estimate NO3 leaching Delgrosso 24Jan  Bill 0.2
 0.50          'FLEACH(2)' # improve estimate NO3 leaching Delgrosso 24Jan  Bill 0.7
-1.20          'FLEACH(3)' # edm was 1.00
+1.0          'FLEACH(3)' # edm was 1.00
 0.00          'FLEACH(4)'
 0.10          'FLEACH(5)'
 1.0000        'FWLOSS(1)'
@@ -108,9 +108,9 @@ X     Fixed_values   Aug 2015 Inventory 2014 format satdec with optional paramet
 0.0000        'PMNSEC(1)'
 0.0000        'PMNSEC(2)'
 2.0000        'PMNSEC(3)'
-0.0040        'PMNTMP' # edm was 0.004
+0.0040        'PMNTMP'
 600.00        'PMXBIO'
--0.0035       'PMXTMP' # edm was -0.0035
+-0.0035       'PMXTMP'
 0.00000       'PPARMN(1)'
 0.00010       'PPARMN(2)'
 0.00050       'PPARMN(3)'

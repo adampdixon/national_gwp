@@ -107,7 +107,7 @@ X    Archived site: "3_GI3_1500.evt<-3_GI3_3000.e!6!67_1001_T"  /data/rubelogle/
  0.03          NCOEFF  # sitepar Ncoeff
  0.0           DNSTRT  # sitepar jdayStart
  0.0           DNEND   # sitepar jdayEnd
- 0.015         NADJFC  # sitepar N2Oadjust_fc # edm was 0.012
+ 0.012         NADJFC  # sitepar N2Oadjust_fc
  0.012         NADJWP  # sitepar N2Oadjust_wp
  1.            MAXNIT  # sitepar MaxNitAmt   
  0.2           MINO3   # sitepar netmn_to_no3
@@ -115,7 +115,7 @@ X    Archived site: "3_GI3_1500.evt<-3_GI3_3000.e!6!67_1001_T"  /data/rubelogle/
  1.            N2N2OA  # sitepar N2N2Oadj    
 *** External nutrient input parameters
  0.3           EPNFA(1)
- 0.004         EPNFA(2) # edm was 0.015
+ 0.0025         EPNFA(2) # edm was 0.015
  30.           EPNFS(1)
  0.01          EPNFS(2)
  0.0           SATMOS(1)
