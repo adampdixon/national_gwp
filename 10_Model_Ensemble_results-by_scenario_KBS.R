@@ -512,13 +512,23 @@ suppressMessages({
       gN_calib
       
       frctn_diff_N2O_APSIM_Daycent <- (ens_N2O_profile_comp_gtot$APSIM-ens_N2O_profile_comp_gtot$Daycent)/ens_N2O_profile_comp_gtot$Daycent
+      frctn_diff_N2O_APSIM_Obs <- (ens_N2O_profile_comp_gtot$APSIM-ens_N2O_profile_comp_gtot$Observed)/ens_N2O_profile_comp_gtot$Observed
+      frctn_diff_N2O_Daycent_Obs <- (ens_N2O_profile_comp_gtot$Daycent-ens_N2O_profile_comp_gtot$Observed)/ens_N2O_profile_comp_gtot$Observed
+      model_mean_N2O <- mean(ens_N2O_profile_comp_gtot_piv$n2o_val)
+      frctn_diff_N2O_mod_means_Obs <- (model_mean_N2O-ens_N2O_profile_comp_gtot$Observed)/ens_N2O_profile_comp_gtot$Observed
+      n2o_vr <- c(frctn_diff_N2O_APSIM_Daycent,frctn_diff_N2O_APSIM_Obs,
+                  frctn_diff_N2O_Daycent_Obs,model_mean_N2O,
+                  frctn_diff_N2O_mod_means_Obs)
+      write.csv(n2o_vr,file=paste0(results_path,"calib_n2o_diffs_",scenario_name,".csv"),
+                row.names=c("diff_apsim_day","diff_apsim_obs","diff_day_obs",
+                                   "model_mean","diff_mods_obs"))
       
       ## CH4
       
       gM_calib <- ens_CH4_profile_comp_gtot_piv %>%
         ggplot(aes(x=Source, y=ch4_val, color=Source, fill=Source)) +
         geom_col(position="stack") +
-        #ylim(0,1000) +
+        ylim(-350,0) +
         ylab(expression('CH'[4]*' (g C ha' ^'-1'*')')) +
         ggtitle(paste(site_name,"Total Modeled CH4 Emissions vs. Observations"),
                 paste0("Scenario: ",scenario_descriptor)) +
@@ -536,6 +546,8 @@ suppressMessages({
       gM_calib
 
 
+      frctn_diff_CH4_Daycent_Obs <- (ens_CH4_profile_comp_gtot$Daycent-ens_CH4_profile_comp_gtot$Observed)/ens_CH4_profile_comp_gtot$Observed
+      
       ggsave(filename=paste0(results_path,"pub_Ensemble_Maize_calibration_",scenario_name,".jpg"),
              plot=gMY_calib, width=9, height=6, dpi=300)
       ggsave(filename=paste0(results_path,"pub_Ensemble_Soybean_calibration_",scenario_name,".jpg"),

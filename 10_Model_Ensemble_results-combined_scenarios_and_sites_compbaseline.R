@@ -38,15 +38,22 @@ suppressMessages({
   
   
   pub_comb_results_path <- paste0("Comb_results_",end_fut_period_year,"/")
+  climate_factor_order <- c("Baseline","GFDL_Low","UKESM_Low","GFDL_High","UKESM_High")
   
-  # Import GWP component data --------------------------------------
+  # Import component data --------------------------------------
   
   kbs_summary_output <- read.csv(paste0("KBS_results_",end_fut_period_year,
                                         "/summary_output_final.csv")) %>%
     mutate(site_name="KBS")
   kbs_scenario_means <- read.csv(paste0("KBS_results_",end_fut_period_year,
                                         "/scenario_means.csv")) %>%
-    mutate(site_name="KBS")
+    mutate(site_name="KBS") %>%
+    left_join(unique(scenario_df[,c("climate_scenario_num",
+                                    "climate_desc")]),
+              by=c("Climate_Scenario"="climate_scenario_num"))  %>%
+    mutate(climate_desc = factor(climate_desc,
+                                 levels=climate_factor_order))
+  
   kbs_annual_results <- read.csv(paste0("KBS_results_",end_fut_period_year,
                                         "/annual_results.csv")) %>%
     mutate(site_name="KBS")
@@ -65,7 +72,13 @@ suppressMessages({
     mutate(site_name="LRF")
   lrf_scenario_means <- read.csv(paste0("LRF_results_",end_fut_period_year,
                                         "/scenario_means.csv")) %>%
-    mutate(site_name="LRF")
+    mutate(site_name="LRF") %>%
+    left_join(unique(scenario_df[,c("climate_scenario_num",
+                                    "climate_desc")]),
+              by=c("Climate_Scenario"="climate_scenario_num"))  %>%
+    mutate(climate_desc = factor(climate_desc,
+                                 levels=climate_factor_order))
+  
   lrf_annual_results <- read.csv(paste0("LRF_results_",end_fut_period_year,
                                         "/annual_results.csv")) %>%
     mutate(site_name="LRF")
@@ -86,10 +99,17 @@ suppressMessages({
   kbs_summary_output_piv <- pivot_longer(kbs_summary_output,
                                          c(-Model,-Climate_Scenario,-Mgmt_Scenario,
                                            -Scenario_Name,-scenario_abbrev,-site_name),
-                                         names_to="source",values_to="vals")
+                                         names_to="source",values_to="vals") %>%
+    left_join(unique(scenario_df[,c("climate_scenario_num",
+                                    "climate_desc")]),
+              by=c("Climate_Scenario"="climate_scenario_num")) %>%
+    mutate(climate_desc = factor(climate_desc,
+                                 levels=climate_factor_order))
+  
   kbs_scenario_means_piv <- pivot_longer(kbs_scenario_means,
                                          c(-Climate_Scenario,-Mgmt_Scenario,
-                                           -Scenario_Name,-scenario_abbrev,-site_name),
+                                           -Scenario_Name,-scenario_abbrev,-site_name,
+                                           -climate_desc),
                                          names_to="source",values_to="vals")
   kbs_annual_results_piv <- pivot_longer(kbs_annual_results,
                                          c(-year,-model_name,-scenario_name,
@@ -124,10 +144,17 @@ suppressMessages({
   lrf_summary_output_piv <- pivot_longer(lrf_summary_output,
                                          c(-Model,-Climate_Scenario,-Mgmt_Scenario,
                                            -Scenario_Name,-scenario_abbrev,-site_name),
-                                         names_to="source",values_to="vals")
+                                         names_to="source",values_to="vals") %>%
+    left_join(unique(scenario_df[,c("climate_scenario_num",
+                                    "climate_desc")]),
+              by=c("Climate_Scenario"="climate_scenario_num")) %>%
+    mutate(climate_desc = factor(climate_desc,
+                                 levels=climate_factor_order))
+  
   lrf_scenario_means_piv <- pivot_longer(lrf_scenario_means,
                                          c(-Climate_Scenario,-Mgmt_Scenario,
-                                           -Scenario_Name,-scenario_abbrev,-site_name),
+                                           -Scenario_Name,-scenario_abbrev,-site_name,
+                                           -climate_desc),
                                          names_to="source",values_to="vals")
   lrf_annual_results_piv <- pivot_longer(lrf_annual_results,
                                          c(-year,-model_name,-scenario_name,
@@ -166,12 +193,9 @@ suppressMessages({
   
   mean_daily_results <- rbind(kbs_mean_daily_results,lrf_mean_daily_results)
   
-  summary_output_piv <- left_join(rbind(kbs_summary_output_piv,lrf_summary_output_piv),
-                                  unique(scenario_df[,c("climate_scenario_num",
-                                                        "climate_desc")]),
-                                  by=c("Climate_Scenario"="climate_scenario_num")) %>%
+  summary_output_piv <- rbind(kbs_summary_output_piv,lrf_summary_output_piv) %>%
     mutate(climate_desc = factor(climate_desc,
-                                 levels=c("Baseline","GFDL_Low","GFDL_High","UKESM_Low","UKESM_High")))
+                                 levels=climate_factor_order))
   
   scenario_means_piv <- rbind(kbs_scenario_means_piv,lrf_scenario_means_piv)
   
@@ -187,7 +211,7 @@ suppressMessages({
                                                         "climate_desc")]),
                                   by=c("Climate_Scenario"="climate_scenario_num"))%>%
     mutate(climate_desc = factor(climate_desc,
-                                 levels=c("Baseline","GFDL_Low","GFDL_High","UKESM_Low","UKESM_High")))
+                                 levels=climate_factor_order))
   gwp_scenario_means_piv <- pivot_longer(gwp_scenario_means,c(-scenario_abbrev,
                                                               -site_name,
                                                               -Climate_Scenario,
@@ -209,7 +233,7 @@ suppressMessages({
                                                         "climate_desc")]),
                                   by=c("Climate_Scenario"="climate_scenario_num"))%>%
     mutate(climate_desc = factor(climate_desc,
-                                 levels=c("Baseline","GFDL_Low","GFDL_High","UKESM_Low","UKESM_High")))
+                                 levels=climate_factor_order))
   
   gwp_summary_output_piv <- pivot_longer(gwp_summary_output,c(-scenario_abbrev,
                                                               -site_name,
@@ -221,6 +245,7 @@ suppressMessages({
                                          names_to="source",
                                          values_to="vals")
   
+
   ### write data frame
   write.csv(gwp_scenario_means, file=paste0("Comb_results_",end_fut_period_year,"/gwp_scenario_means.csv"),
             row.names=FALSE)
@@ -235,14 +260,20 @@ suppressMessages({
   kbs_model_components <- read.csv(paste0("KBS_results_",end_fut_period_year,
                                           "/Summary_future_output.csv")) %>%
     mutate(site_name="KBS",
+           # pub_climate_scenario=factor(case_when(Climate_Scenario==1 ~ "Baseline",
+           #                                Climate_Scenario==2 ~ "Low-GFDL",
+           #                                Climate_Scenario==3 ~ "High-GFDL",
+           #                                Climate_Scenario==4 ~ "Low-UKESM",
+           #                                Climate_Scenario==5 ~ "High-UKESM"),
+           #                             levels=c("Baseline","Low-GFDL","Low-UKESM",
+           #                                      "High-GFDL","High-UKESM"))
            pub_climate_scenario=factor(case_when(Climate_Scenario==1 ~ "Baseline",
-                                          Climate_Scenario==2 ~ "Low-GFDL",
-                                          Climate_Scenario==3 ~ "High-GFDL",
-                                          Climate_Scenario==4 ~ "Low-UKESM",
-                                          Climate_Scenario==5 ~ "High-UKESM"),
-                                       levels=c("Baseline","Low-GFDL","Low-UKESM",
-                                                "High-GFDL","High-UKESM"))
-           ) #%>%
+                                                 Climate_Scenario==2 ~ "GFDL_Low",
+                                                 Climate_Scenario==3 ~ "GFDL_High",
+                                                 Climate_Scenario==4 ~ "UKESM_Low",
+                                                 Climate_Scenario==5 ~ "UKESM_High"),
+                                       levels=climate_factor_order)
+    ) #%>%
   # add change in each component compared to the baseline climate, so this is
   # calculated separately for each climate and management scenario
   # group_by(Model,Mgmt_Scenario) %>%
@@ -302,12 +333,11 @@ suppressMessages({
                                           "/Summary_future_output.csv")) %>%
     mutate(site_name="LRF",
            pub_climate_scenario=factor(case_when(Climate_Scenario==1 ~ "Baseline",
-                                                 Climate_Scenario==2 ~ "Low-GFDL",
-                                                 Climate_Scenario==3 ~ "High-GFDL",
-                                                 Climate_Scenario==4 ~ "Low-UKESM",
-                                                 Climate_Scenario==5 ~ "High-UKESM"),
-                                       levels=c("Baseline","Low-GFDL","Low-UKESM",
-                                                "High-GFDL","High-UKESM"))
+                                                 Climate_Scenario==2 ~ "GFDL_Low",
+                                                 Climate_Scenario==3 ~ "GFDL_High",
+                                                 Climate_Scenario==4 ~ "UKESM_Low",
+                                                 Climate_Scenario==5 ~ "UKESM_High"),
+                                       levels=climate_factor_order)
            ) #%>%
     # add change in each component compared to the baseline climate, so this is
     # calculated separately for each climate and management scenario
@@ -645,34 +675,42 @@ suppressMessages({
   
   g_gwp <- summary_output_piv[summary_output_piv$source == "GWP",] %>%
     ggplot(aes(x=scenario_abbrev, y=vals, fill=Model)) +
+    scale_x_discrete() +
+    geom_hline(yintercept=0, color="darkgrey") +
+    geom_vline(xintercept=5.5, color="grey") +
+    geom_vline(xintercept=7.5, color="grey") +
+    geom_vline(xintercept=8.5, color="grey") +
+    geom_vline(xintercept=10.5, color="grey") +
+    geom_vline(xintercept=14.5, color="grey") +
+    geom_vline(xintercept=20.5, color="grey") +
     geom_col(position="dodge",colour=NA) +
     geom_col(data=gwp_scenario_means,
              aes(x=scenario_abbrev, y=mean_GWP), color= "black",
              fill=NA, position="dodge") +
-    annotate("rect", xmin = 0.5, xmax = 5.5,
-             ymin = min(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
-             ymax = max(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 5.5, xmax = 7.5,
-             ymin = min(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
-             ymax = max(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 7.5, xmax = 8.5,
-             ymin = min(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
-             ymax = max(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 8.5, xmax = 10.5,
-             ymin = min(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
-             ymax = max(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 10.5, xmax = 14.5,
-             ymin = min(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
-             ymax = max(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 14.5, xmax = 20.5,
-             ymin = min(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
-             ymax = max(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
+    # annotate("rect", xmin = 0.5, xmax = 5.5,
+    #          ymin = min(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
+    #          ymax = max(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
+    #          alpha = 0, color= "grey") +
+    # annotate("rect", xmin = 5.5, xmax = 7.5,
+    #          ymin = min(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
+    #          ymax = max(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
+    #          alpha = 0, color= "grey") +
+    # annotate("rect", xmin = 7.5, xmax = 8.5,
+    #          ymin = min(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
+    #          ymax = max(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
+    #          alpha = 0, color= "grey") +
+    # annotate("rect", xmin = 8.5, xmax = 10.5,
+    #          ymin = min(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
+    #          ymax = max(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
+    #          alpha = 0, color= "grey") +
+    # annotate("rect", xmin = 10.5, xmax = 14.5,
+    #          ymin = min(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
+    #          ymax = max(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
+    #          alpha = 0, color= "grey") +
+    # annotate("rect", xmin = 14.5, xmax = 20.5,
+    #          ymin = min(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
+    #          ymax = max(gwp_summary_output[,"GWP"]*1.05, na.rm=T),
+    #          alpha = 0, color= "grey") +
     ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
     xlab("") +
     ggtitle(paste0("Global Warming Potential by ",
@@ -688,7 +726,7 @@ suppressMessages({
           axis.line = element_line(),
           axis.text.x = element_text(angle = 45,
                                      hjust = 1),
-          legend.position = "right",
+          legend.position = "top",
           legend.key = element_blank())
   
   g_gwp
@@ -698,42 +736,61 @@ suppressMessages({
   
   ## components  ------------------------------------------------------------
   
-  g_n2oe <- summary_output_piv[summary_output_piv$source == "CO2e_N2O",] %>%
+  # g_n2oe <- summary_output_piv[summary_output_piv$source == "CO2e_N2O",] %>%
+  #   ggplot(aes(x=scenario_abbrev, y=vals, fill=Model)) +
+  #   scale_x_discrete() +
+  #   geom_hline(yintercept=0, color="darkgrey") +
+  #   geom_vline(xintercept=5.5, color="grey") +
+  #   geom_vline(xintercept=7.5, color="grey") +
+  #   geom_vline(xintercept=8.5, color="grey") +
+  #   geom_vline(xintercept=10.5, color="grey") +
+  #   geom_vline(xintercept=14.5, color="grey") +
+  #   geom_vline(xintercept=20.5, color="grey") +
+  #   geom_col(position="dodge",colour=NA) +
+  #   geom_col(data=gwp_scenario_means,
+  #            aes(x=scenario_abbrev, y=mean_CO2e_N2O), color= "black", 
+  #            fill=NA, position="dodge") + 
+  #   ylab(expression('CO'[2]*'e N'[2]*'O (Mg ha ' ^-1*')')) +
+  #   xlab("") +
+  #   ggtitle(paste0("Change in CO2e-N2O by ",
+  #                  end_fut_period_year)) +
+  #   scale_fill_manual(labels=c("APSIM","Daycent","Millennial","RothC"),
+  #                     values=cbPalette9[c(8,2,6,3)],
+  #                     name="Model") +
+  #   facet_grid(climate_desc~site_name) +
+  #   theme_classic(base_family = "serif", base_size = 25) +
+  #   theme(panel.background = element_blank(),
+  #         panel.border = element_rect(colour = "darkgrey", fill=NA),
+  #         strip.background = element_blank(),
+  #         axis.line = element_line(),
+  #         axis.text.x = element_text(angle = 45,
+  #                                    hjust = 1),
+  #         legend.position = "top",
+  #         legend.key = element_blank())
+  # 
+  # g_n2oe
+  
+  g_n2oe <- summary_output_piv[summary_output_piv$source == "CO2e_N2O" &
+                                 summary_output_piv$Model %in% c("APSIM","Daycent"),] %>%
     ggplot(aes(x=scenario_abbrev, y=vals, fill=Model)) +
+    scale_x_discrete() +
+    geom_hline(yintercept=0, color="darkgrey") +
+    geom_vline(xintercept=5.5, color="grey") +
+    geom_vline(xintercept=7.5, color="grey") +
+    geom_vline(xintercept=8.5, color="grey") +
+    geom_vline(xintercept=10.5, color="grey") +
+    geom_vline(xintercept=14.5, color="grey") +
+    geom_vline(xintercept=20.5, color="grey") +
     geom_col(position="dodge",colour=NA) +
     geom_col(data=gwp_scenario_means,
              aes(x=scenario_abbrev, y=mean_CO2e_N2O), color= "black", 
              fill=NA, position="dodge") + 
-    annotate("rect", xmin = 0.5, xmax = 5.5,
-             ymin = 0,
-             ymax = max(gwp_summary_output[,"CO2e_N2O"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 5.5, xmax = 7.5,
-             ymin = 0,
-             ymax = max(gwp_summary_output[,"CO2e_N2O"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 7.5, xmax = 8.5,
-             ymin = 0,
-             ymax = max(gwp_summary_output[,"CO2e_N2O"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 8.5, xmax = 10.5,
-             ymin = 0,
-             ymax = max(gwp_summary_output[,"CO2e_N2O"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 10.5, xmax = 14.5,
-             ymin = 0,
-             ymax = max(gwp_summary_output[,"CO2e_N2O"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 14.5, xmax = 20.5,
-             ymin = 0,
-             ymax = max(gwp_summary_output[,"CO2e_N2O"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
     ylab(expression('CO'[2]*'e N'[2]*'O (Mg ha ' ^-1*')')) +
     xlab("") +
     ggtitle(paste0("Change in CO2e-N2O by ",
                    end_fut_period_year)) +
-    scale_fill_manual(labels=c("APSIM","Daycent","Millennial","RothC"),
-                      values=cbPalette9[c(8,2,6,3)],
+    scale_fill_manual(labels=c("APSIM","Daycent"),
+                      values=cbPalette9[c(8,2)],
                       name="Model") +
     facet_grid(climate_desc~site_name) +
     theme_classic(base_family = "serif", base_size = 25) +
@@ -743,48 +800,67 @@ suppressMessages({
           axis.line = element_line(),
           axis.text.x = element_text(angle = 45,
                                      hjust = 1),
-          legend.position = "right",
+          legend.position = "top",
           legend.key = element_blank())
   
   g_n2oe
   
   
-  g_ch4e <- summary_output_piv[summary_output_piv$source == "CO2e_CH4",] %>%
+  # g_ch4e <- summary_output_piv[summary_output_piv$source == "CO2e_CH4",] %>%
+  #   ggplot(aes(x=scenario_abbrev, y=vals, fill=Model)) +
+  #   scale_x_discrete() +
+  #   geom_hline(yintercept=0, color="darkgrey") +
+  #   geom_vline(xintercept=5.5, color="grey") +
+  #   geom_vline(xintercept=7.5, color="grey") +
+  #   geom_vline(xintercept=8.5, color="grey") +
+  #   geom_vline(xintercept=10.5, color="grey") +
+  #   geom_vline(xintercept=14.5, color="grey") +
+  #   geom_vline(xintercept=20.5, color="grey") +
+  #   geom_col(position="dodge",colour=NA) +
+  #   geom_col(data=gwp_scenario_means,
+  #            aes(x=scenario_abbrev, y=mean_CO2e_CH4), color= "black",
+  #            fill=NA, position="dodge") +
+  #   ylab(expression('CO'[2]*'e CH'[4]*' (Mg ha ' ^-1*')')) +
+  #   xlab("") +
+  #   ggtitle(paste0("Change in CO2e-CH4 by ",
+  #                  end_fut_period_year)) +
+  #   scale_fill_manual(labels=c("APSIM","Daycent","Millennial","RothC"),
+  #                     values=cbPalette9[c(8,2,6,3)],
+  #                     name="Model") +
+  #   facet_grid(climate_desc~site_name) +
+  #   theme_classic(base_family = "serif", base_size = 25) +
+  #   theme(panel.background = element_blank(),
+  #         panel.border = element_rect(colour = "darkgrey", fill=NA),
+  #         strip.background = element_blank(),
+  #         axis.line = element_line(),
+  #         axis.text.x = element_text(angle = 45,
+  #                                    hjust = 1),
+  #         legend.position = "top",
+  #         legend.key = element_blank())
+  # 
+  # g_ch4e
+  
+  g_ch4e <- summary_output_piv[summary_output_piv$source == "CO2e_CH4" &
+                                 summary_output_piv$Model == "Daycent",] %>%
     ggplot(aes(x=scenario_abbrev, y=vals, fill=Model)) +
+    scale_x_discrete() +
+    geom_hline(yintercept=0, color="darkgrey") +
+    geom_vline(xintercept=5.5, color="grey") +
+    geom_vline(xintercept=7.5, color="grey") +
+    geom_vline(xintercept=8.5, color="grey") +
+    geom_vline(xintercept=10.5, color="grey") +
+    geom_vline(xintercept=14.5, color="grey") +
+    geom_vline(xintercept=20.5, color="grey") +
     geom_col(position="dodge",colour=NA) +
     geom_col(data=gwp_scenario_means,
              aes(x=scenario_abbrev, y=mean_CO2e_CH4), color= "black",
              fill=NA, position="dodge") +
-    annotate("rect", xmin = 0.5, xmax = 5.5,
-             ymin = min(gwp_summary_output[,"CO2e_CH4"]*1.05, na.rm=T),
-             ymax = 0,
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 5.5, xmax = 7.5,
-             ymin = min(gwp_summary_output[,"CO2e_CH4"]*1.05, na.rm=T),
-             ymax = 0,
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 7.5, xmax = 8.5,
-             ymin = min(gwp_summary_output[,"CO2e_CH4"]*1.05, na.rm=T),
-             ymax = 0,
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 8.5, xmax = 10.5,
-             ymin = min(gwp_summary_output[,"CO2e_CH4"]*1.05, na.rm=T),
-             ymax = 0,
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 10.5, xmax = 14.5,
-             ymin = min(gwp_summary_output[,"CO2e_CH4"]*1.05, na.rm=T),
-             ymax = 0,
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 14.5, xmax = 20.5,
-             ymin = min(gwp_summary_output[,"CO2e_CH4"]*1.05, na.rm=T),
-             ymax = 0,
-             alpha = 0, color= "grey") +
-    ylab(expression('CO'[2]*'e CH'[4]*' (Mg ha ' ^-1*')')) +
+  ylab(expression('CO'[2]*'e CH'[4]*' (Mg ha ' ^-1*')')) +
     xlab("") +
     ggtitle(paste0("Change in CO2e-CH4 by ",
                    end_fut_period_year)) +
-    scale_fill_manual(labels=c("APSIM","Daycent","Millennial","RothC"),
-                      values=cbPalette9[c(8,2,6,3)],
+    scale_fill_manual(labels=c("Daycent"),
+                      values=cbPalette9[c(2)],
                       name="Model") +
     facet_grid(climate_desc~site_name) +
     theme_classic(base_family = "serif", base_size = 25) +
@@ -794,41 +870,25 @@ suppressMessages({
           axis.line = element_line(),
           axis.text.x = element_text(angle = 45,
                                      hjust = 1),
-          legend.position = "right",
+          legend.position = "top",
           legend.key = element_blank())
   
   g_ch4e
-  
-  g_soce <- summary_output_piv[summary_output_piv$source == "CO2e_SOC",] %>%
+
+    g_soce <- summary_output_piv[summary_output_piv$source == "CO2e_SOC",] %>%
     ggplot(aes(x=scenario_abbrev, y=vals, fill=Model)) +
+    scale_x_discrete() +
+    geom_hline(yintercept=0, color="darkgrey") +
+    geom_vline(xintercept=5.5, color="grey") +
+    geom_vline(xintercept=7.5, color="grey") +
+    geom_vline(xintercept=8.5, color="grey") +
+    geom_vline(xintercept=10.5, color="grey") +
+    geom_vline(xintercept=14.5, color="grey") +
+    geom_vline(xintercept=20.5, color="grey") +
     geom_col(position="dodge",colour=NA) +
     geom_col(data=gwp_scenario_means,
              aes(x=scenario_abbrev, y=mean_CO2e_SOC), color= "black",
              fill=NA, position="dodge") +
-    annotate("rect", xmin = 0.5, xmax = 5.5,
-             ymin = min(gwp_summary_output[,"CO2e_SOC"]*1.05, na.rm=T),
-             ymax = max(gwp_summary_output[,"CO2e_SOC"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 5.5, xmax = 7.5,
-             ymin = min(gwp_summary_output[,"CO2e_SOC"]*1.05, na.rm=T),
-             ymax = max(gwp_summary_output[,"CO2e_SOC"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 7.5, xmax = 8.5,
-             ymin = min(gwp_summary_output[,"CO2e_SOC"]*1.05, na.rm=T),
-             ymax = max(gwp_summary_output[,"CO2e_SOC"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 8.5, xmax = 10.5,
-             ymin = min(gwp_summary_output[,"CO2e_SOC"]*1.05, na.rm=T),
-             ymax = max(gwp_summary_output[,"CO2e_SOC"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 10.5, xmax = 14.5,
-             ymin = min(gwp_summary_output[,"CO2e_SOC"]*1.05, na.rm=T),
-             ymax = max(gwp_summary_output[,"CO2e_SOC"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 14.5, xmax = 20.5,
-             ymin = min(gwp_summary_output[,"CO2e_SOC"]*1.05, na.rm=T),
-             ymax = max(gwp_summary_output[,"CO2e_SOC"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
     ylab(expression('CO'[2]*'e SOC (Mg ha ' ^-1*')')) +
     xlab("") +
     ggtitle(paste0("Change in CO2e-SOC by ",
@@ -844,7 +904,7 @@ suppressMessages({
           axis.line = element_line(),
           axis.text.x = element_text(angle = 45,
                                      hjust = 1),
-          legend.position = "right",
+          legend.position = "top",
           legend.key = element_blank())
   
   g_soce
@@ -864,38 +924,46 @@ suppressMessages({
   g_gwp_source <- gwp_scenario_means_piv[gwp_scenario_means_piv$source %in% 
                                            c("mean_CO2e_SOC","mean_CO2e_N2O","mean_CO2e_CH4"),] %>%
     ggplot(aes(x=scenario_abbrev, y=vals, fill=source)) +
+    scale_x_discrete() +
+    geom_hline(yintercept=0, color="darkgrey") +
+    geom_vline(xintercept=5.5, color="grey") +
+    geom_vline(xintercept=7.5, color="grey") +
+    geom_vline(xintercept=8.5, color="grey") +
+    geom_vline(xintercept=10.5, color="grey") +
+    geom_vline(xintercept=14.5, color="grey") +
+    geom_vline(xintercept=20.5, color="grey") +
     geom_col(position="stack") +
-    annotate("rect", xmin = 0.5, xmax = 5.5,
-             ymin = min(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
-             ymax = max(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 5.5, xmax = 6.5,
-             ymin = min(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
-             ymax = max(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 6.5, xmax = 7.5,
-             ymin = min(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
-             ymax = max(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 7.5, xmax = 8.5,
-             ymin = min(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
-             ymax = max(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 8.5, xmax = 12.5,
-             ymin = min(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
-             ymax = max(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +
-    annotate("rect", xmin = 12.5, xmax = 18.5,
-             ymin = min(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
-             ymax = max(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
-             alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
+    # annotate("rect", xmin = 0.5, xmax = 5.5,
+    #          ymin = min(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
+    #          ymax = max(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
+    #          alpha = 0, color= "grey") +
+    # annotate("rect", xmin = 5.5, xmax = 6.5,
+    #          ymin = min(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
+    #          ymax = max(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
+    #          alpha = 0, color= "grey") +
+    # annotate("rect", xmin = 6.5, xmax = 7.5,
+    #          ymin = min(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
+    #          ymax = max(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
+    #          alpha = 0, color= "grey") +
+    # annotate("rect", xmin = 7.5, xmax = 8.5,
+    #          ymin = min(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
+    #          ymax = max(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
+    #          alpha = 0, color= "grey") +
+    # annotate("rect", xmin = 8.5, xmax = 12.5,
+    #          ymin = min(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
+    #          ymax = max(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
+    #          alpha = 0, color= "grey") +
+    # annotate("rect", xmin = 12.5, xmax = 18.5,
+    #          ymin = min(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
+    #          ymax = max(gwp_scenario_means_piv[,"vals"]*1.05, na.rm=T),
+    #          alpha = 0, color= "grey") +ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
     ylab(expression('CO'[2]*'e (Mg ha ' ^-1*')')) +
     xlab("") +
-    ggtitle("Global Warming Potential by Source by ",end_fut_period_year) +
+    ggtitle(paste0("Global Warming Potential by Source by ",end_fut_period_year)) +
     labs(fill = "source") +
     scale_fill_manual(labels=c("CO2e-CH4","CO2e-N2O","CO2e-SOC"),
                       values=cbPalette12[c(10,11,12)],
-                      name="Model") +
+                      name="Source") +
     facet_grid(climate_desc~site_name) +
     theme_classic(base_family = "serif", base_size = 25) +
     theme(panel.background = element_blank(),
@@ -904,13 +972,209 @@ suppressMessages({
           axis.line = element_line(),
           axis.text.x = element_text(angle = 45,
                                      hjust = 1),
-          legend.position = "right",
+          legend.position = "top",
           legend.key = element_blank())
   
   g_gwp_source
   
   ggsave(filename=paste0("Comb_results_",end_fut_period_year,"/pub_all_GWP_by_source.jpg"),
          plot=g_gwp_source, width=18, height=14, dpi=300)
+  
+  #*******************************************************************
+  
+  # Crops ---------------------------------------------------------
+  
+
+## Bar charts --------------------------------------------------------------------
+
+  g_maize <- kbs_summary_output_piv[kbs_summary_output_piv$source == "Maize_Diff_Mgha" &
+                                      kbs_summary_output_piv$Model %in% c("APSIM","Daycent"),] %>%
+    ggplot(aes(x=scenario_abbrev, y=vals, fill=Model)) +
+    scale_x_discrete() +
+    geom_hline(yintercept=0, color="darkgrey") +
+    geom_vline(xintercept=5.5, color="grey") +
+    geom_vline(xintercept=7.5, color="grey") +
+    geom_vline(xintercept=8.5, color="grey") +
+    geom_vline(xintercept=10.5, color="grey") +
+    geom_vline(xintercept=14.5, color="grey") +
+    geom_vline(xintercept=20.5, color="grey") +
+    geom_col(position="dodge",colour=NA) +
+    geom_col(data=kbs_scenario_means,
+             aes(x=scenario_abbrev, y=mean_MaizeYld_Mgha), color= "black",
+             fill=NA, position="dodge") +
+  ylab(expression('Grain Yield (Mg ha ' ^-1*')')) +
+    xlab("") +
+    ggtitle(paste0("KBS Maize Yield Change by ",
+                   end_fut_period_year)) +
+    scale_fill_manual(labels=c("APSIM","Daycent"),
+                      values=cbPalette9[c(8,2)],
+                      name="Model") +
+    facet_wrap(~climate_desc,nrow=5,strip.position = "right") +
+    theme_classic(base_family = "serif", base_size = 25) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1),
+          legend.position = "top",
+          legend.key = element_blank())
+  
+  g_maize
+  
+  
+  g_soybean <- kbs_summary_output_piv[kbs_summary_output_piv$source == "Soybean_Diff_Mgha" &
+                                      kbs_summary_output_piv$Model %in% c("APSIM","Daycent"),] %>%
+    ggplot(aes(x=scenario_abbrev, y=vals, fill=Model)) +
+    scale_x_discrete() +
+    geom_hline(yintercept=0, color="darkgrey") +
+    geom_vline(xintercept=5.5, color="grey") +
+    geom_vline(xintercept=7.5, color="grey") +
+    geom_vline(xintercept=8.5, color="grey") +
+    geom_vline(xintercept=10.5, color="grey") +
+    geom_vline(xintercept=14.5, color="grey") +
+    geom_vline(xintercept=20.5, color="grey") +
+    geom_col(position="dodge",colour=NA) +
+    geom_col(data=kbs_scenario_means,
+             aes(x=scenario_abbrev, y=mean_SoyYld_Mgha), color= "black",
+             fill=NA, position="dodge") +
+    ylab(expression('Grain Yield (Mg ha ' ^-1*')')) +
+    xlab("") +
+    ggtitle(paste0("KBS Soybean Yield Change by ",
+                   end_fut_period_year)) +
+    scale_fill_manual(labels=c("APSIM","Daycent"),
+                      values=cbPalette9[c(8,2)],
+                      name="Model") +
+    facet_wrap(~climate_desc,nrow=5,strip.position = "right") +
+    theme_classic(base_family = "serif", base_size = 25) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1),
+          legend.position = "top",
+          legend.key = element_blank())
+  
+  g_soybean
+  
+  g_wheat <- kbs_summary_output_piv[kbs_summary_output_piv$source == "Wheat_Diff_Mgha" &
+                                        kbs_summary_output_piv$Model %in% c("APSIM","Daycent"),] %>%
+    ggplot(aes(x=scenario_abbrev, y=vals, fill=Model)) +
+    scale_x_discrete() +
+    geom_hline(yintercept=0, color="darkgrey") +
+    geom_vline(xintercept=5.5, color="grey") +
+    geom_vline(xintercept=7.5, color="grey") +
+    geom_vline(xintercept=8.5, color="grey") +
+    geom_vline(xintercept=10.5, color="grey") +
+    geom_vline(xintercept=14.5, color="grey") +
+    geom_vline(xintercept=20.5, color="grey") +
+    geom_col(position="dodge",colour=NA) +
+    geom_col(data=kbs_scenario_means,
+             aes(x=scenario_abbrev, y=mean_WheatYld_Mgha), color= "black",
+             fill=NA, position="dodge") +
+    ylab(expression('Grain Yield (Mg ha ' ^-1*')')) +
+    xlab("") +
+    ggtitle(paste0("KBS Wheat Yield Change by ",
+                   end_fut_period_year)) +
+    scale_fill_manual(labels=c("APSIM","Daycent"),
+                      values=cbPalette9[c(8,2)],
+                      name="Model") +
+    facet_wrap(~climate_desc,nrow=5,strip.position = "right") +
+    theme_classic(base_family = "serif", base_size = 25) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1),
+          legend.position = "top",
+          legend.key = element_blank())
+  
+  g_wheat
+  
+  g_cotton <- lrf_summary_output_piv[lrf_summary_output_piv$source == "Cotton_Diff_Mgha" &
+                                      lrf_summary_output_piv$Model %in% c("APSIM","Daycent"),] %>%
+    ggplot(aes(x=scenario_abbrev, y=vals, fill=Model)) +
+    scale_x_discrete() +
+    geom_hline(yintercept=0, color="darkgrey") +
+    geom_vline(xintercept=5.5, color="grey") +
+    geom_vline(xintercept=7.5, color="grey") +
+    geom_vline(xintercept=8.5, color="grey") +
+    geom_vline(xintercept=10.5, color="grey") +
+    geom_vline(xintercept=14.5, color="grey") +
+    geom_vline(xintercept=20.5, color="grey") +
+    geom_col(position="dodge",colour=NA) +
+    geom_col(data=lrf_scenario_means,
+             aes(x=scenario_abbrev, y=mean_CottonYld_Mgha), color= "black",
+             fill=NA, position="dodge") +
+    ylab(expression('Lint Yield (Mg ha ' ^-1*')')) +
+    xlab("") +
+    ggtitle(paste0("LRF Cotton Yield Change by ",
+                   end_fut_period_year)) +
+    scale_fill_manual(labels=c("APSIM","Daycent"),
+                      values=cbPalette9[c(8,2)],
+                      name="Model") +
+    facet_wrap(~climate_desc,nrow=5,strip.position = "right") +
+    theme_classic(base_family = "serif", base_size = 25) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1),
+          legend.position = "top",
+          legend.key = element_blank())
+  
+  g_cotton
+
+  g_sorghum <- lrf_summary_output_piv[lrf_summary_output_piv$source == "Sorghum_Diff_Mgha" &
+                                       lrf_summary_output_piv$Model %in% c("APSIM","Daycent"),] %>%
+    ggplot(aes(x=scenario_abbrev, y=vals, fill=Model)) +
+    scale_x_discrete() +
+    geom_hline(yintercept=0, color="darkgrey") +
+    geom_vline(xintercept=5.5, color="grey") +
+    geom_vline(xintercept=7.5, color="grey") +
+    geom_vline(xintercept=8.5, color="grey") +
+    geom_vline(xintercept=10.5, color="grey") +
+    geom_vline(xintercept=14.5, color="grey") +
+    geom_vline(xintercept=20.5, color="grey") +
+    geom_col(position="dodge",colour=NA) +
+    geom_col(data=lrf_scenario_means,
+             aes(x=scenario_abbrev, y=mean_SorghumYld_Mgha), color= "black",
+             fill=NA, position="dodge") +
+    ylab(expression('Grain Yield (Mg ha ' ^-1*')')) +
+    xlab("") +
+    ggtitle(paste0("LRF Sorghum Yield Change by ",
+                   end_fut_period_year)) +
+    scale_fill_manual(labels=c("APSIM","Daycent"),
+                      values=cbPalette9[c(8,2)],
+                      name="Model") +
+    facet_wrap(~climate_desc,nrow=5,strip.position = "right") +
+    theme_classic(base_family = "serif", base_size = 25) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          axis.text.x = element_text(angle = 45,
+                                     hjust = 1),
+          legend.position = "top",
+          legend.key = element_blank())
+  
+  g_sorghum
+  
+    ggsave(filename=paste0("Comb_results_",end_fut_period_year,"/pub_kbs_maize.jpg"),
+         plot=g_maize, width=10, height=14, dpi=300)
+    ggsave(filename=paste0("Comb_results_",end_fut_period_year,"/pub_kbs_soybean.jpg"),
+           plot=g_soybean, width=10, height=14, dpi=300)
+    ggsave(filename=paste0("Comb_results_",end_fut_period_year,"/pub_kbs_wheat.jpg"),
+           plot=g_wheat, width=10, height=14, dpi=300)
+    ggsave(filename=paste0("Comb_results_",end_fut_period_year,"/pub_lrf_cotton.jpg"),
+           plot=g_cotton, width=10, height=14, dpi=300)
+    ggsave(filename=paste0("Comb_results_",end_fut_period_year,"/pub_lrf_sorghum.jpg"),
+           plot=g_sorghum, width=10, height=14, dpi=300)
+    
+
   
   #*******************************************************************
   
@@ -1998,7 +2262,7 @@ suppressMessages({
                                     "climate_desc")]),
               by=c("Climate_Scenario"="climate_scenario_num")) %>%
     mutate(climate_desc = factor(climate_desc,
-                                 levels=c("Baseline","GFDL_Low","GFDL_High","UKESM_Low","UKESM_High")))
+                                 levels=climate_factor_order))
   
   lrf_model_component_means_byclimate_RFgrp_piv <- pivot_longer(lrf_model_component_means_byclimate_RFgrp,
                                                                 c(-Model,-Climate_Scenario,-pub_climate_scenario,
@@ -2008,7 +2272,7 @@ suppressMessages({
                                     "climate_desc")]),
               by=c("Climate_Scenario"="climate_scenario_num")) %>%
     mutate(climate_desc = factor(climate_desc,
-                                 levels=c("Baseline","GFDL_Low","GFDL_High","UKESM_Low","UKESM_High")))
+                                 levels=climate_factor_order))
   
   
   model_component_means_apsim_climate_CR <- rbind(kbs_model_component_means_apsim_climate_CR)
@@ -2027,7 +2291,7 @@ suppressMessages({
                                     "climate_desc")]),
               by=c("Climate_Scenario"="climate_scenario_num")) %>%
     mutate(climate_desc = factor(climate_desc,
-                                 levels=c("Baseline","GFDL_Low","GFDL_High","UKESM_Low","UKESM_High")))
+                                 levels=climate_factor_order))
   
   model_component_means_apsim_mgmt_baseline_piv <- pivot_longer(model_component_means_apsim_mgmt_baseline,
                                                                 c(-Model,-Scenario_Abbrev,-site_name),
@@ -2040,7 +2304,7 @@ suppressMessages({
                                     "climate_desc")]),
               by=c("Climate_Scenario"="climate_scenario_num")) %>%
     mutate(climate_desc = factor(climate_desc,
-                                 levels=c("Baseline","GFDL_Low","GFDL_High","UKESM_Low","UKESM_High")))
+                                 levels=climate_factor_order))
   
   model_component_means_daycent_mgmt_baseline_piv <- pivot_longer(model_component_means_daycent_mgmt_baseline,
                                                                   c(-Model,-Scenario_Abbrev,-site_name),

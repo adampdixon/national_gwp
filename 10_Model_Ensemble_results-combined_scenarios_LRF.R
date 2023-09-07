@@ -106,7 +106,7 @@ his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_M
     geom_point(show.legend=TRUE) +
     xlab("Year") +
     ylab(expression('Grain Yield (Mg ha ' ^-1*')')) +
-    ylim(0,3) +
+    ylim(0,6) +
     ggtitle(paste(site_name,"Crop Yield Calibration")) +
     geom_errorbar(aes(ymin=yield_val-Obs_sd, ymax=yield_val+Obs_sd),
                   width=.5) + # Width of the error bars
@@ -225,14 +225,43 @@ his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_M
     Y2box_bytreat[Y2box_cotton_Obs_rows,"middle"]
   Y2box_cotton_Daycent_Obs_med_diff <- Y2box_bytreat[Y2box_cotton_Daycent_rows,"middle"] -
     Y2box_bytreat[Y2box_cotton_Obs_rows,"middle"]
-  Y2box_cotton_APSIM_Obs_diff_range <- range(Y2box_cotton_APSIM_Obs_med_diff)
-  Y2box_cotton_Daycent_Obs_diff_range <- range(Y2box_cotton_Daycent_Obs_med_diff)
   Y2box_sorghum_APSIM_Obs_med_diff <- Y2box_bytreat[Y2box_sorghum_APSIM_rows,"middle"] - 
     Y2box_bytreat[Y2box_sorghum_Obs_rows,"middle"]
   Y2box_sorghum_Daycent_Obs_med_diff <- Y2box_bytreat[Y2box_sorghum_Daycent_rows,"middle"] -
     Y2box_bytreat[Y2box_sorghum_Obs_rows,"middle"]
+  # calculate mean medians between APSIM and Daycent
+  Y2box_cotton_model_mean_medians <- rowMeans(cbind(Y2box_bytreat[Y2box_cotton_APSIM_rows,"middle"],
+                                                  Y2box_bytreat[Y2box_cotton_Daycent_rows,"middle"]))
+  Y2box_cotton_Obs_medians <- Y2box_bytreat[Y2box_cotton_Obs_rows,"middle"]
+  Y2box_cotton_median_diffs <- Y2box_cotton_Obs_medians - Y2box_cotton_model_mean_medians
+  Y2box_sorghum_model_mean_medians <- rowMeans(cbind(Y2box_bytreat[Y2box_sorghum_APSIM_rows,"middle"],
+                                                     Y2box_bytreat[Y2box_sorghum_Daycent_rows,"middle"]))
+  Y2box_sorghum_Obs_medians <- Y2box_bytreat[Y2box_sorghum_Obs_rows,"middle"]
+  Y2box_sorghum_median_diffs <- Y2box_sorghum_Obs_medians - Y2box_sorghum_model_mean_medians
+
+  # for paper: crop medians
+  Y2box_cotton_medians_df <- round(data.frame(APSIM_cotton_med=Y2box_bytreat[Y2box_cotton_APSIM_rows,"middle"],
+                                            Daycent_cotton_med=Y2box_bytreat[Y2box_cotton_Daycent_rows,"middle"],
+                                            Model_cotton_med=Y2box_cotton_model_mean_medians,
+                                            Obs_cotton_med=Y2box_cotton_Obs_medians),1) %>%
+    mutate(scenario=c("CC-CR","CC-NT-CR","CN","RR00-CR","RR00-NT-CR"),
+           site=site_name)
+  Y2box_sorghum_medians_df <- round(data.frame(APSIM_sorghum_med=Y2box_bytreat[Y2box_sorghum_APSIM_rows,"middle"],
+                                              Daycent_sorghum_med=Y2box_bytreat[Y2box_sorghum_Daycent_rows,"middle"],
+                                              Model_sorghum_med=Y2box_sorghum_model_mean_medians,
+                                              Obs_sorghum_med=Y2box_sorghum_Obs_medians),1) %>%
+    mutate(scenario=c("CC-CR","CC-NT-CR","RR00-CR","RR00-NT-CR"),
+           site=site_name)
+  write.csv(Y2box_cotton_medians_df,paste0(results_path,"calib_cotton_medians.csv"))
+  write.csv(Y2box_sorghum_medians_df,paste0(results_path,"calib_sorghum_medians.csv"))
+  
+  
+  # DON'T USE FOR PAPER: range of the differences across all calibration mgmt scenarios
+  Y2box_cotton_APSIM_Obs_diff_range <- range(Y2box_cotton_APSIM_Obs_med_diff)
+  Y2box_cotton_Daycent_Obs_diff_range <- range(Y2box_cotton_Daycent_Obs_med_diff)
   Y2box_sorghum_APSIM_Obs_diff_range <- range(Y2box_sorghum_APSIM_Obs_med_diff)
   Y2box_sorghum_Daycent_Obs_diff_range <- range(Y2box_sorghum_Daycent_Obs_med_diff)
+  
   
   ## historical for sorghum
   gY3_box <- his_SorghumYld_Mgha_piv %>%
@@ -265,9 +294,10 @@ his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_M
     Y3box_bytreat[Y3box_sorghum_Obs_rows,"middle"]
   Y3box_sorghum_Daycent_Obs_med_diff <- Y3box_bytreat[Y3box_sorghum_Daycent_rows,"middle"] -
     Y3box_bytreat[Y3box_sorghum_Obs_rows,"middle"]
+  
+  # USE THIS FOR PAPER: range of the differences across all calibration mgmt scenarios
   Y3box_sorghum_APSIM_Obs_diff_range <- range(Y3box_sorghum_APSIM_Obs_med_diff)
   Y3box_sorghum_Daycent_Obs_diff_range <- range(Y3box_sorghum_Daycent_Obs_med_diff)
-  
   
   
   gS1_box <- soc_calib_output_df_piv_withsd[soc_calib_output_df_piv_withsd$year %in%
@@ -324,6 +354,24 @@ his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_M
     S1box_bytreat[S1box_soc_Millennial_rows,"lower"]
   S1box_soc_RothC_iqrs <- S1box_bytreat[S1box_soc_RothC_rows,"upper"] - 
     S1box_bytreat[S1box_soc_RothC_rows,"lower"]
+  # calculate mean medians between APSIM, Daycent, Millennial, and RothC
+  S1box_soc_model_mean_medians <- rowMeans(cbind(S1box_bytreat[S1box_soc_APSIM_rows,"middle"],
+                                                 S1box_bytreat[S1box_soc_Daycent_rows,"middle"],
+                                                 S1box_bytreat[S1box_soc_Millennial_rows,"middle"],
+                                                 S1box_bytreat[S1box_soc_RothC_rows,"middle"]))
+  S1box_soc_Obs_medians <- S1box_bytreat[S1box_soc_Obs_rows,"middle"]
+  S1box_soc_median_diffs <- S1box_soc_Obs_medians - S1box_soc_model_mean_medians
+  # for paper: model and obs medians
+  S1box_soc_medians_df <- round(data.frame(APSIM_soc_med=S1box_bytreat[S1box_soc_APSIM_rows,"middle"],
+                                           Daycent_soc_med=S1box_bytreat[S1box_soc_Daycent_rows,"middle"],
+                                           Millennial_soc_med=S1box_bytreat[S1box_soc_Millennial_rows,"middle"],
+                                           RothC_soc_med=S1box_bytreat[S1box_soc_RothC_rows,"middle"],
+                                           Model_soc_med=S1box_soc_model_mean_medians,
+                                           Obs_soc_med=S1box_soc_Obs_medians),1) %>%
+    mutate(scenario=c("CC-CR","CC-NT-CR","CN","RR00-CR","RR00-NT-CR"),
+           site=site_name)
+  write.csv(S1box_soc_medians_df,paste0(results_path,"calib_soc_medians.csv"))
+  
   
 
   gMB1_box <- mb_calib_output_df_piv_withsd[mb_calib_output_df_piv_withsd$year %in%

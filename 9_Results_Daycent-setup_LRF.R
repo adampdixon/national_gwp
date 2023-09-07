@@ -177,16 +177,50 @@ Day_exp_methane <- read.fwf(paste0(daycent_path,paste0("methane_exp_",scenario_n
                             ,skip=1)%>%
   mutate(date=as.Date(DOY,origin=paste0(as.character(year),"-01-01"))-1)
 
-Day_fut_methane <- read.fwf(paste0(daycent_path,paste0("methane_fut_",scenario_name,".out")),
-                            widths=c(4,6,12,12,12,12,12,12,12,12,12,12,12,12,12,
-                                     12,12,12,12,12,12),
-                            col.names=c("year","DOY","aglivc","bglivcj","bglivcm",
-                                        "prev_mcprd1","prev_mcprd2","prev_mcprd3",
-                                        "COM","ppt","irri","watr2sat","avgst_10cm",
-                                        "TI","Cr","Eh","Feh","CH4_prod","CH4_Ep",
-                                        "CH4_Ebl","CH4_oxid")
-                            ,skip=1)%>%
-  mutate(date=as.Date(DOY,origin=paste0(as.character(year),"-01-01"))-1)
+# ###############################################################################
+# ####### The following block is a work-around for odd behavior in no-till where
+# ####### future methane oxidation suddenly increases more than double in all
+# ####### climate scenarios, including the baseline. 
+# ###############################################################################
+# # calculate what 29-year past total was, then reduce each day by a fraction
+# # until the sum is the same for the future 29 years
+# if(mgmt_scenario_num %in% c(54,55,56,8)) {
+#   num_years <- end_fut_period_year - end_exp_period_year
+#   start_exp <- end_exp_period_year - num_years
+#   sum_exp_oxid <- sum(Day_exp_methane[Day_exp_methane$year>=start_exp,"CH4_oxid"])
+#   
+#   Day_fut_methane <- read.fwf(paste0(daycent_path,paste0("methane_fut_",scenario_name,".out")),
+#                               widths=c(4,6,12,12,12,12,12,12,12,12,12,12,12,12,12,
+#                                        12,12,12,12,12,12),
+#                               col.names=c("year","DOY","aglivc","bglivcj","bglivcm",
+#                                           "prev_mcprd1","prev_mcprd2","prev_mcprd3",
+#                                           "COM","ppt","irri","watr2sat","avgst_10cm",
+#                                           "TI","Cr","Eh","Feh","CH4_prod","CH4_Ep",
+#                                           "CH4_Ebl","CH4_oxid")
+#                               ,skip=1) %>%
+#     mutate(date=as.Date(DOY,origin=paste0(as.character(year),"-01-01"))-1,
+#            CH4_oxid=CH4_oxid*0.465)
+#   
+#   sum_fut_oxid <- sum(Day_fut_methane[Day_fut_methane$year < min(Day_fut_methane$year)+num_years-1,
+#                                       "CH4_oxid"])
+#   
+#   
+# } else {
+  
+  Day_fut_methane <- read.fwf(paste0(daycent_path,paste0("methane_fut_",scenario_name,".out")),
+                              widths=c(4,6,12,12,12,12,12,12,12,12,12,12,12,12,12,
+                                       12,12,12,12,12,12),
+                              col.names=c("year","DOY","aglivc","bglivcj","bglivcm",
+                                          "prev_mcprd1","prev_mcprd2","prev_mcprd3",
+                                          "COM","ppt","irri","watr2sat","avgst_10cm",
+                                          "TI","Cr","Eh","Feh","CH4_prod","CH4_Ep",
+                                          "CH4_Ebl","CH4_oxid")
+                              ,skip=1) %>%
+    mutate(date=as.Date(DOY,origin=paste0(as.character(year),"-01-01"))-1)
+  
+  
+# }
+
 
 Day_methane_raw <- rbind(Day_exp_methane[,c("date","year","DOY","CH4_Ep","CH4_Ebl","CH4_oxid")],
                      Day_fut_methane[,c("date","year","DOY","CH4_Ep","CH4_Ebl","CH4_oxid")]) %>%
@@ -196,27 +230,75 @@ Day_methane_raw <- rbind(Day_exp_methane[,c("date","year","DOY","CH4_Ep","CH4_Eb
 
 Day_methane <- Day_methane_raw[Day_methane_raw$year <= end_fut_period_year,]
 
+
+################################################################################
+
 # Day_base_summary <- read.fwf(paste0(daycent_path,paste0("summary_base.out")),
 #                              widths=c(10,5,9,9,9,13,13,13,13,13),
 #                              col.names=c("time","dayofyear","tmax","tmin","ppt",
 #                                          "N2O_gNhad","NOflux","CH4_gChad","NIT","CO2resp"),
 #                              skip=1) 
-Day_exp_summary <- read.fwf(paste0(daycent_path,paste0("summary_exp_",scenario_name,".out")),
-                            widths=c(10,5,9,9,9,13,13,13,13,13),
-                            col.names=c("time","dayofyear","tmax","tmin","ppt",
-                                        "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"),
-                            skip=1) 
-Day_fut_summary <- read.fwf(paste0(daycent_path,paste0("summary_fut_",scenario_name,".out")),
-                            widths=c(10,5,9,9,9,13,13,13,13,13),
-                            col.names=c("time","dayofyear","tmax","tmin","ppt",
-                                        "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"),
-                            skip=1) 
+
+
+# ###############################################################################
+# ####### The following block is a work-around for odd behavior in no-till where
+# ####### future methane oxidation suddenly increases more than double in all
+# ####### climate scenarios, including the baseline. 
+# ###############################################################################
+# calculate what 29-year past total was, then reduce each day by a fraction
+# until the sum is the same for the future 29 years
+if(mgmt_scenario_num %in% c(54,55,56,8)) {
+  num_years <- end_fut_period_year - end_exp_period_year
+  start_exp <- end_exp_period_year - num_years
+  Day_exp_summary <- read.fwf(paste0(daycent_path,paste0("summary_exp_",scenario_name,".out")),
+                              widths=c(10,5,9,9,9,13,13,13,13,13),
+                              col.names=c("time","dayofyear","tmax","tmin","ppt",
+                                          "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"),
+                              skip=1) %>%
+    mutate(year=floor(time),
+           CH4_oxid_gChad=CH4_oxid_gChad*0.465)
+  sum_exp_oxid_sum <- sum(Day_exp_summary[Day_exp_summary$year>=start_exp,"CH4_oxid_gChad"])
+
+
+  Day_fut_summary <- read.fwf(paste0(daycent_path,paste0("summary_fut_",scenario_name,".out")),
+                              widths=c(10,5,9,9,9,13,13,13,13,13),
+                              col.names=c("time","dayofyear","tmax","tmin","ppt",
+                                          "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"),
+                              skip=1) %>%
+    mutate(year=floor(time),
+           CH4_oxid_gChad=CH4_oxid_gChad*0.465)
+
+  sum_fut_oxid_sum <- sum(Day_fut_summary[Day_fut_summary$year < min(Day_fut_summary$year)+num_years-1,
+                                          "CH4_oxid_gChad"])
+
+
+} else {
+  
+  Day_exp_summary <- read.fwf(paste0(daycent_path,paste0("summary_exp_",scenario_name,".out")),
+                              widths=c(10,5,9,9,9,13,13,13,13,13),
+                              col.names=c("time","dayofyear","tmax","tmin","ppt",
+                                          "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"),
+                              skip=1) 
+
+    Day_fut_summary <- read.fwf(paste0(daycent_path,paste0("summary_fut_",scenario_name,".out")),
+                              widths=c(10,5,9,9,9,13,13,13,13,13),
+                              col.names=c("time","dayofyear","tmax","tmin","ppt",
+                                          "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"),
+                              skip=1) 
+  
+}
+
+###############################################################################
+
+
+
 
 #Day_summary <- rbind(Day_base_summary,Day_exp_summary,Day_fut_summary)
 Day_summary_raw <- rbind(Day_exp_summary,Day_fut_summary) %>%
   mutate(year=floor(time)) %>%
   merge(Day_methane, by=c("year","dayofyear")) %>%
-  mutate(CH4_net_gChad=CH4_emis_gChad-CH4_oxid_gChad) %>%
+  mutate(CH4_net_gChad = -(CH4_oxid_gChad)* 0.2) %>% # make it negative
+   # mutate(CH4_net_gChad=CH4_emis_gChad-CH4_oxid_gChad) %>%
   arrange(year,dayofyear)
 
 Day_summary <- Day_summary_raw[Day_summary_raw$year <= end_fut_period_year,]
@@ -369,6 +451,8 @@ Day_fut_wfps <- read.fwf(paste0(daycent_path,paste0("wfps_fut_",scenario_name,".
   mutate(year=floor(time),
          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
 
+
+Day_wfps <- rbind(Day_exp_wfps,Day_fut_wfps)
 
 
 #**********************************************************************

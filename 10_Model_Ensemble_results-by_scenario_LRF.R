@@ -27,12 +27,13 @@ suppressMessages({
   #[1]black, [2]dark blue, [3]green, [4]light blue, [5]grey,
   #[6]pink, [7]red, [8]orange, [9]yellow
   
-  if(mgmt_scenario_num %in% calib_mgmt_nums) {
-    
+  if(mgmt_scenario_num %in% c(calib_mgmt_nums)) {
+  #  if(mgmt_scenario_num %in% c(calib_mgmt_nums,51)) {
+      
     if(mgmt_scenario_grp!=7) {
       # merge observed and modeled data
       ## use ens_ (ensemble) prefix to distinguish these from the "SorghumYld_Mgha" etc.
-      ## files in each model's Results files.
+      ## files in each model's Results code.
       ens_SorghumYld_Mgha <- merge(merge(ObsYield[ObsYield$crop=="Sorghum",c("year","mean_yield","sd_yield")],
                                          APSIMY_Mgha[APSIMY_Mgha$SorghumYield_Mgha != 0,
                                                      c("year","SorghumYield_Mgha")],
@@ -82,7 +83,7 @@ suppressMessages({
       p_Edit_calib_data_file(his_SorghumYld_Mgha_piv,
                              paste0(results_path,"his_SorghumYld_Mgha_piv.csv"))
       
-    }
+    } # end if mgmt scenario is not 7 (otherwise exclude sorghum code)
     
     #
     ens_CottonYld_Mgha <- merge(merge(ObsYield[ObsYield$crop=="Cotton",c("year","mean_yield","sd_yield")],
@@ -205,7 +206,7 @@ suppressMessages({
                                                    names_to = "Source",
                                                    values_to = "n2o_val")
     
-    #### totals over the whole sampling period
+    #### totals over the whole sampling/experimental period
     ens_N2O_profile_comp_gtot <- cbind(APSIMGN_profile_cum_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr)),
                                        DayGN_cum_calib %>% summarize(tot_N2O_gha=sum(tot_N2O_ghayr)))
     colnames(ens_N2O_profile_comp_gtot) <- c("APSIM","Daycent")
@@ -237,8 +238,9 @@ suppressMessages({
     
     # Calibration temporal graphs ---------------------------------------------
     
-    if(clim_scenario_num == 1 & mgmt_scenario_num %in% calib_mgmt_nums) {
-      
+    if(clim_scenario_num == 1 & mgmt_scenario_num %in% c(calib_mgmt_nums)) {
+      # if(clim_scenario_num == 1 & mgmt_scenario_num %in% c(calib_mgmt_nums,51)) {
+        
       if(mgmt_scenario_grp!=7) {
         ## Sorghum
         SYfit_APSIM <- coef(lm(APSIM ~ year, 
@@ -390,7 +392,7 @@ suppressMessages({
       gN_calib <- ens_N2O_profile_comp_gtot_piv %>%
         ggplot(aes(x=Source, y=n2o_val, color=Source, fill=Source)) +
         geom_col(position="stack") +
-        ylim(0,2000) +
+        ylim(0,3100) +
         ylab(expression('N'[2]*'O (g N ha' ^'-1'*' day'^'-1'*')')) +
         ggtitle(paste(site_name,"Total Modeled N2O Emissions"),
                 paste0("Scenario: ",scenario_descriptor)) +
@@ -408,6 +410,8 @@ suppressMessages({
       gN_calib
       
       frctn_diff_N2O_APSIM_Daycent <- (ens_N2O_profile_comp_gtot$APSIM-ens_N2O_profile_comp_gtot$Daycent)/ens_N2O_profile_comp_gtot$Daycent
+      frctn_diff_N2O_APSIM_Obs <- (ens_N2O_profile_comp_gtot$APSIM-ens_N2O_profile_comp_gtot$Observed)/ens_N2O_profile_comp_gtot$Observed
+      frctn_diff_N2O_Daycent_Obs <- (ens_N2O_profile_comp_gtot$Daycent-ens_N2O_profile_comp_gtot$Observed)/ens_N2O_profile_comp_gtot$Observed
       
       
       if(mgmt_scenario_grp!=7) {
@@ -593,11 +597,11 @@ suppressMessages({
     # 
     # gMG
     
-  } else { # mgmt_scenario_grp == 6
+  } else { # mgmt_scenario_grp not 
     
     # merge observed and modeled data
     ## use ens_ (ensemble) prefix to distinguish these from the "SorghumYld_Mgha" etc.
-    ## files in each model's Results files.
+    ## files in each model's Results code.
     ens_SorghumYld_Mgha <- merge(ObsYield[ObsYield$crop=="Sorghum",c("year","mean_yield")],
                                  APSIMY_Mgha[APSIMY_Mgha$SorghumYield_Mgha != 0,
                                              c("year","SorghumYield_Mgha")],

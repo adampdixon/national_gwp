@@ -122,17 +122,17 @@ source(paste0("0_Observations_and_constants_",site_name,".R"))
 
 #*************************************************************
 
-# Management input files (APSIM, Daycent, LDNDC)
-#
+# # Management input files (APSIM, Daycent, LDNDC)
+# #
 # source(paste0("3_Create_management_input_files-setup_",site_name,".R"))
-# # 
+# #
 # source(paste0("3_Create_management_input_files-APSIM_",site_name,".R"))
-#
+# #
 # if(mgmt_scenario_grp!=6) {
 # source(paste0("3_Create_management_input_files-Daycent_",site_name,".R"))
-# source(paste0("3_Create_management_input_files-LDNDC_",site_name,".R"))
-# 
-# # Management input files for RothC, Millennial are created after Daycent runs
+# #source(paste0("3_Create_management_input_files-LDNDC_",site_name,".R"))
+# #
+# ## Management input files for RothC, Millennial are created after Daycent runs
 # }
 
 
@@ -180,18 +180,18 @@ source(paste0("0_Observations_and_constants_",site_name,".R"))
 #*************************************************************
 #*************************************************************
 
-# APSIM
+# # APSIM
 source(paste0("9_Results_APSIM-setup_",site_name,".R"))
-model_name <- "APSIM"
-
-# # need to first run:
+# model_name <- "APSIM"
+# 
+# # before calibration, need to first run:
 # # 3_Create_management_input_files-setup_",site_name,".R"
 # # 3_Create_management_input_files-APSIM_",site_name,".R"
-# if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
+# if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
 # source(paste0("9_Results_APSIM-calibration2_",site_name,".R"))
 # }
-source(paste0("9_Results_APSIM-future_",site_name,".R"))
-source("p_Results_analysis.R")
+# source(paste0("9_Results_APSIM-future_",site_name,".R"))
+# source("p_Results_analysis.R")
 
 #*************************************************************
 
@@ -199,9 +199,9 @@ source("p_Results_analysis.R")
 if(mgmt_scenario_grp!=6) {
 source(paste0("9_Results_Daycent-setup_",site_name,".R"))
 model_name <- "Daycent"
-  # if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
-  #   source(paste0("9_Results_Daycent-calibration_",site_name,".R"))
-  # }
+  if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
+    source(paste0("9_Results_Daycent-calibration_",site_name,".R"))
+  }
 source(paste0("9_Results_Daycent-future_",site_name,".R"))
 source("p_Results_analysis.R")
 }
@@ -254,31 +254,31 @@ source("p_Results_analysis.R")
 #*************************************************************
 #*************************************************************
 
-# Millennial
+# # Millennial
 if(mgmt_scenario_grp!=6) {
 source(paste0("9_Results_Millennial-setup_",site_name,".R"))
-#
-model_name <- "Millennial"
-# if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
+# #
+# model_name <- "Millennial"
+# if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
 #   source(paste0("9_Results_Millennial-calibration_",site_name,".R"))
 # }
-source(paste0("9_Results_Millennial-future_",site_name,".R"))
-  source("p_Results_analysis.R")
+# source(paste0("9_Results_Millennial-future_",site_name,".R"))
+#   source("p_Results_analysis.R")
 }
 
 
 #*************************************************************
 
-# RothC
+# # RothC
 if(mgmt_scenario_grp!=6) {
 source(paste0("9_Results_RothC-setup_",site_name,".R"))
-#
-model_name <- "RothC"
-# if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
+# #
+# model_name <- "RothC"
+# if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
 # source(paste0("9_Results_RothC-calibration_",site_name,".R"))
 # }
-source("9_Results_RothC-future.R")
-source("p_Results_analysis.R")
+# source("9_Results_RothC-future.R")
+# source("p_Results_analysis.R")
 }
 
 

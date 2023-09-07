@@ -312,7 +312,7 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
     paste0("1 323 HARV G",resid_adjust_chr,"S"),
     paste0("2 17 CULT K",resid_adjust_chr),
     paste0("2 119 FERT (",round(2.8*fert_adjust,2),"N)"),
-    "2 133 CROP SORGH",
+    "2 133 CROP SORG",
     "2 133 PLTM",
     paste0("2 315 HARV G",resid_adjust_chr,"S")
   )
@@ -323,7 +323,7 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
            "1 140 PLTM",
     paste0("1 323 HARV G",resid_adjust_chr,"S"),
     paste0("2 119 FERT (",round(2.8*fert_adjust,2),"N)"),
-    "2 133 CROP SORGH",
+    "2 133 CROP SORG",
     "2 133 PLTM",
     paste0("2 315 HARV G",resid_adjust_chr,"S")
   )
@@ -342,7 +342,7 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
     paste0("2 119 FERT (",round(2.8*fert_adjust,2),"N)"),
     "2 119 CULT K",
     "2 131 CULT R",
-    "2 135 CROP SORGH",
+    "2 135 CROP SORG",
     "2 135 PLTM",
     paste0("2 306 HARV G",resid_adjust_chr,"S"),
     "2 355 CULT K",
@@ -372,7 +372,7 @@ ops_txt <- if(mgmt_scenario_num %in% c(51,52,53) |
     "1 347 PLTM",
     "2 98 HARV KILL",
     paste0("2 119 FERT (",round(2.8*fert_adjust,2),"N)"),
-    "2 135 CROP SORGH",
+    "2 135 CROP SORG",
     "2 135 PLTM",
     paste0("2 306 HARV G",resid_adjust_chr,"S"),
     "2 355 CROP RGA",

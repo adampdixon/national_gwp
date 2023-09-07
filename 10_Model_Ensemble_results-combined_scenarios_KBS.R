@@ -198,6 +198,7 @@ source("f_model_coef.R")
   
   # get stats from boxplots
   Y2box_bytreat <- ggplot_build(gY2_box)[[1]][[1]]
+  ## identify which rows in data are which crops
   Y2box_corn_Obs_rows <- which(as.numeric(rownames(Y2box_bytreat)) %% 3 == 0 &
                                    as.numeric(rownames(Y2box_bytreat)) <= 9  )
   Y2box_corn_APSIM_rows <- which(as.numeric(rownames(Y2box_bytreat)) %% 3 == 1 &
@@ -219,25 +220,58 @@ source("f_model_coef.R")
                                       as.numeric(rownames(Y2box_bytreat)) > 18 )
   Y2box_wheat_Daycent_rows <- which(as.numeric(rownames(Y2box_bytreat)) %% 3 == 2 &
                                         as.numeric(rownames(Y2box_bytreat)) > 18 )
-  # calculate difference in medians between models and Observed
+  # calculate difference in medians ("middle") between models and Observed
   Y2box_corn_APSIM_Obs_med_diff <- Y2box_bytreat[Y2box_corn_APSIM_rows,"middle"] - 
     Y2box_bytreat[Y2box_corn_Obs_rows,"middle"]
   Y2box_corn_Daycent_Obs_med_diff <- Y2box_bytreat[Y2box_corn_Daycent_rows,"middle"] -
     Y2box_bytreat[Y2box_corn_Obs_rows,"middle"]
-  Y2box_corn_APSIM_Obs_diff_range <- range(Y2box_corn_APSIM_Obs_med_diff)
-  Y2box_corn_Daycent_Obs_diff_range <- range(Y2box_corn_Daycent_Obs_med_diff)
   Y2box_soybean_APSIM_Obs_med_diff <- Y2box_bytreat[Y2box_soybean_APSIM_rows,"middle"] - 
     Y2box_bytreat[Y2box_soybean_Obs_rows,"middle"]
   Y2box_soybean_Daycent_Obs_med_diff <- Y2box_bytreat[Y2box_soybean_Daycent_rows,"middle"] -
     Y2box_bytreat[Y2box_soybean_Obs_rows,"middle"]
-  Y2box_soybean_APSIM_Obs_diff_range <- range(Y2box_soybean_APSIM_Obs_med_diff)
-  Y2box_soybean_Daycent_Obs_diff_range <- range(Y2box_soybean_Daycent_Obs_med_diff)
   Y2box_wheat_APSIM_Obs_med_diff <- Y2box_bytreat[Y2box_wheat_APSIM_rows,"middle"] - 
     Y2box_bytreat[Y2box_wheat_Obs_rows,"middle"]
   Y2box_wheat_Daycent_Obs_med_diff <- Y2box_bytreat[Y2box_wheat_Daycent_rows,"middle"] -
     Y2box_bytreat[Y2box_wheat_Obs_rows,"middle"]
-  Y2box_wheat_APSIM_Obs_diff_range <- range(Y2box_wheat_APSIM_Obs_med_diff)
-  Y2box_wheat_Daycent_Obs_diff_range <- range(Y2box_wheat_Daycent_Obs_med_diff)
+  # calculate mean medians between APSIM and Daycent
+  Y2box_corn_model_mean_medians <- rowMeans(cbind(Y2box_bytreat[Y2box_corn_APSIM_rows,"middle"],
+                                       Y2box_bytreat[Y2box_corn_Daycent_rows,"middle"]))
+  Y2box_corn_Obs_medians <- Y2box_bytreat[Y2box_corn_Obs_rows,"middle"]
+  Y2box_corn_median_diffs <- Y2box_corn_Obs_medians - Y2box_corn_model_mean_medians
+  Y2box_soybean_model_mean_medians <- rowMeans(cbind(Y2box_bytreat[Y2box_soybean_APSIM_rows,"middle"],
+                                                  Y2box_bytreat[Y2box_soybean_Daycent_rows,"middle"]))
+  Y2box_soybean_Obs_medians <- Y2box_bytreat[Y2box_soybean_Obs_rows,"middle"]
+  Y2box_soybean_median_diffs <- Y2box_soybean_Obs_medians - Y2box_soybean_model_mean_medians
+  Y2box_wheat_model_mean_medians <- rowMeans(cbind(Y2box_bytreat[Y2box_wheat_APSIM_rows,"middle"],
+                                                  Y2box_bytreat[Y2box_wheat_Daycent_rows,"middle"]))
+  Y2box_wheat_Obs_medians <- Y2box_bytreat[Y2box_wheat_Obs_rows,"middle"]
+  Y2box_wheat_median_diffs <- Y2box_wheat_Obs_medians - Y2box_wheat_model_mean_medians
+  
+  # for paper: range of the differences across all calibration mgmt scenarios and
+  # medians
+  Y2box_corn_APSIM_Obs_diff_range <- round(range(Y2box_corn_APSIM_Obs_med_diff),2)
+  Y2box_corn_Daycent_Obs_diff_range <- round(range(Y2box_corn_Daycent_Obs_med_diff),2)
+  Y2box_soybean_APSIM_Obs_diff_range <- round(range(Y2box_soybean_APSIM_Obs_med_diff),2)
+  Y2box_soybean_Daycent_Obs_diff_range <- round(range(Y2box_soybean_Daycent_Obs_med_diff),2)
+  Y2box_wheat_APSIM_Obs_diff_range <- round(range(Y2box_wheat_APSIM_Obs_med_diff),2)
+  Y2box_wheat_Daycent_Obs_diff_range <- round(range(Y2box_wheat_Daycent_Obs_med_diff),2)
+  Y2box_crop_medians_df <- round(data.frame(APSIM_corn_med=Y2box_bytreat[Y2box_corn_APSIM_rows,"middle"],
+                                      Daycent_corn_med=Y2box_bytreat[Y2box_corn_Daycent_rows,"middle"],
+                                      Model_corn_med=Y2box_corn_model_mean_medians,
+                                      Obs_corn_med=Y2box_corn_Obs_medians,
+                                      APSIM_soybean_med=Y2box_bytreat[Y2box_soybean_APSIM_rows,"middle"],
+                                      Daycent_soybean_med=Y2box_bytreat[Y2box_soybean_Daycent_rows,"middle"],
+                                      Model_soybean_med=Y2box_soybean_model_mean_medians,
+                                      Obs_soybean_med=Y2box_soybean_Obs_medians,
+                                      APSIM_wheat_med=Y2box_bytreat[Y2box_wheat_APSIM_rows,"middle"],
+                                      Daycent_wheat_med=Y2box_bytreat[Y2box_wheat_Daycent_rows,"middle"],
+                                      Model_wheat_med=Y2box_wheat_model_mean_medians,
+                                      Obs_wheat_med=Y2box_wheat_Obs_medians),1) %>%
+    mutate(scenario=c("CC-CR","CR","NT-CR"),
+           site=site_name)
+  write.csv(Y2box_crop_medians_df,paste0(results_path,"calib_crop_medians.csv"))
+  
+  
   
   
   gS1_box <- soc_calib_output_df_piv_withsd[soc_calib_output_df_piv_withsd$year %in%
@@ -293,6 +327,25 @@ source("f_model_coef.R")
     S1box_bytreat[S1box_soc_Millennial_rows,"lower"]
   S1box_soc_RothC_iqrs <- S1box_bytreat[S1box_soc_RothC_rows,"upper"] - 
     S1box_bytreat[S1box_soc_RothC_rows,"lower"]
+  # calculate mean medians between APSIM, Daycent, Millennial, and RothC
+  S1box_soc_model_mean_medians <- rowMeans(cbind(S1box_bytreat[S1box_soc_APSIM_rows,"middle"],
+                                                  S1box_bytreat[S1box_soc_Daycent_rows,"middle"],
+                                                 S1box_bytreat[S1box_soc_Millennial_rows,"middle"],
+                                                 S1box_bytreat[S1box_soc_RothC_rows,"middle"]))
+  S1box_soc_Obs_medians <- S1box_bytreat[S1box_soc_Obs_rows,"middle"]
+  S1box_soc_median_diffs <- S1box_soc_Obs_medians - S1box_soc_model_mean_medians
+  # for paper: model and obs medians
+  S1box_soc_medians_df <- round(data.frame(APSIM_soc_med=S1box_bytreat[S1box_soc_APSIM_rows,"middle"],
+                                            Daycent_soc_med=S1box_bytreat[S1box_soc_Daycent_rows,"middle"],
+                                            Millennial_soc_med=S1box_bytreat[S1box_soc_Millennial_rows,"middle"],
+                                            RothC_soc_med=S1box_bytreat[S1box_soc_RothC_rows,"middle"],
+                                            Model_soc_med=S1box_soc_model_mean_medians,
+                                            Obs_soc_med=S1box_soc_Obs_medians),1) %>%
+    mutate(scenario=c("CC-CR","CR","NT-CR"),
+           site=site_name)
+  write.csv(S1box_soc_medians_df,paste0(results_path,"calib_soc_medians.csv"))
+  
+  
   
   
   gMB1_box <- mb_calib_output_df_piv_withsd[mb_calib_output_df_piv_withsd$year %in%

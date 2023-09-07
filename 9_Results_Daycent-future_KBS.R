@@ -18,6 +18,28 @@ suppressMessages({
   
   #**********************************************************************
   
+  
+  # Calculate weighted means ------------------------------------------------
+  
+  ## For CH4 graphs, calculate weighted mean of wfps
+  soilm_mean <- Day_wfps[,c("date","wfps_layer1","wfps_layer2","wfps_layer3",
+                            "wfps_layer4")] %>%
+    mutate(mean_wfps = (wfps_layer1 * 2/15) +
+             (wfps_layer2 * 3/15) +
+             (wfps_layer3 * 5/15) +
+             (wfps_layer4 * 5/15)
+    )  
+  
+  ## calculate summed soil moisture and temperature as additional explanatory variables
+  soilm_total_exp <- sum(soilm_mean[soilm_mean$date <= experiment_end_date,"mean_wfps"])
+  soilm_mean_exp <- mean(soilm_mean[soilm_mean$date <= experiment_end_date,"mean_wfps"])
+  soilt_total_exp <- sum(DayT_C[DayT_C$date <= experiment_end_date,"mean_15cm"])
+  soilt_mean_exp <- mean(DayT_C[DayT_C$date <= experiment_end_date,"mean_15cm"])
+  soilm_total_fut <- sum(soilm_mean[soilm_mean$date > experiment_end_date,"mean_wfps"])
+  soilm_mean_fut <- mean(soilm_mean[soilm_mean$date > experiment_end_date,"mean_wfps"])
+  soilt_total_fut <- sum(DayT_C[DayT_C$date > experiment_end_date,"mean_15cm"])
+  soilt_mean_fut <- mean(DayT_C[DayT_C$date > experiment_end_date,"mean_15cm"])
+  
 # Future temporal graphs --------------------------------------------------
 
 
@@ -537,8 +559,80 @@ suppressMessages({
   
   gN2O_expl_10to60cm_exp
   
+  # CH4
+  
+  ## graph Eh and Feh, emissions separately for investigation
+  
+  ggplot() +
+    geom_line(data=Day_exp_methane, 
+              aes(x=date, y=Eh,color="blue")) +
+    geom_line(data=Day_exp_methane, 
+              aes(x=date, y=Feh,color="red"))
+  
+  max(Day_exp_methane$Eh)
+  min(Day_exp_methane$Eh)
+  max(Day_exp_methane$Feh)
+  min(Day_exp_methane$Feh)
+  
+  gCH4_expl_elements_exp <- ggplot(data=Day_methane[Day_methane$year %in% 2010:2020,]) +
+    geom_line(aes(x=date,y=CH4_Ep*10000,color=cbPalette9[2])) +
+    geom_line(aes(x=date,y=CH4_Ebl*10000,color=cbPalette9[6])) +
+    #geom_line(aes(x=date,y=CH4_oxid*-1000,color=cbPalette9[8])) +
+    geom_line(data=Day_summary[Day_summary$year %in% 2010:2020,], 
+              aes(x=date,y=-CH4_oxid_gChad,color=cbPalette9[8])) +
+    scale_color_manual(labels=c("Ep","Ebl","Oxid"),
+                       values=cbPalette9[c(2,6,8)]) +
+      ggtitle(bquote(.(site_name)~"CH"["4"]*"O emissions elements to 15 cm in Daycent"),
+              paste0("Scenario: ",scenario_descriptor_full)) + 
+      theme(panel.background = element_blank(),
+            axis.line = element_line(),
+            legend.position = "right",
+            legend.key = element_blank())
+  
+  gCH4_expl_elements_exp
+      
+  ggsave(filename=paste0(results_path,"expl_CH4_elements_exp_",scenario_name,"_Daycent.jpg"),plot=gCH4_expl_elements_exp,
+         width=9, height=6, dpi=300)
+  
+  
+  
   ch4_transform_factor <- 100
 
+  
+  gCH4_expl_oxid_0to15cm_exp <- ggplot() +
+    geom_line(data=Day_methane[Day_methane$year %in% 2010:2020,],
+              aes(x=date,y=CH4_Ep*10000,color=cbPalette9[2])) +
+    geom_line(data=Day_methane[Day_methane$year %in% 2010:2020,],
+              aes(x=date,y=CH4_Ebl*10000,color=cbPalette9[6])) +
+    #     geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2020,],
+    #           aes(x=date, y=wfps_layer3, color=cbPalette9[4]), linewidth=1) +
+    # geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
+    #           aes(x=date, y=wfps_layer4, color=cbPalette9[5]), linewidth=1) +
+    # geom_line(data=Day_exp_soiltavg[Day_exp_soiltavg$year %in% 2010:2011,],
+    #           aes(x=date, y=layer1/100, color=cbPalette9[7]), linewidth=1) +
+    # geom_line(data=Day_exp_methane[Day_exp_methane$year %in% 2010:2011,],
+    #           aes(x=date,y=CH4_oxid*-1000, color=cbPalette9[8]), linewidth=1) +
+    ggtitle(bquote(.(site_name)~"CH"["4"]*"O emissions drivers to 15 cm in Daycent"),
+            paste0("Scenario: ",scenario_descriptor_full)) +      
+    ylab(expression('WFPS, CH'[4]*'  (mg m' ^'-2'*' day'^'-1'*')')) +
+    scale_y_continuous(
+      sec.axis = sec_axis(trans = ~ .x * ch4_transform_factor,
+                          name = expression('Soil Temperature ('^o*'C)'))
+    ) +
+    scale_color_manual(name=NULL,
+                       labels=c("WFPS: 0-2.5cm","WFPS: 2.5-5 cm","WFPS: 5-10 cm",
+                                "WFPS: 10-20cm","Soil Temp","CH4 (mg/m^2/day"),
+                       values=cbPalette9[c(2,3,4,5,7,8)]) +
+    theme(panel.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  
+  gCH4_expl_oxid_0to15cm_exp
+  
+  
+  
     gCH4_expl_oxid_0to20cm_exp <- ggplot() +
     geom_line(data=Day_exp_wfps[Day_exp_wfps$year %in% 2010:2011,],
               aes(x=date, y=wfps_layer1, color=cbPalette9[2]), linewidth=1) +
@@ -574,8 +668,7 @@ suppressMessages({
           legend.position = "right",
           legend.key = element_blank())
   
-  
-  gCH4_expl_oxid_0to20cm_exp
+    gCH4_expl_oxid_0to20cm_exp
   
   ggsave(filename=paste0(results_path,"expl_N2O_0to10cm_exp",scenario_name,"_Daycent.jpg"),plot=gN2O_expl_0to10cm_exp,
          width=9, height=6, dpi=300)
@@ -699,6 +792,7 @@ suppressMessages({
   
   # WFPS_this defined above
   #
+  
   WFPS2cm_fit_time <- lm(wfps_layer1 ~ date, data = WFPS_this)
   WFPS2cm_fit_coef_time <- coef(WFPS2cm_fit_time)
   #
@@ -709,6 +803,7 @@ suppressMessages({
   WFPS10cm_fit_coef_time <- coef( WFPS10cm_fit_time)
   #
   SoilT_this <- DayT_C[DayT_C$year %in% (end_exp_period_year+1):end_fut_period_year,]
+
   SoilT2cm_fit_time <- lm(layer1/100 ~ date, data = SoilT_this)
   SoilT2cm_fit_coef_time <- coef(SoilT2cm_fit_time)
   SoilT5cm_fit_time <- lm(layer2/100 ~ date, data = SoilT_this)
@@ -733,18 +828,71 @@ suppressMessages({
   
   ch4_transform_factor <- 100
   
-  gCH4_expl_oxid_2to15cm_fut <- ggplot() +
-    geom_line(data=WFPS_this,
-              aes(x=date, y=wfps_layer1, color=cbPalette9[2]), linewidth=1) +
-    geom_line(data=WFPS_this,
-              aes(x=date, y=wfps_layer2, color=cbPalette9[3]), linewidth=1) +
-    geom_line(data=WFPS_this,
-              aes(x=date, y=wfps_layer3, color=cbPalette9[4]), linewidth=1) +
-    geom_line(data=WFPS_this,
-              aes(x=date, y=wfps_layer4, color=cbPalette9[5]), linewidth=1) +
-    geom_line(data=SoilT_this,
-              aes(x=date, y=mean_3_4/100, color=cbPalette9[7]), linewidth=1) +
-    geom_line(data=CH4_this,
+  # gCH4_expl_oxid_2to15cm_fut <- ggplot() +
+  #   geom_line(data=WFPS_this,
+  #             aes(x=date, y=wfps_layer1, color=cbPalette9[2]), linewidth=1) +
+  #   geom_line(data=WFPS_this,
+  #             aes(x=date, y=wfps_layer2, color=cbPalette9[3]), linewidth=1) +
+  #   geom_line(data=WFPS_this,
+  #             aes(x=date, y=wfps_layer3, color=cbPalette9[4]), linewidth=1) +
+  #   geom_line(data=WFPS_this,
+  #             aes(x=date, y=wfps_layer4, color=cbPalette9[5]), linewidth=1) +
+  #   geom_line(data=SoilT_this,
+  #             aes(x=date, y=mean_3_4/100, color=cbPalette9[7]), linewidth=1) +
+  #   geom_line(data=CH4_this,
+  #             aes(x=date,y=CH4_oxid*-1000, color=cbPalette9[8]), linewidth=1) +
+  #   # geom_abline(intercept=WFPS0fit_coef_time[1], slope=WFPS0fit_coef_time[2], color=cbPalette9[2]) +
+  #   # geom_abline(intercept=WFPS2fit_coef_time[1], slope=WFPS2fit_coef_time[2], color=cbPalette9[3]) +
+  #   # geom_abline(intercept=WFPS5fit_coef_time[1], slope=WFPS5fit_coef_time[2], color=cbPalette9[4]) +
+  #   # geom_abline(intercept=WFPS10fit_coef_time[1], slope=WFPS10fit_coef_time[2], color=cbPalette9[4]) +
+  #   # geom_abline(intercept=SoilTfit_coef_time[1], slope=SoilTfit_coef_time[2], color=cbPalette9[6]) +
+  #   # geom_abline(intercept=CH4fit_coef_time[1], slope=CH4fit_coef_time[2], color=cbPalette9[8]) +
+  #   ggtitle(bquote(.(site_name)~"CH"["4"]*"O emissions drivers to 15 cm in Daycent"),
+  #           paste0("Scenario: ",scenario_descriptor_full)) +      
+  #   ylab(expression('WFPS, CH'[4]*'  (mg m' ^'-2'*' day'^'-1'*')')) +
+  #   scale_y_continuous(
+  #     sec.axis = sec_axis(trans = ~ .x * ch4_transform_factor,
+  #                         name = expression('Soil Temperature ('^o*'C)'))
+  #   ) +
+  #   scale_color_manual(name=NULL,
+  #                      labels=c("WFPS: 0-2.5cm","WFPS: 2.5-5 cm","WFPS: 5-10 cm",
+  #                               "WFPS: 10-20cm","Soil Temp","CH4 (mg/m^2/day"),
+  #                      values=cbPalette9[c(2,3,4,5,7,8)]) +
+  #   theme(panel.background = element_blank(),
+  #         axis.line = element_line(),
+  #         legend.position = "right",
+  #         legend.key = element_blank())
+  # 
+  # 
+  # gCH4_expl_oxid_2to15cm_fut
+  
+  
+  WFPSmean_this <- soilm_mean[year(soilm_mean$date) < end_fut_period_year,]
+  WFPSmean_fit_time <- lm(mean_wfps ~ date, data = WFPSmean_this)
+  WFPSmean_fit_coef_time <- coef(WFPSmean_fit_time)
+  SoilTmean_this <- DayT_C
+  SoilTmean_fit_time <- lm(mean_15cm/100 ~ date, data = SoilTmean_this)
+  SoilTmean_fit_coef_time <- coef(SoilTmean_fit_time)
+  CH4mean_this <- Day_methane
+  CH4mean_fit_time <- lm(CH4_oxid*-1000 ~ date, data = CH4mean_this)
+  CH4mean_fit_coef_time <- coef(CH4mean_fit_time)
+  
+  gCH4_expl_oxid_0to15cm_fut <- ggplot() +
+    geom_line(data=WFPSmean_this,
+              aes(x=date,y=mean_wfps, color=cbPalette9[2]), linewidth=1) +
+    geom_line(data=SoilTmean_this,
+              aes(x=date,y=mean_15cm/100, color=cbPalette9[7]), linewidth=1) +
+    # geom_line(data=WFPS_this,
+    #           aes(x=date, y=wfps_layer1, color=cbPalette9[2]), linewidth=1) +
+    # geom_line(data=WFPS_this,
+    #           aes(x=date, y=wfps_layer2, color=cbPalette9[3]), linewidth=1) +
+    # geom_line(data=WFPS_this,
+    #           aes(x=date, y=wfps_layer3, color=cbPalette9[4]), linewidth=1) +
+    # geom_line(data=WFPS_this,
+    #           aes(x=date, y=wfps_layer4, color=cbPalette9[5]), linewidth=1) +
+    # geom_line(data=SoilT_this,
+    #           aes(x=date, y=mean_3_4/100, color=cbPalette9[7]), linewidth=1) +
+    geom_line(data=CH4mean_this,
               aes(x=date,y=CH4_oxid*-1000, color=cbPalette9[8]), linewidth=1) +
     # geom_abline(intercept=WFPS0fit_coef_time[1], slope=WFPS0fit_coef_time[2], color=cbPalette9[2]) +
     # geom_abline(intercept=WFPS2fit_coef_time[1], slope=WFPS2fit_coef_time[2], color=cbPalette9[3]) +
@@ -759,17 +907,21 @@ suppressMessages({
       sec.axis = sec_axis(trans = ~ .x * ch4_transform_factor,
                           name = expression('Soil Temperature ('^o*'C)'))
     ) +
+    # scale_color_manual(name=NULL,
+    #                    labels=c("WFPS: 0-2.5cm","WFPS: 2.5-5 cm","WFPS: 5-10 cm",
+    #                             "WFPS: 10-20cm","Soil Temp","CH4 (mg/m^2/day"),
+    #                    values=cbPalette9[c(2,3,4,5,7,8)]) +
     scale_color_manual(name=NULL,
-                       labels=c("WFPS: 0-2.5cm","WFPS: 2.5-5 cm","WFPS: 5-10 cm",
-                                "WFPS: 10-20cm","Soil Temp","CH4 (mg/m^2/day"),
-                       values=cbPalette9[c(2,3,4,5,7,8)]) +
+                       labels=c("WFPS: 15cm mean","Soil Temp: 15cm mean","CH4 (mg/m^2/day)"),
+                       values=cbPalette9[c(2,7,8)]) +
     theme(panel.background = element_blank(),
           axis.line = element_line(),
           legend.position = "right",
           legend.key = element_blank())
   
   
-  gCH4_expl_oxid_2to15cm_fut
+  gCH4_expl_oxid_0to15cm_fut
+  
   
   ## change in each over future period
   WFPS2cm_first <-   as.numeric(lapply(WFPS2cm_fit_time["fitted.values"],dplyr::first))
@@ -938,8 +1090,10 @@ suppressMessages({
   
   ggsave(filename=paste0(results_path,"expl_N2O_10to60cm_fut_",scenario_name,"_Daycent.jpg"),
          plot=gN2O_expl_10to60cm_fut,width=9, height=6, dpi=300)
-  ggsave(filename=paste0(results_path,"expl_CH4_oxid_2to15cm_fut_",scenario_name,"_Daycent.jpg"),
-         plot=gCH4_expl_oxid_2to15cm_fut,width=9, height=6, dpi=300)
+  # ggsave(filename=paste0(results_path,"expl_CH4_oxid_2to15cm_fut_",scenario_name,"_Daycent.jpg"),
+  #        plot=gCH4_expl_oxid_2to15cm_fut,width=9, height=6, dpi=300)
+  ggsave(filename=paste0(results_path,"expl_CH4_oxid_0to15cm_mean_fut_",scenario_name,"_Daycent.jpg"),
+         plot=gCH4_expl_oxid_0to15cm_fut, width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"expl_CI_0to25cm_fut_",scenario_name,"_Daycent.jpg"),
          plot=gCI_fut,width=9, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"expl_SOC_0to25cm_fut_",scenario_name,"_Daycent.jpg"),
