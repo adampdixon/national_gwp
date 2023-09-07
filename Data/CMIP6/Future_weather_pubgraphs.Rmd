@@ -74,25 +74,25 @@ kbs_baseln$date=make_date(kbs_baseln$year, kbs_baseln$month, kbs_baseln$day)
 
 ## CMIPs
 kbs_gfdl_low_raw <- read.csv("KBS/fut_clim_scenario_2_reanal.csv")
-kbs_gfdl_low <- kbs_gfdl_low_raw %>%
+kbs_gfdl_low <- kbs_gfdl_low_raw[kbs_gfdl_low_raw$year<=end_fut_period_year,] %>%
   select(day,month,year,dayofyear,mint_C,maxt_C,rain_cm)
 colnames(kbs_gfdl_low) <- c("day","month","year","dayofyear","gl_tmin","gl_tmax","gl_rain_cm")
 kbs_gfdl_low$date=make_date(kbs_gfdl_low$year, kbs_gfdl_low$month, kbs_gfdl_low$day)
 
 kbs_gfdl_high_raw <- read.csv("KBS/fut_clim_scenario_3_reanal.csv")
-kbs_gfdl_high <- kbs_gfdl_high_raw %>%
+kbs_gfdl_high <- kbs_gfdl_high_raw[kbs_gfdl_high_raw$year<=end_fut_period_year,] %>%
   select(day,month,year,dayofyear,mint_C,maxt_C,rain_cm)
 colnames(kbs_gfdl_high) <- c("day","month","year","dayofyear","gh_tmin","gh_tmax","gh_rain_cm")
 kbs_gfdl_high$date=make_date(kbs_gfdl_high$year, kbs_gfdl_high$month, kbs_gfdl_high$day)
 
 kbs_ukesm_low_raw <- read.csv("KBS/fut_clim_scenario_4_reanal.csv")
-kbs_ukesm_low <- kbs_ukesm_low_raw %>%
+kbs_ukesm_low <- kbs_ukesm_low_raw[kbs_ukesm_low_raw$year<=end_fut_period_year,] %>%
   select(day,month,year,dayofyear,mint_C,maxt_C,rain_cm)
 colnames(kbs_ukesm_low) <- c("day","month","year","dayofyear","ul_tmin","ul_tmax","ul_rain_cm")
 kbs_ukesm_low$date=make_date(kbs_ukesm_low$year, kbs_ukesm_low$month, kbs_ukesm_low$day)
 
 kbs_ukesm_high_raw <- read.csv("KBS/fut_clim_scenario_5_reanal.csv")
-kbs_ukesm_high <- kbs_ukesm_high_raw %>%
+kbs_ukesm_high <- kbs_ukesm_high_raw[kbs_ukesm_high_raw$year<=end_fut_period_year,] %>%
   select(day,month,year,dayofyear,mint_C,maxt_C,rain_cm)
 colnames(kbs_ukesm_high) <- c("day","month","year","dayofyear","uh_tmin","uh_tmax","uh_rain_cm")
 kbs_ukesm_high$date=make_date(kbs_ukesm_high$year, kbs_ukesm_high$month, kbs_ukesm_high$day)
@@ -119,32 +119,211 @@ lrf_baseln$date=make_date(lrf_baseln$year, lrf_baseln$month, lrf_baseln$day)
 
 ## CMIPs
 lrf_gfdl_low_raw <- read.csv("LRF/fut_clim_scenario_2_reanal.csv") 
-lrf_gfdl_low <- lrf_gfdl_low_raw %>%
+lrf_gfdl_low <- lrf_gfdl_low_raw[lrf_gfdl_low_raw$year<=end_fut_period_year,] %>%
   select(day,month,year,dayofyear,mint_C,maxt_C,rain_cm)
 colnames(lrf_gfdl_low) <- c("day","month","year","dayofyear","gl_tmin","gl_tmax","gl_rain_cm")
 lrf_gfdl_low$date=make_date(lrf_gfdl_low$year, lrf_gfdl_low$month, lrf_gfdl_low$day)
 
 lrf_gfdl_high_raw <- read.csv("LRF/fut_clim_scenario_3_reanal.csv")
-lrf_gfdl_high <- lrf_gfdl_high_raw %>%
+lrf_gfdl_high <- lrf_gfdl_high_raw[lrf_gfdl_high_raw$year<=end_fut_period_year,] %>%
   select(day,month,year,dayofyear,mint_C,maxt_C,rain_cm)
 colnames(lrf_gfdl_high) <- c("day","month","year","dayofyear","gh_tmin","gh_tmax","gh_rain_cm")
 lrf_gfdl_high$date=make_date(lrf_gfdl_high$year, lrf_gfdl_high$month, lrf_gfdl_high$day)
 mean(lrf_gfdl_high$gh_rain_cm)
 
 lrf_ukesm_low_raw <- read.csv("LRF/fut_clim_scenario_4_reanal.csv")
-lrf_ukesm_low <- lrf_ukesm_low_raw %>%
+lrf_ukesm_low <- lrf_ukesm_low_raw[lrf_ukesm_low_raw$year<=end_fut_period_year,] %>%
   select(day,month,year,dayofyear,mint_C,maxt_C,rain_cm)
 colnames(lrf_ukesm_low) <- c("day","month","year","dayofyear","ul_tmin","ul_tmax","ul_rain_cm")
 lrf_ukesm_low$date=make_date(lrf_ukesm_low$year, lrf_ukesm_low$month, lrf_ukesm_low$day)
 
 lrf_ukesm_high_raw <- read.csv("LRF/fut_clim_scenario_5_reanal.csv")
-lrf_ukesm_high <- lrf_ukesm_high_raw %>%
+lrf_ukesm_high <- lrf_ukesm_high_raw[lrf_ukesm_high_raw$year<=end_fut_period_year,] %>%
   select(day,month,year,dayofyear,mint_C,maxt_C,rain_cm)
 colnames(lrf_ukesm_high) <- c("day","month","year","dayofyear","uh_tmin","uh_tmax","uh_rain_cm")
 lrf_ukesm_high$date=make_date(lrf_ukesm_high$year, lrf_ukesm_high$month, lrf_ukesm_high$day)
 
 ```
 
+```{r stats}
+
+########## KBS ##########
+
+  # precip change 
+kbs_prec_gfdl_low_df <- kbs_gfdl_low[,c("date","gl_rain_cm")]
+kbs_prec_gfdl_low_fit <- lm(gl_rain_cm ~ date, data = kbs_prec_gfdl_low_df)
+kbs_prec_gfdl_low_coef <- coef(kbs_prec_gfdl_low_fit)
+kbs_prec_gfdl_low_first <- as.numeric(lapply(kbs_prec_gfdl_low_fit["fitted.values"],dplyr::first))
+kbs_prec_gfdl_low_last <- as.numeric(lapply(kbs_prec_gfdl_low_fit["fitted.values"],dplyr::last))
+kbs_prec_gfdl_low_change <- round(kbs_prec_gfdl_low_last - kbs_prec_gfdl_low_first,3)
+##
+kbs_prec_gfdl_high_df <- kbs_gfdl_high[,c("date","gh_rain_cm")]
+kbs_prec_gfdl_high_fit <- lm(gh_rain_cm ~ date, data = kbs_prec_gfdl_high_df)
+kbs_prec_gfdl_high_coef <- coef(kbs_prec_gfdl_high_fit)
+kbs_prec_gfdl_high_first <- as.numeric(lapply(kbs_prec_gfdl_high_fit["fitted.values"],dplyr::first))
+kbs_prec_gfdl_high_last <- as.numeric(lapply(kbs_prec_gfdl_high_fit["fitted.values"],dplyr::last))
+kbs_prec_gfdl_high_change <- round(kbs_prec_gfdl_high_last - kbs_prec_gfdl_high_first,3)
+##
+kbs_prec_ukesm_low_df <- kbs_ukesm_low[,c("date","ul_rain_cm")]
+kbs_prec_ukesm_low_fit <- lm(ul_rain_cm ~ date, data = kbs_prec_ukesm_low_df)
+kbs_prec_ukesm_low_coef <- coef(kbs_prec_ukesm_low_fit)
+kbs_prec_ukesm_low_first <- as.numeric(lapply(kbs_prec_ukesm_low_fit["fitted.values"],dplyr::first))
+kbs_prec_ukesm_low_last <- as.numeric(lapply(kbs_prec_ukesm_low_fit["fitted.values"],dplyr::last))
+kbs_prec_ukesm_low_change <- round(kbs_prec_ukesm_low_last - kbs_prec_ukesm_low_first,3)
+##
+kbs_prec_ukesm_high_df <- kbs_ukesm_high[,c("date","uh_rain_cm")]
+kbs_prec_ukesm_high_fit <- lm(uh_rain_cm ~ date, data = kbs_prec_ukesm_high_df)
+kbs_prec_ukesm_high_coef <- coef(kbs_prec_ukesm_high_fit)
+kbs_prec_ukesm_high_first <- as.numeric(lapply(kbs_prec_ukesm_high_fit["fitted.values"],dplyr::first))
+kbs_prec_ukesm_high_last <- as.numeric(lapply(kbs_prec_ukesm_high_fit["fitted.values"],dplyr::last))
+kbs_prec_ukesm_high_change <- round(kbs_prec_ukesm_high_last - kbs_prec_ukesm_high_first,3)
+
+# tmin change
+kbs_tmin_gfdl_low_df <- kbs_gfdl_low[,c("date","gl_tmin")]
+kbs_tmin_gfdl_low_fit <- lm(gl_tmin ~ date, data = kbs_tmin_gfdl_low_df)
+kbs_tmin_gfdl_low_first <- as.numeric(lapply(kbs_tmin_gfdl_low_fit["fitted.values"],dplyr::first))
+kbs_tmin_gfdl_low_last <- as.numeric(lapply(kbs_tmin_gfdl_low_fit["fitted.values"],dplyr::last))
+kbs_tmin_gfdl_low_change <- round(kbs_tmin_gfdl_low_last - kbs_tmin_gfdl_low_first,1)
+##
+kbs_tmin_gfdl_high_df <- kbs_gfdl_high[,c("date","gh_tmin")]
+kbs_tmin_gfdl_high_fit <- lm(gh_tmin ~ date, data = kbs_tmin_gfdl_high_df)
+kbs_tmin_gfdl_high_first <- as.numeric(lapply(kbs_tmin_gfdl_high_fit["fitted.values"],dplyr::first))
+kbs_tmin_gfdl_high_last <- as.numeric(lapply(kbs_tmin_gfdl_high_fit["fitted.values"],dplyr::last))
+kbs_tmin_gfdl_high_change <- round(kbs_tmin_gfdl_high_last - kbs_tmin_gfdl_high_first,1)
+##
+kbs_tmin_ukesm_low_df <- kbs_ukesm_low[,c("date","ul_tmin")]
+kbs_tmin_ukesm_low_fit <- lm(ul_tmin ~ date, data = kbs_tmin_ukesm_low_df)
+kbs_tmin_ukesm_low_first <- as.numeric(lapply(kbs_tmin_ukesm_low_fit["fitted.values"],dplyr::first))
+kbs_tmin_ukesm_low_last <- as.numeric(lapply(kbs_tmin_ukesm_low_fit["fitted.values"],dplyr::last))
+kbs_tmin_ukesm_low_change <- round(kbs_tmin_ukesm_low_last - kbs_tmin_ukesm_low_first,1)
+##
+kbs_tmin_ukesm_high_df <- kbs_ukesm_high[,c("date","uh_tmin")]
+kbs_tmin_ukesm_high_fit <- lm(uh_tmin ~ date, data = kbs_tmin_ukesm_high_df)
+kbs_tmin_ukesm_high_first <- as.numeric(lapply(kbs_tmin_ukesm_high_fit["fitted.values"],dplyr::first))
+kbs_tmin_ukesm_high_last <- as.numeric(lapply(kbs_tmin_ukesm_high_fit["fitted.values"],dplyr::last))
+kbs_tmin_ukesm_high_change <- round(kbs_tmin_ukesm_high_last - kbs_tmin_ukesm_high_first,1)
+
+# tmax change
+kbs_tmax_gfdl_low_df <- kbs_gfdl_low[,c("date","gl_tmax")]
+kbs_tmax_gfdl_low_fit <- lm(gl_tmax ~ date, data = kbs_tmax_gfdl_low_df)
+kbs_tmax_gfdl_low_first <- as.numeric(lapply(kbs_tmax_gfdl_low_fit["fitted.values"],dplyr::first))
+kbs_tmax_gfdl_low_last <- as.numeric(lapply(kbs_tmax_gfdl_low_fit["fitted.values"],dplyr::last))
+kbs_tmax_gfdl_low_change <- round(kbs_tmax_gfdl_low_last - kbs_tmax_gfdl_low_first,1)
+##
+kbs_tmax_gfdl_high_df <- kbs_gfdl_high[,c("date","gh_tmax")]
+kbs_tmax_gfdl_high_fit <- lm(gh_tmax ~ date, data = kbs_tmax_gfdl_high_df)
+kbs_tmax_gfdl_high_first <- as.numeric(lapply(kbs_tmax_gfdl_high_fit["fitted.values"],dplyr::first))
+kbs_tmax_gfdl_high_last <- as.numeric(lapply(kbs_tmax_gfdl_high_fit["fitted.values"],dplyr::last))
+kbs_tmax_gfdl_high_change <- round(kbs_tmax_gfdl_high_last - kbs_tmax_gfdl_high_first,1)
+##
+kbs_tmax_ukesm_low_df <- kbs_ukesm_low[,c("date","ul_tmax")]
+kbs_tmax_ukesm_low_fit <- lm(ul_tmax ~ date, data = kbs_tmax_ukesm_low_df)
+kbs_tmax_ukesm_low_first <- as.numeric(lapply(kbs_tmax_ukesm_low_fit["fitted.values"],dplyr::first))
+kbs_tmax_ukesm_low_last <- as.numeric(lapply(kbs_tmax_ukesm_low_fit["fitted.values"],dplyr::last))
+kbs_tmax_ukesm_low_change <- round(kbs_tmax_ukesm_low_last - kbs_tmax_ukesm_low_first,1)
+##
+kbs_tmax_ukesm_high_df <- kbs_ukesm_high[,c("date","uh_tmax")]
+kbs_tmax_ukesm_high_fit <- lm(uh_tmax ~ date, data = kbs_tmax_ukesm_high_df)
+kbs_tmax_ukesm_high_first <- as.numeric(lapply(kbs_tmax_ukesm_high_fit["fitted.values"],dplyr::first))
+kbs_tmax_ukesm_high_last <- as.numeric(lapply(kbs_tmax_ukesm_high_fit["fitted.values"],dplyr::last))
+kbs_tmax_ukesm_high_change <- round(kbs_tmax_ukesm_high_last - kbs_tmax_ukesm_high_first,1)
+
+########## LRF ##########
+
+  # precip change 
+lrf_prec_gfdl_low_df <- lrf_gfdl_low[,c("date","gl_rain_cm")]
+lrf_prec_gfdl_low_fit <- lm(gl_rain_cm ~ date, data = lrf_prec_gfdl_low_df)
+lrf_prec_gfdl_low_first <- as.numeric(lapply(lrf_prec_gfdl_low_fit["fitted.values"],dplyr::first))
+lrf_prec_gfdl_low_last <- as.numeric(lapply(lrf_prec_gfdl_low_fit["fitted.values"],dplyr::last))
+lrf_prec_gfdl_low_change <- round(lrf_prec_gfdl_low_last - lrf_prec_gfdl_low_first,3)
+##
+lrf_prec_gfdl_high_df <- lrf_gfdl_high[,c("date","gh_rain_cm")]
+lrf_prec_gfdl_high_fit <- lm(gh_rain_cm ~ date, data = lrf_prec_gfdl_high_df)
+lrf_prec_gfdl_high_first <- as.numeric(lapply(lrf_prec_gfdl_high_fit["fitted.values"],dplyr::first))
+lrf_prec_gfdl_high_last <- as.numeric(lapply(lrf_prec_gfdl_high_fit["fitted.values"],dplyr::last))
+lrf_prec_gfdl_high_change <- round(lrf_prec_gfdl_high_last - lrf_prec_gfdl_high_first,3)
+##
+lrf_prec_ukesm_low_df <- lrf_ukesm_low[,c("date","ul_rain_cm")]
+lrf_prec_ukesm_low_fit <- lm(ul_rain_cm ~ date, data = lrf_prec_ukesm_low_df)
+lrf_prec_ukesm_low_first <- as.numeric(lapply(lrf_prec_ukesm_low_fit["fitted.values"],dplyr::first))
+lrf_prec_ukesm_low_last <- as.numeric(lapply(lrf_prec_ukesm_low_fit["fitted.values"],dplyr::last))
+lrf_prec_ukesm_low_change <- round(lrf_prec_ukesm_low_last - lrf_prec_ukesm_low_first,3)
+##
+lrf_prec_ukesm_high_df <- lrf_ukesm_high[,c("date","uh_rain_cm")]
+lrf_prec_ukesm_high_fit <- lm(uh_rain_cm ~ date, data = lrf_prec_ukesm_high_df)
+lrf_prec_ukesm_high_first <- as.numeric(lapply(lrf_prec_ukesm_high_fit["fitted.values"],dplyr::first))
+lrf_prec_ukesm_high_last <- as.numeric(lapply(lrf_prec_ukesm_high_fit["fitted.values"],dplyr::last))
+lrf_prec_ukesm_high_change <- round(lrf_prec_ukesm_high_last - lrf_prec_ukesm_high_first,3)
+
+# tmin change
+lrf_tmin_gfdl_low_df <- lrf_gfdl_low[,c("date","gl_tmin")]
+lrf_tmin_gfdl_low_fit <- lm(gl_tmin ~ date, data = lrf_tmin_gfdl_low_df)
+lrf_tmin_gfdl_low_first <- as.numeric(lapply(lrf_tmin_gfdl_low_fit["fitted.values"],dplyr::first))
+lrf_tmin_gfdl_low_last <- as.numeric(lapply(lrf_tmin_gfdl_low_fit["fitted.values"],dplyr::last))
+lrf_tmin_gfdl_low_change <- round(lrf_tmin_gfdl_low_last - lrf_tmin_gfdl_low_first,1)
+##
+lrf_tmin_gfdl_high_df <- lrf_gfdl_high[,c("date","gh_tmin")]
+lrf_tmin_gfdl_high_fit <- lm(gh_tmin ~ date, data = lrf_tmin_gfdl_high_df)
+lrf_tmin_gfdl_high_first <- as.numeric(lapply(lrf_tmin_gfdl_high_fit["fitted.values"],dplyr::first))
+lrf_tmin_gfdl_high_last <- as.numeric(lapply(lrf_tmin_gfdl_high_fit["fitted.values"],dplyr::last))
+lrf_tmin_gfdl_high_change <- round(lrf_tmin_gfdl_high_last - lrf_tmin_gfdl_high_first,1)
+##
+lrf_tmin_ukesm_low_df <- lrf_ukesm_low[,c("date","ul_tmin")]
+lrf_tmin_ukesm_low_fit <- lm(ul_tmin ~ date, data = lrf_tmin_ukesm_low_df)
+lrf_tmin_ukesm_low_first <- as.numeric(lapply(lrf_tmin_ukesm_low_fit["fitted.values"],dplyr::first))
+lrf_tmin_ukesm_low_last <- as.numeric(lapply(lrf_tmin_ukesm_low_fit["fitted.values"],dplyr::last))
+lrf_tmin_ukesm_low_change <- round(lrf_tmin_ukesm_low_last - lrf_tmin_ukesm_low_first,1)
+##
+lrf_tmin_ukesm_high_df <- lrf_ukesm_high[,c("date","uh_tmin")]
+lrf_tmin_ukesm_high_fit <- lm(uh_tmin ~ date, data = lrf_tmin_ukesm_high_df)
+lrf_tmin_ukesm_high_first <- as.numeric(lapply(lrf_tmin_ukesm_high_fit["fitted.values"],dplyr::first))
+lrf_tmin_ukesm_high_last <- as.numeric(lapply(lrf_tmin_ukesm_high_fit["fitted.values"],dplyr::last))
+lrf_tmin_ukesm_high_change <- round(lrf_tmin_ukesm_high_last - lrf_tmin_ukesm_high_first,1)
+
+# tmax change
+lrf_tmax_gfdl_low_df <- lrf_gfdl_low[,c("date","gl_tmax")]
+lrf_tmax_gfdl_low_fit <- lm(gl_tmax ~ date, data = lrf_tmax_gfdl_low_df)
+lrf_tmax_gfdl_low_first <- as.numeric(lapply(lrf_tmax_gfdl_low_fit["fitted.values"],dplyr::first))
+lrf_tmax_gfdl_low_last <- as.numeric(lapply(lrf_tmax_gfdl_low_fit["fitted.values"],dplyr::last))
+lrf_tmax_gfdl_low_change <- round(lrf_tmax_gfdl_low_last - lrf_tmax_gfdl_low_first,1)
+##
+lrf_tmax_gfdl_high_df <- lrf_gfdl_high[,c("date","gh_tmax")]
+lrf_tmax_gfdl_high_fit <- lm(gh_tmax ~ date, data = lrf_tmax_gfdl_high_df)
+lrf_tmax_gfdl_high_first <- as.numeric(lapply(lrf_tmax_gfdl_high_fit["fitted.values"],dplyr::first))
+lrf_tmax_gfdl_high_last <- as.numeric(lapply(lrf_tmax_gfdl_high_fit["fitted.values"],dplyr::last))
+lrf_tmax_gfdl_high_change <- round(lrf_tmax_gfdl_high_last - lrf_tmax_gfdl_high_first,1)
+##
+lrf_tmax_ukesm_low_df <- lrf_ukesm_low[,c("date","ul_tmax")]
+lrf_tmax_ukesm_low_fit <- lm(ul_tmax ~ date, data = lrf_tmax_ukesm_low_df)
+lrf_tmax_ukesm_low_first <- as.numeric(lapply(lrf_tmax_ukesm_low_fit["fitted.values"],dplyr::first))
+lrf_tmax_ukesm_low_last <- as.numeric(lapply(lrf_tmax_ukesm_low_fit["fitted.values"],dplyr::last))
+lrf_tmax_ukesm_low_change <- round(lrf_tmax_ukesm_low_last - lrf_tmax_ukesm_low_first,1)
+##
+lrf_tmax_ukesm_high_df <- lrf_ukesm_high[,c("date","uh_tmax")]
+lrf_tmax_ukesm_high_fit <- lm(uh_tmax ~ date, data = lrf_tmax_ukesm_high_df)
+lrf_tmax_ukesm_high_first <- as.numeric(lapply(lrf_tmax_ukesm_high_fit["fitted.values"],dplyr::first))
+lrf_tmax_ukesm_high_last <- as.numeric(lapply(lrf_tmax_ukesm_high_fit["fitted.values"],dplyr::last))
+lrf_tmax_ukesm_high_change <- round(lrf_tmax_ukesm_high_last - lrf_tmax_ukesm_high_first,1)
+
+# make dataframe with changes
+change_df <- data.frame(kbs_prec=c(kbs_prec_gfdl_low_change,kbs_prec_gfdl_high_change,
+                                   kbs_prec_ukesm_low_change,kbs_prec_ukesm_high_change),
+                        kbs_tmin=c(kbs_tmin_gfdl_low_change,kbs_tmin_gfdl_high_change,
+                                   kbs_tmin_ukesm_low_change,kbs_tmin_ukesm_high_change),
+                        kbs_tmax=c(kbs_tmax_gfdl_low_change,kbs_tmax_gfdl_high_change,
+                                   kbs_tmax_ukesm_low_change,kbs_tmax_ukesm_high_change),
+                        lrf_prec=c(lrf_prec_gfdl_low_change,lrf_prec_gfdl_high_change,
+                                   lrf_prec_ukesm_low_change,lrf_prec_ukesm_high_change),
+                        lrf_tmin=c(lrf_tmin_gfdl_low_change,lrf_tmin_gfdl_high_change,
+                                   lrf_tmin_ukesm_low_change,lrf_tmin_ukesm_high_change),
+                        lrf_tmax=c(lrf_tmax_gfdl_low_change,lrf_tmax_gfdl_high_change,
+                                   lrf_tmax_ukesm_low_change,lrf_tmax_ukesm_high_change))
+
+# write out table
+    write.csv(change_df, file="../../Comb_results_2050/fut_clim_stats.csv",
+              row.names=c("GFDL Low","GFDL High","UKESM Low","UKESM High"))
+
+```
 
 ```{r tmin_group_data}
 
@@ -316,8 +495,8 @@ rain_cm_piv <- rbind(kbs_rain_cm_piv,lrf_rain_cm_piv)
 
 ```{r combine}
 
-alldata_piv <- rbind(tmin_piv,tmax_piv,rain_cm_piv) %>%
-  filter(Date<as.Date(end_fut_period_date))
+alldata_piv <- rbind(tmin_piv,tmax_piv,rain_cm_piv) #%>%
+  #filter(Date<as.Date(end_fut_period_date))
                      
 
 ```
@@ -374,9 +553,158 @@ alldata_piv <- rbind(tmin_piv,tmax_piv,rain_cm_piv) %>%
   
   g_rain
 
-    ggsave(filename="../../Comb_results_2050/pub_Future_temperature.jpg",
+  #   g_rain2 <- ggplot(data=kbs_prec_gfdl_low_df) +
+  #   # geom_point(show.legend=TRUE) +
+  #   xlab("Year") +
+  #   ylab(expression('Precipitation (cm)')) +
+  #   ylim(0.25,0.35) +
+  #   ggtitle("Historical Precipitation and Future Projections") +
+  #   # geom_smooth(method='lm', formula= gl_rain_cm~date, se=FALSE, 
+  #   #             aes(x=date, y=gl_rain_cm, colour = cbPalette12[4])
+  #   #             ,linewidth=0.75,na.rm=TRUE, data=kbs_prec_gfdl_low_df) +
+  #   # geom_smooth(method='lm', formula= gh_rain_cm~date, se=FALSE, 
+  #   #             aes(x=date, y=gh_rain_cm, colour = cbPalette12[2])
+  #   #             ,linewidth=0.75,na.rm=TRUE, data=kbs_prec_gfdl_high_df) +
+  # 
+  #   geom_abline(data=kbs_prec_gfdl_low_df,
+  #               aes(intercept=kbs_prec_gfdl_low_coef[1], slope=kbs_prec_gfdl_low_coef[2], 
+  #                   color=cbPalette12[4])) +
+  #   geom_abline(data=kbs_prec_gfdl_high_df,
+  #               aes(intercept=kbs_prec_gfdl_high_coef[1], slope=kbs_prec_gfdl_high_coef[2], 
+  #                   color=cbPalette12[2])) +
+  #   geom_abline(data=kbs_prec_ukesm_low_df,
+  #               aes(intercept=kbs_prec_ukesm_low_coef[1], slope=kbs_prec_ukesm_low_coef[2], 
+  #                   color=cbPalette12[6])) +
+  #   geom_abline(data=kbs_prec_ukesm_high_df,
+  #               aes(intercept=kbs_prec_ukesm_high_coef[1], slope=kbs_prec_ukesm_high_coef[2], 
+  #                   color=cbPalette12[10])) +
+  #   # geom_abline(intercept=kbs_prec_ukesm_low_coef[1], slope=kbs_prec_ukesm_low_coef[2], color=cbPalette12[6]) +
+  #   # geom_abline(intercept=kbs_prec_ukesm_high_coef[1], slope=kbs_prec_ukesm_high_coef[2], color=cbPalette12[10]) +
+  #   scale_color_manual(labels=c("GFDL_High","GFDL_Low",
+  #                               "UKESM_High","UKESM_Low"),
+  #                      values=cbPalette12[c(2,4,10,6)],
+  #                      name="Climate Model") +
+  #   # facet_wrap(~SiteName) +
+  #   theme_classic(base_family = "serif", base_size = 16) +
+  #   theme(panel.background = element_blank(),
+  #         panel.border = element_rect(colour = "darkgrey", fill=NA),
+  #         strip.background = element_blank(),
+  #         axis.line = element_line(),
+  #         legend.position = "right",
+  #         legend.key = element_blank())
+  # 
+  # g_rain2
+
+      ggsave(filename="../../Comb_results_2050/pub_Future_temperature.jpg",
          plot=g_temp, width=8, height=6, dpi=300)
     ggsave(filename="../../Comb_results_2050/pub_Future_precipitation.jpg",
          plot=g_rain, width=9, height=4, dpi=300)
+ 
+```
+
+```{r limited_graph}
+
+#### there is an issue associated with geom_smooth being used with the ylim 
+#### command such that the data are displayed at the wrong vertical position, 
+#### or sometimes even the wrong slope, depending on the range. this must be, 
+#### related to data points being excluded when ylim is set, so a truncated
+#### set of data are being modeled. slopes are being calculated on the fly
+#### this way, though, so that the facet_grid will work.
+
+  g_temp_lim <- alldata_piv[alldata_piv$ClimateVariable %in% c("Max Temp","Min Temp") &
+                          alldata_piv$source %in% c("Historical","Baseline","UKESM_High"),] %>%
+    ggplot(aes(x=Date, y=val, color=source, show.legend=TRUE)) +
+    # geom_point(show.legend=TRUE) +
+    xlab("Year") +
+    ylab(expression('Temperature ( ' ^o*'C)')) +
+   # ylim(0,3) +
+    ggtitle("Historical Temperature and Future Projections") +
+    geom_smooth(method='lm', formula= y~x, se=FALSE, aes(colour = source)
+                ,linewidth=0.75) +
+    scale_color_manual(labels=c("Baseline","Historical","UKESM_High"),
+                       values=cbPalette12[c(8,1,10)],
+                       name="Climate Model") +
+    facet_grid(ClimateVariable~SiteName) +
+    theme_classic(base_family = "serif", base_size = 16) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  g_temp_lim
+  
+
+    g_rain_lim <- alldata_piv[alldata_piv$ClimateVariable == "Rain" &
+                          alldata_piv$source %in% c("Historical","Baseline","UKESM_High"),] %>%
+    ggplot(aes(x=Date, y=val, color=source, show.legend=TRUE)) +
+    #geom_point(show.legend=TRUE) +
+    xlab("Year") +
+    ylab(expression('Precipitation (cm)')) +
+    #ylim(0,10) +
+    ggtitle("Historical Precipitation and Future Projections") +
+    geom_smooth(method='lm', formula= y~x, se=FALSE, aes(colour = source)
+                ,linewidth=0.75,na.rm=TRUE) +
+    scale_color_manual(labels=c("Baseline","Historical","UKESM_High"),
+                       values=cbPalette12[c(8,1,10)],
+                       name="Climate Model") +
+    facet_wrap(~SiteName) +
+    theme_classic(base_family = "serif", base_size = 16) +
+    theme(panel.background = element_blank(),
+          panel.border = element_rect(colour = "darkgrey", fill=NA),
+          strip.background = element_blank(),
+          axis.line = element_line(),
+          legend.position = "right",
+          legend.key = element_blank())
+  
+  g_rain_lim
+
+  #   g_rain2 <- ggplot(data=kbs_prec_gfdl_low_df) +
+  #   # geom_point(show.legend=TRUE) +
+  #   xlab("Year") +
+  #   ylab(expression('Precipitation (cm)')) +
+  #   ylim(0.25,0.35) +
+  #   ggtitle("Historical Precipitation and Future Projections") +
+  #   # geom_smooth(method='lm', formula= gl_rain_cm~date, se=FALSE, 
+  #   #             aes(x=date, y=gl_rain_cm, colour = cbPalette12[4])
+  #   #             ,linewidth=0.75,na.rm=TRUE, data=kbs_prec_gfdl_low_df) +
+  #   # geom_smooth(method='lm', formula= gh_rain_cm~date, se=FALSE, 
+  #   #             aes(x=date, y=gh_rain_cm, colour = cbPalette12[2])
+  #   #             ,linewidth=0.75,na.rm=TRUE, data=kbs_prec_gfdl_high_df) +
+  # 
+  #   geom_abline(data=kbs_prec_gfdl_low_df,
+  #               aes(intercept=kbs_prec_gfdl_low_coef[1], slope=kbs_prec_gfdl_low_coef[2], 
+  #                   color=cbPalette12[4])) +
+  #   geom_abline(data=kbs_prec_gfdl_high_df,
+  #               aes(intercept=kbs_prec_gfdl_high_coef[1], slope=kbs_prec_gfdl_high_coef[2], 
+  #                   color=cbPalette12[2])) +
+  #   geom_abline(data=kbs_prec_ukesm_low_df,
+  #               aes(intercept=kbs_prec_ukesm_low_coef[1], slope=kbs_prec_ukesm_low_coef[2], 
+  #                   color=cbPalette12[6])) +
+  #   geom_abline(data=kbs_prec_ukesm_high_df,
+  #               aes(intercept=kbs_prec_ukesm_high_coef[1], slope=kbs_prec_ukesm_high_coef[2], 
+  #                   color=cbPalette12[10])) +
+  #   # geom_abline(intercept=kbs_prec_ukesm_low_coef[1], slope=kbs_prec_ukesm_low_coef[2], color=cbPalette12[6]) +
+  #   # geom_abline(intercept=kbs_prec_ukesm_high_coef[1], slope=kbs_prec_ukesm_high_coef[2], color=cbPalette12[10]) +
+  #   scale_color_manual(labels=c("GFDL_High","GFDL_Low",
+  #                               "UKESM_High","UKESM_Low"),
+  #                      values=cbPalette12[c(2,4,10,6)],
+  #                      name="Climate Model") +
+  #   # facet_wrap(~SiteName) +
+  #   theme_classic(base_family = "serif", base_size = 16) +
+  #   theme(panel.background = element_blank(),
+  #         panel.border = element_rect(colour = "darkgrey", fill=NA),
+  #         strip.background = element_blank(),
+  #         axis.line = element_line(),
+  #         legend.position = "right",
+  #         legend.key = element_blank())
+  # 
+  # g_rain2
+
+      ggsave(filename="../../Comb_results_2050/pub_Future_temperature_limited.jpg",
+         plot=g_temp_lim, width=8, height=6, dpi=300)
+    ggsave(filename="../../Comb_results_2050/pub_Future_precipitation_limited.jpg",
+         plot=g_rain_lim, width=9, height=4, dpi=300)
  
 ```
