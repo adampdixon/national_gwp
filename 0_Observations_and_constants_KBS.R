@@ -539,6 +539,8 @@ ObsTemp <- ObsTemp_raw[ObsTemp_raw$treatment==treatment & ObsTemp_raw$year >= 19
 ObsTfit <- lm(soil_temperature ~ date, data = ObsTemp)
 ObsTfit_coef <- coef(ObsTfit)
 ObsTfit_r2 <- round(summary(ObsTfit)$r.squared,2)
+ObsTfit_slope_byday <- ObsTfit_coef[2]
+ObsTfit_slope_byyear <- ObsTfit_slope_byday*365
 
 ObsTemp_range <- range(ObsTemp$soil_temperature,na.rm=T)
 
@@ -591,6 +593,7 @@ ObsVSM <- ObsVSM_mean[ObsVSM_mean$treatment==treatment,]
 ObsMfit <- lm(mean_VSM ~ year, data = ObsVSM)
 ObsMfit_coef <- coef(ObsMfit)
 ObsMfit_r2 <- round(summary(ObsMfit)$r.squared,2)
+ObsMfit_slope_byyear <- ObsMfit_coef[2]
 
 ## Microbial biomass
 ObsMB_raw <- read.csv(paste0(obs_path,obs_mb_filename),

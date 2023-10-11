@@ -5,7 +5,7 @@ date: "9/28/2022"
 output: html_document
 description: "Explores data used for calibration at KBS, MI."
 ---
-prerequisite: run 0_Controller.R with arbitrary scenario
+prerequisite: run 0_Observations_and_constants.R with arbitrary scenario
 
 ```{r setup, include=FALSE}
 #rm(list=ls())
@@ -35,8 +35,12 @@ library(ggplot2)
 
 ```{r constants}
 
-calib_path <- paste0("Data/",site_name,"/Calibration/")
-mgmt_path <- paste0("Data/",site_name,"/Management/")
+#calib_path <- paste0("Data/KBS/Calibration/")
+#mgmt_path <- paste0("Data/KBS/Management/")
+#wth_path <- paste0("Data/KBS/Weather/")
+calib_folder <- paste0("Calibration/")
+mgmt_folder <- paste0("Management/")
+wth_folder <- paste0("Weather/")
 
 treatment_list <- c("T1","T2","T3")
 treatment_num_list <- c(1,2,3)
@@ -180,13 +184,18 @@ ggsave(filename="Bulk_Density.jpg",plot=gB)
 
 ```
 
-## soil other
+## soil temp and moisture
 
 ```{r}
+
+ObsTfit <- lm(soil_temperature ~ date, data = SoilTemp_C)
+ObsTfit_coef <- coef(ObsTfit)
+ObsTfit_r2 <- round(summary(ObsTfit)$r.squared,2)
 
 gT <- SoilTemp_C %>%
 ggplot(aes(x=date, y=soil_temperature, color=treatment, show.legend=TRUE)) +
   geom_line() +
+  geom_abline(intercept=ObsTfit_coef[1], slope=ObsTfit_coef[2], color="blue") +
   ggtitle(paste0(site_name," Observed Soil Temperature")) +
   xlab("Year") +
   ylab(expression('Soil temperature (' ^o*'C)')) +
@@ -197,9 +206,21 @@ ggplot(aes(x=date, y=soil_temperature, color=treatment, show.legend=TRUE)) +
 
 gT
 
+ObsTfit2 <- lm(soil_temperature ~ year, data = SoilTemp_C)
+ObsTfit_coef2 <- coef(ObsTfit2)
+ObsTfit_slope_byyear <- ObsTfit_coef2[2]
+
+###
+ObsMfit <- lm(mean_VSM ~ year, data = SoilMoist_VSM)
+ObsMfit_coef <- coef(ObsMfit)
+ObsMfit_r2 <- round(summary(ObsMfit)$r.squared,2)
+ObsMfit_slope_byyear <- ObsMfit_coef[2]
+
+
 gM <- SoilMoist_VSM %>%
-ggplot(aes(x=date, y=mean_VSM, color=treatment, show.legend=TRUE)) +
-  geom_line() +
+ggplot(aes(x=year, y=mean_VSM, color=treatment, show.legend=TRUE)) +
+  geom_point() +
+  geom_abline(intercept=ObsMfit_coef[1], slope=ObsMfit_coef[2], color="blue") +
   ggtitle(paste0(site_name," Observed Soil Moisture")) +
   xlab("Year") +
   ylab("Volumetric soil moisture (%)") +
@@ -210,6 +231,15 @@ ggplot(aes(x=date, y=mean_VSM, color=treatment, show.legend=TRUE)) +
 
 gM
 
+### write out graphs
+ggsave(filename="Soil_Temperature.jpg",plot=gT)
+ggsave(filename="Soil_Moisture.jpg",plot=gM)
+
+```
+
+# GHGs
+
+```{r}
 gCG <- CO2_ghaday[CO2_ghaday$Treatment != control_treatment,] %>%
   ggplot(aes(x=date, y=CO2_C, color=Treatment)) +
   geom_line(show.legend=TRUE) +
@@ -263,8 +293,6 @@ ggplot(aes(x=year, y=mb_gm2, color=trt, show.legend=TRUE)) +
 gMB 
 
 ### write out graphs
-ggsave(filename="Soil_Temperature.jpg",plot=gT)
-ggsave(filename="Soil_Moisture.jpg",plot=gM)
 ggsave(filename="N2O_emissions.jpg",plot=gNG)
 ggsave(filename="MBio_gm2.jpg",plot=gMB)
 
@@ -409,8 +437,8 @@ gNsum
 
 ```{r}
 
-fert_df <- read.csv(file=paste0(calib_path,"RFertilizer.csv"))
-ops_ext_adj_raw <- read_csv(paste0(mgmt_path,adjusted_ops_filename),
+fert_df <- read.csv(file=paste0(calib_folder,"RFertilizer.csv"))
+ops_ext_adj_raw <- read_csv(paste0(mgmt_folder,adjusted_ops_filename),
                     col_names = TRUE, show_col_types=F)
 
 fert_summary1 <- fert_df[fert_df$treatment %in% c("T1","T2","T3"),] %>%
@@ -429,5 +457,64 @@ fert_summary <- left_join(fert_summary1,
 
   
   
+
+```
+
+# Weather
+
+```{r}
+
+historical_weather <- read_csv(paste0(wth_folder,"compiled_historical_weather.csv"),
+                    col_names = TRUE, show_col_types=F) %>%
+    mutate(date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+
+# temp
+ObsATfit <- lm(tavg ~ date, data = historical_weather)
+ObsATfit_coef <- coef(ObsATfit)
+ObsATfit_r2 <- round(summary(ObsATfit)$r.squared,2)
+airtemp_slope_byday <- ObsATfit_coef[2]
+
+gAT <- historical_weather %>%
+ggplot(aes(x=date, y=tavg, color=treatment, show.legend=TRUE)) +
+  geom_line() +
+  geom_abline(intercept=ObsATfit_coef[1], slope=ObsATfit_coef[2], color="red") +
+  ggtitle(paste0(site_name," Observed Mean Air Temperature")) +
+  xlab("Year") +
+  ylab(expression('Temperature (' ^o*'C)')) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gAT
+
+ObsATfit2 <- lm(tavg ~ year, data = historical_weather)
+ObsATfit_coef2 <- coef(ObsATfit2)
+airtemp_slope_byyear <- ObsATfit_coef2[2]
+
+# rain
+ObsPfit <- lm(rain_cm.x ~ date, data = historical_weather)
+ObsPfit_coef <- coef(ObsPfit)
+ObsPfit_r2 <- round(summary(ObsPfit)$r.squared,2)
+rain_slope_byday <- ObsPfit_coef[2]
+
+gP <- historical_weather %>%
+ggplot(aes(x=date, y=rain_cm.x, color=treatment, show.legend=TRUE)) +
+  geom_point() +
+  geom_abline(intercept=ObsPfit_coef[1], slope=ObsPfit_coef[2], color="red") +
+  ggtitle(paste0(site_name," Observed Precipitation")) +
+  xlab("Year") +
+  ylab(expression('Rain (cm)')) +
+  theme(panel.background = element_blank(),
+        axis.line = element_line(),
+        legend.position = "right",
+        legend.key = element_blank())
+
+gP
+
+ObsPfit2 <- lm(rain_cm.x ~ year, data = historical_weather)
+ObsPfit_coef2 <- coef(ObsPfit2)
+rain_cm_slope_byyear <- ObsPfit_coef2[2]
+
 
 ```

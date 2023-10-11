@@ -179,12 +179,21 @@ gC
 
 Temp_this_piv <- SoilTemp_C_piv[SoilTemp_C_piv$year %in% experiment_year_range,]
 
-Temp_this <- SoilTemp_C[year(SoilTemp_C$date) %in% experiment_year_range,]
+Temp_this <- SoilTemp_C[year(SoilTemp_C$date) %in% experiment_year_range,] %>%
+  mutate(year=year(date))
 Tfit_time <- lm(APSIM ~ date, data = Temp_this)
 Tfit_coef_time <- coef(Tfit_time)
 Tfit_r2_time <- round(summary(Tfit_time)$r.squared,2)
+
 T_rmse_error_time <- Temp_this$Observed-Temp_this$APSIM
 T_rmse_time <- round(sqrt(mean(T_rmse_error_time^2,na.rm=TRUE)),2)
+
+Tfit_time_obs <- lm(Observed ~ date, data = Temp_this)
+Tfit_coef_time_obs <- coef(Tfit_time_obs)
+
+APSIMT_slope_byday <- Tfit_coef_time[2]
+Obs_slope_byday <- Tfit_coef_time_obs[2]
+
 
 gT <- Temp_this_piv[Temp_this_piv$source=='APSIM'
                      & Temp_this_piv$year %in% ObsTemp$year,] %>%
@@ -193,6 +202,8 @@ gT <- Temp_this_piv[Temp_this_piv$source=='APSIM'
   geom_point(data=Temp_this_piv[Temp_this_piv$source=='Observed'
                                  & Temp_this_piv$year %in% ObsTemp$year,],
              aes(x=date, y=temp_val, color=source)) +
+  geom_abline(intercept=Tfit_coef_time[1], slope=Tfit_coef_time[2], color="orange") +
+  geom_abline(intercept=Tfit_coef_time_obs[1], slope=Tfit_coef_time_obs[2], color="black") +
   xlab("Year") +
   ylab(expression('Soil temperature ( '*degree*C*")")) +
   ggtitle(paste0(site_name," Soil Temperature"),
@@ -206,6 +217,10 @@ gT <- Temp_this_piv[Temp_this_piv$source=='APSIM'
         legend.key = element_blank())
 
 gT
+
+Tfit_time2 <- lm(APSIM ~ year, data = Temp_this)
+Tfit_coef_time2 <- coef(Tfit_time2)
+APSIMT_slope_byyear <- Tfit_coef_time2[2]
 
 ## Not using APSIM for RothC or Millennial, so no longer needed
 # gT_calib <- SoilTemp_C_piv_calib[SoilTemp_C_piv_calib$source=='APSIM' 
@@ -231,7 +246,8 @@ gT
 # gT_calib
 
 Moist_this_piv <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$year %in% experiment_year_range,]
-Moist_this <- SoilMoist_VSM[year(SoilMoist_VSM$date) %in% experiment_year_range,]
+Moist_this <- SoilMoist_VSM[year(SoilMoist_VSM$date) %in% experiment_year_range,] %>%
+  mutate(year=year(date))
 
 Mfit_time <- lm(APSIM ~ date, data = Moist_this)
 Mfit_coef_time <- coef(Mfit_time)
@@ -260,6 +276,10 @@ gM <- Moist_this_piv[Moist_this_piv$source=='APSIM'
         legend.key = element_blank())
 
 gM
+
+Mfit_time2 <- lm(APSIM ~ year, data = Moist_this)
+Mfit_coef_time2 <- coef(Mfit_time2)
+APSIMM_slope_byyear <- Mfit_coef_time2[2]
 
 ## Not using APSIM for RothC or Millennial, so no longer needed
 # gM_calib <- SoilMoist_VSM_piv_calib[SoilMoist_VSM_piv_calib$source=='APSIM' 
@@ -1131,6 +1151,10 @@ rm(calib_log_tab,
    Cfit_coef, Cfit_r2, C_rmse,
    SOC_obsmod_diff_Mgha,SOC_obsmod_diff_Mgha_nooutliers,
    Tfit_coef, Tfit_r2, T_rmse,
+   T_rmse_error_time,
+   T_rmse_time,
+   Tfit_time_obs,
+   Tfit_coef_time_obs,
    SoilT_obsmod_diff_Mgha,
    Mfit_coef, Mfit_r2, M_rmse,
    SoilM_obsmod_diff_Mgha,

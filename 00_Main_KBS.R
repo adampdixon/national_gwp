@@ -53,8 +53,10 @@ obs_mgmt_path <- paste0("Data/",site_name,"/Management/")
 hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
 hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
 curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
-nasapower_output_filename <- paste0(site_name,"_np.csv")
 wth_path <- paste0("Data/",site_name,"/Weather/")
+nasapower_output_filename <- paste0(site_name,"_np.csv")
+mgmt_path=paste0("Data/",site_name,"/Management/")
+adjusted_ops_filename="clean_ops_ext_adj.csv"
 fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
 apsim_path <- paste0("APSIM/",site_name,"/")
 daycent_path <- paste0("Daycent/",site_name,"/")
@@ -120,7 +122,7 @@ for (x in clim_nums) { # climate scenarios
 } # end loop through climate scenarios
 
  source(paste0("10_Model_Ensemble_results-combined_scenarios_",site_name,".R"))
-# source(paste0("10_Model_Ensemble_results-combined_scenarios_and_sites2.R"))
+ source(paste0("10_Model_Ensemble_results-combined_scenarios_and_sites_compbaseline-two_climate_scenarios4.R"))
 
 # end timer
 run_time <- round(toc(echo=TRUE)/60,1)

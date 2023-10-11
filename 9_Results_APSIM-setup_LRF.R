@@ -14,8 +14,8 @@
 print(paste0("Starting 9_Results_APSIM-setup_",site_name,".R"))
 
 #library(apsimx)
- library(magrittr)
- library(lubridate)
+library(magrittr)
+library(lubridate)
 library(dplyr)
 library(tidyr)
 
@@ -89,7 +89,7 @@ APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4
           # (`BulkDensity_gcc(1)`*5*`oc_bylayer_pct(2)`),
          N2O_10cm_kgha=`N2O_bylayer_kgha(1)`+(`N2O_bylayer_kgha(2)`*0.5),
          N2O_profile_kgha=`N2O_bylayer_kgha(1)`+`N2O_bylayer_kgha(2)`+
-           `N2O_bylayer_kgha(3)`+`N2O_bylayer_kgha(4)`,
+           `N2O_bylayer_kgha(3)`, #+`N2O_bylayer_kgha(4)`,
          BiomC_profile_kgha=`biomc_bylayer_kgha(1)` + `biomc_bylayer_kgha(2)` +
            `biomc_bylayer_kgha(3)`+`biomc_bylayer_kgha(4)`,
          BiomN_profile_kgha=`biomn_bylayer_kgha(1)` + `biomn_bylayer_kgha(2)` +
@@ -174,7 +174,7 @@ APSIM_out_raw <- read.fwf(paste0(apsim_path,"scen_",scenario_name,".out"),skip=4
              #(`BulkDensity_gcc(1)`*5*`oc_bylayer_pct(2)`),
            N2O_10cm_kgha=`N2O_bylayer_kgha(1)`+(`N2O_bylayer_kgha(2)`*0.5),
            N2O_profile_kgha=`N2O_bylayer_kgha(1)`+`N2O_bylayer_kgha(2)`+
-             `N2O_bylayer_kgha(3)`+`N2O_bylayer_kgha(4)`,
+             `N2O_bylayer_kgha(3)`, #+`N2O_bylayer_kgha(4)`,
            BiomC_profile_kgha=`biomc_bylayer_kgha(1)` + `biomc_bylayer_kgha(2)` +
              `biomc_bylayer_kgha(3)`+`biomc_bylayer_kgha(4)`,
            BiomN_profile_kgha=`biomn_bylayer_kgha(1)` + `biomn_bylayer_kgha(2)` +

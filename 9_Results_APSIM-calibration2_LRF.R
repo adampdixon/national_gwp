@@ -165,6 +165,7 @@ gShY <- SorghumYld_Mgha_piv[SorghumYld_Mgha_piv$year <= end_exp_period_year,] %>
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("APSIM","Historical","Observed"),
                      values=c(APSIM_color,4,Observed_color)) +
+  theme_classic(base_family = "serif", base_size = 25) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -278,12 +279,20 @@ gCh
 
 Temp_this_piv <- SoilTemp_C_piv[SoilTemp_C_piv$year %in% experiment_year_range,]
 
-Temp_this <- SoilTemp_C[year(SoilTemp_C$date) %in% experiment_year_range,]
+Temp_this <- SoilTemp_C[year(SoilTemp_C$date) %in% experiment_year_range,] %>%
+  mutate(year=year(date))
 Tfit_time <- lm(APSIM ~ date, data = Temp_this)
 Tfit_coef_time <- coef(Tfit_time)
 Tfit_r2_time <- round(summary(Tfit_time)$r.squared,2)
+
 T_rmse_error_time <- Temp_this$Observed-Temp_this$APSIM
 T_rmse_time <- round(sqrt(mean(T_rmse_error_time^2,na.rm=TRUE)),2)
+
+Tfit_time_obs <- lm(Observed ~ date, data = Temp_this)
+Tfit_coef_time_obs <- coef(Tfit_time_obs)
+
+APSIMT_slope_byday <- Tfit_coef_time[2]
+Obs_slope_byday <- Tfit_coef_time_obs[2]
 
 gT <- Temp_this_piv[Temp_this_piv$source=='APSIM' 
                      & Temp_this_piv$year %in% ObsTemp$year,] %>%
@@ -298,13 +307,18 @@ gT <- Temp_this_piv[Temp_this_piv$source=='APSIM'
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("APSIM","Observed"),
                      values=c(APSIM_color,Observed_color)) +
-  theme_classic(base_family = "serif", base_size = 15) +
+  theme_classic(base_family = "serif", base_size = 20) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
         legend.key = element_blank())
 
 gT
+
+
+Tfit_time2 <- lm(APSIM ~ year, data = Temp_this)
+Tfit_coef_time2 <- coef(Tfit_time2)
+APSIMT_slope_byyear <- Tfit_coef_time2[2]
 
 ## Not using APSIM for RothC or Millennial, so no longer needed
 # gT_calib <- SoilTemp_C_piv_calib[SoilTemp_C_piv_calib$source=='APSIM' 
@@ -333,10 +347,13 @@ gT
 
 Moist_this_piv <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$year %in% experiment_year_range,]
 
-Moist_this <- SoilMoist_VSM[year(SoilMoist_VSM$date) %in% experiment_year_range,]
+Moist_this <- SoilMoist_VSM[year(SoilMoist_VSM$date) %in% experiment_year_range,] %>%
+  mutate(year=year(date))
+
 Mfit_time <- lm(APSIM ~ date, data = Moist_this)
 Mfit_coef_time <- coef(Mfit_time)
 Mfit_r2_time <- round(summary(Mfit_time)$r.squared,2)
+
 M_rmse_error_time <- Moist_this$Observed-Moist_this$APSIM
 M_rmse_time <- round(sqrt(mean(M_rmse_error_time^2,na.rm=TRUE)),2)
 
@@ -360,6 +377,10 @@ gM <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='APSIM'
         legend.key = element_blank())
 
 gM
+
+Mfit_time2 <- lm(APSIM ~ year, data = Moist_this)
+Mfit_coef_time2 <- coef(Mfit_time2)
+APSIMM_slope_byyear <- Mfit_coef_time2[2]
 
 gM_rain <- ggplot() +
   geom_point(data=SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='APSIM' 
@@ -608,7 +629,7 @@ if(mgmt_scenario_grp != 7) {
 ggsave(filename=paste0(results_path,"calib_Sorghum_yield_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gSY,
        width=6, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"calib_Sorghum_hist_yield_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gShY,
-         width=6, height=6, dpi=300)
+         width=8, height=6, dpi=300)
   ggsave(filename=paste0(results_path,"calib_Sorghum_biomass_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gSBY,
          width=6, height=6, dpi=300)
 }
@@ -617,6 +638,8 @@ ggsave(filename=paste0(results_path,"calib_SOC_comparison_exp_",scenario_name,"_
 ggsave(filename=paste0(results_path,"calib_SOC_comparison_base_",scenario_name,"_APSIM.jpg"),plot=gCh,
        width=6, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gT,
+       width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"pub_calib_Soil_Temp_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gT,
        width=6, height=6, dpi=300)
 #ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_calib_exp_",scenario_name,"_APSIM.jpg"),plot=gT_calib)
 ggsave(filename=paste0(results_path,"calib_Soil_Moist_comparison_exp_",scenario_name,"_APSIM.jpg"),plot=gM,

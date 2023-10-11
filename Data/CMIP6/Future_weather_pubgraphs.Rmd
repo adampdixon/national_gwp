@@ -606,7 +606,7 @@ alldata_piv <- rbind(tmin_piv,tmax_piv,rain_cm_piv) #%>%
 
 #### there is an issue associated with geom_smooth being used with the ylim 
 #### command such that the data are displayed at the wrong vertical position, 
-#### or sometimes even the wrong slope, depending on the range. this must be, 
+#### or sometimes even the wrong slope, depending on the range. this must be 
 #### related to data points being excluded when ylim is set, so a truncated
 #### set of data are being modeled. slopes are being calculated on the fly
 #### this way, though, so that the facet_grid will work.

@@ -56,6 +56,10 @@ library(ggplot2)
   
   gM
   
+  Mfit_time2 <- lm(Daycent ~ year, data = Moist_this)
+  Mfit_coef_time2 <- coef(Mfit_time2)
+  DaycentM_slope_byyear <- Mfit_coef_time2[2]
+  
 # Maize_this <- MaizeYld_Mgha_piv[MaizeYld_Mgha_piv$year %in% experiment_year_range &
 #                                   MaizeYld_Mgha_piv$source!='Historical',]
 # 
@@ -383,7 +387,8 @@ SOC_1989 <- unique(lis_output[lis_output$time==1989,"somsc_gm2"])
 # gT
 
 Temp_this_piv <- SoilTemp_C_piv[SoilTemp_C_piv$year %in% experiment_year_range,]
-Temp_this <- SoilTemp_C[year(SoilTemp_C$date) %in% experiment_year_range,]
+Temp_this <- SoilTemp_C[year(SoilTemp_C$date) %in% experiment_year_range,] %>%
+  mutate(year=year(date))
 
 Tfit_time <- lm(Daycent ~ date, data = Temp_this)
 Tfit_coef_time <- coef(Tfit_time)
@@ -391,6 +396,10 @@ Tfit_r2_time <- round(summary(Tfit_time)$r.squared,2)
 
 T_rmse_error_time <- Temp_this$Observed-Temp_this$Daycent
 T_rmse_time <- round(sqrt(mean(T_rmse_error_time^2,na.rm=TRUE)),2)
+
+DaycentT_slope_byday <- Tfit_coef_time[2]
+Obs_slope_byday <- Tfit_coef_time[2]
+
 
 gT <- Temp_this_piv[Temp_this_piv$source=='Daycent'
                     & Temp_this_piv$year %in% ObsTemp$year,] %>%
@@ -405,7 +414,7 @@ gT <- Temp_this_piv[Temp_this_piv$source=='Daycent'
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Observed"),
                      values=cbPalette9[c(2,1)]) +
-  theme_classic(base_family = "serif", base_size = 15) +
+  theme_classic(base_family = "serif", base_size = 20) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -413,6 +422,9 @@ gT <- Temp_this_piv[Temp_this_piv$source=='Daycent'
 
 gT
 
+Tfit_time2 <- lm(Daycent ~ year, data = Temp_this)
+Tfit_coef_time2 <- coef(Tfit_time2)
+DaycentT_slope_byyear <- Tfit_coef_time2[2]
 
 mean_soilT_obs <- mean(SoilTemp_C[,"Observed"],na.rm=TRUE)
 mean_soilT_day <- mean(SoilTemp_C[,"Daycent"],na.rm=TRUE)
@@ -753,6 +765,8 @@ ggsave(filename=paste0(results_path,"calib_SOC_comparison_exp_",scenario_name,"_
 ggsave(filename=paste0(results_path,"calib_SOC_comparison_base_",scenario_name,"_Daycent.jpg"),plot=gCb,
        width=9, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_Soil_Temp_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gT,
+       width=6, height=6, dpi=300)
+ggsave(filename=paste0(results_path,"pub_calib_Soil_Temp_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gT,
        width=6, height=6, dpi=300)
 ggsave(filename=paste0(results_path,"calib_Soil_Moist_comparison_exp_",scenario_name,"_Daycent.jpg"),plot=gM,
        width=6, height=6, dpi=300)
@@ -1272,6 +1286,10 @@ rm(calib_log_tab,
    Cfit_coef, Cfit_r2, C_rmse,
    SOC_obsmod_diff_Mgha,SOC_obsmod_diff_Mgha_nooutliers,
    Tfit_coef, Tfit_r2, T_rmse,
+   T_rmse_error_time,
+   T_rmse_time,
+   Tfit_time,
+   Tfit_coef_time,
    SoilT_obsmod_diff_Mgha,
    Mfit_coef, Mfit_r2, M_rmse,
    SoilM_obsmod_diff_Mgha,

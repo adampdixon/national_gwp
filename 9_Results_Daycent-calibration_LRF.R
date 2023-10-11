@@ -57,6 +57,10 @@ gM <- SoilMoist_VSM_piv[SoilMoist_VSM_piv$source=='Daycent'
 
 gM
 
+Mfit_time2 <- lm(Daycent ~ year, data = Moist_this)
+Mfit_coef_time2 <- coef(Mfit_time2)
+DaycentM_slope_byyear <- Mfit_coef_time2[2]
+
 
 # Cotton_this <- CottonYld_Mgha_piv[CottonYld_Mgha_piv$year %in% experiment_year_range &
 #                                   CottonYld_Mgha_piv$source!='Historical',]
@@ -143,6 +147,7 @@ gSY <- Sorghum_this_piv %>%
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Observed"),
                      values=c(Daycent_color,Observed_color)) +
+  theme_classic(base_family = "serif", base_size = 20) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -161,6 +166,7 @@ gShY <- SorghumYld_Mgha_piv[SorghumYld_Mgha_piv$year <= end_exp_period_year,] %>
           paste0("Scenario: ",scenario_descriptor)) +
   scale_color_manual(labels=c("Daycent","Historical","Observed"),
                      values=c(Daycent_color,Historical_color,Observed_color)) +
+  theme_classic(base_family = "serif", base_size = 22) +
   theme(panel.background = element_blank(),
         axis.line = element_line(),
         legend.position = "right",
@@ -275,12 +281,18 @@ Cdiff_landconv_startexp <- lis_output[lis_output$time==land_conversion_year,"som
 
 Temp_this_piv <- SoilTemp_C_piv[SoilTemp_C_piv$year %in% experiment_year_range,]
 
-Temp_this <- SoilTemp_C[year(SoilTemp_C$date) %in% experiment_year_range,]
+Temp_this <- SoilTemp_C[year(SoilTemp_C$date) %in% experiment_year_range,] %>%
+  mutate(year=year(date))
+
 Tfit_time <- lm(Daycent ~ date, data = Temp_this)
 Tfit_coef_time <- coef(Tfit_time)
 Tfit_r2_time <- round(summary(Tfit_time)$r.squared,2)
+
 T_rmse_error_time <- Temp_this$Observed-Temp_this$Daycent
 T_rmse_time <- round(sqrt(mean(T_rmse_error_time^2,na.rm=TRUE)),2)
+
+DaycentT_slope_byday <- Tfit_coef_time[2]
+Obs_slope_byday <- Tfit_coef_time[2]
 
 gT <- Temp_this_piv[Temp_this_piv$source=='Daycent'
                      & Temp_this_piv$year %in% ObsTemp$year,] %>%
@@ -306,6 +318,10 @@ gT <- Temp_this_piv[Temp_this_piv$source=='Daycent'
         legend.key = element_blank())
 
 gT
+
+Tfit_time2 <- lm(Daycent ~ year, data = Temp_this)
+Tfit_coef_time2 <- coef(Tfit_time2)
+DaycentT_slope_byyear <- Tfit_coef_time2[2]
 
 mean_soilT_obs <- mean(SoilTemp_C[,"Observed"],na.rm=TRUE)
 mean_soilT_day <- mean(SoilTemp_C[,"Daycent"],na.rm=TRUE)

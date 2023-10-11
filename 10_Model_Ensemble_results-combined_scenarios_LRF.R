@@ -308,6 +308,7 @@ his_SorghumYld_Mgha_piv <- read.table(file=paste0(results_path,"his_SorghumYld_M
     geom_boxplot() +
     xlab("") +
     ylab(expression('SOC (Mg C ha ' ^-1*')')) +
+    #ylim(0,50) +
     facet_grid(~scenario_abbrev) +
     theme_classic(base_family = "serif", base_size = 25) +
     theme(panel.background = element_blank(),

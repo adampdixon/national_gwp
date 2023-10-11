@@ -621,7 +621,7 @@ suppressMessages({
   SoilT60cm_last <- as.numeric(lapply(SoilT60cm_fit_time["fitted.values"],dplyr::last))
   SoilT25cm_last <- as.numeric(lapply(SoilT25cm_fit_time["fitted.values"],dplyr::last))
   #
-  SW25cm_change <-  - SW25cm_last - SW25cm_first
+  SW25cm_change <- SW25cm_last - SW25cm_first
   DW25cm_change <- DW25cm_last - DW25cm_first
   BC25cm_change <- BC25cm_last - BC25cm_first
   BN25cm_change <- BN25cm_last - BN25cm_first

@@ -151,11 +151,11 @@ suppressMessages({
                             all=TRUE)
     colnames(ens_N2O_ghaday) <- c("date","Observed","APSIM","Daycent")
     
-    ens_N2O_ghaday_piv <- pivot_longer(ens_N2O_ghaday, c(-date),
+    ens_N2O_ghaday_piv <- pivot_longer(ens_N2O_ghaday, c(-date,),
                                        names_to = "Model",
                                        values_to = "n2o_val")
     
-    ens_N2O_cum_gha <- merge(APSIMGN_cum_gha[,c("date","N2O_gha")],
+        ens_N2O_cum_gha <- merge(APSIMGN_cum_gha[,c("date","N2O_gha")],
                              DayGN_cum_gha[,c("date","N2O_gha")],
                              by="date",
                              all=TRUE) 
@@ -448,14 +448,14 @@ suppressMessages({
         geom_density(alpha=0.3) +
         xlab("Volumetric Water Content (%)") +
         xlim(0,60) +
-        ylim(0,0.6) +
+        ylim(0,0.2) +
         ggtitle(paste(site_name,"Volumetric Water Content Density"),
                 paste0("Scenario: ",scenario_descriptor)) +
         scale_color_manual(labels=c("APSIM","Daycent","Observed"),
                           values=c(APSIM_color,Daycent_color,Observed_color)) +
         scale_fill_manual(labels=c("APSIM","Daycent","Observed"),
                            values=c(APSIM_color,Daycent_color,Observed_color)) +
-        theme_classic(base_family = "serif", base_size = 15) +
+        theme_classic(base_family = "serif", base_size = 25) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
               legend.position = "right",
@@ -495,14 +495,14 @@ suppressMessages({
         ggplot(aes(x=Source, y=n2o_val, color=Source, fill=Source)) +
         geom_col(position="stack") +
         ylim(0,1000) +
-        ylab(expression('N'[2]*'O (g ha' ^'-1'*' day'^'-1'*')')) +
-        ggtitle(paste(site_name,"Total Modeled N2O Emissions vs. Observations"),
+        ylab(expression('N'[2]*'O (g ha' ^'-1'*')')) +
+        ggtitle(paste(site_name,"Total Modeled N2O Emissions vs. Obs"),
                 paste0("Scenario: ",scenario_descriptor)) +
         scale_color_manual(labels=c("APSIM","Daycent","Observed"),
                            values=c(APSIM_color,Daycent_color,Observed_color)) +
         scale_fill_manual(labels=c("APSIM","Daycent","Observed"),
                           values=c(APSIM_color,Daycent_color,Observed_color)) +
-        theme_classic(base_family = "serif", base_size = 15) +
+        theme_classic(base_family = "serif", base_size = 25) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
               legend.position = "right",
@@ -530,13 +530,13 @@ suppressMessages({
         geom_col(position="stack") +
         ylim(-350,0) +
         ylab(expression('CH'[4]*' (g C ha' ^'-1'*')')) +
-        ggtitle(paste(site_name,"Total Modeled CH4 Emissions vs. Observations"),
+        ggtitle(paste(site_name,"Total Modeled CH4 Oxidation vs. Obs"),
                 paste0("Scenario: ",scenario_descriptor)) +
         scale_color_manual(labels=c("Daycent","Observed"),
                            values=c(Daycent_color,Observed_color)) +
         scale_fill_manual(labels=c("Daycent","Observed"),
                           values=c(Daycent_color,Observed_color)) +
-        theme_classic(base_family = "serif", base_size = 15) +
+        theme_classic(base_family = "serif", base_size = 25) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
               legend.position = "right",

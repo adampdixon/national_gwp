@@ -345,14 +345,14 @@ suppressMessages({
         geom_density(alpha=0.3) +
         xlab("Volumetric Water Content (%)") +
         xlim(0,60) +
-        ylim(0,1.5) +
+        ylim(0,1) +
         ggtitle(paste(site_name,"Volumetric Water Content Density"),
                 paste0("Scenario: ",scenario_descriptor)) +
         scale_color_manual(labels=c("APSIM","Daycent"),
                            values=c(APSIM_color,Daycent_color)) +
         scale_fill_manual(labels=c("APSIM","Daycent"),
                           values=c(APSIM_color,Daycent_color)) +
-        theme_classic(base_family = "serif", base_size = 15) +
+        theme_classic(base_family = "serif", base_size = 25) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
               legend.position = "right",
@@ -393,14 +393,14 @@ suppressMessages({
         ggplot(aes(x=Source, y=n2o_val, color=Source, fill=Source)) +
         geom_col(position="stack") +
         ylim(0,3100) +
-        ylab(expression('N'[2]*'O (g N ha' ^'-1'*' day'^'-1'*')')) +
+        ylab(expression('N'[2]*'O (g N ha' ^'-1'*')')) +
         ggtitle(paste(site_name,"Total Modeled N2O Emissions"),
                 paste0("Scenario: ",scenario_descriptor)) +
         scale_color_manual(labels=c("APSIM","Daycent"),
                            values=c(APSIM_color,Daycent_color)) +
         scale_fill_manual(labels=c("APSIM","Daycent"),
                           values=c(APSIM_color,Daycent_color)) +
-        theme_classic(base_family = "serif", base_size = 15) +
+        theme_classic(base_family = "serif", base_size = 25) +
         theme(panel.background = element_blank(),
               axis.line = element_line(),
               legend.position = "right",

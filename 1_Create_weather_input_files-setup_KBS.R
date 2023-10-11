@@ -141,6 +141,11 @@ new_dat$tavg <- (new_dat$maxt_C.x + new_dat$mint_C.x)/2
 na_find_col <- names(which(colSums(is.na(new_dat))>0))
 na_find_row <- new[is.na(new$year),]
 
+# write out compiled data
+write.table(new_dat, file=paste0(wth_path,"compiled_historical_weather.csv"),
+            row.names=F, quote=F, col.names=T, sep=',')
+
+
 #**********************************************************************
 ##### Future weather
 #**********************************************************************
@@ -158,6 +163,9 @@ for (i in 1:3) {
   new_dat_fut <- rbind(new_dat_fut, weather_28yr)
 }
 
+# write out compiled data
+write.table(new_dat_fut, file=paste0(wth_path,"compiled_future_weather.csv"),
+            row.names=F, quote=F, col.names=T, sep=',')
 
 
 

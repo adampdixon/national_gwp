@@ -1009,7 +1009,7 @@ suppressMessages({
   SW40cm_fit_coef_time <- coef(SW40cm_fit_time)
   SW60cm_fit_time <- lm(layer6 ~ date, data = SMoist_this) # already a fraction
   SW60cm_fit_coef_time <- coef(SW60cm_fit_time)
-  SW25cm_fit_time <- lm(SW_25cm/100 ~ date, data = SMoist_this) # convert to fraction
+  SW25cm_fit_time <- lm(SW_25cm ~ date, data = SMoist_this) # already a fraction
   SW25cm_fit_coef_time <- coef(SW25cm_fit_time)
   ## depth of water 
   DW2cm_fit_time <- lm(DW_2cm ~ date, data = SMoist_this) 

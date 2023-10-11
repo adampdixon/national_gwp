@@ -215,6 +215,12 @@ if(mgmt_scenario_num==2) {
                                 ,skip=1) %>%
       mutate(date=as.Date(DOY,origin=paste0(as.character(year),"-01-01"))-1)
     
+    # this is a work-around for all other scenarios, which show the same odd dip
+    # noted above for the no-till scenario, but it happens just in 2022. work-around is
+    # to duplicate 2023 back to 2022, otherwise the massive dip in the first year messes
+    # up the slope of change over time, giving misleading results. only for ch4 oxidation.
+    Day_fut_methane[Day_fut_methane$year==2022,"CH4_oxid"] <- Day_fut_methane[Day_fut_methane$year==2023,"CH4_oxid"]
+    
     
   }
 
@@ -274,6 +280,12 @@ sum_fut_oxid_sum <- sum(Day_fut_summary[Day_fut_summary$year < min(Day_fut_summa
                               col.names=c("time","dayofyear","tmax","tmin","ppt",
                                           "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"),
                               skip=1) 
+  
+  # this is a work-around for all other scenarios, which show the same odd dip
+  # noted above for the no-till scenario, but it happens just in 2022. work-around is
+  # to duplicate 2023 back to 2022, otherwise the massive dip in the first year messes
+  # up the slope of change over time, giving misleading results. only for ch4 oxidation.
+  Day_fut_summary[Day_fut_methane$year==2022,"CH4_oxid_gChad"] <- Day_fut_summary[Day_fut_methane$year==2023,"CH4_oxid_gChad"]
   
 }
 

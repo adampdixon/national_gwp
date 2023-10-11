@@ -100,15 +100,6 @@ for(j in 1984:end_exp_period_year) {
   new_met <- rbind(new_met,iem_met)
 }
 
-pwr_met <- get_power_apsim_met(lonlat=c(longitude,latitude),
-                               dates=c(paste0("1984","-01-01"),paste0(end_exp_period_year,"-12-31")))
-new_met <- add_column_apsim_met(new_met,value=pwr_met$windspeed,name="windspeed", units="m/s")
-
-check_apsim_met(new_met)
-# the above function found missing radiation data (-99 value) so replace
-# with NASA Power data
-new_met[new_met$radn<0,"radn"] <- pwr_met[new_met$radn<0,"radn"]
-
 # does gap-filling, but will return an error if it's clean (no discontinuities);
 # using "try()" with silent=TRUE will ignore that error and continue execution,
 # but keep in mind that ALL errors will be ignored
@@ -117,8 +108,17 @@ try(
   silent=TRUE
 )
 
+pwr_met <- get_power_apsim_met(lonlat=c(longitude,latitude),
+                               dates=c(paste0("1984","-01-01"),paste0(end_exp_period_year,"-12-31")))
+new_met <- add_column_apsim_met(new_met,value=pwr_met$windspeed,name="windspeed", units="m/s")
+
+check_apsim_met(new_met)
+# # the above function found missing radiation data (-99 value) so replace
+# # with NASA Power data
+# new_met[new_met$radn<0,"radn"] <- pwr_met[new_met$radn<0,"radn"]
+
 # will fix 365-366 day year after have run napad
-new_met <- impute_apsim_met(new_met)
+new_met <- impute_apsim_met(met=new_met,method="mean",verbose=TRUE)
 
 # convert to data frame for data merging in subsequent steps
 new_met_df <- as.data.frame(new_met) %>%
@@ -189,6 +189,11 @@ new_dat <- new3 %>%
   ) %>%
   arrange(year,month,day)
 
+# write out compiled data
+write.table(new_dat, file=paste0(wth_path,"compiled_historical_weather.csv"),
+            row.names=F, quote=F, col.names=T, sep=',')
+
+
 #**********************************************************************
 ##### Future weather
 #**********************************************************************
@@ -205,6 +210,10 @@ for (i in 1:3) {
   weather_28yr$year <- weather_28yr$year+28
   new_dat_fut <- rbind(new_dat_fut, weather_28yr)
 }
+
+# write out compiled data
+write.table(new_dat_fut, file=paste0(wth_path,"compiled_future_weather.csv"),
+            row.names=F, quote=F, col.names=T, sep=',')
 
 
 # Site stats --------------------------------------------------------------
