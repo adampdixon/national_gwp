@@ -32,21 +32,25 @@ master_path <- "~/Modeling"
 setwd(master_path)
 #apsimx_options(exe.path="/bin/lib64/R/library/apsimx/R/")
 
+
 site_id <- 1
 site_name <- "KBS"
 latitude = 42.410
 longitude = -85.372
 elevation_m = 288
-experiment_start_year <- 1989
-experiment_end_year <- 2021
-experiment_year_range <- experiment_start_year:experiment_end_year
-experiment_start_date <- "1989-01-01"
-experiment_end_date <- "2021-12-31"
-end_exp_period_year <- 2021
-end_fut_period_year <- 2050
-max_fut_period_year <- 2100
-calib_mgmt_grps <- c(1,2,3)
-calib_mgmt_nums <- c(1,2,3)
+
+# ---These are in 0_Controller2----
+# experiment_start_year <- 1989
+# experiment_end_year <- 2021
+# experiment_year_range <- experiment_start_year:experiment_end_year
+# experiment_start_date <- "1989-01-01"
+# experiment_end_date <- "2021-12-31"
+# end_exp_period_year <- 2021
+# end_fut_period_year <- 2050
+# max_fut_period_year <- 2100
+# calib_mgmt_grps <- c(1,2,3)
+# calib_mgmt_nums <- c(1,2,3)
+# ----in Controller2----
 #
 obs_path <- paste0("Data/",site_name,"/Calibration/")
 obs_mgmt_path <- paste0("Data/",site_name,"/Management/")
@@ -97,7 +101,7 @@ for (x in clim_nums) { # climate scenarios
   print("************************************")
   print("####### New climate scenario #######")
   print("************************************")
-  print(paste0("climate scenario: ",x))
+  print(paste0("climate scenario: ", x))
   clim_scenario_num <- x
   # source("1_Create_weather_input_files.R")
   for (y in mgmt_grps) { # management scenario groups
@@ -115,11 +119,20 @@ for (x in clim_nums) { # climate scenarios
       mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
       scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
       source("0_Controller2.R")
+      print("************************************")
+      print("Completed:")
+      print(paste0("climate scenario: ",x))
+      print(paste0("mgmt scenario: ",y))
+      print(paste0("mgmt option: ",z))
+      print("************************************")
       #p_Controller2()
     }
 
   } # end loop through management scenario groups
 } # end loop through climate scenarios
+
+# toc()
+
 
  source(paste0("10_Model_Ensemble_results-combined_scenarios_",site_name,".R"))
  source(paste0("10_Model_Ensemble_results-combined_scenarios_and_sites_compbaseline-two_climate_scenarios4.R"))

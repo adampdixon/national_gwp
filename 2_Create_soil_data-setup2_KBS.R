@@ -29,7 +29,7 @@ library(lubridate)
 # local constants
 
 
-Cpct_0to20 <- as.numeric(ObsBD$mean_BD)
+Cpct_0to20 <- as.numeric(ObsBD$mean_BD)  #ObsBD file in )_Observations_and_constants script
 Cpct_20to40 <- as.numeric(ObsBDdeep_mean[ObsBDdeep_mean$treatment==control_treatment &
                                   ObsBDdeep_mean$section=="Middle","mean_BD"])
 Cpct_40to60 <- as.numeric(ObsBDdeep_mean[ObsBDdeep_mean$treatment==control_treatment &
@@ -47,6 +47,7 @@ Cpct_80to200 <- as.numeric(ObsBDdeep_mean[ObsBDdeep_mean$treatment==control_trea
 
 # download soil data from SSURGO for the lat/lon into a list of "soil.profile"
 # classes, pre-formatted for APSIM
+
 sps_raw <- get_ssurgo_soil_profile(lonlat = c(longitude, latitude), nsoil=1)
 sps <- sps_raw
 
