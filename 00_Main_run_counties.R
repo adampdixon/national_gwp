@@ -39,7 +39,7 @@ main_run_function<-function(county_geoid){
   # county_geoid<-13193 #Macon County, Georgia
   # county_geoid<-13119 # Franklin County, Georgia
   
-  county_data<-read.csv('/glade/u/home/apdixon/Documents/national_gwp/Data/county_centroids_elevation.csv')%>%
+  county_data<-read.csv('/glade/u/home/apdixon/Documents/national_gwp/Data/County/county_centroids_elevation.csv')%>%
     filter(GEOID==county_geoid)
 
   
@@ -153,7 +153,7 @@ main_run_function<-function(county_geoid){
 # county_geoid<-13193 # Macon County, Georgia
 # county_geoid<-13119 # Franklin County, Georgia
 
-county_data<-read.csv('/glade/u/home/apdixon/Documents/national_gwp/Data/county_centroids_elevation.csv')
+# county_data<-read.csv('/glade/u/home/apdixon/Documents/national_gwp/Data/County/county_centroids_elevation.csv')
 
 main_run_function(13193)
 
