@@ -148,7 +148,7 @@ main_run_function<-function(county_geoid){
   
 
 # start timer
-tic()
+# tic()
 
 # county_geoid<-13193 # Macon County, Georgia
 # county_geoid<-13119 # Franklin County, Georgia
