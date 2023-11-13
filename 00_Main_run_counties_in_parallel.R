@@ -28,7 +28,7 @@ main_run_function<-function(county_geoid){
   library(pracma)
   library(dplyr)
   
-  rm(list=ls())
+  # rm(list=ls())
   master_path <- "~/Modeling"
   setwd(master_path)
   #apsimx_options(exe.path="/bin/lib64/R/library/apsimx/R/")
