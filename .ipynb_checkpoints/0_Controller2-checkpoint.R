@@ -30,7 +30,7 @@ print("Starting 0_Controller2.R")
 print(Sys.Date())
 
 # rm(list=ls())
-master_path <- "/home/ap/Documents/national_gwp"
+master_path <- "~/Modeling"
 setwd(master_path)
 #
 # site_id <- 1                                          #1 in main -put in main

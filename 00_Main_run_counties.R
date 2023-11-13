@@ -1,7 +1,8 @@
+#!/usr/bin/env Rscript
 
 #######################################
-# File: "00_Main.R"
-# Author: "Ellen Maas"
+# File: "00_Main.R" current: 00_Main_run_counties_in_parallel.R
+# Authors: "Ellen Maas (2022-2023); Adam Dixon (2023)"
 # Date: "Nov 11, 2022"
 # Description: This is the master process that drives the looping
 # through all the scenarios and which will be what runs on each 
@@ -20,6 +21,7 @@
 # 11/17/2022: Added ensemble results script to end.
 # 12/21/2022: Added weather script in climate loop.
 # 2/12/2023: Added 
+# 11/12/2023: Updating for county analysis (AD)
 #######################################
 
 
@@ -147,10 +149,12 @@ main_run_function<-function(county_geoid){
 # start timer
 tic()
 
-# county_geoid<-13193 #Macon County, Georgia
+# county_geoid<-13193 # Macon County, Georgia
 # county_geoid<-13119 # Franklin County, Georgia
 
 county_data<-read.csv('/home/ap/Elevation/county_centroids.csv')
+
+main_run_function(13193)
 
 main_run_function(13119)
 
