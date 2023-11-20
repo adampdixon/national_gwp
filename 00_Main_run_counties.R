@@ -119,14 +119,16 @@ main_run_function<-function(county_geoid){
 
   # Loop through the scenarios; set which climate and management
   # scenario numbers to use for this run:
-  clim_nums <- c(1:5)
-  mgmt_grps <- c(1:6) #calib_mgmt_grps #
+  # clim_nums <- c(1:5)
+  # mgmt_grps <- c(1:6) #calib_mgmt_grps #
+# 
+#   mgmt_scenario_grp <- 1 # scenario group number
+#   max_scenario_options <- 1
+  clim_scenario_num <- 1
+  mgmt_scenario_num <- 1
 
-  mgmt_scenario_grp <- 1 # scenario group number
-  max_scenario_options <- 1
-
-  mgmt_scenario_opt <- if(max_scenario_options==1) "" else z
-  mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
+  # mgmt_scenario_opt <- if(max_scenario_options==1) "" else z
+  # mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
   scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
   
   # RUN PROGRAM
