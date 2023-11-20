@@ -52,7 +52,7 @@ main_run_function<-function(county_geoid){
 
   #apsimx_options(exe.path="/bin/lib64/R/library/apsimx/R/")
   
-  # county_geoid<-13193 #Macon County, Georgia
+  county_geoid<-13193 #Macon County, Georgia
   # county_geoid<-13119 # Franklin County, Georgia
   
 
@@ -192,7 +192,7 @@ main_run_function<-function(county_geoid){
 
 # county_data<-read.csv('/glade/u/home/apdixon/Documents/national_gwp/Data/County/county_centroids_elevation.csv')
 
-main_run_function(13193)
+main_run_function(county_geoid = 13193)
 
 # main_run_function(13119)
 
