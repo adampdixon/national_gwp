@@ -31,6 +31,7 @@ main_run_function<-function(county_geoid){
   library(pracma)
   library(dplyr)
   library(tictoc)
+  library(sf)
   
   tic() #timer
   
@@ -40,7 +41,8 @@ main_run_function<-function(county_geoid){
   
   if (Sys.info()['sysname'] == "Linux"){ 
     home_folder<-'/glade/u/home/apdixon/Documents/national_gwp'
-    print('using ncar path')}
+    print('using ncar path, working directory is: ')
+    print(home_folder)}
   
   master_path <- home_folder
   setwd(master_path)
@@ -61,6 +63,7 @@ main_run_function<-function(county_geoid){
   
   site_id <- county_data$GEOID
   site_name <- paste0(gsub(" ", "_", county_data$NAMELSAD),"_", gsub(" ", "_", county_data$State_Name))
+  print(site_name)
   latitude = county_data$County_center_Lat
   longitude = county_data$County_center_Long
   elevation_m = county_data$Elevation_m
