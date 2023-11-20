@@ -11,6 +11,7 @@
 # 9/30/2022: Modified to include T3 data for scenario 3.
 # 10/3/2022: Changed hairy vetch crop type to white clover
 # 12/13/2022: Added climate scenario number to future weather file name.
+# 11/19/2023: Updating for county level analysis (AD)
 #######################################
 
 print("Starting 3_Create_management_input_files-Daycent4.R")

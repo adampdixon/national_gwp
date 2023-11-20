@@ -25,21 +25,33 @@
 #######################################
 
 
+
+
 main_run_function<-function(county_geoid){
-  
   library(pracma)
   library(dplyr)
   library(tictoc)
   
-  # rm(list=ls())
-  master_path <- "~/Modeling"
+  tic() #timer
+  
+  if (Sys.info()['sysname'] == "Darwin"){
+    home_folder<-file.path('/Users/adamdixon/Documents/GitHub/national_gwp')
+  } else{ home_folder<-'/glade/u/home/apdixon/Documents/national_gwp'}
+  
+  master_path <- home_folder
   setwd(master_path)
+  
+  
+  # rm(list=ls())
+
   #apsimx_options(exe.path="/bin/lib64/R/library/apsimx/R/")
   
   # county_geoid<-13193 #Macon County, Georgia
   # county_geoid<-13119 # Franklin County, Georgia
   
-  county_data<-read.csv('/glade/u/home/apdixon/Documents/national_gwp/Data/County/county_centroids_elevation.csv')%>%
+
+  
+  county_data<-read.csv(file.path(home_folder, 'Data', 'County', 'county_centroids_elevation.csv'))%>%
     filter(GEOID==county_geoid)
 
   
@@ -62,6 +74,9 @@ main_run_function<-function(county_geoid){
   # calib_mgmt_nums <- c(1,2,3)
   # ----in Controller2----
   #
+  
+  data_path<-'Data'
+  
   obs_path <- paste0("Data/",site_name,"/Calibration/")
   obs_mgmt_path <- paste0("Data/",site_name,"/Management/")
   hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
@@ -101,51 +116,64 @@ main_run_function<-function(county_geoid){
   # source("p_Future_weather_reanalysis.R")
   
   #**********************************************************************
-  
+
   # Loop through the scenarios; set which climate and management
   # scenario numbers to use for this run:
   clim_nums <- c(1:5)
   mgmt_grps <- c(1:6) #calib_mgmt_grps #
-  
-  for (x in clim_nums) { # climate scenarios
-    print("************************************")
-    print("####### New climate scenario #######")
-    print(paste0('####### ', site_name, " #######"))
-    print("************************************")
 
-    clim_scenario_num <- x
-    # source("1_Create_weather_input_files.R")
-    for (y in mgmt_grps) { # management scenario groups
-      mgmt_scenario_grp <- y # scenario group number
-      max_scenario_options <- if_else(y==4, 4, # option numbers for those with incremental adjustments
-                                      if_else(y==5, 3,
-                                              if_else(y==6, 5, 1)))
-      
-      for (z in 1:max_scenario_options) {
-        print("************************************")
-        print(paste0("climate scenario: ",x))
-        print(paste0("mgmt scenario: ",y))
-        print(paste0("mgmt option: ",z))
-        mgmt_scenario_opt <- if(max_scenario_options==1) "" else z
-        mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
-        scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
-        source("0_Controller2.R")
-        print("************************************")
-        print("Completed:")
-        print(paste0("climate scenario: ",x))
-        print(paste0("mgmt scenario: ",y))
-        print(paste0("mgmt option: ",z))
-        print("************************************")
-        #p_Controller2()
-      }
-      
-    } # end loop through management scenario groups
-  } # end loop through climate scenarios
+  mgmt_scenario_grp <- 1 # scenario group number
+  max_scenario_options <- 1
+
+  mgmt_scenario_opt <- if(max_scenario_options==1) "" else z
+  mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
+  scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
   
+  # RUN PROGRAM
+  source("0_Controller2.R")
+
+  # for (x in clim_nums) { # climate scenarios # ADD BACK IN AD
+  #   print("************************************")
+  #   print("####### New climate scenario #######")
+  #   print(paste0('####### ', site_name, " #######"))
+  #   print("************************************")
+  # 
+  #   clim_scenario_num <- x
+  #   # source("1_Create_weather_input_files.R")
+  #   for (y in mgmt_grps) { # management scenario groups
+  #     mgmt_scenario_grp <- y # scenario group number
+  #     max_scenario_options <- if_else(y==4, 4, # option numbers for those with incremental adjustments
+  #                                     if_else(y==5, 3,
+  #                                             if_else(y==6, 5, 1)))
+  # 
+  #     for (z in 1:max_scenario_options) {
+  #       print("************************************")
+  #       print(paste0("climate scenario: ",x))
+  #       print(paste0("mgmt scenario: ",y))
+  #       print(paste0("mgmt option: ",z))
+  #       mgmt_scenario_opt <- if(max_scenario_options==1) "" else z
+  #       mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
+  #       scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
+  #       source("0_Controller2.R")
+  #       print("************************************")
+  #       print("Completed:")
+  #       print(paste0("climate scenario: ",x))
+  #       print(paste0("mgmt scenario: ",y))
+  #       print(paste0("mgmt option: ",z))
+  #       print("************************************")
+  #       #p_Controller2()
+  #     }
+  # 
+  #   } # end loop through management scenario groups
+  # } # end loop through climate scenarios
+
   print(toc())
-  
+
 }
   
+
+
+
 
 # start timer
 # tic()
@@ -157,7 +185,7 @@ main_run_function<-function(county_geoid){
 
 main_run_function(13193)
 
-main_run_function(13119)
+# main_run_function(13119)
 
 
 # source(paste0("10_Model_Ensemble_results-combined_scenarios_",site_name,".R"))
