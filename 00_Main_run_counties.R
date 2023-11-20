@@ -36,7 +36,9 @@ main_run_function<-function(county_geoid){
   
   if (Sys.info()['sysname'] == "Darwin"){
     home_folder<-file.path('/Users/adamdixon/Documents/GitHub/national_gwp')
-  } else{ home_folder<-'/glade/u/home/apdixon/Documents/national_gwp' print('using ncar path')}
+  } else{ 
+    home_folder<-'/glade/u/home/apdixon/Documents/national_gwp'
+    print('using ncar path')}
   
   master_path <- home_folder
   setwd(master_path)
