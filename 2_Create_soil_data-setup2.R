@@ -111,6 +111,7 @@ sps[[1]]$soil$AirDry <- saxton_rawls_df$AirDry
 sps[[1]]$soil$LL15 <- saxton_rawls_df$LL15
 sps[[1]]$soil$DUL <- saxton_rawls_df$DUL
 
+
 ####################################################################
 ## continue with remaining soil elements
 

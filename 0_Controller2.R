@@ -31,6 +31,7 @@ library(sf)
   
 print("Starting 0_Controller.R")
 print(Sys.Date())
+print(site_name)
 
 # rm(list=ls())
 # master_path <- "/home/ap/Documents/national_gwp"
@@ -232,12 +233,12 @@ source(paste0("Daycent/Daycent_run_controller.R"))
 
 # Daycent
 if(mgmt_scenario_grp!=6) {
-source(paste0("9_Results_Daycent-setup.R")) ###############ADD THIS BACK IN
+source(paste0("9_Results_Daycent-setup_.R")) ###############ADD THIS BACK IN
 model_name <- "Daycent"
   if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
-    source(paste0("9_Results_Daycent-calibration.R"))
+    source(paste0("9_Results_Daycent-calibration_.R"))
   }
-source(paste0("9_Results_Daycent-future.R"))
+source(paste0("9_Results_Daycent-future_.R"))
 source("p_Results_analysis.R")
 }
 
