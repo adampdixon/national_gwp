@@ -6,7 +6,7 @@
 
 suppressMessages({
 
-print(paste0("Starting 9_Results_Daycent-calibration_",site_name,".R"))
+print(paste0("Starting 9_Results_Daycent-calibration_.R"))
 
 library(magrittr)
 library(tidyverse)

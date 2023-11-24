@@ -24,16 +24,17 @@
 library(pracma)
 library(R.utils)
 
-
 # start timer
 tic()
+
+print("starting 00_Main_.R")
 
 # rm(list=ls())
 # master_path <- "~/Modeling"
 # master_path <- '/home/ap/Documents/GitHub/national_gwp_unmodified'
+master_path<-'/home/ap/Documents/GitHub/national_gwp'
 # setwd(master_path)
 #apsimx_options(exe.path="/bin/lib64/R/library/apsimx/R/")
-
 
 
 # site_id <- 1
@@ -52,10 +53,12 @@ max_fut_period_year <- 2100
 calib_mgmt_grps <- c(1,2,3)
 calib_mgmt_nums <- c(1,2,3)
 
-
+#######################################
+print("Copying over KBS data files")
 if(!dir.exists(file.path(master_path, 'Data', site_name))) copyDirectory(from = file.path(master_path, '/Data/KBS'),
                                                                      to = file.path(master_path, 'Data', site_name),
                                                                      recursive = T)
+#######################################
 #
 obs_path <- paste0("Data/",site_name,"/Calibration/")              #14
 obs_mgmt_path <- paste0("Data/",site_name,"/Management/")
@@ -73,17 +76,20 @@ mgmt_path=paste0("Data/",site_name,"/Management/") # same as obs_mgmt_path but g
 adjusted_ops_filename="clean_ops_ext_adj.csv"
 fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
 
-
-
+#######################################
+print("Copying over APSIM files")
 apsim_path <- paste0("APSIM/",site_name,"/")
 if(!dir.exists(file.path(master_path, apsim_path))) copyDirectory(from = file.path(master_path, '/APSIM/KBS'),
                                                                          to = file.path(master_path, apsim_path),
                                                                          recursive = T)
 
+#######################################
+print("Copying over Daycent files")
 daycent_path <- paste0("Daycent/",site_name,"/")
 if(!dir.exists(file.path(master_path, daycent_path))) copyDirectory(from = file.path(master_path, '/Daycent/KBS'),
                                                                          to = file.path(master_path, daycent_path),
                                                                          recursive = T)
+#######################################
 
 if(Sys.info()['sysname']=='Linux') {
   dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")

@@ -26,41 +26,48 @@
 
 #p_Controller2 <- function(data_mtx,model_name,scenario_name) {
 
-library(R.utils)
-library(sf)
-  
-print("Starting 0_Controller.R")
-print(Sys.Date())
-print(site_name)
+
+
+print("Starting 0_Controller2.R")
+
 
 # rm(list=ls())
-# master_path <- "/home/ap/Documents/national_gwp"
+
+# does modeling folder at home location exist?
+# dir.create("~/Modeling")
+# 
+# master_path <- "~/Modeling"
+# 
 # setwd(master_path)
 #
-# site_id <- 1                                          #1 in main -put in main
-# site_name <- "KBS"                                    #2 in main -put in main
-# latitude = 42.410                                     #3 in main -put in main
-# longitude = -85.372                                   #4 in main -put in main
-# elevation_m = 288                                     #5 in main -put in main
-experiment_start_year <- 1989                         #6 in main
-experiment_end_year <- 2021                           #7 in main
-end_exp_period_year <- 2021                           #8 in main
+# site_id <- 1                                          #1
+# site_name <- "KBS"                                    #2
+# latitude = 42.410                                     #3
+# longitude = -85.372                                   #4
+# elevation_m = 288                                     #5
+experiment_start_year <- 1989                         #6
+experiment_end_year <- 2021                           #7
+end_exp_period_year <- 2021                           #8
 experiment_year_range <- experiment_start_year:end_exp_period_year #9
-end_fut_period_year <- 2050                                        #10 in main
-max_fut_period_year <- 2100                                        #11 in main
-calib_mgmt_grps <- c(1,2,3)                                        #12 in main
-calib_mgmt_nums <- c(1,2,3)                                        #13 in main
+end_fut_period_year <- 2050                                        #10
+max_fut_period_year <- 2100                                        #11
+calib_mgmt_grps <- c(1,2,3)                                        #12
+calib_mgmt_nums <- c(1,2,3)                                        #13
+# obs_path <- paste0("Data/",site_name,"/Calibration/")              #14
 
 #Currently copying over all KBS data for use in calibration
 obs_path <- paste0("Data/",site_name,"/Calibration/")              #14
+print("Copying over all KBS data for use in calibration")
 if(!dir.exists(file.path(master_path, obs_path))) copyDirectory(from = file.path(master_path, '/Data/KBS/Calibration'),
-                                                                                 to = file.path(obs_path),
-                                                                                 recursive = T)
+                                                                to = file.path(obs_path),
+                                                                recursive = T)
+
+
 hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"     #15
 hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv" #16
 curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"  #17
 nasapower_output_filename <- paste0(site_name,"_np.csv")
-# #
+#
 # site_id <- 2                                              #1
 # site_name <- "LRF"                                        #2
 # latitude = 33.684                                         #3
@@ -68,56 +75,40 @@ nasapower_output_filename <- paste0(site_name,"_np.csv")
 # elevation_m = 990                                         #5
 # experiment_start_year <- 2003                             #6
 # experiment_end_year <- 2010                               #7
-# experiment_start_date <- "2003-01-01"                     
-# experiment_end_date <- "2010-12-31"                       
+experiment_start_date <- "2003-01-01"
+experiment_end_date <- "2010-12-31"
 # end_exp_period_year <- 2021                               #8
 # experiment_year_range <- experiment_start_year:end_exp_period_year #9
 # end_fut_period_year <- 2050                                        #10
-# end_fut_period_date <- "2050-12-31"                                
+end_fut_period_date <- "2050-12-31"
 # max_fut_period_year <- 2100                                        #11
 # calib_mgmt_grps <- c(3,5,7,8)                                      #12
 # calib_mgmt_nums <- c(3,53,56,7,8)                                  #13
 # obs_path <- paste0("Data/",site_name,"/")                          #14
-
+# 
 # obs_filename <- "LibertyResearchFarm_adj.xlsx"
 # curr_wth_tab <- "WeatherDaily"
 # hist_raw_wth_filename <- "CDO_Lubbock_area.csv"
-
+# 
 # hist_wth_filename <- "NOAA-based Daily Lubbock 1940-2021.csv"                   #15
 # hist_wth_mon_filename <- "NOAA-based Monthly Lubbock 1940-2021 with OPE.csv"    #16
 # curr_local_wth_filename <- "" # included in GRACEnet spreadsheet (obs_filename) #17
 # #
-
 mgmt_path=paste0("Data/",site_name,"/Management/")
-if(!dir.exists(file.path(master_path, mgmt_path))) dir.create(file.path(master_path, mgmt_path))
-# setwd(file.path(master_path, mgmt_path)). # REMOVE?
-# if(!dir.exists(file.path(master_path, mgmt_path))) dir.create(file.path(master_path, mgmt_path)). #TODO replace with this
-
 adjusted_ops_filename="clean_ops_ext_adj.csv"
-
 wth_path <- paste0("Data/",site_name,"/Weather/")
-if(!dir.exists(file.path(master_path, wth_path))) dir.create(file.path(master_path, wth_path))
-
-# apsim_path <- paste0("APSIM/",site_name,"/")
+apsim_path <- paste0("APSIM/",site_name,"/")
 daycent_path <- paste0("Daycent/",site_name,"/")
-if(!dir.exists(file.path(master_path, daycent_path))) dir.create(file.path(master_path, daycent_path))
-
-
-#TODO Set these paths correctly, checking and creating
 if(Sys.info()['sysname']=='Linux') {
   dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
 } else {
   dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
 }
-# rothc_path <- paste0("RothC/",site_name,"/")
+rothc_path <- paste0("RothC/",site_name,"/")
 mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 #
-
-
-#TODO Change these to only be called in 00_Main script
-
-clim_scenario_num <- 1
-mgmt_scenario_grp <- 3 # scenario group number
+# clim_scenario_num <- 1
+# mgmt_scenario_grp <- 3 # scenario group number
 mgmt_scenario_opt <- "" # scenario detail number; put "" if none
 mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
 scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
@@ -131,7 +122,7 @@ scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
 #*************************************************************
 
 ## These are used in multiple functions.
-source(paste0("0_Observations_and_constants.R"))
+source(paste0("0_Observations_and_constants_.R"))
 
 
 #*************************************************************
@@ -143,33 +134,33 @@ source(paste0("0_Observations_and_constants.R"))
 
 # # Soil data
 # 
-if(mgmt_scenario_grp!=6) {
-  ## Prerequisite: APSIM .apsimx file must already exist
-  ## Scenario 6 is setup manually in APSIM Classic
-source(paste0("2_Create_soil_data-setup2.R")) # AD: removing 'site name'
-  #
-  # source("2_Create_soil_data-APSIM.R")
-source("2_Create_soil_data-Daycent.R")
+# if(mgmt_scenario_grp!=6) {
+#   ## Prerequisite: APSIM .apsimx file must already exist
+#   ## Scenario 6 is setup manually in APSIM Classic
+# source(paste0("2_Create_soil_data-setup2_",site_name,".R"))
+#   #
+#   # source("2_Create_soil_data-APSIM.R")
+#   # source("2_Create_soil_data-Daycent.R")
 # source("2_Create_soil_data-LDNDC.R")
-  # RothC only uses clay content, which is included in the weather input file.
-# source(paste0("2_Create_soil_data-Millennial_",site_name,".R"))
-}
+#   # RothC only uses clay content, which is included in the weather input file.
+# # source(paste0("2_Create_soil_data-Millennial_",site_name,".R"))
+# }
 
 
 #*************************************************************
 
 # # Management input files (APSIM, Daycent, LDNDC)
 # #
-source(paste0("3_Create_management_input_files-setup.R")) # AD remove site_name
-#
+# source(paste0("3_Create_management_input_files-setup_",site_name,".R"))
+# #
 # source(paste0("3_Create_management_input_files-APSIM_",site_name,".R"))
-#
-if(mgmt_scenario_grp!=6) {
-source(paste0("3_Create_management_input_files-Daycent.R"))
-#source(paste0("3_Create_management_input_files-LDNDC_",site_name,".R"))
-#
-## Management input files for RothC, Millennial are created after Daycent runs
-}
+# #
+# if(mgmt_scenario_grp!=6) {
+# source(paste0("3_Create_management_input_files-Daycent_",site_name,".R"))
+# #source(paste0("3_Create_management_input_files-LDNDC_",site_name,".R"))
+# #
+# ## Management input files for RothC, Millennial are created after Daycent runs
+# }
 
 
 #*************************************************************
@@ -197,10 +188,10 @@ source(paste0("3_Create_management_input_files-Daycent.R"))
 
 #*************************************************************
 
-# Daycent
-if(mgmt_scenario_grp!=6) {
-source(paste0("Daycent/Daycent_run_controller.R"))
-}
+# # Daycent
+# if(mgmt_scenario_grp!=6) {
+# source(paste0("Daycent/Daycent_run_controller.R"))
+# }
 
 #*************************************************************
 
@@ -217,7 +208,7 @@ source(paste0("Daycent/Daycent_run_controller.R"))
 #*************************************************************
 
 # # APSIM
- # source(paste0("9_Results_APSIM-setup_",site_name,".R"))  ###############ADD THIS BACK IN
+ # source(paste0("9_Results_APSIM-setup_",site_name,".R"))
  # model_name <- "APSIM"
 #
 # before calibration, need to first run (above):
@@ -233,7 +224,7 @@ source(paste0("Daycent/Daycent_run_controller.R"))
 
 # Daycent
 if(mgmt_scenario_grp!=6) {
-source(paste0("9_Results_Daycent-setup_.R")) ###############ADD THIS BACK IN
+source(paste0("9_Results_Daycent-setup_",".R"))
 model_name <- "Daycent"
   if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
     source(paste0("9_Results_Daycent-calibration_.R"))
@@ -292,7 +283,7 @@ source("p_Results_analysis.R")
 
 # # Millennial
 # if(mgmt_scenario_grp!=6) {
-# source(paste0("9_Results_Millennial-setup_",site_name,".R")) ###############ADD THIS BACK IN
+# source(paste0("9_Results_Millennial-setup_",site_name,".R"))
 # #
 # model_name <- "Millennial"
 # if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
@@ -307,7 +298,7 @@ source("p_Results_analysis.R")
 
 # # RothC
 # if(mgmt_scenario_grp!=6) {
-# source(paste0("9_Results_RothC-setup_",site_name,".R")) ###############ADD THIS BACK IN
+# source(paste0("9_Results_RothC-setup_",site_name,".R"))
 # #
 # model_name <- "RothC"
 # if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
@@ -328,7 +319,7 @@ source("p_Results_analysis.R")
 #*************************************************************
 #*************************************************************
 
-# source(paste0("10_Model_Ensemble_results-by_scenario_",site_name,".R")) ###############ADD THIS BACK IN
- 
+# source(paste0("10_Model_Ensemble_results-by_scenario_",site_name,".R"))
+
 
 #}

@@ -6,7 +6,7 @@
 
 suppressMessages({
   
-  print("Starting 9_Results_Daycent-future.R")
+  print("Starting 9_Results_Daycent-future_.R")
   
   library(readxl)
   library(magrittr)
@@ -1215,7 +1215,7 @@ suppressMessages({
                        CI_first, CI_change)
   
   
-  source(paste0("p_Edit_future_file_",site_name,".R"))
+  source(paste0("p_Edit_future_file_.R"))
   p_Edit_future_file(fut_log_tab,model_name,scenario_name)
   
   #**********************************************************************
@@ -1247,3 +1247,4 @@ suppressMessages({
   
   
 }) # end suppressMessages
+
