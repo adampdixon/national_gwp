@@ -225,12 +225,12 @@ source(paste0("0_Observations_and_constants_.R"))
 # Daycent
 if(mgmt_scenario_grp!=6) {
 source(paste0("9_Results_Daycent-setup_",".R"))
-model_name <- "Daycent"
-  if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
-    source(paste0("9_Results_Daycent-calibration_.R"))
-  }
-source(paste0("9_Results_Daycent-future_.R"))
-source("p_Results_analysis.R")
+# model_name <- "Daycent"
+  # if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
+  #   source(paste0("9_Results_Daycent-calibration_.R"))
+  # }
+# source(paste0("9_Results_Daycent-future_.R"))
+# source("p_Results_analysis.R")
 }
 
 #*************************************************************
