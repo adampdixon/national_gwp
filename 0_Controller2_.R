@@ -28,7 +28,7 @@
 
 
 
-print("Starting 0_Controller2.R")
+print("Starting 0_Controller2_.R")
 
 
 # rm(list=ls())
@@ -122,7 +122,7 @@ scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
 #*************************************************************
 
 ## These are used in multiple functions.
-source(paste0("0_Observations_and_constants_.R"))
+source(paste0("0_Observations_and_constants_.R"), local = TRUE)
 
 
 #*************************************************************
@@ -140,7 +140,7 @@ source(paste0("0_Observations_and_constants_.R"))
 # source(paste0("2_Create_soil_data-setup2_",site_name,".R"))
 #   #
 #   # source("2_Create_soil_data-APSIM.R")
-#   # source("2_Create_soil_data-Daycent.R")
+  # source("2_Create_soil_data-Daycent.R", local = TRUE)
 # source("2_Create_soil_data-LDNDC.R")
 #   # RothC only uses clay content, which is included in the weather input file.
 # # source(paste0("2_Create_soil_data-Millennial_",site_name,".R"))
@@ -156,7 +156,7 @@ source(paste0("0_Observations_and_constants_.R"))
 # source(paste0("3_Create_management_input_files-APSIM_",site_name,".R"))
 # #
 # if(mgmt_scenario_grp!=6) {
-# source(paste0("3_Create_management_input_files-Daycent_",site_name,".R"))
+# source("3_Create_management_input_files-Daycent_.R", local = TRUE)
 # #source(paste0("3_Create_management_input_files-LDNDC_",site_name,".R"))
 # #
 # ## Management input files for RothC, Millennial are created after Daycent runs
@@ -188,10 +188,10 @@ source(paste0("0_Observations_and_constants_.R"))
 
 #*************************************************************
 
-# # Daycent
-# if(mgmt_scenario_grp!=6) {
-# source(paste0("Daycent/Daycent_run_controller.R"))
-# }
+# Daycent
+if(mgmt_scenario_grp!=6) {
+source(paste0("Daycent/Daycent_run_controller_.R"), local = TRUE)
+}
 
 #*************************************************************
 
@@ -224,7 +224,7 @@ source(paste0("0_Observations_and_constants_.R"))
 
 # Daycent
 if(mgmt_scenario_grp!=6) {
-source(paste0("9_Results_Daycent-setup_",".R"))
+source(paste0("9_Results_Daycent-setup_.R"), local = TRUE)
 # model_name <- "Daycent"
   # if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
   #   source(paste0("9_Results_Daycent-calibration_.R"))
@@ -237,13 +237,13 @@ source(paste0("9_Results_Daycent-setup_",".R"))
 
 # # LDNDC
 # if(mgmt_scenario_grp!=6) {
-# source(paste0("9_Results_LDNDC-setup_",site_name,".R"))
+# source(paste0("9_Results_LDNDC-setup_.R"), local = TRUE)
 #   model_name <- "LDNDC"
 #   if(clim_scenario_num==1 & mgmt_scenario_grp %in% calib_mgmt_grps) {
-#     source(paste0("9_Results_LDNDC-calibration_",site_name,".R"))
+#     source(paste0("9_Results_LDNDC-calibration_.R"), local = TRUE)
 #   }
-#   # source(paste0("9_Results_LDNDC-future_",site_name,".R"))
-#   # source("p_Results_analysis.R")
+#   source(paste0("9_Results_LDNDC-future_.R"), local = TRUE)
+#   source("p_Results_analysis.R")
 # }
 
 #*************************************************************
@@ -262,6 +262,7 @@ source(paste0("9_Results_Daycent-setup_",".R"))
 # # Millennial
 # source(paste0("3_Create_management_input_files-Millennial_",site_name,".R"))
 # source(paste0(mill_path,"run_Millennial.R"))
+# }
 #
 # RothC
 # source(paste0("3_Create_management_input_files-RothC_",site_name,".R"))

@@ -30,9 +30,7 @@ tic()
 print("starting 00_Main_.R")
 
 # rm(list=ls())
-# master_path <- "~/Modeling"
-# master_path <- '/home/ap/Documents/GitHub/national_gwp_unmodified'
-master_path<-'/home/ap/Documents/GitHub/national_gwp'
+# master_path<-'/home/ap/Documents/GitHub/national_gwp'
 # setwd(master_path)
 #apsimx_options(exe.path="/bin/lib64/R/library/apsimx/R/")
 
@@ -54,11 +52,18 @@ calib_mgmt_grps <- c(1,2,3)
 calib_mgmt_nums <- c(1,2,3)
 
 #######################################
-print("Copying over KBS data files")
+print("Copying over KBS 'Data' files")
 if(!dir.exists(file.path(master_path, 'Data', site_name))) copyDirectory(from = file.path(master_path, '/Data/KBS'),
                                                                      to = file.path(master_path, 'Data', site_name),
                                                                      recursive = T)
 #######################################
+print("Copying over KBS 'Daycent model' files -- delete when begin running in full")
+if(!dir.exists(file.path(master_path, 'Daycent', site_name))) copyDirectory(from = file.path(master_path, '/Daycent/KBS'),
+                                                                         to = file.path(master_path, 'Daycent', site_name),
+                                                                         recursive = T)
+#######################################
+
+
 #
 obs_path <- paste0("Data/",site_name,"/Calibration/")              #14
 obs_mgmt_path <- paste0("Data/",site_name,"/Management/")
@@ -84,11 +89,13 @@ if(!dir.exists(file.path(master_path, apsim_path))) copyDirectory(from = file.pa
                                                                          recursive = T)
 
 #######################################
-print("Copying over Daycent files")
+print("Copying over Daycent files -- get harvest 1_1 please please please joke")
 daycent_path <- paste0("Daycent/",site_name,"/")
-if(!dir.exists(file.path(master_path, daycent_path))) copyDirectory(from = file.path(master_path, '/Daycent/KBS'),
-                                                                         to = file.path(master_path, daycent_path),
-                                                                         recursive = T)
+copyDirectory(from = file.path(master_path, '/Daycent/KBS'), to = file.path(master_path, daycent_path), recursive = T)
+
+print("Is harvest file there?")
+print(list.files(file.path(master_path, daycent_path), pattern = 'harvest_base_1_1.csv'))
+
 #######################################
 
 if(Sys.info()['sysname']=='Linux') {
@@ -145,7 +152,7 @@ for (x in clim_nums) { # climate scenarios
       mgmt_scenario_opt <- if(max_scenario_options==1) "" else z
       mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
       scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
-      source("0_Controller2.R")
+      source("0_Controller2_.R", local = TRUE, echo = TRUE)
       #p_Controller2()
     }
 

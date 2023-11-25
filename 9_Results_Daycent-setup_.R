@@ -4,7 +4,7 @@
 # output: html_document
 #test
 
-print(paste0("Starting 9_Results_Daycent-setup_",site_name,".R"))
+print(paste0("Starting 9_Results_Daycent-setup_.R"))
 
 library(readxl)
 library(magrittr)

@@ -879,7 +879,7 @@ if(clim_scenario_num == 1 & mgmt_scenario_num %in% calib_mgmt_nums) {
                          NA, NA, NA, NA # Sorghum time series
   )
   
-  source("p_Edit_calib_file.R")
+  source("p_Edit_calib_file.R", local = TRUE)
   p_Edit_calib_file(calib_log_tab,"Observed",scenario_name)
 }
 
