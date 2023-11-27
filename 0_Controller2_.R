@@ -137,38 +137,40 @@ source(paste0("0_Observations_and_constants_.R"), local = TRUE)
 # if(mgmt_scenario_grp!=6) {
 #   ## Prerequisite: APSIM .apsimx file must already exist
 #   ## Scenario 6 is setup manually in APSIM Classic
-# source(paste0("2_Create_soil_data-setup2_",site_name,".R"))
+source(paste0("2_Create_soil_data-setup2_.R"), local = TRUE)
 #   #
 #   # source("2_Create_soil_data-APSIM.R")
-  # source("2_Create_soil_data-Daycent.R", local = TRUE)
-# source("2_Create_soil_data-LDNDC.R")
+source("2_Create_soil_data-Daycent_.R", local = TRUE)
+source("2_Create_soil_data-LDNDC_.R", local = TRUE)
 #   # RothC only uses clay content, which is included in the weather input file.
-# # source(paste0("2_Create_soil_data-Millennial_",site_name,".R"))
+source(paste0("2_Create_soil_data-Millennial_.R"), local = TRUE)
 # }
 
 
 #*************************************************************
 
-# # Management input files (APSIM, Daycent, LDNDC)
-# #
-# source(paste0("3_Create_management_input_files-setup_",site_name,".R"))
-# #
-# source(paste0("3_Create_management_input_files-APSIM_",site_name,".R"))
-# #
-# if(mgmt_scenario_grp!=6) {
-# source("3_Create_management_input_files-Daycent_.R", local = TRUE)
-# #source(paste0("3_Create_management_input_files-LDNDC_",site_name,".R"))
-# #
-# ## Management input files for RothC, Millennial are created after Daycent runs
-# }
+# Management input files (APSIM, Daycent, LDNDC)
+#
+
+
+source(paste0("3_Create_management_input_files-setup_.R"), local = TRUE)
+#
+# source(paste0("3_Create_management_input_files-APSIM_.R"), local = TRUE)
+#
+if(mgmt_scenario_grp!=6) {
+source("3_Create_management_input_files-Daycent_.R", local = TRUE)
+source(paste0("3_Create_management_input_files-LDNDC_.R"), local = TRUE)
+#
+## Management input files for RothC, Millennial are created after Daycent runs
+}
 
 
 #*************************************************************
 
-# # Other files
-# if(mgmt_scenario_grp!=6) {
-  # source(paste0("4_Create_additional_files-LDNDC_",site_name,".R"))
-# }
+# Other files
+if(mgmt_scenario_grp!=6) {
+source(paste0("4_Create_additional_files-LDNDC_.R"))
+}
 
 
 #*************************************************************
@@ -187,7 +189,7 @@ source(paste0("0_Observations_and_constants_.R"), local = TRUE)
 #   source(paste0(apsim_path,"run_APSIM.R"))
 
 #*************************************************************
-
+browser()
 # Daycent
 if(mgmt_scenario_grp!=6) {
 source(paste0("Daycent/Daycent_run_controller_.R"), local = TRUE)
@@ -196,9 +198,9 @@ source(paste0("Daycent/Daycent_run_controller_.R"), local = TRUE)
 #*************************************************************
 
 # LDNDC
-# if(mgmt_scenario_grp!=6) {
-  # source(paste0("LDNDC/ldndc-1.35.2.linux64/projects/run_LDNDC.R"))
-# }
+if(mgmt_scenario_grp!=6) {
+source(paste0("LDNDC/ldndc-1.35.2.linux64/projects/run_LDNDC.R"))
+}
 
 
 #*************************************************************
@@ -223,15 +225,15 @@ source(paste0("Daycent/Daycent_run_controller_.R"), local = TRUE)
 #*************************************************************
 
 # Daycent
-if(mgmt_scenario_grp!=6) {
-source(paste0("9_Results_Daycent-setup_.R"), local = TRUE)
+# if(mgmt_scenario_grp!=6) {
+# source(paste0("9_Results_Daycent-setup_.R"), local = TRUE)
 # model_name <- "Daycent"
   # if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
   #   source(paste0("9_Results_Daycent-calibration_.R"))
   # }
 # source(paste0("9_Results_Daycent-future_.R"))
-# source("p_Results_analysis.R")
-}
+# # source("p_Results_analysis.R")
+# }
 
 #*************************************************************
 

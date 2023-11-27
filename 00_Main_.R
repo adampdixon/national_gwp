@@ -99,12 +99,21 @@ print(list.files(file.path(master_path, daycent_path), pattern = 'harvest_base_1
 #######################################
 
 if(Sys.info()['sysname']=='Linux') {
+  # copyDirectory(from = file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects/KBS"),
+  #               to = file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects", site_name),
+  #               recursive = T)
   dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
 } else {
+  print("Can't run cause not linux")
   dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
 }
 rothc_path <- paste0("RothC/",site_name,"/")
 mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
+
+# AD NOTE - Copying over the files from the KBS folder to the site folder
+copyDirectory(from = file.path(master_path, "Millennial/R/simulation/KBS"), 
+              to = file.path(master_path, mill_path), recursive = T)
+
 
 #**********************************************************************
 

@@ -84,8 +84,8 @@ for (i in 1:nrow(county_data)){
 
   # print(paste0("site_name is: ", site_name))
 
-  latitude = county_data$County_center_Lat
-  longitude = county_data$County_center_Long
+  latitude = county_data$Lat
+  longitude = county_data$Long
   elevation_m = county_data$Elevation_m
 
   source(file.path(master_path, '00_Main_.R'))

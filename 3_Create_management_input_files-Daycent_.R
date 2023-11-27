@@ -14,7 +14,7 @@
 # 11/19/2023: Updating for county level analysis (AD)
 #######################################
 
-print("Starting 3_Create_management_input_files-Daycent4.R")
+print("Starting 3_Create_management_input_files-Daycent_.R")
 
 
 ## equilibrium
