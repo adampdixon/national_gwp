@@ -154,7 +154,7 @@ source(paste0("2_Create_soil_data-Millennial_.R"), local = TRUE)
 
 
 source(paste0("3_Create_management_input_files-setup_.R"), local = TRUE)
-#
+
 # source(paste0("3_Create_management_input_files-APSIM_.R"), local = TRUE)
 #
 if(mgmt_scenario_grp!=6) {
@@ -169,7 +169,7 @@ source(paste0("3_Create_management_input_files-LDNDC_.R"), local = TRUE)
 
 # Other files
 if(mgmt_scenario_grp!=6) {
-source(paste0("4_Create_additional_files-LDNDC_.R"))
+source("4_Create_additional_files-LDNDC_.R", local = TRUE)
 }
 
 
@@ -189,7 +189,7 @@ source(paste0("4_Create_additional_files-LDNDC_.R"))
 #   source(paste0(apsim_path,"run_APSIM.R"))
 
 #*************************************************************
-browser()
+
 # Daycent
 if(mgmt_scenario_grp!=6) {
 source(paste0("Daycent/Daycent_run_controller_.R"), local = TRUE)
@@ -199,7 +199,7 @@ source(paste0("Daycent/Daycent_run_controller_.R"), local = TRUE)
 
 # LDNDC
 if(mgmt_scenario_grp!=6) {
-source(paste0("LDNDC/ldndc-1.35.2.linux64/projects/run_LDNDC.R"))
+# source(paste0("LDNDC/ldndc-1.35.2.linux64/projects/run_LDNDC.R"), local = TRUE)
 }
 
 
@@ -224,16 +224,16 @@ source(paste0("LDNDC/ldndc-1.35.2.linux64/projects/run_LDNDC.R"))
 
 #*************************************************************
 
-# Daycent
-# if(mgmt_scenario_grp!=6) {
-# source(paste0("9_Results_Daycent-setup_.R"), local = TRUE)
-# model_name <- "Daycent"
-  # if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
-  #   source(paste0("9_Results_Daycent-calibration_.R"))
-  # }
-# source(paste0("9_Results_Daycent-future_.R"))
-# # source("p_Results_analysis.R")
-# }
+Daycent
+if(mgmt_scenario_grp!=6) {
+source(paste0("9_Results_Daycent-setup_.R"), local = TRUE)
+model_name <- "Daycent"
+if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
+  source(paste0("9_Results_Daycent-calibration_.R"), local = TRUE)
+}
+source(paste0("9_Results_Daycent-future_.R"), local = TRUE)
+# source("p_Results_analysis.R")
+}
 
 #*************************************************************
 
@@ -256,14 +256,14 @@ source(paste0("LDNDC/ldndc-1.35.2.linux64/projects/run_LDNDC.R"))
 
 
 # if(mgmt_scenario_grp!=6) {
-# # Management input files (RothC, Millennial)
-# # need to first run 3_Create_management_input_files-setup_",site_name,".R
-# # and 9_Results_Daycent-setup_",site_name,".R
-# source(paste0("3_Create_management_input_files-setupRM_",site_name,".R"))
-# 
+# Management input files (RothC, Millennial)
+# need to first run 3_Create_management_input_files-setup_",site_name,".R
+# and 9_Results_Daycent-setup_",site_name,".R
+source("3_Create_management_input_files-setupRM2_.R", local = TRUE)
 # # Millennial
-# source(paste0("3_Create_management_input_files-Millennial_",site_name,".R"))
-# source(paste0(mill_path,"run_Millennial.R"))
+source("3_Create_management_input_files-Millennial_.R", local = TRUE)
+
+source(paste0(mill_path,"run_Millennial.R"),  local = TRUE)
 # }
 #
 # RothC

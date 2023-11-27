@@ -102,6 +102,12 @@ if(Sys.info()['sysname']=='Linux') {
   # copyDirectory(from = file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects/KBS"),
   #               to = file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects", site_name),
   #               recursive = T)
+  site_ldndc_folder <- file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects", site_name)
+  #TODO UPATE THIS MAYBE???
+  if(dir.exists(site_ldndc_folder)) unlink(site_ldndc_folder) # remove folder if it's there
+  unlink(site_ldndc_folder, recursive = T) # remove folder if it's there
+  dir.exists(site_ldndc_folder)
+  dir.create(file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects", site_name))
   dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
 } else {
   print("Can't run cause not linux")
