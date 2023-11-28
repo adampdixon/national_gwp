@@ -61,17 +61,20 @@ setwd(master_path)
 county_data<-read.csv(file.path(master_path, 'Data', 'County', 'county_centroids_elevation.csv'))%>%
   filter(State_Name=='Georgia')
 
-county_data<-county_data[22:22,]
+county_data<-county_data[21:22,]
 
 for (i in 1:nrow(county_data)){
-  county_geoid<-county_data$GEOID[i]
-  county_name<-county_data$NAMELSAD[i]
-  state_name<-county_data$State_Name[i]
+  run_Daycent=TRUE
+  run_LDNDC=FALSE
+  run_Millennial=FALSE
+  county_geoid<-county_data[i,]$GEOID
+  county_name<-county_data[i,]$NAMELSAD
+  state_name<-county_data[i,]$State_Name
   print(paste0("county geoid is: ", county_geoid))
   print(paste0("county name is: ", county_name))
   print(paste0("state name is: ", state_name))
   # TODO replace these when model is ready
-  site_id <- county_data$GEOID[i]
+  site_id <- county_data[i,]$GEOID
   # site_name <- paste0(gsub(" ", "_", county_data$NAMELSAD[i]),"_", gsub(" ", "_", county_data$State_Name[i]))
   site_name <- paste0("_", site_id, "_", substr(county_data$State_Name[i], 1, 4))
 
@@ -84,9 +87,9 @@ for (i in 1:nrow(county_data)){
 
   # print(paste0("site_name is: ", site_name))
 
-  latitude = county_data$Lat
-  longitude = county_data$Long
-  elevation_m = county_data$Elevation_m
+  latitude = county_data[i,]$Lat
+  longitude = county_data[i,]$Long
+  elevation_m = county_data[i,]$Elevation_m
 
   source(file.path(master_path, '00_Main_.R'))
 }

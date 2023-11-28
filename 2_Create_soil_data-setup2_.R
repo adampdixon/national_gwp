@@ -27,17 +27,17 @@ library(lubridate)
 
 
 # local constants
-
-
-Cpct_0to20 <- as.numeric(ObsBD$mean_BD)  #ObsBD file in )_Observations_and_constants script
-Cpct_20to40 <- as.numeric(ObsBDdeep_mean[ObsBDdeep_mean$treatment==control_treatment &
-                                  ObsBDdeep_mean$section=="Middle","mean_BD"])
-Cpct_40to60 <- as.numeric(ObsBDdeep_mean[ObsBDdeep_mean$treatment==control_treatment &
-                                  ObsBDdeep_mean$section=="Middle","mean_BD"])
-Cpct_60to80 <- as.numeric(ObsBDdeep_mean[ObsBDdeep_mean$treatment==control_treatment &
-                                  ObsBDdeep_mean$section=="Deep","mean_BD"])
-Cpct_80to200 <- as.numeric(ObsBDdeep_mean[ObsBDdeep_mean$treatment==control_treatment &
-                                  ObsBDdeep_mean$section=="Deep","mean_BD"])
+# 
+# 
+# Cpct_0to20 <- as.numeric(ObsBD$mean_BD)  #ObsBD file in )_Observations_and_constants script
+# Cpct_20to40 <- as.numeric(ObsBDdeep_mean[ObsBDdeep_mean$treatment==control_treatment &
+#                                   ObsBDdeep_mean$section=="Middle","mean_BD"])
+# Cpct_40to60 <- as.numeric(ObsBDdeep_mean[ObsBDdeep_mean$treatment==control_treatment &
+#                                   ObsBDdeep_mean$section=="Middle","mean_BD"])
+# Cpct_60to80 <- as.numeric(ObsBDdeep_mean[ObsBDdeep_mean$treatment==control_treatment &
+#                                   ObsBDdeep_mean$section=="Deep","mean_BD"])
+# Cpct_80to200 <- as.numeric(ObsBDdeep_mean[ObsBDdeep_mean$treatment==control_treatment &
+#                                   ObsBDdeep_mean$section=="Deep","mean_BD"])
 
 
 ###########################
@@ -64,8 +64,8 @@ sps[[1]]$crops <- c('maize','soybean','wheat')
 ## BD changed to the control plot.
 ##
 ## soil layers are in 20 cm increments to 200 cm
-sps[[1]]$soil$BD <- c(Cpct_0to20, 1.2, Cpct_40to60, Cpct_60to80, Cpct_80to200, 
-                          Cpct_80to200, Cpct_80to200, Cpct_80to200, Cpct_80to200, Cpct_80to200)
+# sps[[1]]$soil$BD <- c(Cpct_0to20, 1.2, Cpct_40to60, Cpct_60to80, Cpct_80to200, 
+#                           Cpct_80to200, Cpct_80to200, Cpct_80to200, Cpct_80to200, Cpct_80to200) # can we remove because it's APSIM?
 ## APSIM Classic has a lower limit of 0.01 C content, so bottom 5 layers with 0
 ## were replaced with 0.01
 sps[[1]]$soil$Carbon <- if(mgmt_scenario_num==1 | mgmt_scenario_grp %in% c(4:7))

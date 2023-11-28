@@ -12,7 +12,7 @@
 # may need to change this for linux:
 # https://stackoverflow.com/questions/13672720/r-command-for-setting-working-directory-to-source-file-location-in-rstudio
 
-suppressMessages({
+# suppressMessages({
 
 print(paste0("Starting 0_Observations_and_constants_.R"))
 
@@ -295,8 +295,8 @@ covercrop_aftercorn_Daycent <- "OAT1"
 covercrop_afterwheat_Daycent <- "CLVC"
 
 hist_path <- paste0("Data/",site_name,"/Historical Land Use and Yields/")
-hist_filename <- "MI-Kalamazoo County historical yields and C input.xlsx"
-fut_filename <- "MI-Kalamazoo County future yields and C input.xlsx"
+# hist_filename <- "MI-Kalamazoo County historical yields and C input.xlsx"
+# fut_filename <- "MI-Kalamazoo County future yields and C input.xlsx"
 obs_yield_filename <- "51-agronomic+yields+annual+crops+1656512632.csv"
 obs_bd_filename <- "71-soil+bulk+density+surface+1656513020.csv"
 obs_C_filename <- "Soil Total Carbon and Nitrogen - Surface.csv"
@@ -310,96 +310,96 @@ obs_mb_filename <- "25-soil+microbial+biomass+via+chloroform+fumigation+16565131
 obs_plant_cn_filename <- "73-tissue+carbon+and+nitrogen+1667424583.csv"
 obs_biomass_filename <- "39-annual+crops+and+alfalfa+biomass+1667489393.csv"
 
-# 9-color palette with grey and black. Colors in order are:
-#[1]black, [2]dark blue, [3]green, [4]light blue, [5]lightest grey,
-#[6]pink, [7]red, [8]orange, [9]yellow
-cbPalette9 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
-                "#CC79A7","#D55E00","#E69F00","#F0E442")
-# 12-color palette with grey and black. Colors in order are:
-#[1]black, [2]dark blue, [3]mint green, [4]light blue, [5]lightest grey,
-#[6]pink, [7]red, [8]orange, [9]yellow, [10]mauve, 
-#[11]royal blue, [12]forest green
-cbPalette12 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
-                 "#CC79A7","#D55E00","#E69F00","#F0E442","#882255",
-                 "#332288","#0B6329"
-)
-# 20-color palette with more grey and black. Colors in order are:
-#[1]black, [2]dark blue, [3]mint green, [4]light blue, [5]lightest grey,
-#[6]pink, [7]red, [8]orange, [9]yellow, [10]mauve, 
-#[11]royal blue, [12]forest green, [13]dark grey, [14]med grey, [15]light grey,
-#[16]bright blue, [17]cotton candy, [18]lime green, [19]brick red, #[20]dark mauve
-cbPalette20 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
-                 "#CC79A7","#D55E00","#E69F00","#F0E442","#882255",
-                 "#332288","#0B6329","#333333","#555555","#777777",
-                 "#4948DD","#D832BC","#71C4A6","#5F2A01","#48122D"
-)
-
-APSIM_color <- cbPalette9[8]
-Daycent_color <- cbPalette9[2]
-Millennial_color <- cbPalette9[6]
-RothC_color <- cbPalette9[3]
-Observed_color <- cbPalette9[1]
-Historical_color <- cbPalette9[4]
-Fertilizer_color <- cbPalette9[7]
-
-N2O_color <- cbPalette12[8]
-NO3_color <- cbPalette12[6]
-SoilT_color <- cbPalette12[7]
-SW_20cm_color <- cbPalette12[2]
-SW_25cm_color <- cbPalette12[2]
-SW_40cm_color <- cbPalette12[3]
-SW_60cm_color <- cbPalette12[4]
-WFPS_20cm_color <- cbPalette12[2]
-WFPS_40cm_color <- cbPalette12[3]
-WFPS_60cm_color <- cbPalette12[4]
-WFPS_2cm_color <- cbPalette12[11]
-WFPS_5cm_color <- cbPalette12[12]
-WFPS_10cm_color <- cbPalette12[2]
-CH4_color <- cbPalette12[10]
-
-BiomC_25cm_color <- cbPalette20[10]
-#BiomC_40cm_color <- cbPalette20[]
-#BiomC_60cm_color <- cbPalette20[]
-BiomN_25cm_color <- cbPalette20[6]
-#BiomN_40cm_color <- cbPalette20[]
-#BiomN_60cm_color <- cbPalette20[]
-HumC_25cm_color <- cbPalette20[19]
-#HumC_40cm_color <- cbPalette20[]
-#HumC_60cm_color <- cbPalette20[]
-HumN_25cm_color <- cbPalette20[8]
-#HumN_40cm_color <- cbPalette20[]
-#HumN_60cm_color <- cbPalette20[]
-CtoBiom_25cm_color <- cbPalette20[5]
-CtoHum_25cm_color <- cbPalette20[15]
-CBtoHum_25cm_color <- cbPalette20[14]
-TotalSOC_25cm_color <- cbPalette20[1]
-Cin_25cm_color <- cbPalette20[15]
-
-GFDL_L_color <- cbPalette12[4]
-GFDL_H_color <- cbPalette12[11]
-UKESM_L_color <- cbPalette12[8]
-UKESM_H_color <- cbPalette12[7]
-
-BC19_color <- cbPalette20[1]
-BC38_color <- cbPalette20[13]
-BC57_color <- cbPalette20[14]
-BC76_color <- cbPalette20[15]
-BC96_color <- cbPalette20[5]
-CC_color <- cbPalette20[6]
-CC_NT_color <- cbPalette20[10]
-CN_color <- cbPalette20[16]
-CR_color <- cbPalette20[17]
-NT_color <- cbPalette20[20]
-RF05_color <- cbPalette20[19]
-RF15_color <- cbPalette20[9]
-RF25_color <- cbPalette20[8]
-RF35_color <- cbPalette20[7]
-RR00_color <- cbPalette20[2]
-RR00_NT_color <- cbPalette20[3]
-RR25_color <- cbPalette20[4]
-RR25_NT_color <- cbPalette20[11]
-RR50_color <- cbPalette20[12]
-RR50_NT_color <- cbPalette20[18]
+# # 9-color palette with grey and black. Colors in order are:
+# #[1]black, [2]dark blue, [3]green, [4]light blue, [5]lightest grey,
+# #[6]pink, [7]red, [8]orange, [9]yellow
+# cbPalette9 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
+#                 "#CC79A7","#D55E00","#E69F00","#F0E442")
+# # 12-color palette with grey and black. Colors in order are:
+# #[1]black, [2]dark blue, [3]mint green, [4]light blue, [5]lightest grey,
+# #[6]pink, [7]red, [8]orange, [9]yellow, [10]mauve, 
+# #[11]royal blue, [12]forest green
+# cbPalette12 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
+#                  "#CC79A7","#D55E00","#E69F00","#F0E442","#882255",
+#                  "#332288","#0B6329"
+# )
+# # 20-color palette with more grey and black. Colors in order are:
+# #[1]black, [2]dark blue, [3]mint green, [4]light blue, [5]lightest grey,
+# #[6]pink, [7]red, [8]orange, [9]yellow, [10]mauve, 
+# #[11]royal blue, [12]forest green, [13]dark grey, [14]med grey, [15]light grey,
+# #[16]bright blue, [17]cotton candy, [18]lime green, [19]brick red, #[20]dark mauve
+# cbPalette20 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
+#                  "#CC79A7","#D55E00","#E69F00","#F0E442","#882255",
+#                  "#332288","#0B6329","#333333","#555555","#777777",
+#                  "#4948DD","#D832BC","#71C4A6","#5F2A01","#48122D"
+# )
+# 
+# APSIM_color <- cbPalette9[8]
+# Daycent_color <- cbPalette9[2]
+# Millennial_color <- cbPalette9[6]
+# RothC_color <- cbPalette9[3]
+# Observed_color <- cbPalette9[1]
+# Historical_color <- cbPalette9[4]
+# Fertilizer_color <- cbPalette9[7]
+# 
+# N2O_color <- cbPalette12[8]
+# NO3_color <- cbPalette12[6]
+# SoilT_color <- cbPalette12[7]
+# SW_20cm_color <- cbPalette12[2]
+# SW_25cm_color <- cbPalette12[2]
+# SW_40cm_color <- cbPalette12[3]
+# SW_60cm_color <- cbPalette12[4]
+# WFPS_20cm_color <- cbPalette12[2]
+# WFPS_40cm_color <- cbPalette12[3]
+# WFPS_60cm_color <- cbPalette12[4]
+# WFPS_2cm_color <- cbPalette12[11]
+# WFPS_5cm_color <- cbPalette12[12]
+# WFPS_10cm_color <- cbPalette12[2]
+# CH4_color <- cbPalette12[10]
+# 
+# BiomC_25cm_color <- cbPalette20[10]
+# #BiomC_40cm_color <- cbPalette20[]
+# #BiomC_60cm_color <- cbPalette20[]
+# BiomN_25cm_color <- cbPalette20[6]
+# #BiomN_40cm_color <- cbPalette20[]
+# #BiomN_60cm_color <- cbPalette20[]
+# HumC_25cm_color <- cbPalette20[19]
+# #HumC_40cm_color <- cbPalette20[]
+# #HumC_60cm_color <- cbPalette20[]
+# HumN_25cm_color <- cbPalette20[8]
+# #HumN_40cm_color <- cbPalette20[]
+# #HumN_60cm_color <- cbPalette20[]
+# CtoBiom_25cm_color <- cbPalette20[5]
+# CtoHum_25cm_color <- cbPalette20[15]
+# CBtoHum_25cm_color <- cbPalette20[14]
+# TotalSOC_25cm_color <- cbPalette20[1]
+# Cin_25cm_color <- cbPalette20[15]
+# 
+# GFDL_L_color <- cbPalette12[4]
+# GFDL_H_color <- cbPalette12[11]
+# UKESM_L_color <- cbPalette12[8]
+# UKESM_H_color <- cbPalette12[7]
+# 
+# BC19_color <- cbPalette20[1]
+# BC38_color <- cbPalette20[13]
+# BC57_color <- cbPalette20[14]
+# BC76_color <- cbPalette20[15]
+# BC96_color <- cbPalette20[5]
+# CC_color <- cbPalette20[6]
+# CC_NT_color <- cbPalette20[10]
+# CN_color <- cbPalette20[16]
+# CR_color <- cbPalette20[17]
+# NT_color <- cbPalette20[20]
+# RF05_color <- cbPalette20[19]
+# RF15_color <- cbPalette20[9]
+# RF25_color <- cbPalette20[8]
+# RF35_color <- cbPalette20[7]
+# RR00_color <- cbPalette20[2]
+# RR00_NT_color <- cbPalette20[3]
+# RR25_color <- cbPalette20[4]
+# RR25_NT_color <- cbPalette20[11]
+# RR50_color <- cbPalette20[12]
+# RR50_NT_color <- cbPalette20[18]
 
 
 
@@ -410,13 +410,13 @@ RR50_NT_color <- cbPalette20[18]
 
 ####################### historical averages #######################
 
-Hist_raw <- read_xlsx(paste0(hist_path,"MI-Kalamazoo County historical yields and C input.xlsx"),
-                      sheet="Kalamazoo County-Calcs",range="A2:AW171")
-HistY_Mgha <- Hist_raw[Hist_raw$Year<=1987,c(1,8:10)] %>%
-  mutate(year=Year,
-         maize_yield_mgha=`Corn g/m^2...8`/100,
-         soybean_yield_mgha=`Soybean g/m^2...9`/100,
-         wheat_yield_mgha=`Wheat g/m^2...10`/100)
+# Hist_raw <- read_xlsx(paste0(hist_path,"MI-Kalamazoo County historical yields and C input.xlsx"),
+#                       sheet="Kalamazoo County-Calcs",range="A2:AW171")
+# HistY_Mgha <- Hist_raw[Hist_raw$Year<=1987,c(1,8:10)] %>%
+#   mutate(year=Year,
+#          maize_yield_mgha=`Corn g/m^2...8`/100,
+#          soybean_yield_mgha=`Soybean g/m^2...9`/100,
+#          wheat_yield_mgha=`Wheat g/m^2...10`/100)
 
 
 
@@ -424,464 +424,464 @@ HistY_Mgha <- Hist_raw[Hist_raw$Year<=1987,c(1,8:10)] %>%
 
 ############ surface samples 
 
-
-## Bulk density
-ObsBD_raw <- read.csv(paste0(obs_path,obs_bd_filename),
-                  skip=23) %>%
-  mutate(date=as.Date(Date, format="%m/%d/%Y"),
-         year=year(date))
-ObsBD_mean <- ObsBD_raw %>%
-  group_by(year,Treatment,Replicate) %>%
-  summarize(mean_BD=round(mean(Bulk_density),2),
-            Treatment=str_trim(Treatment))
-### set BD to control treatment value for equiv. soil mass
-ObsBD <- ObsBD_mean[ObsBD_mean$Treatment==control_treatment,] %>%
-  group_by(year,Treatment) %>%
-  summarize(mean_BD=round(mean(mean_BD),2))
-
-## C percent
-ObsC_pct_raw <- read.csv(paste0(obs_path,obs_C_filename),
-                     skip=27) %>%
-  mutate(date=as.Date(sample_date, format="%m/%d/%Y"),
-         month=month(date))
-
-ObsC_pct <- ObsC_pct_raw[ObsC_pct_raw$month<7,]
-
-##  C stock
-
-ObsC_Mgha_all <- ObsC_pct %>%
-  mutate(cstock_byrep=mean_c*ObsBD$mean_BD*25) %>%
-  group_by(year,treatment) %>%
-  summarize(mean_cpct=round(mean(mean_c,na.rm=T),2),
-            cstock=mean(cstock_byrep,na.rm=T),
-            sd_cstock=sd(cstock_byrep,na.rm=T))
-
-
-### BD is from control plot to calculate C stocks
-ObsC_Mgha <- ObsC_pct[ObsC_pct$treatment==treatment_num,] %>%
-  mutate(cstock_byrep=mean_c*ObsBD$mean_BD*25) %>%
-  group_by(year) %>%
-  summarize(mean_cpct=round(mean(mean_c,na.rm=T),2),
-            cstock=mean(cstock_byrep,na.rm=T),
-            sd_cstock=sd(cstock_byrep,na.rm=T))
-
-ObsC_outliers <- boxplot(ObsC_Mgha$cstock, plot=FALSE)$out
-ObsC_Mgha_noout <- ObsC_Mgha[-which(ObsC_Mgha$cstock %in% ObsC_outliers),]
-
-ObsC_control_Mgha <- ObsC_pct[ObsC_pct$treatment==control_treatment_num,] %>%
-  mutate(cstock_byrep=mean_c*ObsBD$mean_BD*25) %>%
-  group_by(year) %>%
-  summarize(mean_cpct=round(mean(mean_c,na.rm=T),2),
-            cstock=mean(cstock_byrep,na.rm=T),
-            sd_cstock=sd(cstock_byrep,na.rm=T))
-initC <- mean(ObsC_control_Mgha$cstock)
-
-# initC is being ignored and 60 Mg C ha-1 forced in due to calibrating the
-# start C to RothC and evidence of decreasing C in the control plot during the experimental
-# period. 
-ObsC_Mgha <- rbind(c(land_conversion_year, NA, 60, NA),ObsC_Mgha)
-
-ObsC_Mgha_mean_5yr <- mean(ObsC_Mgha$mean_cpct[1:5])
-### include SOC outliers or land conversion year in stats
-ObsCfit <- lm(cstock ~ year, data = ObsC_Mgha[ObsC_Mgha$year != land_conversion_year,])
-ObsCfit_coef <- coef(ObsCfit)
-ObsCfit_r2 <- round(summary(ObsCfit)$r.squared,2)
-### don't include SOC outliers or land conversion year in stats
-ObsCfit_noout <- lm(cstock ~ year, data = ObsC_Mgha[!(ObsC_Mgha$cstock %in% ObsC_outliers) &
-                                                ObsC_Mgha$year != land_conversion_year,])
-ObsCfit_coef_noout <- coef(ObsCfit_noout)
-ObsCfit_r2_noout <- round(summary(ObsCfit_noout)$r.squared,2)
-
-## Yield
-ObsYield_raw <- read.csv(paste0(obs_path,obs_yield_filename),skip=31)
-ObsYield <- ObsYield_raw[ObsYield_raw$Treatment==treatment,] %>%
-  mutate(year=Year,
-         crop=if_else(Crop=="Zea mays L. (*)", "Maize",
-              if_else(Crop=="Glycine max L. (*)", "Soybean",
-              if_else(Crop=="Triticum aestivum L. (*)", "Wheat",
-                      Crop)))
-         ) %>%
-  group_by(year,Treatment,crop) %>%
-  summarize(mean_yield_kgha=round(mean(crop_only_yield_kg_ha,na.rm=T),0),
-            sd_yield_kgha=sd(crop_only_yield_kg_ha,na.rm=T))
-  
-ObsYield$mean_yield <- ObsYield$mean_yield_kgha/1000
-ObsYield$sd_yield <- ObsYield$sd_yield_kgha/1000
-ObsYield$mean_yield_gm2 <- ObsYield$mean_yield*100
-ObsYield$sd_yield_gm2 <- ObsYield$sd_yield*100
-
-ObsMYfit <- lm(mean_yield ~ year, data = ObsYield[ObsYield$crop=="Maize",])
-ObsMYfit_coef <- coef(ObsMYfit)
-ObsMYfit_r2 <- round(summary(ObsMYfit)$r.squared,2)
-
-ObsSYfit <- lm(mean_yield ~ year, data = ObsYield[ObsYield$crop=="Soybean",])
-ObsSYfit_coef <- coef(ObsSYfit)
-ObsSYfit_r2 <- round(summary(ObsSYfit)$r.squared,2)
-
-ObsWYfit <- lm(mean_yield ~ year, data = ObsYield[ObsYield$crop=="Wheat",])
-ObsWYfit_coef <- coef(ObsWYfit)
-ObsWYfit_r2 <- round(summary(ObsWYfit)$r.squared,2)
-
-
-## Soil temp
-ObsTemp_raw <- read.csv(paste0(obs_path,obs_soiltemp_filename),
-                    skip=21)%>%
-  mutate(date=as.Date(date, format="%m/%d/%Y"))
-ObsTemp_all <- ObsTemp_raw[ObsTemp_raw$year >= 1999,
-                       c("date","year","treatment","soil_temperature","replicate")] %>%
-  group_by(date,year,treatment) %>%
-  summarize(soil_temperature=round(mean(soil_temperature,na.rm=T),1))
-ObsTemp <- ObsTemp_raw[ObsTemp_raw$treatment==treatment & ObsTemp_raw$year >= 1999,
-                       c("date","year","soil_temperature","replicate")] %>%
-  group_by(date,year) %>%
-  summarize(soil_temperature=round(mean(soil_temperature,na.rm=T),1))
-
-ObsTfit <- lm(soil_temperature ~ date, data = ObsTemp)
-ObsTfit_coef <- coef(ObsTfit)
-ObsTfit_r2 <- round(summary(ObsTfit)$r.squared,2)
-ObsTfit_slope_byday <- ObsTfit_coef[2]
-ObsTfit_slope_byyear <- ObsTfit_slope_byday*365
-
-ObsTemp_range <- range(ObsTemp$soil_temperature,na.rm=T)
-
-## Soil gases - all in g ha-1 d-1
-ObsGas_raw <- read.csv(paste0(obs_path,obs_ghg_filename),
-                   skip=36) %>%
-  mutate(date=as.Date(Sample_Date, format="%m/%d/%Y"),
-         year=Year)
-ObsGas_mean <- ObsGas_raw %>%
-  group_by(date,year,Treatment) %>%
-  summarize(CH4_C=round(mean(CH4_C),2),
-            CO2_C=round(mean(CO2_C),2),
-            N2O_N=round(mean(N2O_N),2))
-ObsGas_all <- ObsGas_mean[,c("date","year","Treatment","CH4_C","CO2_C","N2O_N")]
-ObsGas <- ObsGas_mean[ObsGas_mean$Treatment==treatment,c("date","year","CH4_C","CO2_C",
-                                                  "N2O_N")]
-
-ObsN2Ofit <- lm(N2O_N ~ date, data = ObsGas)
-ObsN2Ofit_coef <- coef(ObsN2Ofit)
-ObsN2Ofit_r2 <- round(summary(ObsN2Ofit)$r.squared,2)
-
-ObsCH4fit <- lm(CH4_C ~ date, data = ObsGas)
-ObsCH4fit_coef <- coef(ObsCH4fit)
-ObsCH4fit_r2 <- round(summary(ObsCH4fit)$r.squared,2)
-
-ObsGas_N2O_calib <- ObsGas[!is.na(ObsGas$N2O_N),] %>%
-  group_by(year) %>%
-  summarize(tot_N2O_ghayr=sum(N2O_N))
-
-ObsGas_CH4_calib <- ObsGas[!is.na(ObsGas$CH4_C),] %>%
-  group_by(year) %>%
-  summarize(tot_CH4_ghayr=sum(CH4_C))
-
-## Soil moisture
-ObsGSM <- read.csv(paste0(obs_path,obs_soilmoist_filename),
-                   skip=24) %>%
-  mutate(date=as.Date(date, format="%m/%d/%Y"),
-         year=year(date))
-ObsVSM_mean <- left_join(ObsGSM[,c("date","moisture","treatment","replicate")],
-                ObsBD_mean,
-                by=c("treatment" = "Treatment","replicate" = "Replicate"),
-                relationship="many-to-many") %>% #,
-                #all=TRUE) %>%
-  mutate(VSM=round(moisture*mean_BD,2)) %>%
-  group_by(date,treatment) %>%
-  summarize(mean_VSM=round(mean(VSM*100),0)) %>%
-  mutate(year=year(date))
-ObsVSM <- ObsVSM_mean[ObsVSM_mean$treatment==treatment,]
-
-ObsMfit <- lm(mean_VSM ~ year, data = ObsVSM)
-ObsMfit_coef <- coef(ObsMfit)
-ObsMfit_r2 <- round(summary(ObsMfit)$r.squared,2)
-ObsMfit_slope_byyear <- ObsMfit_coef[2]
-
-## Microbial biomass
-ObsMB_raw <- read.csv(paste0(obs_path,obs_mb_filename),
-                  skip=68) %>%
-  mutate(date=as.Date(date, format="%m/%d/%Y"),
-         year=Year,
-         )
-ObsMB_mean <- ObsMB_raw %>%
-  group_by(year,trt,date) %>%
-  summarize(mean_MB_ugg=round(mean(cfibio_c,na.rm=T),0),
-            sd_MB_ugg=sd(cfibio_c,na.rm=T))
-
-# ObsMB <- ObsBD[,c("Treatment","mean_BD")] %>%
-#   merge(ObsMB_mean[ObsMB_mean$trt==treatment,],
-#         by.x = "Treatment",
-#         by.y = "trt",
-#         all=T) %>%
-#   mutate(mean_MB_gm2=mean_MB_ugg * mean_BD / 100)
-
-ObsMB_all <- ObsMB_mean %>%
-  mutate(bd=ObsBD$mean_BD,
-         mb_gm2=mean_MB_ugg*bd/100,
-         mb_mgha=mb_gm2/100,
-         sd_gm2=sd_MB_ugg*bd/100,
-         sd_mgha=sd_gm2/100)
-
-ObsMB <- ObsMB_all[ObsMB_all$trt==treatment,] 
-
-ObsMBfit <- lm(mb_gm2 ~ year, data = ObsMB)
-ObsMBfit_coef <- coef(ObsMBfit)
-ObsMBfit_r2 <- round(summary(ObsMBfit)$r.squared,2)
-
-
-## Plant tissue C and N content
-ObsPltCN_raw <- read.csv(paste0(obs_path,obs_plant_cn_filename),
-                         skip=24) %>%
-  mutate(date=as.Date(sample_date, format="%m/%d/%Y"),
-         year=year(date),
-         Treatment=Trt)
-
-###check for plant types
-#unique(ObsPltCN_raw[ObsPltCN_raw$Trt %in% c("T1","T2","T3"),"species"])
-
-ObsPltCN_mean <- ObsPltCN_raw %>%
-  group_by(year,Treatment,species,type) %>%
-  summarize(percent_C=round(mean(percent_C),2),
-            percent_N=round(mean(percent_N),2)) %>%
-  mutate(crop=if_else(species=="Zea mays L. (*)", "Maize",
-                      if_else(species=="Glycine max L. (*)", "Soybean",
-                              if_else(species=="Triticum aestivum L. (*)", "Wheat",
-                                      species))),
-         cn_ratio=percent_C/percent_N
-  )
-
-### "widen" the results to match format of Daycent data
-ObsPltCN_wide <- pivot_wider(ObsPltCN_mean,
-                             names_from = type,
-                             values_from = c("percent_C","percent_N",
-                                             "cn_ratio",)) %>%
-  select(year,Treatment,species,crop,percent_C_SEED,percent_C_STOVER,
-         percent_N_SEED,percent_N_STOVER,cn_ratio_SEED,cn_ratio_STOVER)
-
-ObsGrainCN <- ObsPltCN_mean[ObsPltCN_mean$Treatment==treatment
-                            & ObsPltCN_mean$type=="SEED",] %>%
-  left_join(ObsYield[,!names(ObsYield)=="mean_yield"],
-            by=c("year","Treatment","crop")) %>%
-  mutate(grainC_gm2=percent_C/100*mean_yield_gm2,
-         grainN_gm2=percent_N/100*mean_yield_gm2)
-
-
-## biomass (to calculate C and N of stover)
-ObsBiomass_raw <- read.csv(paste0(obs_path,obs_biomass_filename),
-                           skip=29) %>%
-  mutate(date=as.Date(Date, format="%m/%d/%Y"),
-         year=Year)
-
-ObsBiomass_mean <- ObsBiomass_raw %>%
-  group_by(year,Treatment,Species,Fraction) %>%
-  summarize(biomass_gm2=round(mean(Biomass),2)) %>%
-  mutate(crop=if_else(Species=="Zea mays L. (*)", "Maize",
-                      if_else(Species=="Glycine max L. (*)", "Soybean",
-                              if_else(Species=="Triticum aestivum L. (*)", "Wheat",
-                                      Species)))
-  )
-
-ObsBiomass <- ObsBiomass_mean[ObsBiomass_mean$Treatment==treatment,] 
-
-### now "widen" the results to match format of Daycent data, add N data
-ObsBiomass_wide <- pivot_wider(ObsBiomass, 
-                             names_from = Fraction,
-                             values_from = "biomass_gm2") %>%
-  select(year,Treatment,Species,crop,SEED,WHOLE,STOVER) %>%
-  mutate(STOVER=WHOLE-SEED)
-
-ObsStoverCN <- ObsBiomass_wide[ObsBiomass_wide$Treatment==treatment,
-                               !names(ObsBiomass_wide) %in% c("SEED","WHOLE")]  %>%
-  left_join(ObsPltCN_wide[,c("year","Treatment","crop","percent_C_STOVER","percent_N_STOVER")],
-            by=c("year","Treatment","crop")) %>%
-  mutate(stoverC_gm2=percent_C_STOVER/100*STOVER,
-         stoverN_gm2=percent_N_STOVER/100*STOVER)
-
-
-############### deep core samples 
-
-ObsBDdeep_raw <- read.csv(paste0(obs_path,obs_BDdeep_filename),
-                  skip=32)
-ObsBDdeep_mean <- ObsBDdeep_raw %>%
-  group_by(year,treatment,section) %>%
-  summarize(depth=round(mean(horizon_length),0),
-    mean_BD=round(mean(gravel_free_bulk_density),2))
-ObsBDdeep <- ObsBDdeep_mean[ObsBDdeep_mean$treatment==treatment,]
-
-### add sample depths for each section
-ObsBDdeep_sampledepths <- ObsBDdeep_mean %>%
-  group_by(treatment) %>%
-  summarize(sample_depth=sum(depth))
-
-
-## deep core samples - C percent
-ObsCdeep_pct <- read.csv(paste0(obs_path,obs_Cdeep_filename),
-                     skip=27) %>%
-  mutate(date=as.Date(sample_date, format="%m/%d/%Y"),
-         year=year(date),
-         section=depth)
-ObsCdeep_pct_mean <- ObsCdeep_pct %>%
-  group_by(year,treatment,section) %>%
-  summarize(mean_C=round(mean(c_percent),4))
-
-### calculate C stock
-#### join C and bulk density data; fill in NA bulk density data (in the Deep
-#### layers) with the Middle value; calculate the stock for each group of
-#### year/treatment/depth section; then calculate the % stock in each layer
-ObsCBDdeep <- inner_join(ObsBDdeep_mean,
-                       ObsCdeep_pct_mean,
-                       by=c("year","treatment","section"))%>%
-  group_by(treatment) %>%
-  mutate(mean_BD_adj = if_else(is.na(mean_BD) & section=="Deep", 
-                               mean_BD[section=="Middle"], 
-                               mean_BD),
-         cstock=mean_C*mean_BD_adj*depth,
-         fraction_C=cstock/sum(cstock)) %>%
-  ungroup
-
-ObsCBDdeep_cstock <- ObsCBDdeep %>%
-  group_by(year,treatment) %>%
-  summarize(cstock=sum(cstock)) %>%
-  mutate(top_25cm=cstock*0.63)
-
-#### add initial equilibrium C from control plot for year of land conversion
-ObsCdeep_Mgha <- rbind(data.frame(year=land_conversion_year,
-                                  ObsCBDdeep_cstock[ObsCBDdeep_cstock$treatment==control_treatment,c("treatment","cstock")]),
-                       ObsCBDdeep_cstock[ObsCBDdeep_cstock$treatment==treatment,c("year","treatment","cstock")]) 
-
-### calculate C stock to 25 cm
-ObsCdeep_calcs <- ObsCBDdeep %>%
-  group_by(treatment) %>%
-  mutate(c_cm=cstock/depth,
-         addtl_c=if_else(section=="Surface",0,
-                 if_else(section=="Middle",c_cm*(25-depth[section=="Surface"]),
-                 0)
-                 ),
-         tot_C=if_else(section=="Surface",cstock[section=="Surface"]+addtl_c[section=="Middle"],0)
-         )
-
-ObsCdeep_25cm <- ObsCdeep_calcs[ObsCdeep_calcs$section=="Surface",c("year","treatment","tot_C")]
-
-ObsCdeep_top25_pct <- cbind(ObsCdeep_25cm[,1:2],ObsCdeep_25cm$tot_C/ObsCBDdeep_cstock$cstock)
-
-
-##################################
-# Add fertilizer for GHG reference
-##################################
-
-Fert_APSIM <- as.data.frame(read.csv(paste0(obs_path,obs_fert_filename)) %>%
-  mutate(date=as.Date(date,format="%Y-%m-%d")))
-Fert <- as.data.frame(read.csv(paste0(obs_path,obs_fert_filename)) %>%
-  mutate(date=as.Date(date,format="%m/%d/%Y")))
-
-#######################
-# Bring in weather data
-#######################
-
-ObsWth <- read.csv(paste0(apsim_path,"/basic_wth_",clim_scenario_num,".csv"),
-                   skip=2) %>%
-  mutate(meant=round((maxt+mint)/2,1),
-         date=as.Date(day-1, origin=paste0(as.character(year),"-01-01"),),
-         source="Air"
-  )
-
-#**********************************************************************
-
-# write calibration header file ---------------------------------------
-
-# make separate file with column headers (empty table with NA row)
-log_col_headers <- c("Date_time","Model",
-                     "Climate_Scenario","Mgmt_Scenario","Scenario_Name",
-                     "Scenario_Abbr",
-                     "Maize_slope_1to1","Maize_yint_1to1","Maize_R2_1to1","Maize_RMSE_1to1",
-                     "Maize_diff",
-                     "Soy_slope_1to1","Soy_yint_1to1","Soy_R2_1to1","Soy_RMSE_1to1",
-                     "Soy_diff",
-                     "Wheat_slope_1to1","Wheat_yint_1to1","Wheat_R2_1to1","Wheat_RMSE_1to1",
-                     "Wheat_diff",
-                     "SOC_slope_1to1","SOC_yint_1to1","SOC_R2_1to1","SOC_RMSE_1to1",
-                     "SOC_diff","SOC_diff_noout",
-                     "Temp_slope_1to1","Temp_yint_1to1","Temp_R2_1to1","Temp_RMSE_1to1",
-                     "Temp_diff",
-                     "Moist_slope_1to1","Moist_yint_1to1","Moist_R2_1to1","Moist_RMSE_1to1",
-                     "Moist_diff",
-                     "N2O_slope_1to1","N2O_yint_1to1","N2O_R2_1to1","N2O_RMSE_1to1",
-                     "N2O_diff",
-                     "CH4_slope_1to1","CH4_yint_1to1","CH4_R2_1to1","CH4_RMSE_1to1",
-                     "CH4_diff",
-                     "MBio_slope_1to1","MBio_yint_1to1","MBio_R2_1to1","MBio_RMSE_1to1",
-                     "MBio_diff",
-                     "Cotton_slope_1to1","Cotton_yint_1to1","Cotton_R2_1to1","Cotton_RMSE_1to1",
-                     "Cotton_diff",
-                     "Sorghum_slope_1to1","Sorghum_yint_1to1","Sorghum_R2_1to1","Sorghum_RMSE_1to1",
-                     "Sorghum_diff",
-                     "Maize_cultivar","Soybean_cultivar","Wheat_cultivar",
-                     "Cotton_cultivar","Sorghum_cultivar",
-                     "Maize_slope_time","Maize_yint_time","Maize_R2_time","Maize_RMSE_time",
-                     "Soy_slope_time","Soy_yint_time","Soy_R2_time","Soy_RMSE_time",
-                     "Wheat_slope_time","Wheat_yint_time","Wheat_R2_time","Wheat_RMSE_time",
-                     "SOC_slope_time","SOC_yint_time","SOC_R2_time","SOC_RMSE_time",
-                     "SOC_slope_time_noout","SOC_yint_time_noout","SOC_R2_time_noout","SOC_RMSE_time_noout",
-                     "Temp_slope_time","Temp_yint_time","Temp_R2_time","Temp_RMSE_time",
-                     "Moist_slope_time","Moist_yint_time","Moist_R2_time","Moist_RMSE_time",
-                     "N2O_slope_time","N2O_yint_time","N2O_R2_time","N2O_RMSE_time",
-                     "CH4_slope_time","CH4_yint_time","CH4_R2_time","CH4_RMSE_time",
-                     "MBio_slope_time","MBio_yint_time","MBio_R2_time","MBio_RMSE_time",
-                     "Cotton_slope_time","Cotton_yint_time","Cotton_R2_time","Cotton_RMSE_time",
-                     "Sorghum_slope_time","Sorghum_yint_time","Sorghum_R2_time","Sorghum_RMSE_time"
-)
-dummy<-data.frame(matrix(ncol=length(log_col_headers)))
-colnames(dummy) <- log_col_headers
-
-write.table(dummy,file=paste0(results_path,"Calibration_log_columns.csv"),
-            append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
-
-# Log results -------------------------------------------------------------
-
-if(clim_scenario_num == 1 & mgmt_scenario_num %in% calib_mgmt_nums) {
-  # add this run's results to model log file and file collecting all final
-  # model runs
-  calib_log_tab <- cbind(as.character(Sys.time()),"Observed",
-                         clim_scenario_num,mgmt_scenario_num, scenario_name,
-                         scenario_abbrev,
-                         NA, NA, NA, NA, # Corn 1 to 1
-                         NA, # diff (obs - mod)
-                         NA, NA, NA, NA, # Soybeans 1 to 1
-                         NA, # diff
-                         NA, NA, NA, NA, # Wheat 1 to 1
-                         NA, # diff
-                         NA, NA, NA, NA, # SOC 1 to 1
-                         NA, NA, # diffs (w/ and w/o outliers)
-                         NA, NA, NA, NA, # Temperature 1 to 1
-                         NA, # diff
-                         NA, NA, NA, NA, # Moisture 1 to 1
-                         NA, # diff
-                         NA, NA, NA, NA, # N2O 1 to 1
-                         NA, # diff
-                         NA, NA, NA, NA, # CH4 1 to 1
-                         NA, # diff
-                         NA, NA, NA, NA, # M Bio 1 to 1
-                         NA, # diff
-                         NA, NA, NA, NA, # Cotton 1 to 1
-                         NA, # diff
-                         NA, NA, NA, NA, # Sorghum 1 to 1
-                         NA, # diff
-                         NA, NA, NA, NA, NA, # M,S,W,C,S cultivars
-                         ObsMYfit_coef[2], NA, ObsMYfit_r2, NA, # Corn time series
-                         ObsSYfit_coef[2], NA, ObsSYfit_r2, NA, # Soybeans time series
-                         ObsWYfit_coef[2], NA, ObsWYfit_r2, NA, # Wheat time series
-                         ObsCfit_coef[2], NA, ObsCfit_r2, NA, # SOC time series
-                         ObsCfit_coef_noout[2], NA, ObsCfit_r2_noout, NA, # SOC time series without outliers
-                         ObsTfit_coef[2], NA, ObsTfit_r2, NA, # Temperature time series
-                         ObsMfit_coef[2], NA, ObsMfit_r2, NA, # Moisture time series
-                         ObsN2Ofit_coef[2], NA, ObsN2Ofit_r2, NA, # N2O time series
-                         ObsCH4fit_coef[2], NA, ObsCH4fit_r2, NA, # CH4 time series
-                         ObsMBfit_coef[2], NA, ObsMBfit_r2, NA, # M Bio time series
-                         NA, NA, NA, NA, # Cotton time series
-                         NA, NA, NA, NA # Sorghum time series
-  )
-  
-  source("p_Edit_calib_file.R", local = TRUE)
-  p_Edit_calib_file(calib_log_tab,"Observed",scenario_name)
-}
-
-}) # end suppressMessages
+# 
+# ## Bulk density
+# ObsBD_raw <- read.csv(paste0(obs_path,obs_bd_filename),
+#                   skip=23) %>%
+#   mutate(date=as.Date(Date, format="%m/%d/%Y"),
+#          year=year(date))
+# ObsBD_mean <- ObsBD_raw %>%
+#   group_by(year,Treatment,Replicate) %>%
+#   summarize(mean_BD=round(mean(Bulk_density),2),
+#             Treatment=str_trim(Treatment))
+# ### set BD to control treatment value for equiv. soil mass
+# ObsBD <- ObsBD_mean[ObsBD_mean$Treatment==control_treatment,] %>%
+#   group_by(year,Treatment) %>%
+#   summarize(mean_BD=round(mean(mean_BD),2))
+# 
+# ## C percent
+# ObsC_pct_raw <- read.csv(paste0(obs_path,obs_C_filename),
+#                      skip=27) %>%
+#   mutate(date=as.Date(sample_date, format="%m/%d/%Y"),
+#          month=month(date))
+# 
+# ObsC_pct <- ObsC_pct_raw[ObsC_pct_raw$month<7,]
+# 
+# ##  C stock
+# 
+# ObsC_Mgha_all <- ObsC_pct %>%
+#   mutate(cstock_byrep=mean_c*ObsBD$mean_BD*25) %>%
+#   group_by(year,treatment) %>%
+#   summarize(mean_cpct=round(mean(mean_c,na.rm=T),2),
+#             cstock=mean(cstock_byrep,na.rm=T),
+#             sd_cstock=sd(cstock_byrep,na.rm=T))
+# 
+# 
+# ### BD is from control plot to calculate C stocks
+# ObsC_Mgha <- ObsC_pct[ObsC_pct$treatment==treatment_num,] %>%
+#   mutate(cstock_byrep=mean_c*ObsBD$mean_BD*25) %>%
+#   group_by(year) %>%
+#   summarize(mean_cpct=round(mean(mean_c,na.rm=T),2),
+#             cstock=mean(cstock_byrep,na.rm=T),
+#             sd_cstock=sd(cstock_byrep,na.rm=T))
+# 
+# ObsC_outliers <- boxplot(ObsC_Mgha$cstock, plot=FALSE)$out
+# ObsC_Mgha_noout <- ObsC_Mgha[-which(ObsC_Mgha$cstock %in% ObsC_outliers),]
+# 
+# ObsC_control_Mgha <- ObsC_pct[ObsC_pct$treatment==control_treatment_num,] %>%
+#   mutate(cstock_byrep=mean_c*ObsBD$mean_BD*25) %>%
+#   group_by(year) %>%
+#   summarize(mean_cpct=round(mean(mean_c,na.rm=T),2),
+#             cstock=mean(cstock_byrep,na.rm=T),
+#             sd_cstock=sd(cstock_byrep,na.rm=T))
+# initC <- mean(ObsC_control_Mgha$cstock)
+# 
+# # initC is being ignored and 60 Mg C ha-1 forced in due to calibrating the
+# # start C to RothC and evidence of decreasing C in the control plot during the experimental
+# # period.
+# ObsC_Mgha <- rbind(c(land_conversion_year, NA, 60, NA),ObsC_Mgha)
+# 
+# ObsC_Mgha_mean_5yr <- mean(ObsC_Mgha$mean_cpct[1:5])
+# ### include SOC outliers or land conversion year in stats
+# ObsCfit <- lm(cstock ~ year, data = ObsC_Mgha[ObsC_Mgha$year != land_conversion_year,])
+# ObsCfit_coef <- coef(ObsCfit)
+# ObsCfit_r2 <- round(summary(ObsCfit)$r.squared,2)
+# ### don't include SOC outliers or land conversion year in stats
+# ObsCfit_noout <- lm(cstock ~ year, data = ObsC_Mgha[!(ObsC_Mgha$cstock %in% ObsC_outliers) &
+#                                                 ObsC_Mgha$year != land_conversion_year,])
+# ObsCfit_coef_noout <- coef(ObsCfit_noout)
+# ObsCfit_r2_noout <- round(summary(ObsCfit_noout)$r.squared,2)
+# 
+# ## Yield
+# ObsYield_raw <- read.csv(paste0(obs_path,obs_yield_filename),skip=31)
+# ObsYield <- ObsYield_raw[ObsYield_raw$Treatment==treatment,] %>%
+#   mutate(year=Year,
+#          crop=if_else(Crop=="Zea mays L. (*)", "Maize",
+#               if_else(Crop=="Glycine max L. (*)", "Soybean",
+#               if_else(Crop=="Triticum aestivum L. (*)", "Wheat",
+#                       Crop)))
+#          ) %>%
+#   group_by(year,Treatment,crop) %>%
+#   summarize(mean_yield_kgha=round(mean(crop_only_yield_kg_ha,na.rm=T),0),
+#             sd_yield_kgha=sd(crop_only_yield_kg_ha,na.rm=T))
+# 
+# ObsYield$mean_yield <- ObsYield$mean_yield_kgha/1000
+# ObsYield$sd_yield <- ObsYield$sd_yield_kgha/1000
+# ObsYield$mean_yield_gm2 <- ObsYield$mean_yield*100
+# ObsYield$sd_yield_gm2 <- ObsYield$sd_yield*100
+# 
+# ObsMYfit <- lm(mean_yield ~ year, data = ObsYield[ObsYield$crop=="Maize",])
+# ObsMYfit_coef <- coef(ObsMYfit)
+# ObsMYfit_r2 <- round(summary(ObsMYfit)$r.squared,2)
+# 
+# ObsSYfit <- lm(mean_yield ~ year, data = ObsYield[ObsYield$crop=="Soybean",])
+# ObsSYfit_coef <- coef(ObsSYfit)
+# ObsSYfit_r2 <- round(summary(ObsSYfit)$r.squared,2)
+# 
+# ObsWYfit <- lm(mean_yield ~ year, data = ObsYield[ObsYield$crop=="Wheat",])
+# ObsWYfit_coef <- coef(ObsWYfit)
+# ObsWYfit_r2 <- round(summary(ObsWYfit)$r.squared,2)
+# 
+# 
+# ## Soil temp
+# ObsTemp_raw <- read.csv(paste0(obs_path,obs_soiltemp_filename),
+#                     skip=21)%>%
+#   mutate(date=as.Date(date, format="%m/%d/%Y"))
+# ObsTemp_all <- ObsTemp_raw[ObsTemp_raw$year >= 1999,
+#                        c("date","year","treatment","soil_temperature","replicate")] %>%
+#   group_by(date,year,treatment) %>%
+#   summarize(soil_temperature=round(mean(soil_temperature,na.rm=T),1))
+# ObsTemp <- ObsTemp_raw[ObsTemp_raw$treatment==treatment & ObsTemp_raw$year >= 1999,
+#                        c("date","year","soil_temperature","replicate")] %>%
+#   group_by(date,year) %>%
+#   summarize(soil_temperature=round(mean(soil_temperature,na.rm=T),1))
+# 
+# ObsTfit <- lm(soil_temperature ~ date, data = ObsTemp)
+# ObsTfit_coef <- coef(ObsTfit)
+# ObsTfit_r2 <- round(summary(ObsTfit)$r.squared,2)
+# ObsTfit_slope_byday <- ObsTfit_coef[2]
+# ObsTfit_slope_byyear <- ObsTfit_slope_byday*365
+# 
+# ObsTemp_range <- range(ObsTemp$soil_temperature,na.rm=T)
+# 
+# ## Soil gases - all in g ha-1 d-1
+# ObsGas_raw <- read.csv(paste0(obs_path,obs_ghg_filename),
+#                    skip=36) %>%
+#   mutate(date=as.Date(Sample_Date, format="%m/%d/%Y"),
+#          year=Year)
+# ObsGas_mean <- ObsGas_raw %>%
+#   group_by(date,year,Treatment) %>%
+#   summarize(CH4_C=round(mean(CH4_C),2),
+#             CO2_C=round(mean(CO2_C),2),
+#             N2O_N=round(mean(N2O_N),2))
+# ObsGas_all <- ObsGas_mean[,c("date","year","Treatment","CH4_C","CO2_C","N2O_N")]
+# ObsGas <- ObsGas_mean[ObsGas_mean$Treatment==treatment,c("date","year","CH4_C","CO2_C",
+#                                                   "N2O_N")]
+# 
+# ObsN2Ofit <- lm(N2O_N ~ date, data = ObsGas)
+# ObsN2Ofit_coef <- coef(ObsN2Ofit)
+# ObsN2Ofit_r2 <- round(summary(ObsN2Ofit)$r.squared,2)
+# 
+# ObsCH4fit <- lm(CH4_C ~ date, data = ObsGas)
+# ObsCH4fit_coef <- coef(ObsCH4fit)
+# ObsCH4fit_r2 <- round(summary(ObsCH4fit)$r.squared,2)
+# 
+# ObsGas_N2O_calib <- ObsGas[!is.na(ObsGas$N2O_N),] %>%
+#   group_by(year) %>%
+#   summarize(tot_N2O_ghayr=sum(N2O_N))
+# 
+# ObsGas_CH4_calib <- ObsGas[!is.na(ObsGas$CH4_C),] %>%
+#   group_by(year) %>%
+#   summarize(tot_CH4_ghayr=sum(CH4_C))
+# 
+# ## Soil moisture
+# ObsGSM <- read.csv(paste0(obs_path,obs_soilmoist_filename),
+#                    skip=24) %>%
+#   mutate(date=as.Date(date, format="%m/%d/%Y"),
+#          year=year(date))
+# ObsVSM_mean <- left_join(ObsGSM[,c("date","moisture","treatment","replicate")],
+#                 ObsBD_mean,
+#                 by=c("treatment" = "Treatment","replicate" = "Replicate"),
+#                 relationship="many-to-many") %>% #,
+#                 #all=TRUE) %>%
+#   mutate(VSM=round(moisture*mean_BD,2)) %>%
+#   group_by(date,treatment) %>%
+#   summarize(mean_VSM=round(mean(VSM*100),0)) %>%
+#   mutate(year=year(date))
+# ObsVSM <- ObsVSM_mean[ObsVSM_mean$treatment==treatment,]
+# 
+# ObsMfit <- lm(mean_VSM ~ year, data = ObsVSM)
+# ObsMfit_coef <- coef(ObsMfit)
+# ObsMfit_r2 <- round(summary(ObsMfit)$r.squared,2)
+# ObsMfit_slope_byyear <- ObsMfit_coef[2]
+# 
+# ## Microbial biomass
+# ObsMB_raw <- read.csv(paste0(obs_path,obs_mb_filename),
+#                   skip=68) %>%
+#   mutate(date=as.Date(date, format="%m/%d/%Y"),
+#          year=Year,
+#          )
+# ObsMB_mean <- ObsMB_raw %>%
+#   group_by(year,trt,date) %>%
+#   summarize(mean_MB_ugg=round(mean(cfibio_c,na.rm=T),0),
+#             sd_MB_ugg=sd(cfibio_c,na.rm=T))
+# 
+# # ObsMB <- ObsBD[,c("Treatment","mean_BD")] %>%
+# #   merge(ObsMB_mean[ObsMB_mean$trt==treatment,],
+# #         by.x = "Treatment",
+# #         by.y = "trt",
+# #         all=T) %>%
+# #   mutate(mean_MB_gm2=mean_MB_ugg * mean_BD / 100)
+# 
+# ObsMB_all <- ObsMB_mean %>%
+#   mutate(bd=ObsBD$mean_BD,
+#          mb_gm2=mean_MB_ugg*bd/100,
+#          mb_mgha=mb_gm2/100,
+#          sd_gm2=sd_MB_ugg*bd/100,
+#          sd_mgha=sd_gm2/100)
+# 
+# ObsMB <- ObsMB_all[ObsMB_all$trt==treatment,]
+# 
+# ObsMBfit <- lm(mb_gm2 ~ year, data = ObsMB)
+# ObsMBfit_coef <- coef(ObsMBfit)
+# ObsMBfit_r2 <- round(summary(ObsMBfit)$r.squared,2)
+# 
+# 
+# ## Plant tissue C and N content
+# ObsPltCN_raw <- read.csv(paste0(obs_path,obs_plant_cn_filename),
+#                          skip=24) %>%
+#   mutate(date=as.Date(sample_date, format="%m/%d/%Y"),
+#          year=year(date),
+#          Treatment=Trt)
+# 
+# ###check for plant types
+# #unique(ObsPltCN_raw[ObsPltCN_raw$Trt %in% c("T1","T2","T3"),"species"])
+# 
+# ObsPltCN_mean <- ObsPltCN_raw %>%
+#   group_by(year,Treatment,species,type) %>%
+#   summarize(percent_C=round(mean(percent_C),2),
+#             percent_N=round(mean(percent_N),2)) %>%
+#   mutate(crop=if_else(species=="Zea mays L. (*)", "Maize",
+#                       if_else(species=="Glycine max L. (*)", "Soybean",
+#                               if_else(species=="Triticum aestivum L. (*)", "Wheat",
+#                                       species))),
+#          cn_ratio=percent_C/percent_N
+#   )
+# 
+# ### "widen" the results to match format of Daycent data
+# ObsPltCN_wide <- pivot_wider(ObsPltCN_mean,
+#                              names_from = type,
+#                              values_from = c("percent_C","percent_N",
+#                                              "cn_ratio",)) %>%
+#   select(year,Treatment,species,crop,percent_C_SEED,percent_C_STOVER,
+#          percent_N_SEED,percent_N_STOVER,cn_ratio_SEED,cn_ratio_STOVER)
+# 
+# ObsGrainCN <- ObsPltCN_mean[ObsPltCN_mean$Treatment==treatment
+#                             & ObsPltCN_mean$type=="SEED",] %>%
+#   left_join(ObsYield[,!names(ObsYield)=="mean_yield"],
+#             by=c("year","Treatment","crop")) %>%
+#   mutate(grainC_gm2=percent_C/100*mean_yield_gm2,
+#          grainN_gm2=percent_N/100*mean_yield_gm2)
+# 
+# 
+# ## biomass (to calculate C and N of stover)
+# ObsBiomass_raw <- read.csv(paste0(obs_path,obs_biomass_filename),
+#                            skip=29) %>%
+#   mutate(date=as.Date(Date, format="%m/%d/%Y"),
+#          year=Year)
+# 
+# ObsBiomass_mean <- ObsBiomass_raw %>%
+#   group_by(year,Treatment,Species,Fraction) %>%
+#   summarize(biomass_gm2=round(mean(Biomass),2)) %>%
+#   mutate(crop=if_else(Species=="Zea mays L. (*)", "Maize",
+#                       if_else(Species=="Glycine max L. (*)", "Soybean",
+#                               if_else(Species=="Triticum aestivum L. (*)", "Wheat",
+#                                       Species)))
+#   )
+# 
+# ObsBiomass <- ObsBiomass_mean[ObsBiomass_mean$Treatment==treatment,]
+# 
+# ### now "widen" the results to match format of Daycent data, add N data
+# ObsBiomass_wide <- pivot_wider(ObsBiomass,
+#                              names_from = Fraction,
+#                              values_from = "biomass_gm2") %>%
+#   select(year,Treatment,Species,crop,SEED,WHOLE,STOVER) %>%
+#   mutate(STOVER=WHOLE-SEED)
+# 
+# ObsStoverCN <- ObsBiomass_wide[ObsBiomass_wide$Treatment==treatment,
+#                                !names(ObsBiomass_wide) %in% c("SEED","WHOLE")]  %>%
+#   left_join(ObsPltCN_wide[,c("year","Treatment","crop","percent_C_STOVER","percent_N_STOVER")],
+#             by=c("year","Treatment","crop")) %>%
+#   mutate(stoverC_gm2=percent_C_STOVER/100*STOVER,
+#          stoverN_gm2=percent_N_STOVER/100*STOVER)
+# 
+# 
+# ############### deep core samples
+# 
+# ObsBDdeep_raw <- read.csv(paste0(obs_path,obs_BDdeep_filename),
+#                   skip=32)
+# ObsBDdeep_mean <- ObsBDdeep_raw %>%
+#   group_by(year,treatment,section) %>%
+#   summarize(depth=round(mean(horizon_length),0),
+#     mean_BD=round(mean(gravel_free_bulk_density),2))
+# ObsBDdeep <- ObsBDdeep_mean[ObsBDdeep_mean$treatment==treatment,]
+# 
+# ### add sample depths for each section
+# ObsBDdeep_sampledepths <- ObsBDdeep_mean %>%
+#   group_by(treatment) %>%
+#   summarize(sample_depth=sum(depth))
+# 
+# 
+# ## deep core samples - C percent
+# ObsCdeep_pct <- read.csv(paste0(obs_path,obs_Cdeep_filename),
+#                      skip=27) %>%
+#   mutate(date=as.Date(sample_date, format="%m/%d/%Y"),
+#          year=year(date),
+#          section=depth)
+# ObsCdeep_pct_mean <- ObsCdeep_pct %>%
+#   group_by(year,treatment,section) %>%
+#   summarize(mean_C=round(mean(c_percent),4))
+# 
+# ### calculate C stock
+# #### join C and bulk density data; fill in NA bulk density data (in the Deep
+# #### layers) with the Middle value; calculate the stock for each group of
+# #### year/treatment/depth section; then calculate the % stock in each layer
+# ObsCBDdeep <- inner_join(ObsBDdeep_mean,
+#                        ObsCdeep_pct_mean,
+#                        by=c("year","treatment","section"))%>%
+#   group_by(treatment) %>%
+#   mutate(mean_BD_adj = if_else(is.na(mean_BD) & section=="Deep",
+#                                mean_BD[section=="Middle"],
+#                                mean_BD),
+#          cstock=mean_C*mean_BD_adj*depth,
+#          fraction_C=cstock/sum(cstock)) %>%
+#   ungroup
+# 
+# ObsCBDdeep_cstock <- ObsCBDdeep %>%
+#   group_by(year,treatment) %>%
+#   summarize(cstock=sum(cstock)) %>%
+#   mutate(top_25cm=cstock*0.63)
+# 
+# #### add initial equilibrium C from control plot for year of land conversion
+# ObsCdeep_Mgha <- rbind(data.frame(year=land_conversion_year,
+#                                   ObsCBDdeep_cstock[ObsCBDdeep_cstock$treatment==control_treatment,c("treatment","cstock")]),
+#                        ObsCBDdeep_cstock[ObsCBDdeep_cstock$treatment==treatment,c("year","treatment","cstock")])
+# 
+# ### calculate C stock to 25 cm
+# ObsCdeep_calcs <- ObsCBDdeep %>%
+#   group_by(treatment) %>%
+#   mutate(c_cm=cstock/depth,
+#          addtl_c=if_else(section=="Surface",0,
+#                  if_else(section=="Middle",c_cm*(25-depth[section=="Surface"]),
+#                  0)
+#                  ),
+#          tot_C=if_else(section=="Surface",cstock[section=="Surface"]+addtl_c[section=="Middle"],0)
+#          )
+# 
+# ObsCdeep_25cm <- ObsCdeep_calcs[ObsCdeep_calcs$section=="Surface",c("year","treatment","tot_C")]
+# 
+# ObsCdeep_top25_pct <- cbind(ObsCdeep_25cm[,1:2],ObsCdeep_25cm$tot_C/ObsCBDdeep_cstock$cstock)
+# 
+# 
+# ##################################
+# # Add fertilizer for GHG reference
+# ##################################
+# # 
+# # Fert_APSIM <- as.data.frame(read.csv(paste0(obs_path,obs_fert_filename)) %>%
+# #   mutate(date=as.Date(date,format="%Y-%m-%d")))
+# # Fert <- as.data.frame(read.csv(paste0(obs_path,obs_fert_filename)) %>%
+# #   mutate(date=as.Date(date,format="%m/%d/%Y")))
+# 
+# #######################
+# # Bring in weather data
+# #######################
+# 
+# # ObsWth <- read.csv(paste0(apsim_path,"/basic_wth_",clim_scenario_num,".csv"),
+# #                    skip=2) %>%
+# #   mutate(meant=round((maxt+mint)/2,1),
+# #          date=as.Date(day-1, origin=paste0(as.character(year),"-01-01"),),
+# #          source="Air"
+# #   )
+# 
+# #**********************************************************************
+# 
+# # write calibration header file ---------------------------------------
+# 
+# # make separate file with column headers (empty table with NA row)
+# log_col_headers <- c("Date_time","Model",
+#                      "Climate_Scenario","Mgmt_Scenario","Scenario_Name",
+#                      "Scenario_Abbr",
+#                      "Maize_slope_1to1","Maize_yint_1to1","Maize_R2_1to1","Maize_RMSE_1to1",
+#                      "Maize_diff",
+#                      "Soy_slope_1to1","Soy_yint_1to1","Soy_R2_1to1","Soy_RMSE_1to1",
+#                      "Soy_diff",
+#                      "Wheat_slope_1to1","Wheat_yint_1to1","Wheat_R2_1to1","Wheat_RMSE_1to1",
+#                      "Wheat_diff",
+#                      "SOC_slope_1to1","SOC_yint_1to1","SOC_R2_1to1","SOC_RMSE_1to1",
+#                      "SOC_diff","SOC_diff_noout",
+#                      "Temp_slope_1to1","Temp_yint_1to1","Temp_R2_1to1","Temp_RMSE_1to1",
+#                      "Temp_diff",
+#                      "Moist_slope_1to1","Moist_yint_1to1","Moist_R2_1to1","Moist_RMSE_1to1",
+#                      "Moist_diff",
+#                      "N2O_slope_1to1","N2O_yint_1to1","N2O_R2_1to1","N2O_RMSE_1to1",
+#                      "N2O_diff",
+#                      "CH4_slope_1to1","CH4_yint_1to1","CH4_R2_1to1","CH4_RMSE_1to1",
+#                      "CH4_diff",
+#                      "MBio_slope_1to1","MBio_yint_1to1","MBio_R2_1to1","MBio_RMSE_1to1",
+#                      "MBio_diff",
+#                      "Cotton_slope_1to1","Cotton_yint_1to1","Cotton_R2_1to1","Cotton_RMSE_1to1",
+#                      "Cotton_diff",
+#                      "Sorghum_slope_1to1","Sorghum_yint_1to1","Sorghum_R2_1to1","Sorghum_RMSE_1to1",
+#                      "Sorghum_diff",
+#                      "Maize_cultivar","Soybean_cultivar","Wheat_cultivar",
+#                      "Cotton_cultivar","Sorghum_cultivar",
+#                      "Maize_slope_time","Maize_yint_time","Maize_R2_time","Maize_RMSE_time",
+#                      "Soy_slope_time","Soy_yint_time","Soy_R2_time","Soy_RMSE_time",
+#                      "Wheat_slope_time","Wheat_yint_time","Wheat_R2_time","Wheat_RMSE_time",
+#                      "SOC_slope_time","SOC_yint_time","SOC_R2_time","SOC_RMSE_time",
+#                      "SOC_slope_time_noout","SOC_yint_time_noout","SOC_R2_time_noout","SOC_RMSE_time_noout",
+#                      "Temp_slope_time","Temp_yint_time","Temp_R2_time","Temp_RMSE_time",
+#                      "Moist_slope_time","Moist_yint_time","Moist_R2_time","Moist_RMSE_time",
+#                      "N2O_slope_time","N2O_yint_time","N2O_R2_time","N2O_RMSE_time",
+#                      "CH4_slope_time","CH4_yint_time","CH4_R2_time","CH4_RMSE_time",
+#                      "MBio_slope_time","MBio_yint_time","MBio_R2_time","MBio_RMSE_time",
+#                      "Cotton_slope_time","Cotton_yint_time","Cotton_R2_time","Cotton_RMSE_time",
+#                      "Sorghum_slope_time","Sorghum_yint_time","Sorghum_R2_time","Sorghum_RMSE_time"
+# )
+# dummy<-data.frame(matrix(ncol=length(log_col_headers)))
+# colnames(dummy) <- log_col_headers
+# 
+# write.table(dummy,file=paste0(results_path,"Calibration_log_columns.csv"),
+#             append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
+# 
+# # Log results -------------------------------------------------------------
+# 
+# if(clim_scenario_num == 1 & mgmt_scenario_num %in% calib_mgmt_nums) {
+#   # add this run's results to model log file and file collecting all final
+#   # model runs
+#   calib_log_tab <- cbind(as.character(Sys.time()),"Observed",
+#                          clim_scenario_num,mgmt_scenario_num, scenario_name,
+#                          scenario_abbrev,
+#                          NA, NA, NA, NA, # Corn 1 to 1
+#                          NA, # diff (obs - mod)
+#                          NA, NA, NA, NA, # Soybeans 1 to 1
+#                          NA, # diff
+#                          NA, NA, NA, NA, # Wheat 1 to 1
+#                          NA, # diff
+#                          NA, NA, NA, NA, # SOC 1 to 1
+#                          NA, NA, # diffs (w/ and w/o outliers)
+#                          NA, NA, NA, NA, # Temperature 1 to 1
+#                          NA, # diff
+#                          NA, NA, NA, NA, # Moisture 1 to 1
+#                          NA, # diff
+#                          NA, NA, NA, NA, # N2O 1 to 1
+#                          NA, # diff
+#                          NA, NA, NA, NA, # CH4 1 to 1
+#                          NA, # diff
+#                          NA, NA, NA, NA, # M Bio 1 to 1
+#                          NA, # diff
+#                          NA, NA, NA, NA, # Cotton 1 to 1
+#                          NA, # diff
+#                          NA, NA, NA, NA, # Sorghum 1 to 1
+#                          NA, # diff
+#                          NA, NA, NA, NA, NA, # M,S,W,C,S cultivars
+#                          ObsMYfit_coef[2], NA, ObsMYfit_r2, NA, # Corn time series
+#                          ObsSYfit_coef[2], NA, ObsSYfit_r2, NA, # Soybeans time series
+#                          ObsWYfit_coef[2], NA, ObsWYfit_r2, NA, # Wheat time series
+#                          ObsCfit_coef[2], NA, ObsCfit_r2, NA, # SOC time series
+#                          ObsCfit_coef_noout[2], NA, ObsCfit_r2_noout, NA, # SOC time series without outliers
+#                          ObsTfit_coef[2], NA, ObsTfit_r2, NA, # Temperature time series
+#                          ObsMfit_coef[2], NA, ObsMfit_r2, NA, # Moisture time series
+#                          ObsN2Ofit_coef[2], NA, ObsN2Ofit_r2, NA, # N2O time series
+#                          ObsCH4fit_coef[2], NA, ObsCH4fit_r2, NA, # CH4 time series
+#                          ObsMBfit_coef[2], NA, ObsMBfit_r2, NA, # M Bio time series
+#                          NA, NA, NA, NA, # Cotton time series
+#                          NA, NA, NA, NA # Sorghum time series
+#   )
+#   
+#   source("p_Edit_calib_file.R", local = TRUE)
+#   p_Edit_calib_file(calib_log_tab,"Observed",scenario_name)
+# }
+
+# }) # end suppressMessages
 

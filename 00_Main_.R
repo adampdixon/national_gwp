@@ -52,15 +52,27 @@ calib_mgmt_grps <- c(1,2,3)
 calib_mgmt_nums <- c(1,2,3)
 
 #######################################
-print("Copying over KBS 'Data' files")
-if(!dir.exists(file.path(master_path, 'Data', site_name))) copyDirectory(from = file.path(master_path, '/Data/KBS'),
-                                                                     to = file.path(master_path, 'Data', site_name),
-                                                                     recursive = T)
+# print("Copying over KBS 'Data' files")
+# if(!dir.exists(file.path(master_path, 'Data', site_name))) copyDirectory(from = file.path(master_path, '/Data/KBS'),
+#                                                                      to = file.path(master_path, 'Data', site_name),
+#                                                                      recursive = T)
+# Create the same directory structure as the KBS site, but leave empty
+dir.create(file.path(master_path, 'Data', site_name))
+dir.create(file.path(master_path, 'Data', site_name, 'Calibration'))
+dir.create(file.path(master_path, 'Data', site_name, 'Historical Land Use and Yields'))
+dir.create(file.path(master_path, 'Data', site_name, 'Management'))
+dir.create(file.path(master_path, 'Data', site_name, 'Site and Region info'))
+dir.create(file.path(master_path, 'Data', site_name, 'Weather'))
+
+
+
 #######################################
-print("Copying over KBS 'Daycent model' files -- delete when begin running in full")
-if(!dir.exists(file.path(master_path, 'Daycent', site_name))) copyDirectory(from = file.path(master_path, '/Daycent/KBS'),
-                                                                         to = file.path(master_path, 'Daycent', site_name),
-                                                                         recursive = T)
+# print("Copying over KBS 'Daycent model' files -- delete when begin running in full")
+# if(!dir.exists(file.path(master_path, 'Daycent', site_name))) copyDirectory(from = file.path(master_path, '/Daycent/KBS'),
+#                                                                          to = file.path(master_path, 'Daycent', site_name),
+#                                                                          recursive = T)
+dir.create(file.path(master_path, 'Daycent', site_name))
+
 #######################################
 
 
@@ -70,11 +82,11 @@ obs_mgmt_path <- paste0("Data/",site_name,"/Management/")
 
 
 
-hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
-hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
-curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
-wth_path <- paste0("Data/",site_name,"/Weather/")
-nasapower_output_filename <- paste0(site_name,"_np.csv")
+# hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
+# hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
+# curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
+# wth_path <- paste0("Data/",site_name,"/Weather/")
+# nasapower_output_filename <- paste0(site_name,"_np.csv")
 
 mgmt_path=paste0("Data/",site_name,"/Management/") # same as obs_mgmt_path but going with it
 
@@ -82,11 +94,11 @@ adjusted_ops_filename="clean_ops_ext_adj.csv"
 fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
 
 #######################################
-print("Copying over APSIM files")
-apsim_path <- paste0("APSIM/",site_name,"/")
-if(!dir.exists(file.path(master_path, apsim_path))) copyDirectory(from = file.path(master_path, '/APSIM/KBS'),
-                                                                         to = file.path(master_path, apsim_path),
-                                                                         recursive = T)
+# print("Copying over APSIM files")
+# apsim_path <- paste0("APSIM/",site_name,"/")
+# if(!dir.exists(file.path(master_path, apsim_path))) copyDirectory(from = file.path(master_path, '/APSIM/KBS'),
+#                                                                          to = file.path(master_path, apsim_path),
+#                                                                          recursive = T)
 
 #######################################
 print("Copying over Daycent files -- get harvest 1_1 please please please joke")
@@ -98,27 +110,34 @@ print(list.files(file.path(master_path, daycent_path), pattern = 'harvest_base_1
 
 #######################################
 
-if(Sys.info()['sysname']=='Linux') {
-  # copyDirectory(from = file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects/KBS"),
-  #               to = file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects", site_name),
-  #               recursive = T)
-  site_ldndc_folder <- file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects", site_name)
-  #TODO UPATE THIS MAYBE???
-  if(dir.exists(site_ldndc_folder)) unlink(site_ldndc_folder) # remove folder if it's there
-  unlink(site_ldndc_folder, recursive = T) # remove folder if it's there
-  dir.exists(site_ldndc_folder)
-  dir.create(file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects", site_name))
-  dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
-} else {
-  print("Can't run cause not linux")
-  dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
-}
-rothc_path <- paste0("RothC/",site_name,"/")
-mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
+if(identical(run_LDNDC, TRUE)){
+  if(Sys.info()['sysname']=='Linux') {
+    # copyDirectory(from = file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects/KBS"),
+    #               to = file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects", site_name),
+    #               recursive = T)
+    site_ldndc_folder <- file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects", site_name)
+    #TODO UPATE THIS MAYBE???
+    if(dir.exists(site_ldndc_folder)) unlink(site_ldndc_folder) # remove folder if it's there
+    unlink(site_ldndc_folder, recursive = T) # remove folder if it's there
+    dir.exists(site_ldndc_folder)
+    dir.create(file.path(master_path, "LDNDC/ldndc-1.35.2.linux64/projects", site_name))
+    dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
+  } else {
+    print("Can't run cause not linux")
+    dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
+  }
+  
+}  
+  
+# rothc_path <- paste0("RothC/",site_name,"/")
 
-# AD NOTE - Copying over the files from the KBS folder to the site folder
-copyDirectory(from = file.path(master_path, "Millennial/R/simulation/KBS"), 
-              to = file.path(master_path, mill_path), recursive = T)
+
+if(identical(run_Millennial, TRUE)){
+  # AD NOTE - Copying over the files from the KBS folder to the site folder
+  copyDirectory(from = file.path(master_path, "Millennial/R/simulation/KBS"), 
+                to = file.path(master_path, mill_path), recursive = T)
+  mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
+}
 
 
 #**********************************************************************

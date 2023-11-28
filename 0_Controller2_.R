@@ -63,10 +63,10 @@ if(!dir.exists(file.path(master_path, obs_path))) copyDirectory(from = file.path
                                                                 recursive = T)
 
 
-hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"     #15
-hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv" #16
-curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"  #17
-nasapower_output_filename <- paste0(site_name,"_np.csv")
+# hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"     #15
+# hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv" #16
+# curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"  #17
+# nasapower_output_filename <- paste0(site_name,"_np.csv")
 #
 # site_id <- 2                                              #1
 # site_name <- "LRF"                                        #2
@@ -97,14 +97,16 @@ end_fut_period_date <- "2050-12-31"
 mgmt_path=paste0("Data/",site_name,"/Management/")
 adjusted_ops_filename="clean_ops_ext_adj.csv"
 wth_path <- paste0("Data/",site_name,"/Weather/")
-apsim_path <- paste0("APSIM/",site_name,"/")
+# apsim_path <- paste0("APSIM/",site_name,"/")
 daycent_path <- paste0("Daycent/",site_name,"/")
-if(Sys.info()['sysname']=='Linux') {
-  dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
-} else {
-  dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
-}
-rothc_path <- paste0("RothC/",site_name,"/")
+
+# 
+# if(Sys.info()['sysname']=='Linux') {
+#   dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
+# } else {
+#   dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
+# }
+# rothc_path <- paste0("RothC/",site_name,"/")
 mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 #
 # clim_scenario_num <- 1
@@ -141,10 +143,14 @@ source(paste0("2_Create_soil_data-setup2_.R"), local = TRUE)
 #   #
 #   # source("2_Create_soil_data-APSIM.R")
 source("2_Create_soil_data-Daycent_.R", local = TRUE)
-source("2_Create_soil_data-LDNDC_.R", local = TRUE)
-#   # RothC only uses clay content, which is included in the weather input file.
-source(paste0("2_Create_soil_data-Millennial_.R"), local = TRUE)
-# }
+
+if(identical(run_LDNDC, TRUE)){
+  source("2_Create_soil_data-LDNDC_.R", local = TRUE)
+}
+
+if(identical(run_Millennial, TRUE)){
+  source(paste0("2_Create_soil_data-Millennial_.R"), local = TRUE)
+}
 
 
 #*************************************************************
@@ -157,20 +163,23 @@ source(paste0("3_Create_management_input_files-setup_.R"), local = TRUE)
 
 # source(paste0("3_Create_management_input_files-APSIM_.R"), local = TRUE)
 #
-if(mgmt_scenario_grp!=6) {
+# if(mgmt_scenario_grp!=6) {
 source("3_Create_management_input_files-Daycent_.R", local = TRUE)
+
+if(identical(run_LDNDC, TRUE)){
 source(paste0("3_Create_management_input_files-LDNDC_.R"), local = TRUE)
-#
+# # Other files
+source("4_Create_additional_files-LDNDC_.R", local = TRUE)
 ## Management input files for RothC, Millennial are created after Daycent runs
 }
 
 
 #*************************************************************
 
-# Other files
-if(mgmt_scenario_grp!=6) {
-source("4_Create_additional_files-LDNDC_.R", local = TRUE)
-}
+# # Other files
+# if(mgmt_scenario_grp!=6) {
+# source("4_Create_additional_files-LDNDC_.R", local = TRUE)
+# }
 
 
 #*************************************************************
@@ -198,8 +207,8 @@ source(paste0("Daycent/Daycent_run_controller_.R"), local = TRUE)
 #*************************************************************
 
 # LDNDC
-if(mgmt_scenario_grp!=6) {
-# source(paste0("LDNDC/ldndc-1.35.2.linux64/projects/run_LDNDC.R"), local = TRUE)
+if(identical(run_LDNDC, TRUE)){
+source(paste0("LDNDC/ldndc-1.35.2.linux64/projects/run_LDNDC.R"), local = TRUE)
 }
 
 
@@ -224,16 +233,16 @@ if(mgmt_scenario_grp!=6) {
 
 #*************************************************************
 
-Daycent
-if(mgmt_scenario_grp!=6) {
-source(paste0("9_Results_Daycent-setup_.R"), local = TRUE)
-model_name <- "Daycent"
-if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
-  source(paste0("9_Results_Daycent-calibration_.R"), local = TRUE)
-}
-source(paste0("9_Results_Daycent-future_.R"), local = TRUE)
+# Daycent
+# if(mgmt_scenario_grp!=6) {  
+source(paste0("9_Results_Daycent-setup_.R"), local = TRUE)# this file creates the Annual_results_compilation file
+# model_name <- "Daycent"
+# if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
+#   source(paste0("9_Results_Daycent-calibration_.R"), local = TRUE)
+# }
+# source(paste0("9_Results_Daycent-future_.R"), local = TRUE) # these are mostly graphing, do we need?
 # source("p_Results_analysis.R")
-}
+# }
 
 #*************************************************************
 
@@ -259,12 +268,16 @@ source(paste0("9_Results_Daycent-future_.R"), local = TRUE)
 # Management input files (RothC, Millennial)
 # need to first run 3_Create_management_input_files-setup_",site_name,".R
 # and 9_Results_Daycent-setup_",site_name,".R
-source("3_Create_management_input_files-setupRM2_.R", local = TRUE)
+
+
 # # Millennial
+if(identical(run_Millennial, TRUE)){
+source("3_Create_management_input_files-setupRM2_.R", local = TRUE)
+
 source("3_Create_management_input_files-Millennial_.R", local = TRUE)
 
 source(paste0(mill_path,"run_Millennial.R"),  local = TRUE)
-# }
+}
 #
 # RothC
 # source(paste0("3_Create_management_input_files-RothC_",site_name,".R"))
