@@ -24,3 +24,9 @@ write.table(soil_df[,c("upper_depth_cm","lower_depth_cm","DUL","LL15","evap_coef
             row.names=F, quote=F, col.names=F, sep=' ')
 
 # phaq_value_avg, bdfiod_value_avg, #THESE ARE MISSING
+
+
+
+# s<-soil_df[,c("upper_depth_cm","lower_depth_cm","DUL","LL15","evap_coef",
+#            "root_fraction","sand_fraction","clay_fraction","OM_fraction", # changed all _frac to e.g. clay_fraction
+#            "deltamin","ksat_cmsec")]
