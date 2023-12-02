@@ -11,4 +11,13 @@ precip<-precip_raw[grep('.csv', precip_raw)]
 #read multiple csvs into data.frame
 precip_df<-do.call(rbind, lapply(precip, read.csv))
 
+
+head(precip_df)
+
+unique(precip_df$GEOID)
 # make GEOID, date, doy, precip 
+
+head(read.csv(precip[1]))
+unique(read.csv(precip[1])$GEOID)
+
+length(read.csv(precip[1])$GEOID)
