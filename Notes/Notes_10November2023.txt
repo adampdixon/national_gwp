@@ -1,0 +1,226 @@
+logging on to cheyenne or casper
+
+ssh -Y apdixon@cheyenne.ucar.edu
+
+use password (Token response:) and then two-factor authentication
+
+
+
+Glade
+Home
+/glade/u/home/apdixon
+/glade/work/apdixon
+/glade/scratch/apdixon
+/glade/p/essity/project_code
+
+check usage with gladequota
+
+Copying over Ellen's files 
+first command
+rsync --stats -vraP /glade/work/edvlmaas/CMIP6 /glade/work/apdixon
+
+rsync
+
+cp -r css images js backups ar/
+
+cp -r FieldObs LRR NASS Tillage Fertilizer gSSURGO LUH2 nClimGrid USCounties glade/work/apdixon
+
+rsync --stats -vraRP --progress /glade/work/edvlmaas/./FieldObs /glade/work/edvlmaas/./LRR /glade/work/edvlmaas/./Tillage /glade/work/edvlmaas/./Fertilizer /glade/work/edvlmaas/./gSSURGO /glade/work/edvlmaas/./LUH2 /glade/work/edvlmaas/./nClimGrid /glade/work/edvlmaas/./USCounties /glade/u/work/apdixon
+
+rsync --stats -vraRP --progress /glade/work/zhuonan/Output_nClimGrid /glade/work/apdixon/    <-this puts folders in a weird directory structure
+
+cp -r /glade/work/zhuonan /glade/work/apdixon/   <-this puts folders where they are specified here
+
+cp -r CMIP6 /glade/work/apdixon/CMIP6_zhuonan
+
+* /glade/derecho/scratch/edvlmaas copied
+* /glade/cheyenne/scratch/edvlmaas copied
+* /glade/work/edvlmaas copied
+
+double checking work folder is copied over successfully using 
+rsync -n -avrc /glade/work/edvlmaas/* /glade/work/apdixon/
+
+https://stackoverflow.com/questions/50619033/rsync-compare-files-in-two-directories-list-only-files-with-difference
+
+To get elevation data
+http://www.viewfinderpanoramas.org/dem3.html#himalayas
+
+https://www.qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu
+
+Need to get for each site
+Weather data
+Climate data
+Soil data
+
+
+/home/ap/Elevation/tl_2022_us_state.shp
+/home/ap/Elevation/us_county_average_elevation_m.csv
+
+
+On glade:
+/glade/u/home/apdixon/Documents/national_gwp
+
+Oklah0m4!@
+
+
+Github passphrase: Oklahoma
+Your identification has been saved in /glade/u/home/apdixon/.ssh/id_ed25519
+Your public key has been saved in /glade/u/home/apdixon/.ssh/id_ed25519.pub
+
+vncmgr create session1 --account UEMO0003 --time 01:00
+
+ssh -l apdixon -L 5903:localhost:5903 casper15.ucar.edu "bash ~/.vncmgr/tunnel-default"
+
+Talking to Debjani - 13 November 2023
+
+make sure 
+NASS yields
+gSSURGO
+
+Climate data set up for the current
+Conversion of yield and soil carbon to get started on historical data
+Crop yield for each crop, and soil carbon 
+Maybe make a map of differences -- but first thing is running it at the CONUS scale
+
+generation of carbon stock - % carbon x bulk density x depth - US tons per hectare (m2 area - SSURGO units)
+
+look at google drive to check the source for weather data (in reference to Kalamazoo csv ) There's a powerpoint in the google drive folder
+
+We're doing millineal because it's the only one that does microbial
+
+RUN THE BASELINE FIRST - Where are we now?
+Once you are able to set it up. Then we'll do cover crop and tillage.
+1850 to 2022
+
+Millenial will need soil moisture from DayCent
+
+Generatie 
+
+install.packages(c('readxl','plotly','magrittr','dplyr','data.table','tidyr','stringr','lubridate','ggplot2','readr','pracma','sqldf','stringi','tidyverse','graphics','apsimx','soiltexture','xml2','raster'))
+
+## Default repo
+local({r <- getOption("repos")
+       r["CRAN"] <- "https://mirror.las.iastate.edu/CRAN/" 
+       options(repos=r)
+})
+
+http://cran.espol.edu.ec/mirrors.html
+
+
+redact
+plotly
+magrittr
+dplyr
+data.table
+tidyr
+stringr
+lubridate
+ggplot2
+readr\
+pracma
+sqldf
+stringi
+tidyverse
+graphics
+apsimx
+soiltexture
+xml2
+raster
+
+19 November 2023
+
+Near module list
+Gnu/12.1
+
+module remove netcdf
+
+gdal/3.3.2 
+geos/3.10.1
+proj/8.1.1
+udunits/2.2.28
+
+
+R/4.1.2 
+
+To install sf and spatial packages
+On Cheyenne:
+Steps:
+  1) ncarenv/1.3              
+  2) gnu/10.1.0. - it appears that gdal requires GLIBCXX_3.4.2 which is on 10.1 g++
+  3) ncarcompilers/0.5.0
+  4) mpt/2.25
+  5) gdal/3.3.2
+  6) geos/3.10.1
+  7) proj/8.1.1
+  8) udunits/2.2.28    
+  9) R/4.1.2
+
+ml remove netcdf
+ml load ncarenv/1.3 gnu/10.1.0 ncarcompilers/0.5.0 mpt/2.25 gdal/3.3.2 geos/3.10.1 proj/8.1.1 udunits/2.2.28 R/4.1.2
+
+
+Load CRAN 
+## Default repo
+local({r <- getOption("repos")
+       r["CRAN"] <- "https://mirror.las.iastate.edu/CRAN/" 
+       options(repos=r)
+})        
+
+
+Go forth          
+
+
+
+On capser
+Problem 1:
+configure: Install failure: compilation and/or linkage problems.
+configure: error: GDALAllRegister not found in libgdal.
+Solution: load gnu - but don't know how to configure gnu
+
+
+
+
+install.packages(c('plotly','magrittr','dplyr','data.table','tidyr','stringr','lubridate','ggplot2','readr','pracma','sqldf','stringi','tidyverse'))
+
+
+'graphics','apsimx','soiltexture','xml2','raster'
+
+#to download R
+cran.r-project.org/bin/macosx/base/R-4.1.2.pkg
+
+
+Install also:
+soilDB
+apsimx 
+RSQLite
+sf-all these done
+
+now these
+spData-
+XML-
+berryFunctions- not available
+datetime - currently commented out... not needed?
+FME
+rnoaa
+
+
+install.packages(c('berryFucntions','datetime','FME','rnoaa'))
+
+make sure mono is installed
+https://www.mono-project.com/download/stable/--don't think this is needed
+https://cran.r-project.org/web/packages/apsimx/vignettes/apsimx-scripts.html
+
+https://vim.rtorr.com/
+https://www.freecodecamp.org/news/turning-vim-into-an-r-ide-cd9602e8c217/
+
+ 
+
+/home/ap/Documents/GitHub/national_gwp
+
+
+/home/ap/Documents/GitHub/national_gwp_unmodified
+
+Github on glade
+/glade/u/home/apdixon/Documents/national_gwp/
+
+

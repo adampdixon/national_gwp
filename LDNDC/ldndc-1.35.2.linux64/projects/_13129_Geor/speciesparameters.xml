@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ldndcspeciesparameters>
+  <speciesparameters>
+    <species group="crop" mnemonic="soyb">
+      <par name="gdd_base_temperature" value="7"/>
+      <par name="gdd_maturity" value="1819"/>
+      <par name="gdd_grain_filling" value="-1"/>
+      <par name="fraction_foliage" value="0.43"/>
+      <par name="fraction_fruit" value="0.4"/>
+      <par name="fraction_root" value="0.06"/>
+      <par name="fyield" value="0.18"/>
+      <par name="slamax" value="20"/>
+      <par name="vcmax25" value="125.6"/>
+      <par name="h2oref_a" value="0.5"/>
+    </species>
+  </speciesparameters>
+</ldndcspeciesparameters>

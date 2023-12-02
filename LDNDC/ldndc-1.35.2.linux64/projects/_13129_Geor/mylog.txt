@@ -1,0 +1,22 @@
+[EE] error occured during load,  error=3
+[EE] 	error diagnostic-1:./_13129_Geor1_1.ldndc
+node    0: Setting up ldndc instance failed with status -3
+Error: "Failed to read project file"
+
+==== HELP =============================================
+Rats! What happened now? See below for possible
+explainations (You'll also find more detailed inform-
+ation in the LandscapeDNDC Users Guide v1.35.2) 
+
+The attempt to find and read the project file
+failed. This can have several reasons:
+    a) The project file does not exist
+    b) The project file is spelled incorrectly
+    c) The project file contains syntax errors
+    d) You have insufficient read permissions
+Please, check your project file. Consider using
+an XML editor with syntax highlighting
+and an XML validator (e.g., xmllint).
+==== HELP =============================================
+node 0: premature termination or incomplete run.
+node    0: premature termination or incomplete run.

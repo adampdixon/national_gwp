@@ -1,0 +1,202 @@
+Start up meeting with Debjani
+
+https://drive.google.com/drive/folders/17OCpPGuuYr17QBDQ8PYDmT90eYScAZ8m
+
+go through source codes
+
+LDNCD
+Millennial
+Daycent
+
+Dno't worry about APSIM, RothC
+
+You should be able to find online info on each of the models - each model has a person in charge that is repsponsible for answering questions
+
+Daycent - what are dependencies, what are input files, etc. how do you write output, technically how to run the model
+
+Feel free to reach out to UCAR -- go through their documentation.
+You can respond to the same thread. I need to be under Debjani's project.
+
+Get set up with userID, 2 factor auth, having access to other input files. Where they are located and what has been done - so look and see what's been done.
+
+look at soils, and inputs
+
+let Debjani know if I have any questions. Check in again mid-week or end of week.
+
+Once I have access to everything, aware of scripts, once user of database you can join training sessions, etc. but they have very good documentation.
+
+
+We really want to find out if it's possible to find Net Zero emissions using one or many crop/mgmt practices. This is the goal. 
+
+There are 3 different models. If you can put together flow diagrams, Debjani can help with explaining. Don't worry about what the equations are doing, just what is connected. What are the flows, inputs, outputs. 
+
+
+
+second step, will be to run the functions for several counties. Then to adapt the functions so that we can run all the counties.
+
+With questions - just reach out - any time of the day.
+
+Put time management in same. MAke sure you have full access to NCAR system. Email them and have them add to the project and ownership.
+
+
+
+cislhelp@ucar.edu
+
+
+ssh -l apdixon -L 5901:localhost4:5901 casper07.ucar.edu "bash ~/.vncmgr/tunnel-third"
+17783633
+
+commands
+
+gladequota
+
+snapshots - one level up from home directory - shows working sessions
+snapls - shows all snapshots available 
+
+Research Data Archive - /glade/collections/rda/
+Under "Computing & Data"
+
+Data Transfer -> Globus
+
+Software -> 
+lmod as environment module system
+command: module avail 
+ml - short for module
+
+Do I need to specify a compiler?
+which icc
+use swap to change
+
+--Don't put module load commands in your shell startup files
+proper way>
+module load ncl python ncl mkl
+module save default
+
+make multiple - module restore <set>
+
+
+
+What is the threshold for a task taking too many resources on a login node?
+
+running PBS jobs
+qsub
+qstat
+qinteractive
+qcmd
+qhist
+
+
+LandscapeDNDC - google group - there's a user group - 
+
+
+https://gitlab.com/mark.easter99/comet-farm-daycent-model-source-code
+
+https://www2.nrel.colostate.edu/projects/irc/public/Documents/Software/Century5/Reference/index.html
+
+https://ldndc.imk-ifu.kit.edu/products/ldndc-usersguide.pdf
+
+https://ldndc.imk-ifu.kit.edu/about/people.php
+
+
+Do in this order
+1.Daycent - much more local, more information
+2.Millenial - it's much more easy (just a decomposition module)
+3. LDNDC - do last - tons of papers
+
+Counties in mind -- Debjani will send
+
+Don't worry about removing something, just use all counties, and go from there.
+
+Go with process that helps you expedite. If you want to use all crop layers, etc, what you want to do.
+
+
+There's two sites, KBS and another one. Just focus on one of them. Focus on the COMET farm version. Clone it in your github and 
+
+https://gitlab.com/mark.easter99/comet-farm-daycent-model-source-code
+
+https://ldndc.imk-ifu.kit.edu/about/people.php
+
+https://ldndc.imk-ifu.kit.edu/products/ldndc-usersguide.pdf
+
+Password: drfGKT@o2
+
+MtEqMCBnEGJC8c9Lifmu
+
+AB22MAR79#
+
+pw: BZG5T7B2$
+wtk8qpv@mxf!ugt4ATD
+
+
+TODOS:
+1. Get connected to CISL and to Emory
+2. Run draft of Daycent model
+	a. Create function to run Daycent in a county
+	a. Get draft scenarios set up
+3. Run draft of Millenial modelS
+	a. Create county function
+4. Run draft of LDNDC
+	a. Create county function
+
+5. Write R script to run all functions for all counties
+	a. output table with counties and years as unique rows
+	b. create draft maps of each year at CONUS level
+
+
+
+
+https://www.nrel.colostate.edu/assets/nrel_files/projects/daycent/downloads/
+
+
+https://github.com/edvlmaas/national_gwp/tree/master
+https://github.com/infotroph/soyface_daycent
+https://www2.nrel.colostate.edu/projects/irc/public/Documents/Software/Century5/Reference/index.html
+https://medium.com/@jamie84mclaughlin/installing-r-and-the-tidyverse-on-ubuntu-20-04-60170020649b
+
+
+libraries needed to be installed
+sf
+units
+sudo aptitude install gdal-bin libgdal-dev
+
+
+
+Talking with Debjani 6 November 2023
+
+-starting to work through Ellen Maas's code
+    - seems to make sense
+    -
+
+Make sure you get Ellen's files on CISL
+
+in the model we'll change crop percentage according to what percentage county is
+we'll try to make as simple as possible
+goal is to get a bigger view than fine resolution, go away from that 
+
+will I use all the same scenarios as Ellen
+dates will be very approximate
+
+Ellen did a deep dive for KBS, but we'll abstract a lot and make a lot of assumptions at the county level
+
+Generally what is the sowing date? e.g.
+
+Model is calibrated going back in time - pre-history to 2022 - then projected from 2022 to 2050
+again we can' fit according to the details
+
+NASS - county level yield data
+Soil Carbon data and yield to get started. Then we'll follow up in the future scenarios.
+This is first bet to run at national scale, then we'll see if we need to do more targeted calibration
+
+LTER KBS, LRF (in Texas) we can check according to those
+
+If you don't hear back from CISL, the ticket is in the system.
+
+
+Milennial is just a soil model and is easy - take 2 hours to read through it
+
+temperature/soil moisture -
+
+After DayCent 
+
+Run the point scale model -\\ ?? what does this mean? dfdfdf
+
