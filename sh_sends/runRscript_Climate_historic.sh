@@ -1,19 +1,19 @@
 #!/bin/bash 
 ########################
 ### Job name
-#PBS -N Climate_historic
+#PBS -N Climate_data
 #PBS -A UEMO0003
 #PBS -o /glade/u/home/apdixon/Documents/GitHub/national_gwp/sh_sends/job_climate.stdout
 #PBS -e /glade/u/home/apdixon/Documents/GitHub/national_gwp/sh_sends/job_climate.stderr 
 ### Queue name
 #PBS -q regular
-#PBS -l walltime=12:00:00
+#PBS -l walltime=6:00:00
 ### Send email on abort, begin and end
 #PBS -m e
 ### Specify mail recipient
 #PBS -M apdixon@pm.me
 ### Number of nodes
-#PBS -l select=1:ncpus=2:ompthreads=2:mem=64GB
+#PBS -l select=1:ncpus=7:ompthreads=7:mem=64GB
 ###PBS -l select=1:ncpus=32:mem=235GB
 ########################
 
