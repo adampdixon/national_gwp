@@ -1,3 +1,6 @@
+library(dplyr)
+library(tidyr)
+
 # setwd('/glade/work/apdixon')
 
 # nclim_dir<-'/glade/work/apdixon/Output_nClimGrid'
@@ -38,3 +41,5 @@ geo_link<-read.csv(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
 # join with the GEOID given by Zhuonan
 climate_df_<-left_join(climate_df, geo_link, by = c('GEOID' = 'zh_geoid'))
 
+# create wide format with pivot
+climate_df_wide<-pivot_wider(climate_df_, names_from = variable, values_from = value)
