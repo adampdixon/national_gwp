@@ -19,13 +19,25 @@ suppressMessages({
   
   print("Starting 1_Create_weather_input_files-Daycent4.R")
   # 
-  # if(clim_scenario_num==1) {
-    
-    ########## Create .wth files ##########
-    
-    # Select day, month, year, dayofyear, maxt, mint, precip (cm)
-    
-    # spin-up period (28 years from 1950-1977 accounting for even breaks between leap years)
+  # load county data from 1950-2021 with nclim, then 2022-2050 with cmip6
+  
+  climate_dir<'/glade/work/apdixon/climate'
+  
+  county_nclim_tmax <-read.csv(file.path(climate_dir,'nclim_tmax.csv'))%>%filter(GEOID==county_geoid)
+  county_ncmlim_tmin<-read.csv(file.path(climate_dir,'nclim_tmin.csv'))%>%filter(GEOID==county_geoid)
+  county_cmlim_prec<-read.csv(file.path(climate_dir,'nclim_prcp.csv'))%>%filter(GEOID==county_geoid)
+  county_cmip6_tmax<-read.csv(file.path(climate_dir,'cmip6_tmax.csv'))%>%filter(GEOID==county_geoid, year!=2021)
+  county_cmip6_tmin<-read.csv(file.path(climate_dir,'cmip6_tmin.csv'))%>%filter(GEOID==county_geoid, year!=2021)
+  county_cmip6_prec<-read.csv(file.path(climate_dir,'cmip6_prcp.csv'))%>%filter(GEOID==county_geoid, year!=2021)
+  
+  # 'GEOID', 'value', 'year', 'doy', 'variable','model'
+  
+  nclim_years<-1950:2021
+  cmip6_years<-2022:2050
+  
+  # create a dataframe with all the weather data
+  
+  
     
     DAYCENT_gwp_all <- Hist_site[Hist_site$year %in% 1950:1977, 
                                   c("day","month","year","dayofyear",
