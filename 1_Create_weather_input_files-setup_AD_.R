@@ -22,7 +22,7 @@ climate_data<-function(var){
   # county data to link
   geo_link_dir<-'/glade/u/home/apdixon/Documents/national_gwp/Data/County'
   #output csvs
-  output_dir<'/glade/work/apdixon/climate'
+  output_dir<-'/glade/work/apdixon/climate'
   
   # GET HISTORIC DATA
   if(var=='prcp'|var=='tmax'|var=='tmin'){
@@ -30,7 +30,7 @@ climate_data<-function(var){
     # nclim_dir<-'/home/ap/Scratch/'
     # read csvs
     data_raw<-list.files(nclim_dir, pattern = var, full.names = T)
-    data<-data_raw[grep('.csv', data_raw)]
+    data<-data_raw[grep('.csv', data_raw)][1:2]
     #read multiple csvs into data.frame
     data_df<-do.call(rbind, lapply(data, read.csv))%>%as_tibble()
     # add the variable name to column, table will be long format
@@ -64,7 +64,7 @@ climate_data<-function(var){
     # read csvs #get only ssp126 scenario
     data_raw<-list.files(cmip6_dir, pattern = paste0(var, '_ssp126'), full.names = T) #get correct variable
     data<-data_raw[grep('gfdl-esm4', data_raw)] # get gfdl-esm4
-    data<-data_raw[grep('.csv', data_raw)][1:4] # get only csvs
+    data<-data_raw[grep('.csv', data_raw)][1:2] # get only csvs
     #read multiple csvs into data.frame
     data_df<-do.call(rbind, lapply(data, read.csv))%>%as_tibble()
     # add the variable name to column, table will be long format
