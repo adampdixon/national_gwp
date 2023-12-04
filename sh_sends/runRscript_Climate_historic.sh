@@ -3,8 +3,8 @@
 ### Job name
 #PBS -N Climate_historic
 #PBS -A UEMO0003
-#PBS -o /glade/u/home/apdixon/Documents/GitHub/national_gwp/sh_sends/job_climate.stdout
-#PBS -e /glade/u/home/apdixon/Documents/GitHub/national_gwp/sh_sends/job_climate.stderr 
+#PBS -o /glade/u/home/apdixon/Documents/national_gwp/sh_sends/job_climate.stdout
+#PBS -e /glade/u/home/apdixon/Documents/national_gwp/sh_sends/job_climate.stderr 
 ### Queue name
 #PBS -q regular
 #PBS -l walltime=12:00:00
