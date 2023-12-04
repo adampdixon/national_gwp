@@ -3,10 +3,11 @@ library(tidyr)
 
 # setwd('/glade/work/apdixon')
 
-# nclim_dir<-'/glade/work/apdixon/Output_nClimGrid'
+nclim_dir<-'/glade/work/apdixon/Output_nClimGrid'
+geo_link_dir<-'/glade/u/home/apdixon/Documents/national_gwp/Data/County'
 
-nclim_dir<-'/home/ap/Scratch/'
-geo_link_dir<-'/home/ap/Documents/GitHub/national_gwp/Data/County'
+# nclim_dir<-'/home/ap/Scratch/'
+# geo_link_dir<-'/home/ap/Documents/GitHub/national_gwp/Data/County'
 
 
 fields<-c('GEOID', 'date', 'precip','tmax','tmin','doy')
@@ -43,3 +44,5 @@ climate_df_<-left_join(climate_df, geo_link, by = c('GEOID' = 'zh_geoid'))
 
 # create wide format with pivot
 climate_df_wide<-pivot_wider(climate_df_, names_from = variable, values_from = value)
+
+write.csv(climate_df_wide, '/glade/scratch/apdixon/climate_df.csv')
