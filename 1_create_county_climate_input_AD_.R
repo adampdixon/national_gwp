@@ -29,6 +29,7 @@ climate_data<-function(county_number){
   
   # GET HISTORIC DATA
   for(var in c('prcp','tmax','tmin')){
+    hist_climate_df<-data.frame()
   # if(var=='prcp'|var=='tmax'|var=='tmin'){
 
     # nclim_dir<-'/home/ap/Scratch/'
@@ -59,12 +60,19 @@ climate_data<-function(county_number){
       
       # use select to put in columns in correct order
       data_df_<-select(data_df_, GEOID, value, year, doy, variable, model)
-      write.csv(data_df_, file.path(output_dir, paste0(var,"_", GEOID ,'_nclim.csv')))
-  }
+      
+      hist_climate_df<-rbind(hist_climate_df, data_df_)
+      
+    }
+    # once all years have run and rbind, write to csv
+    write.csv(hist_climate_df, file.path(output_dir, paste0(var,"_", GEOID ,'_nclim.csv')))
 }
   
   # GET FUTURE DATA
   for (var in c('pr','tasmax','tasmin')){
+    #empty df to rbind
+    future_climate_df<-data.frame()
+    
     # read csvs #get only ssp126 scenario
     data_raw<-list.files(cmip6_dir, pattern = paste0(var, '_ssp126'), full.names = T) #get correct variable
     data<-data_raw[grep('gfdl-esm4', data_raw)] # get gfdl-esm4
@@ -95,8 +103,9 @@ climate_data<-function(county_number){
       # change actual data column to value for long table format
       colnames(data_df)<-c('GEOID', 'value', 'year', 'doy', 'variable','model')
       
-      write.csv(data_df, file.path(output_dir, paste0(var2,"_", GEOID2 ,'_cmip6.csv')))
+      future_climate_df<-rbind(future_climate_df, data_df)
     }
+    write.csv(future_climate_df, file.path(output_dir, paste0(var2,"_", GEOID2 ,'_cmip6.csv')))
   }
 }
 
@@ -106,7 +115,7 @@ library(parallel)
 library(tictoc)
 ncores<-detectCores(logical = T) # not needed?
 # use 7 cores, one for main processing, and one for the 6 variables
-cl<-makeCluster(ncores-1)
+cl<-makeCluster(72)
 tic()
 county_number<-1:3109 # number of US counties in CONUS
 clim<-clusterApply(cl, county_number, climate_data)
