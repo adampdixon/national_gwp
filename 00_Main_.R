@@ -89,8 +89,8 @@ obs_mgmt_path <- paste0("Data/",site_name,"/Management/")
 # nasapower_output_filename <- paste0(site_name,"_np.csv")
 
 mgmt_path=paste0("Data/",site_name,"/Management/") # same as obs_mgmt_path but going with it
-
 adjusted_ops_filename="clean_ops_ext_adj.csv"
+
 fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
 
 #######################################
@@ -101,7 +101,7 @@ fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
 #                                                                          recursive = T)
 
 #######################################
-print("Copying over Daycent files -- get harvest 1_1 please please please joke")
+print("Copying over Daycent files -- ")
 daycent_path <- paste0("Daycent/",site_name,"/")
 copyDirectory(from = file.path(master_path, '/Daycent/KBS'), to = file.path(master_path, daycent_path), recursive = T)
 
