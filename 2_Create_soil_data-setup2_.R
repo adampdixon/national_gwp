@@ -54,7 +54,7 @@ sps <- sps_raw
 # edit attributes from site data and APSIM calibration, relative to each scenario
 # based on deep soil cores from 2001 and APSIM calibration
 
-sps[[1]]$crops <- c('maize','soybean','wheat')
+# sps[[1]]$crops <- c('maize','soybean','wheat')
 ## Bulk density presents an unusual challenge in that it needs to be fixed at the 
 ## control plot BD for equivalent soil mass between the initial C at land conversion 
 ## and the current day, because APSIM will compute the SOC stock as BD*Carbon*depth.
@@ -68,12 +68,14 @@ sps[[1]]$crops <- c('maize','soybean','wheat')
 #                           Cpct_80to200, Cpct_80to200, Cpct_80to200, Cpct_80to200, Cpct_80to200) # can we remove because it's APSIM?
 ## APSIM Classic has a lower limit of 0.01 C content, so bottom 5 layers with 0
 ## were replaced with 0.01
-sps[[1]]$soil$Carbon <- if(mgmt_scenario_num==1 | mgmt_scenario_grp %in% c(4:7))
-                           c(0.87, 0.43, 0.43, 0.233, 0.19, 0.15, 0.1, 0.1, 0.1, 0.1) else 
-                        if(mgmt_scenario_num==2)
-                           c(0.99, 0.44, 0.44, 0.354, 0.19, 0.15, 0.1, 0.1, 0.1, 0.1) else
-                        if(mgmt_scenario_num==3)
-                           c(0.93, 0.44, 0.44, 0.354, 0.19, 0.15, 0.1, 0.1, 0.1, 0.1)
+# sps[[1]]$soil$Carbon <- if(mgmt_scenario_num==1 | mgmt_scenario_grp %in% c(4:7))
+#                            c(0.87, 0.43, 0.43, 0.233, 0.19, 0.15, 0.1, 0.1, 0.1, 0.1) else 
+#                         if(mgmt_scenario_num==2)
+#                            c(0.99, 0.44, 0.44, 0.354, 0.19, 0.15, 0.1, 0.1, 0.1, 0.1) else
+#                         if(mgmt_scenario_num==3)
+#                            c(0.93, 0.44, 0.44, 0.354, 0.19, 0.15, 0.1, 0.1, 0.1, 0.1)
+
+sps[[1]]$soil$Carbon <- c(0.87, 0.43, 0.43, 0.233, 0.19, 0.15, 0.1, 0.1, 0.1, 0.1)
 sps[[1]]$soil$ParticleSizeClay <- c(19, 19, 19, 23, 12, 5, 5, 5, 1, 1)
 sps[[1]]$soil$ParticleSizeSilt <- c(38, 38, 38, 26, 17, 8, 8, 8, 4, 4)
 sps[[1]]$soil$ParticleSizeSand <- c(43, 43, 43, 51, 71, 87, 87, 87, 95, 95)
@@ -104,7 +106,9 @@ saxton_rawls_df <- soil_water_raw %>%
          Ks = 1930*(SAT-DUL)^(3-lamda), # saturated conductivity (mm h-1)
          Ks_mmday = Ks*24,
          Ks_cmsec = Ks/10/60/60,
-         Ks_cmhr = Ks/10)
+         Ks_cmhr = Ks/10,
+         phaq_value_avg = PH, # use soil ph -AD
+         bdfiod_value_avg = BD) # use soil bulk density -AD
 sps[[1]]$soil$SAT <- saxton_rawls_df$SAT
 sps[[1]]$soil$AirDry <- saxton_rawls_df$AirDry
 sps[[1]]$soil$LL15 <- saxton_rawls_df$LL15
@@ -113,28 +117,28 @@ sps[[1]]$soil$DUL <- saxton_rawls_df$DUL
 ####################################################################
 ## continue with remaining soil elements
 
-sps[[1]]$soil$SoilCNRatio <- c(10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
-sps[[1]]$soil$PH <- c(5.5, 5.5, 5.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5)
-sps[[1]]$soil$Maize.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
-                                0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
-sps[[1]]$soil$Soybean.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
-                              0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
-sps[[1]]$soil$Wheat.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
-                                0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
-if(mgmt_scenario_num==3) {
-sps[[1]]$soil$WhiteClover.KL <- c(0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06)
-sps[[1]]$soil$WhiteClover.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
-                                0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
-sps[[1]]$soil$WhiteClover.XF <- c(1,1,1,1,1,1,1,1,1,1)
-sps[[1]]$soil$RedClover.KL <- c(0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06)
-sps[[1]]$soil$RedClover.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
-                                0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
-sps[[1]]$soil$RedClover.XF <- c(1,1,1,1,1,1,1,1,1,1)
-sps[[1]]$soil$Oats.KL <- c(0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06)
-sps[[1]]$soil$Oats.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
-                                0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
-sps[[1]]$soil$Oats.XF <- c(1,1,1,1,1,1,1,1,1,1)
-}
+# sps[[1]]$soil$SoilCNRatio <- c(10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
+# sps[[1]]$soil$PH <- c(5.5, 5.5, 5.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5)
+# sps[[1]]$soil$Maize.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
+#                                 0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
+# sps[[1]]$soil$Soybean.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
+#                               0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
+# sps[[1]]$soil$Wheat.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
+#                                 0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
+# if(mgmt_scenario_num==3) {
+# sps[[1]]$soil$WhiteClover.KL <- c(0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06)
+# sps[[1]]$soil$WhiteClover.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
+#                                 0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
+# sps[[1]]$soil$WhiteClover.XF <- c(1,1,1,1,1,1,1,1,1,1)
+# sps[[1]]$soil$RedClover.KL <- c(0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06)
+# sps[[1]]$soil$RedClover.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
+#                                 0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
+# sps[[1]]$soil$RedClover.XF <- c(1,1,1,1,1,1,1,1,1,1)
+# sps[[1]]$soil$Oats.KL <- c(0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06)
+# sps[[1]]$soil$Oats.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
+#                                 0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
+# sps[[1]]$soil$Oats.XF <- c(1,1,1,1,1,1,1,1,1,1)
+# }
 
 # extract just soil data into a dataframe
 soil_df_raw <- sps[[1]]$soil

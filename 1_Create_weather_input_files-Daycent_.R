@@ -1,7 +1,7 @@
 #######################################
 # Script: 1_Create_weather_input_files-Daycent4.R
-# Author: Ellen Maas
-# Date: July 11, 2022
+# Author: Adam Dixon
+# Date: December 4, 2023
 # Output: .wth files for the given scenario.
 # Description: Generates weather input files specifically in the format that
 # Daycent needs, for the given scenario.
@@ -17,6 +17,8 @@
 
 suppressMessages({
   
+  library(tidyr)
+  
   print("Starting 1_Create_weather_input_files-Daycent4.R")
   # 
   # load county data from 1950-2021 with nclim, then 2022-2050 with cmip6
@@ -25,21 +27,38 @@ suppressMessages({
   
   county_nclim_tmax <-read.csv(file.path(climate_dir,'nclim_tmax.csv'))%>%filter(GEOID==county_geoid)
   county_ncmlim_tmin<-read.csv(file.path(climate_dir,'nclim_tmin.csv'))%>%filter(GEOID==county_geoid)
-  county_cmlim_prec<-read.csv(file.path(climate_dir,'nclim_prcp.csv'))%>%filter(GEOID==county_geoid)
-  county_cmip6_tmax<-read.csv(file.path(climate_dir,'cmip6_tmax.csv'))%>%filter(GEOID==county_geoid, year!=2021)
-  county_cmip6_tmin<-read.csv(file.path(climate_dir,'cmip6_tmin.csv'))%>%filter(GEOID==county_geoid, year!=2021)
-  county_cmip6_prec<-read.csv(file.path(climate_dir,'cmip6_prcp.csv'))%>%filter(GEOID==county_geoid, year!=2021)
+  county_nclim_prec<-read.csv(file.path(climate_dir,'nclim_prcp.csv'))%>%filter(GEOID==county_geoid)
+  county_cmip6_tmax<-read.csv(file.path(climate_dir,'cmip6_tmax.csv'))%>%filter(GEOID==county_geoid, year!=2021, year<2051)
+  county_cmip6_tmin<-read.csv(file.path(climate_dir,'cmip6_tmin.csv'))%>%filter(GEOID==county_geoid, year!=2021, year<2051)
+  county_cmip6_prec<-read.csv(file.path(climate_dir,'cmip6_prcp.csv'))%>%filter(GEOID==county_geoid, year!=2021, year<2051)
   
   # 'GEOID', 'value', 'year', 'doy', 'variable','model'
-  
-  nclim_years<-1950:2021
-  cmip6_years<-2022:2050
+  # nclim_years<-1950:2021
+  # cmip6_years<-2022:2050
   
   # create a dataframe with all the weather data
+  # need to call nclim and cmip6 separately because they have different years
+  nclim_df<-do.call(rbind, lapply(list(county_nclim_tmax,
+                                    county_ncmlim_tmin,
+                                    county_nclim_prec), 
+                                  read.csv))%>%as_tibble()
+  cmip6_df<-do.call(rbind, lapply(list(county_cmip6_tmax,
+                                    county_cmip6_tmin,
+                                    county_cmip6_prec),
+                                  read.csv))%>%as_tibble()
   
+  climate_data<-rbind(nclim_df, cmip6_df)
   
+  # Now pivot data to wide format
+
+  climate_df_wide<-pivot_wider(climate_data, names_from = variable, values_from = value)
+  
+  #working with these variables, need to get day, month, year, doy, tmax, tmin, prec_cm
+  # c('GEOID', 'value', 'year', 'doy', 'variable','model')
+  
+  '/glade/work/apdixon/climate':q!
     
-    DAYCENT_gwp_all <- Hist_site[Hist_site$year %in% 1950:1977, 
+  DAYCENT_gwp_all <- Hist_site[Hist_site$year %in% 1950:1977, 
                                   c("day","month","year","dayofyear",
                                     "TMAX","TMIN","prec_cm")]
     

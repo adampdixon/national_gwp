@@ -16,3 +16,13 @@ In left_join(data_df, geo_link, by = c(GEOID = "zh_geoid")) :
 ss express
 316 558 3050
 
+
+get cropland data layer
+use the most updated crop data
+
+2 different climate scenarios
+let's touch base on Thursday, and see where I am 
+
+/home/ap/Documents/GitHub/national_gwp/climate_cmip6
+
+/home/ap/Scratch
