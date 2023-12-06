@@ -135,7 +135,7 @@ ncores<-detectCores(logical = T) # not needed?
 # use 7 cores, one for main processing, and one for the 6 variables
 cl<-makeCluster(72)
 tic()
-county_number<-1:3109 # number of US counties in CONUS
+county_number<-1871:3109 # number of US counties in CONUS
 clim<-clusterApply(cl, county_number, climate_data)
 stopCluster(cl)
 toc()
