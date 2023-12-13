@@ -21,4 +21,14 @@ file.copy(cm3, '/glade/u/home/apdixon/Documents/national_gwp/cmip6_climate')
 
 
 
+# randomly select files from climate output data to check out
+
+output<-'/glade/work/apdixon/climate'
+
+cmip_files<-sample(list.files(output, pattern = 'cmip6', full.names = T), 10)
+nclim_files<-sample(list.files(output, pattern = 'nclim', full.names = T), 10)
+
+file.copy(cmip_files, '/glade/u/home/apdixon/Documents/national_gwp/cmip6_climate')
+file.copy(nclim_files, '/glade/u/home/apdixon/Documents/national_gwp/climate_nclim')
+
 
