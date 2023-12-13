@@ -140,9 +140,9 @@ library(parallel)
 library(tictoc)
 ncores<-detectCores(logical = T) # not needed?
 # use 7 cores, one for main processing, and one for the 6 variables
-cl<-makeCluster(4)
+cl<-makeCluster(36)
 tic()
-county_number<-1:4  #1871:3109 # number of US counties in CONUS
+county_number<-2373:2409 # number of US counties in CONUS
 clim<-clusterApply(cl, county_number, climate_data)
 stopCluster(cl)
 toc()
