@@ -10,13 +10,17 @@
 ######################################################
 climate_data<-function(county_number){
   library(dplyr) # for piping & tibble
+  library(parallel) # for parallel processing
+  library(tictoc) # for timing
+  
+  tic()
   
   # county data to link
   geo_link_dir<-'/glade/u/home/apdixon/Documents/national_gwp/Data/County'
   output_dir<-'/glade/work/apdixon/climate'
   nclim_dir<-'/glade/work/apdixon/Output_nClimGrid'
   cmip6_dir<-'/glade/work/apdixon/Output_climate'
-  
+  # 
   # geo_link_dir<-'/home/ap/Documents/GitHub/national_gwp/Data/County'
   # output_dir<-'/home/ap/Scratch'
   # nclim_dir<-'/home/ap/Documents/GitHub/national_gwp/climate_nclim'
@@ -125,17 +129,20 @@ climate_data<-function(county_number){
     }
     
   }
+  
+  print(toc())
+  print(paste0('done with county ', county_number))
 }
 
 
-###########PARALLEL
+###########PARALLEL PROCESSING################
 library(parallel)
 library(tictoc)
 ncores<-detectCores(logical = T) # not needed?
 # use 7 cores, one for main processing, and one for the 6 variables
-cl<-makeCluster(72)
+cl<-makeCluster(4)
 tic()
-county_number<-1871:3109 # number of US counties in CONUS
+county_number<-1:4  #1871:3109 # number of US counties in CONUS
 clim<-clusterApply(cl, county_number, climate_data)
 stopCluster(cl)
 toc()
