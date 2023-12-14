@@ -7,7 +7,7 @@
 #PBS -e /glade/u/home/apdixon/Documents/national_gwp/sh_sends/job_climate.stderr 
 ### Queue name
 #PBS -q regular
-#PBS -l walltime=12:00:00
+#PBS -l walltime=00:10:00
 ### Send email on abort, begin and end
 #PBS -m e
 ### Specify mail recipient
@@ -24,6 +24,6 @@
 
 module restore R_processing
 
-Rscript /glade/u/home/apdixon/Documents/national_gwp/1_create_county_climate_input_AD_.R
+Rscript /glade/u/home/apdixon/Documents/national_gwp/1_create_county_climate_input_AD_v3_.R
 # 
 

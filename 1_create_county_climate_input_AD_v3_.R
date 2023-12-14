@@ -47,7 +47,7 @@ doParallel::registerDoParallel(cl = my.cluster)
 foreach::getDoParRegistered()
 foreach::getDoParWorkers() 
 #c(2370:2406)
-foreach(county_number = c(2370:2406), .packages=c("dplyr","tictoc","data.table")) %dopar% {
+foreach(county_number = c(2370:3109), .packages=c("dplyr","tictoc","data.table")) %dopar% {
   # Open a connection to stderr
   sink(stderr(), type = "message")
   # Print an error message to stderr

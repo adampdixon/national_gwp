@@ -130,8 +130,8 @@ climate_data<-function(county_number){
     
   }
   
-  print(toc())
-  print(paste0('done with county ', county_number))
+  write(toc(), stderr())
+  write(paste0('done with county ', county_number), stderr())
 }
 
 
@@ -140,9 +140,9 @@ library(parallel)
 library(tictoc)
 ncores<-detectCores(logical = T) # not needed?
 # use 7 cores, one for main processing, and one for the 6 variables
-cl<-makeCluster(36)
+cl<-makeCluster(4)
 tic()
-county_number<-2373:2409 # number of US counties in CONUS
+county_number<-2374:2378 # number of US counties in CONUS
 clim<-clusterApply(cl, county_number, climate_data)
 stopCluster(cl)
 toc()
