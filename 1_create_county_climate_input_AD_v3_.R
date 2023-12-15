@@ -14,10 +14,6 @@ library(doParallel) # for parallel processing
 library(tictoc) # for timing
 library(data.table) # for fwrite
 
-
-
-tic()
-
 # county data to link
 geo_link_dir<-'/glade/u/home/apdixon/Documents/national_gwp/Data/County'
 output_dir<-'/glade/work/apdixon/climate'
@@ -29,6 +25,7 @@ cmip6_dir<-'/glade/work/apdixon/Output_climate'
 # nclim_dir<-'/home/ap/Documents/GitHub/national_gwp/climate_nclim'
 # cmip6_dir<-'/home/ap/Documents/GitHub/national_gwp/climate_cmip6'
 
+
 # add geolink table to make GEOIDS align with census GEOID
 geo_link<-read.csv(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
   select(zh_geoid, REAL_GEOID)%>%
@@ -36,24 +33,27 @@ geo_link<-read.csv(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
 
 #create the cluster--------------------
 n_threads<-2
-county_range<-c(2370:2376)
+county_range<-c(2370:2371)
 # 
-# my.cluster <- parallel::makeCluster(
-#   n_threads,
-#   type = "FORK",
-#   outfile="Log.txt")
-# )
-# #register it to be used by %dopar%
-# doParallel::registerDoParallel(cl = my.cluster)
-# #check if it is registered (optional)
-# foreach::getDoParRegistered()
-# foreach::getDoParWorkers() 
+my.cluster <- parallel::makeCluster(
+  n_threads,
+  type = "FORK",
+  outfile="Log.txt")
+#register it to be used by %dopar%
+doParallel::registerDoParallel(cl = my.cluster)
+#check if it is registered (optional)
+foreach::getDoParRegistered()
+foreach::getDoParWorkers()
+# set number of threads for data.table
+setDTthreads(threads = n_threads)
+
 #c(2370:2406)
-foreach(county_number = county_range, .packages=c("dplyr","tictoc","data.table")) %do% {
+foreach(county_number = county_range, .packages=c("dplyr","tictoc","data.table")) %dopar% {
+  tic()
   # Open a connection to stderr
   sink(stderr(), type = "message")
   # Print an error message to stderr
-  cat(paste0("Starting county", county_number, "\n"), file = stderr(), append = TRUE)
+  cat(paste0("Starting county ", county_number, "\n"), file = stderr(), append = TRUE)
   
   #County GEOID
   GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
@@ -77,7 +77,7 @@ foreach(county_number = county_range, .packages=c("dplyr","tictoc","data.table")
         for(year in data){
           ##### READ DATA ######################
           #read county csv for each year into data.frame, get county_number from out of function list
-          data_df<-read.csv(year)%>%as_tibble()%>%filter(GEOID==county_number)
+          data_df<-fread(year)%>%as_tibble()%>%filter(GEOID==county_number)
           ## GET GEOID #########################
           # join with the GEOID given by Zhuonan
           data_df_<-left_join(data_df, geo_link, by = c('GEOID' = 'zh_geoid'))
@@ -99,7 +99,7 @@ foreach(county_number = county_range, .packages=c("dplyr","tictoc","data.table")
           
         }
         # once all years have run and rbind, write to csv
-        write.csv(hist_climate_df, output_filename)
+        fwrite(hist_climate_df, output_filename)
         
       }
       
@@ -137,7 +137,7 @@ foreach(county_number = county_range, .packages=c("dplyr","tictoc","data.table")
           GEOID2<-GEOID_$REAL_GEOID
           
           #read multiple csvs into data.frame
-          data_df<-read.csv(year)%>%as_tibble()%>%filter(GEOID==GEOID2)
+          data_df<-fread(year)%>%as_tibble()%>%filter(GEOID==GEOID2)
           # add the variable name to column, table will be long format
           
           data_df$variable<-var2
@@ -149,7 +149,7 @@ foreach(county_number = county_range, .packages=c("dplyr","tictoc","data.table")
           
           future_climate_df<-rbind(future_climate_df, data_df)
         }
-        write.csv(future_climate_df, output_filename2)
+        fwrite(future_climate_df, output_filename2)
       }
     }
     
@@ -162,10 +162,12 @@ foreach(county_number = county_range, .packages=c("dplyr","tictoc","data.table")
     
   }
   
-  # parallel::stopCluster(cl = my.cluster)
-  # #close the cluster--------------------
-  # #setDTthreads(threads = n_threads)
+
 }
+
+parallel::stopCluster(cl = my.cluster)
+# #close the cluster--------------------
+# #setDTthreads(threads = n_threads)
 
 toc()
 
