@@ -35,27 +35,30 @@ geo_link<-read.csv(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
   as_tibble()
 
 #create the cluster--------------------
-n_threads<-36
-
-my.cluster <- parallel::makeCluster(
-  n_threads,
-  type = "FORK"
-)
-#register it to be used by %dopar%
-doParallel::registerDoParallel(cl = my.cluster)
-#check if it is registered (optional)
-foreach::getDoParRegistered()
-foreach::getDoParWorkers() 
+n_threads<-2
+county_range<-c(2370:2376)
+# 
+# my.cluster <- parallel::makeCluster(
+#   n_threads,
+#   type = "FORK",
+#   outfile="Log.txt")
+# )
+# #register it to be used by %dopar%
+# doParallel::registerDoParallel(cl = my.cluster)
+# #check if it is registered (optional)
+# foreach::getDoParRegistered()
+# foreach::getDoParWorkers() 
 #c(2370:2406)
-foreach(county_number = c(2370:3109), .packages=c("dplyr","tictoc","data.table")) %dopar% {
+foreach(county_number = county_range, .packages=c("dplyr","tictoc","data.table")) %do% {
   # Open a connection to stderr
   sink(stderr(), type = "message")
   # Print an error message to stderr
-  cat("Starting county\n", file = stderr(), append = TRUE)
+  cat(paste0("Starting county", county_number, "\n"), file = stderr(), append = TRUE)
   
   #County GEOID
   GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
   if(is.na(GEOID)){ # stop if GEOID is NA
+    cat("GEOID is NA\n")
     break
   } else{
     # GET HISTORIC DATA
@@ -96,7 +99,7 @@ foreach(county_number = c(2370:3109), .packages=c("dplyr","tictoc","data.table")
           
         }
         # once all years have run and rbind, write to csv
-        fwrite(hist_climate_df, output_filename)
+        write.csv(hist_climate_df, output_filename)
         
       }
       
@@ -146,7 +149,7 @@ foreach(county_number = c(2370:3109), .packages=c("dplyr","tictoc","data.table")
           
           future_climate_df<-rbind(future_climate_df, data_df)
         }
-        fwrite(future_climate_df, output_filename2)
+        write.csv(future_climate_df, output_filename2)
       }
     }
     
@@ -159,9 +162,9 @@ foreach(county_number = c(2370:3109), .packages=c("dplyr","tictoc","data.table")
     
   }
   
-  parallel::stopCluster(cl = my.cluster)
-  #close the cluster--------------------
-  setDTthreads(threads = n_threads)
+  # parallel::stopCluster(cl = my.cluster)
+  # #close the cluster--------------------
+  # #setDTthreads(threads = n_threads)
 }
 
 toc()
