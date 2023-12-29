@@ -6,3 +6,319 @@ starting worker pid=20950 on localhost:11597 at 22:49:53.304
 starting worker pid=20951 on localhost:11597 at 22:49:53.313
 starting worker pid=21132 on localhost:11597 at 22:55:33.915
 starting worker pid=21136 on localhost:11597 at 22:55:34.041
+starting worker pid=13757 on localhost:11046 at 22:31:07.850
+starting worker pid=13758 on localhost:11046 at 22:31:07.860
+APSIM(X) not found.
+                        If APSIM(X) is installed in an alternative location,
+                        set paths manually using 'apsimx_options' or 'apsim_options'.
+                        You can still try as the package will look into the registry (under Windows)
+APSIM(X) not found.
+                        If APSIM(X) is installed in an alternative location,
+                        set paths manually using 'apsimx_options' or 'apsim_options'.
+                        You can still try as the package will look into the registry (under Windows)
+starting worker pid=16415 on localhost:11046 at 22:32:32.546
+starting worker pid=16416 on localhost:11046 at 22:32:32.553
+APSIM(X) not found.
+                        If APSIM(X) is installed in an alternative location,
+                        set paths manually using 'apsimx_options' or 'apsim_options'.
+                        You can still try as the package will look into the registry (under Windows)
+APSIM(X) not found.
+                        If APSIM(X) is installed in an alternative location,
+                        set paths manually using 'apsimx_options' or 'apsim_options'.
+                        You can still try as the package will look into the registry (under Windows)
+data.table 1.14.8 using 1 threads (see ?getDTthreads).  Latest news: r-datatable.com
+data.table 1.14.8 using 1 threads (see ?getDTthreads).  Latest news: r-datatable.com
+
+Attaching package: ‘data.table’
+
+
+Attaching package: ‘data.table’
+
+The following object is masked from ‘package:berryFunctions’:
+
+    between
+
+The following object is masked from ‘package:berryFunctions’:
+
+    between
+
+The following object is masked from ‘package:tictoc’:
+
+    shift
+
+The following object is masked from ‘package:tictoc’:
+
+    shift
+
+
+Attaching package: ‘dplyr’
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:data.table’:
+
+    between, first, last
+
+The following objects are masked from ‘package:data.table’:
+
+    between, first, last
+
+The following object is masked from ‘package:berryFunctions’:
+
+    between
+
+The following object is masked from ‘package:berryFunctions’:
+
+    between
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘lubridate’
+
+The following objects are masked from ‘package:data.table’:
+
+    hour, isoweek, mday, minute, month, quarter, second, wday, week, yday, year
+
+The following objects are masked from ‘package:base’:
+
+    date, intersect, setdiff, union
+
+
+Attaching package: ‘lubridate’
+
+The following objects are masked from ‘package:data.table’:
+
+    hour, isoweek, mday, minute, month, quarter, second, wday, week, yday, year
+
+The following objects are masked from ‘package:base’:
+
+    date, intersect, setdiff, union
+
+
+Attaching package: ‘pracma’
+
+
+Attaching package: ‘pracma’
+
+The following objects are masked from ‘package:magrittr’:
+
+    and, mod, or
+
+The following objects are masked from ‘package:magrittr’:
+
+    and, mod, or
+
+The following objects are masked from ‘package:tictoc’:
+
+    clear, size, tic, toc
+
+The following objects are masked from ‘package:tictoc’:
+
+    clear, size, tic, toc
+
+Loading required package: R.oo
+Loading required package: R.oo
+Loading required package: R.methodsS3
+Loading required package: R.methodsS3
+R.methodsS3 v1.8.1 (2020-08-26 16:20:06 UTC) successfully loaded. See ?R.methodsS3 for help.
+R.methodsS3 v1.8.1 (2020-08-26 16:20:06 UTC) successfully loaded. See ?R.methodsS3 for help.
+R.oo v1.24.0 (2020-08-26 16:11:58 UTC) successfully loaded. See ?R.oo for help.
+R.oo v1.24.0 (2020-08-26 16:11:58 UTC) successfully loaded. See ?R.oo for help.
+
+Attaching package: ‘R.oo’
+
+The following object is masked from ‘package:R.methodsS3’:
+
+    throw
+
+The following object is masked from ‘package:magrittr’:
+
+    equals
+
+The following object is masked from ‘package:berryFunctions’:
+
+    getName
+
+The following objects are masked from ‘package:methods’:
+
+    getClasses, getMethods
+
+The following objects are masked from ‘package:base’:
+
+    attach, detach, load, save
+
+
+Attaching package: ‘R.oo’
+
+The following object is masked from ‘package:R.methodsS3’:
+
+    throw
+
+The following object is masked from ‘package:magrittr’:
+
+    equals
+
+The following object is masked from ‘package:berryFunctions’:
+
+    getName
+
+The following objects are masked from ‘package:methods’:
+
+    getClasses, getMethods
+
+The following objects are masked from ‘package:base’:
+
+    attach, detach, load, save
+
+R.utils v2.11.0 (2021-09-26 08:30:02 UTC) successfully loaded. See ?R.utils for help.
+R.utils v2.11.0 (2021-09-26 08:30:02 UTC) successfully loaded. See ?R.utils for help.
+
+Attaching package: ‘R.utils’
+
+
+Attaching package: ‘R.utils’
+
+The following object is masked from ‘package:magrittr’:
+
+    extract
+
+The following object is masked from ‘package:magrittr’:
+
+    extract
+
+The following object is masked from ‘package:utils’:
+
+    timestamp
+
+The following object is masked from ‘package:utils’:
+
+    timestamp
+
+The following objects are masked from ‘package:base’:
+
+    cat, commandArgs, getOption, inherits, isOpen, nullfile, parse, warnings
+
+The following objects are masked from ‘package:base’:
+
+    cat, commandArgs, getOption, inherits, isOpen, nullfile, parse, warnings
+
+Linking to GEOS 3.10.1, GDAL 3.3.2, PROJ 8.1.1; sf_use_s2() is TRUE
+Linking to GEOS 3.10.1, GDAL 3.3.2, PROJ 8.1.1; sf_use_s2() is TRUE
+soiltexture 1.5.1 (git revision: 4b25ba2). For help type: help(pack='soiltexture')
+soiltexture 1.5.1 (git revision: 4b25ba2). For help type: help(pack='soiltexture')
+
+Attaching package: ‘tidyr’
+
+
+Attaching package: ‘tidyr’
+
+The following object is masked from ‘package:R.utils’:
+
+    extract
+
+The following object is masked from ‘package:R.utils’:
+
+    extract
+
+The following object is masked from ‘package:magrittr’:
+
+    extract
+
+The following object is masked from ‘package:magrittr’:
+
+    extract
+
+── Attaching packages ───────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+── Attaching packages ───────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+✔ tibble  3.2.1     ✔ purrr   1.0.1
+✔ readr   2.1.4     ✔ forcats 1.0.0
+✔ tibble  3.2.1     ✔ purrr   1.0.1
+✔ readr   2.1.4     ✔ forcats 1.0.0
+── Conflicts ──────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ purrr::accumulate()      masks foreach::accumulate()
+✖ pracma::and()            masks magrittr::and()
+✖ lubridate::as.difftime() masks base::as.difftime()
+✖ dplyr::between()         masks data.table::between(), berryFunctions::between()
+✖ purrr::cross()           masks pracma::cross()
+✖ lubridate::date()        masks base::date()
+✖ R.oo::equals()           masks magrittr::equals()
+✖ tidyr::extract()         masks R.utils::extract(), magrittr::extract()
+✖ dplyr::filter()          masks stats::filter()
+✖ dplyr::first()           masks data.table::first()
+✖ lubridate::hour()        masks data.table::hour()
+✖ lubridate::intersect()   masks base::intersect()
+✖ lubridate::isoweek()     masks data.table::isoweek()
+✖ dplyr::lag()             masks stats::lag()
+✖ dplyr::last()            masks data.table::last()
+✖ lubridate::mday()        masks data.table::mday()
+✖ lubridate::minute()      masks data.table::minute()
+✖ pracma::mod()            masks magrittr::mod()
+✖ lubridate::month()       masks data.table::month()
+✖ pracma::or()             masks magrittr::or()
+✖ lubridate::quarter()     masks data.table::quarter()
+✖ lubridate::second()      masks data.table::second()
+✖ purrr::set_names()       masks magrittr::set_names()
+✖ lubridate::setdiff()     masks base::setdiff()
+✖ purrr::transpose()       masks data.table::transpose()
+✖ lubridate::union()       masks base::union()
+✖ lubridate::wday()        masks data.table::wday()
+✖ lubridate::week()        masks data.table::week()
+✖ purrr::when()            masks foreach::when()
+✖ lubridate::yday()        masks data.table::yday()
+✖ lubridate::year()        masks data.table::year()
+── Conflicts ──────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ purrr::accumulate()      masks foreach::accumulate()
+✖ pracma::and()            masks magrittr::and()
+✖ lubridate::as.difftime() masks base::as.difftime()
+✖ dplyr::between()         masks data.table::between(), berryFunctions::between()
+✖ purrr::cross()           masks pracma::cross()
+✖ lubridate::date()        masks base::date()
+✖ R.oo::equals()           masks magrittr::equals()
+✖ tidyr::extract()         masks R.utils::extract(), magrittr::extract()
+✖ dplyr::filter()          masks stats::filter()
+✖ dplyr::first()           masks data.table::first()
+✖ lubridate::hour()        masks data.table::hour()
+✖ lubridate::intersect()   masks base::intersect()
+✖ lubridate::isoweek()     masks data.table::isoweek()
+✖ dplyr::lag()             masks stats::lag()
+✖ dplyr::last()            masks data.table::last()
+✖ lubridate::mday()        masks data.table::mday()
+✖ lubridate::minute()      masks data.table::minute()
+✖ pracma::mod()            masks magrittr::mod()
+✖ lubridate::month()       masks data.table::month()
+✖ pracma::or()             masks magrittr::or()
+✖ lubridate::quarter()     masks data.table::quarter()
+✖ lubridate::second()      masks data.table::second()
+✖ purrr::set_names()       masks magrittr::set_names()
+✖ lubridate::setdiff()     masks base::setdiff()
+✖ purrr::transpose()       masks data.table::transpose()
+✖ lubridate::union()       masks base::union()
+✖ lubridate::wday()        masks data.table::wday()
+✖ lubridate::week()        masks data.table::week()
+✖ purrr::when()            masks foreach::when()
+✖ lubridate::yday()        masks data.table::yday()
+✖ lubridate::year()        masks data.table::year()
+[1] 1
+[1] 2
+[1] "************************************"
+[1] "*****Using linux mint *********"
+[1] "************************************"
+[1] "*****Using linux mint *********"
+starting worker pid=24246 on localhost:11046 at 22:36:19.420
+starting worker pid=24247 on localhost:11046 at 22:36:19.432

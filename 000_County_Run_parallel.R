@@ -54,7 +54,7 @@ foreach::getDoParWorkers()
 foreach(county_seq = 1:2, .verbose = T, .combine = 'c', 
         .packages=c('apsimx','berryFunctions','broom','data.table','dplyr','ggplot2',
                     'graphics','lubridate','magrittr','pracma','R.utils','readxl','sf',
-  'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %dopar% {
+  'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %do% {
 
   print(county_seq)
   
@@ -74,7 +74,7 @@ foreach(county_seq = 1:2, .verbose = T, .combine = 'c',
   } 
   
   if (Sys.info()['sysname'] == "Linux"){ 
-    if(Sys.info()['machine']=='x86_64') {
+    if(Sys.info()['user']=='ap') {
       home_folder<-'/home/ap/Documents/GitHub/national_gwp'
       print("************************************")
       print("*****Using linux mint *********")
@@ -100,7 +100,7 @@ foreach(county_seq = 1:2, .verbose = T, .combine = 'c',
   
   county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation.csv'))
   
-  Test <- FALSE
+  Test <- TRUE
   
   if(identical(Test, TRUE)){
     county_data<-county_data%>%

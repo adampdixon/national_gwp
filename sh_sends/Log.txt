@@ -1,0 +1,3544 @@
+starting worker pid=23462 on localhost:11175 at 19:29:58.703
+starting worker pid=23463 on localhost:11175 at 19:29:58.709
+starting worker pid=23464 on localhost:11175 at 19:29:58.712
+starting worker pid=23465 on localhost:11175 at 19:29:58.716
+starting worker pid=23466 on localhost:11175 at 19:29:58.720
+starting worker pid=23467 on localhost:11175 at 19:29:58.724
+starting worker pid=23468 on localhost:11175 at 19:29:58.727
+starting worker pid=23469 on localhost:11175 at 19:29:58.731
+starting worker pid=23470 on localhost:11175 at 19:29:58.735
+starting worker pid=23471 on localhost:11175 at 19:29:58.739
+starting worker pid=23472 on localhost:11175 at 19:29:58.742
+starting worker pid=23473 on localhost:11175 at 19:29:58.746
+starting worker pid=23474 on localhost:11175 at 19:29:58.750
+starting worker pid=23475 on localhost:11175 at 19:29:58.754
+0.16 sec elapsed
+Finished 2373 in c(elapsed = 1.924) seconds
+2TRUE Finished 2373 in c(elapsed = 2.084) seconds
+2TRUE Finished 2373 in logical(0) seconds
+2TRUE Finished 2373 in 0.16 sec elapsed seconds
+2TRUE0.169 sec elapsed
+Finished 2374 in c(elapsed = 1.924) seconds
+2TRUE Finished 2374 in c(elapsed = 2.093) seconds
+2TRUE Finished 2374 in logical(0) seconds
+2TRUE Finished 2374 in 0.169 sec elapsed seconds
+2TRUE0.177 sec elapsed
+Finished 2372 in c(elapsed = 1.924) seconds
+2TRUE Finished 2372 in c(elapsed = 2.101) seconds
+2TRUE Finished 2372 in logical(0) seconds
+2TRUE Finished 2372 in 0.177 sec elapsed seconds
+2TRUE228.006 sec elapsed
+Finished 2380 in c(elapsed = 1.925) seconds
+2TRUE Finished 2380 in c(elapsed = 229.931) seconds
+2TRUE Finished 2380 in logical(0) seconds
+2TRUE Finished 2380 in 228.006 sec elapsed seconds
+2TRUE228.009 sec elapsed
+Finished 2384 in c(elapsed = 1.925) seconds
+2TRUE Finished 2384 in c(elapsed = 229.934) seconds
+2TRUE Finished 2384 in logical(0) seconds
+2TRUE Finished 2384 in 228.009 sec elapsed seconds
+2TRUE228.01 sec elapsed
+228.011 sec elapsed
+Finished 2382 in c(elapsed = 1.925) seconds
+2TRUE Finished 2377 in c(elapsed = 1.924) seconds
+2TRUEFinished 2382 in c(elapsed = 229.935) seconds
+2TRUE  Finished 2377 in c(elapsed = 229.935) seconds
+2TRUEFinished 2382 in logical(0) seconds
+2TRUE  Finished 2377 in logical(0) seconds
+2TRUEFinished 2382 in 228.01 sec elapsed seconds
+2TRUE Finished 2377 in 228.011 sec elapsed seconds
+2TRUE228.015 sec elapsed
+Finished 2376 in c(elapsed = 1.924) seconds
+2TRUE Finished 2376 in c(elapsed = 229.939) seconds
+2TRUE Finished 2376 in logical(0) seconds
+2TRUE Finished 2376 in 228.015 sec elapsed seconds
+2TRUE228.018 sec elapsed
+Finished 2385 in c(elapsed = 1.925) seconds
+2TRUE Finished 2385 in c(elapsed = 229.943) seconds
+2TRUE Finished 2385 in logical(0) seconds
+2TRUE Finished 2385 in 228.018 sec elapsed seconds
+2TRUE228.02 sec elapsed
+Finished 2381 in c(elapsed = 1.925) seconds
+2TRUE Finished 2381 in c(elapsed = 229.945) seconds
+2TRUE Finished 2381 in logical(0) seconds
+2TRUE Finished 2381 in 228.02 sec elapsed seconds
+2TRUE228.03 sec elapsed
+Finished 2375 in c(elapsed = 1.924) seconds
+2TRUE Finished 2375 in c(elapsed = 229.954) seconds
+2TRUE Finished 2375 in logical(0) seconds
+2TRUE Finished 2375 in 228.03 sec elapsed seconds
+2TRUE228.038 sec elapsed
+Finished 2383 in c(elapsed = 1.925) seconds
+2TRUE228.039 sec elapsed
+ Finished 2383 in c(elapsed = 229.963) seconds
+2TRUE Finished 2383 in logical(0) seconds
+2TRUE Finished 2383 in 228.038 sec elapsed seconds
+2TRUEFinished 2378 in c(elapsed = 1.924) seconds
+2TRUE Finished 2378 in c(elapsed = 229.963) seconds
+2TRUE Finished 2378 in logical(0) seconds
+2TRUE Finished 2378 in 228.039 sec elapsed seconds
+2TRUE227.862 sec elapsed
+Finished 2388 in c(elapsed = 2.102) seconds
+2TRUE Finished 2388 in c(elapsed = 229.964) seconds
+2TRUE Finished 2388 in logical(0) seconds
+2TRUE Finished 2388 in 227.862 sec elapsed seconds
+2TRUE228.04 sec elapsed
+Finished 2379 in c(elapsed = 1.924) seconds
+2TRUE227.87 sec elapsed
+ Finished 2379 in c(elapsed = 229.964) seconds
+2TRUE Finished 2379 in logical(0) seconds
+2TRUEFinished 2387 in c(elapsed = 2.094) seconds
+2TRUE  Finished 2379 in 228.04 sec elapsed seconds
+2TRUEFinished 2387 in c(elapsed = 229.964) seconds
+2TRUE Finished 2387 in logical(0) seconds
+2TRUE Finished 2387 in 227.87 sec elapsed seconds
+2TRUE227.885 sec elapsed
+Finished 2386 in c(elapsed = 2.085) seconds
+2TRUE Finished 2386 in c(elapsed = 229.97) seconds
+2TRUE Finished 2386 in logical(0) seconds
+2TRUE Finished 2386 in 227.885 sec elapsed seconds
+2TRUE56.782 sec elapsed
+Finished 2391 in c(elapsed = 229.936) seconds
+2TRUE Finished 2391 in c(elapsed = 286.718) seconds
+2TRUE Finished 2391 in logical(0) seconds
+2TRUE Finished 2391 in 56.782 sec elapsed seconds
+2TRUE57.404 sec elapsed
+Finished 2390 in c(elapsed = 229.935) seconds
+2TRUE Finished 2390 in c(elapsed = 287.339) seconds
+2TRUE Finished 2390 in logical(0) seconds
+2TRUE Finished 2390 in 57.404 sec elapsed seconds
+2TRUE57.882 sec elapsed
+Finished 2392 in c(elapsed = 229.936) seconds
+2TRUE Finished 2392 in c(elapsed = 287.818) seconds
+2TRUE Finished 2392 in logical(0) seconds
+2TRUE Finished 2392 in 57.882 sec elapsed seconds
+2TRUE58.802 sec elapsed
+Finished 2393 in c(elapsed = 229.94) seconds
+2TRUE Finished 2393 in c(elapsed = 288.742) seconds
+2TRUE Finished 2393 in logical(0) seconds
+2TRUE Finished 2393 in 58.802 sec elapsed seconds
+2TRUE60.038 sec elapsed
+Finished 2389 in c(elapsed = 229.932) seconds
+2TRUE Finished 2389 in c(elapsed = 289.97) seconds
+2TRUE Finished 2389 in logical(0) seconds
+2TRUE Finished 2389 in 60.038 sec elapsed seconds
+2TRUE60.169 sec elapsed
+Finished 2394 in c(elapsed = 229.944) seconds
+2TRUE Finished 2394 in c(elapsed = 290.113) seconds
+2TRUE Finished 2394 in logical(0) seconds
+2TRUE Finished 2394 in 60.169 sec elapsed seconds
+2TRUE60.547 sec elapsed
+Finished 2395 in c(elapsed = 229.946) seconds
+2TRUE Finished 2395 in c(elapsed = 290.493) seconds
+2TRUE Finished 2395 in logical(0) seconds
+2TRUE Finished 2395 in 60.547 sec elapsed seconds
+2TRUE60.854 sec elapsed
+Finished 2396 in c(elapsed = 229.955) seconds
+2TRUE Finished 2396 in c(elapsed = 290.809) seconds
+2TRUE Finished 2396 in logical(0) seconds
+2TRUE Finished 2396 in 60.854 sec elapsed seconds
+2TRUE61.189 sec elapsed
+Finished 2397 in c(elapsed = 229.964) seconds
+2TRUE Finished 2397 in c(elapsed = 291.153) seconds
+2TRUE Finished 2397 in logical(0) seconds
+2TRUE Finished 2397 in 61.189 sec elapsed seconds
+2TRUE61.791 sec elapsed
+Finished 2400 in c(elapsed = 229.968) seconds
+2TRUE Finished 2400 in c(elapsed = 291.759) seconds
+2TRUE Finished 2400 in logical(0) seconds
+2TRUE Finished 2400 in 61.791 sec elapsed seconds
+2TRUE62.004 sec elapsed
+Finished 2398 in c(elapsed = 229.965) seconds
+2TRUE Finished 2398 in c(elapsed = 291.969) seconds
+2TRUE Finished 2398 in logical(0) seconds
+2TRUE Finished 2398 in 62.004 sec elapsed seconds
+2TRUE62.115 sec elapsed
+Finished 2399 in c(elapsed = 229.965) seconds
+2TRUE Finished 2399 in c(elapsed = 292.08) seconds
+2TRUE Finished 2399 in logical(0) seconds
+2TRUE Finished 2399 in 62.115 sec elapsed seconds
+2TRUEstarting worker pid=15980 on localhost:11897 at 19:51:11.639
+starting worker pid=15981 on localhost:11897 at 19:51:11.740
+starting worker pid=15982 on localhost:11897 at 19:51:11.743
+starting worker pid=15983 on localhost:11897 at 19:51:11.747
+starting worker pid=15984 on localhost:11897 at 19:51:11.751
+starting worker pid=15985 on localhost:11897 at 19:51:11.754
+starting worker pid=15986 on localhost:11897 at 19:51:11.758
+starting worker pid=15987 on localhost:11897 at 19:51:11.762
+starting worker pid=15988 on localhost:11897 at 19:51:11.766
+starting worker pid=15989 on localhost:11897 at 19:51:11.769
+starting worker pid=15990 on localhost:11897 at 19:51:11.773
+starting worker pid=15991 on localhost:11897 at 19:51:11.777
+starting worker pid=15992 on localhost:11897 at 19:51:11.781
+starting worker pid=15993 on localhost:11897 at 19:51:11.785
+starting worker pid=15994 on localhost:11897 at 19:51:11.789
+starting worker pid=15995 on localhost:11897 at 19:51:11.792
+starting worker pid=15996 on localhost:11897 at 19:51:11.796
+starting worker pid=15997 on localhost:11897 at 19:51:11.800
+starting worker pid=15998 on localhost:11897 at 19:51:11.804
+starting worker pid=15999 on localhost:11897 at 19:51:11.808
+starting worker pid=16000 on localhost:11897 at 19:51:11.886
+starting worker pid=16001 on localhost:11897 at 19:51:11.890
+starting worker pid=16002 on localhost:11897 at 19:51:11.894
+starting worker pid=16003 on localhost:11897 at 19:51:11.897
+starting worker pid=16004 on localhost:11897 at 19:51:11.901
+starting worker pid=16005 on localhost:11897 at 19:51:11.905
+starting worker pid=16006 on localhost:11897 at 19:51:11.909
+starting worker pid=16007 on localhost:11897 at 19:51:11.912
+starting worker pid=16008 on localhost:11897 at 19:51:11.916
+starting worker pid=16009 on localhost:11897 at 19:51:11.920
+starting worker pid=16010 on localhost:11897 at 19:51:11.924
+starting worker pid=16011 on localhost:11897 at 19:51:11.928
+starting worker pid=16012 on localhost:11897 at 19:51:11.931
+starting worker pid=16013 on localhost:11897 at 19:51:11.935
+starting worker pid=16014 on localhost:11897 at 19:51:11.939
+starting worker pid=16015 on localhost:11897 at 19:51:11.943
+starting worker pid=48781 on localhost:11483 at 20:33:31.995
+starting worker pid=48782 on localhost:11483 at 20:33:32.002
+starting worker pid=48783 on localhost:11483 at 20:33:32.005
+starting worker pid=48784 on localhost:11483 at 20:33:32.009
+starting worker pid=48785 on localhost:11483 at 20:33:32.013
+starting worker pid=48786 on localhost:11483 at 20:33:32.017
+starting worker pid=48787 on localhost:11483 at 20:33:32.020
+starting worker pid=48788 on localhost:11483 at 20:33:32.024
+starting worker pid=48789 on localhost:11483 at 20:33:32.028
+starting worker pid=48790 on localhost:11483 at 20:33:32.031
+starting worker pid=48791 on localhost:11483 at 20:33:32.035
+starting worker pid=48792 on localhost:11483 at 20:33:32.039
+starting worker pid=48793 on localhost:11483 at 20:33:32.043
+starting worker pid=48794 on localhost:11483 at 20:33:32.047
+starting worker pid=48795 on localhost:11483 at 20:33:32.051
+starting worker pid=48796 on localhost:11483 at 20:33:32.055
+starting worker pid=48797 on localhost:11483 at 20:33:32.059
+starting worker pid=48798 on localhost:11483 at 20:33:32.062
+starting worker pid=48799 on localhost:11483 at 20:33:32.066
+starting worker pid=48800 on localhost:11483 at 20:33:32.070
+starting worker pid=48801 on localhost:11483 at 20:33:32.074
+starting worker pid=48802 on localhost:11483 at 20:33:32.078
+starting worker pid=48803 on localhost:11483 at 20:33:32.082
+starting worker pid=48804 on localhost:11483 at 20:33:32.086
+starting worker pid=48805 on localhost:11483 at 20:33:32.089
+starting worker pid=48806 on localhost:11483 at 20:33:32.093
+starting worker pid=48807 on localhost:11483 at 20:33:32.097
+starting worker pid=48808 on localhost:11483 at 20:33:32.103
+starting worker pid=48809 on localhost:11483 at 20:33:32.107
+starting worker pid=48810 on localhost:11483 at 20:33:32.111
+starting worker pid=48811 on localhost:11483 at 20:33:32.115
+starting worker pid=48812 on localhost:11483 at 20:33:32.119
+starting worker pid=48813 on localhost:11483 at 20:33:32.122
+starting worker pid=48814 on localhost:11483 at 20:33:32.126
+starting worker pid=48815 on localhost:11483 at 20:33:32.130
+starting worker pid=48816 on localhost:11483 at 20:33:32.134
+1565.612 sec elapsed
+Finished 2459 in c(elapsed = 2.57) seconds
+2TRUE Finished 2459 in c(elapsed = 1568.182) seconds
+2TRUE Finished 2459 in logical(0) seconds
+2TRUE Finished 2459 in 1565.612 sec elapsed seconds
+2TRUE1565.627 sec elapsed
+Finished 2454 in c(elapsed = 2.57) seconds
+2TRUE Finished 2454 in c(elapsed = 1568.197) seconds
+2TRUE Finished 2454 in logical(0) seconds
+2TRUE Finished 2454 in 1565.627 sec elapsed seconds
+2TRUE1565.633 sec elapsed
+Finished 2451 in c(elapsed = 2.569) seconds
+2TRUE Finished 2451 in c(elapsed = 1568.202) seconds
+2TRUE Finished 2451 in logical(0) seconds
+2TRUE Finished 2451 in 1565.633 sec elapsed seconds
+2TRUE1565.636 sec elapsed
+Finished 2447 in c(elapsed = 2.569) seconds
+2TRUE Finished 2447 in c(elapsed = 1568.205) seconds
+2TRUE Finished 2447 in logical(0) seconds
+2TRUE Finished 2447 in 1565.636 sec elapsed seconds
+2TRUE1565.638 sec elapsed
+1565.635 sec elapsed
+1565.634 sec elapsed
+Finished 2448 in c(elapsed = 2.569) seconds
+2TRUE Finished 2448 in c(elapsed = 1568.207) seconds
+2TRUEFinished 2478 in c(elapsed = 2.572) seconds
+2TRUE  Finished 2448 in logical(0) seconds
+2TRUE Finished 2478 in c(elapsed = 1568.207) seconds
+2TRUEFinished 2448 in 1565.638 sec elapsed seconds
+2TRUE Finished 2478 in logical(0) seconds
+2TRUEFinished 2480 in c(elapsed = 2.573) seconds
+2TRUE Finished 2478 in 1565.635 sec elapsed seconds
+2TRUE Finished 2480 in c(elapsed = 1568.207) seconds
+2TRUE Finished 2480 in logical(0) seconds
+2TRUE Finished 2480 in 1565.634 sec elapsed seconds
+2TRUE1565.638 sec elapsed
+Finished 2461 in c(elapsed = 2.57) seconds
+2TRUE Finished 2461 in c(elapsed = 1568.208) seconds
+2TRUE Finished 2461 in logical(0) seconds
+2TRUE Finished 2461 in 1565.638 sec elapsed seconds
+2TRUE1565.635 sec elapsed
+Finished 2465 in c(elapsed = 2.574) seconds
+2TRUE Finished 2465 in c(elapsed = 1568.209) seconds
+2TRUE Finished 2465 in logical(0) seconds
+2TRUE Finished 2465 in 1565.635 sec elapsed seconds
+2TRUE1565.639 sec elapsed
+Finished 2462 in c(elapsed = 2.57) seconds
+2TRUE 1565.639 sec elapsed
+Finished 2462 in c(elapsed = 1568.209) seconds
+2TRUE Finished 2462 in logical(0) seconds
+2TRUE Finished 2462 in 1565.639 sec elapsed seconds
+2TRUEFinished 2458 in c(elapsed = 2.57) seconds
+2TRUE Finished 2458 in c(elapsed = 1568.209) seconds
+2TRUE Finished 2458 in logical(0) seconds
+2TRUE Finished 2458 in 1565.639 sec elapsed seconds
+2TRUE1565.638 sec elapsed
+Finished 2466 in c(elapsed = 2.571) seconds
+2TRUE Finished 2466 in c(elapsed = 1568.209) seconds
+2TRUE Finished 2466 in logical(0) seconds
+2TRUE Finished 2466 in 1565.638 sec elapsed seconds
+2TRUE1565.641 sec elapsed
+Finished 2453 in c(elapsed = 2.569) seconds
+2TRUE Finished 2453 in c(elapsed = 1568.21) seconds
+2TRUE Finished 2453 in logical(0) seconds
+2TRUE Finished 2453 in 1565.641 sec elapsed seconds
+2TRUE1565.641 sec elapsed
+Finished 2452 in c(elapsed = 2.569) seconds
+2TRUE Finished 2452 in c(elapsed = 1568.21) seconds
+2TRUE Finished 2452 in logical(0) seconds
+2TRUE Finished 2452 in 1565.641 sec elapsed seconds
+2TRUE1565.633 sec elapsed
+Finished 2477 in c(elapsed = 2.578) seconds
+2TRUE Finished 2477 in c(elapsed = 1568.211) seconds
+2TRUE Finished 2477 in logical(0) seconds
+2TRUE Finished 2477 in 1565.633 sec elapsed seconds
+2TRUE1565.643 sec elapsed
+Finished 2449 in c(elapsed = 2.569) seconds
+2TRUE Finished 2449 in c(elapsed = 1568.212) seconds
+2TRUE Finished 2449 in logical(0) seconds
+2TRUE Finished 2449 in 1565.643 sec elapsed seconds
+2TRUE1565.645 sec elapsed
+1565.643 sec elapsed
+1565.645 sec elapsed
+Finished 2468 in c(elapsed = 2.571) seconds
+2TRUEFinished 2467 in c(elapsed = 2.571) seconds
+2TRUEFinished 2482 in c(elapsed = 2.573) seconds
+2TRUE   Finished 2468 in c(elapsed = 1568.216) seconds
+2TRUEFinished 2467 in c(elapsed = 1568.216) seconds
+2TRUEFinished 2482 in c(elapsed = 1568.216) seconds
+2TRUE   Finished 2467 in logical(0) seconds
+2TRUEFinished 2468 in logical(0) seconds
+2TRUEFinished 2482 in logical(0) seconds
+2TRUE   Finished 2467 in 1565.645 sec elapsed seconds
+2TRUEFinished 2468 in 1565.645 sec elapsed seconds
+2TRUEFinished 2482 in 1565.643 sec elapsed seconds
+2TRUE1565.645 sec elapsed
+Finished 2472 in c(elapsed = 2.572) seconds
+2TRUE Finished 2472 in c(elapsed = 1568.217) seconds
+2TRUE Finished 2472 in logical(0) seconds
+2TRUE Finished 2472 in 1565.645 sec elapsed seconds
+2TRUE1565.647 sec elapsed
+Finished 2469 in c(elapsed = 2.571) seconds
+2TRUE Finished 2469 in c(elapsed = 1568.218) seconds
+2TRUE Finished 2469 in logical(0) seconds
+2TRUE Finished 2469 in 1565.647 sec elapsed seconds
+2TRUE1565.645 sec elapsed
+1565.647 sec elapsed
+Finished 2479 in c(elapsed = 2.573) seconds
+2TRUE Finished 2479 in c(elapsed = 1568.218) seconds
+2TRUE Finished 2479 in logical(0) seconds
+2TRUE Finished 2479 in 1565.645 sec elapsed seconds
+2TRUEFinished 2470 in c(elapsed = 2.571) seconds
+2TRUE Finished 2470 in c(elapsed = 1568.218) seconds
+2TRUE Finished 2470 in logical(0) seconds
+2TRUE Finished 2470 in 1565.647 sec elapsed seconds
+2TRUE1565.645 sec elapsed
+1565.654 sec elapsed
+1565.663 sec elapsed
+1565.66 sec elapsed
+1565.641 sec elapsed
+1565.665 sec elapsed
+Finished 2481 in c(elapsed = 2.573) seconds
+2TRUEFinished 2463 in c(elapsed = 2.57) seconds
+2TRUE1565.659 sec elapsed
+1565.665 sec elapsed
+ Finished 2450 in c(elapsed = 2.569) seconds
+2TRUEFinished 2456 in c(elapsed = 2.57) seconds
+2TRUE Finished 2460 in c(elapsed = 2.57) seconds
+2TRUE1565.664 sec elapsed
+Finished 2463 in c(elapsed = 1568.224) seconds
+2TRUEFinished 2475 in c(elapsed = 2.578) seconds
+2TRUE1565.641 sec elapsed
+ Finished 2457 in c(elapsed = 2.57) seconds
+2TRUE Finished 2481 in c(elapsed = 1568.218) seconds
+2TRUE  Finished 2473 in c(elapsed = 2.578) seconds
+2TRUE1565.643 sec elapsed
+ Finished 2456 in c(elapsed = 1568.233) seconds
+2TRUE Finished 2450 in c(elapsed = 1568.229) seconds
+2TRUE1565.663 sec elapsed
+Finished 2464 in c(elapsed = 2.571) seconds
+2TRUE  Finished 2460 in c(elapsed = 1568.235) seconds
+2TRUEFinished 2473 in c(elapsed = 1568.219) seconds
+2TRUEFinished 2475 in c(elapsed = 1568.219) seconds
+2TRUEFinished 2463 in logical(0) seconds
+2TRUE   Finished 2456 in logical(0) seconds
+2TRUE Finished 2471 in c(elapsed = 2.571) seconds
+2TRUEFinished 2474 in c(elapsed = 2.574) seconds
+2TRUE  Finished 2481 in logical(0) seconds
+2TRUE Finished 2460 in logical(0) seconds
+2TRUEFinished 2473 in logical(0) seconds
+2TRUE  Finished 2481 in 1565.645 sec elapsed seconds
+2TRUEFinished 2456 in 1565.663 sec elapsed seconds
+2TRUEFinished 2476 in c(elapsed = 2.578) seconds
+2TRUE Finished 2463 in 1565.654 sec elapsed seconds
+2TRUEFinished 2471 in c(elapsed = 1568.234) seconds
+2TRUE Finished 2450 in logical(0) seconds
+2TRUEFinished 2474 in c(elapsed = 1568.233) seconds
+2TRUE Finished 2460 in 1565.665 sec elapsed seconds
+2TRUE Finished 2471 in logical(0) seconds
+2TRUE  Finished 2457 in c(elapsed = 1568.234) seconds
+2TRUEFinished 2474 in logical(0) seconds
+2TRUEFinished 2464 in c(elapsed = 1568.236) seconds
+2TRUE Finished 2464 in logical(0) seconds
+2TRUE Finished 2475 in logical(0) seconds
+2TRUE  Finished 2464 in 1565.665 sec elapsed seconds
+2TRUE  Finished 2476 in c(elapsed = 1568.221) seconds
+2TRUEFinished 2471 in 1565.663 sec elapsed seconds
+2TRUE Finished 2473 in 1565.641 sec elapsed seconds
+2TRUEFinished 2475 in 1565.641 sec elapsed seconds
+2TRUEFinished 2457 in logical(0) seconds
+2TRUEFinished 2450 in 1565.66 sec elapsed seconds
+2TRUE   Finished 2457 in 1565.664 sec elapsed seconds
+2TRUEFinished 2474 in 1565.659 sec elapsed seconds
+2TRUEFinished 2476 in logical(0) seconds
+2TRUE Finished 2476 in 1565.643 sec elapsed seconds
+2TRUE1565.76 sec elapsed
+Finished 2455 in c(elapsed = 2.57) seconds
+2TRUE Finished 2455 in c(elapsed = 1568.33) seconds
+2TRUE Finished 2455 in logical(0) seconds
+2TRUE Finished 2455 in 1565.76 sec elapsed seconds
+2TRUE81.731 sec elapsed
+Finished 2489 in c(elapsed = 1568.209) seconds
+2TRUE Finished 2489 in c(elapsed = 1649.94) seconds
+2TRUE Finished 2489 in logical(0) seconds
+2TRUE Finished 2489 in 81.731 sec elapsed seconds
+2TRUE82.974 sec elapsed
+Finished 2485 in c(elapsed = 1568.203) seconds
+2TRUE Finished 2485 in c(elapsed = 1651.177) seconds
+2TRUE Finished 2485 in logical(0) seconds
+2TRUE Finished 2485 in 82.974 sec elapsed seconds
+2TRUE83.024 sec elapsed
+Finished 2492 in c(elapsed = 1568.21) seconds
+2TRUE Finished 2492 in c(elapsed = 1651.234) seconds
+2TRUE Finished 2492 in logical(0) seconds
+2TRUE Finished 2492 in 83.024 sec elapsed seconds
+2TRUE83.665 sec elapsed
+Finished 2498 in c(elapsed = 1568.214) seconds
+2TRUE Finished 2498 in c(elapsed = 1651.879) seconds
+2TRUE Finished 2498 in logical(0) seconds
+2TRUE Finished 2498 in 83.665 sec elapsed seconds
+2TRUE84.47 sec elapsed
+Finished 2486 in c(elapsed = 1568.206) seconds
+2TRUE Finished 2486 in c(elapsed = 1652.676) seconds
+2TRUE Finished 2486 in logical(0) seconds
+2TRUE Finished 2486 in 84.47 sec elapsed seconds
+2TRUE84.614 sec elapsed
+Finished 2494 in c(elapsed = 1568.211) seconds
+2TRUE Finished 2494 in c(elapsed = 1652.825) seconds
+2TRUE Finished 2494 in logical(0) seconds
+2TRUE Finished 2494 in 84.614 sec elapsed seconds
+2TRUE84.665 sec elapsed
+Finished 2490 in c(elapsed = 1568.209) seconds
+2TRUE Finished 2490 in c(elapsed = 1652.874) seconds
+2TRUE Finished 2490 in logical(0) seconds
+2TRUE Finished 2490 in 84.665 sec elapsed seconds
+2TRUE84.869 sec elapsed
+Finished 2491 in c(elapsed = 1568.21) seconds
+2TRUE Finished 2491 in c(elapsed = 1653.079) seconds
+2TRUE Finished 2491 in logical(0) seconds
+2TRUE Finished 2491 in 84.869 sec elapsed seconds
+2TRUE87.793 sec elapsed
+Finished 2495 in c(elapsed = 1568.212) seconds
+2TRUE Finished 2495 in c(elapsed = 1656.005) seconds
+2TRUE Finished 2495 in logical(0) seconds
+2TRUE Finished 2495 in 87.793 sec elapsed seconds
+2TRUE87.911 sec elapsed
+Finished 2500 in c(elapsed = 1568.217) seconds
+2TRUE Finished 2500 in c(elapsed = 1656.128) seconds
+2TRUE Finished 2500 in logical(0) seconds
+2TRUE Finished 2500 in 87.911 sec elapsed seconds
+2TRUE88.012 sec elapsed
+88.023 sec elapsed
+Finished 2488 in c(elapsed = 1568.209) seconds
+2TRUEFinished 2484 in c(elapsed = 1568.198) seconds
+2TRUE  Finished 2488 in c(elapsed = 1656.221) seconds
+2TRUEFinished 2484 in c(elapsed = 1656.221) seconds
+2TRUE  Finished 2488 in logical(0) seconds
+2TRUEFinished 2484 in logical(0) seconds
+2TRUE  Finished 2488 in 88.012 sec elapsed seconds
+2TRUEFinished 2484 in 88.023 sec elapsed seconds
+2TRUE88.009 sec elapsed
+Finished 2496 in c(elapsed = 1568.212) seconds
+2TRUE Finished 2496 in c(elapsed = 1656.221) seconds
+2TRUE Finished 2496 in logical(0) seconds
+2TRUE Finished 2496 in 88.009 sec elapsed seconds
+2TRUE88.041 sec elapsed
+Finished 2497 in c(elapsed = 1568.213) seconds
+2TRUE Finished 2497 in c(elapsed = 1656.254) seconds
+2TRUE Finished 2497 in logical(0) seconds
+2TRUE Finished 2497 in 88.041 sec elapsed seconds
+2TRUE88.108 sec elapsed
+Finished 2487 in c(elapsed = 1568.208) seconds
+2TRUE Finished 2487 in c(elapsed = 1656.316) seconds
+2TRUE Finished 2487 in logical(0) seconds
+2TRUE Finished 2487 in 88.108 sec elapsed seconds
+2TRUE88.374 sec elapsed
+Finished 2499 in c(elapsed = 1568.214) seconds
+2TRUE Finished 2499 in c(elapsed = 1656.588) seconds
+2TRUE Finished 2499 in logical(0) seconds
+2TRUE Finished 2499 in 88.374 sec elapsed seconds
+2TRUE88.415 sec elapsed
+Finished 2483 in c(elapsed = 1568.185) seconds
+2TRUE Finished 2483 in c(elapsed = 1656.6) seconds
+2TRUE Finished 2483 in logical(0) seconds
+2TRUE Finished 2483 in 88.415 sec elapsed seconds
+2TRUEstarting worker pid=61703 on localhost:11454 at 21:32:42.546
+starting worker pid=61704 on localhost:11454 at 21:32:42.552
+starting worker pid=61705 on localhost:11454 at 21:32:42.556
+starting worker pid=61706 on localhost:11454 at 21:32:42.559
+starting worker pid=61707 on localhost:11454 at 21:32:42.563
+starting worker pid=61708 on localhost:11454 at 21:32:42.567
+starting worker pid=61709 on localhost:11454 at 21:32:42.571
+starting worker pid=61710 on localhost:11454 at 21:32:42.574
+starting worker pid=61711 on localhost:11454 at 21:32:42.578
+starting worker pid=61712 on localhost:11454 at 21:32:42.582
+starting worker pid=61713 on localhost:11454 at 21:32:42.586
+starting worker pid=61714 on localhost:11454 at 21:32:42.590
+starting worker pid=61715 on localhost:11454 at 21:32:42.594
+starting worker pid=61716 on localhost:11454 at 21:32:42.598
+starting worker pid=61717 on localhost:11454 at 21:32:42.601
+starting worker pid=61718 on localhost:11454 at 21:32:42.605
+starting worker pid=61719 on localhost:11454 at 21:32:42.609
+starting worker pid=61720 on localhost:11454 at 21:32:42.613
+starting worker pid=61721 on localhost:11454 at 21:32:42.617
+starting worker pid=61722 on localhost:11454 at 21:32:42.621
+starting worker pid=61723 on localhost:11454 at 21:32:42.625
+starting worker pid=61724 on localhost:11454 at 21:32:42.628
+starting worker pid=61725 on localhost:11454 at 21:32:42.632
+starting worker pid=61726 on localhost:11454 at 21:32:42.636
+starting worker pid=61727 on localhost:11454 at 21:32:42.640
+starting worker pid=61728 on localhost:11454 at 21:32:42.644
+starting worker pid=61729 on localhost:11454 at 21:32:42.647
+starting worker pid=61730 on localhost:11454 at 21:32:42.651
+starting worker pid=61731 on localhost:11454 at 21:32:42.655
+starting worker pid=61732 on localhost:11454 at 21:32:42.659
+starting worker pid=61733 on localhost:11454 at 21:32:42.663
+starting worker pid=61734 on localhost:11454 at 21:32:42.667
+starting worker pid=61735 on localhost:11454 at 21:32:42.671
+starting worker pid=61736 on localhost:11454 at 21:32:42.674
+starting worker pid=61737 on localhost:11454 at 21:32:42.678
+starting worker pid=61738 on localhost:11454 at 21:32:42.682
+starting worker pid=61739 on localhost:11454 at 21:32:42.686
+starting worker pid=61740 on localhost:11454 at 21:32:42.689
+starting worker pid=61741 on localhost:11454 at 21:32:42.693
+starting worker pid=61742 on localhost:11454 at 21:32:42.697
+starting worker pid=61743 on localhost:11454 at 21:32:42.701
+starting worker pid=61744 on localhost:11454 at 21:32:42.705
+starting worker pid=61745 on localhost:11454 at 21:32:42.708
+starting worker pid=61746 on localhost:11454 at 21:32:42.712
+starting worker pid=61747 on localhost:11454 at 21:32:42.716
+starting worker pid=61748 on localhost:11454 at 21:32:42.720
+starting worker pid=61749 on localhost:11454 at 21:32:42.724
+starting worker pid=61750 on localhost:11454 at 21:32:42.727
+starting worker pid=61751 on localhost:11454 at 21:32:42.731
+starting worker pid=61752 on localhost:11454 at 21:32:42.735
+starting worker pid=61753 on localhost:11454 at 21:32:42.739
+starting worker pid=61754 on localhost:11454 at 21:32:42.743
+starting worker pid=61755 on localhost:11454 at 21:32:42.747
+starting worker pid=61756 on localhost:11454 at 21:32:42.750
+starting worker pid=61757 on localhost:11454 at 21:32:42.754
+starting worker pid=61758 on localhost:11454 at 21:32:42.758
+starting worker pid=61759 on localhost:11454 at 21:32:42.762
+starting worker pid=61760 on localhost:11454 at 21:32:42.766
+starting worker pid=61761 on localhost:11454 at 21:32:42.770
+starting worker pid=61762 on localhost:11454 at 21:32:42.774
+starting worker pid=61763 on localhost:11454 at 21:32:42.777
+starting worker pid=61764 on localhost:11454 at 21:32:42.781
+starting worker pid=61765 on localhost:11454 at 21:32:42.785
+starting worker pid=61766 on localhost:11454 at 21:32:42.789
+starting worker pid=61767 on localhost:11454 at 21:32:42.793
+starting worker pid=61768 on localhost:11454 at 21:32:42.797
+starting worker pid=61769 on localhost:11454 at 21:32:42.801
+starting worker pid=61770 on localhost:11454 at 21:32:42.805
+starting worker pid=61771 on localhost:11454 at 21:32:42.808
+starting worker pid=61772 on localhost:11454 at 21:32:42.812
+starting worker pid=61773 on localhost:11454 at 21:32:42.816
+starting worker pid=61774 on localhost:11454 at 21:32:42.820
+2870.914 sec elapsed
+2870.917 sec elapsed
+2870.919 sec elapsed
+Finished 2514 in c(elapsed = 2.313) seconds
+2TRUE Finished 2514 in c(elapsed = 2873.227) seconds
+2TRUE Finished 2514 in logical(0) seconds
+2TRUE Finished 2532 in c(elapsed = 2.314) seconds
+2TRUEFinished 2514 in 2870.914 sec elapsed seconds
+2TRUEFinished 2508 in c(elapsed = 2.312) seconds
+2TRUE  Finished 2508 in c(elapsed = 2873.231) seconds
+2TRUE Finished 2508 in logical(0) seconds
+2TRUE Finished 2508 in 2870.919 sec elapsed seconds
+2TRUEFinished 2532 in c(elapsed = 2873.231) seconds
+2TRUE Finished 2532 in logical(0) seconds
+2TRUE Finished 2532 in 2870.917 sec elapsed seconds
+2TRUE2872.026 sec elapsed
+Finished 2502 in c(elapsed = 2.312) seconds
+2TRUE Finished 2502 in c(elapsed = 2874.338) seconds
+2TRUE Finished 2502 in logical(0) seconds
+2TRUE Finished 2502 in 2872.026 sec elapsed seconds
+2TRUE2872.028 sec elapsed
+Finished 2505 in c(elapsed = 2.312) seconds
+2TRUE Finished 2505 in c(elapsed = 2874.34) seconds
+2TRUE Finished 2505 in logical(0) seconds
+2TRUE Finished 2505 in 2872.028 sec elapsed seconds
+2TRUE2872.011 sec elapsed
+Finished 2568 in c(elapsed = 2.331) seconds
+2TRUE Finished 2568 in c(elapsed = 2874.342) seconds
+2TRUE Finished 2568 in logical(0) seconds
+2TRUE Finished 2568 in 2872.011 sec elapsed seconds
+2TRUE2872.027 sec elapsed
+Finished 2536 in c(elapsed = 2.315) seconds
+2TRUE Finished 2536 in c(elapsed = 2874.342) seconds
+2TRUE2872.03 sec elapsed
+ Finished 2536 in logical(0) seconds
+2TRUE Finished 2536 in 2872.027 sec elapsed seconds
+2TRUEFinished 2523 in c(elapsed = 2.313) seconds
+2TRUE Finished 2523 in c(elapsed = 2874.343) seconds
+2TRUE Finished 2523 in logical(0) seconds
+2TRUE Finished 2523 in 2872.03 sec elapsed seconds
+2TRUE2872.033 sec elapsed
+Finished 2534 in c(elapsed = 2.314) seconds
+2TRUE Finished 2534 in c(elapsed = 2874.347) seconds
+2TRUE Finished 2534 in logical(0) seconds
+2TRUE Finished 2534 in 2872.033 sec elapsed seconds
+2TRUE2872.019 sec elapsed
+Finished 2566 in c(elapsed = 2.329) seconds
+2TRUE Finished 2566 in c(elapsed = 2874.348) seconds
+2TRUE Finished 2566 in logical(0) seconds
+2TRUE Finished 2566 in 2872.019 sec elapsed seconds
+2TRUE2872.036 sec elapsed
+2872.032 sec elapsed
+Finished 2513 in c(elapsed = 2.313) seconds
+2TRUE Finished 2513 in c(elapsed = 2874.349) seconds
+2TRUE Finished 2513 in logical(0) seconds
+2TRUE Finished 2513 in 2872.036 sec elapsed seconds
+2TRUEFinished 2553 in c(elapsed = 2.317) seconds
+2TRUE Finished 2553 in c(elapsed = 2874.349) seconds
+2TRUE Finished 2553 in logical(0) seconds
+2TRUE Finished 2553 in 2872.032 sec elapsed seconds
+2TRUE2872.02 sec elapsed
+2872.032 sec elapsed
+Finished 2551 in c(elapsed = 2.317) seconds
+2TRUE Finished 2551 in c(elapsed = 2874.349) seconds
+2TRUE Finished 2551 in logical(0) seconds
+2TRUE Finished 2551 in 2872.032 sec elapsed seconds
+2TRUE2872.022 sec elapsed
+Finished 2560 in c(elapsed = 2.328) seconds
+2TRUE Finished 2560 in c(elapsed = 2874.35) seconds
+2TRUE Finished 2560 in logical(0) seconds
+2TRUE Finished 2560 in 2872.022 sec elapsed seconds
+2TRUE2872.034 sec elapsed
+Finished 2572 in c(elapsed = 2.324) seconds
+2TRUE2872.033 sec elapsed
+2872.044 sec elapsed
+2872.048 sec elapsed
+2872.023 sec elapsed
+2872.039 sec elapsed
+2872.041 sec elapsed
+2872.04 sec elapsed
+2872.038 sec elapsed
+2872.046 sec elapsed
+2872.039 sec elapsed
+2872.041 sec elapsed
+2872.033 sec elapsed
+2872.038 sec elapsed
+Finished 2556 in c(elapsed = 2.328) seconds
+2TRUEFinished 2528 in c(elapsed = 2.314) seconds
+2TRUE2872.049 sec elapsed
+2872.049 sec elapsed
+ 2872.033 sec elapsed
+ Finished 2518 in c(elapsed = 2.313) seconds
+2TRUE2872.035 sec elapsed
+Finished 2503 in c(elapsed = 2.312) seconds
+2TRUE 2872.028 sec elapsed
+Finished 2559 in c(elapsed = 2.328) seconds
+2TRUE2872.045 sec elapsed
+Finished 2507 in c(elapsed = 2.312) seconds
+2TRUE2872.049 sec elapsed
+2872.036 sec elapsed
+2872.049 sec elapsed
+Finished 2535 in c(elapsed = 2.314) seconds
+2TRUE2872.035 sec elapsed
+2872.047 sec elapsed
+2872.044 sec elapsed
+2872.048 sec elapsed
+Finished 2506 in c(elapsed = 2.312) seconds
+2TRUEFinished 2522 in c(elapsed = 2.313) seconds
+2TRUEFinished 2549 in c(elapsed = 2.316) seconds
+2TRUE2872.047 sec elapsed
+Finished 2504 in c(elapsed = 2.312) seconds
+2TRUE 2872.049 sec elapsed
+Finished 2570 in c(elapsed = 2.324) seconds
+2TRUEFinished 2512 in c(elapsed = 2.313) seconds
+2TRUE2872.031 sec elapsed
+2872.029 sec elapsed
+2872.043 sec elapsed
+Finished 2541 in c(elapsed = 2.316) seconds
+2TRUE2872.044 sec elapsed
+Finished 2540 in c(elapsed = 2.316) seconds
+2TRUEFinished 2555 in c(elapsed = 2.329) seconds
+2TRUEFinished 2561 in c(elapsed = 2.328) seconds
+2TRUE2872.043 sec elapsed
+2872.043 sec elapsed
+ 2872.024 sec elapsed
+2872.05 sec elapsed
+2872.041 sec elapsed
+Finished 2506 in c(elapsed = 2874.351) seconds
+2TRUEFinished 2538 in c(elapsed = 2.316) seconds
+2TRUE 2872.052 sec elapsed
+2872.049 sec elapsed
+2872.05 sec elapsed
+ Finished 2572 in c(elapsed = 2874.344) seconds
+2TRUEFinished 2571 in c(elapsed = 2.324) seconds
+2TRUEFinished 2543 in c(elapsed = 2.316) seconds
+2TRUE2872.035 sec elapsed
+Finished 2515 in c(elapsed = 2.313) seconds
+2TRUEFinished 2518 in c(elapsed = 2874.354) seconds
+2TRUEFinished 2507 in c(elapsed = 2874.36) seconds
+2TRUEFinished 2520 in c(elapsed = 2.313) seconds
+2TRUE2872.033 sec elapsed
+Finished 2528 in c(elapsed = 2874.36) seconds
+2TRUE 2872.045 sec elapsed
+2872.064 sec elapsed
+Finished 2547 in c(elapsed = 2.316) seconds
+2TRUEFinished 2537 in c(elapsed = 2.315) seconds
+2TRUEFinished 2527 in c(elapsed = 2.314) seconds
+2TRUE Finished 2550 in c(elapsed = 2.317) seconds
+2TRUE  Finished 2531 in c(elapsed = 2.314) seconds
+2TRUEFinished 2501 in c(elapsed = 2.312) seconds
+2TRUE Finished 2542 in c(elapsed = 2.316) seconds
+2TRUEFinished 2519 in c(elapsed = 2.313) seconds
+2TRUEFinished 2552 in c(elapsed = 2.317) seconds
+2TRUE 2872.056 sec elapsed
+2872.049 sec elapsed
+2872.049 sec elapsed
+ Finished 2521 in c(elapsed = 2.313) seconds
+2TRUE  2872.045 sec elapsed
+Finished 2562 in c(elapsed = 2.331) seconds
+2TRUE2872.041 sec elapsed
+ 2872.055 sec elapsed
+Finished 2510 in c(elapsed = 2.312) seconds
+2TRUEFinished 2554 in c(elapsed = 2.32) seconds
+2TRUE   2872.065 sec elapsed
+  2872.035 sec elapsed
+ Finished 2564 in c(elapsed = 2.324) seconds
+2TRUE2872.06 sec elapsed
+Finished 2565 in c(elapsed = 2.325) seconds
+2TRUEFinished 2558 in c(elapsed = 2.328) seconds
+2TRUE   Finished 2541 in c(elapsed = 2874.351) seconds
+2TRUEFinished 2548 in c(elapsed = 2.316) seconds
+2TRUEFinished 2545 in c(elapsed = 2.316) seconds
+2TRUEFinished 2501 in c(elapsed = 2874.361) seconds
+2TRUE Finished 2518 in logical(0) seconds
+2TRUE Finished 2511 in c(elapsed = 2.312) seconds
+2TRUEFinished 2561 in c(elapsed = 2874.361) seconds
+2TRUE  Finished 2539 in c(elapsed = 2.316) seconds
+2TRUE Finished 2549 in c(elapsed = 2874.354) seconds
+2TRUE Finished 2507 in logical(0) seconds
+2TRUEFinished 2569 in c(elapsed = 2.328) seconds
+2TRUEFinished 2522 in c(elapsed = 2874.362) seconds
+2TRUE Finished 2509 in c(elapsed = 2.312) seconds
+2TRUEFinished 2524 in c(elapsed = 2.313) seconds
+2TRUEFinished 2538 in c(elapsed = 2874.354) seconds
+2TRUE Finished 2557 in c(elapsed = 2.317) seconds
+2TRUE   Finished 2543 in c(elapsed = 2874.365) seconds
+2TRUE Finished 2535 in c(elapsed = 2874.359) seconds
+2TRUE2872.064 sec elapsed
+Finished 2528 in logical(0) seconds
+2TRUE Finished 2533 in c(elapsed = 2.314) seconds
+2TRUEFinished 2570 in c(elapsed = 2874.359) seconds
+2TRUE Finished 2519 in c(elapsed = 2874.356) seconds
+2TRUEFinished 2559 in c(elapsed = 2874.361) seconds
+2TRUEFinished 2512 in c(elapsed = 2874.362) seconds
+2TRUEFinished 2521 in c(elapsed = 2874.377) seconds
+2TRUEFinished 2517 in c(elapsed = 2.313) seconds
+2TRUEFinished 2556 in c(elapsed = 2874.351) seconds
+2TRUEFinished 2527 in c(elapsed = 2874.361) seconds
+2TRUE2872.056 sec elapsed
+Finished 2540 in c(elapsed = 2874.35) seconds
+2TRUE Finished 2563 in c(elapsed = 2.328) seconds
+2TRUE  Finished 2530 in c(elapsed = 2.314) seconds
+2TRUEFinished 2542 in c(elapsed = 2874.36) seconds
+2TRUEFinished 2506 in logical(0) seconds
+2TRUE    Finished 2572 in logical(0) seconds
+2TRUE Finished 2539 in c(elapsed = 2874.36) seconds
+2TRUEFinished 2555 in c(elapsed = 2874.357) seconds
+2TRUEFinished 2504 in c(elapsed = 2874.353) seconds
+2TRUE Finished 2525 in c(elapsed = 2.314) seconds
+2TRUEFinished 2544 in c(elapsed = 2.316) seconds
+2TRUEFinished 2503 in c(elapsed = 2874.356) seconds
+2TRUEFinished 2516 in c(elapsed = 2.313) seconds
+2TRUEFinished 2522 in logical(0) seconds
+2TRUE Finished 2515 in c(elapsed = 2874.361) seconds
+2TRUE  Finished 2562 in c(elapsed = 2874.355) seconds
+2TRUE    Finished 2546 in c(elapsed = 2.316) seconds
+2TRUEFinished 2520 in c(elapsed = 2874.362) seconds
+2TRUE    Finished 2552 in c(elapsed = 2874.364) seconds
+2TRUE  Finished 2529 in c(elapsed = 2.314) seconds
+2TRUE   Finished 2565 in c(elapsed = 2874.358) seconds
+2TRUE   Finished 2558 in c(elapsed = 2874.369) seconds
+2TRUEFinished 2570 in logical(0) seconds
+2TRUE Finished 2538 in logical(0) seconds
+2TRUEFinished 2547 in c(elapsed = 2874.365) seconds
+2TRUE    Finished 2541 in logical(0) seconds
+2TRUEFinished 2509 in c(elapsed = 2874.361) seconds
+2TRUE  Finished 2561 in logical(0) seconds
+2TRUEFinished 2571 in c(elapsed = 2874.353) seconds
+2TRUE  Finished 2510 in c(elapsed = 2874.362) seconds
+2TRUEFinished 2542 in logical(0) seconds
+2TRUEFinished 2548 in c(elapsed = 2874.349) seconds
+2TRUE  Finished 2537 in c(elapsed = 2874.355) seconds
+2TRUEFinished 2530 in c(elapsed = 2874.363) seconds
+2TRUEFinished 2531 in c(elapsed = 2874.364) seconds
+2TRUEFinished 2545 in c(elapsed = 2874.351) seconds
+2TRUEFinished 2526 in c(elapsed = 2.314) seconds
+2TRUEFinished 2519 in logical(0) seconds
+2TRUEFinished 2572 in 2872.02 sec elapsed seconds
+2TRUE    Finished 2569 in c(elapsed = 2874.364) seconds
+2TRUEFinished 2512 in logical(0) seconds
+2TRUE Finished 2528 in 2872.046 sec elapsed seconds
+2TRUE   Finished 2556 in logical(0) seconds
+2TRUE Finished 2517 in c(elapsed = 2874.365) seconds
+2TRUEFinished 2564 in c(elapsed = 2874.355) seconds
+2TRUEFinished 2501 in logical(0) seconds
+2TRUE     Finished 2524 in c(elapsed = 2874.369) seconds
+2TRUEFinished 2557 in c(elapsed = 2874.362) seconds
+2TRUEFinished 2507 in 2872.048 sec elapsed seconds
+2TRUE Finished 2535 in logical(0) seconds
+2TRUEFinished 2540 in logical(0) seconds
+2TRUE Finished 2554 in c(elapsed = 2874.359) seconds
+2TRUEFinished 2550 in c(elapsed = 2874.36) seconds
+2TRUEFinished 2515 in logical(0) seconds
+2TRUEFinished 2516 in c(elapsed = 2874.368) seconds
+2TRUE    Finished 2521 in logical(0) seconds
+2TRUE  Finished 2518 in 2872.041 sec elapsed seconds
+2TRUEFinished 2522 in 2872.049 sec elapsed seconds
+2TRUE  Finished 2552 in logical(0) seconds
+2TRUE   Finished 2531 in logical(0) seconds
+2TRUEFinished 2533 in c(elapsed = 2874.379) seconds
+2TRUEFinished 2539 in logical(0) seconds
+2TRUEFinished 2563 in c(elapsed = 2874.363) seconds
+2TRUEFinished 2520 in logical(0) seconds
+2TRUE Finished 2537 in logical(0) seconds
+2TRUEFinished 2548 in logical(0) seconds
+2TRUE    Finished 2510 in logical(0) seconds
+2TRUEFinished 2503 in logical(0) seconds
+2TRUEFinished 2525 in c(elapsed = 2874.359) seconds
+2TRUE   Finished 2562 in logical(0) seconds
+2TRUE Finished 2519 in 2872.043 sec elapsed seconds
+2TRUEFinished 2543 in logical(0) seconds
+2TRUEFinished 2558 in logical(0) seconds
+2TRUE Finished 2544 in c(elapsed = 2874.38) seconds
+2TRUEFinished 2511 in c(elapsed = 2874.353) seconds
+2TRUEFinished 2535 in 2872.045 sec elapsed seconds
+2TRUE   Finished 2512 in 2872.049 sec elapsed seconds
+2TRUE  Finished 2506 in 2872.039 sec elapsed seconds
+2TRUEFinished 2538 in 2872.038 sec elapsed seconds
+2TRUE Finished 2546 in c(elapsed = 2874.376) seconds
+2TRUE  Finished 2561 in 2872.033 sec elapsed seconds
+2TRUE Finished 2556 in 2872.023 sec elapsed seconds
+2TRUEFinished 2520 in 2872.049 sec elapsed seconds
+2TRUE  Finished 2570 in 2872.035 sec elapsed seconds
+2TRUE Finished 2541 in 2872.035 sec elapsed seconds
+2TRUE Finished 2549 in logical(0) seconds
+2TRUEFinished 2564 in logical(0) seconds
+2TRUEFinished 2530 in logical(0) seconds
+2TRUE Finished 2527 in logical(0) seconds
+2TRUE Finished 2529 in c(elapsed = 2874.37) seconds
+2TRUE Finished 2547 in logical(0) seconds
+2TRUE  Finished 2517 in logical(0) seconds
+2TRUE Finished 2565 in logical(0) seconds
+2TRUEFinished 2554 in logical(0) seconds
+2TRUE Finished 2510 in 2872.05 sec elapsed seconds
+2TRUEFinished 2501 in 2872.049 sec elapsed seconds
+2TRUE  Finished 2516 in logical(0) seconds
+2TRUEFinished 2552 in 2872.047 sec elapsed seconds
+2TRUEFinished 2524 in logical(0) seconds
+2TRUEFinished 2558 in 2872.041 sec elapsed seconds
+2TRUEFinished 2526 in c(elapsed = 2874.357) seconds
+2TRUE Finished 2525 in logical(0) seconds
+2TRUEFinished 2571 in logical(0) seconds
+2TRUEFinished 2555 in logical(0) seconds
+2TRUEFinished 2531 in 2872.05 sec elapsed seconds
+2TRUE Finished 2545 in logical(0) seconds
+2TRUEFinished 2542 in 2872.044 sec elapsed seconds
+2TRUEFinished 2521 in 2872.064 sec elapsed seconds
+2TRUEFinished 2533 in logical(0) seconds
+2TRUE Finished 2504 in logical(0) seconds
+2TRUEFinished 2548 in 2872.033 sec elapsed seconds
+2TRUE Finished 2540 in 2872.034 sec elapsed seconds
+2TRUE   Finished 2515 in 2872.048 sec elapsed seconds
+2TRUEFinished 2559 in logical(0) seconds
+2TRUE Finished 2569 in logical(0) seconds
+2TRUEFinished 2503 in 2872.044 sec elapsed seconds
+2TRUEFinished 2537 in 2872.04 sec elapsed seconds
+2TRUE Finished 2550 in logical(0) seconds
+2TRUEFinished 2563 in logical(0) seconds
+2TRUE   Finished 2557 in logical(0) seconds
+2TRUEFinished 2509 in logical(0) seconds
+2TRUEFinished 2539 in 2872.044 sec elapsed seconds
+2TRUEFinished 2527 in 2872.047 sec elapsed seconds
+2TRUE   Finished 2549 in 2872.038 sec elapsed seconds
+2TRUE Finished 2544 in logical(0) seconds
+2TRUE Finished 2562 in 2872.024 sec elapsed seconds
+2TRUE Finished 2511 in logical(0) seconds
+2TRUEFinished 2517 in 2872.052 sec elapsed seconds
+2TRUEFinished 2546 in logical(0) seconds
+2TRUEFinished 2555 in 2872.028 sec elapsed seconds
+2TRUEFinished 2564 in 2872.031 sec elapsed seconds
+2TRUE Finished 2525 in 2872.045 sec elapsed seconds
+2TRUE      Finished 2530 in 2872.049 sec elapsed seconds
+2TRUEFinished 2571 in 2872.029 sec elapsed seconds
+2TRUE Finished 2554 in 2872.039 sec elapsed seconds
+2TRUE Finished 2550 in 2872.043 sec elapsed seconds
+2TRUEFinished 2526 in logical(0) seconds
+2TRUEFinished 2559 in 2872.033 sec elapsed seconds
+2TRUEFinished 2543 in 2872.049 sec elapsed seconds
+2TRUEFinished 2547 in 2872.049 sec elapsed seconds
+2TRUE Finished 2544 in 2872.064 sec elapsed seconds
+2TRUE Finished 2516 in 2872.055 sec elapsed seconds
+2TRUEFinished 2509 in 2872.049 sec elapsed seconds
+2TRUEFinished 2511 in 2872.041 sec elapsed seconds
+2TRUE  Finished 2504 in 2872.041 sec elapsed seconds
+2TRUEFinished 2563 in 2872.035 sec elapsed seconds
+2TRUEFinished 2533 in 2872.065 sec elapsed seconds
+2TRUEFinished 2524 in 2872.056 sec elapsed seconds
+2TRUEFinished 2569 in 2872.036 sec elapsed seconds
+2TRUE Finished 2526 in 2872.043 sec elapsed seconds
+2TRUEFinished 2545 in 2872.035 sec elapsed seconds
+2TRUEFinished 2546 in 2872.06 sec elapsed seconds
+2TRUEFinished 2565 in 2872.033 sec elapsed seconds
+2TRUEFinished 2557 in 2872.045 sec elapsed seconds
+2TRUEFinished 2529 in logical(0) seconds
+2TRUE Finished 2529 in 2872.056 sec elapsed seconds
+2TRUE2872.399 sec elapsed
+Finished 2567 in c(elapsed = 2.328) seconds
+2TRUE Finished 2567 in c(elapsed = 2874.727) seconds
+2TRUE Finished 2567 in logical(0) seconds
+2TRUE Finished 2567 in 2872.399 sec elapsed seconds
+2TRUE156.871 sec elapsed
+Finished 2609 in c(elapsed = 2874.483) seconds
+2TRUE Finished 2609 in c(elapsed = 3031.354) seconds
+2TRUE Finished 2609 in logical(0) seconds
+2TRUE Finished 2609 in 156.871 sec elapsed seconds
+2TRUE158.823 sec elapsed
+Finished 2604 in c(elapsed = 2874.479) seconds
+2TRUE Finished 2604 in c(elapsed = 3033.302) seconds
+2TRUE Finished 2604 in logical(0) seconds
+2TRUE Finished 2604 in 158.823 sec elapsed seconds
+2TRUE159.117 sec elapsed
+Finished 2573 in c(elapsed = 2874.319) seconds
+2TRUE Finished 2573 in c(elapsed = 3033.436) seconds
+2TRUE Finished 2573 in logical(0) seconds
+2TRUE Finished 2573 in 159.117 sec elapsed seconds
+2TRUE159.611 sec elapsed
+Finished 2581 in c(elapsed = 2874.349) seconds
+2TRUE Finished 2581 in c(elapsed = 3033.96) seconds
+2TRUE Finished 2581 in logical(0) seconds
+2TRUE Finished 2581 in 159.611 sec elapsed seconds
+2TRUE160.834 sec elapsed
+Finished 2632 in c(elapsed = 2874.517) seconds
+2TRUE Finished 2632 in c(elapsed = 3035.351) seconds
+2TRUE Finished 2632 in logical(0) seconds
+2TRUE Finished 2632 in 160.834 sec elapsed seconds
+2TRUE160.692 sec elapsed
+Finished 2644 in c(elapsed = 2874.731) seconds
+2TRUE Finished 2644 in c(elapsed = 3035.423) seconds
+2TRUE Finished 2644 in logical(0) seconds
+2TRUE Finished 2644 in 160.692 sec elapsed seconds
+2TRUE160.971 sec elapsed
+Finished 2635 in c(elapsed = 2874.522) seconds
+2TRUE Finished 2635 in c(elapsed = 3035.493) seconds
+2TRUE Finished 2635 in logical(0) seconds
+2TRUE Finished 2635 in 160.971 sec elapsed seconds
+2TRUE161.268 sec elapsed
+Finished 2588 in c(elapsed = 2874.44) seconds
+2TRUE Finished 2588 in c(elapsed = 3035.708) seconds
+2TRUE Finished 2588 in logical(0) seconds
+2TRUE Finished 2588 in 161.268 sec elapsed seconds
+2TRUE161.487 sec elapsed
+Finished 2605 in c(elapsed = 2874.48) seconds
+2TRUE Finished 2605 in c(elapsed = 3035.967) seconds
+2TRUE Finished 2605 in logical(0) seconds
+2TRUE Finished 2605 in 161.487 sec elapsed seconds
+2TRUE162.347 sec elapsed
+Finished 2584 in c(elapsed = 2874.351) seconds
+2TRUE Finished 2584 in c(elapsed = 3036.698) seconds
+2TRUE Finished 2584 in logical(0) seconds
+2TRUE Finished 2584 in 162.347 sec elapsed seconds
+2TRUE162.428 sec elapsed
+Finished 2607 in c(elapsed = 2874.482) seconds
+2TRUE Finished 2607 in c(elapsed = 3036.91) seconds
+2TRUE Finished 2607 in logical(0) seconds
+2TRUE Finished 2607 in 162.428 sec elapsed seconds
+2TRUE162.657 sec elapsed
+Finished 2586 in c(elapsed = 2874.353) seconds
+2TRUE Finished 2586 in c(elapsed = 3037.01) seconds
+2TRUE Finished 2586 in logical(0) seconds
+2TRUE Finished 2586 in 162.657 sec elapsed seconds
+2TRUE163.097 sec elapsed
+Finished 2583 in c(elapsed = 2874.351) seconds
+2TRUE Finished 2583 in c(elapsed = 3037.448) seconds
+2TRUE Finished 2583 in logical(0) seconds
+2TRUE Finished 2583 in 163.097 sec elapsed seconds
+2TRUE163.195 sec elapsed
+Finished 2582 in c(elapsed = 2874.351) seconds
+2TRUE Finished 2582 in c(elapsed = 3037.546) seconds
+2TRUE Finished 2582 in logical(0) seconds
+2TRUE Finished 2582 in 163.195 sec elapsed seconds
+2TRUE163.956 sec elapsed
+Finished 2591 in c(elapsed = 2874.453) seconds
+2TRUE Finished 2591 in c(elapsed = 3038.409) seconds
+2TRUE Finished 2591 in logical(0) seconds
+2TRUE Finished 2591 in 163.956 sec elapsed seconds
+2TRUE164.176 sec elapsed
+Finished 2611 in c(elapsed = 2874.485) seconds
+2TRUE Finished 2611 in c(elapsed = 3038.661) seconds
+2TRUE Finished 2611 in logical(0) seconds
+2TRUE Finished 2611 in 164.176 sec elapsed seconds
+2TRUE164.535 sec elapsed
+Finished 2587 in c(elapsed = 2874.438) seconds
+2TRUE Finished 2587 in c(elapsed = 3038.973) seconds
+2TRUE Finished 2587 in logical(0) seconds
+2TRUE Finished 2587 in 164.535 sec elapsed seconds
+2TRUE164.79 sec elapsed
+Finished 2574 in c(elapsed = 2874.32) seconds
+2TRUE Finished 2574 in c(elapsed = 3039.11) seconds
+2TRUE Finished 2574 in logical(0) seconds
+2TRUE Finished 2574 in 164.79 sec elapsed seconds
+2TRUE165.099 sec elapsed
+Finished 2589 in c(elapsed = 2874.447) seconds
+2TRUE Finished 2589 in c(elapsed = 3039.546) seconds
+2TRUE Finished 2589 in logical(0) seconds
+2TRUE Finished 2589 in 165.099 sec elapsed seconds
+2TRUE165.187 sec elapsed
+Finished 2592 in c(elapsed = 2874.464) seconds
+2TRUE Finished 2592 in c(elapsed = 3039.651) seconds
+2TRUE Finished 2592 in logical(0) seconds
+2TRUE Finished 2592 in 165.187 sec elapsed seconds
+2TRUE165.211 sec elapsed
+Finished 2620 in c(elapsed = 2874.509) seconds
+2TRUE Finished 2620 in c(elapsed = 3039.72) seconds
+2TRUE Finished 2620 in logical(0) seconds
+2TRUE Finished 2620 in 165.211 sec elapsed seconds
+2TRUE165.25 sec elapsed
+Finished 2626 in c(elapsed = 2874.513) seconds
+2TRUE Finished 2626 in c(elapsed = 3039.763) seconds
+2TRUE Finished 2626 in logical(0) seconds
+2TRUE Finished 2626 in 165.25 sec elapsed seconds
+2TRUE165.66 sec elapsed
+Finished 2608 in c(elapsed = 2874.482) seconds
+2TRUE Finished 2608 in c(elapsed = 3040.142) seconds
+2TRUE Finished 2608 in logical(0) seconds
+2TRUE Finished 2608 in 165.66 sec elapsed seconds
+2TRUE165.652 sec elapsed
+Finished 2623 in c(elapsed = 2874.511) seconds
+2TRUE Finished 2623 in c(elapsed = 3040.163) seconds
+2TRUE Finished 2623 in logical(0) seconds
+2TRUE Finished 2623 in 165.652 sec elapsed seconds
+2TRUE165.816 sec elapsed
+Finished 2637 in c(elapsed = 2874.521) seconds
+2TRUE Finished 2637 in c(elapsed = 3040.337) seconds
+2TRUE Finished 2637 in logical(0) seconds
+2TRUE Finished 2637 in 165.816 sec elapsed seconds
+2TRUE166.49 sec elapsed
+Finished 2596 in c(elapsed = 2874.468) seconds
+2TRUE Finished 2596 in c(elapsed = 3040.958) seconds
+2TRUE Finished 2596 in logical(0) seconds
+2TRUE Finished 2596 in 166.49 sec elapsed seconds
+2TRUE166.73 sec elapsed
+Finished 2595 in c(elapsed = 2874.467) seconds
+2TRUE Finished 2595 in c(elapsed = 3041.197) seconds
+2TRUE Finished 2595 in logical(0) seconds
+2TRUE Finished 2595 in 166.73 sec elapsed seconds
+2TRUE166.856 sec elapsed
+Finished 2594 in c(elapsed = 2874.467) seconds
+2TRUE Finished 2594 in c(elapsed = 3041.323) seconds
+2TRUE Finished 2594 in logical(0) seconds
+2TRUE Finished 2594 in 166.856 sec elapsed seconds
+2TRUE167.519 sec elapsed
+Finished 2575 in c(elapsed = 2874.32) seconds
+2TRUE Finished 2575 in c(elapsed = 3041.839) seconds
+2TRUE Finished 2575 in logical(0) seconds
+2TRUE Finished 2575 in 167.519 sec elapsed seconds
+2TRUE167.638 sec elapsed
+Finished 2630 in c(elapsed = 2874.516) seconds
+2TRUE Finished 2630 in c(elapsed = 3042.154) seconds
+2TRUE Finished 2630 in logical(0) seconds
+2TRUE Finished 2630 in 167.638 sec elapsed seconds
+2TRUE167.734 sec elapsed
+Finished 2597 in c(elapsed = 2874.469) seconds
+2TRUE Finished 2597 in c(elapsed = 3042.203) seconds
+2TRUE Finished 2597 in logical(0) seconds
+2TRUE Finished 2597 in 167.734 sec elapsed seconds
+2TRUE167.809 sec elapsed
+Finished 2590 in c(elapsed = 2874.453) seconds
+2TRUE Finished 2590 in c(elapsed = 3042.262) seconds
+2TRUE Finished 2590 in logical(0) seconds
+2TRUE Finished 2590 in 167.809 sec elapsed seconds
+2TRUE167.81 sec elapsed
+Finished 2613 in c(elapsed = 2874.486) seconds
+2TRUE Finished 2613 in c(elapsed = 3042.296) seconds
+2TRUE Finished 2613 in logical(0) seconds
+2TRUE Finished 2613 in 167.81 sec elapsed seconds
+2TRUE167.9 sec elapsed
+Finished 2610 in c(elapsed = 2874.483) seconds
+2TRUE Finished 2610 in c(elapsed = 3042.383) seconds
+2TRUE Finished 2610 in logical(0) seconds
+2TRUE Finished 2610 in 167.9 sec elapsed seconds
+2TRUE167.997 sec elapsed
+Finished 2603 in c(elapsed = 2874.478) seconds
+2TRUE Finished 2603 in c(elapsed = 3042.475) seconds
+2TRUE Finished 2603 in logical(0) seconds
+2TRUE Finished 2603 in 167.997 sec elapsed seconds
+2TRUE168.352 sec elapsed
+Finished 2576 in c(elapsed = 2874.342) seconds
+2TRUE Finished 2576 in c(elapsed = 3042.694) seconds
+2TRUE Finished 2576 in logical(0) seconds
+2TRUE Finished 2576 in 168.352 sec elapsed seconds
+2TRUE168.349 sec elapsed
+Finished 2634 in c(elapsed = 2874.525) seconds
+2TRUE Finished 2634 in c(elapsed = 3042.874) seconds
+2TRUE Finished 2634 in logical(0) seconds
+2TRUE Finished 2634 in 168.349 sec elapsed seconds
+2TRUE168.552 sec elapsed
+Finished 2578 in c(elapsed = 2874.344) seconds
+2TRUE Finished 2578 in c(elapsed = 3042.896) seconds
+2TRUE Finished 2578 in logical(0) seconds
+2TRUE Finished 2578 in 168.552 sec elapsed seconds
+2TRUE168.805 sec elapsed
+Finished 2577 in c(elapsed = 2874.343) seconds
+2TRUE Finished 2577 in c(elapsed = 3043.148) seconds
+2TRUE Finished 2577 in logical(0) seconds
+2TRUE Finished 2577 in 168.805 sec elapsed seconds
+2TRUE169.073 sec elapsed
+Finished 2622 in c(elapsed = 2874.523) seconds
+2TRUE Finished 2622 in c(elapsed = 3043.596) seconds
+2TRUE Finished 2622 in logical(0) seconds
+2TRUE Finished 2622 in 169.073 sec elapsed seconds
+2TRUE169.089 sec elapsed
+Finished 2641 in c(elapsed = 2874.524) seconds
+2TRUE Finished 2641 in c(elapsed = 3043.613) seconds
+2TRUE Finished 2641 in logical(0) seconds
+2TRUE Finished 2641 in 169.089 sec elapsed seconds
+2TRUE169.264 sec elapsed
+Finished 2615 in c(elapsed = 2874.491) seconds
+2TRUE Finished 2615 in c(elapsed = 3043.755) seconds
+2TRUE Finished 2615 in logical(0) seconds
+2TRUE Finished 2615 in 169.264 sec elapsed seconds
+2TRUE169.48 sec elapsed
+Finished 2580 in c(elapsed = 2874.348) seconds
+2TRUE Finished 2580 in c(elapsed = 3043.828) seconds
+2TRUE Finished 2580 in logical(0) seconds
+2TRUE Finished 2580 in 169.48 sec elapsed seconds
+2TRUE169.484 sec elapsed
+Finished 2585 in c(elapsed = 2874.352) seconds
+2TRUE Finished 2585 in c(elapsed = 3043.836) seconds
+2TRUE Finished 2585 in logical(0) seconds
+2TRUE Finished 2585 in 169.484 sec elapsed seconds
+2TRUE169.591 sec elapsed
+Finished 2617 in c(elapsed = 2874.505) seconds
+2TRUE Finished 2617 in c(elapsed = 3044.096) seconds
+2TRUE Finished 2617 in logical(0) seconds
+2TRUE Finished 2617 in 169.591 sec elapsed seconds
+2TRUE169.6 sec elapsed
+Finished 2639 in c(elapsed = 2874.522) seconds
+2TRUE Finished 2639 in c(elapsed = 3044.122) seconds
+2TRUE Finished 2639 in logical(0) seconds
+2TRUE Finished 2639 in 169.6 sec elapsed seconds
+2TRUE169.791 sec elapsed
+Finished 2624 in c(elapsed = 2874.512) seconds
+2TRUE Finished 2624 in c(elapsed = 3044.303) seconds
+2TRUE Finished 2624 in logical(0) seconds
+2TRUE Finished 2624 in 169.791 sec elapsed seconds
+2TRUE170.002 sec elapsed
+Finished 2633 in c(elapsed = 2874.518) seconds
+2TRUE Finished 2633 in c(elapsed = 3044.52) seconds
+2TRUE Finished 2633 in logical(0) seconds
+2TRUE Finished 2633 in 170.002 sec elapsed seconds
+2TRUE170.165 sec elapsed
+Finished 2619 in c(elapsed = 2874.508) seconds
+2TRUE Finished 2619 in c(elapsed = 3044.673) seconds
+2TRUE Finished 2619 in logical(0) seconds
+2TRUE Finished 2619 in 170.165 sec elapsed seconds
+2TRUE170.451 sec elapsed
+Finished 2598 in c(elapsed = 2874.47) seconds
+2TRUE Finished 2598 in c(elapsed = 3044.921) seconds
+2TRUE Finished 2598 in logical(0) seconds
+2TRUE Finished 2598 in 170.451 sec elapsed seconds
+2TRUE170.686 sec elapsed
+Finished 2612 in c(elapsed = 2874.486) seconds
+2TRUE Finished 2612 in c(elapsed = 3045.172) seconds
+2TRUE Finished 2612 in logical(0) seconds
+2TRUE Finished 2612 in 170.686 sec elapsed seconds
+2TRUE170.882 sec elapsed
+Finished 2628 in c(elapsed = 2874.514) seconds
+2TRUE Finished 2628 in c(elapsed = 3045.396) seconds
+2TRUE Finished 2628 in logical(0) seconds
+2TRUE Finished 2628 in 170.882 sec elapsed seconds
+2TRUE171.636 sec elapsed
+Finished 2636 in c(elapsed = 2874.52) seconds
+2TRUE Finished 2636 in c(elapsed = 3046.156) seconds
+2TRUE Finished 2636 in logical(0) seconds
+2TRUE Finished 2636 in 171.636 sec elapsed seconds
+2TRUE171.675 sec elapsed
+Finished 2625 in c(elapsed = 2874.512) seconds
+2TRUE Finished 2625 in c(elapsed = 3046.187) seconds
+2TRUE Finished 2625 in logical(0) seconds
+2TRUE Finished 2625 in 171.675 sec elapsed seconds
+2TRUE171.859 sec elapsed
+Finished 2618 in c(elapsed = 2874.507) seconds
+2TRUE Finished 2618 in c(elapsed = 3046.366) seconds
+2TRUE Finished 2618 in logical(0) seconds
+2TRUE Finished 2618 in 171.859 sec elapsed seconds
+2TRUE172.943 sec elapsed
+Finished 2601 in c(elapsed = 2874.471) seconds
+2TRUE Finished 2601 in c(elapsed = 3047.414) seconds
+2TRUE Finished 2601 in logical(0) seconds
+2TRUE Finished 2601 in 172.943 sec elapsed seconds
+2TRUE173.11 sec elapsed
+Finished 2621 in c(elapsed = 2874.509) seconds
+2TRUE Finished 2621 in c(elapsed = 3047.619) seconds
+2TRUE Finished 2621 in logical(0) seconds
+2TRUE Finished 2621 in 173.11 sec elapsed seconds
+2TRUE173.188 sec elapsed
+Finished 2627 in c(elapsed = 2874.514) seconds
+2TRUE Finished 2627 in c(elapsed = 3047.702) seconds
+2TRUE Finished 2627 in logical(0) seconds
+2TRUE Finished 2627 in 173.188 sec elapsed seconds
+2TRUE173.356 sec elapsed
+Finished 2629 in c(elapsed = 2874.515) seconds
+2TRUE Finished 2629 in c(elapsed = 3047.871) seconds
+2TRUE Finished 2629 in logical(0) seconds
+2TRUE Finished 2629 in 173.356 sec elapsed seconds
+2TRUE173.412 sec elapsed
+Finished 2631 in c(elapsed = 2874.516) seconds
+2TRUE Finished 2631 in c(elapsed = 3047.928) seconds
+2TRUE Finished 2631 in logical(0) seconds
+2TRUE Finished 2631 in 173.412 sec elapsed seconds
+2TRUE173.547 sec elapsed
+Finished 2642 in c(elapsed = 2874.524) seconds
+2TRUE Finished 2642 in c(elapsed = 3048.071) seconds
+2TRUE Finished 2642 in logical(0) seconds
+2TRUE Finished 2642 in 173.547 sec elapsed seconds
+2TRUE174.116 sec elapsed
+Finished 2614 in c(elapsed = 2874.49) seconds
+2TRUE Finished 2614 in c(elapsed = 3048.606) seconds
+2TRUE Finished 2614 in logical(0) seconds
+2TRUE Finished 2614 in 174.116 sec elapsed seconds
+2TRUE174.225 sec elapsed
+Finished 2616 in c(elapsed = 2874.503) seconds
+2TRUE Finished 2616 in c(elapsed = 3048.728) seconds
+2TRUE Finished 2616 in logical(0) seconds
+2TRUE Finished 2616 in 174.225 sec elapsed seconds
+2TRUE174.362 sec elapsed
+Finished 2593 in c(elapsed = 2874.465) seconds
+2TRUE Finished 2593 in c(elapsed = 3048.827) seconds
+2TRUE Finished 2593 in logical(0) seconds
+2TRUE Finished 2593 in 174.362 sec elapsed seconds
+2TRUE174.425 sec elapsed
+Finished 2640 in c(elapsed = 2874.523) seconds
+2TRUE Finished 2640 in c(elapsed = 3048.948) seconds
+2TRUE Finished 2640 in logical(0) seconds
+2TRUE Finished 2640 in 174.425 sec elapsed seconds
+2TRUE175.269 sec elapsed
+Finished 2599 in c(elapsed = 2874.47) seconds
+2TRUE Finished 2599 in c(elapsed = 3049.739) seconds
+2TRUE Finished 2599 in logical(0) seconds
+2TRUE Finished 2599 in 175.269 sec elapsed seconds
+2TRUE175.739 sec elapsed
+Finished 2579 in c(elapsed = 2874.346) seconds
+2TRUE Finished 2579 in c(elapsed = 3050.085) seconds
+2TRUE Finished 2579 in logical(0) seconds
+2TRUE Finished 2579 in 175.739 sec elapsed seconds
+2TRUE176.211 sec elapsed
+Finished 2600 in c(elapsed = 2874.471) seconds
+2TRUE Finished 2600 in c(elapsed = 3050.682) seconds
+2TRUE Finished 2600 in logical(0) seconds
+2TRUE Finished 2600 in 176.211 sec elapsed seconds
+2TRUE176.563 sec elapsed
+Finished 2602 in c(elapsed = 2874.478) seconds
+2TRUE Finished 2602 in c(elapsed = 3051.041) seconds
+2TRUE Finished 2602 in logical(0) seconds
+2TRUE Finished 2602 in 176.563 sec elapsed seconds
+2TRUE176.945 sec elapsed
+Finished 2638 in c(elapsed = 2874.522) seconds
+2TRUE Finished 2638 in c(elapsed = 3051.467) seconds
+2TRUE Finished 2638 in logical(0) seconds
+2TRUE Finished 2638 in 176.945 sec elapsed seconds
+2TRUE178.53 sec elapsed
+Finished 2606 in c(elapsed = 2874.481) seconds
+2TRUE Finished 2606 in c(elapsed = 3053.011) seconds
+2TRUE Finished 2606 in logical(0) seconds
+2TRUE Finished 2606 in 178.53 sec elapsed seconds
+2TRUE178.608 sec elapsed
+Finished 2643 in c(elapsed = 2874.529) seconds
+2TRUE Finished 2643 in c(elapsed = 3053.137) seconds
+2TRUE Finished 2643 in logical(0) seconds
+2TRUE Finished 2643 in 178.608 sec elapsed seconds
+2TRUE157.397 sec elapsed
+Finished 2645 in c(elapsed = 3031.358) seconds
+2TRUE Finished 2645 in c(elapsed = 3188.755) seconds
+2TRUE Finished 2645 in logical(0) seconds
+2TRUE Finished 2645 in 157.397 sec elapsed seconds
+2TRUE156.887 sec elapsed
+Finished 2646 in c(elapsed = 3033.306) seconds
+2TRUE Finished 2646 in c(elapsed = 3190.193) seconds
+2TRUE Finished 2646 in logical(0) seconds
+2TRUE Finished 2646 in 156.887 sec elapsed seconds
+2TRUE161.169 sec elapsed
+Finished 2647 in c(elapsed = 3033.438) seconds
+2TRUE Finished 2647 in c(elapsed = 3194.607) seconds
+2TRUE Finished 2647 in logical(0) seconds
+2TRUE Finished 2647 in 161.169 sec elapsed seconds
+2TRUE159.094 sec elapsed
+Finished 2652 in c(elapsed = 3035.711) seconds
+2TRUE Finished 2652 in c(elapsed = 3194.805) seconds
+2TRUE Finished 2652 in logical(0) seconds
+2TRUE Finished 2652 in 159.094 sec elapsed seconds
+2TRUE160.034 sec elapsed
+Finished 2653 in c(elapsed = 3035.969) seconds
+2TRUE Finished 2653 in c(elapsed = 3196.003) seconds
+2TRUE Finished 2653 in logical(0) seconds
+2TRUE Finished 2653 in 160.034 sec elapsed seconds
+2TRUE161.678 sec elapsed
+Finished 2649 in c(elapsed = 3035.354) seconds
+2TRUE Finished 2649 in c(elapsed = 3197.032) seconds
+2TRUE Finished 2649 in logical(0) seconds
+2TRUE Finished 2649 in 161.678 sec elapsed seconds
+2TRUE161.448 sec elapsed
+Finished 2654 in c(elapsed = 3036.702) seconds
+2TRUE Finished 2654 in c(elapsed = 3198.15) seconds
+2TRUE Finished 2654 in logical(0) seconds
+2TRUE Finished 2654 in 161.448 sec elapsed seconds
+2TRUE163.022 sec elapsed
+Finished 2651 in c(elapsed = 3035.497) seconds
+2TRUE Finished 2651 in c(elapsed = 3198.519) seconds
+2TRUE Finished 2651 in logical(0) seconds
+2TRUE Finished 2651 in 163.022 sec elapsed seconds
+2TRUE161.611 sec elapsed
+Finished 2658 in c(elapsed = 3037.548) seconds
+2TRUE Finished 2658 in c(elapsed = 3199.159) seconds
+2TRUE Finished 2658 in logical(0) seconds
+2TRUE Finished 2658 in 161.611 sec elapsed seconds
+2TRUE160.308 sec elapsed
+Finished 2661 in c(elapsed = 3038.975) seconds
+2TRUE Finished 2661 in c(elapsed = 3199.283) seconds
+2TRUE Finished 2661 in logical(0) seconds
+2TRUE Finished 2661 in 160.308 sec elapsed seconds
+2TRUE165.513 sec elapsed
+Finished 2648 in c(elapsed = 3033.963) seconds
+2TRUE Finished 2648 in c(elapsed = 3199.476) seconds
+2TRUE Finished 2648 in logical(0) seconds
+2TRUE Finished 2648 in 165.513 sec elapsed seconds
+2TRUE162.918 sec elapsed
+Finished 2657 in c(elapsed = 3037.451) seconds
+2TRUE Finished 2657 in c(elapsed = 3200.369) seconds
+2TRUE Finished 2657 in logical(0) seconds
+2TRUE Finished 2657 in 162.918 sec elapsed seconds
+2TRUE160.615 sec elapsed
+Finished 2666 in c(elapsed = 3039.766) seconds
+2TRUE Finished 2666 in c(elapsed = 3200.381) seconds
+2TRUE Finished 2666 in logical(0) seconds
+2TRUE Finished 2666 in 160.615 sec elapsed seconds
+2TRUE161.989 sec elapsed
+Finished 2665 in c(elapsed = 3039.722) seconds
+2TRUE Finished 2665 in c(elapsed = 3201.711) seconds
+2TRUE Finished 2665 in logical(0) seconds
+2TRUE Finished 2665 in 161.989 sec elapsed seconds
+2TRUE161.971 sec elapsed
+Finished 2667 in c(elapsed = 3040.145) seconds
+2TRUE Finished 2667 in c(elapsed = 3202.116) seconds
+2TRUE Finished 2667 in logical(0) seconds
+2TRUE Finished 2667 in 161.971 sec elapsed seconds
+2TRUE164.044 sec elapsed
+Finished 2659 in c(elapsed = 3038.412) seconds
+2TRUE Finished 2659 in c(elapsed = 3202.456) seconds
+2TRUE Finished 2659 in logical(0) seconds
+2TRUE Finished 2659 in 164.044 sec elapsed seconds
+2TRUE162.246 sec elapsed
+Finished 2669 in c(elapsed = 3040.34) seconds
+2TRUE Finished 2669 in c(elapsed = 3202.586) seconds
+2TRUE Finished 2669 in logical(0) seconds
+2TRUE Finished 2669 in 162.246 sec elapsed seconds
+2TRUE169.286 sec elapsed
+Finished 2650 in c(elapsed = 3035.426) seconds
+2TRUE Finished 2650 in c(elapsed = 3204.712) seconds
+2TRUE Finished 2650 in logical(0) seconds
+2TRUE Finished 2650 in 169.286 sec elapsed seconds
+2TRUE165.023 sec elapsed
+Finished 2668 in c(elapsed = 3040.166) seconds
+2TRUE Finished 2668 in c(elapsed = 3205.189) seconds
+2TRUE Finished 2668 in logical(0) seconds
+2TRUE Finished 2668 in 165.023 sec elapsed seconds
+2TRUE166.525 sec elapsed
+Finished 2663 in c(elapsed = 3039.55) seconds
+2TRUE Finished 2663 in c(elapsed = 3206.075) seconds
+2TRUE Finished 2663 in logical(0) seconds
+2TRUE Finished 2663 in 166.525 sec elapsed seconds
+2TRUE169.532 sec elapsed
+Finished 2656 in c(elapsed = 3037.013) seconds
+2TRUE Finished 2656 in c(elapsed = 3206.545) seconds
+2TRUE Finished 2656 in logical(0) seconds
+2TRUE Finished 2656 in 169.532 sec elapsed seconds
+2TRUE162.21 sec elapsed
+Finished 2693 in c(elapsed = 3044.676) seconds
+2TRUE Finished 2693 in c(elapsed = 3206.886) seconds
+2TRUE Finished 2693 in logical(0) seconds
+2TRUE Finished 2693 in 162.21 sec elapsed seconds
+2TRUE168.469 sec elapsed
+Finished 2662 in c(elapsed = 3039.112) seconds
+2TRUE Finished 2662 in c(elapsed = 3207.581) seconds
+2TRUE Finished 2662 in logical(0) seconds
+2TRUE Finished 2662 in 168.469 sec elapsed seconds
+2TRUE165.622 sec elapsed
+Finished 2675 in c(elapsed = 3042.206) seconds
+2TRUE Finished 2675 in c(elapsed = 3207.828) seconds
+2TRUE Finished 2675 in logical(0) seconds
+2TRUE Finished 2675 in 165.622 sec elapsed seconds
+2TRUE166.763 sec elapsed
+Finished 2671 in c(elapsed = 3041.2) seconds
+2TRUE Finished 2671 in c(elapsed = 3207.963) seconds
+2TRUE Finished 2671 in logical(0) seconds
+2TRUE Finished 2671 in 166.763 sec elapsed seconds
+2TRUE164.738 sec elapsed
+Finished 2686 in c(elapsed = 3043.759) seconds
+2TRUE Finished 2686 in c(elapsed = 3208.497) seconds
+2TRUE Finished 2686 in logical(0) seconds
+2TRUE Finished 2686 in 164.738 sec elapsed seconds
+2TRUE171.592 sec elapsed
+Finished 2655 in c(elapsed = 3036.913) seconds
+2TRUE Finished 2655 in c(elapsed = 3208.505) seconds
+2TRUE Finished 2655 in logical(0) seconds
+2TRUE Finished 2655 in 171.592 sec elapsed seconds
+2TRUE164.54 sec elapsed
+Finished 2690 in c(elapsed = 3044.124) seconds
+2TRUE Finished 2690 in c(elapsed = 3208.664) seconds
+2TRUE Finished 2690 in logical(0) seconds
+2TRUE Finished 2690 in 164.54 sec elapsed seconds
+2TRUE167.756 sec elapsed
+Finished 2672 in c(elapsed = 3041.327) seconds
+2TRUE Finished 2672 in c(elapsed = 3209.083) seconds
+2TRUE Finished 2672 in logical(0) seconds
+2TRUE Finished 2672 in 167.756 sec elapsed seconds
+2TRUE167.421 sec elapsed
+Finished 2673 in c(elapsed = 3041.842) seconds
+2TRUE Finished 2673 in c(elapsed = 3209.263) seconds
+2TRUE Finished 2673 in logical(0) seconds
+2TRUE Finished 2673 in 167.421 sec elapsed seconds
+2TRUE161.309 sec elapsed
+Finished 2705 in c(elapsed = 3048.074) seconds
+2TRUE Finished 2705 in c(elapsed = 3209.383) seconds
+2TRUE Finished 2705 in logical(0) seconds
+2TRUE Finished 2705 in 161.309 sec elapsed seconds
+2TRUE167.012 sec elapsed
+Finished 2678 in c(elapsed = 3042.387) seconds
+2TRUE Finished 2678 in c(elapsed = 3209.399) seconds
+2TRUE Finished 2678 in logical(0) seconds
+2TRUE Finished 2678 in 167.012 sec elapsed seconds
+2TRUE164.884 sec elapsed
+Finished 2692 in c(elapsed = 3044.524) seconds
+2TRUE Finished 2692 in c(elapsed = 3209.408) seconds
+2TRUE Finished 2692 in logical(0) seconds
+2TRUE Finished 2692 in 164.884 sec elapsed seconds
+2TRUE167.422 sec elapsed
+Finished 2679 in c(elapsed = 3042.477) seconds
+2TRUE Finished 2679 in c(elapsed = 3209.899) seconds
+2TRUE Finished 2679 in logical(0) seconds
+2TRUE Finished 2679 in 167.422 sec elapsed seconds
+2TRUE167.751 sec elapsed
+Finished 2674 in c(elapsed = 3042.157) seconds
+2TRUE Finished 2674 in c(elapsed = 3209.908) seconds
+2TRUE Finished 2674 in logical(0) seconds
+2TRUE Finished 2674 in 167.751 sec elapsed seconds
+2TRUE167.702 sec elapsed
+Finished 2680 in c(elapsed = 3042.696) seconds
+2TRUE Finished 2680 in c(elapsed = 3210.398) seconds
+2TRUE Finished 2680 in logical(0) seconds
+2TRUE Finished 2680 in 167.702 sec elapsed seconds
+2TRUE171.739 sec elapsed
+Finished 2660 in c(elapsed = 3038.664) seconds
+2TRUE Finished 2660 in c(elapsed = 3210.403) seconds
+2TRUE Finished 2660 in logical(0) seconds
+2TRUE Finished 2660 in 171.739 sec elapsed seconds
+2TRUE168.157 sec elapsed
+Finished 2676 in c(elapsed = 3042.264) seconds
+2TRUE Finished 2676 in c(elapsed = 3210.421) seconds
+2TRUE Finished 2676 in logical(0) seconds
+2TRUE Finished 2676 in 168.157 sec elapsed seconds
+2TRUE168.174 sec elapsed
+Finished 2681 in c(elapsed = 3042.878) seconds
+2TRUE Finished 2681 in c(elapsed = 3211.052) seconds
+2TRUE Finished 2681 in logical(0) seconds
+2TRUE Finished 2681 in 168.174 sec elapsed seconds
+2TRUE170.356 sec elapsed
+Finished 2670 in c(elapsed = 3040.961) seconds
+2TRUE Finished 2670 in c(elapsed = 3211.317) seconds
+2TRUE Finished 2670 in logical(0) seconds
+2TRUE Finished 2670 in 170.356 sec elapsed seconds
+2TRUE168.463 sec elapsed
+Finished 2682 in c(elapsed = 3042.898) seconds
+2TRUE Finished 2682 in c(elapsed = 3211.361) seconds
+2TRUE Finished 2682 in logical(0) seconds
+2TRUE Finished 2682 in 168.463 sec elapsed seconds
+2TRUE161.035 sec elapsed
+Finished 2712 in c(elapsed = 3050.684) seconds
+2TRUE Finished 2712 in c(elapsed = 3211.719) seconds
+2TRUE Finished 2712 in logical(0) seconds
+2TRUE Finished 2712 in 161.035 sec elapsed seconds
+2TRUE172.304 sec elapsed
+Finished 2664 in c(elapsed = 3039.654) seconds
+2TRUE Finished 2664 in c(elapsed = 3211.958) seconds
+2TRUE Finished 2664 in logical(0) seconds
+2TRUE Finished 2664 in 172.304 sec elapsed seconds
+2TRUE168.892 sec elapsed
+Finished 2683 in c(elapsed = 3043.151) seconds
+2TRUE Finished 2683 in c(elapsed = 3212.043) seconds
+2TRUE Finished 2683 in logical(0) seconds
+2TRUE Finished 2683 in 168.892 sec elapsed seconds
+2TRUE164.615 sec elapsed
+Finished 2703 in c(elapsed = 3047.874) seconds
+2TRUE Finished 2703 in c(elapsed = 3212.489) seconds
+2TRUE Finished 2703 in logical(0) seconds
+2TRUE Finished 2703 in 164.615 sec elapsed seconds
+2TRUE170.357 sec elapsed
+Finished 2677 in c(elapsed = 3042.299) seconds
+2TRUE Finished 2677 in c(elapsed = 3212.656) seconds
+2TRUE Finished 2677 in logical(0) seconds
+2TRUE Finished 2677 in 170.357 sec elapsed seconds
+2TRUE169.584 sec elapsed
+Finished 2684 in c(elapsed = 3043.598) seconds
+2TRUE Finished 2684 in c(elapsed = 3213.182) seconds
+2TRUE Finished 2684 in logical(0) seconds
+2TRUE Finished 2684 in 169.584 sec elapsed seconds
+2TRUE163.096 sec elapsed
+Finished 2711 in c(elapsed = 3050.089) seconds
+2TRUE Finished 2711 in c(elapsed = 3213.185) seconds
+2TRUE Finished 2711 in logical(0) seconds
+2TRUE Finished 2711 in 163.096 sec elapsed seconds
+2TRUE169.456 sec elapsed
+Finished 2689 in c(elapsed = 3044.099) seconds
+2TRUE Finished 2689 in c(elapsed = 3213.555) seconds
+2TRUE Finished 2689 in logical(0) seconds
+2TRUE Finished 2689 in 169.456 sec elapsed seconds
+2TRUE170.174 sec elapsed
+Finished 2688 in c(elapsed = 3043.839) seconds
+2TRUE Finished 2688 in c(elapsed = 3214.013) seconds
+2TRUE Finished 2688 in logical(0) seconds
+2TRUE Finished 2688 in 170.174 sec elapsed seconds
+2TRUE169.13 sec elapsed
+Finished 2694 in c(elapsed = 3044.923) seconds
+2TRUE Finished 2694 in c(elapsed = 3214.053) seconds
+2TRUE Finished 2694 in logical(0) seconds
+2TRUE Finished 2694 in 169.13 sec elapsed seconds
+2TRUE170.159 sec elapsed
+Finished 2691 in c(elapsed = 3044.306) seconds
+2TRUE Finished 2691 in c(elapsed = 3214.465) seconds
+2TRUE Finished 2691 in logical(0) seconds
+2TRUE Finished 2691 in 170.159 sec elapsed seconds
+2TRUE169.436 sec elapsed
+Finished 2695 in c(elapsed = 3045.175) seconds
+2TRUE Finished 2695 in c(elapsed = 3214.611) seconds
+2TRUE Finished 2695 in logical(0) seconds
+2TRUE Finished 2695 in 169.436 sec elapsed seconds
+2TRUE161.614 sec elapsed
+Finished 2715 in c(elapsed = 3053.014) seconds
+2TRUE Finished 2715 in c(elapsed = 3214.628) seconds
+2TRUE Finished 2715 in logical(0) seconds
+2TRUE Finished 2715 in 161.614 sec elapsed seconds
+2TRUE170.902 sec elapsed
+Finished 2687 in c(elapsed = 3043.831) seconds
+2TRUE Finished 2687 in c(elapsed = 3214.733) seconds
+2TRUE Finished 2687 in logical(0) seconds
+2TRUE Finished 2687 in 170.902 sec elapsed seconds
+2TRUE170.724 sec elapsed
+Finished 2697 in c(elapsed = 3046.158) seconds
+2TRUE Finished 2697 in c(elapsed = 3216.882) seconds
+2TRUE Finished 2697 in logical(0) seconds
+2TRUE Finished 2697 in 170.724 sec elapsed seconds
+2TRUE173.771 sec elapsed
+Finished 2685 in c(elapsed = 3043.616) seconds
+2TRUE Finished 2685 in c(elapsed = 3217.387) seconds
+2TRUE Finished 2685 in logical(0) seconds
+2TRUE Finished 2685 in 173.771 sec elapsed seconds
+2TRUE169.64 sec elapsed
+Finished 2706 in c(elapsed = 3048.609) seconds
+2TRUE Finished 2706 in c(elapsed = 3218.249) seconds
+2TRUE Finished 2706 in logical(0) seconds
+2TRUE Finished 2706 in 169.64 sec elapsed seconds
+2TRUE169.624 sec elapsed
+Finished 2707 in c(elapsed = 3048.731) seconds
+2TRUE Finished 2707 in c(elapsed = 3218.355) seconds
+2TRUE Finished 2707 in logical(0) seconds
+2TRUE Finished 2707 in 169.624 sec elapsed seconds
+2TRUE173.782 sec elapsed
+Finished 2696 in c(elapsed = 3045.4) seconds
+2TRUE Finished 2696 in c(elapsed = 3219.182) seconds
+2TRUE Finished 2696 in logical(0) seconds
+2TRUE Finished 2696 in 173.782 sec elapsed seconds
+2TRUE170.258 sec elapsed
+Finished 2709 in c(elapsed = 3048.953) seconds
+2TRUE Finished 2709 in c(elapsed = 3219.211) seconds
+2TRUE Finished 2709 in logical(0) seconds
+2TRUE Finished 2709 in 170.258 sec elapsed seconds
+2TRUE173.095 sec elapsed
+Finished 2699 in c(elapsed = 3046.369) seconds
+2TRUE Finished 2699 in c(elapsed = 3219.464) seconds
+2TRUE Finished 2699 in logical(0) seconds
+2TRUE Finished 2699 in 173.095 sec elapsed seconds
+2TRUE173.527 sec elapsed
+Finished 2698 in c(elapsed = 3046.19) seconds
+2TRUE Finished 2698 in c(elapsed = 3219.717) seconds
+2TRUE Finished 2698 in logical(0) seconds
+2TRUE Finished 2698 in 173.527 sec elapsed seconds
+2TRUE172.302 sec elapsed
+Finished 2700 in c(elapsed = 3047.417) seconds
+2TRUE Finished 2700 in c(elapsed = 3219.719) seconds
+2TRUE Finished 2700 in logical(0) seconds
+2TRUE Finished 2700 in 172.302 sec elapsed seconds
+2TRUE173.403 sec elapsed
+Finished 2701 in c(elapsed = 3047.622) seconds
+2TRUE Finished 2701 in c(elapsed = 3221.025) seconds
+2TRUE Finished 2701 in logical(0) seconds
+2TRUE Finished 2701 in 173.403 sec elapsed seconds
+2TRUE172.469 sec elapsed
+Finished 2708 in c(elapsed = 3048.83) seconds
+2TRUE Finished 2708 in c(elapsed = 3221.299) seconds
+2TRUE Finished 2708 in logical(0) seconds
+2TRUE Finished 2708 in 172.469 sec elapsed seconds
+2TRUE168.577 sec elapsed
+Finished 2716 in c(elapsed = 3053.14) seconds
+2TRUE Finished 2716 in c(elapsed = 3221.717) seconds
+2TRUE Finished 2716 in logical(0) seconds
+2TRUE Finished 2716 in 168.577 sec elapsed seconds
+2TRUE174.124 sec elapsed
+Finished 2704 in c(elapsed = 3047.932) seconds
+2TRUE Finished 2704 in c(elapsed = 3222.056) seconds
+2TRUE Finished 2704 in logical(0) seconds
+2TRUE Finished 2704 in 174.124 sec elapsed seconds
+2TRUE176.205 sec elapsed
+Finished 2702 in c(elapsed = 3047.705) seconds
+2TRUE Finished 2702 in c(elapsed = 3223.91) seconds
+2TRUE Finished 2702 in logical(0) seconds
+2TRUE Finished 2702 in 176.205 sec elapsed seconds
+2TRUE175.449 sec elapsed
+Finished 2710 in c(elapsed = 3049.743) seconds
+2TRUE Finished 2710 in c(elapsed = 3225.192) seconds
+2TRUE Finished 2710 in logical(0) seconds
+2TRUE Finished 2710 in 175.449 sec elapsed seconds
+2TRUE174.416 sec elapsed
+Finished 2713 in c(elapsed = 3051.044) seconds
+2TRUE Finished 2713 in c(elapsed = 3225.46) seconds
+2TRUE Finished 2713 in logical(0) seconds
+2TRUE Finished 2713 in 174.416 sec elapsed seconds
+2TRUE175.268 sec elapsed
+Finished 2714 in c(elapsed = 3051.472) seconds
+2TRUE Finished 2714 in c(elapsed = 3226.74) seconds
+2TRUE Finished 2714 in logical(0) seconds
+2TRUE Finished 2714 in 175.268 sec elapsed seconds
+2TRUE161.508 sec elapsed
+Finished 2717 in c(elapsed = 3188.757) seconds
+2TRUE Finished 2717 in c(elapsed = 3350.265) seconds
+2TRUE Finished 2717 in logical(0) seconds
+2TRUE Finished 2717 in 161.508 sec elapsed seconds
+2TRUE162.343 sec elapsed
+Finished 2720 in c(elapsed = 3194.808) seconds
+2TRUE Finished 2720 in c(elapsed = 3357.151) seconds
+2TRUE Finished 2720 in logical(0) seconds
+2TRUE Finished 2720 in 162.343 sec elapsed seconds
+2TRUE163.794 sec elapsed
+Finished 2722 in c(elapsed = 3197.035) seconds
+2TRUE Finished 2722 in c(elapsed = 3360.829) seconds
+2TRUE Finished 2722 in logical(0) seconds
+2TRUE Finished 2722 in 163.794 sec elapsed seconds
+2TRUE170.855 sec elapsed
+Finished 2718 in c(elapsed = 3190.196) seconds
+2TRUE Finished 2718 in c(elapsed = 3361.051) seconds
+2TRUE Finished 2718 in logical(0) seconds
+2TRUE Finished 2718 in 170.855 sec elapsed seconds
+2TRUE165.987 sec elapsed
+Finished 2721 in c(elapsed = 3196.005) seconds
+2TRUE Finished 2721 in c(elapsed = 3361.992) seconds
+2TRUE Finished 2721 in logical(0) seconds
+2TRUE Finished 2721 in 165.987 sec elapsed seconds
+2TRUE163.123 sec elapsed
+Finished 2727 in c(elapsed = 3199.491) seconds
+2TRUE Finished 2727 in c(elapsed = 3362.614) seconds
+2TRUE Finished 2727 in logical(0) seconds
+2TRUE Finished 2727 in 163.123 sec elapsed seconds
+2TRUE165.254 sec elapsed
+Finished 2723 in c(elapsed = 3198.153) seconds
+2TRUE Finished 2723 in c(elapsed = 3363.407) seconds
+2TRUE Finished 2723 in logical(0) seconds
+2TRUE Finished 2723 in 165.254 sec elapsed seconds
+2TRUE165.304 sec elapsed
+Finished 2726 in c(elapsed = 3199.286) seconds
+2TRUE Finished 2726 in c(elapsed = 3364.59) seconds
+2TRUE Finished 2726 in logical(0) seconds
+2TRUE Finished 2726 in 165.304 sec elapsed seconds
+2TRUE164.517 sec elapsed
+Finished 2729 in c(elapsed = 3200.384) seconds
+2TRUE Finished 2729 in c(elapsed = 3364.901) seconds
+2TRUE Finished 2729 in logical(0) seconds
+2TRUE Finished 2729 in 164.517 sec elapsed seconds
+2TRUE164.839 sec elapsed
+Finished 2731 in c(elapsed = 3202.118) seconds
+2TRUE Finished 2731 in c(elapsed = 3366.957) seconds
+2TRUE Finished 2731 in logical(0) seconds
+2TRUE Finished 2731 in 164.839 sec elapsed seconds
+2TRUE167.831 sec elapsed
+Finished 2725 in c(elapsed = 3199.162) seconds
+2TRUE Finished 2725 in c(elapsed = 3366.993) seconds
+2TRUE Finished 2725 in logical(0) seconds
+2TRUE Finished 2725 in 167.831 sec elapsed seconds
+2TRUE165.212 sec elapsed
+Finished 2733 in c(elapsed = 3202.589) seconds
+2TRUE Finished 2733 in c(elapsed = 3367.801) seconds
+2TRUE Finished 2733 in logical(0) seconds
+2TRUE Finished 2733 in 165.212 sec elapsed seconds
+2TRUE171.353 sec elapsed
+Finished 2724 in c(elapsed = 3198.521) seconds
+2TRUE Finished 2724 in c(elapsed = 3369.874) seconds
+2TRUE Finished 2724 in logical(0) seconds
+2TRUE Finished 2724 in 171.353 sec elapsed seconds
+2TRUE167.816 sec elapsed
+Finished 2732 in c(elapsed = 3202.459) seconds
+2TRUE Finished 2732 in c(elapsed = 3370.275) seconds
+2TRUE Finished 2732 in logical(0) seconds
+2TRUE Finished 2732 in 167.816 sec elapsed seconds
+2TRUE168.829 sec elapsed
+Finished 2730 in c(elapsed = 3201.716) seconds
+2TRUE Finished 2730 in c(elapsed = 3370.545) seconds
+2TRUE Finished 2730 in logical(0) seconds
+2TRUE Finished 2730 in 168.829 sec elapsed seconds
+2TRUE171.569 sec elapsed
+Finished 2728 in c(elapsed = 3200.374) seconds
+2TRUE Finished 2728 in c(elapsed = 3371.943) seconds
+2TRUE Finished 2728 in logical(0) seconds
+2TRUE Finished 2728 in 171.569 sec elapsed seconds
+2TRUE179.361 sec elapsed
+Finished 2719 in c(elapsed = 3194.61) seconds
+2TRUE Finished 2719 in c(elapsed = 3373.971) seconds
+2TRUE Finished 2719 in logical(0) seconds
+2TRUE Finished 2719 in 179.361 sec elapsed seconds
+2TRUE165.003 sec elapsed
+Finished 2749 in c(elapsed = 3209.411) seconds
+2TRUE Finished 2749 in c(elapsed = 3374.414) seconds
+2TRUE Finished 2749 in logical(0) seconds
+2TRUE Finished 2749 in 165.003 sec elapsed seconds
+2TRUE163.255 sec elapsed
+Finished 2756 in c(elapsed = 3211.319) seconds
+2TRUE Finished 2756 in c(elapsed = 3374.574) seconds
+2TRUE Finished 2756 in logical(0) seconds
+2TRUE Finished 2756 in 163.255 sec elapsed seconds
+2TRUE170.327 sec elapsed
+Finished 2734 in c(elapsed = 3204.716) seconds
+2TRUE Finished 2734 in c(elapsed = 3375.043) seconds
+2TRUE Finished 2734 in logical(0) seconds
+2TRUE Finished 2734 in 170.327 sec elapsed seconds
+2TRUE168.184 sec elapsed
+Finished 2738 in c(elapsed = 3206.889) seconds
+2TRUE Finished 2738 in c(elapsed = 3375.073) seconds
+2TRUE Finished 2738 in logical(0) seconds
+2TRUE Finished 2738 in 168.184 sec elapsed seconds
+2TRUE166.415 sec elapsed
+Finished 2747 in c(elapsed = 3209.385) seconds
+2TRUE Finished 2747 in c(elapsed = 3375.8) seconds
+2TRUE Finished 2747 in logical(0) seconds
+2TRUE Finished 2747 in 166.415 sec elapsed seconds
+2TRUE164.869 sec elapsed
+Finished 2761 in c(elapsed = 3212.491) seconds
+2TRUE Finished 2761 in c(elapsed = 3377.36) seconds
+2TRUE Finished 2761 in logical(0) seconds
+2TRUE Finished 2761 in 164.869 sec elapsed seconds
+2TRUE165.7 sec elapsed
+Finished 2758 in c(elapsed = 3211.721) seconds
+2TRUE Finished 2758 in c(elapsed = 3377.421) seconds
+2TRUE Finished 2758 in logical(0) seconds
+2TRUE Finished 2758 in 165.7 sec elapsed seconds
+2TRUE167.209 sec elapsed
+Finished 2752 in c(elapsed = 3210.401) seconds
+2TRUE Finished 2752 in c(elapsed = 3377.61) seconds
+2TRUE Finished 2752 in logical(0) seconds
+2TRUE Finished 2752 in 167.209 sec elapsed seconds
+2TRUE167.464 sec elapsed
+Finished 2754 in c(elapsed = 3210.424) seconds
+2TRUE Finished 2754 in c(elapsed = 3377.888) seconds
+2TRUE Finished 2754 in logical(0) seconds
+2TRUE Finished 2754 in 167.464 sec elapsed seconds
+2TRUE171.814 sec elapsed
+Finished 2736 in c(elapsed = 3206.077) seconds
+2TRUE Finished 2736 in c(elapsed = 3377.891) seconds
+2TRUE Finished 2736 in logical(0) seconds
+2TRUE Finished 2736 in 171.814 sec elapsed seconds
+2TRUE164.962 sec elapsed
+Finished 2764 in c(elapsed = 3213.187) seconds
+2TRUE Finished 2764 in c(elapsed = 3378.149) seconds
+2TRUE Finished 2764 in logical(0) seconds
+2TRUE Finished 2764 in 164.962 sec elapsed seconds
+2TRUE170.999 sec elapsed
+Finished 2741 in c(elapsed = 3207.965) seconds
+2TRUE Finished 2741 in c(elapsed = 3378.964) seconds
+2TRUE Finished 2741 in logical(0) seconds
+2TRUE Finished 2741 in 170.999 sec elapsed seconds
+2TRUE173.783 sec elapsed
+Finished 2735 in c(elapsed = 3205.192) seconds
+2TRUE Finished 2735 in c(elapsed = 3378.975) seconds
+2TRUE Finished 2735 in logical(0) seconds
+2TRUE Finished 2735 in 173.783 sec elapsed seconds
+2TRUE171.145 sec elapsed
+Finished 2740 in c(elapsed = 3207.83) seconds
+2TRUE Finished 2740 in c(elapsed = 3378.975) seconds
+2TRUE Finished 2740 in logical(0) seconds
+2TRUE Finished 2740 in 171.145 sec elapsed seconds
+2TRUE171.22 sec elapsed
+Finished 2750 in c(elapsed = 3209.902) seconds
+2TRUE Finished 2750 in c(elapsed = 3381.122) seconds
+2TRUE Finished 2750 in logical(0) seconds
+2TRUE Finished 2750 in 171.22 sec elapsed seconds
+2TRUE172.407 sec elapsed
+Finished 2745 in c(elapsed = 3209.087) seconds
+2TRUE Finished 2745 in c(elapsed = 3381.494) seconds
+2TRUE Finished 2745 in logical(0) seconds
+2TRUE Finished 2745 in 172.407 sec elapsed seconds
+2TRUE173.997 sec elapsed
+Finished 2742 in c(elapsed = 3208.5) seconds
+2TRUE Finished 2742 in c(elapsed = 3382.497) seconds
+2TRUE Finished 2742 in logical(0) seconds
+2TRUE Finished 2742 in 173.997 sec elapsed seconds
+2TRUE173.313 sec elapsed
+Finished 2746 in c(elapsed = 3209.266) seconds
+2TRUE Finished 2746 in c(elapsed = 3382.579) seconds
+2TRUE Finished 2746 in logical(0) seconds
+2TRUE Finished 2746 in 173.313 sec elapsed seconds
+2TRUE174.96 sec elapsed
+Finished 2743 in c(elapsed = 3208.508) seconds
+2TRUE Finished 2743 in c(elapsed = 3383.468) seconds
+2TRUE Finished 2743 in logical(0) seconds
+2TRUE Finished 2743 in 174.96 sec elapsed seconds
+2TRUE172.17 sec elapsed
+Finished 2757 in c(elapsed = 3211.363) seconds
+2TRUE Finished 2757 in c(elapsed = 3383.533) seconds
+2TRUE Finished 2757 in logical(0) seconds
+2TRUE Finished 2757 in 172.17 sec elapsed seconds
+2TRUE172.704 sec elapsed
+Finished 2755 in c(elapsed = 3211.054) seconds
+2TRUE Finished 2755 in c(elapsed = 3383.758) seconds
+2TRUE Finished 2755 in logical(0) seconds
+2TRUE Finished 2755 in 172.704 sec elapsed seconds
+2TRUE174.908 sec elapsed
+Finished 2748 in c(elapsed = 3209.402) seconds
+2TRUE Finished 2748 in c(elapsed = 3384.31) seconds
+2TRUE Finished 2748 in logical(0) seconds
+2TRUE Finished 2748 in 174.908 sec elapsed seconds
+2TRUE175.763 sec elapsed
+Finished 2744 in c(elapsed = 3208.667) seconds
+2TRUE Finished 2744 in c(elapsed = 3384.43) seconds
+2TRUE Finished 2744 in logical(0) seconds
+2TRUE Finished 2744 in 175.763 sec elapsed seconds
+2TRUE172.29 sec elapsed
+Finished 2763 in c(elapsed = 3213.185) seconds
+2TRUE Finished 2763 in c(elapsed = 3385.475) seconds
+2TRUE Finished 2763 in logical(0) seconds
+2TRUE Finished 2763 in 172.29 sec elapsed seconds
+2TRUE179.037 sec elapsed
+Finished 2737 in c(elapsed = 3206.548) seconds
+2TRUE Finished 2737 in c(elapsed = 3385.585) seconds
+2TRUE Finished 2737 in logical(0) seconds
+2TRUE Finished 2737 in 179.037 sec elapsed seconds
+2TRUE173.651 sec elapsed
+Finished 2760 in c(elapsed = 3212.047) seconds
+2TRUE Finished 2760 in c(elapsed = 3385.698) seconds
+2TRUE Finished 2760 in logical(0) seconds
+2TRUE Finished 2760 in 173.651 sec elapsed seconds
+2TRUE175.872 sec elapsed
+Finished 2751 in c(elapsed = 3209.911) seconds
+2TRUE Finished 2751 in c(elapsed = 3385.783) seconds
+2TRUE Finished 2751 in logical(0) seconds
+2TRUE Finished 2751 in 175.872 sec elapsed seconds
+2TRUE175.957 sec elapsed
+Finished 2753 in c(elapsed = 3210.405) seconds
+2TRUE Finished 2753 in c(elapsed = 3386.362) seconds
+2TRUE Finished 2753 in logical(0) seconds
+2TRUE Finished 2753 in 175.957 sec elapsed seconds
+2TRUE173.873 sec elapsed
+Finished 2765 in c(elapsed = 3213.557) seconds
+2TRUE Finished 2765 in c(elapsed = 3387.43) seconds
+2TRUE Finished 2765 in logical(0) seconds
+2TRUE Finished 2765 in 173.873 sec elapsed seconds
+2TRUE173.204 sec elapsed
+Finished 2770 in c(elapsed = 3214.631) seconds
+2TRUE Finished 2770 in c(elapsed = 3387.835) seconds
+2TRUE Finished 2770 in logical(0) seconds
+2TRUE Finished 2770 in 173.204 sec elapsed seconds
+2TRUE174.112 sec elapsed
+Finished 2767 in c(elapsed = 3214.056) seconds
+2TRUE Finished 2767 in c(elapsed = 3388.168) seconds
+2TRUE Finished 2767 in logical(0) seconds
+2TRUE Finished 2767 in 174.112 sec elapsed seconds
+2TRUE174.284 sec elapsed
+Finished 2766 in c(elapsed = 3214.015) seconds
+2TRUE Finished 2766 in c(elapsed = 3388.299) seconds
+2TRUE Finished 2766 in logical(0) seconds
+2TRUE Finished 2766 in 174.284 sec elapsed seconds
+2TRUE175.702 sec elapsed
+Finished 2762 in c(elapsed = 3212.659) seconds
+2TRUE Finished 2762 in c(elapsed = 3388.361) seconds
+2TRUE Finished 2762 in logical(0) seconds
+2TRUE Finished 2762 in 175.702 sec elapsed seconds
+2TRUE173.741 sec elapsed
+Finished 2771 in c(elapsed = 3214.736) seconds
+2TRUE Finished 2771 in c(elapsed = 3388.477) seconds
+2TRUE Finished 2771 in logical(0) seconds
+2TRUE Finished 2771 in 173.741 sec elapsed seconds
+2TRUE174.122 sec elapsed
+Finished 2769 in c(elapsed = 3214.614) seconds
+2TRUE Finished 2769 in c(elapsed = 3388.736) seconds
+2TRUE Finished 2769 in logical(0) seconds
+2TRUE Finished 2769 in 174.122 sec elapsed seconds
+2TRUE175.068 sec elapsed
+Finished 2768 in c(elapsed = 3214.468) seconds
+2TRUE Finished 2768 in c(elapsed = 3389.536) seconds
+2TRUE Finished 2768 in logical(0) seconds
+2TRUE Finished 2768 in 175.068 sec elapsed seconds
+2TRUE173.463 sec elapsed
+Finished 2773 in c(elapsed = 3217.391) seconds
+2TRUE Finished 2773 in c(elapsed = 3390.854) seconds
+2TRUE Finished 2773 in logical(0) seconds
+2TRUE Finished 2773 in 173.463 sec elapsed seconds
+2TRUE169.399 sec elapsed
+Finished 2783 in c(elapsed = 3221.72) seconds
+2TRUE Finished 2783 in c(elapsed = 3391.119) seconds
+2TRUE Finished 2783 in logical(0) seconds
+2TRUE Finished 2783 in 169.399 sec elapsed seconds
+2TRUE172.042 sec elapsed
+Finished 2777 in c(elapsed = 3219.213) seconds
+2TRUE Finished 2777 in c(elapsed = 3391.255) seconds
+2TRUE Finished 2777 in logical(0) seconds
+2TRUE Finished 2777 in 172.042 sec elapsed seconds
+2TRUE167.563 sec elapsed
+Finished 2785 in c(elapsed = 3223.913) seconds
+2TRUE Finished 2785 in c(elapsed = 3391.476) seconds
+2TRUE Finished 2785 in logical(0) seconds
+2TRUE Finished 2785 in 167.563 sec elapsed seconds
+2TRUE184.482 sec elapsed
+Finished 2739 in c(elapsed = 3207.585) seconds
+2TRUE Finished 2739 in c(elapsed = 3392.067) seconds
+2TRUE Finished 2739 in logical(0) seconds
+2TRUE Finished 2739 in 184.482 sec elapsed seconds
+2TRUE176.22 sec elapsed
+Finished 2772 in c(elapsed = 3216.884) seconds
+2TRUE Finished 2772 in c(elapsed = 3393.104) seconds
+2TRUE Finished 2772 in logical(0) seconds
+2TRUE Finished 2772 in 176.22 sec elapsed seconds
+2TRUE176.414 sec elapsed
+Finished 2774 in c(elapsed = 3218.252) seconds
+2TRUE Finished 2774 in c(elapsed = 3394.666) seconds
+2TRUE Finished 2774 in logical(0) seconds
+2TRUE Finished 2774 in 176.414 sec elapsed seconds
+2TRUE183.077 sec elapsed
+Finished 2759 in c(elapsed = 3211.961) seconds
+2TRUE Finished 2759 in c(elapsed = 3395.038) seconds
+2TRUE Finished 2759 in logical(0) seconds
+2TRUE Finished 2759 in 183.077 sec elapsed seconds
+2TRUE176.962 sec elapsed
+Finished 2775 in c(elapsed = 3218.359) seconds
+2TRUE Finished 2775 in c(elapsed = 3395.321) seconds
+2TRUE Finished 2775 in logical(0) seconds
+2TRUE Finished 2775 in 176.962 sec elapsed seconds
+2TRUE177.635 sec elapsed
+Finished 2776 in c(elapsed = 3219.186) seconds
+2TRUE Finished 2776 in c(elapsed = 3396.821) seconds
+2TRUE Finished 2776 in logical(0) seconds
+2TRUE Finished 2776 in 177.635 sec elapsed seconds
+2TRUE179.046 sec elapsed
+Finished 2778 in c(elapsed = 3219.467) seconds
+2TRUE Finished 2778 in c(elapsed = 3398.513) seconds
+2TRUE Finished 2778 in logical(0) seconds
+2TRUE Finished 2778 in 179.046 sec elapsed seconds
+2TRUE179.302 sec elapsed
+Finished 2780 in c(elapsed = 3219.721) seconds
+2TRUE Finished 2780 in c(elapsed = 3399.023) seconds
+2TRUE Finished 2780 in logical(0) seconds
+2TRUE Finished 2780 in 179.302 sec elapsed seconds
+2TRUE177.751 sec elapsed
+Finished 2782 in c(elapsed = 3221.302) seconds
+2TRUE Finished 2782 in c(elapsed = 3399.053) seconds
+2TRUE Finished 2782 in logical(0) seconds
+2TRUE Finished 2782 in 177.751 sec elapsed seconds
+2TRUE180.475 sec elapsed
+Finished 2779 in c(elapsed = 3219.72) seconds
+2TRUE Finished 2779 in c(elapsed = 3400.195) seconds
+2TRUE Finished 2779 in logical(0) seconds
+2TRUE Finished 2779 in 180.475 sec elapsed seconds
+2TRUE175.028 sec elapsed
+Finished 2787 in c(elapsed = 3225.463) seconds
+2TRUE Finished 2787 in c(elapsed = 3400.491) seconds
+2TRUE Finished 2787 in logical(0) seconds
+2TRUE Finished 2787 in 175.028 sec elapsed seconds
+2TRUE180.245 sec elapsed
+Finished 2781 in c(elapsed = 3221.029) seconds
+2TRUE Finished 2781 in c(elapsed = 3401.274) seconds
+2TRUE Finished 2781 in logical(0) seconds
+2TRUE Finished 2781 in 180.245 sec elapsed seconds
+2TRUE180.639 sec elapsed
+Finished 2784 in c(elapsed = 3222.059) seconds
+2TRUE Finished 2784 in c(elapsed = 3402.698) seconds
+2TRUE Finished 2784 in logical(0) seconds
+2TRUE Finished 2784 in 180.639 sec elapsed seconds
+2TRUE182.101 sec elapsed
+Finished 2786 in c(elapsed = 3225.197) seconds
+2TRUE Finished 2786 in c(elapsed = 3407.298) seconds
+2TRUE Finished 2786 in logical(0) seconds
+2TRUE Finished 2786 in 182.101 sec elapsed seconds
+2TRUE182.222 sec elapsed
+Finished 2788 in c(elapsed = 3226.743) seconds
+2TRUE Finished 2788 in c(elapsed = 3408.965) seconds
+2TRUE Finished 2788 in logical(0) seconds
+2TRUE Finished 2788 in 182.222 sec elapsed seconds
+2TRUE160.335 sec elapsed
+Finished 2789 in c(elapsed = 3350.268) seconds
+2TRUE Finished 2789 in c(elapsed = 3510.603) seconds
+2TRUE Finished 2789 in logical(0) seconds
+2TRUE Finished 2789 in 160.335 sec elapsed seconds
+2TRUE164.246 sec elapsed
+Finished 2790 in c(elapsed = 3357.155) seconds
+2TRUE Finished 2790 in c(elapsed = 3521.401) seconds
+2TRUE Finished 2790 in logical(0) seconds
+2TRUE Finished 2790 in 164.246 sec elapsed seconds
+2TRUE163.285 sec elapsed
+Finished 2792 in c(elapsed = 3361.054) seconds
+2TRUE Finished 2792 in c(elapsed = 3524.339) seconds
+2TRUE Finished 2792 in logical(0) seconds
+2TRUE Finished 2792 in 163.285 sec elapsed seconds
+2TRUE164.726 sec elapsed
+Finished 2795 in c(elapsed = 3363.409) seconds
+2TRUE Finished 2795 in c(elapsed = 3528.135) seconds
+2TRUE Finished 2795 in logical(0) seconds
+2TRUE Finished 2795 in 164.726 sec elapsed seconds
+2TRUE166.003 sec elapsed
+Finished 2794 in c(elapsed = 3362.617) seconds
+2TRUE Finished 2794 in c(elapsed = 3528.62) seconds
+2TRUE Finished 2794 in logical(0) seconds
+2TRUE Finished 2794 in 166.003 sec elapsed seconds
+2TRUE163.93 sec elapsed
+Finished 2797 in c(elapsed = 3364.905) seconds
+2TRUE Finished 2797 in c(elapsed = 3528.835) seconds
+2TRUE Finished 2797 in logical(0) seconds
+2TRUE Finished 2797 in 163.93 sec elapsed seconds
+2TRUE163.821 sec elapsed
+Finished 2798 in c(elapsed = 3366.96) seconds
+2TRUE Finished 2798 in c(elapsed = 3530.781) seconds
+2TRUE Finished 2798 in logical(0) seconds
+2TRUE Finished 2798 in 163.821 sec elapsed seconds
+2TRUE160.774 sec elapsed
+Finished 2803 in c(elapsed = 3370.548) seconds
+2TRUE Finished 2803 in c(elapsed = 3531.322) seconds
+2TRUE Finished 2803 in logical(0) seconds
+2TRUE Finished 2803 in 160.774 sec elapsed seconds
+2TRUE173.976 sec elapsed
+Finished 2791 in c(elapsed = 3360.831) seconds
+2TRUE Finished 2791 in c(elapsed = 3534.807) seconds
+2TRUE Finished 2791 in logical(0) seconds
+2TRUE Finished 2791 in 173.976 sec elapsed seconds
+2TRUE167.586 sec elapsed
+Finished 2801 in c(elapsed = 3369.878) seconds
+2TRUE Finished 2801 in c(elapsed = 3537.464) seconds
+2TRUE Finished 2801 in logical(0) seconds
+2TRUE Finished 2801 in 167.586 sec elapsed seconds
+2TRUE171.041 sec elapsed
+Finished 2800 in c(elapsed = 3367.804) seconds
+2TRUE Finished 2800 in c(elapsed = 3538.845) seconds
+2TRUE Finished 2800 in logical(0) seconds
+2TRUE Finished 2800 in 171.041 sec elapsed seconds
+2TRUE176.886 sec elapsed
+Finished 2793 in c(elapsed = 3361.995) seconds
+2TRUE Finished 2793 in c(elapsed = 3538.881) seconds
+2TRUE Finished 2793 in logical(0) seconds
+2TRUE Finished 2793 in 176.886 sec elapsed seconds
+2TRUE168.773 sec elapsed
+Finished 2802 in c(elapsed = 3370.278) seconds
+2TRUE Finished 2802 in c(elapsed = 3539.051) seconds
+2TRUE Finished 2802 in logical(0) seconds
+2TRUE Finished 2802 in 168.773 sec elapsed seconds
+2TRUE172.812 sec elapsed
+Finished 2799 in c(elapsed = 3366.996) seconds
+2TRUE Finished 2799 in c(elapsed = 3539.808) seconds
+2TRUE Finished 2799 in logical(0) seconds
+2TRUE Finished 2799 in 172.812 sec elapsed seconds
+2TRUE167.953 sec elapsed
+Finished 2804 in c(elapsed = 3371.945) seconds
+2TRUE Finished 2804 in c(elapsed = 3539.898) seconds
+2TRUE Finished 2804 in logical(0) seconds
+2TRUE Finished 2804 in 167.953 sec elapsed seconds
+2TRUE165.336 sec elapsed
+Finished 2807 in c(elapsed = 3374.577) seconds
+2TRUE Finished 2807 in c(elapsed = 3539.913) seconds
+2TRUE Finished 2807 in logical(0) seconds
+2TRUE Finished 2807 in 165.336 sec elapsed seconds
+2TRUE167.894 sec elapsed
+Finished 2810 in c(elapsed = 3375.802) seconds
+2TRUE Finished 2810 in c(elapsed = 3543.696) seconds
+2TRUE Finished 2810 in logical(0) seconds
+2TRUE Finished 2810 in 167.894 sec elapsed seconds
+2TRUE179.602 sec elapsed
+Finished 2796 in c(elapsed = 3364.592) seconds
+2TRUE Finished 2796 in c(elapsed = 3544.194) seconds
+2TRUE Finished 2796 in logical(0) seconds
+2TRUE Finished 2796 in 179.602 sec elapsed seconds
+2TRUE168.219 sec elapsed
+Finished 2811 in c(elapsed = 3377.364) seconds
+2TRUE Finished 2811 in c(elapsed = 3545.583) seconds
+2TRUE Finished 2811 in logical(0) seconds
+2TRUE Finished 2811 in 168.219 sec elapsed seconds
+2TRUE171.33 sec elapsed
+Finished 2806 in c(elapsed = 3374.417) seconds
+2TRUE Finished 2806 in c(elapsed = 3545.747) seconds
+2TRUE Finished 2806 in logical(0) seconds
+2TRUE Finished 2806 in 171.33 sec elapsed seconds
+2TRUE168.285 sec elapsed
+Finished 2816 in c(elapsed = 3377.904) seconds
+2TRUE Finished 2816 in c(elapsed = 3546.189) seconds
+2TRUE Finished 2816 in logical(0) seconds
+2TRUE Finished 2816 in 168.285 sec elapsed seconds
+2TRUE168.728 sec elapsed
+Finished 2813 in c(elapsed = 3377.612) seconds
+2TRUE Finished 2813 in c(elapsed = 3546.34) seconds
+2TRUE Finished 2813 in logical(0) seconds
+2TRUE Finished 2813 in 168.728 sec elapsed seconds
+2TRUE171.389 sec elapsed
+Finished 2809 in c(elapsed = 3375.076) seconds
+2TRUE Finished 2809 in c(elapsed = 3546.465) seconds
+2TRUE Finished 2809 in logical(0) seconds
+2TRUE Finished 2809 in 171.389 sec elapsed seconds
+2TRUE169.662 sec elapsed
+Finished 2812 in c(elapsed = 3377.423) seconds
+2TRUE Finished 2812 in c(elapsed = 3547.085) seconds
+2TRUE Finished 2812 in logical(0) seconds
+2TRUE Finished 2812 in 169.662 sec elapsed seconds
+2TRUE173.514 sec elapsed
+Finished 2805 in c(elapsed = 3373.976) seconds
+2TRUE Finished 2805 in c(elapsed = 3547.49) seconds
+2TRUE Finished 2805 in logical(0) seconds
+2TRUE Finished 2805 in 173.514 sec elapsed seconds
+2TRUE170.388 sec elapsed
+Finished 2819 in c(elapsed = 3378.979) seconds
+2TRUE Finished 2819 in c(elapsed = 3549.367) seconds
+2TRUE Finished 2819 in logical(0) seconds
+2TRUE Finished 2819 in 170.388 sec elapsed seconds
+2TRUE171.093 sec elapsed
+Finished 2820 in c(elapsed = 3378.979) seconds
+2TRUE Finished 2820 in c(elapsed = 3550.072) seconds
+2TRUE Finished 2820 in logical(0) seconds
+2TRUE Finished 2820 in 171.093 sec elapsed seconds
+2TRUE172.391 sec elapsed
+Finished 2814 in c(elapsed = 3377.891) seconds
+2TRUE Finished 2814 in c(elapsed = 3550.282) seconds
+2TRUE Finished 2814 in logical(0) seconds
+2TRUE Finished 2814 in 172.391 sec elapsed seconds
+2TRUE171.946 sec elapsed
+Finished 2818 in c(elapsed = 3378.968) seconds
+2TRUE Finished 2818 in c(elapsed = 3550.914) seconds
+2TRUE Finished 2818 in logical(0) seconds
+2TRUE Finished 2818 in 171.946 sec elapsed seconds
+2TRUE164.557 sec elapsed
+Finished 2836 in c(elapsed = 3386.365) seconds
+2TRUE Finished 2836 in c(elapsed = 3550.922) seconds
+2TRUE Finished 2836 in logical(0) seconds
+2TRUE Finished 2836 in 164.557 sec elapsed seconds
+2TRUE170.12 sec elapsed
+Finished 2821 in c(elapsed = 3381.125) seconds
+2TRUE Finished 2821 in c(elapsed = 3551.245) seconds
+2TRUE Finished 2821 in logical(0) seconds
+2TRUE Finished 2821 in 170.12 sec elapsed seconds
+2TRUE166.008 sec elapsed
+Finished 2835 in c(elapsed = 3385.786) seconds
+2TRUE Finished 2835 in c(elapsed = 3551.794) seconds
+2TRUE Finished 2835 in logical(0) seconds
+2TRUE Finished 2835 in 166.008 sec elapsed seconds
+2TRUE173.724 sec elapsed
+Finished 2817 in c(elapsed = 3378.152) seconds
+2TRUE Finished 2817 in c(elapsed = 3551.876) seconds
+2TRUE Finished 2817 in logical(0) seconds
+2TRUE Finished 2817 in 173.724 sec elapsed seconds
+2TRUE167.592 sec elapsed
+Finished 2828 in c(elapsed = 3384.313) seconds
+2TRUE Finished 2828 in c(elapsed = 3551.905) seconds
+2TRUE Finished 2828 in logical(0) seconds
+2TRUE Finished 2828 in 167.592 sec elapsed seconds
+2TRUE170.441 sec elapsed
+Finished 2822 in c(elapsed = 3381.496) seconds
+2TRUE Finished 2822 in c(elapsed = 3551.937) seconds
+2TRUE Finished 2822 in logical(0) seconds
+2TRUE Finished 2822 in 170.441 sec elapsed seconds
+2TRUE168.536 sec elapsed
+Finished 2826 in c(elapsed = 3383.536) seconds
+2TRUE Finished 2826 in c(elapsed = 3552.072) seconds
+2TRUE Finished 2826 in logical(0) seconds
+2TRUE Finished 2826 in 168.536 sec elapsed seconds
+2TRUE163.655 sec elapsed
+Finished 2842 in c(elapsed = 3388.48) seconds
+2TRUE Finished 2842 in c(elapsed = 3552.135) seconds
+2TRUE Finished 2842 in logical(0) seconds
+2TRUE Finished 2842 in 163.655 sec elapsed seconds
+2TRUE177.849 sec elapsed
+Finished 2808 in c(elapsed = 3375.046) seconds
+2TRUE Finished 2808 in c(elapsed = 3552.895) seconds
+2TRUE Finished 2808 in logical(0) seconds
+2TRUE Finished 2808 in 177.849 sec elapsed seconds
+2TRUE171.302 sec elapsed
+Finished 2824 in c(elapsed = 3382.582) seconds
+2TRUE Finished 2824 in c(elapsed = 3553.884) seconds
+2TRUE Finished 2824 in logical(0) seconds
+2TRUE Finished 2824 in 171.302 sec elapsed seconds
+2TRUE172.989 sec elapsed
+Finished 2823 in c(elapsed = 3382.5) seconds
+2TRUE Finished 2823 in c(elapsed = 3555.489) seconds
+2TRUE Finished 2823 in logical(0) seconds
+2TRUE Finished 2823 in 172.989 sec elapsed seconds
+2TRUE171.888 sec elapsed
+Finished 2827 in c(elapsed = 3383.761) seconds
+2TRUE Finished 2827 in c(elapsed = 3555.649) seconds
+2TRUE Finished 2827 in logical(0) seconds
+2TRUE Finished 2827 in 171.888 sec elapsed seconds
+2TRUE172.376 sec elapsed
+Finished 2825 in c(elapsed = 3383.472) seconds
+2TRUE Finished 2825 in c(elapsed = 3555.848) seconds
+2TRUE Finished 2825 in logical(0) seconds
+2TRUE Finished 2825 in 172.376 sec elapsed seconds
+2TRUE164.609 sec elapsed
+Finished 2848 in c(elapsed = 3391.48) seconds
+2TRUE Finished 2848 in c(elapsed = 3556.089) seconds
+2TRUE Finished 2848 in logical(0) seconds
+2TRUE Finished 2848 in 164.609 sec elapsed seconds
+2TRUE167.944 sec elapsed
+Finished 2843 in c(elapsed = 3388.74) seconds
+2TRUE Finished 2843 in c(elapsed = 3556.684) seconds
+2TRUE Finished 2843 in logical(0) seconds
+2TRUE Finished 2843 in 167.944 sec elapsed seconds
+2TRUE172.273 sec elapsed
+Finished 2834 in c(elapsed = 3385.7) seconds
+2TRUE Finished 2834 in c(elapsed = 3557.973) seconds
+2TRUE Finished 2834 in logical(0) seconds
+2TRUE Finished 2834 in 172.273 sec elapsed seconds
+2TRUE172.758 sec elapsed
+Finished 2832 in c(elapsed = 3385.477) seconds
+2TRUE Finished 2832 in c(elapsed = 3558.235) seconds
+2TRUE Finished 2832 in logical(0) seconds
+2TRUE Finished 2832 in 172.758 sec elapsed seconds
+2TRUE167.389 sec elapsed
+Finished 2847 in c(elapsed = 3391.257) seconds
+2TRUE Finished 2847 in c(elapsed = 3558.646) seconds
+2TRUE Finished 2847 in logical(0) seconds
+2TRUE Finished 2847 in 167.389 sec elapsed seconds
+2TRUE172.095 sec elapsed
+Finished 2837 in c(elapsed = 3387.432) seconds
+2TRUE Finished 2837 in c(elapsed = 3559.527) seconds
+2TRUE Finished 2837 in logical(0) seconds
+2TRUE Finished 2837 in 172.095 sec elapsed seconds
+2TRUE171.185 sec elapsed
+Finished 2841 in c(elapsed = 3388.363) seconds
+2TRUE Finished 2841 in c(elapsed = 3559.548) seconds
+2TRUE Finished 2841 in logical(0) seconds
+2TRUE Finished 2841 in 171.185 sec elapsed seconds
+2TRUE168.543 sec elapsed
+Finished 2849 in c(elapsed = 3392.072) seconds
+2TRUE Finished 2849 in c(elapsed = 3560.615) seconds
+2TRUE Finished 2849 in logical(0) seconds
+2TRUE Finished 2849 in 168.543 sec elapsed seconds
+2TRUE172.353 sec elapsed
+Finished 2840 in c(elapsed = 3388.301) seconds
+2TRUE Finished 2840 in c(elapsed = 3560.654) seconds
+2TRUE Finished 2840 in logical(0) seconds
+2TRUE Finished 2840 in 172.353 sec elapsed seconds
+2TRUE176.382 sec elapsed
+Finished 2831 in c(elapsed = 3384.49) seconds
+2TRUE Finished 2831 in c(elapsed = 3560.872) seconds
+2TRUE Finished 2831 in logical(0) seconds
+2TRUE Finished 2831 in 176.382 sec elapsed seconds
+2TRUE173.888 sec elapsed
+Finished 2838 in c(elapsed = 3387.838) seconds
+2TRUE Finished 2838 in c(elapsed = 3561.726) seconds
+2TRUE Finished 2838 in logical(0) seconds
+2TRUE Finished 2838 in 173.888 sec elapsed seconds
+2TRUE173.704 sec elapsed
+Finished 2839 in c(elapsed = 3388.171) seconds
+2TRUE Finished 2839 in c(elapsed = 3561.875) seconds
+2TRUE Finished 2839 in logical(0) seconds
+2TRUE Finished 2839 in 173.704 sec elapsed seconds
+2TRUE173.025 sec elapsed
+Finished 2844 in c(elapsed = 3389.539) seconds
+2TRUE Finished 2844 in c(elapsed = 3562.564) seconds
+2TRUE Finished 2844 in logical(0) seconds
+2TRUE Finished 2844 in 173.025 sec elapsed seconds
+2TRUE165.971 sec elapsed
+Finished 2854 in c(elapsed = 3396.824) seconds
+2TRUE Finished 2854 in c(elapsed = 3562.795) seconds
+2TRUE Finished 2854 in logical(0) seconds
+2TRUE Finished 2854 in 165.971 sec elapsed seconds
+2TRUE178.863 sec elapsed
+Finished 2833 in c(elapsed = 3385.589) seconds
+2TRUE Finished 2833 in c(elapsed = 3564.452) seconds
+2TRUE Finished 2833 in logical(0) seconds
+2TRUE Finished 2833 in 178.863 sec elapsed seconds
+2TRUE174.713 sec elapsed
+Finished 2850 in c(elapsed = 3393.107) seconds
+2TRUE Finished 2850 in c(elapsed = 3567.82) seconds
+2TRUE Finished 2850 in logical(0) seconds
+2TRUE Finished 2850 in 174.713 sec elapsed seconds
+2TRUE177.131 sec elapsed
+Finished 2845 in c(elapsed = 3390.857) seconds
+2TRUE Finished 2845 in c(elapsed = 3567.988) seconds
+2TRUE Finished 2845 in logical(0) seconds
+2TRUE Finished 2845 in 177.131 sec elapsed seconds
+2TRUE174.599 sec elapsed
+Finished 2852 in c(elapsed = 3395.041) seconds
+2TRUE Finished 2852 in c(elapsed = 3569.64) seconds
+2TRUE Finished 2852 in logical(0) seconds
+2TRUE Finished 2852 in 174.599 sec elapsed seconds
+2TRUE175.838 sec elapsed
+Finished 2851 in c(elapsed = 3394.668) seconds
+2TRUE Finished 2851 in c(elapsed = 3570.506) seconds
+2TRUE Finished 2851 in logical(0) seconds
+2TRUE Finished 2851 in 175.838 sec elapsed seconds
+2TRUE175.434 sec elapsed
+Finished 2853 in c(elapsed = 3395.325) seconds
+2TRUE Finished 2853 in c(elapsed = 3570.759) seconds
+2TRUE Finished 2853 in logical(0) seconds
+2TRUE Finished 2853 in 175.434 sec elapsed seconds
+2TRUE179.823 sec elapsed
+Finished 2846 in c(elapsed = 3391.122) seconds
+2TRUE Finished 2846 in c(elapsed = 3570.945) seconds
+2TRUE Finished 2846 in logical(0) seconds
+2TRUE Finished 2846 in 179.823 sec elapsed seconds
+2TRUE174.578 sec elapsed
+Finished 2857 in c(elapsed = 3399.056) seconds
+2TRUE Finished 2857 in c(elapsed = 3573.634) seconds
+2TRUE Finished 2857 in logical(0) seconds
+2TRUE Finished 2857 in 174.578 sec elapsed seconds
+2TRUE175.299 sec elapsed
+Finished 2856 in c(elapsed = 3399.027) seconds
+2TRUE Finished 2856 in c(elapsed = 3574.326) seconds
+2TRUE Finished 2856 in logical(0) seconds
+2TRUE Finished 2856 in 175.299 sec elapsed seconds
+2TRUE166.807 sec elapsed
+Finished 2864 in c(elapsed = 3408.975) seconds
+2TRUE Finished 2864 in c(elapsed = 3575.782) seconds
+2TRUE Finished 2864 in logical(0) seconds
+2TRUE Finished 2864 in 166.807 sec elapsed seconds
+2TRUE177.27 sec elapsed
+Finished 2855 in c(elapsed = 3398.515) seconds
+2TRUE Finished 2855 in c(elapsed = 3575.785) seconds
+2TRUE Finished 2855 in logical(0) seconds
+2TRUE Finished 2855 in 177.27 sec elapsed seconds
+2TRUE174.375 sec elapsed
+Finished 2861 in c(elapsed = 3402.7) seconds
+2TRUE Finished 2861 in c(elapsed = 3577.075) seconds
+2TRUE Finished 2861 in logical(0) seconds
+2TRUE Finished 2861 in 174.375 sec elapsed seconds
+2TRUE179.148 sec elapsed
+Finished 2858 in c(elapsed = 3400.198) seconds
+2TRUE Finished 2858 in c(elapsed = 3579.346) seconds
+2TRUE Finished 2858 in logical(0) seconds
+2TRUE Finished 2858 in 179.148 sec elapsed seconds
+2TRUE179.179 sec elapsed
+Finished 2860 in c(elapsed = 3401.277) seconds
+2TRUE Finished 2860 in c(elapsed = 3580.456) seconds
+2TRUE Finished 2860 in logical(0) seconds
+2TRUE Finished 2860 in 179.179 sec elapsed seconds
+2TRUE173.627 sec elapsed
+Finished 2862 in c(elapsed = 3407.3) seconds
+2TRUE Finished 2862 in c(elapsed = 3580.927) seconds
+2TRUE Finished 2862 in logical(0) seconds
+2TRUE Finished 2862 in 173.627 sec elapsed seconds
+2TRUE165.777 sec elapsed
+Finished 2865 in c(elapsed = 3420.929) seconds
+2TRUE Finished 2865 in c(elapsed = 3586.706) seconds
+2TRUE Finished 2865 in logical(0) seconds
+2TRUE Finished 2865 in 165.777 sec elapsed seconds
+2TRUE157.936 sec elapsed
+Finished 2866 in c(elapsed = 3510.606) seconds
+2TRUE Finished 2866 in c(elapsed = 3668.542) seconds
+2TRUE Finished 2866 in logical(0) seconds
+2TRUE Finished 2866 in 157.936 sec elapsed seconds
+2TRUE159.774 sec elapsed
+Finished 2867 in c(elapsed = 3521.406) seconds
+2TRUE Finished 2867 in c(elapsed = 3681.18) seconds
+2TRUE Finished 2867 in logical(0) seconds
+2TRUE Finished 2867 in 159.774 sec elapsed seconds
+2TRUE157.947 sec elapsed
+Finished 2868 in c(elapsed = 3524.342) seconds
+2TRUE Finished 2868 in c(elapsed = 3682.289) seconds
+2TRUE Finished 2868 in logical(0) seconds
+2TRUE Finished 2868 in 157.947 sec elapsed seconds
+2TRUE161.394 sec elapsed
+Finished 2871 in c(elapsed = 3528.838) seconds
+2TRUE Finished 2871 in c(elapsed = 3690.232) seconds
+2TRUE Finished 2871 in logical(0) seconds
+2TRUE Finished 2871 in 161.394 sec elapsed seconds
+2TRUE164.144 sec elapsed
+Finished 2869 in c(elapsed = 3528.138) seconds
+2TRUE Finished 2869 in c(elapsed = 3692.282) seconds
+2TRUE Finished 2869 in logical(0) seconds
+2TRUE Finished 2869 in 164.144 sec elapsed seconds
+2TRUE166.499 sec elapsed
+Finished 2873 in c(elapsed = 3531.325) seconds
+2TRUE Finished 2873 in c(elapsed = 3697.824) seconds
+2TRUE Finished 2873 in logical(0) seconds
+2TRUE Finished 2873 in 166.499 sec elapsed seconds
+2TRUE171.958 sec elapsed
+Finished 2870 in c(elapsed = 3528.622) seconds
+2TRUE Finished 2870 in c(elapsed = 3700.58) seconds
+2TRUE Finished 2870 in logical(0) seconds
+2TRUE Finished 2870 in 171.958 sec elapsed seconds
+2TRUE163.783 sec elapsed
+Finished 2877 in c(elapsed = 3538.883) seconds
+2TRUE Finished 2877 in c(elapsed = 3702.666) seconds
+2TRUE Finished 2877 in logical(0) seconds
+2TRUE Finished 2877 in 163.783 sec elapsed seconds
+2TRUE162.867 sec elapsed
+Finished 2880 in c(elapsed = 3539.901) seconds
+2TRUE Finished 2880 in c(elapsed = 3702.768) seconds
+2TRUE Finished 2880 in logical(0) seconds
+2TRUE Finished 2880 in 162.867 sec elapsed seconds
+2TRUE175.049 sec elapsed
+Finished 2872 in c(elapsed = 3530.784) seconds
+2TRUE Finished 2872 in c(elapsed = 3705.833) seconds
+2TRUE Finished 2872 in logical(0) seconds
+2TRUE Finished 2872 in 175.049 sec elapsed seconds
+2TRUE171.295 sec elapsed
+Finished 2874 in c(elapsed = 3534.809) seconds
+2TRUE Finished 2874 in c(elapsed = 3706.104) seconds
+2TRUE Finished 2874 in logical(0) seconds
+2TRUE Finished 2874 in 171.295 sec elapsed seconds
+2TRUE166.362 sec elapsed
+Finished 2881 in c(elapsed = 3539.915) seconds
+2TRUE Finished 2881 in c(elapsed = 3706.277) seconds
+2TRUE Finished 2881 in logical(0) seconds
+2TRUE Finished 2881 in 166.362 sec elapsed seconds
+2TRUE161.346 sec elapsed
+Finished 2888 in c(elapsed = 3546.468) seconds
+2TRUE Finished 2888 in c(elapsed = 3707.814) seconds
+2TRUE Finished 2888 in logical(0) seconds
+2TRUE Finished 2888 in 161.346 sec elapsed seconds
+2TRUE170.405 sec elapsed
+Finished 2875 in c(elapsed = 3537.467) seconds
+2TRUE Finished 2875 in c(elapsed = 3707.872) seconds
+2TRUE Finished 2875 in logical(0) seconds
+2TRUE Finished 2875 in 170.405 sec elapsed seconds
+2TRUE170.404 sec elapsed
+Finished 2876 in c(elapsed = 3538.847) seconds
+2TRUE Finished 2876 in c(elapsed = 3709.251) seconds
+2TRUE Finished 2876 in logical(0) seconds
+2TRUE Finished 2876 in 170.404 sec elapsed seconds
+2TRUE170.336 sec elapsed
+Finished 2878 in c(elapsed = 3539.053) seconds
+2TRUE Finished 2878 in c(elapsed = 3709.389) seconds
+2TRUE Finished 2878 in logical(0) seconds
+2TRUE Finished 2878 in 170.336 sec elapsed seconds
+2TRUE165.857 sec elapsed
+Finished 2882 in c(elapsed = 3543.699) seconds
+2TRUE Finished 2882 in c(elapsed = 3709.556) seconds
+2TRUE Finished 2882 in logical(0) seconds
+2TRUE Finished 2882 in 165.857 sec elapsed seconds
+2TRUE164.955 sec elapsed
+Finished 2887 in c(elapsed = 3546.343) seconds
+2TRUE Finished 2887 in c(elapsed = 3711.298) seconds
+2TRUE Finished 2887 in logical(0) seconds
+2TRUE Finished 2887 in 164.955 sec elapsed seconds
+2TRUE169.143 sec elapsed
+Finished 2883 in c(elapsed = 3544.198) seconds
+2TRUE Finished 2883 in c(elapsed = 3713.341) seconds
+2TRUE Finished 2883 in logical(0) seconds
+2TRUE Finished 2883 in 169.143 sec elapsed seconds
+2TRUE167.963 sec elapsed
+Finished 2889 in c(elapsed = 3547.088) seconds
+2TRUE Finished 2889 in c(elapsed = 3715.051) seconds
+2TRUE Finished 2889 in logical(0) seconds
+2TRUE Finished 2889 in 167.963 sec elapsed seconds
+2TRUE169.519 sec elapsed
+Finished 2885 in c(elapsed = 3545.751) seconds
+2TRUE Finished 2885 in c(elapsed = 3715.27) seconds
+2TRUE Finished 2885 in logical(0) seconds
+2TRUE Finished 2885 in 169.519 sec elapsed seconds
+2TRUE163.82 sec elapsed
+Finished 2898 in c(elapsed = 3551.878) seconds
+2TRUE Finished 2898 in c(elapsed = 3715.698) seconds
+2TRUE Finished 2898 in logical(0) seconds
+2TRUE Finished 2898 in 163.82 sec elapsed seconds
+2TRUE169.924 sec elapsed
+Finished 2886 in c(elapsed = 3546.192) seconds
+2TRUE Finished 2886 in c(elapsed = 3716.116) seconds
+2TRUE Finished 2886 in logical(0) seconds
+2TRUE Finished 2886 in 169.924 sec elapsed seconds
+2TRUE165.704 sec elapsed
+Finished 2895 in c(elapsed = 3550.924) seconds
+2TRUE Finished 2895 in c(elapsed = 3716.628) seconds
+2TRUE Finished 2895 in logical(0) seconds
+2TRUE Finished 2895 in 165.704 sec elapsed seconds
+2TRUE162.168 sec elapsed
+Finished 2908 in c(elapsed = 3555.852) seconds
+2TRUE Finished 2908 in c(elapsed = 3718.02) seconds
+2TRUE Finished 2908 in logical(0) seconds
+2TRUE Finished 2908 in 162.168 sec elapsed seconds
+2TRUE158.636 sec elapsed
+Finished 2915 in c(elapsed = 3559.551) seconds
+2TRUE Finished 2915 in c(elapsed = 3718.187) seconds
+2TRUE Finished 2915 in logical(0) seconds
+2TRUE Finished 2915 in 158.636 sec elapsed seconds
+2TRUE168.747 sec elapsed
+Finished 2892 in c(elapsed = 3550.075) seconds
+2TRUE Finished 2892 in c(elapsed = 3718.822) seconds
+2TRUE Finished 2892 in logical(0) seconds
+2TRUE Finished 2892 in 168.747 sec elapsed seconds
+2TRUE163.388 sec elapsed
+Finished 2909 in c(elapsed = 3556.092) seconds
+2TRUE Finished 2909 in c(elapsed = 3719.48) seconds
+2TRUE Finished 2909 in logical(0) seconds
+2TRUE Finished 2909 in 163.388 sec elapsed seconds
+2TRUE163.382 sec elapsed
+Finished 2910 in c(elapsed = 3556.687) seconds
+2TRUE Finished 2910 in c(elapsed = 3720.069) seconds
+2TRUE Finished 2910 in logical(0) seconds
+2TRUE Finished 2910 in 163.382 sec elapsed seconds
+2TRUE168.311 sec elapsed
+Finished 2900 in c(elapsed = 3551.939) seconds
+2TRUE Finished 2900 in c(elapsed = 3720.25) seconds
+2TRUE Finished 2900 in logical(0) seconds
+2TRUE Finished 2900 in 168.311 sec elapsed seconds
+2TRUE169.452 sec elapsed
+Finished 2896 in c(elapsed = 3551.248) seconds
+2TRUE Finished 2896 in c(elapsed = 3720.7) seconds
+2TRUE Finished 2896 in logical(0) seconds
+2TRUE Finished 2896 in 169.452 sec elapsed seconds
+2TRUE181.231 sec elapsed
+Finished 2879 in c(elapsed = 3539.811) seconds
+2TRUE Finished 2879 in c(elapsed = 3721.042) seconds
+2TRUE Finished 2879 in logical(0) seconds
+2TRUE Finished 2879 in 181.231 sec elapsed seconds
+2TRUE171.065 sec elapsed
+Finished 2893 in c(elapsed = 3550.285) seconds
+2TRUE Finished 2893 in c(elapsed = 3721.35) seconds
+2TRUE Finished 2893 in logical(0) seconds
+2TRUE Finished 2893 in 171.065 sec elapsed seconds
+2TRUE176.285 sec elapsed
+Finished 2884 in c(elapsed = 3545.585) seconds
+2TRUE Finished 2884 in c(elapsed = 3721.87) seconds
+2TRUE Finished 2884 in logical(0) seconds
+2TRUE Finished 2884 in 176.285 sec elapsed seconds
+2TRUE171.046 sec elapsed
+Finished 2894 in c(elapsed = 3550.916) seconds
+2TRUE Finished 2894 in c(elapsed = 3721.962) seconds
+2TRUE Finished 2894 in logical(0) seconds
+2TRUE Finished 2894 in 171.046 sec elapsed seconds
+2TRUE170.526 sec elapsed
+Finished 2901 in c(elapsed = 3552.076) seconds
+2TRUE Finished 2901 in c(elapsed = 3722.602) seconds
+2TRUE Finished 2901 in logical(0) seconds
+2TRUE Finished 2901 in 170.526 sec elapsed seconds
+2TRUE163.316 sec elapsed
+Finished 2914 in c(elapsed = 3559.53) seconds
+2TRUE Finished 2914 in c(elapsed = 3722.846) seconds
+2TRUE Finished 2914 in logical(0) seconds
+2TRUE Finished 2914 in 163.316 sec elapsed seconds
+2TRUE169.061 sec elapsed
+Finished 2905 in c(elapsed = 3553.887) seconds
+2TRUE Finished 2905 in c(elapsed = 3722.948) seconds
+2TRUE Finished 2905 in logical(0) seconds
+2TRUE Finished 2905 in 169.061 sec elapsed seconds
+2TRUE164.966 sec elapsed
+Finished 2912 in c(elapsed = 3558.238) seconds
+2TRUE Finished 2912 in c(elapsed = 3723.204) seconds
+2TRUE Finished 2912 in logical(0) seconds
+2TRUE Finished 2912 in 164.966 sec elapsed seconds
+2TRUE171.816 sec elapsed
+Finished 2897 in c(elapsed = 3551.797) seconds
+2TRUE Finished 2897 in c(elapsed = 3723.613) seconds
+2TRUE Finished 2897 in logical(0) seconds
+2TRUE Finished 2897 in 171.816 sec elapsed seconds
+2TRUE172.828 sec elapsed
+Finished 2899 in c(elapsed = 3551.907) seconds
+2TRUE Finished 2899 in c(elapsed = 3724.735) seconds
+2TRUE Finished 2899 in logical(0) seconds
+2TRUE Finished 2899 in 172.828 sec elapsed seconds
+2TRUE169.621 sec elapsed
+Finished 2907 in c(elapsed = 3555.651) seconds
+2TRUE Finished 2907 in c(elapsed = 3725.272) seconds
+2TRUE Finished 2907 in logical(0) seconds
+2TRUE Finished 2907 in 169.621 sec elapsed seconds
+2TRUE170.916 sec elapsed
+Finished 2906 in c(elapsed = 3555.491) seconds
+2TRUE Finished 2906 in c(elapsed = 3726.407) seconds
+2TRUE Finished 2906 in logical(0) seconds
+2TRUE Finished 2906 in 170.916 sec elapsed seconds
+2TRUE179.639 sec elapsed
+Finished 2890 in c(elapsed = 3547.493) seconds
+2TRUE Finished 2890 in c(elapsed = 3727.132) seconds
+2TRUE Finished 2890 in logical(0) seconds
+2TRUE Finished 2890 in 179.639 sec elapsed seconds
+2TRUE165.179 sec elapsed
+Finished 2922 in c(elapsed = 3562.797) seconds
+2TRUE Finished 2922 in c(elapsed = 3727.976) seconds
+2TRUE Finished 2922 in logical(0) seconds
+2TRUE Finished 2922 in 165.179 sec elapsed seconds
+2TRUE166.337 sec elapsed
+Finished 2919 in c(elapsed = 3561.729) seconds
+2TRUE Finished 2919 in c(elapsed = 3728.066) seconds
+2TRUE Finished 2919 in logical(0) seconds
+2TRUE Finished 2919 in 166.337 sec elapsed seconds
+2TRUE158.509 sec elapsed
+Finished 2926 in c(elapsed = 3569.6) seconds
+2TRUE Finished 2926 in c(elapsed = 3728.109) seconds
+2TRUE Finished 2926 in logical(0) seconds
+2TRUE Finished 2926 in 158.509 sec elapsed seconds
+2TRUE177.275 sec elapsed
+Finished 2904 in c(elapsed = 3552.897) seconds
+2TRUE Finished 2904 in c(elapsed = 3730.172) seconds
+2TRUE Finished 2904 in logical(0) seconds
+2TRUE Finished 2904 in 177.275 sec elapsed seconds
+2TRUE169.882 sec elapsed
+Finished 2916 in c(elapsed = 3560.618) seconds
+2TRUE Finished 2916 in c(elapsed = 3730.5) seconds
+2TRUE Finished 2916 in logical(0) seconds
+2TRUE Finished 2916 in 169.882 sec elapsed seconds
+2TRUE170.195 sec elapsed
+Finished 2917 in c(elapsed = 3560.657) seconds
+2TRUE Finished 2917 in c(elapsed = 3730.852) seconds
+2TRUE Finished 2917 in logical(0) seconds
+2TRUE Finished 2917 in 170.195 sec elapsed seconds
+2TRUE163.608 sec elapsed
+Finished 2927 in c(elapsed = 3569.643) seconds
+2TRUE Finished 2927 in c(elapsed = 3733.251) seconds
+2TRUE Finished 2927 in logical(0) seconds
+2TRUE Finished 2927 in 163.608 sec elapsed seconds
+2TRUE172.664 sec elapsed
+Finished 2920 in c(elapsed = 3561.878) seconds
+2TRUE Finished 2920 in c(elapsed = 3734.542) seconds
+2TRUE Finished 2920 in logical(0) seconds
+2TRUE Finished 2920 in 172.664 sec elapsed seconds
+2TRUE162.299 sec elapsed
+Finished 2931 in c(elapsed = 3572.742) seconds
+2TRUE Finished 2931 in c(elapsed = 3735.041) seconds
+2TRUE Finished 2931 in logical(0) seconds
+2TRUE Finished 2931 in 162.299 sec elapsed seconds
+2TRUE174.21 sec elapsed
+Finished 2921 in c(elapsed = 3562.566) seconds
+2TRUE Finished 2921 in c(elapsed = 3736.776) seconds
+2TRUE Finished 2921 in logical(0) seconds
+2TRUE Finished 2921 in 174.21 sec elapsed seconds
+2TRUE176.953 sec elapsed
+Finished 2918 in c(elapsed = 3560.875) seconds
+2TRUE Finished 2918 in c(elapsed = 3737.828) seconds
+2TRUE Finished 2918 in logical(0) seconds
+2TRUE Finished 2918 in 176.953 sec elapsed seconds
+2TRUE172.234 sec elapsed
+Finished 2924 in c(elapsed = 3567.823) seconds
+2TRUE Finished 2924 in c(elapsed = 3740.057) seconds
+2TRUE Finished 2924 in logical(0) seconds
+2TRUE Finished 2924 in 172.234 sec elapsed seconds
+2TRUE176.963 sec elapsed
+Finished 2923 in c(elapsed = 3564.454) seconds
+2TRUE Finished 2923 in c(elapsed = 3741.417) seconds
+2TRUE Finished 2923 in logical(0) seconds
+2TRUE Finished 2923 in 176.963 sec elapsed seconds
+2TRUE164.992 sec elapsed
+Finished 2937 in c(elapsed = 3577.077) seconds
+2TRUE Finished 2937 in c(elapsed = 3742.069) seconds
+2TRUE Finished 2937 in logical(0) seconds
+2TRUE Finished 2937 in 164.992 sec elapsed seconds
+2TRUE171.599 sec elapsed
+Finished 2928 in c(elapsed = 3570.509) seconds
+2TRUE Finished 2928 in c(elapsed = 3742.108) seconds
+2TRUE Finished 2928 in logical(0) seconds
+2TRUE Finished 2928 in 171.599 sec elapsed seconds
+2TRUE164.258 sec elapsed
+Finished 2940 in c(elapsed = 3579.487) seconds
+2TRUE Finished 2940 in c(elapsed = 3743.745) seconds
+2TRUE Finished 2940 in logical(0) seconds
+2TRUE Finished 2940 in 164.258 sec elapsed seconds
+2TRUE174.436 sec elapsed
+Finished 2929 in c(elapsed = 3570.762) seconds
+2TRUE Finished 2929 in c(elapsed = 3745.198) seconds
+2TRUE Finished 2929 in logical(0) seconds
+2TRUE Finished 2929 in 174.436 sec elapsed seconds
+2TRUE166.192 sec elapsed
+Finished 2938 in c(elapsed = 3579.307) seconds
+2TRUE Finished 2938 in c(elapsed = 3745.499) seconds
+2TRUE Finished 2938 in logical(0) seconds
+2TRUE Finished 2938 in 166.192 sec elapsed seconds
+2TRUE165.354 sec elapsed
+Finished 2942 in c(elapsed = 3580.929) seconds
+2TRUE Finished 2942 in c(elapsed = 3746.283) seconds
+2TRUE Finished 2942 in logical(0) seconds
+2TRUE Finished 2942 in 165.354 sec elapsed seconds
+2TRUE179.79 sec elapsed
+Finished 2925 in c(elapsed = 3567.99) seconds
+2TRUE Finished 2925 in c(elapsed = 3747.78) seconds
+2TRUE Finished 2925 in logical(0) seconds
+2TRUE Finished 2925 in 179.79 sec elapsed seconds
+2TRUE173.674 sec elapsed
+Finished 2933 in c(elapsed = 3574.329) seconds
+2TRUE Finished 2933 in c(elapsed = 3748.003) seconds
+2TRUE Finished 2933 in logical(0) seconds
+2TRUE Finished 2933 in 173.674 sec elapsed seconds
+2TRUE178.513 sec elapsed
+Finished 2930 in c(elapsed = 3570.948) seconds
+2TRUE Finished 2930 in c(elapsed = 3749.461) seconds
+2TRUE Finished 2930 in logical(0) seconds
+2TRUE Finished 2930 in 178.513 sec elapsed seconds
+2TRUE178.153 sec elapsed
+Finished 2932 in c(elapsed = 3573.637) seconds
+2TRUE Finished 2932 in c(elapsed = 3751.79) seconds
+2TRUE Finished 2932 in logical(0) seconds
+2TRUE Finished 2932 in 178.153 sec elapsed seconds
+2TRUE178.799 sec elapsed
+Finished 2936 in c(elapsed = 3575.837) seconds
+2TRUE Finished 2936 in c(elapsed = 3754.636) seconds
+2TRUE Finished 2936 in logical(0) seconds
+2TRUE Finished 2936 in 178.799 sec elapsed seconds
+2TRUE179.843 sec elapsed
+Finished 2935 in c(elapsed = 3575.789) seconds
+2TRUE Finished 2935 in c(elapsed = 3755.632) seconds
+2TRUE Finished 2935 in logical(0) seconds
+2TRUE Finished 2935 in 179.843 sec elapsed seconds
+2TRUE178.771 sec elapsed
+Finished 2941 in c(elapsed = 3580.46) seconds
+2TRUE Finished 2941 in c(elapsed = 3759.231) seconds
+2TRUE Finished 2941 in logical(0) seconds
+2TRUE Finished 2941 in 178.771 sec elapsed seconds
+2TRUE181.536 sec elapsed
+Finished 2939 in c(elapsed = 3579.349) seconds
+2TRUE Finished 2939 in c(elapsed = 3760.885) seconds
+2TRUE Finished 2939 in logical(0) seconds
+2TRUE Finished 2939 in 181.536 sec elapsed seconds
+2TRUE175.413 sec elapsed
+Finished 2943 in c(elapsed = 3586.709) seconds
+2TRUE Finished 2943 in c(elapsed = 3762.122) seconds
+2TRUE Finished 2943 in logical(0) seconds
+2TRUE Finished 2943 in 175.413 sec elapsed seconds
+2TRUE161.644 sec elapsed
+Finished 2944 in c(elapsed = 3668.545) seconds
+2TRUE Finished 2944 in c(elapsed = 3830.189) seconds
+2TRUE Finished 2944 in logical(0) seconds
+2TRUE Finished 2944 in 161.644 sec elapsed seconds
+2TRUE157.541 sec elapsed
+Finished 2946 in c(elapsed = 3682.292) seconds
+2TRUE Finished 2946 in c(elapsed = 3839.833) seconds
+2TRUE Finished 2946 in logical(0) seconds
+2TRUE Finished 2946 in 157.541 sec elapsed seconds
+2TRUE161.056 sec elapsed
+Finished 2945 in c(elapsed = 3681.183) seconds
+2TRUE Finished 2945 in c(elapsed = 3842.239) seconds
+2TRUE Finished 2945 in logical(0) seconds
+2TRUE Finished 2945 in 161.056 sec elapsed seconds
+2TRUE164.31 sec elapsed
+Finished 2948 in c(elapsed = 3692.284) seconds
+2TRUE Finished 2948 in c(elapsed = 3856.594) seconds
+2TRUE Finished 2948 in logical(0) seconds
+2TRUE Finished 2948 in 164.31 sec elapsed seconds
+2TRUE169.683 sec elapsed
+Finished 2947 in c(elapsed = 3690.235) seconds
+2TRUE Finished 2947 in c(elapsed = 3859.918) seconds
+2TRUE Finished 2947 in logical(0) seconds
+2TRUE Finished 2947 in 169.683 sec elapsed seconds
+2TRUE164.431 sec elapsed
+Finished 2949 in c(elapsed = 3697.827) seconds
+2TRUE Finished 2949 in c(elapsed = 3862.258) seconds
+2TRUE Finished 2949 in logical(0) seconds
+2TRUE Finished 2949 in 164.431 sec elapsed seconds
+2TRUE167.287 sec elapsed
+Finished 2950 in c(elapsed = 3700.583) seconds
+2TRUE Finished 2950 in c(elapsed = 3867.87) seconds
+2TRUE Finished 2950 in logical(0) seconds
+2TRUE Finished 2950 in 167.287 sec elapsed seconds
+2TRUE163.175 sec elapsed
+Finished 2955 in c(elapsed = 3706.279) seconds
+2TRUE Finished 2955 in c(elapsed = 3869.454) seconds
+2TRUE Finished 2955 in logical(0) seconds
+2TRUE Finished 2955 in 163.175 sec elapsed seconds
+2TRUE167.343 sec elapsed
+Finished 2952 in c(elapsed = 3702.771) seconds
+2TRUE Finished 2952 in c(elapsed = 3870.114) seconds
+2TRUE Finished 2952 in logical(0) seconds
+2TRUE Finished 2952 in 167.343 sec elapsed seconds
+2TRUE170.149 sec elapsed
+Finished 2951 in c(elapsed = 3702.668) seconds
+2TRUE Finished 2951 in c(elapsed = 3872.817) seconds
+2TRUE Finished 2951 in logical(0) seconds
+2TRUE Finished 2951 in 170.149 sec elapsed seconds
+2TRUE167.131 sec elapsed
+Finished 2953 in c(elapsed = 3705.836) seconds
+2TRUE Finished 2953 in c(elapsed = 3872.967) seconds
+2TRUE Finished 2953 in logical(0) seconds
+2TRUE Finished 2953 in 167.131 sec elapsed seconds
+2TRUE166.599 sec elapsed
+Finished 2956 in c(elapsed = 3707.818) seconds
+2TRUE Finished 2956 in c(elapsed = 3874.417) seconds
+2TRUE Finished 2956 in logical(0) seconds
+2TRUE Finished 2956 in 166.599 sec elapsed seconds
+2TRUE165.704 sec elapsed
+Finished 2960 in c(elapsed = 3709.559) seconds
+2TRUE Finished 2960 in c(elapsed = 3875.263) seconds
+2TRUE Finished 2960 in logical(0) seconds
+2TRUE Finished 2960 in 165.704 sec elapsed seconds
+2TRUE167.803 sec elapsed
+Finished 2957 in c(elapsed = 3707.874) seconds
+2TRUE Finished 2957 in c(elapsed = 3875.677) seconds
+2TRUE Finished 2957 in logical(0) seconds
+2TRUE Finished 2957 in 167.803 sec elapsed seconds
+2TRUE166.454 sec elapsed
+Finished 2959 in c(elapsed = 3709.393) seconds
+2TRUE Finished 2959 in c(elapsed = 3875.847) seconds
+2TRUE Finished 2959 in logical(0) seconds
+2TRUE Finished 2959 in 166.454 sec elapsed seconds
+2TRUE159.562 sec elapsed
+Finished 2969 in c(elapsed = 3718.19) seconds
+2TRUE Finished 2969 in c(elapsed = 3877.752) seconds
+2TRUE Finished 2969 in logical(0) seconds
+2TRUE Finished 2969 in 159.562 sec elapsed seconds
+2TRUE164.462 sec elapsed
+Finished 2962 in c(elapsed = 3713.344) seconds
+2TRUE Finished 2962 in c(elapsed = 3877.806) seconds
+2TRUE Finished 2962 in logical(0) seconds
+2TRUE Finished 2962 in 164.462 sec elapsed seconds
+2TRUE171.989 sec elapsed
+Finished 2954 in c(elapsed = 3706.107) seconds
+2TRUE Finished 2954 in c(elapsed = 3878.096) seconds
+2TRUE Finished 2954 in logical(0) seconds
+2TRUE Finished 2954 in 171.989 sec elapsed seconds
+2TRUE168.147 sec elapsed
+Finished 2961 in c(elapsed = 3711.301) seconds
+2TRUE Finished 2961 in c(elapsed = 3879.448) seconds
+2TRUE Finished 2961 in logical(0) seconds
+2TRUE Finished 2961 in 168.147 sec elapsed seconds
+2TRUE171.825 sec elapsed
+Finished 2958 in c(elapsed = 3709.254) seconds
+2TRUE Finished 2958 in c(elapsed = 3881.079) seconds
+2TRUE Finished 2958 in logical(0) seconds
+2TRUE Finished 2958 in 171.825 sec elapsed seconds
+2TRUE162.727 sec elapsed
+Finished 2971 in c(elapsed = 3719.483) seconds
+2TRUE Finished 2971 in c(elapsed = 3882.21) seconds
+2TRUE Finished 2971 in logical(0) seconds
+2TRUE Finished 2971 in 162.727 sec elapsed seconds
+2TRUE164.689 sec elapsed
+Finished 2968 in c(elapsed = 3718.023) seconds
+2TRUE Finished 2968 in c(elapsed = 3882.712) seconds
+2TRUE Finished 2968 in logical(0) seconds
+2TRUE Finished 2968 in 164.689 sec elapsed seconds
+2TRUE166.586 sec elapsed
+Finished 2967 in c(elapsed = 3716.632) seconds
+2TRUE Finished 2967 in c(elapsed = 3883.218) seconds
+2TRUE Finished 2967 in logical(0) seconds
+2TRUE Finished 2967 in 166.586 sec elapsed seconds
+2TRUE167.908 sec elapsed
+Finished 2966 in c(elapsed = 3716.118) seconds
+2TRUE Finished 2966 in c(elapsed = 3884.026) seconds
+2TRUE Finished 2966 in logical(0) seconds
+2TRUE Finished 2966 in 167.908 sec elapsed seconds
+2TRUE166.257 sec elapsed
+Finished 2973 in c(elapsed = 3720.253) seconds
+2TRUE Finished 2973 in c(elapsed = 3886.51) seconds
+2TRUE Finished 2973 in logical(0) seconds
+2TRUE Finished 2973 in 166.257 sec elapsed seconds
+2TRUE171.509 sec elapsed
+Finished 2964 in c(elapsed = 3715.274) seconds
+2TRUE Finished 2964 in c(elapsed = 3886.783) seconds
+2TRUE Finished 2964 in logical(0) seconds
+2TRUE Finished 2964 in 171.509 sec elapsed seconds
+2TRUE167.38 sec elapsed
+Finished 2972 in c(elapsed = 3720.073) seconds
+2TRUE Finished 2972 in c(elapsed = 3887.453) seconds
+2TRUE Finished 2972 in logical(0) seconds
+2TRUE Finished 2972 in 167.38 sec elapsed seconds
+2TRUE169.625 sec elapsed
+Finished 2970 in c(elapsed = 3718.825) seconds
+2TRUE Finished 2970 in c(elapsed = 3888.45) seconds
+2TRUE Finished 2970 in logical(0) seconds
+2TRUE Finished 2970 in 169.625 sec elapsed seconds
+2TRUE165.66 sec elapsed
+Finished 2982 in c(elapsed = 3723.207) seconds
+2TRUE Finished 2982 in c(elapsed = 3888.867) seconds
+2TRUE Finished 2982 in logical(0) seconds
+2TRUE Finished 2982 in 165.66 sec elapsed seconds
+2TRUE173.49 sec elapsed
+Finished 2965 in c(elapsed = 3715.701) seconds
+2TRUE Finished 2965 in c(elapsed = 3889.191) seconds
+2TRUE Finished 2965 in logical(0) seconds
+2TRUE Finished 2965 in 173.49 sec elapsed seconds
+2TRUE166.618 sec elapsed
+Finished 2980 in c(elapsed = 3722.849) seconds
+2TRUE Finished 2980 in c(elapsed = 3889.467) seconds
+2TRUE Finished 2980 in logical(0) seconds
+2TRUE Finished 2980 in 166.618 sec elapsed seconds
+2TRUE163.121 sec elapsed
+Finished 2987 in c(elapsed = 3727.135) seconds
+2TRUE Finished 2987 in c(elapsed = 3890.256) seconds
+2TRUE Finished 2987 in logical(0) seconds
+2TRUE Finished 2987 in 163.121 sec elapsed seconds
+2TRUE169.984 sec elapsed
+Finished 2974 in c(elapsed = 3720.703) seconds
+2TRUE Finished 2974 in c(elapsed = 3890.687) seconds
+2TRUE Finished 2974 in logical(0) seconds
+2TRUE Finished 2974 in 169.984 sec elapsed seconds
+2TRUE169.956 sec elapsed
+Finished 2976 in c(elapsed = 3721.354) seconds
+2TRUE Finished 2976 in c(elapsed = 3891.31) seconds
+2TRUE Finished 2976 in logical(0) seconds
+2TRUE Finished 2976 in 169.956 sec elapsed seconds
+2TRUE166.479 sec elapsed
+Finished 2985 in c(elapsed = 3725.275) seconds
+2TRUE Finished 2985 in c(elapsed = 3891.754) seconds
+2TRUE Finished 2985 in logical(0) seconds
+2TRUE Finished 2985 in 166.479 sec elapsed seconds
+2TRUE170.134 sec elapsed
+Finished 2978 in c(elapsed = 3721.964) seconds
+2TRUE Finished 2978 in c(elapsed = 3892.098) seconds
+2TRUE Finished 2978 in logical(0) seconds
+2TRUE Finished 2978 in 170.134 sec elapsed seconds
+2TRUE162.595 sec elapsed
+Finished 2992 in c(elapsed = 3730.502) seconds
+2TRUE Finished 2992 in c(elapsed = 3893.097) seconds
+2TRUE Finished 2992 in logical(0) seconds
+2TRUE Finished 2992 in 162.595 sec elapsed seconds
+2TRUE165.954 sec elapsed
+Finished 2988 in c(elapsed = 3727.978) seconds
+2TRUE Finished 2988 in c(elapsed = 3893.932) seconds
+2TRUE Finished 2988 in logical(0) seconds
+2TRUE Finished 2988 in 165.954 sec elapsed seconds
+2TRUE171.718 sec elapsed
+Finished 2979 in c(elapsed = 3722.604) seconds
+2TRUE Finished 2979 in c(elapsed = 3894.322) seconds
+2TRUE Finished 2979 in logical(0) seconds
+2TRUE Finished 2979 in 171.718 sec elapsed seconds
+2TRUE170.783 sec elapsed
+Finished 2983 in c(elapsed = 3723.615) seconds
+2TRUE Finished 2983 in c(elapsed = 3894.398) seconds
+2TRUE Finished 2983 in logical(0) seconds
+2TRUE Finished 2983 in 170.783 sec elapsed seconds
+2TRUE171.589 sec elapsed
+Finished 2981 in c(elapsed = 3722.95) seconds
+2TRUE Finished 2981 in c(elapsed = 3894.539) seconds
+2TRUE Finished 2981 in logical(0) seconds
+2TRUE Finished 2981 in 171.589 sec elapsed seconds
+2TRUE164.142 sec elapsed
+Finished 2993 in c(elapsed = 3730.854) seconds
+2TRUE Finished 2993 in c(elapsed = 3894.996) seconds
+2TRUE Finished 2993 in logical(0) seconds
+2TRUE Finished 2993 in 164.142 sec elapsed seconds
+2TRUE166.954 sec elapsed
+Finished 2991 in c(elapsed = 3730.176) seconds
+2TRUE Finished 2991 in c(elapsed = 3897.13) seconds
+2TRUE Finished 2991 in logical(0) seconds
+2TRUE Finished 2991 in 166.954 sec elapsed seconds
+2TRUE182.537 sec elapsed
+Finished 2963 in c(elapsed = 3715.055) seconds
+2TRUE Finished 2963 in c(elapsed = 3897.592) seconds
+2TRUE Finished 2963 in logical(0) seconds
+2TRUE Finished 2963 in 182.537 sec elapsed seconds
+2TRUE170.52 sec elapsed
+Finished 2990 in c(elapsed = 3728.112) seconds
+2TRUE Finished 2990 in c(elapsed = 3898.632) seconds
+2TRUE Finished 2990 in logical(0) seconds
+2TRUE Finished 2990 in 170.52 sec elapsed seconds
+2TRUE166.602 sec elapsed
+Finished 2994 in c(elapsed = 3733.254) seconds
+2TRUE Finished 2994 in c(elapsed = 3899.856) seconds
+2TRUE Finished 2994 in logical(0) seconds
+2TRUE Finished 2994 in 166.602 sec elapsed seconds
+2TRUE165.464 sec elapsed
+Finished 2995 in c(elapsed = 3734.545) seconds
+2TRUE Finished 2995 in c(elapsed = 3900.009) seconds
+2TRUE Finished 2995 in logical(0) seconds
+2TRUE Finished 2995 in 165.464 sec elapsed seconds
+2TRUE176.227 sec elapsed
+Finished 2984 in c(elapsed = 3724.74) seconds
+2TRUE Finished 2984 in c(elapsed = 3900.967) seconds
+2TRUE Finished 2984 in logical(0) seconds
+2TRUE Finished 2984 in 176.227 sec elapsed seconds
+2TRUE175.013 sec elapsed
+Finished 2986 in c(elapsed = 3726.41) seconds
+2TRUE Finished 2986 in c(elapsed = 3901.423) seconds
+2TRUE Finished 2986 in logical(0) seconds
+2TRUE Finished 2986 in 175.013 sec elapsed seconds
+2TRUE180.798 sec elapsed
+Finished 2977 in c(elapsed = 3721.873) seconds
+2TRUE Finished 2977 in c(elapsed = 3902.671) seconds
+2TRUE Finished 2977 in logical(0) seconds
+2TRUE Finished 2977 in 180.798 sec elapsed seconds
+2TRUE181.752 sec elapsed
+Finished 2975 in c(elapsed = 3721.045) seconds
+2TRUE Finished 2975 in c(elapsed = 3902.797) seconds
+2TRUE Finished 2975 in logical(0) seconds
+2TRUE Finished 2975 in 181.752 sec elapsed seconds
+2TRUE169.791 sec elapsed
+Finished 2996 in c(elapsed = 3735.044) seconds
+2TRUE Finished 2996 in c(elapsed = 3904.835) seconds
+2TRUE Finished 2996 in logical(0) seconds
+2TRUE Finished 2996 in 169.791 sec elapsed seconds
+2TRUE168.463 sec elapsed
+Finished 2997 in c(elapsed = 3736.779) seconds
+2TRUE Finished 2997 in c(elapsed = 3905.242) seconds
+2TRUE Finished 2997 in logical(0) seconds
+2TRUE Finished 2997 in 168.463 sec elapsed seconds
+2TRUE178.648 sec elapsed
+Finished 2989 in c(elapsed = 3728.069) seconds
+2TRUE Finished 2989 in c(elapsed = 3906.717) seconds
+2TRUE Finished 2989 in logical(0) seconds
+2TRUE Finished 2989 in 178.648 sec elapsed seconds
+2TRUE165.187 sec elapsed
+Finished 3001 in c(elapsed = 3742.071) seconds
+2TRUE Finished 3001 in c(elapsed = 3907.258) seconds
+2TRUE Finished 3001 in logical(0) seconds
+2TRUE Finished 3001 in 165.187 sec elapsed seconds
+2TRUE164.519 sec elapsed
+Finished 3003 in c(elapsed = 3743.749) seconds
+2TRUE Finished 3003 in c(elapsed = 3908.268) seconds
+2TRUE Finished 3003 in logical(0) seconds
+2TRUE Finished 3003 in 164.519 sec elapsed seconds
+2TRUE164.299 sec elapsed
+Finished 3006 in c(elapsed = 3746.286) seconds
+2TRUE Finished 3006 in c(elapsed = 3910.585) seconds
+2TRUE Finished 3006 in logical(0) seconds
+2TRUE Finished 3006 in 164.299 sec elapsed seconds
+2TRUE172.397 sec elapsed
+Finished 2999 in c(elapsed = 3740.071) seconds
+2TRUE Finished 2999 in c(elapsed = 3912.468) seconds
+2TRUE Finished 2999 in logical(0) seconds
+2TRUE Finished 2999 in 172.397 sec elapsed seconds
+2TRUE167.798 sec elapsed
+Finished 3005 in c(elapsed = 3745.503) seconds
+2TRUE Finished 3005 in c(elapsed = 3913.301) seconds
+2TRUE Finished 3005 in logical(0) seconds
+2TRUE Finished 3005 in 167.798 sec elapsed seconds
+2TRUE175.594 sec elapsed
+Finished 2998 in c(elapsed = 3737.831) seconds
+2TRUE Finished 2998 in c(elapsed = 3913.425) seconds
+2TRUE Finished 2998 in logical(0) seconds
+2TRUE Finished 2998 in 175.594 sec elapsed seconds
+2TRUE165.108 sec elapsed
+Finished 3009 in c(elapsed = 3749.464) seconds
+2TRUE Finished 3009 in c(elapsed = 3914.572) seconds
+2TRUE Finished 3009 in logical(0) seconds
+2TRUE Finished 3009 in 165.108 sec elapsed seconds
+2TRUE174.041 sec elapsed
+Finished 3002 in c(elapsed = 3742.11) seconds
+2TRUE Finished 3002 in c(elapsed = 3916.151) seconds
+2TRUE Finished 3002 in logical(0) seconds
+2TRUE Finished 3002 in 174.041 sec elapsed seconds
+2TRUE175.488 sec elapsed
+Finished 3000 in c(elapsed = 3741.419) seconds
+2TRUE Finished 3000 in c(elapsed = 3916.907) seconds
+2TRUE Finished 3000 in logical(0) seconds
+2TRUE Finished 3000 in 175.488 sec elapsed seconds
+2TRUE173.36 sec elapsed
+Finished 3004 in c(elapsed = 3745.201) seconds
+2TRUE Finished 3004 in c(elapsed = 3918.561) seconds
+2TRUE Finished 3004 in logical(0) seconds
+2TRUE Finished 3004 in 173.36 sec elapsed seconds
+2TRUE171.224 sec elapsed
+Finished 3007 in c(elapsed = 3747.784) seconds
+2TRUE Finished 3007 in c(elapsed = 3919.008) seconds
+2TRUE Finished 3007 in logical(0) seconds
+2TRUE Finished 3007 in 171.224 sec elapsed seconds
+2TRUE172.468 sec elapsed
+Finished 3008 in c(elapsed = 3748.006) seconds
+2TRUE Finished 3008 in c(elapsed = 3920.474) seconds
+2TRUE Finished 3008 in logical(0) seconds
+2TRUE Finished 3008 in 172.468 sec elapsed seconds
+2TRUE175.781 sec elapsed
+Finished 3010 in c(elapsed = 3751.793) seconds
+2TRUE Finished 3010 in c(elapsed = 3927.574) seconds
+2TRUE Finished 3010 in logical(0) seconds
+2TRUE Finished 3010 in 175.781 sec elapsed seconds
+2TRUE173.166 sec elapsed
+Finished 3012 in c(elapsed = 3755.635) seconds
+2TRUE Finished 3012 in c(elapsed = 3928.801) seconds
+2TRUE Finished 3012 in logical(0) seconds
+2TRUE Finished 3012 in 173.166 sec elapsed seconds
+2TRUE180.604 sec elapsed
+Finished 3011 in c(elapsed = 3754.639) seconds
+2TRUE Finished 3011 in c(elapsed = 3935.243) seconds
+2TRUE Finished 3011 in logical(0) seconds
+2TRUE Finished 3011 in 180.604 sec elapsed seconds
+2TRUE179.375 sec elapsed
+Finished 3013 in c(elapsed = 3759.234) seconds
+2TRUE Finished 3013 in c(elapsed = 3938.609) seconds
+2TRUE Finished 3013 in logical(0) seconds
+2TRUE Finished 3013 in 179.375 sec elapsed seconds
+2TRUE181.161 sec elapsed
+Finished 3015 in c(elapsed = 3762.125) seconds
+2TRUE Finished 3015 in c(elapsed = 3943.286) seconds
+2TRUE Finished 3015 in logical(0) seconds
+2TRUE Finished 3015 in 181.161 sec elapsed seconds
+2TRUE182.478 sec elapsed
+Finished 3014 in c(elapsed = 3760.889) seconds
+2TRUE Finished 3014 in c(elapsed = 3943.367) seconds
+2TRUE Finished 3014 in logical(0) seconds
+2TRUE Finished 3014 in 182.478 sec elapsed seconds
+2TRUE158.742 sec elapsed
+Finished 3017 in c(elapsed = 3839.835) seconds
+2TRUE Finished 3017 in c(elapsed = 3998.577) seconds
+2TRUE Finished 3017 in logical(0) seconds
+2TRUE Finished 3017 in 158.742 sec elapsed seconds
+2TRUE160.853 sec elapsed
+Finished 3018 in c(elapsed = 3842.242) seconds
+2TRUE Finished 3018 in c(elapsed = 4003.095) seconds
+2TRUE Finished 3018 in logical(0) seconds
+2TRUE Finished 3018 in 160.853 sec elapsed seconds
+2TRUE173.952 sec elapsed
+Finished 3016 in c(elapsed = 3830.192) seconds
+2TRUE Finished 3016 in c(elapsed = 4004.144) seconds
+2TRUE Finished 3016 in logical(0) seconds
+2TRUE Finished 3016 in 173.952 sec elapsed seconds
+2TRUE160.004 sec elapsed
+Finished 3021 in c(elapsed = 3862.261) seconds
+2TRUE Finished 3021 in c(elapsed = 4022.265) seconds
+2TRUE Finished 3021 in logical(0) seconds
+2TRUE Finished 3021 in 160.004 sec elapsed seconds
+2TRUE170.242 sec elapsed
+Finished 3020 in c(elapsed = 3859.921) seconds
+2TRUE Finished 3020 in c(elapsed = 4030.163) seconds
+2TRUE Finished 3020 in logical(0) seconds
+2TRUE Finished 3020 in 170.242 sec elapsed seconds
+2TRUE161.84 sec elapsed
+Finished 3023 in c(elapsed = 3869.459) seconds
+2TRUE Finished 3023 in c(elapsed = 4031.299) seconds
+2TRUE Finished 3023 in logical(0) seconds
+2TRUE Finished 3023 in 161.84 sec elapsed seconds
+2TRUE164.751 sec elapsed
+Finished 3022 in c(elapsed = 3867.873) seconds
+2TRUE Finished 3022 in c(elapsed = 4032.624) seconds
+2TRUE Finished 3022 in logical(0) seconds
+2TRUE Finished 3022 in 164.751 sec elapsed seconds
+2TRUE159.744 sec elapsed
+Finished 3032 in c(elapsed = 3877.756) seconds
+2TRUE Finished 3032 in c(elapsed = 4037.5) seconds
+2TRUE Finished 3032 in logical(0) seconds
+2TRUE Finished 3032 in 159.744 sec elapsed seconds
+2TRUE164.225 sec elapsed
+Finished 3027 in c(elapsed = 3874.42) seconds
+2TRUE Finished 3027 in c(elapsed = 4038.645) seconds
+2TRUE Finished 3027 in logical(0) seconds
+2TRUE Finished 3027 in 164.225 sec elapsed seconds
+2TRUE166.987 sec elapsed
+Finished 3026 in c(elapsed = 3872.969) seconds
+2TRUE Finished 3026 in c(elapsed = 4039.956) seconds
+2TRUE Finished 3026 in logical(0) seconds
+2TRUE Finished 3026 in 166.987 sec elapsed seconds
+2TRUE165.689 sec elapsed
+Finished 3029 in c(elapsed = 3875.68) seconds
+2TRUE Finished 3029 in c(elapsed = 4041.369) seconds
+2TRUE Finished 3029 in logical(0) seconds
+2TRUE Finished 3029 in 165.689 sec elapsed seconds
+2TRUE171.376 sec elapsed
+Finished 3024 in c(elapsed = 3870.117) seconds
+2TRUE Finished 3024 in c(elapsed = 4041.493) seconds
+2TRUE Finished 3024 in logical(0) seconds
+2TRUE Finished 3024 in 171.376 sec elapsed seconds
+2TRUE167.81 sec elapsed
+Finished 3028 in c(elapsed = 3875.266) seconds
+2TRUE Finished 3028 in c(elapsed = 4043.076) seconds
+2TRUE Finished 3028 in logical(0) seconds
+2TRUE Finished 3028 in 167.81 sec elapsed seconds
+2TRUE167.599 sec elapsed
+Finished 3030 in c(elapsed = 3875.85) seconds
+2TRUE Finished 3030 in c(elapsed = 4043.449) seconds
+2TRUE Finished 3030 in logical(0) seconds
+2TRUE Finished 3030 in 167.599 sec elapsed seconds
+2TRUE165.846 sec elapsed
+Finished 3033 in c(elapsed = 3877.808) seconds
+2TRUE Finished 3033 in c(elapsed = 4043.654) seconds
+2TRUE Finished 3033 in logical(0) seconds
+2TRUE Finished 3033 in 165.846 sec elapsed seconds
+2TRUE168.508 sec elapsed
+Finished 3031 in c(elapsed = 3877.225) seconds
+2TRUE Finished 3031 in c(elapsed = 4045.733) seconds
+2TRUE Finished 3031 in logical(0) seconds
+2TRUE Finished 3031 in 168.508 sec elapsed seconds
+2TRUE167.583 sec elapsed
+Finished 3035 in c(elapsed = 3879.453) seconds
+2TRUE Finished 3035 in c(elapsed = 4047.036) seconds
+2TRUE Finished 3035 in logical(0) seconds
+2TRUE Finished 3035 in 167.583 sec elapsed seconds
+2TRUE170.412 sec elapsed
+Finished 3034 in c(elapsed = 3878.098) seconds
+2TRUE Finished 3034 in c(elapsed = 4048.51) seconds
+2TRUE Finished 3034 in logical(0) seconds
+2TRUE Finished 3034 in 170.412 sec elapsed seconds
+2TRUE168.287 sec elapsed
+Finished 3036 in c(elapsed = 3881.082) seconds
+2TRUE Finished 3036 in c(elapsed = 4049.369) seconds
+2TRUE Finished 3036 in logical(0) seconds
+2TRUE Finished 3036 in 168.287 sec elapsed seconds
+2TRUE167.608 sec elapsed
+Finished 3039 in c(elapsed = 3883.22) seconds
+2TRUE Finished 3039 in c(elapsed = 4050.828) seconds
+2TRUE Finished 3039 in logical(0) seconds
+2TRUE Finished 3039 in 167.608 sec elapsed seconds
+2TRUE171.595 sec elapsed
+Finished 3037 in c(elapsed = 3882.213) seconds
+2TRUE Finished 3037 in c(elapsed = 4053.808) seconds
+2TRUE Finished 3037 in logical(0) seconds
+2TRUE Finished 3037 in 171.595 sec elapsed seconds
+2TRUE165.204 sec elapsed
+Finished 3045 in c(elapsed = 3888.871) seconds
+2TRUE Finished 3045 in c(elapsed = 4054.075) seconds
+2TRUE Finished 3045 in logical(0) seconds
+2TRUE Finished 3045 in 165.204 sec elapsed seconds
+2TRUE170.414 sec elapsed
+Finished 3040 in c(elapsed = 3884.03) seconds
+2TRUE Finished 3040 in c(elapsed = 4054.444) seconds
+2TRUE Finished 3040 in logical(0) seconds
+2TRUE Finished 3040 in 170.414 sec elapsed seconds
+2TRUE171.913 sec elapsed
+Finished 3038 in c(elapsed = 3882.715) seconds
+2TRUE Finished 3038 in c(elapsed = 4054.628) seconds
+2TRUE Finished 3038 in logical(0) seconds
+2TRUE Finished 3038 in 171.913 sec elapsed seconds
+2TRUE163.53 sec elapsed
+Finished 3050 in c(elapsed = 3891.314) seconds
+2TRUE Finished 3050 in c(elapsed = 4054.844) seconds
+2TRUE Finished 3050 in logical(0) seconds
+2TRUE Finished 3050 in 163.53 sec elapsed seconds
+2TRUE165.842 sec elapsed
+Finished 3048 in c(elapsed = 3890.259) seconds
+2TRUE Finished 3048 in c(elapsed = 4056.101) seconds
+2TRUE Finished 3048 in logical(0) seconds
+2TRUE Finished 3048 in 165.842 sec elapsed seconds
+2TRUE169.986 sec elapsed
+Finished 3041 in c(elapsed = 3886.514) seconds
+2TRUE Finished 3041 in c(elapsed = 4056.5) seconds
+2TRUE Finished 3041 in logical(0) seconds
+2TRUE Finished 3041 in 169.986 sec elapsed seconds
+2TRUE169.867 sec elapsed
+Finished 3042 in c(elapsed = 3886.785) seconds
+2TRUE Finished 3042 in c(elapsed = 4056.652) seconds
+2TRUE Finished 3042 in logical(0) seconds
+2TRUE Finished 3042 in 169.867 sec elapsed seconds
+2TRUE183.931 sec elapsed
+Finished 3025 in c(elapsed = 3872.819) seconds
+2TRUE Finished 3025 in c(elapsed = 4056.75) seconds
+2TRUE Finished 3025 in logical(0) seconds
+2TRUE Finished 3025 in 183.931 sec elapsed seconds
+2TRUE167.782 sec elapsed
+Finished 3047 in c(elapsed = 3889.47) seconds
+2TRUE Finished 3047 in c(elapsed = 4057.252) seconds
+2TRUE Finished 3047 in logical(0) seconds
+2TRUE Finished 3047 in 167.782 sec elapsed seconds
+2TRUE167.061 sec elapsed
+Finished 3049 in c(elapsed = 3890.691) seconds
+2TRUE Finished 3049 in c(elapsed = 4057.752) seconds
+2TRUE Finished 3049 in logical(0) seconds
+2TRUE Finished 3049 in 167.061 sec elapsed seconds
+2TRUE166.007 sec elapsed
+Finished 3051 in c(elapsed = 3891.758) seconds
+2TRUE Finished 3051 in c(elapsed = 4057.765) seconds
+2TRUE Finished 3051 in logical(0) seconds
+2TRUE Finished 3051 in 166.007 sec elapsed seconds
+2TRUE171.214 sec elapsed
+Finished 3043 in c(elapsed = 3887.456) seconds
+2TRUE Finished 3043 in c(elapsed = 4058.67) seconds
+2TRUE Finished 3043 in logical(0) seconds
+2TRUE Finished 3043 in 171.214 sec elapsed seconds
+2TRUE170.877 sec elapsed
+Finished 3044 in c(elapsed = 3888.453) seconds
+2TRUE Finished 3044 in c(elapsed = 4059.33) seconds
+2TRUE Finished 3044 in logical(0) seconds
+2TRUE Finished 3044 in 170.877 sec elapsed seconds
+2TRUE167.266 sec elapsed
+Finished 3052 in c(elapsed = 3892.101) seconds
+2TRUE Finished 3052 in c(elapsed = 4059.367) seconds
+2TRUE Finished 3052 in logical(0) seconds
+2TRUE Finished 3052 in 167.266 sec elapsed seconds
+2TRUE166.924 sec elapsed
+Finished 3053 in c(elapsed = 3893.099) seconds
+2TRUE Finished 3053 in c(elapsed = 4060.023) seconds
+2TRUE Finished 3053 in logical(0) seconds
+2TRUE Finished 3053 in 166.924 sec elapsed seconds
+2TRUE167.411 sec elapsed
+Finished 3056 in c(elapsed = 3894.401) seconds
+2TRUE Finished 3056 in c(elapsed = 4061.812) seconds
+2TRUE Finished 3056 in logical(0) seconds
+2TRUE Finished 3056 in 167.411 sec elapsed seconds
+2TRUE167.372 sec elapsed
+Finished 3057 in c(elapsed = 3894.542) seconds
+2TRUE Finished 3057 in c(elapsed = 4061.914) seconds
+2TRUE Finished 3057 in logical(0) seconds
+2TRUE Finished 3057 in 167.372 sec elapsed seconds
+2TRUE162.389 sec elapsed
+Finished 3064 in c(elapsed = 3900.015) seconds
+2TRUE Finished 3064 in c(elapsed = 4062.404) seconds
+2TRUE Finished 3064 in logical(0) seconds
+2TRUE Finished 3064 in 162.389 sec elapsed seconds
+2TRUE174.523 sec elapsed
+Finished 3046 in c(elapsed = 3889.194) seconds
+2TRUE Finished 3046 in c(elapsed = 4063.717) seconds
+2TRUE Finished 3046 in logical(0) seconds
+2TRUE Finished 3046 in 174.523 sec elapsed seconds
+2TRUE167.014 sec elapsed
+Finished 3059 in c(elapsed = 3897.133) seconds
+2TRUE Finished 3059 in c(elapsed = 4064.147) seconds
+2TRUE Finished 3059 in logical(0) seconds
+2TRUE Finished 3059 in 167.014 sec elapsed seconds
+2TRUE170.614 sec elapsed
+Finished 3054 in c(elapsed = 3893.935) seconds
+2TRUE Finished 3054 in c(elapsed = 4064.549) seconds
+2TRUE Finished 3054 in logical(0) seconds
+2TRUE Finished 3054 in 170.614 sec elapsed seconds
+2TRUE170.394 sec elapsed
+Finished 3055 in c(elapsed = 3894.325) seconds
+2TRUE Finished 3055 in c(elapsed = 4064.719) seconds
+2TRUE Finished 3055 in logical(0) seconds
+2TRUE Finished 3055 in 170.394 sec elapsed seconds
+2TRUE163.987 sec elapsed
+Finished 3065 in c(elapsed = 3900.97) seconds
+2TRUE Finished 3065 in c(elapsed = 4064.957) seconds
+2TRUE Finished 3065 in logical(0) seconds
+2TRUE Finished 3065 in 163.987 sec elapsed seconds
+2TRUE170.712 sec elapsed
+Finished 3058 in c(elapsed = 3895) seconds
+2TRUE Finished 3058 in c(elapsed = 4065.712) seconds
+2TRUE Finished 3058 in logical(0) seconds
+2TRUE Finished 3058 in 170.712 sec elapsed seconds
+2TRUE168.046 sec elapsed
+Finished 3066 in c(elapsed = 3901.426) seconds
+2TRUE Finished 3066 in c(elapsed = 4069.472) seconds
+2TRUE Finished 3066 in logical(0) seconds
+2TRUE Finished 3066 in 168.046 sec elapsed seconds
+2TRUE165.177 sec elapsed
+Finished 3070 in c(elapsed = 3905.244) seconds
+2TRUE Finished 3070 in c(elapsed = 4070.421) seconds
+2TRUE Finished 3070 in logical(0) seconds
+2TRUE Finished 3070 in 165.177 sec elapsed seconds
+2TRUE172.533 sec elapsed
+Finished 3062 in c(elapsed = 3898.635) seconds
+2TRUE Finished 3062 in c(elapsed = 4071.168) seconds
+2TRUE Finished 3062 in logical(0) seconds
+2TRUE Finished 3062 in 172.533 sec elapsed seconds
+2TRUE159.573 sec elapsed
+Finished 3075 in c(elapsed = 3912.471) seconds
+2TRUE Finished 3075 in c(elapsed = 4072.044) seconds
+2TRUE Finished 3075 in logical(0) seconds
+2TRUE Finished 3075 in 159.573 sec elapsed seconds
+2TRUE155.527 sec elapsed
+Finished 3080 in c(elapsed = 3916.909) seconds
+2TRUE Finished 3080 in c(elapsed = 4072.436) seconds
+2TRUE Finished 3080 in logical(0) seconds
+2TRUE Finished 3080 in 155.527 sec elapsed seconds
+2TRUE175.575 sec elapsed
+Finished 3061 in c(elapsed = 3897.603) seconds
+2TRUE Finished 3061 in c(elapsed = 4073.178) seconds
+2TRUE Finished 3061 in logical(0) seconds
+2TRUE Finished 3061 in 175.575 sec elapsed seconds
+2TRUE166.623 sec elapsed
+Finished 3072 in c(elapsed = 3907.261) seconds
+2TRUE Finished 3072 in c(elapsed = 4073.884) seconds
+2TRUE Finished 3072 in logical(0) seconds
+2TRUE Finished 3072 in 166.623 sec elapsed seconds
+2TRUE174.389 sec elapsed
+Finished 3063 in c(elapsed = 3899.859) seconds
+2TRUE Finished 3063 in c(elapsed = 4074.248) seconds
+2TRUE Finished 3063 in logical(0) seconds
+2TRUE Finished 3063 in 174.389 sec elapsed seconds
+2TRUE167.978 sec elapsed
+Finished 3071 in c(elapsed = 3906.72) seconds
+2TRUE Finished 3071 in c(elapsed = 4074.698) seconds
+2TRUE Finished 3071 in logical(0) seconds
+2TRUE Finished 3071 in 167.978 sec elapsed seconds
+2TRUE154.333 sec elapsed
+Finished 3083 in c(elapsed = 3920.477) seconds
+2TRUE Finished 3083 in c(elapsed = 4074.81) seconds
+2TRUE Finished 3083 in logical(0) seconds
+2TRUE Finished 3083 in 154.333 sec elapsed seconds
+2TRUE164.794 sec elapsed
+Finished 3074 in c(elapsed = 3910.588) seconds
+2TRUE Finished 3074 in c(elapsed = 4075.382) seconds
+2TRUE Finished 3074 in logical(0) seconds
+2TRUE Finished 3074 in 164.794 sec elapsed seconds
+2TRUE170.633 sec elapsed
+Finished 3069 in c(elapsed = 3904.838) seconds
+2TRUE Finished 3069 in c(elapsed = 4075.471) seconds
+2TRUE Finished 3069 in logical(0) seconds
+2TRUE Finished 3069 in 170.633 sec elapsed seconds
+2TRUE162.693 sec elapsed
+Finished 3076 in c(elapsed = 3913.304) seconds
+2TRUE Finished 3076 in c(elapsed = 4075.997) seconds
+2TRUE Finished 3076 in logical(0) seconds
+2TRUE Finished 3076 in 162.693 sec elapsed seconds
+2TRUE167.906 sec elapsed
+Finished 3073 in c(elapsed = 3908.27) seconds
+2TRUE Finished 3073 in c(elapsed = 4076.176) seconds
+2TRUE Finished 3073 in logical(0) seconds
+2TRUE Finished 3073 in 167.906 sec elapsed seconds
+2TRUE160.217 sec elapsed
+Finished 3079 in c(elapsed = 3916.154) seconds
+2TRUE Finished 3079 in c(elapsed = 4076.371) seconds
+2TRUE Finished 3079 in logical(0) seconds
+2TRUE Finished 3079 in 160.217 sec elapsed seconds
+2TRUE159.892 sec elapsed
+Finished 3081 in c(elapsed = 3918.564) seconds
+2TRUE Finished 3081 in c(elapsed = 4078.456) seconds
+2TRUE Finished 3081 in logical(0) seconds
+2TRUE Finished 3081 in 159.892 sec elapsed seconds
+2TRUE176.323 sec elapsed
+Finished 3067 in c(elapsed = 3902.674) seconds
+2TRUE Finished 3067 in c(elapsed = 4078.997) seconds
+2TRUE Finished 3067 in logical(0) seconds
+2TRUE Finished 3067 in 176.323 sec elapsed seconds
+2TRUE165.59 sec elapsed
+Finished 3077 in c(elapsed = 3913.428) seconds
+2TRUE Finished 3077 in c(elapsed = 4079.018) seconds
+2TRUE Finished 3077 in logical(0) seconds
+2TRUE Finished 3077 in 165.59 sec elapsed seconds
+2TRUE164.745 sec elapsed
+Finished 3078 in c(elapsed = 3914.575) seconds
+2TRUE Finished 3078 in c(elapsed = 4079.32) seconds
+2TRUE Finished 3078 in logical(0) seconds
+2TRUE Finished 3078 in 164.745 sec elapsed seconds
+2TRUE176.575 sec elapsed
+Finished 3068 in c(elapsed = 3902.8) seconds
+2TRUE Finished 3068 in c(elapsed = 4079.375) seconds
+2TRUE Finished 3068 in logical(0) seconds
+2TRUE Finished 3068 in 176.575 sec elapsed seconds
+2TRUE155.359 sec elapsed
+Finished 3085 in c(elapsed = 3928.804) seconds
+2TRUE Finished 3085 in c(elapsed = 4084.163) seconds
+2TRUE Finished 3085 in logical(0) seconds
+2TRUE Finished 3085 in 155.359 sec elapsed seconds
+2TRUE166.059 sec elapsed
+Finished 3082 in c(elapsed = 3919.012) seconds
+2TRUE Finished 3082 in c(elapsed = 4085.071) seconds
+2TRUE Finished 3082 in logical(0) seconds
+2TRUE Finished 3082 in 166.059 sec elapsed seconds
+2TRUE159.803 sec elapsed
+Finished 3084 in c(elapsed = 3927.578) seconds
+2TRUE Finished 3084 in c(elapsed = 4087.381) seconds
+2TRUE Finished 3084 in logical(0) seconds
+2TRUE Finished 3084 in 159.803 sec elapsed seconds
+2TRUE155.126 sec elapsed
+Finished 3086 in c(elapsed = 3935.247) seconds
+2TRUE Finished 3086 in c(elapsed = 4090.373) seconds
+2TRUE Finished 3086 in logical(0) seconds
+2TRUE Finished 3086 in 155.126 sec elapsed seconds
+2TRUE157.575 sec elapsed
+Finished 3087 in c(elapsed = 3938.613) seconds
+2TRUE Finished 3087 in c(elapsed = 4096.188) seconds
+2TRUE Finished 3087 in logical(0) seconds
+2TRUE Finished 3087 in 157.575 sec elapsed seconds
+2TRUE152.892 sec elapsed
+Finished 3089 in c(elapsed = 3943.372) seconds
+2TRUE Finished 3089 in c(elapsed = 4096.264) seconds
+2TRUE Finished 3089 in logical(0) seconds
+2TRUE Finished 3089 in 152.892 sec elapsed seconds
+2TRUE156.154 sec elapsed
+Finished 3088 in c(elapsed = 3943.289) seconds
+2TRUE Finished 3088 in c(elapsed = 4099.443) seconds
+2TRUE Finished 3088 in logical(0) seconds
+2TRUE Finished 3088 in 156.154 sec elapsed seconds
+2TRUE117.588 sec elapsed
+Finished 3091 in c(elapsed = 4003.098) seconds
+2TRUE Finished 3091 in c(elapsed = 4120.686) seconds
+2TRUE Finished 3091 in logical(0) seconds
+2TRUE Finished 3091 in 117.588 sec elapsed seconds
+2TRUE124.283 sec elapsed
+Finished 3090 in c(elapsed = 3998.581) seconds
+2TRUE Finished 3090 in c(elapsed = 4122.864) seconds
+2TRUE Finished 3090 in logical(0) seconds
+2TRUE Finished 3090 in 124.283 sec elapsed seconds
+2TRUE119.196 sec elapsed
+Finished 3092 in c(elapsed = 4004.147) seconds
+2TRUE Finished 3092 in c(elapsed = 4123.343) seconds
+2TRUE Finished 3092 in logical(0) seconds
+2TRUE Finished 3092 in 119.196 sec elapsed seconds
+2TRUE104.348 sec elapsed
+Finished 3093 in c(elapsed = 4022.269) seconds
+2TRUE Finished 3093 in c(elapsed = 4126.617) seconds
+2TRUE Finished 3093 in logical(0) seconds
+2TRUE Finished 3093 in 104.348 sec elapsed seconds
+2TRUE100.294 sec elapsed
+Finished 3095 in c(elapsed = 4031.303) seconds
+2TRUE Finished 3095 in c(elapsed = 4131.597) seconds
+2TRUE Finished 3095 in logical(0) seconds
+2TRUE Finished 3095 in 100.294 sec elapsed seconds
+2TRUE99.018 sec elapsed
+Finished 3097 in c(elapsed = 4037.503) seconds
+2TRUE Finished 3097 in c(elapsed = 4136.521) seconds
+2TRUE Finished 3097 in logical(0) seconds
+2TRUE Finished 3097 in 99.018 sec elapsed seconds
+2TRUE93.153 sec elapsed
+Finished 3104 in c(elapsed = 4043.656) seconds
+2TRUE Finished 3104 in c(elapsed = 4136.809) seconds
+2TRUE Finished 3104 in logical(0) seconds
+2TRUE Finished 3104 in 93.153 sec elapsed seconds
+2TRUE107.115 sec elapsed
+Finished 3094 in c(elapsed = 4030.166) seconds
+2TRUE Finished 3094 in c(elapsed = 4137.281) seconds
+2TRUE Finished 3094 in logical(0) seconds
+2TRUE Finished 3094 in 107.115 sec elapsed seconds
+2TRUE98.982 sec elapsed
+Finished 3099 in c(elapsed = 4039.959) seconds
+2TRUE Finished 3099 in c(elapsed = 4138.941) seconds
+2TRUE Finished 3099 in logical(0) seconds
+2TRUE Finished 3099 in 98.982 sec elapsed seconds
+2TRUE101.263 sec elapsed
+Finished 3098 in c(elapsed = 4038.65) seconds
+2TRUE Finished 3098 in c(elapsed = 4139.913) seconds
+2TRUE Finished 3098 in logical(0) seconds
+2TRUE Finished 3098 in 101.263 sec elapsed seconds
+2TRUE108.22 sec elapsed
+Finished 3096 in c(elapsed = 4032.627) seconds
+2TRUE Finished 3096 in c(elapsed = 4140.847) seconds
+2TRUE Finished 3096 in logical(0) seconds
+2TRUE Finished 3096 in 108.22 sec elapsed seconds
+2TRUE100.739 sec elapsed
+Finished 3100 in c(elapsed = 4041.372) seconds
+2TRUE Finished 3100 in c(elapsed = 4142.111) seconds
+2TRUE Finished 3100 in logical(0) seconds
+2TRUE Finished 3100 in 100.739 sec elapsed seconds
+2TRUE99.94 sec elapsed
+Finished 3102 in c(elapsed = 4043.078) seconds
+2TRUE Finished 3102 in c(elapsed = 4143.018) seconds
+2TRUE Finished 3102 in logical(0) seconds
+2TRUE Finished 3102 in 99.94 sec elapsed seconds
+2TRUE97.942 sec elapsed
+Finished 3105 in c(elapsed = 4045.736) seconds
+2TRUE Finished 3105 in c(elapsed = 4143.678) seconds
+2TRUE Finished 3105 in logical(0) seconds
+2TRUE Finished 3105 in 97.942 sec elapsed seconds
+2TRUE102.491 sec elapsed
+Finished 3101 in c(elapsed = 4041.496) seconds
+2TRUE Finished 3101 in c(elapsed = 4143.987) seconds
+2TRUE Finished 3101 in logical(0) seconds
+2TRUE Finished 3101 in 102.491 sec elapsed seconds
+2TRUE97.15 sec elapsed
+Finished 3107 in c(elapsed = 4048.514) seconds
+2TRUE Finished 3107 in c(elapsed = 4145.664) seconds
+2TRUE Finished 3107 in logical(0) seconds
+2TRUE Finished 3107 in 97.15 sec elapsed seconds
+2TRUE102.678 sec elapsed
+Finished 3103 in c(elapsed = 4043.453) seconds
+2TRUE Finished 3103 in c(elapsed = 4146.131) seconds
+2TRUE Finished 3103 in logical(0) seconds
+2TRUE Finished 3103 in 102.678 sec elapsed seconds
+2TRUE100.041 sec elapsed
+Finished 3106 in c(elapsed = 4047.039) seconds
+2TRUE Finished 3106 in c(elapsed = 4147.08) seconds
+2TRUE Finished 3106 in logical(0) seconds
+2TRUE Finished 3106 in 100.041 sec elapsed seconds
+2TRUE97.833 sec elapsed
+Finished 3108 in c(elapsed = 4049.372) seconds
+2TRUE Finished 3108 in c(elapsed = 4147.205) seconds
+2TRUE Finished 3108 in logical(0) seconds
+2TRUE Finished 3108 in 97.833 sec elapsed seconds
+2TRUE
