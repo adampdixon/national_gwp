@@ -81,7 +81,7 @@ mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 
 #######################################
 print("Copying over KBS 'Daycent model' files -- delete when begin running in full?")
-if(!dir.exists(file.path(master_path, 'Daycent', site_name))) copyDirectory(from = file.path(master_path, '/Daycent/KBS_4copy2'),
+if(!dir.exists(file.path(master_path, 'Daycent', site_name))) copyDirectory(from = file.path(master_path, '/Daycent/KBS'),
                                                                          to = file.path(master_path, 'Daycent', site_name),
                                                                          recursive = T)
 # dir.create(file.path(master_path, 'Daycent', site_name))
