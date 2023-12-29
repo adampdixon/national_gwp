@@ -1,0 +1,23 @@
+Soils notes
+
+
+ParticleSizeClay <- c(19, 19, 19, 23, 12, 5, 5, 5, 1, 1)
+ParticleSizeSilt <- c(38, 38, 38, 26, 17, 8, 8, 8, 4, 4)
+ParticleSizeSand <- c(43, 43, 43, 51, 71, 87, 87, 87, 95, 95)
+
+
+upper_depth_cm - ok
+lower_depth_cm -  ok
+DUL -- derivative of root/sand/clay fraction
+LL15 -- derivative of root/sand/clay fraction
+evap_coef = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
+root_fraction = c(0.01, 0.04, 0.25, 0.30, 0.15, 0.1, 0.05, 0.04, 0.03, .02, 0.01, 0, 0)
+sand_fraction -- derivative of root/sand/clay fraction
+clay_fraction -- derivative of root/sand/clay fraction
+OM_fraction - ok                    
+deltamin deltamin = c(0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, .01, 0.01, 0.01, 0.01)
+ksat_cmsec -- partial derivative of root/sand/clay fraction
+
+# removed: "phaq_value_avg"
+
+

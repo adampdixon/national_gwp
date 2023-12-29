@@ -1,0 +1,28 @@
+pr_ssp126_gfdl-esm4_daily_2021_2030_dat_Y2021.csv  <-precipitation
+
+consider the cmip6 scenario and other unique identifiers
+
+Check this:
+   # join with the GEOID given by Zhuonan
+    data_df_<-left_join(data_df, geo_link, by = c('GEOID' = 'zh_geoid'))
+
+Warning message:
+In left_join(data_df, geo_link, by = c(GEOID = "zh_geoid")) :
+  Detected an unexpected many-to-many relationship between `x` and `y`.
+ℹ Row 280 of `x` matches multiple rows in `y`.
+ℹ Row 1413 of `y` matches multiple rows in `x`.
+ℹ If a many-to-many relationship is expected, set `relationship = "many-to-many"` to silence this warning.
+
+ss express
+316 558 3050
+
+
+get cropland data layer
+use the most updated crop data
+
+2 different climate scenarios
+let's touch base on Thursday, and see where I am 
+
+/home/ap/Documents/GitHub/national_gwp/climate_cmip6
+
+/home/ap/Scratch

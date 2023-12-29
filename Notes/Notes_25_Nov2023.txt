@@ -1,0 +1,53 @@
+Open questions
+
+->What do the scenarios and managment numbers represent?
+->Which daycent version are we running? (can I swap out Daycent files if I find some are corrupted?)
+->Note that I had to change the BIL limit in soils to be positive because its a negative and need to take log -Line 962_Create_soil_data
+->Note replaced NULL value with 'NA' 3_Create_management_input_files-LDNDC_.R line 83
+    -also line 112 NULL->-9999
+
+Target is to make sure everything is in one place -
+-These are all the scenarios that will be in play
+-
+
+Daycent version is in the presentation
+
+
+To do
+Put together flow diagrams of models
+
+
+
+https://www.shells.com/l/en-US/tutorial/How-to-Fix-Shell-Script-Permission-Denied-Error-in-Linux
+
+
+sudo apt remove bcmwl-kernel-source && sudo apt install firmware-b43-installer
+https://forums.linuxmint.com/viewtopic.php?p=2302764#p2302764
+
+
+/home/ap/Documents/GitHub/national_gwp/4_Create_additional_files-LDNDC_.R
+
+/home/ap/Documents/GitHub/national_gwp/LDNDC/ldndc-1.35.2.linux64
+
+find /home/ap/Documents/GitHub/national_gwp/LDNDC/ldndc-1.35.2.linux64 -type d -exec chmod 755 {} \;
+
+
+/home/ap/Downloads/Appendix_2.Model_Output_Variables_09.29.2017.pdf
+
+
+
+
+#construct weather files for:
+        date=as.Date(Date,format="%m/%d/%Y"),
+         day=Day,
+         month=Month,
+         year=Year,
+         dayofyear=yday(date),
+         prec_cm=PRCP/10)
+
+from as far in past (1951) to 2050
+
+Output_climate - 1951-2021 - /glade/work/apdixon/Output_nClimGrid
+nclimgrid - 2021-2050   - /glade/work/apdixon/Output_climate
+
+County_data<-/glade/work/apdixon/USCounties/tl_2022_us_county.shp

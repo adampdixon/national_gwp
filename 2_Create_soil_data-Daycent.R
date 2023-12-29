@@ -16,10 +16,11 @@
 # field capacity (volumetric), wilting point (volumetric), 
 
 ## cannot name with scenario numbers
-write.table(soil_df[,c("upper_depth_cm","lower_depth_cm","bdfiod_value_avg","DUL","LL15","evap_coef",
-                       "root_fraction","sand_frac","clay_frac","OM_frac",
-                       "deltamin","ksat_cmsec","phaq_value_avg")], 
+write.table(soil_df[,c("upper_depth_cm","lower_depth_cm","DUL","LL15","evap_coef",
+                       "root_fraction","sand_fraction","clay_fraction","OM_fraction", # changed all _frac to e.g. clay_fraction
+                       "deltamin","ksat_cmsec")],  # removed: "phaq_value_avg", "bdfiod_value_avg"
 #            file=paste0(daycent_path,"soils_",scenario_name,".in"),
             file=paste0(daycent_path,"soils.in"),
             row.names=F, quote=F, col.names=F, sep=' ')
 
+# phaq_value_avg, bdfiod_value_avg, #THESE ARE MISSING
