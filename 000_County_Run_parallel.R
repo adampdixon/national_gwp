@@ -54,7 +54,7 @@ foreach::getDoParWorkers()
 foreach(county_seq = 1:2, .verbose = T, .combine = 'c', 
         .packages=c('apsimx','berryFunctions','broom','data.table','dplyr','ggplot2',
                     'graphics','lubridate','magrittr','pracma','R.utils','readxl','sf',
-  'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %do% {
+  'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %dopar% {
 
   print(county_seq)
   
@@ -98,15 +98,18 @@ foreach(county_seq = 1:2, .verbose = T, .combine = 'c',
   # county_data<-read.csv(file.path(master_path, 'Data', 'County', 'county_centroids_elevation.csv'))%>%
   #   filter(GEOID==county_geoid)
   
-  county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation.csv'))%>%
-    filter(GEOID %in% c(46087, 46085))
+  county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation.csv'))
   
+  Test <- FALSE
+  
+  if(identical(Test, TRUE)){
+    county_data<-county_data%>%
+      filter(GEOID %in% c(46087, 46085))
+  }
+
   # county_data<-county_data[county_data$GEOID==county_number,]
   county_data<-county_data[county_number,]
-  
-  
-  
-  # for (i in 1:nrow(county_data)){
+
   Glade=FALSE
   run_Daycent=TRUE
   run_LDNDC=FALSE
@@ -141,8 +144,8 @@ foreach(county_seq = 1:2, .verbose = T, .combine = 'c',
 # #close the cluster--------------------
 # #setDTthreads(threads = n_threads)
 
-parallel::stopCluster(cl = my.cluster)
-toc()
+  parallel::stopCluster(cl = my.cluster)
+  toc()
 
 
 }
