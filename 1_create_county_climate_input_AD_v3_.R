@@ -15,7 +15,7 @@ library(tictoc) # for timing
 library(data.table) # for fwrite
 
 # county data to link
-geo_link_dir<-'/glade/u/home/apdixon/Documents/national_gwp/Data/County'
+geo_link_dir<-'/glade/u/home/apdixon/Documents/national_gwp/Data/County_start'
 output_dir<-'/glade/work/apdixon/climate'
 nclim_dir<-'/glade/work/apdixon/Output_nClimGrid'
 cmip6_dir<-'/glade/work/apdixon/Output_climate'

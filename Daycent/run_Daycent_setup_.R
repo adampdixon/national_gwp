@@ -12,7 +12,7 @@
 # 1/3/2023: Added soiln.out to output files processing.
 ###########################################################################
 
-print("Starting run_Daycent_setup_.R")
+print("Starting run_Daycent_setup.R")
 
 #***** If running this script independently, uncomment this group 
 # Clear memory before rerunning the script. 
@@ -25,47 +25,40 @@ print("Starting run_Daycent_setup_.R")
 
 # Set the model path to the location of this site's files.
 prior_path <- getwd()
-# model_path = paste0("~/Modeling/Daycent/",site_name,"/")
-model_path = file.path(prior_path, 'Daycent' , site_name)
+model_path = paste0(master_path, site_name,"/")
+#modelPath = paste0("~/Modeling/Daycent/KBS - Copy/") # for testing
 setwd(model_path)
 
 # local constants
 if(Sys.info()['sysname']=='Linux') {
   daycent_executable <- "./DDcentEVI_rev279"
   daycent_list100 <- "./DDlist100_rev279"
-  # AD give system permissions if getting permission error 
-  system('chmod u+x ./DDcentEVI_rev279')
-  system('chmod u+x ./DDlist100_rev279')
 } else {
   daycent_executable <- "DD17centEVI.exe"
   daycent_list100 <- "DD17list100.exe"
 }
-# 
-print("DayCent local constant file paths set")
+
 
 # --------------- Install this scenario's input files ---------------------
 #
 # Load scenario-specific input files.
-if(mgmt_scenario_grp==2) {
-  file.copy("soils_2.in","soils.in", overwrite=TRUE)
-  file.copy("site_2.100","site.100", overwrite=TRUE)
-  file.copy("fix_2.100","fix.100", overwrite=TRUE)
-} else if(mgmt_scenario_grp==3) {
-  file.copy("soils_3.in","soils.in", overwrite=TRUE)
-  file.copy("site_3.100","site.100", overwrite=TRUE)
-  file.copy("fix_3.100","fix.100", overwrite=TRUE)
-} else {
-  file.copy("soils_1.in","soils.in", overwrite=TRUE)
-  file.copy("site_1.100","site.100", overwrite=TRUE)
-  file.copy("fix_1.100","fix.100", overwrite=TRUE)
-}
+# if(mgmt_scenario_grp==2) {
+#   file.copy("soils_2.in","soils.in", overwrite=TRUE)
+#   file.copy("site_2.100","site.100", overwrite=TRUE)
+#   file.copy("fix_2.100","fix.100", overwrite=TRUE)
+# } else if(mgmt_scenario_grp==3) {
+#   file.copy("soils_3.in","soils.in", overwrite=TRUE)
+#   file.copy("site_3.100","site.100", overwrite=TRUE)
+#   file.copy("fix_3.100","fix.100", overwrite=TRUE)
+# } else {
+#   file.copy("soils_1.in","soils.in", overwrite=TRUE)
+#   file.copy("site_1.100","site.100", overwrite=TRUE)
+#   file.copy("fix_1.100","fix.100", overwrite=TRUE)
+# }
 
 # use default crop.100 except for future for scenario 3
-file.copy("crop_allothers.100","crop.100", overwrite=TRUE)
+# file.copy("crop_allothers.100","crop.100", overwrite=TRUE)
 
 
 # --------------- Reset working directory --------------- 
 setwd(prior_path)
-
-
-print("Finished run_Daycent_setup_.R")

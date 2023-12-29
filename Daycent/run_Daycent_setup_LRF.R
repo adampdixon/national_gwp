@@ -17,7 +17,7 @@ print("Starting run_Daycent_setup.R")
 
 # Set the model path to the location of this site's files.
 prior_path <- getwd()
-model_path = paste0("~/Modeling/Daycent/",site_name,"/")
+model_path = paste0("/home/ap/Documents/GitHub/national_gwp/Daycent/",site_name,"/")
 #modelPath = paste0("~/Modeling/Daycent/KBS - Copy/") # for testing
 setwd(model_path)
 
@@ -25,6 +25,11 @@ setwd(model_path)
 if(Sys.info()['sysname']=='Linux') {
   daycent_executable <- "./DDcentEVI_rev279"
   daycent_list100 <- "./DDlist100_rev279"
+  
+  # AD give system permissions if getting permission error 
+  system(paste0('chmod u+x ./DDcentEVI_rev279'))
+  system(paste0('chmod u+x ./DDlist100_rev279'))
+  
 } else {
   daycent_executable <- "DD17centEVI.exe"
   daycent_list100 <- "DD17list100.exe"
