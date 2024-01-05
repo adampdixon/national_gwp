@@ -412,6 +412,7 @@ RR50_NT_color <- cbPalette20[18]
 ####################### climate #######################
 if (identical(Glade, TRUE)){
   climate_data_path<-'/glade/work/apdixon/climate'
+  print(paste0('*********climate_data_path is ', climate_data_path, " **************"))
 } else {
   climate_data_path<-'/home/ap/Scratch'
 }

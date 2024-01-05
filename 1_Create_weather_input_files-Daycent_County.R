@@ -69,10 +69,10 @@ suppressMessages({
     
     print("removing extraneous weather data files AD")
     # AD REMOVE FILES FROM BEFORE 
-    unlink(paste0(daycent_path,"basic_2.wth"))
-    unlink(paste0(daycent_path,"basic_3.wth"))
-    unlink(paste0(daycent_path,"basic_4.wth"))
-    unlink(paste0(daycent_path,"basic_5.wth"))
+    # unlink(paste0(daycent_path,"basic_2.wth"))
+    # unlink(paste0(daycent_path,"basic_3.wth"))
+    # unlink(paste0(daycent_path,"basic_4.wth"))
+    # unlink(paste0(daycent_path,"basic_5.wth"))
 
     # Removed because not needed in EVI when .wth filename set at top of site.100 file
     # ########## Create climate stats for site.100 ##########
