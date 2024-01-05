@@ -43,6 +43,7 @@ suppressMessages({
     print(paste0('max temp is: ', max(DAYCENT_basic_eq$tmax)))
     print(paste0('min temp is: ', min(DAYCENT_basic_eq$tmax)))
     print(paste0("min and max year are ", min(DAYCENT_basic_eq$year), ", ", max(DAYCENT_basic_eq$year)))
+    print(paste0("number of rows are: ", nrow(DAYCENT_basic_eq)))
     
     # experimental period (2003-2021, even though experiment ends 2010)
 
@@ -62,6 +63,7 @@ suppressMessages({
     print(paste0('max temp is: ', max(DAYCENT_basic$tmax)))
     print(paste0('min temp is: ', min(DAYCENT_basic$tmax)))
     print(paste0("min and max year are ", min(DAYCENT_basic$year), ", ", max(DAYCENT_basic$year)))
+    print(paste0("number of rows are: ", nrow(DAYCENT_basic)))
 
     # future period (1994-2021 repeated 3 times)
 
@@ -76,6 +78,7 @@ suppressMessages({
     print(paste0('max temp is: ', max(DAYCENT_basic_fut$tmax)))
     print(paste0('min temp is: ', min(DAYCENT_basic_fut$tmax)))
     print(paste0("min and max year are ", min(DAYCENT_basic_fut$year), ", ", max(DAYCENT_basic_fut$year)))
+    print(paste0("number of rows are: ", nrow(DAYCENT_basic_fut)))
     
     
                                      # c("day","month","year","dayofyear",

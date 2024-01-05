@@ -108,7 +108,7 @@ foreach(county_seq = 1:2, .verbose = T, .combine = 'c',
   
   if(identical(Test, TRUE)){
     county_data<-county_data%>%
-      filter(GEOID %in% c(46087, 46085))
+      filter(GEOID %in% c(46085, 27069)) # 46087
   }
 
   # county_data<-county_data[county_data$GEOID==county_number,]
