@@ -79,9 +79,10 @@ foreach(county_seq = 1:2, .verbose = T, .combine = 'c',
       print("************************************")
       print("*****Using linux mint *********")
     } else {
-      home_folder<-'/glade/u/home/apdixon/Documents/national_gwp'
+      home_folder<-'/glade/derecho/scratch/apdixon/national_gwp'
       print("************************************")
       print("*****Using NCAR *********")
+      print("***** SCRATCH SPACE *********")
     }
   }
   

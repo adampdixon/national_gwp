@@ -1,0 +1,22 @@
+connecting bluetooth keyboard
+
+https://unix.stackexchange.com/questions/590221/pairing-logitech-k380-in-ubuntu-20-04
+
+screenfetch -- to get system info
+
+https://itsfoss.com/night-shift-flux-ubuntu-linux/
+
+Fix bluetooth keyboard
+https://forums.linuxmint.com/viewtopic.php?t=366879
+
+wifi fix
+https://forums.linuxmint.com/viewtopic.php?t=374136
+
+ncdu - for file size 
+https://dev.yorhel.nl/ncdu/man
+
+
+count number of files in directory
+ls -1 | wc -l
+
+dd if=/dev/sda4 of=/dev/sdb3 bs=64K conv=noerror,sync

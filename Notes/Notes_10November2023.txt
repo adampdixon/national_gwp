@@ -61,6 +61,7 @@ On glade:
 /glade/u/home/apdixon/Documents/national_gwp
 
 Oklah0m4!@
+Oklahoma
 
 
 Github passphrase: Oklahoma
@@ -158,7 +159,15 @@ Steps:
 ml unload netcdf
 ml load ncarenv/1.3 gnu/10.1.0 ncarcompilers/0.5.0 mpt/2.25 gdal/3.3.2 geos/3.10.1 proj/8.1.1 udunits/2.2.28 R/4.1.2 rstudio
 
-module unload ncarenv/1.3 gnu/10.1.0 ncarcompilers/0.5.0 mpt/2.25 gdal/3.3.2 geos/3.10.1 proj/8.1.1 udunits/2.2.28 R/4.1.2 rstudio
+on Casper
+ml load ncarenv/23.10 ncarcompilers/1 gdal/3.7.1 geos/3.9.1 proj/8.2.1 udunits/2.2.28 rstudio conda
+conda activate r-4.3
+
+module unload ncarenv/1.3 gnu/10.1.0 ncarcompilers/0.5.0 mpt/2.25 gdal/3.3.2 geos/3.10.1 proj/8.1.1 udunits/2.2.28 R/4.1.2 rstudio conda
+
+on Derecho
+ml load ncarenv/23.06 ncarcompilers/1 gdal/3.7.1 geos/3.9.1 proj/8.2.1 udunits/2.2.28 rstudio conda
+conda activate r-4.3
 
 
 Load CRAN 

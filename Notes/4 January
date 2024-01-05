@@ -1,0 +1,27 @@
+on Derecho
+ml load ncarenv/23.06 ncarcompilers/1 gdal/3.7.1 geos/3.9.1 proj/8.2.1 udunits/2.2.28 rstudio conda
+conda activate r-4.3
+
+
+install.packages(c('plotly','magrittr','dplyr','data.table','tidyr','stringr','lubridate','ggplot2','readr','pracma','sqldf','stringi','tidyverse'))
+
+install.packages(c('soilDB, apsimx RSQLite sf spData XML berryFunctions datetime FME rnoaa)
+
+
+
+
+proj: proj/8.2.1
+rstudio: rstudio/2023.09.0
+gdal: gdal/3.6.4, gdal/3.7.1
+geos: geos/3.9.1
+udunits: udunits/2.2.28
+   
+conda
+
+ml load ncarenv-basic/23.09 ncarenv/23.09 gdal/3.7.1 geos/3.9.1 proj/8.2.1 udunits/2.2.28 rstudio conda
+
+ml load ncarenv/23.06  gcc/12.2.0 gdal/3.7.1 geos/3.9.1 proj/8.2.1 udunits/2.2.28 rstudio conda
+
+ml load ncarenv-basic/23.09 gdal geos proj udunits conda rstudio
+conda activate r-4.3
+
