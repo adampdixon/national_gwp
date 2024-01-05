@@ -39,6 +39,9 @@ suppressMessages({
     write.table(DAYCENT_basic_eq, file=file.path(master_path, "Daycent", site_name, "basic_eq.wth"),
                 row.names=F, quote=F, col.names=F, sep=' ')
     
+    print(summary(DAYCENT_basic_eq$tmax))
+    print(summary(DAYCENT_basic_eq$year))
+    
     # experimental period (2003-2021, even though experiment ends 2010)
 
     # DAYCENT_basic <- new_dat[new_dat$year %in% (experiment_start_year:end_exp_period_year), # ORIGINAL
@@ -52,6 +55,9 @@ suppressMessages({
     # write data file with no headers, tab-delimited, for experimental period
     write.table(DAYCENT_basic, file=paste0(daycent_path,"basic_exp.wth"),
                 row.names=F, quote=F, col.names=F, sep=' ')
+    
+    print(summary(DAYCENT_basic$tmax))
+    print(summary(DAYCENT_basic$year))
 
     # future period (1994-2021 repeated 3 times)
 
@@ -61,6 +67,9 @@ suppressMessages({
     
     # DAYCENT_basic_fut <- filter(weather, year %in% end_exp_period_year:end_fut_period_year)
     DAYCENT_basic_fut <- weather[weather$year>end_exp_period_year]
+    
+    print(summary(DAYCENT_basic_fut$tmax))
+    print(summary(DAYCENT_basic_fut$year))
     
     
                                      # c("day","month","year","dayofyear",
