@@ -32,7 +32,7 @@ suppressMessages({
   #                                 c("day","month","year","dayofyear",
   #                                   "TMAX","TMIN","prec_cm")]  
   
-  DAYCENT_basic_eq <- filter(weather, year %in% 1950:1988) # AD Changing to 1988
+  DAYCENT_basic_eq <- filter(weather, year %in% 1950:1977) # ORIGINAL
                                # c("day","month","year","dayofyear",
                                #   "TMAX","TMIN","prec_cm")]
     
@@ -59,7 +59,10 @@ suppressMessages({
     #                                    c("day","month","year","dayofyear",
     #                                      "maxt_C.x","mint_C.x","rain_cm.x")]
     
-    DAYCENT_basic_fut <- filter(weather, year %in% end_exp_period_year:2050)
+    # DAYCENT_basic_fut <- filter(weather, year %in% end_exp_period_year:end_fut_period_year)
+    DAYCENT_basic_fut <- weather[weather$year>end_exp_period_year]
+    
+    
                                      # c("day","month","year","dayofyear",
                                      #   "maxt_C.x","mint_C.x","rain_cm.x")]
 
@@ -67,7 +70,7 @@ suppressMessages({
     write.table(DAYCENT_basic_fut, file=paste0(daycent_path,"basic_",clim_scenario_num,".wth"),
                 row.names=F, quote=F, col.names=F, sep=' ')
     
-    print("removing extraneous weather data files AD")
+    # print("removing extraneous weather data files AD")
     # AD REMOVE FILES FROM BEFORE 
     # unlink(paste0(daycent_path,"basic_2.wth"))
     # unlink(paste0(daycent_path,"basic_3.wth"))
