@@ -39,8 +39,10 @@ suppressMessages({
     write.table(DAYCENT_basic_eq, file=file.path(master_path, "Daycent", site_name, "basic_eq.wth"),
                 row.names=F, quote=F, col.names=F, sep=' ')
     
-    print(summary(DAYCENT_basic_eq$tmax))
-    print(summary(DAYCENT_basic_eq$year))
+    print("**********DAYCENT_basic_eq**********")
+    print(paste0('max temp is: ', max(DAYCENT_basic_eq$tmax)))
+    print(paste0('min temp is: ', min(DAYCENT_basic_eq$tmax)))
+    print(paste0("min and max year are ", min(DAYCENT_basic_eq$year), ", ", max(DAYCENT_basic_eq$year)))
     
     # experimental period (2003-2021, even though experiment ends 2010)
 
@@ -56,8 +58,10 @@ suppressMessages({
     write.table(DAYCENT_basic, file=paste0(daycent_path,"basic_exp.wth"),
                 row.names=F, quote=F, col.names=F, sep=' ')
     
-    print(summary(DAYCENT_basic$tmax))
-    print(summary(DAYCENT_basic$year))
+    print("**********DAYCENT_basic**********")
+    print(paste0('max temp is: ', max(DAYCENT_basic$tmax)))
+    print(paste0('min temp is: ', min(DAYCENT_basic$tmax)))
+    print(paste0("min and max year are ", min(DAYCENT_basic$year), ", ", max(DAYCENT_basic$year)))
 
     # future period (1994-2021 repeated 3 times)
 
@@ -68,8 +72,10 @@ suppressMessages({
     # DAYCENT_basic_fut <- filter(weather, year %in% end_exp_period_year:end_fut_period_year)
     DAYCENT_basic_fut <- weather[weather$year>end_exp_period_year]
     
-    print(summary(DAYCENT_basic_fut$tmax))
-    print(summary(DAYCENT_basic_fut$year))
+    print("**********DAYCENT_basic_fut**********")
+    print(paste0('max temp is: ', max(DAYCENT_basic_fut$tmax)))
+    print(paste0('min temp is: ', min(DAYCENT_basic_fut$tmax)))
+    print(paste0("min and max year are ", min(DAYCENT_basic_fut$year), ", ", max(DAYCENT_basic_fut$year)))
     
     
                                      # c("day","month","year","dayofyear",
