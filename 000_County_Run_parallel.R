@@ -69,6 +69,7 @@ foreach(county_seq = 1:2, .verbose = T, .combine = 'c',
   # Set workspace
   if (Sys.info()['sysname'] == "Darwin"){
     home_folder<-file.path('/Users/adamdixon/Documents/GitHub/national_gwp')
+    Glade=FALSE
     print("************************************")
     print("*****Using Mac OS *********")
   } 
@@ -76,10 +77,12 @@ foreach(county_seq = 1:2, .verbose = T, .combine = 'c',
   if (Sys.info()['sysname'] == "Linux"){ 
     if(Sys.info()['user']=='ap') {
       home_folder<-'/home/ap/Documents/GitHub/national_gwp'
+      Glade=FALSE
       print("************************************")
       print("*****Using linux mint *********")
     } else {
       home_folder<-'/glade/derecho/scratch/apdixon/national_gwp'
+      Glade=TRUE
       print("************************************")
       print("*****Using NCAR *********")
       print("***** SCRATCH SPACE *********")
@@ -111,7 +114,7 @@ foreach(county_seq = 1:2, .verbose = T, .combine = 'c',
   # county_data<-county_data[county_data$GEOID==county_number,]
   county_data<-county_data[county_number,]
 
-  Glade=FALSE
+
   run_Daycent=TRUE
   run_LDNDC=FALSE
   run_Millennial=FALSE
