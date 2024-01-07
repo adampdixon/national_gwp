@@ -51,7 +51,7 @@ foreach::getDoParWorkers()
 # set number of threads for data.table
 # setDTthreads(threads = n_threads)
 
-foreach(county_seq = 1:2, .verbose = T, .combine = 'c', 
+foreach(county_seq = 1:3, .verbose = T, .combine = 'c', 
         .packages=c('apsimx','berryFunctions','broom','data.table','dplyr','ggplot2',
                     'graphics','lubridate','magrittr','pracma','R.utils','readxl','sf',
   'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %do% {
@@ -108,7 +108,7 @@ foreach(county_seq = 1:2, .verbose = T, .combine = 'c',
   
   if(identical(Test, TRUE)){
     county_data<-county_data%>%
-      filter(GEOID %in% c(46085, 27069)) # 46087
+      filter(GEOID %in% c(46085, 27069, 46087))
   }
 
   # county_data<-county_data[county_data$GEOID==county_number,]

@@ -43,7 +43,7 @@ experiment_end_year <- 2021
 end_exp_period_year <- 2021
 experiment_year_range <- experiment_start_year:end_exp_period_year
 end_fut_period_year <- 2050
-max_fut_period_year <- 2100
+max_fut_period_year <- 2051
 calib_mgmt_grps <- c(1,2,3)
 calib_mgmt_nums <- c(1,2,3)
 obs_path <- paste0("Data/County/Calibration/")
@@ -125,8 +125,7 @@ source('1_Create_weather_input_files-Daycent_County.R', local = TRUE)
 # source("3_Create_site100files-Daycent_AD_.R", local = TRUE)
 # 
 # source('3_Create_fix100_file-Daycent_AD_.R', local = TRUE)
-
-
+browser()
 
 
 

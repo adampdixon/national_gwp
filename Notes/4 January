@@ -5,7 +5,7 @@ conda activate r-4.3
 
 install.packages(c('plotly','magrittr','dplyr','data.table','tidyr','stringr','lubridate','ggplot2','readr','pracma','sqldf','stringi','tidyverse'))
 
-install.packages(c('soilDB, apsimx RSQLite sf spData XML berryFunctions datetime FME rnoaa)
+install.packages(c('soilDB', 'apsimx', 'RSQLite', 'sf', 'spData', 'XML', 'berryFunctions', 'datetime', 'FME', 'rnoaa')
 
 
 
@@ -22,6 +22,16 @@ ml load ncarenv-basic/23.09 ncarenv/23.09 gdal/3.7.1 geos/3.9.1 proj/8.2.1 uduni
 
 ml load ncarenv/23.06  gcc/12.2.0 gdal/3.7.1 geos/3.9.1 proj/8.2.1 udunits/2.2.28 rstudio conda
 
-ml load ncarenv-basic/23.09 gdal geos proj udunits conda rstudio
+ml load ncarenv-basic/23.09 gcc gdal geos proj udunits conda rstudio
 conda activate r-4.3
+
+/glade/derecho/scratch/apdixon/national_gwp
+/glade/work/apdixon/climate
+
+Rscript 000_County_Run_parallel.R
+
+If github bad certificate
+git config --global http.sslVerify false
+https://stackoverflow.com/questions/37444154/git-clone-fails-server-certificate-verification-failed
+
 

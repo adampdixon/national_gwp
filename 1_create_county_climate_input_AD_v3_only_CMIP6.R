@@ -32,8 +32,8 @@ geo_link<-read.csv(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
   as_tibble()
 
 #create the cluster--------------------
-n_threads<-2
-county_range<-c(2370:2371)
+n_threads<-10
+county_range<-c(1:10) # just how many counties in US - 3109, 8?
 # 
 my.cluster <- parallel::makeCluster(
   n_threads,
@@ -61,49 +61,49 @@ foreach(county_number = county_range, .packages=c("dplyr","tictoc","data.table")
     cat("GEOID is NA\n")
     break
   } else{
-    # GET HISTORIC DATA
-    for(var in c('prcp','tmax','tmin')){
-      #####################################
-      # check if output file exists, if so, skip
-      output_filename<-file.path(output_dir, paste0(var,"_", GEOID ,'_nclim.csv'))
-      #####################################
-      if(file.exists(output_filename)){
-        next
-      } else {
-        hist_climate_df<-data.frame()
-        # read csvs
-        data_raw<-list.files(nclim_dir, pattern = var, full.names = T)
-        data<-data_raw[grep('.csv', data_raw)]
-        for(year in data){
-          ##### READ DATA ######################
-          #read county csv for each year into data.frame, get county_number from out of function list
-          data_df<-fread(year)%>%as_tibble()%>%filter(GEOID==county_number)
-          ## GET GEOID #########################
-          # join with the GEOID given by Zhuonan
-          data_df_<-left_join(data_df, geo_link, by = c('GEOID' = 'zh_geoid'))
-          # drop Zhuonan geoid
-          data_df_<-select(data_df_, -GEOID)
-          colnames(data_df_)<-c('value', 'year', 'doy', 'GEOID')
-          
-          # use select to put in columns in correct order
-          data_df_<-select(data_df_, GEOID, value, year, doy)
-          
-          # Prepare data #
-          # add the variable name to column, table will be long format
-          data_df_$variable<-var
-          data_df_$model<-'nclim'
-          
-          # combine years
-          
-          hist_climate_df<-rbind(hist_climate_df, data_df_)
-          
-        }
-        # once all years have run and rbind, write to csv
-        fwrite(hist_climate_df, output_filename)
-        
-      }
-      
-    }
+    # # GET HISTORIC DATA
+    # for(var in c('prcp','tmax','tmin')){
+    #   #####################################
+    #   # check if output file exists, if so, skip
+    #   output_filename<-file.path(output_dir, paste0(var,"_", GEOID ,'_nclim.csv'))
+    #   #####################################
+    #   if(file.exists(output_filename)){
+    #     next
+    #   } else {
+    #     hist_climate_df<-data.frame()
+    #     # read csvs
+    #     data_raw<-list.files(nclim_dir, pattern = var, full.names = T)
+    #     data<-data_raw[grep('.csv', data_raw)]
+    #     for(year in data){
+    #       ##### READ DATA ######################
+    #       #read county csv for each year into data.frame, get county_number from out of function list
+    #       data_df<-fread(year)%>%as_tibble()%>%filter(GEOID==county_number)
+    #       ## GET GEOID #########################
+    #       # join with the GEOID given by Zhuonan
+    #       data_df_<-left_join(data_df, geo_link, by = c('GEOID' = 'zh_geoid'))
+    #       # drop Zhuonan geoid
+    #       data_df_<-select(data_df_, -GEOID)
+    #       colnames(data_df_)<-c('value', 'year', 'doy', 'GEOID')
+    #       
+    #       # use select to put in columns in correct order
+    #       data_df_<-select(data_df_, GEOID, value, year, doy)
+    #       
+    #       # Prepare data #
+    #       # add the variable name to column, table will be long format
+    #       data_df_$variable<-var
+    #       data_df_$model<-'nclim'
+    #       
+    #       # combine years
+    #       
+    #       hist_climate_df<-rbind(hist_climate_df, data_df_)
+    #       
+    #     }
+    #     # once all years have run and rbind, write to csv
+    #     fwrite(hist_climate_df, output_filename)
+    #     
+    #   }
+    #   
+    # }
     
     # GET FUTURE DATA
     for (var in c('pr','tasmax','tasmin')){

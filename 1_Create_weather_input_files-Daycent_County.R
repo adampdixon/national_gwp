@@ -32,9 +32,11 @@ suppressMessages({
   #                                 c("day","month","year","dayofyear",
   #                                   "TMAX","TMIN","prec_cm")]  
   
-  DAYCENT_basic_eq <- filter(weather, year %in% 1950:1977) # ORIGINAL
+  DAYCENT_basic_eq <- filter(weather, year %in% 1950:1977)%>% # ORIGINAL
+    mutate_if(is.double, round, 2)
                                # c("day","month","year","dayofyear",
                                #   "TMAX","TMIN","prec_cm")]
+    
     
     write.table(DAYCENT_basic_eq, file=file.path(master_path, "Daycent", site_name, "basic_eq.wth"),
                 row.names=F, quote=F, col.names=F, sep=' ')
@@ -51,7 +53,8 @@ suppressMessages({
     #                          c("day","month","year","dayofyear","maxt_C.x",
     #                             "mint_C.x","rain_cm.x")]
     
-    DAYCENT_basic <- filter(weather, year %in% (experiment_start_year:end_exp_period_year))
+    DAYCENT_basic <- filter(weather, year %in% (1978:end_exp_period_year))%>%
+      mutate_if(is.double, round, 2)
                              # c("day","month","year","dayofyear","maxt_C.x",
                              #   "mint_C.x","rain_cm.x")]
 
@@ -72,7 +75,8 @@ suppressMessages({
     #                                      "maxt_C.x","mint_C.x","rain_cm.x")]
     
     # DAYCENT_basic_fut <- filter(weather, year %in% end_exp_period_year:end_fut_period_year)
-    DAYCENT_basic_fut <- weather[weather$year>end_exp_period_year]
+    DAYCENT_basic_fut <- weather[weather$year>end_exp_period_year]%>%
+      mutate_if(is.double, round, 2)
     
     print("**********DAYCENT_basic_fut**********")
     print(paste0('max temp is: ', max(DAYCENT_basic_fut$tmax)))
