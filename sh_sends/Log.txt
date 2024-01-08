@@ -6986,3 +6986,151 @@ Called from: withCallingHandlers(expr, message = function(c) if (inherits(c,
 [1] "Starting run_Daycent_setup.R"
 [1] "Starting run_Daycent_eq.R"
 [1] "**********Daycent equilibrium simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+result of evaluating expression:
+<simpleError in file(file, "rt"): cannot open the connection>
+got results for task 9
+numValues: 9, numResults: 9, stopped: FALSE
+returning status FALSE
+evaluation # 10:
+$county_seq
+[1] 10
+
+[1] "county_seq is: 10"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 39063"
+[1] "county name is: Hancock County"
+[1] "state name is: Ohio"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 41.0018579535827"
+[1] "longitude is: -83.6665848961401"
+[1] "elevation_m is: 247"
+[1] "Copying over KBS 'Daycent model' files --"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+elapsed time is 203.067000 seconds 
+[1] "Run time is 3.4 minutes, 0.0566666666666667 hours."
+************************************
+DELETE INPUT FILES???
+Deleting input files
+************************************[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "************************************"
+[1][1] "Starting 9_Results_Daycent-setup_County.R" "####### New climate scenario #######"
+
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "mgmt scenario: 1"
+[1] "mgmt option: 1"
+[1] "Starting 0_Controller2_County.R"
+[1] "Starting 0_Observations_and_constants_County.R"
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -20.89 and 37.23"
+[1] "min max precip is: 0 and 6.77"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -22.77 and 39.49"
+[1] "min max precip is: 0 and 10.17"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -18.57 and 38.7"
+[1] "min max precip is: 0 and 10.35"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "getting soil data for lat 41.0018579535827 and lon -83.6665848961401 at GEOID_39063_Ohio"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting run_Daycent_eq.R"
+[1] "**********Daycent equilibrium simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+result of evaluating expression:
+<simpleError: 'Daycent/GEOID_39063_Ohio/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').>
+got results for task 10
+numValues: 10, numResults: 10, stopped: FALSE
+returning status FALSE
+numValues: 10, numResults: 10, stopped: TRUE
+first call to combine function
+evaluating call object to combine results:
+  fun(result.3, result.5, result.8)
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -20.89 and 37.23"
+[1] "min max precip is: 0 and 6.77"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -22.77 and 39.49"
+[1] "min max precip is: 0 and 10.17"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -18.57 and 38.7"
+[1] "min max precip is: 0 and 10.35"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "getting soil data for lat 41.0018579535827 and lon -83.6665848961401 at GEOID_39063_Ohio"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting run_Daycent_eq.R"
+[1] "**********Daycent equilibrium simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+elapsed time is 287.447000 seconds 
+[1] "Run time is 4.8 minutes, 0.08 hours."
+************************************
+DELETE INPUT FILES???
+Deleting input files
+************************************elapsed time is 121.029000 seconds 
+[1] "Run time is 2 minutes, 0.0333333333333333 hours."
+************************************
+DELETE INPUT FILES???
+Deleting input files
+************************************
