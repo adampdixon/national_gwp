@@ -2,7 +2,7 @@
 # This script gathers the csvs for each US county from historic climate data (1951-2021) and creates a table
 # for Daycent 
 # A Dixon
-# Dec 4, 2023
+# Jan 8, 2024
 ###########################
 
 ######################################################
@@ -37,7 +37,7 @@ run_parallel<-T
 if(identical(run_parallel, TRUE)){
   cat("Running in parallel using foreach")
   #create the cluster--------------------
-  n_threads<-3
+  n_threads<-111
   # county_range<-geoids
   # 
   my.cluster <- parallel::makeCluster(
@@ -53,7 +53,7 @@ if(identical(run_parallel, TRUE)){
   # setDTthreads(threads = n_threads)
 }
 
-foreach(county_seq = 1:3, .verbose = T, .combine = 'c', 
+foreach(county_seq = 1:3108, .verbose = T, .combine = 'c', 
         .packages=c('apsimx','berryFunctions','broom','data.table','dplyr','ggplot2',
                     'graphics','lubridate','magrittr','pracma','R.utils','readxl','sf',
   'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %dopar% {
@@ -102,7 +102,7 @@ foreach(county_seq = 1:3, .verbose = T, .combine = 'c',
   
   "************************************"
   "************************************"
-  Test <- TRUE
+  Test <- FALSE
   
   if(identical(Test, TRUE)){
     county_data<-county_data%>%
