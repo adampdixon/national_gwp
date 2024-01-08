@@ -53,7 +53,7 @@ if(identical(run_parallel, TRUE)){
   # setDTthreads(threads = n_threads)
 }
 
-foreach(county_seq = 1:3, .verbose = T, .combine = 'c', 
+foreach(county_seq = 1:10, .verbose = T, .combine = 'c', 
         .packages=c('apsimx','berryFunctions','broom','data.table','dplyr','ggplot2',
                     'graphics','lubridate','magrittr','pracma','R.utils','readxl','sf',
   'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %dopar% {
@@ -100,7 +100,7 @@ foreach(county_seq = 1:3, .verbose = T, .combine = 'c',
   
   "************************************"
   "************************************"
-  Test <- TRUE
+  Test <- FALSE
   
   if(identical(Test, TRUE)){
     county_data<-county_data%>%
@@ -116,7 +116,7 @@ foreach(county_seq = 1:3, .verbose = T, .combine = 'c',
   run_Daycent=TRUE
   run_LDNDC=FALSE
   run_Millennial=FALSE
-  del_input_files=FALSE
+  del_input_files=TRUE
   "************************************"
   "************************************"
   # county_geoid<-sprintf("%05d", county_data$GEOID) # Use 5 character GEOID?
