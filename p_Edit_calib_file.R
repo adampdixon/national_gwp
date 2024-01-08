@@ -26,13 +26,13 @@ p_Edit_calib_file <- function(data_mtx,model_name,scenario_name) {
   
   # Write data to model's log -------------------------------------
   
-  write.table(data_mtx,file=paste0(results_path,"Calibration_log_",model_name,".csv"),
+  write.table(data_mtx,file=file.path(results_path,paste0("Calibration_log_",model_name,".csv")),
               append=TRUE,row.names=FALSE,col.names=FALSE,sep=",")
   
   
   # Write data to summary log -------------------------------------
   
-  outfile_name <- paste0(results_path,"Calibration_summary.csv")
+  outfile_name <- file.path(results_path,"Calibration_summary.csv")
   colnames(data_mtx) <- log_col_headers
   
   # if the output file already exists, check if the model/scenario already has

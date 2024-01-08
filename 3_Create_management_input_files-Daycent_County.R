@@ -24,7 +24,7 @@ print("Starting 3_Create_management_input_files-Daycent4.R")
 # Base period -------------------------------------------------------------
 
 
-schedule_file <- paste0(daycent_path,"sched_base.sch")
+schedule_file <- file.path(master_path, daycent_path, "sched_base.sch")
 
 ### 1850-1875 - start with continuous C1 corn ###
 
@@ -246,7 +246,7 @@ cat(yrs_1988,sep="\n",file=schedule_file,append=TRUE)
 
 
 
-schedule_file_exp <- paste0(daycent_path,"sched_exp_",scenario_name,".sch")
+schedule_file_exp <- file.path(master_path, daycent_path, paste0("sched_exp_",scenario_name,".sch"))
 
 # remove duplicate/NA records
 Daycent_data <- full_ops_ext_adj[!is.na(full_ops_ext_adj$daycent_mgmt_code),]
@@ -336,7 +336,7 @@ for (i in experiment_start_year:experiment_end_year) {
 
 # baseline climate
 
-schedule_file_2100 <- paste0(daycent_path,"sched_fut_",scenario_name,".sch")
+schedule_file_2100 <- file.path(master_path, daycent_path, paste0("sched_fut_",scenario_name,".sch"))
 
 Daycent_conv_2100 <- Daycent_conv[Daycent_conv$year %in% experiment_end_year-2:experiment_end_year,
                                 c("date","daycent_mgmt_code","dayofyear")]  %>%

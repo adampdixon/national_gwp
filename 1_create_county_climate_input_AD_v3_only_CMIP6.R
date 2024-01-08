@@ -15,15 +15,15 @@ library(tictoc) # for timing
 library(data.table) # for fwrite
 
 # county data to link
-geo_link_dir<-'/glade/derecho/scratch/apdixon/national_gwp/Data/County_start'
-output_dir<-'/glade/work/apdixon/climate'
-nclim_dir<-'/glade/work/apdixon/Output_nClimGrid'
-cmip6_dir<-'/glade/work/apdixon/Output_climate'
+# geo_link_dir<-'/glade/derecho/scratch/apdixon/national_gwp/Data/County_start'
+# output_dir<-'/glade/work/apdixon/climate'
+# nclim_dir<-'/glade/work/apdixon/Output_nClimGrid'
+# cmip6_dir<-'/glade/work/apdixon/Output_climate'
 # 
-# geo_link_dir<-'/home/ap/Documents/GitHub/national_gwp/Data/County'
-# output_dir<-'/home/ap/Scratch'
+geo_link_dir<-'/home/ap/Documents/GitHub/national_gwp/Data/County_start'
+output_dir<-'/home/ap/Scratch3'
 # nclim_dir<-'/home/ap/Documents/GitHub/national_gwp/climate_nclim'
-# cmip6_dir<-'/home/ap/Documents/GitHub/national_gwp/climate_cmip6'
+cmip6_dir<-'/home/ap/climate_data'
 
 
 # add geolink table to make GEOIDS align with census GEOID
@@ -32,7 +32,7 @@ geo_link<-read.csv(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
   as_tibble()
 
 #create the cluster--------------------
-n_threads<-10
+n_threads<-2
 county_range<-c(1:10) # just how many counties in US - 3109, 8?
 # 
 my.cluster <- parallel::makeCluster(
@@ -48,7 +48,7 @@ foreach::getDoParWorkers()
 setDTthreads(threads = n_threads)
 
 #c(2370:2406)
-foreach(county_number = county_range, .packages=c("dplyr","tictoc","data.table")) %dopar% {
+foreach(county_number = county_range, .packages=c("dplyr","tictoc","data.table")) %do% {
   tic()
   # Open a connection to stderr
   sink(stderr(), type = "message")
@@ -107,6 +107,7 @@ foreach(county_number = county_range, .packages=c("dplyr","tictoc","data.table")
     
     # GET FUTURE DATA
     for (var in c('pr','tasmax','tasmin')){
+      print(var)
       # use if statements to convert cmip6 naming convention to nclims so they align later
       if(var=='pr'){
         var2='prcp'

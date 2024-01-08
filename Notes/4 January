@@ -27,11 +27,23 @@ conda activate r-4.3
 
 /glade/derecho/scratch/apdixon/national_gwp
 /glade/work/apdixon/climate
+/glade/work/apdixon/Output_nClimGrid
+/glade/work/apdixon/Output_climate
 
 Rscript 000_County_Run_parallel.R
 
 If github bad certificate
 git config --global http.sslVerify false
 https://stackoverflow.com/questions/37444154/git-clone-fails-server-certificate-verification-failed
+
+
+when transfering via globus
+connect to globus personal https://docs.globus.org/globus-connect-personal/install/linux/
+ap@ap:~/Downloads$ cd globusconnectpersonal-3.2.3
+ap@ap:~/Downloads/globusconnectpersonal-3.2.3$ ./globusconnectpersonal
+
+Then online globus file manager
+https://app.globus.org/file-manager?
+find UCAR GLADE, then UCAR_Emory to connect to personal 
 
 

@@ -38,19 +38,19 @@ print("Starting 0_Controller2_County.R")
 # latitude = 42.410
 # longitude = -85.372
 # elevation_m = 288
-experiment_start_year <- 1989
-experiment_end_year <- 2021
-end_exp_period_year <- 2021
-experiment_year_range <- experiment_start_year:end_exp_period_year
-end_fut_period_year <- 2050
-max_fut_period_year <- 2051
-calib_mgmt_grps <- c(1,2,3)
-calib_mgmt_nums <- c(1,2,3)
-obs_path <- paste0("Data/County/Calibration/")
-hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
-hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
-curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
-nasapower_output_filename <- paste0(site_name,"_np.csv")
+# experiment_start_year <- 1989
+# experiment_end_year <- 2021
+# end_exp_period_year <- 2021
+# experiment_year_range <- experiment_start_year:end_exp_period_year
+# end_fut_period_year <- 2050
+# max_fut_period_year <- 2051
+# calib_mgmt_grps <- c(1,2,3)
+# calib_mgmt_nums <- c(1,2,3)
+# obs_path <- paste0("Data/County/Calibration/")
+# hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
+# hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
+# curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
+# nasapower_output_filename <- paste0(site_name,"_np.csv")
 # #
 # site_id <- 2
 # site_name <- "LRF"
@@ -125,12 +125,10 @@ source('1_Create_weather_input_files-Daycent_County.R', local = TRUE)
 # source("3_Create_site100files-Daycent_AD_.R", local = TRUE)
 # 
 # source('3_Create_fix100_file-Daycent_AD_.R', local = TRUE)
-browser()
-
 
 
 # Soil data
-source(paste0("2_Create_soil_data-setup2_County.R"), local = TRUE)
+source("2_Create_soil_data-setup2_County.R", local = TRUE)
   #
   # source("2_Create_soil_data-APSIM.R")
 source("2_Create_soil_data-Daycent_County.R", local = TRUE)

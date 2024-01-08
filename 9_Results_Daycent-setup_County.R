@@ -560,11 +560,11 @@ colnames(output_daily_data) <- c("date","year","dayofyear","N2O_emit_gha","N2O_c
                                  "model_name","scenario_name","climate_scenario_num",
                                  "mgmt_scenario_grp_num","mgmt_scenario_opt_num")
 
-write.table(output_annual_data,file=paste0(results_path,"Annual_results_compilation_",
-                                           scenario_name,"_Daycent.csv"),
+write.table(output_annual_data,file=file.path(results_path, paste0("Annual_results_compilation_",
+                                           scenario_name,"_Daycent.csv")),
             col.names=T,row.names=F,sep=",",append=F)
-write.table(output_daily_data,file=paste0(results_path,"Daily_results_compilation_",
-                                          scenario_name,"_Daycent.csv"),
+write.table(output_daily_data,file=file.path(results_path,paste0("Daily_results_compilation_",
+                                          scenario_name,"_Daycent.csv")),
             col.names=T,row.names=F,sep=",",append=F)
 
 

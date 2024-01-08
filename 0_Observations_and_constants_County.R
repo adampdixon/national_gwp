@@ -235,11 +235,13 @@ climate_scenario_descriptor <-
   
 scenario_descriptor_full <- paste0(scenario_descriptor, "; ",climate_scenario_descriptor)
 
+browser()
+
 #create results folder if it doesn't already exist
-results_path <- paste0(site_name,"_results/")
+results_path <- file.path(master_path, paste0("Results_", site_name))
 if(!dir.exists(results_path)) dir.create(results_path)
 
-write.table(scenario_df,file=paste0(results_path,"Scenario_table.csv"),
+write.table(scenario_df,file=file.path(results_path,"Scenario_table.csv"),
             append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
 
 # site_id <- 0
@@ -414,7 +416,7 @@ if (identical(Glade, TRUE)){
   climate_data_path<-'/glade/work/apdixon/climate'
   print(paste0('*********climate_data_path is ', climate_data_path, " **************"))
 } else {
-  climate_data_path<-'/home/ap/Scratch2'
+  climate_data_path<-'/home/ap/Scratch'
 }
 
 
@@ -851,7 +853,7 @@ log_col_headers <- c("Date_time","Model",
 dummy<-data.frame(matrix(ncol=length(log_col_headers)))
 colnames(dummy) <- log_col_headers
 
-write.table(dummy,file=paste0(results_path,"Calibration_log_columns.csv"),
+write.table(dummy,file=file.path(results_path,"Calibration_log_columns.csv"),
             append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
 
 # Log results -------------------------------------------------------------

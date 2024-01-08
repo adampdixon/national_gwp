@@ -31,8 +31,8 @@ setwd(model_path)
 
 # local constants
 if(Sys.info()['sysname']=='Linux') {
-  daycent_executable <- "./DDcentEVI_rev279"
-  daycent_list100 <- "./DDlist100_rev279"
+  daycent_executable <- file.path(model_path, 'DDcentEVI_rev279')
+  daycent_list100 <- file.path(model_path, 'DDlist100_rev279')
   # AD give system permissions if getting permission error 
   system(paste0('chmod u+x ', file.path(model_path, 'DDcentEVI_rev279')))
   system(paste0('chmod u+x ', file.path(model_path, 'DDlist100_rev279')))

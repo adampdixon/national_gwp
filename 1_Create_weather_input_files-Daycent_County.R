@@ -42,8 +42,8 @@ suppressMessages({
                 row.names=F, quote=F, col.names=F, sep=' ')
     
     print("**********DAYCENT_basic_eq**********")
-    print(paste0('max temp is: ', max(DAYCENT_basic_eq$tmax)))
-    print(paste0('min temp is: ', min(DAYCENT_basic_eq$tmax)))
+    print(paste0('min max temp is: ', min(DAYCENT_basic_eq$tmax), " and ", max(DAYCENT_basic_eq$tmax)))
+    print(paste0('min max precip is: ', min(DAYCENT_basic_eq$precip), " and ", max(DAYCENT_basic_eq$precip)))
     print(paste0("min and max year are ", min(DAYCENT_basic_eq$year), ", ", max(DAYCENT_basic_eq$year)))
     print(paste0("number of rows are: ", nrow(DAYCENT_basic_eq)))
     
@@ -59,12 +59,12 @@ suppressMessages({
                              #   "mint_C.x","rain_cm.x")]
 
     # write data file with no headers, tab-delimited, for experimental period
-    write.table(DAYCENT_basic, file=paste0(daycent_path,"basic_exp.wth"),
+    write.table(DAYCENT_basic, file=file.path(master_path, 'Daycent',site_name,"basic_exp.wth"),
                 row.names=F, quote=F, col.names=F, sep=' ')
     
     print("**********DAYCENT_basic**********")
-    print(paste0('max temp is: ', max(DAYCENT_basic$tmax)))
-    print(paste0('min temp is: ', min(DAYCENT_basic$tmax)))
+    print(paste0('min max temp is: ', min(DAYCENT_basic$tmax), " and ", max(DAYCENT_basic$tmax)))
+    print(paste0('min max precip is: ', min(DAYCENT_basic$precip), " and ", max(DAYCENT_basic$precip)))
     print(paste0("min and max year are ", min(DAYCENT_basic$year), ", ", max(DAYCENT_basic$year)))
     print(paste0("number of rows are: ", nrow(DAYCENT_basic)))
 
@@ -78,9 +78,21 @@ suppressMessages({
     DAYCENT_basic_fut <- weather[weather$year>end_exp_period_year]%>%
       mutate_if(is.double, round, 2)
     
+    d2<-DAYCENT_basic_fut%>%mutate(uni=paste0(year, month, day))
+    
+    nrow(d2)
+    length(unique(d2$uni))
+    
+    DAYCENT_basic_fut%>%
+      group_by(year, month)%>%
+      summarize(tmax = max(tmax),
+                tmin = min(tmin),
+                prec = sum(precip))
+    
+    
     print("**********DAYCENT_basic_fut**********")
-    print(paste0('max temp is: ', max(DAYCENT_basic_fut$tmax)))
-    print(paste0('min temp is: ', min(DAYCENT_basic_fut$tmax)))
+    print(paste0('min max temp is: ', min(DAYCENT_basic_fut$tmax), " and ", max(DAYCENT_basic_fut$tmax)))
+    print(paste0('min max precip is: ', min(DAYCENT_basic_fut$precip), " and ", max(DAYCENT_basic_fut$precip)))
     print(paste0("min and max year are ", min(DAYCENT_basic_fut$year), ", ", max(DAYCENT_basic_fut$year)))
     print(paste0("number of rows are: ", nrow(DAYCENT_basic_fut)))
     
@@ -89,7 +101,7 @@ suppressMessages({
                                      #   "maxt_C.x","mint_C.x","rain_cm.x")]
 
     # write data file with no headers, tab-delimited, for experimental period
-    write.table(DAYCENT_basic_fut, file=paste0(daycent_path,"basic_",clim_scenario_num,".wth"),
+    write.table(DAYCENT_basic_fut, file=file.path(master_path, 'Daycent',site_name, paste0("basic_",clim_scenario_num,".wth")),
                 row.names=F, quote=F, col.names=F, sep=' ')
     
     # print("removing extraneous weather data files AD")

@@ -23,7 +23,7 @@
 #######################################
 library(pracma)
 library(dplyr)
-library(R.utils)
+# library(R.utils)
 
 # start timer
 tic()
@@ -35,10 +35,13 @@ tic()
 
 
 #######################################
-print("Copying the KBS 'Data' files")
-if(!dir.exists(file.path(master_path, 'Data', 'County'))) copyDirectory(from = file.path(master_path, '/Data/KBS'),
-                                                                     to = file.path(master_path, 'Data', 'County'),
-                                                                     recursive = T)
+
+# This should be rare since we're using the same data for all counties and a folder named "County"
+# library(R.utils)
+# print("Copying the KBS 'Data' files")
+# if(!dir.exists(file.path(master_path, 'Data', 'County'))) copyDirectory(from = file.path(master_path, '/Data/KBS'),
+#                                                                      to = file.path(master_path, 'Data', 'County'),
+#                                                                      recursive = T)
 #######################################
 
 
@@ -47,45 +50,60 @@ if(!dir.exists(file.path(master_path, 'Data', 'County'))) copyDirectory(from = f
 # latitude = 42.410
 # longitude = -85.372
 # elevation_m = 288
-experiment_start_year <- 1989
-experiment_end_year <- 2021
-experiment_year_range <- experiment_start_year:experiment_end_year
-experiment_start_date <- "1989-01-01"
-experiment_end_date <- "2021-12-31"
-end_exp_period_year <- 2021
-end_fut_period_year <- 2050
-max_fut_period_year <- 2100
-calib_mgmt_grps <- c(1,2,3)
-calib_mgmt_nums <- c(1,2,3)
+.GlobalEnv$experiment_start_year <- 1989
+.GlobalEnv$experiment_end_year <- 2021
+.GlobalEnv$experiment_year_range <- experiment_start_year:experiment_end_year
+.GlobalEnv$experiment_start_date <- "1989-01-01"
+.GlobalEnv$experiment_end_date <- "2021-12-31"
+.GlobalEnv$end_exp_period_year <- 2021
+.GlobalEnv$end_fut_period_year <- 2050
+.GlobalEnv$max_fut_period_year <- 2100
+.GlobalEnv$calib_mgmt_grps <- c(1,2,3)
+.GlobalEnv$calib_mgmt_nums <- c(1,2,3)
 #
-obs_path <- paste0("Data/County/Calibration/")
-obs_mgmt_path <- paste0("Data/County/Management/")
-hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
-hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
-curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
-wth_path <- paste0("Data/County/Weather/")
-nasapower_output_filename <- paste0(site_name,"_np.csv")
-mgmt_path=paste0("Data/County/Management/")
-adjusted_ops_filename="clean_ops_ext_adj.csv"
-fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
-apsim_path <- paste0("APSIM/",site_name,"/")
-daycent_path <- paste0("Daycent/",site_name,"/")
+.GlobalEnv$obs_path <- paste0("Data/County/Calibration/")
+.GlobalEnv$obs_mgmt_path <- paste0("Data/County/Management/")
+.GlobalEnv$hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
+.GlobalEnv$hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
+.GlobalEnv$curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
+.GlobalEnv$wth_path <- paste0("Data/County/Weather/")
+.GlobalEnv$nasapower_output_filename <- paste0(site_name,"_np.csv")
+.GlobalEnv$mgmt_path=paste0("Data/County/Management/")
+.GlobalEnv$adjusted_ops_filename="clean_ops_ext_adj.csv"
+.GlobalEnv$fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
+.GlobalEnv$apsim_path <- paste0("APSIM/",site_name,"/")
+.GlobalEnv$daycent_path <- paste0("Daycent/",site_name,"/")
 if(Sys.info()['sysname']=='Linux') {
-  dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
+ dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
 } else {
-  dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
+ dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
 }
-rothc_path <- paste0("RothC/",site_name,"/")
-mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
+.GlobalEnv$rothc_path <- paste0("RothC/",site_name,"/")
+.GlobalEnv$mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 
 
 #######################################
-print("Copying over KBS 'Daycent model' files -- delete when begin running in full?")
-if(!dir.exists(file.path(master_path, 'Daycent', site_name))) copyDirectory(from = file.path(master_path, '/Daycent/KBS'),
-                                                                         to = file.path(master_path, 'Daycent', site_name),
-                                                                         recursive = T)
+print("Copying over KBS 'Daycent model' files --")
 # dir.create(file.path(master_path, 'Daycent', site_name))
 
+copy_from_ <-file.path(master_path, 'Daycent', 'KBS')
+copy_to_ <-file.path(master_path, 'Daycent', site_name)
+
+if(length(list.files(copy_to_))>1800) {
+  print("Site daycent folder already exists. Skipping copy.")
+} else {
+  
+  #create the directory
+  dir.create(copy_to_)
+  
+  #list all the files to copy
+  files_to_copy <- list.files(copy_from_, full.names = T)
+  
+  # copy the files
+  file.copy(from = files_to_copy, to = copy_to_, overwrite = TRUE, recursive = FALSE, 
+            copy.mode = TRUE)
+
+}
 #######################################
 
 #**********************************************************************
@@ -121,7 +139,7 @@ for (x in clim_nums) { # climate scenarios
   clim_scenario_num <- x
   # source("1_Create_weather_input_files.R")
   for (y in mgmt_grps) { # management scenario groups
-    mgmt_scenario_grp <- y # scenario group number
+    .GlobalEnv$mgmt_scenario_grp <- y # scenario group number
     max_scenario_options <- if_else(y==4, 4, # option numbers for those with incremental adjustments
                             if_else(y==5, 3,
                             if_else(y==6, 5, 1)))
@@ -132,8 +150,8 @@ for (x in clim_nums) { # climate scenarios
       print(paste0("mgmt scenario: ",y))
       print(paste0("mgmt option: ",z))
       mgmt_scenario_opt <- if(max_scenario_options==1) "" else z
-      mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
-      scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
+      .GlobalEnv$mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
+      .GlobalEnv$scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
       source("0_Controller2_County.R", local = TRUE)
       #p_Controller2()
     }
