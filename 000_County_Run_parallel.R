@@ -53,7 +53,7 @@ if(identical(run_parallel, TRUE)){
   # setDTthreads(threads = n_threads)
 }
 
-foreach(county_seq = 1:10, .verbose = T, .combine = 'c', 
+foreach(county_seq = 1:3, .verbose = T, .combine = 'c', 
         .packages=c('apsimx','berryFunctions','broom','data.table','dplyr','ggplot2',
                     'graphics','lubridate','magrittr','pracma','R.utils','readxl','sf',
   'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %dopar% {
@@ -79,11 +79,13 @@ foreach(county_seq = 1:10, .verbose = T, .combine = 'c',
   if (Sys.info()['sysname'] == "Linux"){ 
     if(Sys.info()['user']=='ap') {
       home_folder<-'/home/ap/Documents/GitHub/national_gwp'
+      results_folder<-'/home/ap/Documents/national_gwp_results'
       Glade=FALSE
       print("************************************")
       print("*****Using linux mint *********")
     } else {
       home_folder<-'/glade/derecho/scratch/apdixon/national_gwp'
+      results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
       Glade=TRUE
       print("************************************")
       print("*****Using NCAR *********")
@@ -100,7 +102,7 @@ foreach(county_seq = 1:10, .verbose = T, .combine = 'c',
   
   "************************************"
   "************************************"
-  Test <- FALSE
+  Test <- TRUE
   
   if(identical(Test, TRUE)){
     county_data<-county_data%>%

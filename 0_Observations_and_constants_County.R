@@ -238,7 +238,7 @@ scenario_descriptor_full <- paste0(scenario_descriptor, "; ",climate_scenario_de
 browser()
 
 #create results folder if it doesn't already exist
-results_path <- file.path(master_path, paste0("Results_", site_name))
+results_path <- file.path(results_folder, paste0("Results_", site_name))
 if(!dir.exists(results_path)) dir.create(results_path)
 
 write.table(scenario_df,file=file.path(results_path,"Scenario_table.csv"),
