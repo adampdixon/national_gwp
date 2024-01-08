@@ -3541,4 +3541,3187 @@ Finished 3108 in c(elapsed = 4049.372) seconds
 2TRUE Finished 3108 in c(elapsed = 4147.205) seconds
 2TRUE Finished 3108 in logical(0) seconds
 2TRUE Finished 3108 in 97.833 sec elapsed seconds
-2TRUE
+2TRUEstarting worker pid=228053 on localhost:11996 at 02:00:57.396
+starting worker pid=228054 on localhost:11996 at 02:00:57.422
+starting worker pid=228055 on localhost:11996 at 02:00:57.427
+APSIM(X) not found.
+                        If APSIM(X) is installed in an alternative location,
+                        set paths manually using 'apsimx_options' or 'apsim_options'.
+                        You can still try as the package will look into the registry (under Windows)
+APSIM(X) not found.
+                        If APSIM(X) is installed in an alternative location,
+                        set paths manually using 'apsimx_options' or 'apsim_options'.
+                        You can still try as the package will look into the registry (under Windows)
+APSIM(X) not found.
+                        If APSIM(X) is installed in an alternative location,
+                        set paths manually using 'apsimx_options' or 'apsim_options'.
+                        You can still try as the package will look into the registry (under Windows)
+
+Attaching package: 'data.table'
+
+
+Attaching package: 'data.table'
+
+
+Attaching package: 'data.table'
+
+The following object is masked from 'package:berryFunctions':
+
+    between
+
+The following object is masked from 'package:berryFunctions':
+
+    between
+
+The following object is masked from 'package:tictoc':
+
+    shift
+
+The following object is masked from 'package:berryFunctions':
+
+    between
+
+The following object is masked from 'package:tictoc':
+
+    shift
+
+The following object is masked from 'package:tictoc':
+
+    shift
+
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:data.table':
+
+    between, first, last
+
+
+Attaching package: 'dplyr'
+
+
+Attaching package: 'dplyr'
+
+The following object is masked from 'package:berryFunctions':
+
+    between
+
+The following objects are masked from 'package:data.table':
+
+    between, first, last
+
+The following objects are masked from 'package:data.table':
+
+    between, first, last
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following object is masked from 'package:berryFunctions':
+
+    between
+
+The following object is masked from 'package:berryFunctions':
+
+    between
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: 'lubridate'
+
+The following objects are masked from 'package:data.table':
+
+    hour, isoweek, mday, minute, month, quarter, second, wday, week,
+    yday, year
+
+The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union
+
+
+Attaching package: 'lubridate'
+
+The following objects are masked from 'package:data.table':
+
+    hour, isoweek, mday, minute, month, quarter, second, wday, week,
+    yday, year
+
+The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union
+
+
+Attaching package: 'lubridate'
+
+The following objects are masked from 'package:data.table':
+
+    hour, isoweek, mday, minute, month, quarter, second, wday, week,
+    yday, year
+
+The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union
+
+
+Attaching package: 'pracma'
+
+
+Attaching package: 'pracma'
+
+
+Attaching package: 'pracma'
+
+The following objects are masked from 'package:magrittr':
+
+    and, mod, or
+
+The following objects are masked from 'package:magrittr':
+
+    and, mod, or
+
+The following objects are masked from 'package:magrittr':
+
+    and, mod, or
+
+The following objects are masked from 'package:tictoc':
+
+    clear, size, tic, toc
+
+The following objects are masked from 'package:tictoc':
+
+    clear, size, tic, toc
+
+The following objects are masked from 'package:tictoc':
+
+    clear, size, tic, toc
+
+Loading required package: R.oo
+Loading required package: R.oo
+Loading required package: R.oo
+Loading required package: R.methodsS3
+Loading required package: R.methodsS3
+Loading required package: R.methodsS3
+R.methodsS3 v1.8.2 (2022-06-13 22:00:14 UTC) successfully loaded. See ?R.methodsS3 for help.
+R.methodsS3 v1.8.2 (2022-06-13 22:00:14 UTC) successfully loaded. See ?R.methodsS3 for help.
+R.methodsS3 v1.8.2 (2022-06-13 22:00:14 UTC) successfully loaded. See ?R.methodsS3 for help.
+R.oo v1.25.0 (2022-06-12 02:20:02 UTC) successfully loaded. See ?R.oo for help.
+R.oo v1.25.0 (2022-06-12 02:20:02 UTC) successfully loaded. See ?R.oo for help.
+R.oo v1.25.0 (2022-06-12 02:20:02 UTC) successfully loaded. See ?R.oo for help.
+
+Attaching package: 'R.oo'
+
+The following object is masked from 'package:R.methodsS3':
+
+    throw
+
+
+Attaching package: 'R.oo'
+
+
+Attaching package: 'R.oo'
+
+The following object is masked from 'package:magrittr':
+
+    equals
+
+The following object is masked from 'package:R.methodsS3':
+
+    throw
+
+The following object is masked from 'package:R.methodsS3':
+
+    throw
+
+The following object is masked from 'package:berryFunctions':
+
+    getName
+
+The following object is masked from 'package:magrittr':
+
+    equals
+
+The following object is masked from 'package:magrittr':
+
+    equals
+
+The following objects are masked from 'package:methods':
+
+    getClasses, getMethods
+
+The following object is masked from 'package:berryFunctions':
+
+    getName
+
+The following object is masked from 'package:berryFunctions':
+
+    getName
+
+The following objects are masked from 'package:base':
+
+    attach, detach, load, save
+
+The following objects are masked from 'package:methods':
+
+    getClasses, getMethods
+
+The following objects are masked from 'package:methods':
+
+    getClasses, getMethods
+
+The following objects are masked from 'package:base':
+
+    attach, detach, load, save
+
+The following objects are masked from 'package:base':
+
+    attach, detach, load, save
+
+R.utils v2.12.3 (2023-11-18 01:00:02 UTC) successfully loaded. See ?R.utils for help.
+R.utils v2.12.3 (2023-11-18 01:00:02 UTC) successfully loaded. See ?R.utils for help.
+R.utils v2.12.3 (2023-11-18 01:00:02 UTC) successfully loaded. See ?R.utils for help.
+
+Attaching package: 'R.utils'
+
+The following object is masked from 'package:magrittr':
+
+    extract
+
+The following object is masked from 'package:utils':
+
+    timestamp
+
+
+Attaching package: 'R.utils'
+
+
+Attaching package: 'R.utils'
+
+The following objects are masked from 'package:base':
+
+    cat, commandArgs, getOption, isOpen, nullfile, parse, warnings
+
+The following object is masked from 'package:magrittr':
+
+    extract
+
+The following object is masked from 'package:magrittr':
+
+    extract
+
+The following object is masked from 'package:utils':
+
+    timestamp
+
+The following object is masked from 'package:utils':
+
+    timestamp
+
+The following objects are masked from 'package:base':
+
+    cat, commandArgs, getOption, isOpen, nullfile, parse, warnings
+
+The following objects are masked from 'package:base':
+
+    cat, commandArgs, getOption, isOpen, nullfile, parse, warnings
+
+Linking to GEOS 3.12.0, GDAL 3.7.0, PROJ 9.2.1; sf_use_s2() is TRUE
+Linking to GEOS 3.12.0, GDAL 3.7.0, PROJ 9.2.1; sf_use_s2() is TRUE
+Linking to GEOS 3.12.0, GDAL 3.7.0, PROJ 9.2.1; sf_use_s2() is TRUE
+The legacy packages maptools, rgdal, and rgeos, underpinning this package
+will retire shortly. Please refer to R-spatial evolution reports on
+https://r-spatial.org/r/2023/05/15/evolution4.html for details.
+This package is now running under evolution status 0 
+The legacy packages maptools, rgdal, and rgeos, underpinning this package
+will retire shortly. Please refer to R-spatial evolution reports on
+https://r-spatial.org/r/2023/05/15/evolution4.html for details.
+This package is now running under evolution status 0 
+The legacy packages maptools, rgdal, and rgeos, underpinning this package
+will retire shortly. Please refer to R-spatial evolution reports on
+https://r-spatial.org/r/2023/05/15/evolution4.html for details.
+This package is now running under evolution status 0 
+
+Attaching package: 'tidyr'
+
+The following object is masked from 'package:R.utils':
+
+    extract
+
+
+Attaching package: 'tidyr'
+
+
+Attaching package: 'tidyr'
+
+The following object is masked from 'package:magrittr':
+
+    extract
+
+The following object is masked from 'package:R.utils':
+
+    extract
+
+The following object is masked from 'package:R.utils':
+
+    extract
+
+The following object is masked from 'package:magrittr':
+
+    extract
+
+The following object is masked from 'package:magrittr':
+
+    extract
+
+-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+v forcats 1.0.0     v readr   2.1.4
+v purrr   1.0.1     v tibble  3.2.1
+-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+v forcats 1.0.0     v readr   2.1.4
+v purrr   1.0.1     v tibble  3.2.1
+-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+v forcats 1.0.0     v readr   2.1.4
+v purrr   1.0.1     v tibble  3.2.1
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x purrr::accumulate()  masks foreach::accumulate()
+x pracma::and()        masks magrittr::and()
+x dplyr::between()     masks data.table::between(), berryFunctions::between()
+x purrr::cross()       masks pracma::cross()
+x R.oo::equals()       masks magrittr::equals()
+x tidyr::extract()     masks R.utils::extract(), magrittr::extract()
+x dplyr::filter()      masks stats::filter()
+x dplyr::first()       masks data.table::first()
+x lubridate::hour()    masks data.table::hour()
+x lubridate::isoweek() masks data.table::isoweek()
+x dplyr::lag()         masks stats::lag()
+x dplyr::last()        masks data.table::last()
+x lubridate::mday()    masks data.table::mday()
+x lubridate::minute()  masks data.table::minute()
+x pracma::mod()        masks magrittr::mod()
+x lubridate::month()   masks data.table::month()
+x pracma::or()         masks magrittr::or()
+x lubridate::quarter() masks data.table::quarter()
+x lubridate::second()  masks data.table::second()
+x purrr::set_names()   masks magrittr::set_names()
+x purrr::transpose()   masks data.table::transpose()
+x lubridate::wday()    masks data.table::wday()
+x lubridate::week()    masks data.table::week()
+x purrr::when()        masks foreach::when()
+x lubridate::yday()    masks data.table::yday()
+x lubridate::year()    masks data.table::year()
+i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x purrr::accumulate()  masks foreach::accumulate()
+x pracma::and()        masks magrittr::and()
+x dplyr::between()     masks data.table::between(), berryFunctions::between()
+x purrr::cross()       masks pracma::cross()
+x R.oo::equals()       masks magrittr::equals()
+x tidyr::extract()     masks R.utils::extract(), magrittr::extract()
+x dplyr::filter()      masks stats::filter()
+x dplyr::first()       masks data.table::first()
+x lubridate::hour()    masks data.table::hour()
+x lubridate::isoweek() masks data.table::isoweek()
+x dplyr::lag()         masks stats::lag()
+x dplyr::last()        masks data.table::last()
+x lubridate::mday()    masks data.table::mday()
+x lubridate::minute()  masks data.table::minute()
+x pracma::mod()        masks magrittr::mod()
+x lubridate::month()   masks data.table::month()
+x pracma::or()         masks magrittr::or()
+x lubridate::quarter() masks data.table::quarter()
+x lubridate::second()  masks data.table::second()
+x purrr::set_names()   masks magrittr::set_names()
+x purrr::transpose()   masks data.table::transpose()
+x lubridate::wday()    masks data.table::wday()
+x lubridate::week()    masks data.table::week()
+x purrr::when()        masks foreach::when()
+x lubridate::yday()    masks data.table::yday()
+x lubridate::year()    masks data.table::year()
+i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x purrr::accumulate()  masks foreach::accumulate()
+x pracma::and()        masks magrittr::and()
+x dplyr::between()     masks data.table::between(), berryFunctions::between()
+x purrr::cross()       masks pracma::cross()
+x R.oo::equals()       masks magrittr::equals()
+x tidyr::extract()     masks R.utils::extract(), magrittr::extract()
+x dplyr::filter()      masks stats::filter()
+x dplyr::first()       masks data.table::first()
+x lubridate::hour()    masks data.table::hour()
+x lubridate::isoweek() masks data.table::isoweek()
+x dplyr::lag()         masks stats::lag()
+x dplyr::last()        masks data.table::last()
+x lubridate::mday()    masks data.table::mday()
+x lubridate::minute()  masks data.table::minute()
+x pracma::mod()        masks magrittr::mod()
+x lubridate::month()   masks data.table::month()
+x pracma::or()         masks magrittr::or()
+x lubridate::quarter() masks data.table::quarter()
+x lubridate::second()  masks data.table::second()
+x purrr::set_names()   masks magrittr::set_names()
+x purrr::transpose()   masks data.table::transpose()
+x lubridate::wday()    masks data.table::wday()
+x lubridate::week()    masks data.table::week()
+x purrr::when()        masks foreach::when()
+x lubridate::yday()    masks data.table::yday()
+x lubridate::year()    masks data.table::year()
+i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+[1][1][1] "county_seq is: 1" "county_seq is: 2" "county_seq is: 3"
+
+
+[1][1] "************************************"[1] "************************************"
+ "************************************"
+[1]
+[1] "*****Using NCAR *********"[1] "*****Using NCAR *********"
+ "*****Using NCAR *********"
+[1]
+[1] "***** SCRATCH SPACE *********"[1] "***** SCRATCH SPACE *********"
+ "***** SCRATCH SPACE *********"
+
+[1] "************************************"
+[1] "county geoid is: 53069"
+[1] "county name is: Wahkiakum County"
+[1] "state name is: Washington"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1][1] "/glade/derecho/scratch/apdixon/national_gwp" "************************************"
+
+[1][1] "************************************" "county geoid is: 31039"[1]
+
+ "************************************"[1][1]
+ "latitude is: 46.2911584785049" "county name is: Cuming County"[1]
+
+ "county geoid is: 35011"[1][1]
+ "longitude is: -123.433347414895" "state name is: Nebraska"[1]
+
+ "county name is: De Baca County"[1][1]
+ "elevation_m is: 186" "************************************"[1]
+
+ "state name is: New Mexico"[1]
+ "************************************"[1]
+ "************************************"[1]
+ "working directory is: "[1]
+ "************************************"[1]
+ "/glade/derecho/scratch/apdixon/national_gwp"[1]
+[1] "working directory is: "[1] "Copying over KBS 'Daycent model' files --"
+ "************************************"
+[1]
+ "/glade/derecho/scratch/apdixon/national_gwp"[1]
+ "latitude is: 41.9163237828574"[1]
+ "************************************"[1]
+ "longitude is: -96.7873997260689"[1]
+ "latitude is: 34.3422521001445"[1]
+ "elevation_m is: 435"[1]
+ "longitude is: -104.412085223527"
+[1] "elevation_m is: 1352"
+[1] "Copying over KBS 'Daycent model' files --"
+[1] "Copying over KBS 'Daycent model' files --"
+[1][1][1] "************************************" "************************************" "************************************"
+
+
+[1][1][1] "####### New climate scenario #######" "####### New climate scenario #######" "####### New climate scenario #######"
+
+
+[1][1][1] "************************************" "************************************" "************************************"
+
+
+[1][1][1] "climate scenario: 1" "climate scenario: 1" "climate scenario: 1"
+
+
+[1][1] "************************************"[1] "************************************"
+ "************************************"
+[1]
+[1] "climate scenario: 1"[1] "climate scenario: 1"
+ "climate scenario: 1"
+[1]
+[1] "mgmt scenario: 1"[1] "mgmt scenario: 1"
+ "mgmt scenario: 1"
+[1]
+[1] "mgmt option: 1"[1] "mgmt option: 1"
+ "mgmt option: 1"
+
+[1][1][1] "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R"
+
+
+[1][1] "Starting 0_Observations_and_constants_County.R"[1] "Starting 0_Observations_and_constants_County.R"
+ "Starting 0_Observations_and_constants_County.R"
+
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+Called from:     classes)) tryInvokeRestart("muffleMessage"))
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1][1] "*********climate_data_path is /glade/work/apdixon/climate **************" "*********climate_data_path is /glade/work/apdixon/climate **************"
+
+[1][1][1] "Starting p_Edit_calib_file" "Starting p_Edit_calib_file" "Starting p_Edit_calib_file"
+
+
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -21.31 and 40.23"
+[1] "min max precip is: 0 and 6.46"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -14.06 and 40.18"
+[1] "min max precip is: 0 and 7.5"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -25.74 and 41.31"
+[1] "min max precip is: 0 and 11.16"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -11.84 and 41.95"
+[1] "min max precip is: 0 and 7.27"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -4.42 and 35.57"
+[1] "min max precip is: 0 and 12.17"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -23.21 and 48"
+[1] "min max precip is: 0 and 11.51"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -7.59 and 41.99"
+[1] "min max precip is: 0 and 10.53"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -7.81 and 37.69"
+[1] "min max precip is: 0 and 11.7"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -5.41 and 38.01"
+[1] "min max precip is: 0 and 12.38"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "getting soil data for lat 41.9163237828574 and lon -96.7873997260689 at GEOID_31039_Nebraska"
+[1] "getting soil data for lat 34.3422521001445 and lon -104.412085223527 at GEOID_35011_New_Mexico"
+[1] "getting soil data for lat 46.2911584785049 and lon -123.433347414895 at GEOID_53069_Washington"
+[1][1] "Starting 3_Create_management_input_files-setup_County.R" "Starting 3_Create_management_input_files-setup_County.R"
+
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1][1] "Starting Daycent_run_controller.R" "Starting Daycent_run_controller.R"
+
+[1][1] "Starting run_Daycent_setup.R" "Starting run_Daycent_setup.R"
+
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting run_Daycent_eq.R"
+[1] "**********Daycent equilibrium simulation*********"
+[1] "Starting run_Daycent_eq.R"
+[1] "**********Daycent equilibrium simulation*********"
+[1] "Starting run_Daycent_eq.R"
+[1] "**********Daycent equilibrium simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+elapsed time is 293.902000 seconds 
+[1] "Run time is 4.9 minutes, 0.0816666666666667 hours."
+************************************
+DELETE INPUT FILES???
+Deleting input files
+************************************[1] "county_seq is: 4"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 31109"
+[1] "county name is: Lancaster County"
+[1] "state name is: Nebraska"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 40.7839032640555"
+[1] "longitude is: -96.6877572249372"
+[1] "elevation_m is: 392"
+[1] "Copying over KBS 'Daycent model' files --"
+elapsed time is 307.115000 seconds 
+[1] "Run time is 5.1 minutes, 0.085 hours."
+************************************
+DELETE INPUT FILES???
+Deleting input files
+************************************[1] "county_seq is: 5"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 31129"
+[1] "county name is: Nuckolls County"
+[1] "state name is: Nebraska"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 40.1763041963168"
+[1] "longitude is: -98.0471852004944"
+[1] "elevation_m is: 522"
+[1] "Copying over KBS 'Daycent model' files --"
+elapsed time is 310.538000 seconds 
+[1] "Run time is 5.2 minutes, 0.0866666666666667 hours."
+************************************
+DELETE INPUT FILES???
+Deleting input files
+************************************[1] "county_seq is: 6"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 46099"
+[1] "county name is: Minnehaha County"
+[1] "state name is: South Dakota"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 43.6741760135642"
+[1] "longitude is: -96.7914376149155"
+[1] "elevation_m is: 468"
+[1] "Copying over KBS 'Daycent model' files --"
+[1][1][1] "************************************" "************************************" "************************************"
+
+
+[1][1][1] "####### New climate scenario #######" "####### New climate scenario #######" "####### New climate scenario #######"
+
+
+[1][1][1] "************************************" "************************************" "************************************"
+
+
+[1][1][1] "climate scenario: 1" "climate scenario: 1" "climate scenario: 1"
+
+
+[1][1] "************************************"[1] "************************************"
+ "************************************"
+[1]
+[1] "climate scenario: 1"[1] "climate scenario: 1"
+ "climate scenario: 1"
+[1]
+[1] "mgmt scenario: 1"[1] "mgmt scenario: 1"
+ "mgmt scenario: 1"
+[1]
+[1] "mgmt option: 1"[1] "mgmt option: 1"
+ "mgmt option: 1"
+
+[1][1][1] "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R"
+
+
+[1][1][1] "Starting 0_Observations_and_constants_County.R" "Starting 0_Observations_and_constants_County.R" "Starting 0_Observations_and_constants_County.R"
+
+
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+Called from:     classes)) tryInvokeRestart("muffleMessage"))
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+    classes)) tryInvokeRestart("muffleMessage"))
+evaluation # 1:
+evaluation # 1:
+$county_seq
+$county_seq
+[1][1] 1 1
+
+
+
+[1][1] "county_seq is: 1" "county_seq is: 1"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "*****Using NCAR *********" "*****Using NCAR *********"
+
+[1][1] "***** SCRATCH SPACE *********" "***** SCRATCH SPACE *********"
+
+[1] "************************************"
+[1][1] "************************************" "county geoid is: 31039"
+
+[1][1] "county geoid is: 31039" "county name is: Cuming County"
+
+[1][1] "county name is: Cuming County" "state name is: Nebraska"
+
+[1][1] "state name is: Nebraska" "************************************"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "************************************" "working directory is: "
+
+[1][1] "working directory is: " "/glade/derecho/scratch/apdixon/national_gwp"
+
+[1][1] "/glade/derecho/scratch/apdixon/national_gwp" "************************************"
+
+[1][1] "************************************" "latitude is: 41.9163237828574"
+
+[1][1] "latitude is: 41.9163237828574" "longitude is: -96.7873997260689"
+
+[1][1] "longitude is: -96.7873997260689" "elevation_m is: 435"
+
+[1] "elevation_m is: 435"
+[1] "Copying over KBS 'Daycent model' files --"
+[1] "Copying over KBS 'Daycent model' files --"
+evaluation # 1:
+$county_seq
+[1] 1
+
+[1] "county_seq is: 1"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 31039"
+[1] "county name is: Cuming County"
+[1] "state name is: Nebraska"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 41.9163237828574"
+[1] "longitude is: -96.7873997260689"
+[1] "elevation_m is: 435"
+[1] "Copying over KBS 'Daycent model' files --"
+[1][1][1] "************************************" "************************************" "************************************"
+
+
+[1][1][1] "####### New climate scenario #######" "####### New climate scenario #######" "####### New climate scenario #######"
+
+
+[1][1][1] "************************************" "************************************" "************************************"
+
+
+[1][1][1] "climate scenario: 1" "climate scenario: 1" "climate scenario: 1"
+
+
+[1][1] "************************************"[1] "************************************"
+ "************************************"
+[1]
+[1] "climate scenario: 1"[1] "climate scenario: 1"
+ "climate scenario: 1"
+[1]
+[1] "mgmt scenario: 1"[1] "mgmt scenario: 1"
+ "mgmt scenario: 1"
+[1]
+[1] "mgmt option: 1"[1] "mgmt option: 1"
+ "mgmt option: 1"
+
+[1][1][1] "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R"
+
+
+[1][1][1] "Starting 0_Observations_and_constants_County.R" "Starting 0_Observations_and_constants_County.R" "Starting 0_Observations_and_constants_County.R"
+
+
+Called from: Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"[1]
+ "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1][1] "Starting p_Edit_calib_file" "Starting p_Edit_calib_file"
+
+[1] "Starting p_Edit_calib_file"
+[1][1][1] "Starting 1_Create_weather_input_files-Daycent4.R" "Starting 1_Create_weather_input_files-Daycent4.R" "Starting 1_Create_weather_input_files-Daycent4.R"
+
+
+[1][1][1] "**********DAYCENT_basic_eq**********" "**********DAYCENT_basic_eq**********" "**********DAYCENT_basic_eq**********"
+
+
+[1][1][1] "min max temp is: -21.31 and 40.23" "min max temp is: -21.31 and 40.23" "min max temp is: -21.31 and 40.23"
+
+
+[1][1][1] "min max precip is: 0 and 6.46" "min max precip is: 0 and 6.46" "min max precip is: 0 and 6.46"
+
+
+[1][1][1] "min and max year are 1951, 1977" "min and max year are 1951, 1977" "min and max year are 1951, 1977"
+
+
+[1][1][1] "number of rows are: 9862" "number of rows are: 9862" "number of rows are: 9862"
+
+
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -25.74 and 41.31"
+[1] "min max precip is: 0 and 11.16"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic**********"
+[1][1] "**********DAYCENT_basic**********" "min max temp is: -25.74 and 41.31"
+
+[1][1] "min max temp is: -25.74 and 41.31" "min max precip is: 0 and 11.16"
+
+[1][1] "min max precip is: 0 and 11.16" "min and max year are 1978, 2021"
+
+[1][1] "min and max year are 1978, 2021" "number of rows are: 16436"
+
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -23.21 and 48"
+[1] "min max precip is: 0 and 11.51"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "**********DAYCENT_basic_fut**********"[1]
+ "**********DAYCENT_basic_fut**********"[1]
+ "min max temp is: -23.21 and 48"[1]
+ "min max temp is: -23.21 and 48"[1]
+ "min max precip is: 0 and 11.51"[1]
+ "min max precip is: 0 and 11.51"[1]
+ "min and max year are 2022, 2100"[1]
+ "min and max year are 2022, 2100"[1]
+ "number of rows are: 28854"[1]
+ "number of rows are: 28854"
+[1] "getting soil data for lat 41.9163237828574 and lon -96.7873997260689 at GEOID_31039_Nebraska"
+[1] "getting soil data for lat 41.9163237828574 and lon -96.7873997260689 at GEOID_31039_Nebraska"
+[1] "getting soil data for lat 41.9163237828574 and lon -96.7873997260689 at GEOID_31039_Nebraska"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1][1] "Starting 3_Create_management_input_files-setup_County.R" "Starting 3_Create_management_input_files-setup_County.R"
+
+[1][1][1] "Starting 3_Create_management_input_files-Daycent4.R" "Starting 3_Create_management_input_files-Daycent4.R" "Starting 3_Create_management_input_files-Daycent4.R"
+
+
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting run_Daycent_eq.R"[1]
+ "Starting run_Daycent_eq.R"[1][1]
+ "Starting run_Daycent_eq.R" "**********Daycent equilibrium simulation*********"[1]
+
+ "**********Daycent equilibrium simulation*********"[1]
+ "**********Daycent equilibrium simulation*********"
+[1][1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+
+[1][1][1] "**********Daycent base simulation*********" "**********Daycent base simulation*********" "**********Daycent base simulation*********"
+
+
+[1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+[1][1] "**********Daycent experimental period simulation*********" "**********Daycent experimental period simulation*********"
+
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1][1][1] "Starting 9_Results_Daycent-setup_County.R" "Starting 9_Results_Daycent-setup_County.R" "Starting 9_Results_Daycent-setup_County.R"
+
+
+result of evaluating expression:
+result of evaluating expression:
+<<simpleErrorsimpleError: : 'Daycent/GEOID_31039_Nebraska/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').'Daycent/GEOID_31039_Nebraska/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').>
+>
+got results for task 1
+got results for task 1
+accumulate got an error result
+accumulate got an error result
+numValues: 1, numResults: 1, stopped: FALSE
+numValues: 1, numResults: 1, stopped: FALSE
+returning status FALSE
+returning status FALSE
+evaluation # 2:
+evaluation # 2:
+$county_seq
+$county_seq
+[1][1] 2 2
+
+
+
+[1][1] "county_seq is: 2" "county_seq is: 2"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "*****Using NCAR *********" "*****Using NCAR *********"
+
+[1][1] "***** SCRATCH SPACE *********" "***** SCRATCH SPACE *********"
+
+result of evaluating expression:
+<simpleError: 'Daycent/GEOID_31039_Nebraska/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').>
+got results for task 1
+accumulate got an error result
+numValues: 1, numResults: 1, stopped: FALSE
+returning status FALSE
+evaluation # 2:
+$county_seq
+[1] 2
+
+[1] "county_seq is: 2"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 53069"
+[1][1][1] "************************************" "************************************" "county name is: Wahkiakum County"
+
+
+[1][1][1] "county geoid is: 53069" "county geoid is: 53069" "state name is: Washington"
+
+
+[1][1][1] "county name is: Wahkiakum County" "county name is: Wahkiakum County" "************************************"
+
+
+[1][1][1] "state name is: Washington" "state name is: Washington" "************************************"
+
+
+[1][1][1] "************************************" "************************************" "working directory is: "
+
+
+[1][1][1] "************************************" "************************************" "/glade/derecho/scratch/apdixon/national_gwp"
+
+
+[1][1][1] "working directory is: " "working directory is: " "************************************"
+
+
+[1][1][1] "/glade/derecho/scratch/apdixon/national_gwp" "/glade/derecho/scratch/apdixon/national_gwp" "latitude is: 46.2911584785049"
+
+
+[1][1][1] "************************************" "************************************" "longitude is: -123.433347414895"
+
+
+[1][1][1] "latitude is: 46.2911584785049" "latitude is: 46.2911584785049" "elevation_m is: 186"
+
+
+[1][1] "longitude is: -123.433347414895" "longitude is: -123.433347414895"
+
+[1][1][1] "elevation_m is: 186" "elevation_m is: 186" "Copying over KBS 'Daycent model' files --"
+
+
+[1][1] "Copying over KBS 'Daycent model' files --" "Copying over KBS 'Daycent model' files --"
+
+[1] "************************************"
+[1] "####### New climate scenario #######"
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "mgmt scenario: 1"
+[1] "mgmt option: 1"
+[1] "Starting 0_Controller2_County.R"
+[1] "Starting 0_Observations_and_constants_County.R"
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1] "************************************"
+[1] "####### New climate scenario #######"
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "mgmt scenario: 1"
+[1] "mgmt option: 1"
+[1] "Starting 0_Controller2_County.R"
+[1] "Starting 0_Observations_and_constants_County.R"
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1] "************************************"
+[1] "####### New climate scenario #######"
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "mgmt scenario: 1"
+[1] "mgmt option: 1"
+[1] "Starting 0_Controller2_County.R"
+[1] "Starting 0_Observations_and_constants_County.R"
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1][1][1] "Starting p_Edit_calib_file" "Starting p_Edit_calib_file" "Starting p_Edit_calib_file"
+
+
+[1][1][1] "Starting 1_Create_weather_input_files-Daycent4.R" "Starting 1_Create_weather_input_files-Daycent4.R" "Starting 1_Create_weather_input_files-Daycent4.R"
+
+
+[1][1][1] "**********DAYCENT_basic_eq**********" "**********DAYCENT_basic_eq**********" "**********DAYCENT_basic_eq**********"
+
+
+[1][1][1] "min max temp is: -4.42 and 35.57" "min max temp is: -4.42 and 35.57" "min max temp is: -4.42 and 35.57"
+
+
+[1][1][1] "min max precip is: 0 and 12.17" "min max precip is: 0 and 12.17" "min max precip is: 0 and 12.17"
+
+
+[1][1][1] "min and max year are 1951, 1977" "min and max year are 1951, 1977" "min and max year are 1951, 1977"
+
+
+[1][1][1] "number of rows are: 9862" "number of rows are: 9862" "number of rows are: 9862"
+
+
+[1][1][1] "**********DAYCENT_basic**********" "**********DAYCENT_basic**********" "**********DAYCENT_basic**********"
+
+
+[1][1][1] "min max temp is: -7.81 and 37.69" "min max temp is: -7.81 and 37.69" "min max temp is: -7.81 and 37.69"
+
+
+[1][1][1] "min max precip is: 0 and 11.7" "min max precip is: 0 and 11.7" "min max precip is: 0 and 11.7"
+
+
+[1][1][1] "min and max year are 1978, 2021" "min and max year are 1978, 2021" "min and max year are 1978, 2021"
+
+
+[1][1][1] "number of rows are: 16436" "number of rows are: 16436" "number of rows are: 16436"
+
+
+[1] "**********DAYCENT_basic_fut**********"
+[1][1][1] "min max temp is: -5.41 and 38.01" "**********DAYCENT_basic_fut**********" "**********DAYCENT_basic_fut**********"
+
+
+[1][1][1] "min max precip is: 0 and 12.38" "min max temp is: -5.41 and 38.01" "min max temp is: -5.41 and 38.01"
+
+
+[1][1][1] "min and max year are 2022, 2100" "min max precip is: 0 and 12.38" "min max precip is: 0 and 12.38"
+
+
+[1][1][1] "number of rows are: 28854" "min and max year are 2022, 2100" "min and max year are 2022, 2100"
+
+
+[1][1] "number of rows are: 28854" "number of rows are: 28854"
+
+[1][1][1] "getting soil data for lat 46.2911584785049 and lon -123.433347414895 at GEOID_53069_Washington" "getting soil data for lat 46.2911584785049 and lon -123.433347414895 at GEOID_53069_Washington" "getting soil data for lat 46.2911584785049 and lon -123.433347414895 at GEOID_53069_Washington"
+
+
+[1][1][1] "Starting 3_Create_management_input_files-setup_County.R" "Starting 3_Create_management_input_files-setup_County.R" "Starting 3_Create_management_input_files-setup_County.R"
+
+
+[1][1] "Starting 3_Create_management_input_files-Daycent4.R" "Starting 3_Create_management_input_files-Daycent4.R"
+
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting run_Daycent_eq.R"[1]
+[1] "Starting run_Daycent_eq.R"[1] "Starting run_Daycent_eq.R"
+ "**********Daycent equilibrium simulation*********"
+[1]
+[1] "**********Daycent equilibrium simulation*********" "**********Daycent equilibrium simulation*********"
+
+[1][1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+
+[1][1][1] "**********Daycent base simulation*********" "**********Daycent base simulation*********" "**********Daycent base simulation*********"
+
+
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+[1][1] "**********Daycent experimental period simulation*********" "**********Daycent experimental period simulation*********"
+
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+[1][1] "**********Daycent future simulation*********" "**********Daycent future simulation*********"
+
+[1] "Starting 9_Results_Daycent-setup_County.R"
+result of evaluating expression:
+<simpleError: 'Daycent/GEOID_53069_Washington/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').>
+got results for task 2
+numValues: 2, numResults: 2, stopped: FALSE
+returning status FALSE
+evaluation # 3:
+$county_seq
+[1] 3
+
+[1] "county_seq is: 3"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+[1] "************************************"
+[1]result of evaluating expression:
+ "county geoid is: 35011"<
+simpleError[1]:  "county name is: De Baca County"'Daycent/GEOID_53069_Washington/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').
+>
+[1]got results for task 2
+ "state name is: New Mexico"numValues: 2, numResults: 2, stopped: FALSE
+
+returning status FALSE
+[1]evaluation # 3:
+ "************************************"$county_seq
+
+[1][1] 3 "************************************"
+
+
+[1][1] "working directory is: " "county_seq is: 3"
+
+[1][1] "/glade/derecho/scratch/apdixon/national_gwp" "************************************"
+
+[1][1] "************************************" "*****Using NCAR *********"
+
+result of evaluating expression:
+[1][1]< "latitude is: 34.3422521001445" "***** SCRATCH SPACE *********"simpleError
+
+: [1]'Daycent/GEOID_53069_Washington/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp'). "longitude is: -104.412085223527">
+
+got results for task 2
+[1]numValues: 2, numResults: 2, stopped: FALSE
+ "elevation_m is: 1352"returning status FALSE
+
+evaluation # 3:
+$county_seq
+[1] 3
+
+[1][1] "Copying over KBS 'Daycent model' files --" "county_seq is: 3"
+
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 35011"
+[1] "county name is: De Baca County"
+[1] "state name is: New Mexico"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1][1] "************************************" "************************************"
+
+[1][1] "county geoid is: 35011" "latitude is: 34.3422521001445"
+
+[1][1] "county name is: De Baca County" "longitude is: -104.412085223527"
+
+[1][1] "state name is: New Mexico" "elevation_m is: 1352"
+
+[1] "************************************"
+[1] "************************************"[1]
+ "Copying over KBS 'Daycent model' files --"[1]
+ "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 34.3422521001445"
+[1] "longitude is: -104.412085223527"
+[1] "elevation_m is: 1352"
+[1] "Copying over KBS 'Daycent model' files --"
+[1] "************************************"
+[1] "####### New climate scenario #######"
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "mgmt scenario: 1"
+[1] "mgmt option: 1"
+[1] "Starting 0_Controller2_County.R"
+[1] "Starting 0_Observations_and_constants_County.R"
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1][1] "************************************" "************************************"
+
+[1][1] "####### New climate scenario #######" "####### New climate scenario #######"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "climate scenario: 1" "climate scenario: 1"
+
+[1] "************************************"[1]
+ "************************************"[1]
+ "climate scenario: 1"[1]
+ "climate scenario: 1"[1]
+ "mgmt scenario: 1"[1]
+ "mgmt scenario: 1"[1]
+ "mgmt option: 1"[1]
+ "mgmt option: 1"
+[1] "Starting 0_Controller2_County.R"[1]
+ "Starting 0_Controller2_County.R"
+[1] "Starting 0_Observations_and_constants_County.R"[1]
+ "Starting 0_Observations_and_constants_County.R"
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+Called from:     classes)) tryInvokeRestart("muffleMessage"))
+withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+[1][1] "*********climate_data_path is /glade/work/apdixon/climate **************" "*********climate_data_path is /glade/work/apdixon/climate **************"
+
+[1] "Starting p_Edit_calib_file"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -14.06 and 40.18"
+[1] "min max precip is: 0 and 7.5"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -11.84 and 41.95"
+[1] "min max precip is: 0 and 7.27"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -7.59 and 41.99"
+[1] "min max precip is: 0 and 10.53"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "getting soil data for lat 34.3422521001445 and lon -104.412085223527 at GEOID_35011_New_Mexico"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -14.06 and 40.18"
+[1] "min max precip is: 0 and 7.5"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -14.06 and 40.18"
+[1] "min max precip is: 0 and 7.5"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -11.84 and 41.95"
+[1] "min max precip is: 0 and 7.27"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -11.84 and 41.95"
+[1] "min max precip is: 0 and 7.27"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -7.59 and 41.99"
+[1] "min max precip is: 0 and 10.53"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -7.59 and 41.99"
+[1] "min max precip is: 0 and 10.53"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "getting soil data for lat 34.3422521001445 and lon -104.412085223527 at GEOID_35011_New_Mexico"
+[1] "getting soil data for lat 34.3422521001445 and lon -104.412085223527 at GEOID_35011_New_Mexico"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting run_Daycent_eq.R"
+[1][1] "Starting run_Daycent_eq.R" "**********Daycent equilibrium simulation*********"
+
+[1] "**********Daycent equilibrium simulation*********"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting run_Daycent_eq.R"
+[1] "**********Daycent equilibrium simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+elapsed time is 231.513000 seconds 
+[1] "Run time is 3.9 minutes, 0.065 hours."
+************************************
+DELETE INPUT FILES???
+Deleting input files
+result of evaluating expression:
+<simpleError in file(file, "rt"): cannot open the connection>
+got results for task 3
+numValues: 3, numResults: 3, stopped: FALSE
+returning status FALSE
+evaluation # 4:
+$county_seq
+[1] 4
+
+[1] "county_seq is: 4"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 31109"
+[1] "county name is: Lancaster County"
+[1] "state name is: Nebraska"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 40.7839032640555"
+[1] "longitude is: -96.6877572249372"
+[1] "elevation_m is: 392"
+[1] "Copying over KBS 'Daycent model' files --"
+[1] "Site daycent folder already exists. Skipping copy."
+[1] "************************************"
+[1] "####### New climate scenario #######"
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "mgmt scenario: 1"
+[1] "mgmt option: 1"
+[1] "Starting 0_Controller2_County.R"
+[1] "Starting 0_Observations_and_constants_County.R"
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+closing the cluster
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+elapsed time is 232.311000 seconds 
+[1] "Run time is 3.9 minutes, 0.065 hours."
+************************************
+DELETE INPUT FILES???
+Deleting input files
+************************************result of evaluating expression:
+************************************[1]result of evaluating expression:
+ 1[1]
+ 1got results for task 3
+
+numValues: 3, numResults: 3, stopped: FALSE
+got results for task 3
+returning status FALSE
+numValues: 3, numResults: 3, stopped: FALSE
+evaluation # 4:
+returning status FALSE
+$county_seq
+evaluation # 4:
+[1]$county_seq
+ 4[1]
+ 4
+
+[1]
+ "county_seq is: 4"[1]
+ "county_seq is: 4"[1]
+ "************************************"[1]
+ "************************************"[1]
+ "*****Using NCAR *********"[1]
+ "*****Using NCAR *********"[1]
+ "***** SCRATCH SPACE *********"[1]
+ "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 31109"[1]
+ "************************************"[1]
+ "county name is: Lancaster County"[1]
+ "county geoid is: 31109"[1]
+ "state name is: Nebraska"[1]
+ "county name is: Lancaster County"[1]
+ "************************************"[1]
+ "state name is: Nebraska"[1]
+ "************************************"[1]
+ "************************************"[1]
+ "working directory is: "[1]
+ "************************************"[1]
+ "/glade/derecho/scratch/apdixon/national_gwp"[1]
+ "working directory is: "[1]
+ "************************************"[1]
+ "/glade/derecho/scratch/apdixon/national_gwp"[1]
+ "latitude is: 40.7839032640555"[1]
+ "************************************"[1]
+ "longitude is: -96.6877572249372"[1]
+ "latitude is: 40.7839032640555"[1]
+ "elevation_m is: 392"[1]
+ "longitude is: -96.6877572249372"
+[1] "elevation_m is: 392"
+[1] "Copying over KBS 'Daycent model' files --"
+[1] "Copying over KBS 'Daycent model' files --"
+[1] "Site daycent folder already exists. Skipping copy."
+[1][1] "************************************" "Site daycent folder already exists. Skipping copy."
+
+[1][1] "####### New climate scenario #######" "************************************"
+
+[1][1] "************************************" "####### New climate scenario #######"
+
+[1][1] "climate scenario: 1" "************************************"
+
+[1] "climate scenario: 1"[1]
+ "************************************"
+[1][1] "climate scenario: 1" "************************************"
+
+[1][1] "mgmt scenario: 1" "climate scenario: 1"
+
+[1][1] "mgmt option: 1" "mgmt scenario: 1"
+
+[1] "mgmt option: 1"[1]
+ "Starting 0_Controller2_County.R"
+[1] "Starting 0_Controller2_County.R"
+[1] "Starting 0_Observations_and_constants_County.R"
+[1] "Starting 0_Observations_and_constants_County.R"
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+closing the cluster
+closing the cluster
+[1][1] "*********climate_data_path is /glade/work/apdixon/climate **************" "*********climate_data_path is /glade/work/apdixon/climate **************"
+
+[1] "Starting p_Edit_calib_file"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -16.99 and 41.23"
+[1] "min max precip is: 0 and 10.92"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -16.99 and 41.23"
+[1] "min max precip is: 0 and 10.92"
+[1] "min and max year are 1951, 1977"
+[1][1] "Starting 1_Create_weather_input_files-Daycent4.R" "number of rows are: 9862"
+
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -23.15 and 41.45"
+[1] "min max precip is: 0 and 9.81"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -16.99 and 41.23"
+[1] "min max precip is: 0 and 10.92"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -23.28 and 48.96"
+[1] "min max precip is: 0 and 12.7"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -23.15 and 41.45"
+[1] "min max precip is: 0 and 9.81"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -23.15 and 41.45"
+[1] "min max precip is: 0 and 9.81"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -23.28 and 48.96"
+[1] "min max precip is: 0 and 12.7"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "getting soil data for lat 40.7839032640555 and lon -96.6877572249372 at GEOID_31109_Nebraska"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -23.28 and 48.96"
+[1] "min max precip is: 0 and 12.7"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "getting soil data for lat 40.7839032640555 and lon -96.6877572249372 at GEOID_31109_Nebraska"
+[1] "getting soil data for lat 40.7839032640555 and lon -96.6877572249372 at GEOID_31109_Nebraska"
+  hzname hzdept.r hzdepb.r hzthk.r sandtotal.r silttotal.r claytotal.r om.r
+7     H1        0      152      NA          NA          NA          NA   NA
+  partdensity ksat.r awc.r wthirdbar.r wfifteenbar.r wsatiated.r ph1to1h2o.r
+7          NA  1.411     0          NA            NA          NA          NA
+     cokey    chkey hzdepa.r Depth Thickness DUL LL15 SAT       KS PH BD AirDry
+7 24386080 72480148       76    76       152  NA    NA hzname  NA hzdept.r 121.9104 hzdepb.r NA hzthk.r NA sandtotal.r     NA silttotal.r
+ claytotal.r  om.r Carbon
+7 ParticleSizeClay     H1 ParticleSizeSilt        0 ParticleSizeSand      152
+7      NA     NA          NA               NA          NA               NA          NA               NA   NA
+
+   partdensity Depth ksat.r BD awc.r
+7 wthirdbar.r    76 wfifteenbar.r NA wsatiated.r
+ ph1to1h2o.rresult of evaluating expression:
+
+7 <          NA hznamesimpleError  1.411 hzdept.r in      0 hzdepb.rssurgo2sp(mapunit = mapunit, component = cmpnt, chorizon = chrzns,           NA hzthk.r    mapunit.shp = mapunit.shp, nmapunit = nmapunit, nsoil = nsoil,             NA sandtotal.r    xout = xout, soil.bottom = soil.bottom, method = method,           NA silttotal.r    nlayers = nlayers, verbose = verbose)          NA claytotal.r: 
+ om.rinterpolation did not work. Possibly due to missing values. 
+7>
+    cokey     H1got results for task 4
+    chkey        0numValues: 4, numResults: 4, stopped: FALSE
+ hzdepa.r      152returning status FALSE
+ Depth      NAevaluation # 5:
+ Thickness          NA$county_seq
+ DUL          NA[1] LL15          NA 5 SAT   NA
+       KS
+
+ PH [1] BD partdensity "county_seq is: 5" AirDry ksat.r
+
+7 awc.r[1] 24386080 wthirdbar.r "************************************" 72480148 wfifteenbar.r
+       76 wsatiated.r[1]    76 ph1to1h2o.r "*****Using NCAR *********"       152
+7
+  NA          NA[1]   NA  1.411 "***** SCRATCH SPACE *********"  NA     0
+ 121.9104          NA NA            NA NA          NA     NA          NA
+
+   Carbon    cokey ParticleSizeClay    chkey ParticleSizeSilt hzdepa.r ParticleSizeSand Depth
+7 Thickness     NA DUL               NA LL15               NA SAT               NA       KS
+ PH BD AirDry 
+7 Depth 24386080 BD 72480148
+7       76    76    76 NA       152
+  NAresult of evaluating expression:
+   NA<  NAsimpleError[1] 121.9104 in  "************************************" NAssurgo2sp(mapunit = mapunit, component = cmpnt, chorizon = chrzns, 
+ NA    mapunit.shp = mapunit.shp, nmapunit = nmapunit, nsoil = nsoil, [1]     NA    xout = xout, soil.bottom = soil.bottom, method = method,  "county geoid is: 31129"
+    nlayers = nlayers, verbose = verbose)
+ : [1] Carboninterpolation did not work. Possibly due to missing values. "county name is: Nuckolls County" ParticleSizeClay>
+
+ ParticleSizeSiltgot results for task 4
+[1] ParticleSizeSandnumValues: 4, numResults: 4, stopped: FALSE
+ "state name is: Nebraska"
+7returning status FALSE
+
+     NAevaluation # 5:
+[1]               NA$county_seq
+ "************************************"               NA[1]
+               NA 5[1]
+
+ "************************************"
+ 
+[1] Depth[1] "county_seq is: 5" BD "working directory is: "
+
+7
+[1]    76[1] "************************************" NA "/glade/derecho/scratch/apdixon/national_gwp"
+
+
+[1]result of evaluating expression:
+[1] "*****Using NCAR *********"< "************************************"
+simpleError
+[1] in [1] "***** SCRATCH SPACE *********"ssurgo2sp(mapunit = mapunit, component = cmpnt, chorizon = chrzns,  "latitude is: 40.1763041963168"
+    mapunit.shp = mapunit.shp, nmapunit = nmapunit, nsoil = nsoil, 
+    xout = xout, soil.bottom = soil.bottom, method = method, [1]    nlayers = nlayers, verbose = verbose) "longitude is: -98.0471852004944": 
+interpolation did not work. Possibly due to missing values.[1]>
+ "elevation_m is: 522"got results for task 4
+
+numValues: 4, numResults: 4, stopped: FALSE
+returning status FALSE
+evaluation # 5:
+$county_seq
+[1][1] 5 "Copying over KBS 'Daycent model' files --"
+
+
+[1] "county_seq is: 5"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"[1]
+ "Site daycent folder already exists. Skipping copy."[1]
+ "county geoid is: 31129"[1]
+ "************************************"[1]
+ "county name is: Nuckolls County"[1]
+ "####### New climate scenario #######"[1]
+ "state name is: Nebraska"[1]
+ "************************************"[1]
+ "************************************"[1]
+ "climate scenario: 1"[1]
+ "************************************"
+[1][1] "working directory is: " "************************************"
+
+[1][1][1] "/glade/derecho/scratch/apdixon/national_gwp" "************************************" "climate scenario: 1"
+
+
+[1][1][1] "************************************" "county geoid is: 31129" "mgmt scenario: 1"
+
+
+[1][1][1] "latitude is: 40.1763041963168" "county name is: Nuckolls County" "mgmt option: 1"
+
+
+[1][1] "longitude is: -98.0471852004944" "state name is: Nebraska"[1]
+
+ "Starting 0_Controller2_County.R"[1][1]
+ "elevation_m is: 522" "************************************"
+
+[1] "************************************"
+[1] "working directory is: "[1]
+[1] "Copying over KBS 'Daycent model' files --"[1] "Starting 0_Observations_and_constants_County.R"
+ "/glade/derecho/scratch/apdixon/national_gwp"
+
+[1] "************************************"
+[1] "latitude is: 40.1763041963168"[1]
+ "Site daycent folder already exists. Skipping copy."[1]
+ "longitude is: -98.0471852004944"[1]
+ "************************************"[1]
+ "elevation_m is: 522"[1]
+ "####### New climate scenario #######"
+[1] "************************************"
+Called from: [1][1]withCallingHandlers(expr, message = function(c) if (inherits(c, 
+ "climate scenario: 1" "Copying over KBS 'Daycent model' files --"    classes)) tryInvokeRestart("muffleMessage"))
+
+
+[1] "************************************"
+[1] "climate scenario: 1"[1]
+ "Site daycent folder already exists. Skipping copy."[1]
+ "mgmt scenario: 1"[1]
+ "************************************"[1]
+ "mgmt option: 1"[1]
+ "####### New climate scenario #######"
+[1][1] "************************************" "Starting 0_Controller2_County.R"
+
+[1] "climate scenario: 1"
+[1] "************************************"
+[1][1] "climate scenario: 1" "Starting 0_Observations_and_constants_County.R"
+
+[1] "mgmt scenario: 1"
+[1] "mgmt option: 1"
+[1] "Starting 0_Controller2_County.R"
+[1] "Starting 0_Observations_and_constants_County.R"Called from: 
+withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+[1][1] "*********climate_data_path is /glade/work/apdixon/climate **************" "*********climate_data_path is /glade/work/apdixon/climate **************"
+
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -17.03 and 43.33"
+[1][1] "min max precip is: 0 and 8.63" "**********DAYCENT_basic_eq**********"
+
+[1][1][1] "**********DAYCENT_basic_eq**********" "min and max year are 1951, 1977" "min max temp is: -17.03 and 43.33"
+
+
+[1][1][1] "min max temp is: -17.03 and 43.33" "number of rows are: 9862" "min max precip is: 0 and 8.63"
+
+
+[1][1] "min max precip is: 0 and 8.63" "min and max year are 1951, 1977"
+
+[1][1] "min and max year are 1951, 1977" "number of rows are: 9862"
+
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -20.19 and 41.81"
+[1] "min max precip is: 0 and 10.57"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -20.19 and 41.81"[1]
+ "**********DAYCENT_basic**********"[1]
+ "min max precip is: 0 and 10.57"[1]
+ "min max temp is: -20.19 and 41.81"[1]
+ "min and max year are 1978, 2021"[1]
+ "min max precip is: 0 and 10.57"[1]
+ "number of rows are: 16436"[1]
+ "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -21.84 and 48.04"
+[1] "min max precip is: 0 and 15.78"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -21.84 and 48.04"
+[1][1] "min max precip is: 0 and 15.78" "**********DAYCENT_basic_fut**********"
+
+[1][1] "min and max year are 2022, 2100" "min max temp is: -21.84 and 48.04"
+
+[1][1] "number of rows are: 28854" "min max precip is: 0 and 15.78"
+
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "getting soil data for lat 40.1763041963168 and lon -98.0471852004944 at GEOID_31129_Nebraska"
+[1] "getting soil data for lat 40.1763041963168 and lon -98.0471852004944 at GEOID_31129_Nebraska"
+[1] "getting soil data for lat 40.1763041963168 and lon -98.0471852004944 at GEOID_31129_Nebraska"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting run_Daycent_eq.R"[1]
+ "Starting run_Daycent_eq.R"[1]
+ "**********Daycent equilibrium simulation*********"[1]
+ "**********Daycent equilibrium simulation*********"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting run_Daycent4.R"[1]
+ "Starting run_Daycent4.R"[1]
+ "**********Daycent base simulation*********"[1]
+ "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+[1][1] "**********Daycent future simulation*********" "**********Daycent future simulation*********"
+
+[1] "Starting 9_Results_Daycent-setup_County.R"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+result of evaluating expression:
+<simpleError: result of evaluating expression:
+'Daycent/GEOID_31129_Nebraska/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').<>
+simpleErrorgot results for task 5
+: numValues: 5, numResults: 5, stopped: FALSE
+'Daycent/GEOID_31129_Nebraska/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').returning status FALSE
+>
+evaluation # 6:
+got results for task 5
+$county_seq
+numValues: 5, numResults: 5, stopped: FALSE
+[1]returning status FALSE
+ 6evaluation # 6:
+
+$county_seq
+
+[1][1] 6 "county_seq is: 6"
+
+
+[1][1] "************************************" "county_seq is: 6"
+
+[1][1] "*****Using NCAR *********" "************************************"
+
+[1][1] "***** SCRATCH SPACE *********" "*****Using NCAR *********"
+
+[1] "***** SCRATCH SPACE *********"
+[1][1] "************************************" "************************************"
+
+[1][1] "county geoid is: 46099" "county geoid is: 46099"
+
+[1][1] "county name is: Minnehaha County" "county name is: Minnehaha County"
+
+[1][1] "state name is: South Dakota" "state name is: South Dakota"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "working directory is: " "working directory is: "
+
+[1][1] "/glade/derecho/scratch/apdixon/national_gwp" "/glade/derecho/scratch/apdixon/national_gwp"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "latitude is: 43.6741760135642" "latitude is: 43.6741760135642"
+
+[1][1] "longitude is: -96.7914376149155" "longitude is: -96.7914376149155"
+
+[1][1] "elevation_m is: 468" "elevation_m is: 468"
+[1]
+ "Starting Daycent_run_controller.R"
+[1][1] "Copying over KBS 'Daycent model' files --"[1] "Starting run_Daycent_setup.R"
+ "Copying over KBS 'Daycent model' files --"
+
+[1] "Site daycent folder already exists. Skipping copy."
+[1][1] "Site daycent folder already exists. Skipping copy." "************************************"
+
+[1][1] "************************************" "####### New climate scenario #######"
+
+[1][1] "####### New climate scenario #######" "************************************"
+
+[1][1] "************************************" "climate scenario: 1"
+
+[1] "climate scenario: 1"
+[1] "************************************"
+[1][1] "************************************" "climate scenario: 1"
+
+[1][1] "climate scenario: 1" "mgmt scenario: 1"
+
+[1][1] "mgmt scenario: 1" "mgmt option: 1"
+
+[1] "mgmt option: 1"
+[1] "Starting 0_Controller2_County.R"
+[1] "Starting 0_Controller2_County.R"
+[1] "Starting 0_Observations_and_constants_County.R"
+[1] "Starting 0_Observations_and_constants_County.R"
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+Called from:     classes)) tryInvokeRestart("muffleMessage"))
+withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"[1]
+ "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1] "Starting run_Daycent_eq.R"
+[1] "**********Daycent equilibrium simulation*********"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting p_Edit_calib_file"
+result of evaluating expression:
+result of evaluating expression:
+<error/dplyr:::mutate_error>
+Error in `mutate()`:
+i In argument: `tmin = value`.
+Caused by error:
+! object 'value' not found
+---
+Backtrace:
+     x
+  1. +-parallel::makeCluster(n_threads, type = "FORK", outfile = "Log.txt")
+  2. | \-parallel::makeForkCluster(nnodes = spec, ...)
+  3. |   +-base::tryCatch(...)
+  4. |   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+  5. |   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+  6. |   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+  7. |   \-parallel:::newForkNode(..., rank = i, socket = socket, server_socket = socket)
+  8. |     \-parallel:::workLoop(makeSOCKmaster(master, port, timeout))
+  9. |       \-parallel:::workCommand(master)
+ 10. |         +-base::tryCatch(...)
+ 11. |         | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 12. |         |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 13. |         |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 14. |         +-base::tryCatch(...)
+ 15. |         | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 16. |         |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 17. |         |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 18. |         +-base::do.call(msg$data$fun, msg$data$args, quote = TRUE)
+ 19. |         \-doParallel (local) `<fn>`(base::quote(`<named list>`))
+ 20. |           +-base::tryCatch(...)
+ 21. |           | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 22. |           |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 23. |           |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 24. |           \-base::eval(.doSnowGlobals$expr, envir = .doSnowGlobals$exportenv)
+ 25. |             \-base::eval(.doSnowGlobals$expr, envir = .doSnowGlobals$exportenv)
+ 26. |               +-base::source("00_Main_County.R", local = TRUE)
+ 27. |               +-base::source("00_Main_County.R", local = TRUE)
+ 28. |               | +-base::withVisible(eval(ei, envir))
+ 29. |               | \-base::eval(ei, envir)
+ 30. |               |   \-base::eval(ei, envir)
+ 31. |               +-base::source("0_Controller2_County.R", local = TRUE)
+ 32. |               +-base::source("0_Controller2_County.R", local = TRUE)
+ 33. |               | +-base::withVisible(eval(ei, envir))
+ 34. |               | \-base::eval(ei, envir)
+ 35. |               |   \-base::eval(ei, envir)
+ 36. |               +-base::source(...)
+ 37. |               +-base::source(...)
+ 38. |               | +-base::withVisible(eval(ei, envir))
+ 39. |               | \-base::eval(ei, envir)
+ 40. |               |   \-base::eval(ei, envir)
+ 41. |               +-base::suppressMessages(...)
+ 42. |               | \-base::withCallingHandlers(...)
+ 43. |               \-... %dopar% ...
+ 44. |                 \-e$fun(obj, substitute(ex), parent.frame(), e$data)
+ 45. |                   +-base::tryCatch(...)
+ 46. |                   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 47. |                   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 48. |                   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 49. |                   +-base::tryCatch(eval(xpr, envir = envir), error = function(e) e)
+ 50. |                   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 51. |                   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 52. |                   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 53. |                   \-base::eval(xpr, envir = envir)
+ 54. |                     \-base::eval(xpr, envir = envir)
+ 55. |                       +-base::source("00_Main_County.R", local = TRUE)
+ 56. |                       +-base::source("00_Main_County.R", local = TRUE)
+ 57. |                       | +-base::withVisible(eval(ei, envir))
+ 58. |                       | \-base::eval(ei, envir)
+ 59. |                       |   \-base::eval(ei, envir)
+ 60. |                       +-base::source("0_Controller2_County.R", local = TRUE)
+ 61. |                       +-base::source("0_Controller2_County.R", local = TRUE)
+ 62. |                       | +-base::withVisible(eval(ei, envir))
+ 63. |                       | \-base::eval(ei, envir)
+ 64. |                       |   \-base::eval(ei, envir)
+ 65. |                       +-base::source("1_create_county_climate_wth_file_County.R", local = TRUE)
+ 66. |                       +-base::source("1_create_county_climate_wth_file_County.R", local = TRUE)
+ 67. |                       | +-base::withVisible(eval(ei, envir))
+ 68. |                       | \-base::eval(ei, envir)
+ 69. |                       |   \-base::eval(ei, envir)
+ 70. |                       \-... %>% select(day, month, year, jday, tmax, tmin, precip)
+ 71. +-dplyr::select(., day, month, year, jday, tmax, tmin, precip)
+ 72. +-dplyr::mutate(...)
+ 73. +-dplyr::mutate(...)
+ 74. +-dplyr::select(., year, doy, tmax, tmin, precip)
+ 75. +-dplyr::left_join(...)
+ 76. +-dplyr::left_join(...)
+ 77. +-dplyr:::left_join.data.frame(...)
+ 78. | \-dplyr::auto_copy(x, y, copy = copy)
+ 79. |   +-dplyr::same_src(x, y)
+ 80. |   \-dplyr:::same_src.data.frame(x, y)
+ 81. |     \-base::is.data.frame(y)
+ 82. +-dplyr::mutate(...)
+ 83. \-dplyr:::mutate.data.frame(...)
+ 84.   \-dplyr:::mutate_cols(.data, dplyr_quosures(...), by)
+ 85.     +-base::withCallingHandlers(...)
+ 86.     \-dplyr:::mutate_col(dots[[i]], data, mask, new_columns)
+ 87.       \-mask$eval_all_mutate(quo)
+ 88.         \-dplyr (local) eval()
+got results for task 6
+numValues: 6, numResults: 6, stopped: FALSE
+returning status FALSE
+evaluation # 7:
+$county_seq
+[1] 7
+
+[1] "county_seq is: 7"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 48327"
+[1] "county name is: Menard County"
+[1] "state name is: Texas"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 30.8897781890174"
+[1] "longitude is: -99.8205834623948"
+[1] "elevation_m is: 641"
+[1] "Copying over KBS 'Daycent model' files --"
+<error/dplyr:::mutate_error>
+Error in `mutate()`:
+i In argument: `tmin = value`.
+Caused by error:
+! object 'value' not found
+---
+Backtrace:
+     x
+  1. +-parallel::makeCluster(n_threads, type = "FORK", outfile = "Log.txt")
+  2. | \-parallel::makeForkCluster(nnodes = spec, ...)
+  3. |   +-base::tryCatch(...)
+  4. |   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+  5. |   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+  6. |   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+  7. |   \-parallel:::newForkNode(..., rank = i, socket = socket, server_socket = socket)
+  8. |     \-parallel:::workLoop(makeSOCKmaster(master, port, timeout))
+  9. |       \-parallel:::workCommand(master)
+ 10. |         +-base::tryCatch(...)
+ 11. |         | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 12. |         |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 13. |         |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 14. |         +-base::tryCatch(...)
+ 15. |         | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 16. |         |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 17. |         |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 18. |         +-base::do.call(msg$data$fun, msg$data$args, quote = TRUE)
+ 19. |         \-doParallel (local) `<fn>`(base::quote(`<named list>`))
+ 20. |           +-base::tryCatch(...)
+ 21. |           | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 22. |           |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 23. |           |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 24. |           \-base::eval(.doSnowGlobals$expr, envir = .doSnowGlobals$exportenv)
+ 25. |             \-base::eval(.doSnowGlobals$expr, envir = .doSnowGlobals$exportenv)
+ 26. |               +-base::source("00_Main_County.R", local = TRUE)
+ 27. |               +-base::source("00_Main_County.R", local = TRUE)
+ 28. |               | +-base::withVisible(eval(ei, envir))
+ 29. |               | \-base::eval(ei, envir)
+ 30. |               |   \-base::eval(ei, envir)
+ 31. |               +-base::source("0_Controller2_County.R", local = TRUE)
+ 32. |               +-base::source("0_Controller2_County.R", local = TRUE)
+ 33. |               | +-base::withVisible(eval(ei, envir))
+ 34. |               | \-base::eval(ei, envir)
+ 35. |               |   \-base::eval(ei, envir)
+ 36. |               +-base::source(...)
+ 37. |               +-base::source(...)
+ 38. |               | +-base::withVisible(eval(ei, envir))
+ 39. |               | \-base::eval(ei, envir)
+ 40. |               |   \-base::eval(ei, envir)
+ 41. |               +-base::suppressMessages(...)
+ 42. |               | \-base::withCallingHandlers(...)
+ 43. |               \-... %dopar% ...
+ 44. |                 \-e$fun(obj, substitute(ex), parent.frame(), e$data)
+ 45. |                   +-base::tryCatch(...)
+ 46. |                   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 47. |                   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 48. |                   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 49. |                   +-base::tryCatch(eval(xpr, envir = envir), error = function(e) e)
+ 50. |                   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 51. |                   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 52. |                   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 53. |                   \-base::eval(xpr, envir = envir)
+ 54. |                     \-base::eval(xpr, envir = envir)
+ 55. |                       +-base::source("00_Main_County.R", local = TRUE)
+ 56. |                       +-base::source("00_Main_County.R", local = TRUE)
+ 57. |                       | +-base::withVisible(eval(ei, envir))
+ 58. |                       | \-base::eval(ei, envir)
+ 59. |                       |   \-base::eval(ei, envir)
+ 60. |                       +-base::source("0_Controller2_County.R", local = TRUE)
+ 61. |                       +-base::source("0_Controller2_County.R", local = TRUE)
+ 62. |                       | +-base::withVisible(eval(ei, envir))
+ 63. |                       | \-base::eval(ei, envir)
+ 64. |                       |   \-base::eval(ei, envir)
+ 65. |                       +-base::source("1_create_county_climate_wth_file_County.R", local = TRUE)
+ 66. |                       +-base::source("1_create_county_climate_wth_file_County.R", local = TRUE)
+ 67. |                       | +-base::withVisible(eval(ei, envir))
+ 68. |                       | \-base::eval(ei, envir)
+ 69. |                       |   \-base::eval(ei, envir)
+ 70. |                       \-... %>% select(day, month, year, jday, tmax, tmin, precip)
+ 71. +-dplyr::select(., day, month, year, jday, tmax, tmin, precip)
+ 72. +-dplyr::mutate(...)
+ 73. +-dplyr::mutate(...)
+ 74. +-dplyr::select(., year, doy, tmax, tmin, precip)
+ 75. +-dplyr::left_join(...)
+ 76. +-dplyr::left_join(...)
+ 77. +-dplyr:::left_join.data.frame(...)
+ 78. | \-dplyr::auto_copy(x, y, copy = copy)
+ 79. |   +-dplyr::same_src(x, y)
+ 80. |   \-dplyr:::same_src.data.frame(x, y)
+ 81. |     \-base::is.data.frame(y)
+ 82. +-dplyr::mutate(...)
+ 83. \-dplyr:::mutate.data.frame(...)
+ 84.   \-dplyr:::mutate_cols(.data, dplyr_quosures(...), by)
+ 85.     +-base::withCallingHandlers(...)
+ 86.     \-dplyr:::mutate_col(dots[[i]], data, mask, new_columns)
+ 87.       \-mask$eval_all_mutate(quo)
+ 88.         \-dplyr (local) eval()
+got results for task 6
+numValues: 6, numResults: 6, stopped: FALSE
+returning status FALSE
+evaluation # 7:
+$county_seq
+[1] 7
+
+[1] "county_seq is: 7"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 48327"
+[1] "county name is: Menard County"
+[1] "state name is: Texas"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 30.8897781890174"
+[1] "longitude is: -99.8205834623948"
+[1] "elevation_m is: 641"
+[1] "Copying over KBS 'Daycent model' files --"
+[1][1] "************************************" "************************************"
+
+[1][1] "####### New climate scenario #######" "####### New climate scenario #######"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "climate scenario: 1" "climate scenario: 1"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "climate scenario: 1" "climate scenario: 1"
+
+[1][1] "mgmt scenario: 1" "mgmt scenario: 1"
+
+[1][1] "mgmt option: 1" "mgmt option: 1"
+
+[1][1] "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R"
+
+[1][1] "Starting 0_Observations_and_constants_County.R" "Starting 0_Observations_and_constants_County.R"
+
+Called from: Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"[1]
+ "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1][1] "Starting p_Edit_calib_file" "Starting p_Edit_calib_file"
+
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -8.61 and 40.75"
+[1] "min max precip is: 0 and 14.22"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -8.61 and 40.75"
+[1] "min max precip is: 0 and 14.22"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -7.9 and 41.73"
+[1] "min max precip is: 0 and 9.89"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -7.9 and 41.73"
+[1] "min max precip is: 0 and 9.89"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -0.74 and 45.53"
+[1] "min max precip is: 0 and 17.19"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -0.74 and 45.53"
+[1] "min max precip is: 0 and 17.19"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1][1] "getting soil data for lat 30.8897781890174 and lon -99.8205834623948 at GEOID_48327_Texas" "getting soil data for lat 30.8897781890174 and lon -99.8205834623948 at GEOID_48327_Texas"
+
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1][1] "Starting run_Daycent_eq.R" "Starting run_Daycent_eq.R"
+
+[1][1] "**********Daycent equilibrium simulation*********" "**********Daycent equilibrium simulation*********"
+
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+elapsed time is 220.616000 seconds 
+[1] "Run time is 3.7 minutes, 0.0616666666666667 hours."
+************************************
+DELETE INPUT FILES???
+Deleting input files
+************************************result of evaluating expression:
+[1] 1
+got results for task 5
+numValues: 5, numResults: 5, stopped: FALSE
+returning status FALSE
+evaluation # 6:
+$county_seq
+[1] 6
+
+[1] "county_seq is: 6"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 46099"
+[1] "county name is: Minnehaha County"
+[1] "state name is: South Dakota"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 43.6741760135642"
+[1] "longitude is: -96.7914376149155"
+[1] "elevation_m is: 468"
+[1] "Copying over KBS 'Daycent model' files --"
+[1] "Site daycent folder already exists. Skipping copy."
+[1] "************************************"
+[1] "####### New climate scenario #######"
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "************************************"
+[1] "climate scenario: 1"
+[1] "mgmt scenario: 1"
+[1] "mgmt option: 1"
+[1] "Starting 0_Controller2_County.R"
+[1] "Starting 0_Observations_and_constants_County.R"
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1] "Starting p_Edit_calib_file"
+result of evaluating expression:
+<error/dplyr:::mutate_error>
+Error in `mutate()`:
+i In argument: `tmin = value`.
+Caused by error:
+! object 'value' not found
+---
+Backtrace:
+     x
+  1. +-parallel::makeCluster(n_threads, type = "FORK", outfile = "Log.txt")
+  2. | \-parallel::makeForkCluster(nnodes = spec, ...)
+  3. |   +-base::tryCatch(...)
+  4. |   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+  5. |   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+  6. |   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+  7. |   \-parallel:::newForkNode(..., rank = i, socket = socket, server_socket = socket)
+  8. |     \-parallel:::workLoop(makeSOCKmaster(master, port, timeout))
+  9. |       \-parallel:::workCommand(master)
+ 10. |         +-base::tryCatch(...)
+ 11. |         | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 12. |         |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 13. |         |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 14. |         +-base::tryCatch(...)
+ 15. |         | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 16. |         |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 17. |         |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 18. |         +-base::do.call(msg$data$fun, msg$data$args, quote = TRUE)
+ 19. |         \-doParallel (local) `<fn>`(base::quote(`<named list>`))
+ 20. |           +-base::tryCatch(...)
+ 21. |           | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 22. |           |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 23. |           |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 24. |           \-base::eval(.doSnowGlobals$expr, envir = .doSnowGlobals$exportenv)
+ 25. |             \-base::eval(.doSnowGlobals$expr, envir = .doSnowGlobals$exportenv)
+ 26. |               +-base::source("00_Main_County.R", local = TRUE)
+ 27. |               +-base::source("00_Main_County.R", local = TRUE)
+ 28. |               | +-base::withVisible(eval(ei, envir))
+ 29. |               | \-base::eval(ei, envir)
+ 30. |               |   \-base::eval(ei, envir)
+ 31. |               +-base::source("0_Controller2_County.R", local = TRUE)
+ 32. |               +-base::source("0_Controller2_County.R", local = TRUE)
+ 33. |               | +-base::withVisible(eval(ei, envir))
+ 34. |               | \-base::eval(ei, envir)
+ 35. |               |   \-base::eval(ei, envir)
+ 36. |               +-base::source(...)
+ 37. |               +-base::source(...)
+ 38. |               | +-base::withVisible(eval(ei, envir))
+ 39. |               | \-base::eval(ei, envir)
+ 40. |               |   \-base::eval(ei, envir)
+ 41. |               +-base::suppressMessages(...)
+ 42. |               | \-base::withCallingHandlers(...)
+ 43. |               \-... %dopar% ...
+ 44. |                 \-e$fun(obj, substitute(ex), parent.frame(), e$data)
+ 45. |                   +-base::tryCatch(...)
+ 46. |                   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 47. |                   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 48. |                   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 49. |                   +-base::tryCatch(eval(xpr, envir = envir), error = function(e) e)
+ 50. |                   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 51. |                   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 52. |                   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 53. |                   \-base::eval(xpr, envir = envir)
+ 54. |                     \-base::eval(xpr, envir = envir)
+ 55. |                       +-base::source("00_Main_County.R", local = TRUE)
+ 56. |                       +-base::source("00_Main_County.R", local = TRUE)
+ 57. |                       | +-base::withVisible(eval(ei, envir))
+ 58. |                       | \-base::eval(ei, envir)
+ 59. |                       |   \-base::eval(ei, envir)
+ 60. |                       +-base::source("0_Controller2_County.R", local = TRUE)
+ 61. |                       +-base::source("0_Controller2_County.R", local = TRUE)
+ 62. |                       | +-base::withVisible(eval(ei, envir))
+ 63. |                       | \-base::eval(ei, envir)
+ 64. |                       |   \-base::eval(ei, envir)
+ 65. |                       +-base::source("1_create_county_climate_wth_file_County.R", local = TRUE)
+ 66. |                       +-base::source("1_create_county_climate_wth_file_County.R", local = TRUE)
+ 67. |                       | +-base::withVisible(eval(ei, envir))
+ 68. |                       | \-base::eval(ei, envir)
+ 69. |                       |   \-base::eval(ei, envir)
+ 70. |                       \-... %>% select(day, month, year, jday, tmax, tmin, precip)
+ 71. +-dplyr::select(., day, month, year, jday, tmax, tmin, precip)
+ 72. +-dplyr::mutate(...)
+ 73. +-dplyr::mutate(...)
+ 74. +-dplyr::select(., year, doy, tmax, tmin, precip)
+ 75. +-dplyr::left_join(...)
+ 76. +-dplyr::left_join(...)
+ 77. +-dplyr:::left_join.data.frame(...)
+ 78. | \-dplyr::auto_copy(x, y, copy = copy)
+ 79. |   +-dplyr::same_src(x, y)
+ 80. |   \-dplyr:::same_src.data.frame(x, y)
+ 81. |     \-base::is.data.frame(y)
+ 82. +-dplyr::mutate(...)
+ 83. \-dplyr:::mutate.data.frame(...)
+ 84.   \-dplyr:::mutate_cols(.data, dplyr_quosures(...), by)
+ 85.     +-base::withCallingHandlers(...)
+ 86.     \-dplyr:::mutate_col(dots[[i]], data, mask, new_columns)
+ 87.       \-mask$eval_all_mutate(quo)
+ 88.         \-dplyr (local) eval()
+got results for task 6
+numValues: 6, numResults: 6, stopped: FALSE
+returning status FALSE
+evaluation # 7:
+$county_seq
+[1] 7
+
+[1] "county_seq is: 7"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 48327"
+[1] "county name is: Menard County"
+[1] "state name is: Texas"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 30.8897781890174"
+[1] "longitude is: -99.8205834623948"
+[1] "elevation_m is: 641"
+[1] "Copying over KBS 'Daycent model' files --"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+result of evaluating expression:
+<error/dplyr:::mutate_error>
+Error in `mutate()`:
+i In argument: `date = -...`.
+Caused by error in `charToDate()`:
+! character string is not in a standard unambiguous format
+---
+Backtrace:
+     x
+  1. +-parallel::makeCluster(n_threads, type = "FORK", outfile = "Log.txt")
+  2. | \-parallel::makeForkCluster(nnodes = spec, ...)
+  3. |   +-base::tryCatch(...)
+  4. |   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+  5. |   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+  6. |   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+  7. |   \-parallel:::newForkNode(..., rank = i, socket = socket, server_socket = socket)
+  8. |     \-parallel:::workLoop(makeSOCKmaster(master, port, timeout))
+  9. |       \-parallel:::workCommand(master)
+ 10. |         +-base::tryCatch(...)
+ 11. |         | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 12. |         |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 13. |         |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 14. |         +-base::tryCatch(...)
+ 15. |         | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 16. |         |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 17. |         |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 18. |         +-base::do.call(msg$data$fun, msg$data$args, quote = TRUE)
+ 19. |         \-doParallel (local) `<fn>`(base::quote(`<named list>`))
+ 20. |           +-base::tryCatch(...)
+ 21. |           | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 22. |           |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 23. |           |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 24. |           \-base::eval(.doSnowGlobals$expr, envir = .doSnowGlobals$exportenv)
+ 25. |             \-base::eval(.doSnowGlobals$expr, envir = .doSnowGlobals$exportenv)
+ 26. |               +-base::source("00_Main_County.R", local = TRUE)
+ 27. |               +-base::source("00_Main_County.R", local = TRUE)
+ 28. |               | +-base::withVisible(eval(ei, envir))
+ 29. |               | \-base::eval(ei, envir)
+ 30. |               |   \-base::eval(ei, envir)
+ 31. |               +-base::source("0_Controller2_County.R", local = TRUE)
+ 32. |               +-base::source("0_Controller2_County.R", local = TRUE)
+ 33. |               | +-base::withVisible(eval(ei, envir))
+ 34. |               | \-base::eval(ei, envir)
+ 35. |               |   \-base::eval(ei, envir)
+ 36. |               +-base::source(...)
+ 37. |               +-base::source(...)
+ 38. |               | +-base::withVisible(eval(ei, envir))
+ 39. |               | \-base::eval(ei, envir)
+ 40. |               |   \-base::eval(ei, envir)
+ 41. |               +-base::suppressMessages(...)
+ 42. |               | \-base::withCallingHandlers(...)
+ 43. |               \-... %dopar% ...
+ 44. |                 \-e$fun(obj, substitute(ex), parent.frame(), e$data)
+ 45. |                   +-base::tryCatch(...)
+ 46. |                   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 47. |                   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 48. |                   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 49. |                   +-base::tryCatch(eval(xpr, envir = envir), error = function(e) e)
+ 50. |                   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 51. |                   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 52. |                   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 53. |                   \-base::eval(xpr, envir = envir)
+ 54. |                     \-base::eval(xpr, envir = envir)
+ 55. |                       +-base::source("00_Main_County.R", local = TRUE)
+ 56. |                       +-base::source("00_Main_County.R", local = TRUE)
+ 57. |                       | +-base::withVisible(eval(ei, envir))
+ 58. |                       | \-base::eval(ei, envir)
+ 59. |                       |   \-base::eval(ei, envir)
+ 60. |                       +-base::source("0_Controller2_County.R", local = TRUE)
+ 61. |                       +-base::source("0_Controller2_County.R", local = TRUE)
+ 62. |                       | +-base::withVisible(eval(ei, envir))
+ 63. |                       | \-base::eval(ei, envir)
+ 64. |                       |   \-base::eval(ei, envir)
+ 65. |                       +-base::source(paste0("9_Results_Daycent-setup_County.R"), local = TRUE)
+ 66. |                       +-base::source(paste0("9_Results_Daycent-setup_County.R"), local = TRUE)
+ 67. |                       | +-base::withVisible(eval(ei, envir))
+ 68. |                       | \-base::eval(ei, envir)
+ 69. |                       |   \-base::eval(ei, envir)
+ 70. |                       \-... %>% ...
+ 71. +-dplyr::mutate(...)
+ 72. +-dplyr:::mutate.data.frame(...)
+ 73. | \-dplyr:::mutate_cols(.data, dplyr_quosures(...), by)
+ 74. |   +-base::withCallingHandlers(...)
+ 75. |   \-dplyr:::mutate_col(dots[[i]], data, mask, new_columns)
+ 76. |     \-mask$eval_all_mutate(quo)
+ 77. |       \-dplyr (local) eval()
+ 78. +-base::as.Date(...)
+ 79. \-base::as.Date.numeric(...)
+ 80.   +-base::as.Date(origin, ...)
+ 81.   \-base::as.Date.character(origin, ...)
+ 82.     \-base (local) charToDate(x)
+ 83.       \-base::stop("character string is not in a standard unambiguous format")
+got results for task 7
+numValues: 7, numResults: 7, stopped: FALSE
+returning status FALSE
+evaluation # 8:
+$county_seq
+[1] 8
+
+[1] "county_seq is: 8"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 6091"
+[1] "county name is: Sierra County"
+[1] "state name is: California"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 39.5807086797164"
+[1] "longitude is: -120.516011209158"
+[1] "elevation_m is: 1748"
+[1] "Copying over KBS 'Daycent model' files --"
+result of evaluating expression:
+<error/dplyr:::mutate_error>
+Error in `mutate()`:
+i In argument: `date = -...`.
+Caused by error in `charToDate()`:
+! character string is not in a standard unambiguous format
+---
+Backtrace:
+     x
+  1. +-parallel::makeCluster(n_threads, type = "FORK", outfile = "Log.txt")
+  2. | \-parallel::makeForkCluster(nnodes = spec, ...)
+  3. |   +-base::tryCatch(...)
+  4. |   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+  5. |   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+  6. |   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+  7. |   \-parallel:::newForkNode(..., rank = i, socket = socket, server_socket = socket)
+  8. |     \-parallel:::workLoop(makeSOCKmaster(master, port, timeout))
+  9. |       \-parallel:::workCommand(master)
+ 10. |         +-base::tryCatch(...)
+ 11. |         | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 12. |         |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 13. |         |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 14. |         +-base::tryCatch(...)
+ 15. |         | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 16. |         |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 17. |         |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 18. |         +-base::do.call(msg$data$fun, msg$data$args, quote = TRUE)
+ 19. |         \-doParallel (local) `<fn>`(base::quote(`<named list>`))
+ 20. |           +-base::tryCatch(...)
+ 21. |           | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 22. |           |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 23. |           |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 24. |           \-base::eval(.doSnowGlobals$expr, envir = .doSnowGlobals$exportenv)
+ 25. |             \-base::eval(.doSnowGlobals$expr, envir = .doSnowGlobals$exportenv)
+ 26. |               +-base::source("00_Main_County.R", local = TRUE)
+ 27. |               +-base::source("00_Main_County.R", local = TRUE)
+ 28. |               | +-base::withVisible(eval(ei, envir))
+ 29. |               | \-base::eval(ei, envir)
+ 30. |               |   \-base::eval(ei, envir)
+ 31. |               +-base::source("0_Controller2_County.R", local = TRUE)
+ 32. |               +-base::source("0_Controller2_County.R", local = TRUE)
+ 33. |               | +-base::withVisible(eval(ei, envir))
+ 34. |               | \-base::eval(ei, envir)
+ 35. |               |   \-base::eval(ei, envir)
+ 36. |               +-base::source(...)
+ 37. |               +-base::source(...)
+ 38. |               | +-base::withVisible(eval(ei, envir))
+ 39. |               | \-base::eval(ei, envir)
+ 40. |               |   \-base::eval(ei, envir)
+ 41. |               +-base::suppressMessages(...)
+ 42. |               | \-base::withCallingHandlers(...)
+ 43. |               \-... %dopar% ...
+ 44. |                 \-e$fun(obj, substitute(ex), parent.frame(), e$data)
+ 45. |                   +-base::tryCatch(...)
+ 46. |                   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 47. |                   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 48. |                   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 49. |                   +-base::tryCatch(eval(xpr, envir = envir), error = function(e) e)
+ 50. |                   | \-base (local) tryCatchList(expr, classes, parentenv, handlers)
+ 51. |                   |   \-base (local) tryCatchOne(expr, names, parentenv, handlers[[1L]])
+ 52. |                   |     \-base (local) doTryCatch(return(expr), name, parentenv, handler)
+ 53. |                   \-base::eval(xpr, envir = envir)
+ 54. |                     \-base::eval(xpr, envir = envir)
+ 55. |                       +-base::source("00_Main_County.R", local = TRUE)
+ 56. |                       +-base::source("00_Main_County.R", local = TRUE)
+ 57. |                       | +-base::withVisible(eval(ei, envir))
+ 58. |                       | \-base::eval(ei, envir)
+ 59. |                       |   \-base::eval(ei, envir)
+ 60. |                       +-base::source("0_Controller2_County.R", local = TRUE)
+ 61. |                       +-base::source("0_Controller2_County.R", local = TRUE)
+ 62. |                       | +-base::withVisible(eval(ei, envir))
+ 63. |                       | \-base::eval(ei, envir)
+ 64. |                       |   \-base::eval(ei, envir)
+ 65. |                       +-base::source(paste0("9_Results_Daycent-setup_County.R"), local = TRUE)
+ 66. |                       +-base::source(paste0("9_Results_Daycent-setup_County.R"), local = TRUE)
+ 67. |                       | +-base::withVisible(eval(ei, envir))
+ 68. |                       | \-base::eval(ei, envir)
+ 69. |                       |   \-base::eval(ei, envir)
+ 70. |                       \-... %>% ...
+ 71. +-dplyr::mutate(...)
+ 72. +-dplyr:::mutate.data.frame(...)
+ 73. | \-dplyr:::mutate_cols(.data, dplyr_quosures(...), by)
+ 74. |   +-base::withCallingHandlers(...)
+ 75. |   \-dplyr:::mutate_col(dots[[i]], data, mask, new_columns)
+ 76. |     \-mask$eval_all_mutate(quo)
+ 77. |       \-dplyr (local) eval()
+ 78. +-base::as.Date(...)
+ 79. \-base::as.Date.numeric(...)
+ 80.   +-base::as.Date(origin, ...)
+ 81.   \-base::as.Date.character(origin, ...)
+ 82.     \-base (local) charToDate(x)
+ 83.       \-base::stop("character string is not in a standard unambiguous format")
+got results for task 7
+numValues: 7, numResults: 7, stopped: FALSE
+returning status FALSE
+evaluation # 8:
+$county_seq
+[1] 8
+
+[1] "county_seq is: 8"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 6091"
+[1] "county name is: Sierra County"
+[1] "state name is: California"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 39.5807086797164"
+[1] "longitude is: -120.516011209158"
+[1] "elevation_m is: 1748"
+[1] "Copying over KBS 'Daycent model' files --"
+[1][1][1] "************************************" "************************************" "************************************"
+
+
+[1][1][1] "####### New climate scenario #######" "####### New climate scenario #######" "####### New climate scenario #######"
+
+
+[1][1][1] "************************************" "************************************" "************************************"
+
+
+[1][1][1] "climate scenario: 1" "climate scenario: 1" "climate scenario: 1"
+
+
+[1][1] "************************************"[1] "************************************"
+ "************************************"
+[1]
+[1] "climate scenario: 1"[1] "climate scenario: 1"
+ "climate scenario: 1"
+[1]
+[1] "mgmt scenario: 1"[1] "mgmt scenario: 1"
+ "mgmt scenario: 1"
+[1]
+[1] "mgmt option: 1"[1] "mgmt option: 1"
+ "mgmt option: 1"
+
+[1][1][1] "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R"
+
+
+[1][1][1] "Starting 0_Observations_and_constants_County.R" "Starting 0_Observations_and_constants_County.R" "Starting 0_Observations_and_constants_County.R"
+
+
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+Called from:     classes)) tryInvokeRestart("muffleMessage"))
+withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1][1] "Starting p_Edit_calib_file" "Starting p_Edit_calib_file"
+
+[1] "Starting p_Edit_calib_file"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -8.61 and 40.75"
+[1] "min max precip is: 0 and 14.22"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -7.9 and 41.73"
+[1] "min max precip is: 0 and 9.89"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -10.75 and 34.78"
+[1] "min max precip is: 0 and 14.62"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -10.75 and 34.78"
+[1] "min max precip is: 0 and 14.62"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -0.74 and 45.53"
+[1] "min max precip is: 0 and 17.19"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -9.44 and 36.2"
+[1] "min max precip is: 0 and 15.38"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -9.44 and 36.2"
+[1] "min max precip is: 0 and 15.38"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -3.34 and 40.28"
+[1] "min max precip is: 0 and 16.24"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -3.34 and 40.28"
+[1] "min max precip is: 0 and 16.24"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "getting soil data for lat 30.8897781890174 and lon -99.8205834623948 at GEOID_48327_Texas"
+[1] "getting soil data for lat 39.5807086797164 and lon -120.516011209158 at GEOID_6091_California"
+[1] "getting soil data for lat 39.5807086797164 and lon -120.516011209158 at GEOID_6091_California"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1][1] "Starting Daycent_run_controller.R" "Starting Daycent_run_controller.R"
+
+[1][1] "Starting run_Daycent_setup.R" "Starting run_Daycent_setup.R"
+
+[1] "Starting run_Daycent_eq.R"
+[1] "**********Daycent equilibrium simulation*********"
+[1] "Starting run_Daycent_eq.R"
+[1] "**********Daycent equilibrium simulation*********"
+[1] "Starting run_Daycent_eq.R"
+[1] "**********Daycent equilibrium simulation*********"
+[1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+[1][1] "**********Daycent base simulation*********" "**********Daycent base simulation*********"
+
+[1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+[1][1] "**********Daycent experimental period simulation*********" "**********Daycent experimental period simulation*********"
+
+[1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+[1][1] "**********Daycent future simulation*********" "**********Daycent future simulation*********"
+
+[1][1] "Starting 9_Results_Daycent-setup_County.R" "Starting 9_Results_Daycent-setup_County.R"
+
+result of evaluating expression:
+result of evaluating expression:
+<<simpleErrorsimpleError: : 'Daycent/GEOID_6091_California/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').'Daycent/GEOID_6091_California/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').>
+>
+got results for task 8
+got results for task 8
+numValues: 8, numResults: 8, stopped: FALSE
+numValues: 8, numResults: 8, stopped: FALSE
+returning status FALSE
+returning status FALSE
+evaluation # 9:
+evaluation # 9:
+$county_seq
+$county_seq
+[1][1] 9 9
+
+
+
+[1][1] "county_seq is: 9" "county_seq is: 9"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "*****Using NCAR *********" "*****Using NCAR *********"
+
+[1][1] "***** SCRATCH SPACE *********" "***** SCRATCH SPACE *********"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "county geoid is: 21053" "county geoid is: 21053"
+
+[1][1] "county name is: Clinton County" "county name is: Clinton County"
+
+[1][1] "state name is: Kentucky" "state name is: Kentucky"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "working directory is: " "working directory is: "
+
+[1][1] "/glade/derecho/scratch/apdixon/national_gwp" "/glade/derecho/scratch/apdixon/national_gwp"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "latitude is: 36.7274467884251" "latitude is: 36.7274467884251"
+
+[1][1] "longitude is: -85.13601203322" "longitude is: -85.13601203322"
+
+[1][1] "elevation_m is: 298" "elevation_m is: 298"
+
+[1][1] "Copying over KBS 'Daycent model' files --" "Copying over KBS 'Daycent model' files --"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "####### New climate scenario #######" "####### New climate scenario #######"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "climate scenario: 1" "climate scenario: 1"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "climate scenario: 1" "climate scenario: 1"
+
+[1][1] "mgmt scenario: 1" "mgmt scenario: 1"
+
+[1][1] "mgmt option: 1" "mgmt option: 1"
+
+[1][1] "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R"
+
+[1][1] "Starting 0_Observations_and_constants_County.R" "Starting 0_Observations_and_constants_County.R"
+
+Called from: Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"[1]
+ "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1][1] "Starting p_Edit_calib_file" "Starting p_Edit_calib_file"
+
+[1][1] "Starting 1_Create_weather_input_files-Daycent4.R" "Starting 1_Create_weather_input_files-Daycent4.R"
+
+[1][1] "**********DAYCENT_basic_eq**********" "**********DAYCENT_basic_eq**********"
+
+[1][1] "min max temp is: -15.04 and 39.67" "min max temp is: -15.04 and 39.67"
+
+[1][1] "min max precip is: 0 and 10.26" "min max precip is: 0 and 10.26"
+
+[1][1] "min and max year are 1951, 1977" "min and max year are 1951, 1977"
+
+[1][1] "number of rows are: 9862" "number of rows are: 9862"
+
+[1][1] "**********DAYCENT_basic**********" "**********DAYCENT_basic**********"
+
+[1][1] "min max temp is: -18.64 and 40.13" "min max temp is: -18.64 and 40.13"
+
+[1][1] "min max precip is: 0 and 11.87" "min max precip is: 0 and 11.87"
+
+[1][1] "min and max year are 1978, 2021" "min and max year are 1978, 2021"
+
+[1][1] "number of rows are: 16436" "number of rows are: 16436"
+
+[1][1] "**********DAYCENT_basic_fut**********" "**********DAYCENT_basic_fut**********"
+
+[1][1] "min max temp is: -8.37 and 39.91" "min max temp is: -8.37 and 39.91"
+
+[1][1] "min max precip is: 0 and 12.98" "min max precip is: 0 and 12.98"
+
+[1][1] "min and max year are 2022, 2100" "min and max year are 2022, 2100"
+
+[1][1] "number of rows are: 28854" "number of rows are: 28854"
+
+[1][1] "getting soil data for lat 36.7274467884251 and lon -85.13601203322 at GEOID_21053_Kentucky" "getting soil data for lat 36.7274467884251 and lon -85.13601203322 at GEOID_21053_Kentucky"
+
+[1][1] "Starting 3_Create_management_input_files-setup_County.R" "Starting 3_Create_management_input_files-setup_County.R"
+
+[1][1] "Starting 3_Create_management_input_files-Daycent4.R" "Starting 3_Create_management_input_files-Daycent4.R"
+
+[1][1] "Starting Daycent_run_controller.R" "Starting Daycent_run_controller.R"
+
+[1][1] "Starting run_Daycent_setup.R" "Starting run_Daycent_setup.R"
+
+[1][1] "Starting run_Daycent_eq.R" "Starting run_Daycent_eq.R"
+
+[1][1] "**********Daycent equilibrium simulation*********" "**********Daycent equilibrium simulation*********"
+
+[1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+[1][1] "**********Daycent base simulation*********" "**********Daycent base simulation*********"
+
+[1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+[1][1] "**********Daycent experimental period simulation*********" "**********Daycent experimental period simulation*********"
+
+[1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+[1][1] "**********Daycent future simulation*********" "**********Daycent future simulation*********"
+
+[1][1] "Starting 9_Results_Daycent-setup_County.R" "Starting 9_Results_Daycent-setup_County.R"
+
+result of evaluating expression:
+result of evaluating expression:
+<<simpleErrorsimpleError: : 'Daycent/GEOID_21053_Kentucky/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').'Daycent/GEOID_21053_Kentucky/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').>
+>
+got results for task 9
+got results for task 9
+numValues: 9, numResults: 9, stopped: FALSE
+numValues: 9, numResults: 9, stopped: FALSE
+returning status FALSE
+returning status FALSE
+evaluation # 10:
+evaluation # 10:
+$county_seq
+$county_seq
+[1][1] 10 10
+
+
+
+[1][1] "county_seq is: 10" "county_seq is: 10"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "*****Using NCAR *********" "*****Using NCAR *********"
+
+[1][1] "***** SCRATCH SPACE *********" "***** SCRATCH SPACE *********"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "county geoid is: 39063" "county geoid is: 39063"
+
+[1][1] "county name is: Hancock County" "county name is: Hancock County"
+
+[1][1] "state name is: Ohio" "state name is: Ohio"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "working directory is: " "working directory is: "
+
+[1][1] "/glade/derecho/scratch/apdixon/national_gwp" "/glade/derecho/scratch/apdixon/national_gwp"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "latitude is: 41.0018579535827" "latitude is: 41.0018579535827"
+
+[1][1] "longitude is: -83.6665848961401" "longitude is: -83.6665848961401"
+
+[1][1] "elevation_m is: 247" "elevation_m is: 247"
+
+[1][1] "Copying over KBS 'Daycent model' files --" "Copying over KBS 'Daycent model' files --"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "####### New climate scenario #######" "####### New climate scenario #######"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "climate scenario: 1" "climate scenario: 1"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "climate scenario: 1" "climate scenario: 1"
+
+[1][1] "mgmt scenario: 1" "mgmt scenario: 1"
+
+[1][1] "mgmt option: 1" "mgmt option: 1"
+
+[1][1] "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R"
+
+[1][1] "Starting 0_Observations_and_constants_County.R" "Starting 0_Observations_and_constants_County.R"
+
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"[1]
+ "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1][1] "Starting p_Edit_calib_file" "Starting p_Edit_calib_file"
+
+[1][1] "Starting 1_Create_weather_input_files-Daycent4.R" "Starting 1_Create_weather_input_files-Daycent4.R"
+
+[1][1] "**********DAYCENT_basic_eq**********" "**********DAYCENT_basic_eq**********"
+
+[1][1] "min max temp is: -20.89 and 37.23" "min max temp is: -20.89 and 37.23"
+
+[1][1] "min max precip is: 0 and 6.77" "min max precip is: 0 and 6.77"
+
+[1][1] "min and max year are 1951, 1977" "min and max year are 1951, 1977"
+
+[1][1] "number of rows are: 9862" "number of rows are: 9862"
+
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -22.77 and 39.49"
+[1] "min max precip is: 0 and 10.17"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -22.77 and 39.49"
+[1] "min max precip is: 0 and 10.17"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -18.57 and 38.7"
+[1] "min max precip is: 0 and 10.35"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -18.57 and 38.7"
+[1] "min max precip is: 0 and 10.35"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "getting soil data for lat 41.0018579535827 and lon -83.6665848961401 at GEOID_39063_Ohio"
+[1] "getting soil data for lat 41.0018579535827 and lon -83.6665848961401 at GEOID_39063_Ohio"
+[1][1] "Starting 3_Create_management_input_files-setup_County.R" "Starting 3_Create_management_input_files-setup_County.R"
+
+[1][1] "Starting 3_Create_management_input_files-Daycent4.R" "Starting 3_Create_management_input_files-Daycent4.R"
+
+[1][1] "Starting Daycent_run_controller.R" "Starting Daycent_run_controller.R"
+
+[1][1] "Starting run_Daycent_setup.R" "Starting run_Daycent_setup.R"
+
+[1][1] "Starting run_Daycent_eq.R" "Starting run_Daycent_eq.R"
+
+[1][1] "**********Daycent equilibrium simulation*********" "**********Daycent equilibrium simulation*********"
+
+[1] "Starting run_Daycent4.R"[1]
+ "Starting run_Daycent4.R"[1]
+ "**********Daycent base simulation*********"[1]
+ "**********Daycent base simulation*********"
+[1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+[1][1] "**********Daycent experimental period simulation*********" "**********Daycent experimental period simulation*********"
+
+[1][1] "Starting run_Daycent4.R" "Starting run_Daycent4.R"
+
+[1][1] "**********Daycent future simulation*********" "**********Daycent future simulation*********"
+
+[1][1] "Starting 9_Results_Daycent-setup_County.R" "Starting 9_Results_Daycent-setup_County.R"
+
+result of evaluating expression:
+result of evaluating expression:
+<<simpleErrorsimpleError: : 'Daycent/GEOID_39063_Ohio/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').'Daycent/GEOID_39063_Ohio/harvest_base_1_1.csv' does not exist in current working directory ('/glade/derecho/scratch/apdixon/national_gwp').>
+>
+got results for task 10
+got results for task 10
+numValues: 10, numResults: 10, stopped: FALSE
+numValues: 10, numResults: 10, stopped: FALSE
+returning status FALSE
+returning status FALSE
+numValues: 10, numResults: 10, stopped: TRUE
+numValues: 10, numResults: 10, stopped: TRUE
+first call to combine function
+not calling combine function due to errors
+evaluating call object to combine results:
+  result.3
+[1][1] "*********climate_data_path is /glade/work/apdixon/climate **************" "*********climate_data_path is /glade/work/apdixon/climate **************"
+
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic_eq**********"[1]
+ "**********DAYCENT_basic_eq**********"[1]
+ "min max temp is: -20.89 and 37.23"[1]
+ "min max temp is: -20.89 and 37.23"[1]
+ "min max precip is: 0 and 6.77"[1]
+ "min max precip is: 0 and 6.77"[1]
+ "min and max year are 1951, 1977"[1]
+ "min and max year are 1951, 1977"[1]
+ "number of rows are: 9862"[1]
+ "number of rows are: 9862"
+[1][1] "**********DAYCENT_basic**********" "**********DAYCENT_basic**********"
+
+[1][1] "min max temp is: -22.77 and 39.49" "min max temp is: -22.77 and 39.49"
+
+[1][1] "min max precip is: 0 and 10.17" "min max precip is: 0 and 10.17"
+
+[1][1] "min and max year are 1978, 2021" "min and max year are 1978, 2021"
+
+[1][1] "number of rows are: 16436" "number of rows are: 16436"
+
+[1] "**********DAYCENT_basic_fut**********"
+[1][1] "min max temp is: -18.57 and 38.7" "**********DAYCENT_basic_fut**********"
+
+[1][1] "min max precip is: 0 and 10.35" "min max temp is: -18.57 and 38.7"
+
+[1][1] "min and max year are 2022, 2100" "min max precip is: 0 and 10.35"
+
+[1][1] "number of rows are: 28854" "min and max year are 2022, 2100"
+
+[1] "number of rows are: 28854"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1][1] "getting soil data for lat 41.0018579535827 and lon -83.6665848961401 at GEOID_39063_Ohio" "getting soil data for lat 41.0018579535827 and lon -83.6665848961401 at GEOID_39063_Ohio"
+
+[1] "county_seq is: 7"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 48327"
+[1] "county name is: Menard County"
+[1] "state name is: Texas"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 30.8897781890174"
+[1] "longitude is: -99.8205834623948"
+[1] "elevation_m is: 641"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Copying over KBS 'Daycent model' files --"
+[1] "Starting 9_Results_Daycent-setup_County.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting run_Daycent_eq.R"
+[1] "**********Daycent equilibrium simulation*********"
+result of evaluating expression:
+<simpleError in file(file, "rt"): cannot open the connection>
+got results for task 7
+numValues: 7, numResults: 7, stopped: FALSE
+returning status FALSE
+evaluation # 8:
+$county_seq
+[1] 8
+
+[1] "county_seq is: 8"
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+[1] "************************************"
+[1] "county geoid is: 6091"
+[1] "county name is: Sierra County"
+[1] "state name is: California"
+[1] "************************************"
+[1] "************************************"
+[1] "working directory is: "
+[1] "/glade/derecho/scratch/apdixon/national_gwp"
+[1] "************************************"
+[1] "latitude is: 39.5807086797164"
+[1] "longitude is: -120.516011209158"
+[1] "elevation_m is: 1748"
+[1] "Copying over KBS 'Daycent model' files --"
+[1][1] "************************************" "************************************"
+
+[1][1] "####### New climate scenario #######" "####### New climate scenario #######"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "climate scenario: 1" "climate scenario: 1"
+
+[1][1] "************************************" "************************************"
+
+[1][1] "climate scenario: 1" "climate scenario: 1"
+
+[1][1] "mgmt scenario: 1" "mgmt scenario: 1"
+
+[1][1] "mgmt option: 1" "mgmt option: 1"
+
+[1][1] "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R"
+
+[1][1] "Starting 0_Observations_and_constants_County.R" "Starting 0_Observations_and_constants_County.R"
+
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+Called from: withCallingHandlers(expr, message = function(c) if (inherits(c, 
+    classes)) tryInvokeRestart("muffleMessage"))
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting p_Edit_calib_file"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "Starting 1_Create_weather_input_files-Daycent4.R"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -8.61 and 40.75"
+[1] "min max precip is: 0 and 14.22"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic_eq**********"
+[1] "min max temp is: -10.75 and 34.78"
+[1] "min max precip is: 0 and 14.62"
+[1] "min and max year are 1951, 1977"
+[1] "number of rows are: 9862"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -7.9 and 41.73"
+[1] "min max precip is: 0 and 9.89"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic**********"
+[1] "min max temp is: -9.44 and 36.2"
+[1] "min max precip is: 0 and 15.38"
+[1] "min and max year are 1978, 2021"
+[1] "number of rows are: 16436"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -0.74 and 45.53"
+[1] "min max precip is: 0 and 17.19"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "**********DAYCENT_basic_fut**********"
+[1] "min max temp is: -3.34 and 40.28"
+[1] "min max precip is: 0 and 16.24"
+[1] "min and max year are 2022, 2100"
+[1] "number of rows are: 28854"
+[1] "getting soil data for lat 30.8897781890174 and lon -99.8205834623948 at GEOID_48327_Texas"
+[1] "getting soil data for lat 39.5807086797164 and lon -120.516011209158 at GEOID_6091_California"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-setup_County.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting 3_Create_management_input_files-Daycent4.R"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting run_Daycent_eq.R"
+[1] "**********Daycent equilibrium simulation*********"
+[1] "Starting Daycent_run_controller.R"
+[1] "Starting run_Daycent_setup.R"
+[1] "Starting run_Daycent_eq.R"
+[1] "**********Daycent equilibrium simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent base simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent experimental period simulation*********"
+[1] "Starting run_Daycent4.R"
+[1] "**********Daycent future simulation*********"
+[1] "Starting 9_Results_Daycent-setup_County.R"
