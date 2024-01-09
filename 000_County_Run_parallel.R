@@ -11,33 +11,37 @@
 # 
 # library(dplyr) # for piping & tibble
 library(doParallel) # for parallel processing
+library(doFuture) # for parallel processing and managing global variables
+plan(multisession) # for use with doFuture
 library(foreach) # for parallel processing
 library(tictoc) # for timing
 # library(data.table) # for fwrite
 
-# # county data to link
-# # geo_link_dir<-'/glade/u/home/apdixon/Documents/national_gwp/Data/County_start'
-# geo_link_dir<-'/home/ap/Documents/GitHub/national_gwp/Data/County_start'
-# 
-# 
-# # add geolink table to make GEOIDS align with census GEOID
-# geo_link<-read.csv(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
-#   select(zh_geoid, REAL_GEOID)%>%
-#   as_tibble()%>%
-#   arrange(REAL_GEOID)%>%
-#   filter(REAL_GEOID %in% c(46087, 46085))
-# 
-# head(geo_link)
-# tail(geo_link)
-# 
-# geoids<-geo_link$REAL_GEOID
+# Set workspace
+if (Sys.info()['sysname'] == "Linux"){ 
+  if(Sys.info()['user']=='ap') {
+    master_path<-'/home/ap/Documents/GitHub/national_gwp'
+    results_folder<-'/home/ap/Documents/national_gwp_results'
+    Glade=FALSE
+    print("************************************")
+    print("*****Using linux mint *********")
+  } else {
+    master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
+    results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
+    Glade=TRUE
+    print("************************************")
+    print("*****Using NCAR *********")
+    print("***** SCRATCH SPACE *********")
+  }
+}
 
-run_parallel<-T
+
+run_parallel<-TRUE
 
 if(identical(run_parallel, TRUE)){
   cat("Running in parallel using foreach")
   #create the cluster--------------------
-  n_threads<-111
+  n_threads<-10
   # county_range<-geoids
   # 
   my.cluster <- parallel::makeCluster(
@@ -53,10 +57,16 @@ if(identical(run_parallel, TRUE)){
   # setDTthreads(threads = n_threads)
 }
 
-foreach(county_seq = 1:3108, .verbose = T, .combine = 'c', 
-        .packages=c('apsimx','berryFunctions','broom','data.table','dplyr','ggplot2',
+foreach(county_seq = 1:10, .verbose = T, .combine = 'c', 
+        .options.future = list(packages = c('apsimx','berryFunctions','broom','data.table','dplyr','ggplot2',
                     'graphics','lubridate','magrittr','pracma','R.utils','readxl','sf',
-  'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %dopar% {
+  'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')
+  , globals = structure(TRUE, add = c('master_path', 'results_folder', 'Glade')))) %dofuture% {
+    
+# foreach(county_seq = 1:2, .verbose = T, .combine = 'c', 
+#         .packages=c('apsimx','berryFunctions','broom','data.table','dplyr','ggplot2',
+#                     'graphics','lubridate','magrittr','pracma','R.utils','readxl','sf',
+#                     'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %do% {
 
   print(paste0("county_seq is: ", county_seq))
   
@@ -68,41 +78,18 @@ foreach(county_seq = 1:3108, .verbose = T, .combine = 'c',
   # Print an error message to stderr
   cat(paste0("Starting county ", county_number, "\n"), file = stderr(), append = TRUE)
   
-  # Set workspace
-  if (Sys.info()['sysname'] == "Darwin"){
-    home_folder<-file.path('/Users/adamdixon/Documents/GitHub/national_gwp')
-    Glade=FALSE
-    print("************************************")
-    print("*****Using Mac OS *********")
-  } 
+
+  setwd(master_path)
   
-  if (Sys.info()['sysname'] == "Linux"){ 
-    if(Sys.info()['user']=='ap') {
-      home_folder<-'/home/ap/Documents/GitHub/national_gwp'
-      results_folder<-'/home/ap/Documents/national_gwp_results'
-      Glade=FALSE
-      print("************************************")
-      print("*****Using linux mint *********")
-    } else {
-      home_folder<-'/glade/derecho/scratch/apdixon/national_gwp'
-      results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
-      Glade=TRUE
-      print("************************************")
-      print("*****Using NCAR *********")
-      print("***** SCRATCH SPACE *********")
-    }
-  }
-  
-  setwd(home_folder)
-  
-  .GlobalEnv$master_path <- home_folder
+  # master_path <- home_folder
 
   county_data<-read.csv(file.path('Data', 'County_start', 'county_centroids_elevation.csv'))
   
   
-  "************************************"
-  "************************************"
-  Test <- FALSE
+  cat("************************************\n")
+  cat("************************************\n")
+  Test <- TRUE
+  del_input_files<-TRUE
   
   if(identical(Test, TRUE)){
     county_data<-county_data%>%
@@ -118,14 +105,13 @@ foreach(county_seq = 1:3108, .verbose = T, .combine = 'c',
   run_Daycent=TRUE
   run_LDNDC=FALSE
   run_Millennial=FALSE
-  del_input_files=TRUE
-  "************************************"
-  "************************************"
+  cat("************************************\n")
+  cat("************************************\n")
   # county_geoid<-sprintf("%05d", county_data$GEOID) # Use 5 character GEOID?
   # county_geoid<-paste0("_", county_data$GEOID, "_") # Use 5 character GEOID?, or put _ in front and behind to isolate for pattern matching
-  .GlobalEnv$county_geoid<-county_data$GEOID # adapting 4 and 5 character geoids isn't necessary because we're always using paste statements with _ in front and behind
-  .GlobalEnv$county_name<-county_data$NAMELSAD
-  .GlobalEnv$state_name<-county_data$State_Name
+  county_geoid<-county_data$GEOID # adapting 4 and 5 character geoids isn't necessary because we're always using paste statements with _ in front and behind
+  county_name<-county_data$NAMELSAD
+  state_name<-county_data$State_Name
   print("************************************")
   print(paste0("county geoid is: ", county_geoid))
   print(paste0("county name is: ", county_name))
@@ -141,9 +127,9 @@ foreach(county_seq = 1:3108, .verbose = T, .combine = 'c',
   print(getwd())
   print("************************************")
   
-  .GlobalEnv$latitude = county_data$Lat
-  .GlobalEnv$longitude = county_data$Long
-  .GlobalEnv$elevation_m = county_data$Elev_mean_m
+  latitude = county_data$Lat
+  longitude = county_data$Long
+  elevation_m = county_data$Elev_mean_m
   
   print(paste0("latitude is: ", latitude))
   print(paste0("longitude is: ", longitude))
@@ -171,8 +157,9 @@ if(identical(run_parallel, TRUE)){
   # #close the cluster--------------------
   # #setDTthreads(threads = n_threads)
   parallel::stopCluster(cl = my.cluster)
-  # end timer
-  run_time <- round(toc(echo=TRUE)/60,1)
+  # end time
+  toc()
+  run_time <- round(toc()/60,1)
   print(paste0("Run time is ",run_time," minutes, ",run_time/60," hours."))
 }
 
