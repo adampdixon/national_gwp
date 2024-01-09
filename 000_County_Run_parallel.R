@@ -88,7 +88,7 @@ foreach(county_seq = 1:10, .verbose = T, .combine = 'c',
   
   cat("************************************\n")
   cat("************************************\n")
-  Test <- TRUE
+  Test <- FALSE
   del_input_files<-TRUE
   
   if(identical(Test, TRUE)){
