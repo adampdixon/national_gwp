@@ -1698,3 +1698,184 @@ Loading required package: iterators
 Loading required package: parallel
 Error in library(doFuture) : there is no package called 'doFuture'
 Execution halted
+
+Lmod is automatically replacing "ncarenv/23.06" with "ncarenv-basic/23.09".
+
+
+Lmod is automatically replacing "intel/2023.0.0" with "gcc/12.2.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.25     3) hdf5/1.12.2             5) netcdf/4.9.2
+  2) craype/2.7.20         4) ncarcompilers/1.0.0
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: parallel
+Loading required package: future
+The legacy packages maptools, rgdal, and rgeos, underpinning this package
+will retire shortly. Please refer to R-spatial evolution reports on
+https://r-spatial.org/r/2023/05/15/evolution4.html for details.
+This package is now running under evolution status 0 
+which: no mono in (/glade/u/apps/opt/conda/envs/r-4.3/bin:/glade/u/apps/opt/conda/condabin:/glade/u/apps/derecho/23.09/spack/opt/spack/udunits/2.2.28/gcc/12.2.0/eice/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/proj/8.2.1/gcc/12.2.0/2cvt/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/geos/3.9.1/gcc/12.2.0/unnt/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/ncarcompilers/1.0.0/gcc/12.2.0/zue2/bin/mpi:/opt/cray/pe/pals/1.2.11/bin:/opt/cray/libfabric/1.15.2.0/bin:/opt/cray/pe/mpich/8.1.25/ofi/gnu/9.1/bin:/opt/cray/pe/mpich/8.1.25/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/netcdf/4.9.2/gcc/12.2.0/gjc6/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/hdf5/1.12.2/gcc/12.2.0/cqpo/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/ncarcompilers/1.0.0/gcc/12.2.0/zue2/bin:/opt/cray/pe/craype/2.7.20/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/gdal/3.7.1/gcc/12.2.0/fhgy/bin:/opt/cray/pe/gcc/12.2.0/snos/bin:/opt/clmgr/sbin:/opt/clmgr/bin:/opt/sgi/sbin:/opt/sgi/bin:/opt/c3/bin:/usr/lib/mit/bin:/opt/pbs/bin:/usr/local/bin:/usr/bin:/sbin:/bin:/opt/cray/pe/bin)
+APSIM(X) not found.
+                        If APSIM(X) is installed in an alternative location,
+                        set paths manually using 'apsimx_options' or 'apsim_options'.
+                        You can still try as the package will look into the registry (under Windows)
+
+Attaching package: 'data.table'
+
+The following object is masked from 'package:berryFunctions':
+
+    between
+
+The following object is masked from 'package:tictoc':
+
+    shift
+
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:data.table':
+
+    between, first, last
+
+The following object is masked from 'package:berryFunctions':
+
+    between
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: 'lubridate'
+
+The following objects are masked from 'package:data.table':
+
+    hour, isoweek, mday, minute, month, quarter, second, wday, week,
+    yday, year
+
+The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union
+
+
+Attaching package: 'pracma'
+
+The following objects are masked from 'package:magrittr':
+
+    and, mod, or
+
+The following objects are masked from 'package:tictoc':
+
+    clear, size, tic, toc
+
+Loading required package: R.oo
+Loading required package: R.methodsS3
+R.methodsS3 v1.8.2 (2022-06-13 22:00:14 UTC) successfully loaded. See ?R.methodsS3 for help.
+R.oo v1.25.0 (2022-06-12 02:20:02 UTC) successfully loaded. See ?R.oo for help.
+
+Attaching package: 'R.oo'
+
+The following object is masked from 'package:R.methodsS3':
+
+    throw
+
+The following object is masked from 'package:magrittr':
+
+    equals
+
+The following object is masked from 'package:berryFunctions':
+
+    getName
+
+The following objects are masked from 'package:methods':
+
+    getClasses, getMethods
+
+The following objects are masked from 'package:base':
+
+    attach, detach, load, save
+
+R.utils v2.12.3 (2023-11-18 01:00:02 UTC) successfully loaded. See ?R.utils for help.
+
+Attaching package: 'R.utils'
+
+The following object is masked from 'package:magrittr':
+
+    extract
+
+The following object is masked from 'package:utils':
+
+    timestamp
+
+The following objects are masked from 'package:base':
+
+    cat, commandArgs, getOption, isOpen, nullfile, parse, warnings
+
+Linking to GEOS 3.12.0, GDAL 3.7.0, PROJ 9.2.1; sf_use_s2() is TRUE
+
+Attaching package: 'tidyr'
+
+The following object is masked from 'package:R.utils':
+
+    extract
+
+The following object is masked from 'package:magrittr':
+
+    extract
+
+-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+v forcats 1.0.0     v readr   2.1.4
+v purrr   1.0.1     v tibble  3.2.1
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x purrr::accumulate()  masks foreach::accumulate()
+x pracma::and()        masks magrittr::and()
+x dplyr::between()     masks data.table::between(), berryFunctions::between()
+x purrr::cross()       masks pracma::cross()
+x R.oo::equals()       masks magrittr::equals()
+x tidyr::extract()     masks R.utils::extract(), magrittr::extract()
+x dplyr::filter()      masks stats::filter()
+x dplyr::first()       masks data.table::first()
+x lubridate::hour()    masks data.table::hour()
+x lubridate::isoweek() masks data.table::isoweek()
+x dplyr::lag()         masks stats::lag()
+x dplyr::last()        masks data.table::last()
+x lubridate::mday()    masks data.table::mday()
+x lubridate::minute()  masks data.table::minute()
+x pracma::mod()        masks magrittr::mod()
+x lubridate::month()   masks data.table::month()
+x pracma::or()         masks magrittr::or()
+x lubridate::quarter() masks data.table::quarter()
+x lubridate::second()  masks data.table::second()
+x purrr::set_names()   masks magrittr::set_names()
+x purrr::transpose()   masks data.table::transpose()
+x lubridate::wday()    masks data.table::wday()
+x lubridate::week()    masks data.table::week()
+x purrr::when()        masks foreach::when()
+x lubridate::yday()    masks data.table::yday()
+x lubridate::year()    masks data.table::year()
+i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Starting county 1
+Warning message:
+no DISPLAY variable so Tk is not available 
+Starting county 2
+Starting county 3
+Starting county 4
+Starting county 5
+Starting county 6
+Starting county 7
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 8
+Starting county 9
+Starting county 10
+Error in ssurgo2sp(mapunit = mapunit, component = cmpnt, chorizon = chrzns,  : 
+  interpolation did not work. Possibly due to missing values.
+Calls: %dofuture% -> doFuture2
+In addition: There were 19 warnings (use warnings() to see them)
+Execution halted
