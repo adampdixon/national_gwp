@@ -35,6 +35,9 @@ if (Sys.info()['sysname'] == "Linux"){
   }
 }
 
+cat("date and time are ")
+print(Sys.time())
+
 
 run_parallel<-TRUE
 
