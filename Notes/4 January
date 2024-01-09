@@ -25,6 +25,8 @@ ml load ncarenv/23.06  gcc/12.2.0 gdal/3.7.1 geos/3.9.1 proj/8.2.1 udunits/2.2.2
 ml load ncarenv-basic/23.09 gcc gdal geos proj udunits conda rstudio
 conda activate r-4.3
 
+
+/glade/u/home/apdixon
 /glade/derecho/scratch/apdixon/national_gwp
 /glade/work/apdixon/climate
 /glade/work/apdixon/Output_nClimGrid
@@ -47,4 +49,11 @@ https://app.globus.org/file-manager?
 find UCAR GLADE, then UCAR_Emory to connect to personal 
 
 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
+
+# consider this for doParallel issues
+https://cran.r-project.org/web/packages/doFuture/index.html
+
+# Get directories file sizes
+du -sh ./*/
+
 

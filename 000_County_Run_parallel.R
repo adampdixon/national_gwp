@@ -44,7 +44,7 @@ run_parallel<-TRUE
 if(identical(run_parallel, TRUE)){
   cat("Running in parallel using foreach")
   #create the cluster--------------------
-  n_threads<-10
+  n_threads<-50
   # county_range<-geoids
   # 
   my.cluster <- parallel::makeCluster(
@@ -60,7 +60,7 @@ if(identical(run_parallel, TRUE)){
   # setDTthreads(threads = n_threads)
 }
 
-foreach(county_seq = 1:10, .verbose = T, .combine = 'c', 
+foreach(county_seq = 11:3108, .verbose = T, .combine = 'c', 
         .options.future = list(packages = c('apsimx','berryFunctions','broom','data.table','dplyr','ggplot2',
                     'graphics','lubridate','magrittr','pracma','R.utils','readxl','sf',
   'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')
