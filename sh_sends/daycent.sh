@@ -7,7 +7,7 @@
 #PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day.stderr 
 ### Queue name
 #PBS -q main
-#PBS -l walltime=12:00:00
+#PBS -l walltime=6:00:00
 ### Send email on abort, begin and end
 #PBS -m e
 ### Specify mail recipient
