@@ -11,8 +11,10 @@
 # 
 # library(dplyr) # for piping & tibble
 # library(doParallel) # for parallel processing
+library(parallelly) # for help with killing clusters at end
 library(doFuture) # for parallel processing and managing global variables
 plan(multisession) # for use with doFuture
+
 library(foreach) # for parallel processing
 library(tictoc) # for timing
 library(data.table) # for fwrite
@@ -41,14 +43,14 @@ print(Sys.time())
 cat("************************************\n")
 cat("******** FLAGS etc *****************\n")
 run_parallel<-TRUE
-Test <- TRUE # if TRUE, only run 3 counties, filtered below
+Test <- FALSE # if TRUE, only run 3 counties, filtered below
 del_input_files<-TRUE
-n_cores<-3 # number of cores to use
+n_cores<-50 # number of cores to use
 
 run_Daycent=TRUE
 run_LDNDC=FALSE
 run_Millennial=FALSE
-county_numbers<-1:3 #11:3108
+county_numbers<-193:293 #11:3108
 cat("************************************\n")
 cat("************************************\n")
 
@@ -58,12 +60,13 @@ if(identical(run_parallel, TRUE)){
 
   # county_range<-geoids
   # 
-  my.cluster <- parallel::makeCluster(
-    n_cores,
-    # type = "FORK",
-    outfile="Log.txt")
+  my.cl <- parallelly::makeClusterPSOCK(n_cores, autoStop = TRUE)
+  # my.cluster <- parallel::makeCluster(
+  #   n_cores,
+  #   # type = "FORK",
+  #   outfile="Log.txt")
   #register it to be used by %dopar%
-  doParallel::registerDoParallel(cl = my.cluster, cores = n_cores)
+  doParallel::registerDoParallel(cl = my.cl, cores = n_cores)
   #check if it is registered (optional)
   # foreach::getDoParRegistered()
   # foreach::getDoParWorkers()
@@ -174,7 +177,8 @@ if(identical(run_parallel, TRUE)){
   cat("closing the cluster\n")
   # #close the cluster--------------------
   # #setDTthreads(threads = n_threads)
-  parallel::stopCluster(cl = my.cluster)
+  # parallel::stopCluster(cl = my.cluster)
+  my.cl <- parallelly::autoStopCluster(my.cl)
 
 }
 
