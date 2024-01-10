@@ -10,12 +10,12 @@
 ######################################################
 # 
 # library(dplyr) # for piping & tibble
-library(doParallel) # for parallel processing
+# library(doParallel) # for parallel processing
 library(doFuture) # for parallel processing and managing global variables
 plan(multisession) # for use with doFuture
 library(foreach) # for parallel processing
 library(tictoc) # for timing
-# library(data.table) # for fwrite
+library(data.table) # for fwrite
 
 # Set workspace
 if (Sys.info()['sysname'] == "Linux"){ 
@@ -38,44 +38,58 @@ if (Sys.info()['sysname'] == "Linux"){
 cat("date and time are ")
 print(Sys.time())
 
-
+cat("************************************\n")
+cat("******** FLAGS etc *****************\n")
 run_parallel<-TRUE
+Test <- TRUE # if TRUE, only run 3 counties, filtered below
+del_input_files<-TRUE
+n_cores<-3 # number of cores to use
+
+run_Daycent=TRUE
+run_LDNDC=FALSE
+run_Millennial=FALSE
+county_numbers<-1:3 #11:3108
+cat("************************************\n")
+cat("************************************\n")
 
 if(identical(run_parallel, TRUE)){
   cat("Running in parallel using foreach")
   #create the cluster--------------------
-  n_threads<-50
+
   # county_range<-geoids
   # 
   my.cluster <- parallel::makeCluster(
-    n_threads,
-    type = "FORK",
+    n_cores,
+    # type = "FORK",
     outfile="Log.txt")
   #register it to be used by %dopar%
-  doParallel::registerDoParallel(cl = my.cluster)
+  doParallel::registerDoParallel(cl = my.cluster, cores = n_cores)
   #check if it is registered (optional)
-  foreach::getDoParRegistered()
-  foreach::getDoParWorkers()
+  # foreach::getDoParRegistered()
+  # foreach::getDoParWorkers()
   # set number of threads for data.table
-  # setDTthreads(threads = n_threads)
+  setDTthreads(threads = n_cores)
 }
 
-foreach(county_seq = 11:3108, .verbose = T, .combine = 'c', 
+foreach(county_seq = county_numbers, .verbose = T, .combine = 'c',
         .options.future = list(packages = c('apsimx','berryFunctions','broom','data.table','dplyr','ggplot2',
                     'graphics','lubridate','magrittr','pracma','R.utils','readxl','sf',
   'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')
-  , globals = structure(TRUE, add = c('master_path', 'results_folder', 'Glade')))) %dofuture% {
+  , globals = structure(TRUE, add = c('master_path', 'results_folder', 'Glade', 'Test', 'del_input_files',
+                                      'run_Daycent','run_LDNDC','run_Millennial')))) %dofuture% {
     
-# foreach(county_seq = 1:2, .verbose = T, .combine = 'c', 
+# foreach(county_seq = county_numbers, .verbose = T, .combine = 'c',
 #         .packages=c('apsimx','berryFunctions','broom','data.table','dplyr','ggplot2',
 #                     'graphics','lubridate','magrittr','pracma','R.utils','readxl','sf',
-#                     'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %do% {
+#                     'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %dopar% {
 
   print(paste0("county_seq is: ", county_seq))
   
   # x = the number of counties to run
   county_number<-county_seq
+  
   tic()
+  
   # Open a connection to stderr
   sink(stderr(), type = "message")
   # Print an error message to stderr
@@ -88,11 +102,8 @@ foreach(county_seq = 11:3108, .verbose = T, .combine = 'c',
 
   county_data<-read.csv(file.path('Data', 'County_start', 'county_centroids_elevation.csv'))
   
-  
-  cat("************************************\n")
-  cat("************************************\n")
-  Test <- FALSE
-  del_input_files<-TRUE
+
+
   
   if(identical(Test, TRUE)){
     county_data<-county_data%>%
@@ -105,11 +116,6 @@ foreach(county_seq = 11:3108, .verbose = T, .combine = 'c',
   #  -- add this to each parameter here so that it's available down the line
   # https://stackoverflow.com/questions/63241209/object-not-found-in-foreach-loop
 
-  run_Daycent=TRUE
-  run_LDNDC=FALSE
-  run_Millennial=FALSE
-  cat("************************************\n")
-  cat("************************************\n")
   # county_geoid<-sprintf("%05d", county_data$GEOID) # Use 5 character GEOID?
   # county_geoid<-paste0("_", county_data$GEOID, "_") # Use 5 character GEOID?, or put _ in front and behind to isolate for pattern matching
   county_geoid<-county_data$GEOID # adapting 4 and 5 character geoids isn't necessary because we're always using paste statements with _ in front and behind
@@ -150,7 +156,16 @@ foreach(county_seq = 11:3108, .verbose = T, .combine = 'c',
     print("Saving input data files")}
   cat("************************************")
   
-  return(1) # adding this so that the foreach loop returns something
+  # end time
+  toc()
+  run_time <- round(toc(echo=T)/60,1)
+  print(paste0("Run time is ",run_time," minutes, ",run_time/60," hours."))
+  
+  # rm(list = ls()) # clear the workspace
+  gc() # garbage collection, to save RAM
+
+  return(NULL) # adding this so that the foreach loop returns something
+
   } # END OF DOPAR COUNTY LOOP
 
 
@@ -160,10 +175,7 @@ if(identical(run_parallel, TRUE)){
   # #close the cluster--------------------
   # #setDTthreads(threads = n_threads)
   parallel::stopCluster(cl = my.cluster)
-  # end time
-  toc()
-  run_time <- round(toc()/60,1)
-  print(paste0("Run time is ",run_time," minutes, ",run_time/60," hours."))
+
 }
 
 

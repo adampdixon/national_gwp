@@ -22,7 +22,7 @@ ml load ncarenv-basic/23.09 ncarenv/23.09 gdal/3.7.1 geos/3.9.1 proj/8.2.1 uduni
 
 ml load ncarenv/23.06  gcc/12.2.0 gdal/3.7.1 geos/3.9.1 proj/8.2.1 udunits/2.2.28 rstudio conda
 
-ml load ncarenv-basic/23.09 gcc gdal geos proj udunits conda rstudio
+  ml load ncarenv-basic/23.09 gcc gdal geos proj udunits conda rstudio
 conda activate r-4.3
 
 
