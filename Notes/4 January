@@ -57,3 +57,25 @@ https://cran.r-project.org/web/packages/doFuture/index.html
 du -sh ./*/
 
 
+These are the ones that didn't work
+arley Oat Rye comparison.xlsx  GEOID_26003_Michigan        GEOID_41013_Oregon        GEOID_51095_Virginia       run_Daycent_base_LRF.R
+Calibration tests_KBS.xlsx      GEOID_26007_Michigan        GEOID_41035_Oregon        GEOID_51121_Virginia       run_Daycent_eq_County.R
+Calibration tests_LRF.xlsx      GEOID_27045_Minnesota       GEOID_41063_Oregon        GEOID_5137_Arkansas        run_Daycent_eq_KBS.R
+County                          GEOID_27153_Minnesota       GEOID_42007_Pennsylvania  GEOID_51540_Virginia       run_Daycent_eq_LRF.R
+Daycent_run_controller.R        GEOID_28061_Mississippi     GEOID_46039_South_Dakota  GEOID_51735_Virginia       run_Daycent_exp_County.R
+GEOID_1019_Alabama              GEOID_29011_Missouri        GEOID_46099_South_Dakota  GEOID_51775_Virginia       run_Daycent_exp_KBS.R
+GEOID_1027_Alabama              GEOID_29083_Missouri        GEOID_46101_South_Dakota  GEOID_54075_West_Virginia  run_Daycent_exp_LRF.R
+GEOID_1091_Alabama              GEOID_31101_Nebraska        GEOID_47013_Tennessee     GEOID_54103_West_Virginia  run_Daycent_fut_County.R
+GEOID_12011_Florida             GEOID_31109_Nebraska        GEOID_47065_Tennessee     GEOID_55111_Wisconsin      run_Daycent_fut_KBS.R
+GEOID_12131_Florida             GEOID_31137_Nebraska        GEOID_47149_Tennessee     GEOID_56023_Wyoming        run_Daycent_fut_LRF.R
+GEOID_13189_Georgia             GEOID_35003_New_Mexico      GEOID_47159_Tennessee     GEOID_8109_Colorado        run_Daycent_setup_.R
+GEOID_13265_Georgia             GEOID_35035_New_Mexico      GEOID_48011_Texas         KBS                        run_Daycent_setup_County.R
+GEOID_16033_Idaho               GEOID_36111_New_York        GEOID_48057_Texas         KBS_4copy2                 run_Daycent_setup_KBS.R
+GEOID_18151_Indiana             GEOID_37037_North_Carolina  GEOID_48077_Texas         fort.1                     run_Daycent_setup_LRF.R
+GEOID_19101_Iowa                GEOID_39003_Ohio            GEOID_48245_Texas         nohup-trunc.out            slurm-469.out
+GEOID_22019_Louisiana           GEOID_39085_Ohio            GEOID_49005_Utah          run_Daycent_base.R
+GEOID_24510_Maryland            GEOID_40001_Oklahoma        GEOID_49033_Utah          run_Daycent_base_County.R
+GEOID_25025_Massachusetts       GEOID_41005_Oregon          GEOID_51089_Virginia      run_Daycent_base_KBS.R
+
+
+
