@@ -1879,3 +1879,308 @@ Error in ssurgo2sp(mapunit = mapunit, component = cmpnt, chorizon = chrzns,  :
 Calls: %dofuture% -> doFuture2
 In addition: There were 19 warnings (use warnings() to see them)
 Execution halted
+
+Lmod is automatically replacing "ncarenv/23.06" with "ncarenv-basic/23.09".
+
+
+Lmod is automatically replacing "intel/2023.0.0" with "gcc/12.2.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.25     3) hdf5/1.12.2             5) netcdf/4.9.2
+  2) craype/2.7.20         4) ncarcompilers/1.0.0
+
+Loading required package: foreach
+Loading required package: future
+
+Attaching package: 'data.table'
+
+The following object is masked from 'package:tictoc':
+
+    shift
+
+The legacy packages maptools, rgdal, and rgeos, underpinning this package
+will retire shortly. Please refer to R-spatial evolution reports on
+https://r-spatial.org/r/2023/05/15/evolution4.html for details.
+This package is now running under evolution status 0 
+which: no mono in (/glade/u/apps/opt/conda/envs/r-4.3/bin:/glade/u/apps/opt/conda/condabin:/glade/u/apps/derecho/23.09/spack/opt/spack/udunits/2.2.28/gcc/12.2.0/eice/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/proj/8.2.1/gcc/12.2.0/2cvt/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/geos/3.9.1/gcc/12.2.0/unnt/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/ncarcompilers/1.0.0/gcc/12.2.0/zue2/bin/mpi:/opt/cray/pe/pals/1.2.11/bin:/opt/cray/libfabric/1.15.2.0/bin:/opt/cray/pe/mpich/8.1.25/ofi/gnu/9.1/bin:/opt/cray/pe/mpich/8.1.25/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/netcdf/4.9.2/gcc/12.2.0/gjc6/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/hdf5/1.12.2/gcc/12.2.0/cqpo/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/ncarcompilers/1.0.0/gcc/12.2.0/zue2/bin:/opt/cray/pe/craype/2.7.20/bin:/glade/u/apps/derecho/23.09/spack/opt/spack/gdal/3.7.1/gcc/12.2.0/fhgy/bin:/opt/cray/pe/gcc/12.2.0/snos/bin:/opt/clmgr/sbin:/opt/clmgr/bin:/opt/sgi/sbin:/opt/sgi/bin:/opt/c3/bin:/usr/lib/mit/bin:/opt/pbs/bin:/usr/local/bin:/usr/bin:/sbin:/bin:/opt/cray/pe/bin)
+APSIM(X) not found.
+                        If APSIM(X) is installed in an alternative location,
+                        set paths manually using 'apsimx_options' or 'apsim_options'.
+                        You can still try as the package will look into the registry (under Windows)
+
+Attaching package: 'berryFunctions'
+
+The following object is masked from 'package:data.table':
+
+    between
+
+
+Attaching package: 'dplyr'
+
+The following object is masked from 'package:berryFunctions':
+
+    between
+
+The following objects are masked from 'package:data.table':
+
+    between, first, last
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: 'lubridate'
+
+The following objects are masked from 'package:data.table':
+
+    hour, isoweek, mday, minute, month, quarter, second, wday, week,
+    yday, year
+
+The following objects are masked from 'package:base':
+
+    date, intersect, setdiff, union
+
+
+Attaching package: 'pracma'
+
+The following objects are masked from 'package:magrittr':
+
+    and, mod, or
+
+The following objects are masked from 'package:tictoc':
+
+    clear, size, tic, toc
+
+Loading required package: R.oo
+Loading required package: R.methodsS3
+R.methodsS3 v1.8.2 (2022-06-13 22:00:14 UTC) successfully loaded. See ?R.methodsS3 for help.
+R.oo v1.25.0 (2022-06-12 02:20:02 UTC) successfully loaded. See ?R.oo for help.
+
+Attaching package: 'R.oo'
+
+The following object is masked from 'package:R.methodsS3':
+
+    throw
+
+The following object is masked from 'package:magrittr':
+
+    equals
+
+The following object is masked from 'package:berryFunctions':
+
+    getName
+
+The following objects are masked from 'package:methods':
+
+    getClasses, getMethods
+
+The following objects are masked from 'package:base':
+
+    attach, detach, load, save
+
+R.utils v2.12.3 (2023-11-18 01:00:02 UTC) successfully loaded. See ?R.utils for help.
+
+Attaching package: 'R.utils'
+
+The following object is masked from 'package:magrittr':
+
+    extract
+
+The following object is masked from 'package:utils':
+
+    timestamp
+
+The following objects are masked from 'package:base':
+
+    cat, commandArgs, getOption, isOpen, nullfile, parse, warnings
+
+Linking to GEOS 3.12.0, GDAL 3.7.0, PROJ 9.2.1; sf_use_s2() is TRUE
+
+Attaching package: 'tidyr'
+
+The following object is masked from 'package:R.utils':
+
+    extract
+
+The following object is masked from 'package:magrittr':
+
+    extract
+
+-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+v forcats 1.0.0     v readr   2.1.4
+v purrr   1.0.1     v tibble  3.2.1
+-- Conflicts ------------------------------------------ tidyverse_conflicts() --
+x purrr::accumulate()  masks foreach::accumulate()
+x pracma::and()        masks magrittr::and()
+x dplyr::between()     masks berryFunctions::between(), data.table::between()
+x purrr::cross()       masks pracma::cross()
+x R.oo::equals()       masks magrittr::equals()
+x tidyr::extract()     masks R.utils::extract(), magrittr::extract()
+x dplyr::filter()      masks stats::filter()
+x dplyr::first()       masks data.table::first()
+x lubridate::hour()    masks data.table::hour()
+x lubridate::isoweek() masks data.table::isoweek()
+x dplyr::lag()         masks stats::lag()
+x dplyr::last()        masks data.table::last()
+x lubridate::mday()    masks data.table::mday()
+x lubridate::minute()  masks data.table::minute()
+x pracma::mod()        masks magrittr::mod()
+x lubridate::month()   masks data.table::month()
+x pracma::or()         masks magrittr::or()
+x lubridate::quarter() masks data.table::quarter()
+x lubridate::second()  masks data.table::second()
+x purrr::set_names()   masks magrittr::set_names()
+x purrr::transpose()   masks data.table::transpose()
+x lubridate::wday()    masks data.table::wday()
+x lubridate::week()    masks data.table::week()
+x purrr::when()        masks foreach::when()
+x lubridate::yday()    masks data.table::yday()
+x lubridate::year()    masks data.table::year()
+i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+Starting county 193
+Warning message:
+no DISPLAY variable so Tk is not available 
+Starting county 194
+Starting county 195
+Starting county 196
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 197
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 198
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 199
+Starting county 200
+Starting county 201
+Starting county 202
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 203
+Starting county 204
+Starting county 205
+Starting county 206
+Starting county 207
+Starting county 208
+Starting county 209
+Starting county 210
+Starting county 211
+Starting county 212
+Starting county 213
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 214
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 215
+Starting county 216
+Starting county 217
+Starting county 218
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 219
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 220
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 221
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 222
+Starting county 223
+Starting county 224
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 225
+Starting county 226
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 227
+Starting county 228
+Starting county 229
+Starting county 230
+Starting county 231
+Starting county 232
+Starting county 233
+Starting county 234
+Starting county 235
+Starting county 236
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 237
+Starting county 238
+Starting county 239
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 240
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 241
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 242
+Starting county 243
+Starting county 244
+Starting county 245
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 246
+Starting county 247
+Starting county 248
+Starting county 249
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 250
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 251
+Starting county 252
+Starting county 253
+Starting county 254
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 255
+Starting county 256
+Starting county 257
+Starting county 258
+Starting county 259
+Starting county 260
+Starting county 261
+Starting county 262
+Starting county 263
+Starting county 264
+Starting county 265
+Starting county 266
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 267
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 268
+Starting county 269
+Starting county 270
+Starting county 271
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 272
+Starting county 273
+Starting county 274
+Starting county 275
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 276
+Starting county 277
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 278
+Starting county 279
+Starting county 280
+Starting county 281
+Starting county 282
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 283
+Starting county 284
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 285
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 286
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 287
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 288
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 289
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 290
+Starting county 291
+Note: The following floating-point exceptions are signalling: IEEE_INVALID_FLAG
+Starting county 292
+Starting county 293
+Error in (function (classes, fdef, mtable)  : 
+  unable to find an inherited method for function 'depths<-' for signature '"NULL"'
+Calls: %dofuture% -> doFuture2
+In addition: There were 50 or more warnings (use warnings() to see the first 50)
+Execution halted
