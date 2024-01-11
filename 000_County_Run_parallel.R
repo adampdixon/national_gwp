@@ -43,14 +43,14 @@ print(Sys.time())
 cat("************************************\n")
 cat("******** FLAGS etc *****************\n")
 run_parallel<-TRUE
-Test <- TRUE # if TRUE, only run 3 counties, filtered below
+Test <- FALSE # if TRUE, only run 3 counties, filtered below
 del_input_files<-TRUE
-n_cores<-3 # number of cores to use
+n_cores<-50 # number of cores to use
 
 run_Daycent=TRUE
 run_LDNDC=FALSE
 run_Millennial=FALSE
-county_numbers<-1:6 #193:293 #11:3108
+county_numbers<-295:3100
 cat("************************************\n")
 cat("************************************\n")
 
