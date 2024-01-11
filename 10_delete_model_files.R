@@ -9,7 +9,6 @@
 if (Sys.info()['sysname'] == "Linux"){ 
   if(Sys.info()['user']=='ap') {
     daycent_input_folder<-'/home/ap/Documents/GitHub/national_gwp/Daycent'
-    results_folder<-'/home/ap/Documents/national_gwp_results'
     Glade=FALSE
     print("************************************")
     print("*****Using linux mint *********")
@@ -33,7 +32,7 @@ results_data<-results_data[grepl("Results_GEOID_", results_data)]
 # CAREFUL WITH THIS
 ##################################################
 # delete_data<-c(results_data, daycent_input_data)
-delete_data<-c(results_data, daycent_input_data)
+delete_data<-c(daycent_input_data)
 ##################################################
 # CAREFUL WITH THIS
 ##################################################
@@ -45,9 +44,9 @@ for (i in 1:length(delete_data)){
   }
 }
 # Double check
-input_data<-list.dirs('/home/ap/Documents/GitHub/national_gwp/Daycent')
+input_data<-list.dirs(daycent_input_folder)
 input_data<-input_data[grepl("GEOID", input_data)]
 print(input_data)
-results_data<-results_data<-list.dirs('/home/ap/Documents/GitHub/national_gwp')
+results_data<-results_data<-list.dirs(results_folder)
 results_data<-results_data[grepl("Results_GEOID_", results_data)]
 print(results_data)
