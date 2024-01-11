@@ -43,14 +43,14 @@ print(Sys.time())
 cat("************************************\n")
 cat("******** FLAGS etc *****************\n")
 run_parallel<-TRUE
-Test <- FALSE # if TRUE, only run 3 counties, filtered below
+Test <- TRUE # if TRUE, only run 3 counties, filtered below
 del_input_files<-TRUE
-n_cores<-50 # number of cores to use
+n_cores<-3 # number of cores to use
 
 run_Daycent=TRUE
 run_LDNDC=FALSE
 run_Millennial=FALSE
-county_numbers<-193:293 #11:3108
+county_numbers<-1:6 #193:293 #11:3108
 cat("************************************\n")
 cat("************************************\n")
 
@@ -66,12 +66,12 @@ if(identical(run_parallel, TRUE)){
   #   # type = "FORK",
   #   outfile="Log.txt")
   #register it to be used by %dopar%
-  doParallel::registerDoParallel(cl = my.cl, cores = n_cores)
+  # doParallel::registerDoParallel(cl = my.cl, cores = n_cores)
   #check if it is registered (optional)
   # foreach::getDoParRegistered()
   # foreach::getDoParWorkers()
   # set number of threads for data.table
-  setDTthreads(threads = n_cores)
+  # setDTthreads(threads = n_cores)
 }
 
 foreach(county_seq = county_numbers, .verbose = T, .combine = 'c',
@@ -110,7 +110,7 @@ foreach(county_seq = county_numbers, .verbose = T, .combine = 'c',
   
   if(identical(Test, TRUE)){
     county_data<-county_data%>%
-      filter(GEOID %in% c(1075, 13023, 13213))
+      filter(GEOID %in% c(1075, 13023, 13213, 20073, 31181, 42053))
   }
 
   # county_data<-county_data[county_data$GEOID==county_number,]
@@ -165,9 +165,9 @@ foreach(county_seq = county_numbers, .verbose = T, .combine = 'c',
   print(paste0("Run time is ",run_time," minutes, ",run_time/60," hours."))
   
   # rm(list = ls()) # clear the workspace
-  gc() # garbage collection, to save RAM
+  gc() # garbage collection, to save RAM fingers crossed
 
-  return(NULL) # adding this so that the foreach loop returns something
+  # return(NULL) # adding this so that the foreach loop returns something
 
   } # END OF DOPAR COUNTY LOOP
 
@@ -178,7 +178,7 @@ if(identical(run_parallel, TRUE)){
   # #close the cluster--------------------
   # #setDTthreads(threads = n_threads)
   # parallel::stopCluster(cl = my.cluster)
-  my.cl <- parallelly::autoStopCluster(my.cl)
+  parallelly::autoStopCluster(my.cl)
 
 }
 
