@@ -79,3 +79,13 @@ GEOID_25025_Massachusetts       GEOID_41005_Oregon          GEOID_51089_Virginia
 
 
 
+#################################
+You can override any checks that Git does by using "force push". Use this command in the terminal:
+
+git push -f origin master
+
+However, you will potentially ignore the existing work that is in remote. You are effectively rewriting the remote's history to be exactly like your local copy.
+#################################
+
+
+
