@@ -235,8 +235,6 @@ climate_scenario_descriptor <-
   
 scenario_descriptor_full <- paste0(scenario_descriptor, "; ",climate_scenario_descriptor)
 
-browser()
-
 #create results folder if it doesn't already exist
 results_path <- file.path(results_folder, paste0("Results_", site_name))
 if(!dir.exists(results_path)) dir.create(results_path)

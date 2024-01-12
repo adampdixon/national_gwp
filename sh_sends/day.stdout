@@ -81975,3 +81975,12 @@ got results for task 101
 numValues: 101, numResults: 101, stopped: TRUE
 not calling combine function due to errors
 returning status TRUE
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+date and time are [1] "2024-01-11 00:03:14 MST"
+************************************
+******** FLAGS etc *****************
+************************************
+************************************
+Running in parallel using foreachnumValues: 2806, numResults: 0, stopped: TRUE
