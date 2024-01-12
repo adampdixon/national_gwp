@@ -81984,3 +81984,1401 @@ date and time are [1] "2024-01-11 00:03:14 MST"
 ************************************
 ************************************
 Running in parallel using foreachnumValues: 2806, numResults: 0, stopped: TRUE
+Running 000_County_Run.R in bash parallel
+Starting task 307
+Starting task 308
+Starting task 309
+Starting task 310
+********************************
+The county_number is: 310
+********************************
+[1]********************************
+ "************************************"The county_number is: 308
+
+********************************
+[1] "*****Using NCAR *********"[1]
+********************************
+ "************************************"[1]The county_number is: 309
+********************************
+
+ "***** SCRATCH SPACE *********"********************************
+The county_number is: 307
+[1]
+********************************
+[1] "*****Using NCAR *********"date and time are  "************************************"[1]
+
+[1] "************************************"[1][1] "2024-01-12 08:18:45 MST"
+ "***** SCRATCH SPACE *********" "*****Using NCAR *********"
+[1]
+
+************************************
+ "*****Using NCAR *********"date and time are [1]******** FLAGS etc *****************
+
+ "***** SCRATCH SPACE *********"[1]************************************
+[1]
+ "2024-01-12 08:18:45 MST"************************************
+ "***** SCRATCH SPACE *********"date and time are 
+
+************************************
+[1]date and time are ******** FLAGS etc *****************
+ "2024-01-12 08:18:45 MST"************************************
+[1]
+************************************
+ "2024-01-12 08:18:45 MST"************************************
+
+******** FLAGS etc *****************
+************************************
+************************************
+******** FLAGS etc *****************
+************************************
+************************************
+************************************
+[1][1][1][1] "************************************" "************************************" "************************************" "************************************"
+
+
+
+[1][1][1][1] "county geoid is: NA" "county geoid is: NA" "county geoid is: NA" "county geoid is: NA"
+
+
+
+[1][1][1][1] "county name is: NA" "county name is: NA" "county name is: NA" "county name is: NA"
+
+
+
+[1][1][1][1] "state name is: NA" "state name is: NA" "state name is: NA" "state name is: NA"
+
+
+
+[1][1][1][1] "************************************" "************************************" "************************************" "************************************"
+
+
+
+[1][1][1][1] "************************************" "************************************" "************************************" "************************************"
+
+
+
+[1][1][1][1] "working directory is: " "working directory is: " "working directory is: " "working directory is: "
+
+
+
+[1][1][1][1] "/glade/derecho/scratch/apdixon/national_gwp" "/glade/derecho/scratch/apdixon/national_gwp" "/glade/derecho/scratch/apdixon/national_gwp" "/glade/derecho/scratch/apdixon/national_gwp"
+
+
+
+[1][1][1][1] "************************************" "************************************" "************************************" "************************************"
+
+
+
+[1][1][1][1] "latitude is: NA" "latitude is: NA" "latitude is: NA" "latitude is: NA"
+
+
+
+[1][1][1][1] "longitude is: NA" "longitude is: NA" "longitude is: NA" "longitude is: NA"
+
+
+
+[1][1][1][1] "elevation_m is: NA" "elevation_m is: NA" "elevation_m is: NA" "elevation_m is: NA"
+
+
+
+[1][1] "Copying over KBS 'Daycent model' files --" "Copying over KBS 'Daycent model' files --"
+
+[1][1] "Copying over KBS 'Daycent model' files --" "Copying over KBS 'Daycent model' files --"
+
+[1] "************************************"
+[1] "*****Using NCAR *********"
+[1] "***** SCRATCH SPACE *********"
+date and time are [1] "2024-01-12 08:18:48 MST"
+************************************
+******** FLAGS etc *****************
+************************************
+************************************
+Running in parallel using foreachnumValues: 11, numResults: 0, stopped: TRUE
+[1][1] "************************************"[1] "************************************"[1]
+ "************************************"
+ "************************************"[1]
+[1]
+ "####### New climate scenario #######"[1] "####### New climate scenario #######"[1]
+ "####### New climate scenario #######"
+ "####### New climate scenario #######"[1]
+[1]
+ "************************************"[1] "************************************"[1]
+ "************************************"
+ "************************************"[1]
+[1]
+ "climate scenario: 1"[1] "climate scenario: 1"[1]
+ "climate scenario: 1"
+ "climate scenario: 1"
+
+[1] "************************************"[1]
+ "************************************"[1]
+ "climate scenario: 1"[1][1][1]
+ "************************************" "climate scenario: 1" "************************************"[1]
+
+
+ "mgmt scenario: 1"[1][1][1]
+ "climate scenario: 1" "mgmt scenario: 1" "climate scenario: 1"[1]
+
+
+ "mgmt option: 1"[1][1][1]
+ "mgmt scenario: 1" "mgmt option: 1" "mgmt scenario: 1"
+
+
+[1][1] "mgmt option: 1" "mgmt option: 1"[1][1]
+
+ "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R"
+[1]
+[1] "Starting 0_Controller2_County.R" "Starting 0_Controller2_County.R"
+
+[1][1] "Starting 0_Observations_and_constants_County.R" "Starting 0_Observations_and_constants_County.R"
+
+[1][1] "Starting 0_Observations_and_constants_County.R" "Starting 0_Observations_and_constants_County.R"
+
+[1][1] "*********climate_data_path is /glade/work/apdixon/climate **************"[1][1] "*********climate_data_path is /glade/work/apdixon/climate **************"
+ "*********climate_data_path is /glade/work/apdixon/climate **************" "*********climate_data_path is /glade/work/apdixon/climate **************"
+
+
+[1][1][1] "Starting p_Edit_calib_file"[1] "Starting p_Edit_calib_file" "Starting p_Edit_calib_file"
+ "Starting p_Edit_calib_file"
+
+
+308
+309
+310
+307
+Starting task 311
+Starting task 312
+Starting task 313
+Starting task 314
+Starting task 315
+Starting task 316
+Starting task 317
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+new binary: sched_eq.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+Open soiln.out
+Open soilc.out
+Open harvest.csv
+swflag = 0
+Tminan= -4.368879  Tmaxan= 27.728931  Tamp= 32.097809
+ Setting soil profile to Tavean= 12.040114
+   Model is running... 08:20:20.365
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+EOF on weather file reading 28; rewinding to 1 1 1951 1
+EOF on weather file reading 55; rewinding to 1 1 1951 1
+EOF on weather file reading 82; rewinding to 1 1 1951 1
+further rewinds will be ignored
+Execution success. 1:25.659
+ Generating list file: sched_eq.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+new binary: sched_eq_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+Open soiln.out
+Open soilc.out
+Open harvest.csv
+swflag = 0
+Tminan= -4.368879  Tmaxan= 27.728931  Tamp= 32.097809
+ Setting soil profile to Tavean= 12.040114
+   Model is running... 08:21:46.087
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+EOF on weather file reading 28; rewinding to 1 1 1951 1
+EOF on weather file reading 55; rewinding to 1 1 1951 1
+EOF on weather file reading 82; rewinding to 1 1 1951 1
+further rewinds will be ignored
+Execution success. 1:26.089
+ Generating list file: sched_eq_1_1.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+WARNING: sitepar parameters unread - using defaults
+new binary: sched_base_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 4:     1             soiltavg.out      # daily average soil temperature by layer
+wrt = 1  line 8:     1             vswc.out          # daily volumetric soilwater content by layer
+wrt = 1  line 10:     1             wfps.out          # daily water filled pore space by layer
+wrt = 1  line 15:     1             livec.out         # daily live carbon
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 22:     1             gresp.out         # daily growth respiration
+wrt = 1  line 24:     1             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 26:     1             cflows.out        # daily carbon flows due to decompostion
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+wrt = 1  line 31:     1			  methane.out       # methanogenesis and methane oxidation
+Open soiln.out
+Open livec.out
+Open soilc.out
+Open gresp.out
+Open dc_sip.csv
+Open harvest.csv
+swflag = 0
+Tminan= -4.368879  Tmaxan= 27.728931  Tamp= 32.097809
+ Setting soil profile to Tavean= 12.040114
+   Model is running... 08:23:12.427
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+EOF on weather file reading 1877; rewinding to 1 1 1951 1
+EOF on weather file reading 1904; rewinding to 1 1 1951 1
+EOF on weather file reading 1931; rewinding to 1 1 1951 1
+further rewinds will be ignored
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+Execution success. 5.958 s
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+WARNING: sitepar parameters unread - using defaults
+new binary: sched_exp_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 4:     1             soiltavg.out      # daily average soil temperature by layer
+wrt = 1  line 8:     1             vswc.out          # daily volumetric soilwater content by layer
+wrt = 1  line 10:     1             wfps.out          # daily water filled pore space by layer
+wrt = 1  line 15:     1             livec.out         # daily live carbon
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 22:     1             gresp.out         # daily growth respiration
+wrt = 1  line 24:     1             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 26:     1             cflows.out        # daily carbon flows due to decompostion
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+wrt = 1  line 31:     1			  methane.out       # methanogenesis and methane oxidation
+Open soiln.out
+Open livec.out
+Open soilc.out
+Open gresp.out
+Open dc_sip.csv
+Open harvest.csv
+swflag = 0
+Tminan= -4.368879  Tmaxan= 27.728931  Tamp= 32.097809
+ Setting soil profile to Tavean= 12.040114
+   Model is running... 08:23:18.990
+Opened weather file: basic_exp.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+Execution success. 1.429 s
+ Generating list file: sched_exp_1_1.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+WARNING: sitepar parameters unread - using defaults
+new binary: sched_fut_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 4:     1             soiltavg.out      # daily average soil temperature by layer
+wrt = 1  line 8:     1             vswc.out          # daily volumetric soilwater content by layer
+wrt = 1  line 10:     1             wfps.out          # daily water filled pore space by layer
+wrt = 1  line 15:     1             livec.out         # daily live carbon
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 22:     1             gresp.out         # daily growth respiration
+wrt = 1  line 24:     1             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 26:     1             cflows.out        # daily carbon flows due to decompostion
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+wrt = 1  line 31:     1			  methane.out       # methanogenesis and methane oxidation
+Open soiln.out
+Open livec.out
+Open soilc.out
+Open gresp.out
+Open dc_sip.csv
+Open harvest.csv
+swflag = 0
+Tminan= -4.368879  Tmaxan= 27.728931  Tamp= 32.097809
+ Setting soil profile to Tavean= 12.040114
+   Model is running... 08:23:20.680
+Opened weather file: basic_1.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+Execution success. 3.244 s
+ Generating list file: sched_fut_1_1.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+new binary: sched_eq.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+Open soiln.out
+Open soilc.out
+Open harvest.csv
+swflag = 0
+Tminan= -7.659245  Tmaxan= 30.845362  Tamp= 38.504608
+ Setting soil profile to Tavean= 9.317472
+   Model is running... 08:24:16.721
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+EOF on weather file reading 28; rewinding to 1 1 1951 1
+EOF on weather file reading 55; rewinding to 1 1 1951 1
+EOF on weather file reading 82; rewinding to 1 1 1951 1
+further rewinds will be ignored
+Execution success. 1:31.427
+ Generating list file: sched_eq.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+new binary: sched_eq_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+Open soiln.out
+Open soilc.out
+Open harvest.csv
+swflag = 0
+Tminan= -7.659245  Tmaxan= 30.845362  Tamp= 38.504608
+ Setting soil profile to Tavean= 9.317472
+   Model is running... 08:25:48.187
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+EOF on weather file reading 28; rewinding to 1 1 1951 1
+EOF on weather file reading 55; rewinding to 1 1 1951 1
+EOF on weather file reading 82; rewinding to 1 1 1951 1
+further rewinds will be ignored
+Execution success. 1:32.354
+ Generating list file: sched_eq_1_1.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+WARNING: sitepar parameters unread - using defaults
+new binary: sched_base_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 4:     1             soiltavg.out      # daily average soil temperature by layer
+wrt = 1  line 8:     1             vswc.out          # daily volumetric soilwater content by layer
+wrt = 1  line 10:     1             wfps.out          # daily water filled pore space by layer
+wrt = 1  line 15:     1             livec.out         # daily live carbon
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 22:     1             gresp.out         # daily growth respiration
+wrt = 1  line 24:     1             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 26:     1             cflows.out        # daily carbon flows due to decompostion
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+wrt = 1  line 31:     1			  methane.out       # methanogenesis and methane oxidation
+Open soiln.out
+Open livec.out
+Open soilc.out
+Open gresp.out
+Open dc_sip.csv
+Open harvest.csv
+swflag = 0
+Tminan= -7.659245  Tmaxan= 30.845362  Tamp= 38.504608
+ Setting soil profile to Tavean= 9.317472
+   Model is running... 08:27:20.780
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+EOF on weather file reading 1877; rewinding to 1 1 1951 1
+EOF on weather file reading 1904; rewinding to 1 1 1951 1
+EOF on weather file reading 1931; rewinding to 1 1 1951 1
+further rewinds will be ignored
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+Execution success. 6.093 s
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+WARNING: sitepar parameters unread - using defaults
+new binary: sched_exp_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 4:     1             soiltavg.out      # daily average soil temperature by layer
+wrt = 1  line 8:     1             vswc.out          # daily volumetric soilwater content by layer
+wrt = 1  line 10:     1             wfps.out          # daily water filled pore space by layer
+wrt = 1  line 15:     1             livec.out         # daily live carbon
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 22:     1             gresp.out         # daily growth respiration
+wrt = 1  line 24:     1             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 26:     1             cflows.out        # daily carbon flows due to decompostion
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+wrt = 1  line 31:     1			  methane.out       # methanogenesis and methane oxidation
+Open soiln.out
+Open livec.out
+Open soilc.out
+Open gresp.out
+Open dc_sip.csv
+Open harvest.csv
+swflag = 0
+Tminan= -7.659245  Tmaxan= 30.845362  Tamp= 38.504608
+ Setting soil profile to Tavean= 9.317472
+   Model is running... 08:27:27.424
+Opened weather file: basic_exp.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+Execution success. 1.466 s
+ Generating list file: sched_exp_1_1.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+WARNING: sitepar parameters unread - using defaults
+new binary: sched_fut_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 4:     1             soiltavg.out      # daily average soil temperature by layer
+wrt = 1  line 8:     1             vswc.out          # daily volumetric soilwater content by layer
+wrt = 1  line 10:     1             wfps.out          # daily water filled pore space by layer
+wrt = 1  line 15:     1             livec.out         # daily live carbon
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 22:     1             gresp.out         # daily growth respiration
+wrt = 1  line 24:     1             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 26:     1             cflows.out        # daily carbon flows due to decompostion
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+wrt = 1  line 31:     1			  methane.out       # methanogenesis and methane oxidation
+Open soiln.out
+Open livec.out
+Open soilc.out
+Open gresp.out
+Open dc_sip.csv
+Open harvest.csv
+swflag = 0
+Tminan= -7.659245  Tmaxan= 30.845362  Tamp= 38.504608
+ Setting soil profile to Tavean= 9.317472
+   Model is running... 08:27:29.397
+Opened weather file: basic_1.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+Execution success. 3.398 s
+ Generating list file: sched_fut_1_1.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+new binary: sched_eq.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+Open soiln.out
+Open soilc.out
+Open harvest.csv
+swflag = 0
+Tminan= -7.420527  Tmaxan= 29.420267  Tamp= 36.840794
+ Setting soil profile to Tavean= 11.390067
+   Model is running... 08:28:24.468
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+EOF on weather file reading 28; rewinding to 1 1 1951 1
+EOF on weather file reading 55; rewinding to 1 1 1951 1
+EOF on weather file reading 82; rewinding to 1 1 1951 1
+further rewinds will be ignored
+Execution success. 1:27.095
+ Generating list file: sched_eq.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+new binary: sched_eq_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+Open soiln.out
+Open soilc.out
+Open harvest.csv
+swflag = 0
+Tminan= -7.420527  Tmaxan= 29.420267  Tamp= 36.840794
+ Setting soil profile to Tavean= 11.390067
+   Model is running... 08:29:51.603
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+EOF on weather file reading 28; rewinding to 1 1 1951 1
+EOF on weather file reading 55; rewinding to 1 1 1951 1
+EOF on weather file reading 82; rewinding to 1 1 1951 1
+further rewinds will be ignored
+Execution success. 1:28.497
+ Generating list file: sched_eq_1_1.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+WARNING: sitepar parameters unread - using defaults
+new binary: sched_base_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 4:     1             soiltavg.out      # daily average soil temperature by layer
+wrt = 1  line 8:     1             vswc.out          # daily volumetric soilwater content by layer
+wrt = 1  line 10:     1             wfps.out          # daily water filled pore space by layer
+wrt = 1  line 15:     1             livec.out         # daily live carbon
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 22:     1             gresp.out         # daily growth respiration
+wrt = 1  line 24:     1             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 26:     1             cflows.out        # daily carbon flows due to decompostion
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+wrt = 1  line 31:     1			  methane.out       # methanogenesis and methane oxidation
+Open soiln.out
+Open livec.out
+Open soilc.out
+Open gresp.out
+Open dc_sip.csv
+Open harvest.csv
+swflag = 0
+Tminan= -7.420527  Tmaxan= 29.420267  Tamp= 36.840794
+ Setting soil profile to Tavean= 11.390067
+   Model is running... 08:31:20.348
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+EOF on weather file reading 1877; rewinding to 1 1 1951 1
+EOF on weather file reading 1904; rewinding to 1 1 1951 1
+EOF on weather file reading 1931; rewinding to 1 1 1951 1
+further rewinds will be ignored
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+Execution success. 6.275 s
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+WARNING: sitepar parameters unread - using defaults
+new binary: sched_exp_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 4:     1             soiltavg.out      # daily average soil temperature by layer
+wrt = 1  line 8:     1             vswc.out          # daily volumetric soilwater content by layer
+wrt = 1  line 10:     1             wfps.out          # daily water filled pore space by layer
+wrt = 1  line 15:     1             livec.out         # daily live carbon
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 22:     1             gresp.out         # daily growth respiration
+wrt = 1  line 24:     1             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 26:     1             cflows.out        # daily carbon flows due to decompostion
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+wrt = 1  line 31:     1			  methane.out       # methanogenesis and methane oxidation
+Open soiln.out
+Open livec.out
+Open soilc.out
+Open gresp.out
+Open dc_sip.csv
+Open harvest.csv
+swflag = 0
+Tminan= -7.420527  Tmaxan= 29.420267  Tamp= 36.840794
+ Setting soil profile to Tavean= 11.390067
+   Model is running... 08:31:27.268
+Opened weather file: basic_exp.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+Execution success. 1.449 s
+ Generating list file: sched_exp_1_1.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+WARNING: sitepar parameters unread - using defaults
+new binary: sched_fut_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 4:     1             soiltavg.out      # daily average soil temperature by layer
+wrt = 1  line 8:     1             vswc.out          # daily volumetric soilwater content by layer
+wrt = 1  line 10:     1             wfps.out          # daily water filled pore space by layer
+wrt = 1  line 15:     1             livec.out         # daily live carbon
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 22:     1             gresp.out         # daily growth respiration
+wrt = 1  line 24:     1             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 26:     1             cflows.out        # daily carbon flows due to decompostion
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+wrt = 1  line 31:     1			  methane.out       # methanogenesis and methane oxidation
+Open soiln.out
+Open livec.out
+Open soilc.out
+Open gresp.out
+Open dc_sip.csv
+Open harvest.csv
+swflag = 0
+Tminan= -7.420527  Tmaxan= 29.420267  Tamp= 36.840794
+ Setting soil profile to Tavean= 11.390067
+   Model is running... 08:31:28.946
+Opened weather file: basic_1.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+Execution success. 3.308 s
+ Generating list file: sched_fut_1_1.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+new binary: sched_eq.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+Open soiln.out
+Open soilc.out
+Open harvest.csv
+swflag = 0
+Tminan= 1.592294  Tmaxan= 35.048645  Tamp= 33.456352
+ Setting soil profile to Tavean= 18.688829
+   Model is running... 08:33:35.809
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+EOF on weather file reading 28; rewinding to 1 1 1951 1
+EOF on weather file reading 55; rewinding to 1 1 1951 1
+EOF on weather file reading 82; rewinding to 1 1 1951 1
+further rewinds will be ignored
+Execution success. 1:29.620
+ Generating list file: sched_eq.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+new binary: sched_eq_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+Open soiln.out
+Open soilc.out
+Open harvest.csv
+swflag = 0
+Tminan= 1.592294  Tmaxan= 35.048645  Tamp= 33.456352
+ Setting soil profile to Tavean= 18.688829
+   Model is running... 08:35:05.469
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+EOF on weather file reading 28; rewinding to 1 1 1951 1
+EOF on weather file reading 55; rewinding to 1 1 1951 1
+EOF on weather file reading 82; rewinding to 1 1 1951 1
+further rewinds will be ignored
+Execution success. 1:29.449
+ Generating list file: sched_eq_1_1.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+WARNING: sitepar parameters unread - using defaults
+new binary: sched_base_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 4:     1             soiltavg.out      # daily average soil temperature by layer
+wrt = 1  line 8:     1             vswc.out          # daily volumetric soilwater content by layer
+wrt = 1  line 10:     1             wfps.out          # daily water filled pore space by layer
+wrt = 1  line 15:     1             livec.out         # daily live carbon
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 22:     1             gresp.out         # daily growth respiration
+wrt = 1  line 24:     1             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 26:     1             cflows.out        # daily carbon flows due to decompostion
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+wrt = 1  line 31:     1			  methane.out       # methanogenesis and methane oxidation
+Open soiln.out
+Open livec.out
+Open soilc.out
+Open gresp.out
+Open dc_sip.csv
+Open harvest.csv
+swflag = 0
+Tminan= 1.592294  Tmaxan= 35.048645  Tamp= 33.456352
+ Setting soil profile to Tavean= 18.688829
+   Model is running... 08:36:35.158
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+EOF on weather file reading 1877; rewinding to 1 1 1951 1
+EOF on weather file reading 1904; rewinding to 1 1 1951 1
+EOF on weather file reading 1931; rewinding to 1 1 1951 1
+further rewinds will be ignored
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+Execution success. 6.054 s
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+WARNING: sitepar parameters unread - using defaults
+new binary: sched_exp_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 4:     1             soiltavg.out      # daily average soil temperature by layer
+wrt = 1  line 8:     1             vswc.out          # daily volumetric soilwater content by layer
+wrt = 1  line 10:     1             wfps.out          # daily water filled pore space by layer
+wrt = 1  line 15:     1             livec.out         # daily live carbon
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 22:     1             gresp.out         # daily growth respiration
+wrt = 1  line 24:     1             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 26:     1             cflows.out        # daily carbon flows due to decompostion
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+wrt = 1  line 31:     1			  methane.out       # methanogenesis and methane oxidation
+Open soiln.out
+Open livec.out
+Open soilc.out
+Open gresp.out
+Open dc_sip.csv
+Open harvest.csv
+swflag = 0
+Tminan= 1.592294  Tmaxan= 35.048645  Tamp= 33.456352
+ Setting soil profile to Tavean= 18.688829
+   Model is running... 08:36:41.791
+Opened weather file: basic_exp.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+Execution success. 1.453 s
+ Generating list file: sched_exp_1_1.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+WARNING: sitepar parameters unread - using defaults
+new binary: sched_fut_1_1.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 4:     1             soiltavg.out      # daily average soil temperature by layer
+wrt = 1  line 8:     1             vswc.out          # daily volumetric soilwater content by layer
+wrt = 1  line 10:     1             wfps.out          # daily water filled pore space by layer
+wrt = 1  line 15:     1             livec.out         # daily live carbon
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 22:     1             gresp.out         # daily growth respiration
+wrt = 1  line 24:     1             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 26:     1             cflows.out        # daily carbon flows due to decompostion
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+wrt = 1  line 31:     1			  methane.out       # methanogenesis and methane oxidation
+Open soiln.out
+Open livec.out
+Open soilc.out
+Open gresp.out
+Open dc_sip.csv
+Open harvest.csv
+swflag = 0
+Tminan= 1.592294  Tmaxan= 35.048645  Tamp= 33.456352
+ Setting soil profile to Tavean= 18.688829
+   Model is running... 08:36:43.503
+Opened weather file: basic_1.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+Execution success. 3.301 s
+ Generating list file: sched_fut_1_1.lis
+reading site: site.100
+FIX OPTION: xefcltef = 0.1645
+temp adjusted cultivation effects
+FIX OPTION: maxcltef = 10.53
+FIX OPTION: fldn2d = -1
+FIX OPTION: fln2or = 100.0
+FIX OPTION: co2ch4 = 0.50
+FIX OPTION: mxch4f = 0.65
+FIX OPTION: frexud = 0.55
+FIX OPTION: aeh = 0.23
+FIX OPTION: deh = 0.16
+FIX OPTION: behfl = -250.
+FIX OPTION: behdr = 300.
+FIX OPTION: methzr = 0.7
+FIX OPTION: wfdryt = 14
+FIX OPTION: tplen = 3
+TNP; duration: tplen= 3
+FIX OPTION: plmfdd = -100.0
+TNP; freezing degree day pulse length plmfdd= 100.000, plxfdd= 180.000 triggering on lyr 2
+TNP; freezing degree day sum NOT RESET on pulse
+FIX OPTION: tnpsif = 0.7
+TNP; denitrification pore space inflection tnpsif= 0.700
+FIX OPTION: dpsfdm = 100.0
+TNP; frozen degree day denitrification pore space shift limits dpsfdm= 100.000, dpsfdx= 180.000
+FIX OPTION: tndrrl = 3
+TNP; remove denitrification respiration restraint above layer 3
+using interacting cultivations
+Calculating mean weather from: "basic_eq.wth"
+SITE NOTE: unused soil boundary temperature value "tbmin" value ignored
+SITE NOTE: unused soil boundary temperature value "tbmax" value ignored
+SITE NOTE: unused soil boundary temperature value "timlag" value ignored
+new binary: sched_eq.bin
+wrt = 1  line 3:     1             soiln.out         # daily soil ammonium and nitrate by layer
+wrt = 1  line 17:     1             soilc.out         # daily soil carbon
+wrt = 1  line 25:     1             harvest.csv       # state of the system at time of harvest
+wrt = 1  line 29:     1             nflux.out         # daily trace gases, nitrification, denitrification
+wrt = 1  line 30:     1             summary.out       # daily climate, trace gas, and CO resp
+Open soiln.out
+Open soilc.out
+Open harvest.csv
+swflag = 0
+Tminan= -13.236514  Tmaxan= 24.183172  Tamp= 37.419685
+ Setting soil profile to Tavean= 5.031294
+   Model is running... 08:37:39.479
+Opened weather file: basic_eq.wth
+ Using only air temp for PET calc
+SnowFlag = 1;  snow insulation, around basetemp
+EOF on weather file reading 28; rewinding to 1 1 1951 1
+EOF on weather file reading 55; rewinding to 1 1 1951 1
+EOF on weather file reading 82; rewinding to 1 1 1951 1
+further rewinds will be ignored
+Execution success. 1:28.018
+ Generating list file: sched_eq.lis
