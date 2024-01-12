@@ -7,13 +7,13 @@
 #PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day.stderr 
 ### Queue name
 #PBS -q main
-#PBS -l walltime=12:00:00
+#PBS -l walltime=1:00:00
 ### Send email on abort, begin and end
 #PBS -m e
 ### Specify mail recipient
 #PBS -M apdixon@pm.me
 ### Number of nodes
-#PBS -l select=1:ncpus=50:mem=110GB
+#PBS -l select=1:ncpus=10:mem=20GB
 ###PBS -l select=1:ncpus=32:mem=235GB
 ########################
 

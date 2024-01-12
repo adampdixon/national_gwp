@@ -44,13 +44,13 @@ cat("************************************\n")
 cat("******** FLAGS etc *****************\n")
 run_parallel<-TRUE
 Test <- FALSE # if TRUE, only run 3 counties, filtered below
-del_input_files<-TRUE
-n_cores<-50 # number of cores to use
+del_input_files<-FALSE
+n_cores<-10 # number of cores to use
 
 run_Daycent=TRUE
 run_LDNDC=FALSE
 run_Millennial=FALSE
-county_numbers<-295:3100
+county_numbers<-296:306   #295:3100
 cat("************************************\n")
 cat("************************************\n")
 
@@ -84,7 +84,7 @@ foreach(county_seq = county_numbers, .verbose = T, .combine = 'c',
 # foreach(county_seq = county_numbers, .verbose = T, .combine = 'c',
 #         .packages=c('apsimx','berryFunctions','broom','data.table','dplyr','ggplot2',
 #                     'graphics','lubridate','magrittr','pracma','R.utils','readxl','sf',
-#                     'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %dopar% {
+#                     'soilDB','soiltexture','stringr','tidyr','tictoc','tidyverse','XML','xml2')) %do% {
 
   print(paste0("county_seq is: ", county_seq))
   
