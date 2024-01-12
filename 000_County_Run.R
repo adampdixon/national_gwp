@@ -22,6 +22,17 @@ county_number<-args[2]
 # Use the variable
 cat(paste0("The county_number is: ", county_number, "\n"))
 cat("********************************\n")
+cat("******** FLAGS etc *****************\n")
+Test <- TRUE # if TRUE, only run 3 counties, filtered below
+del_input_files<-FALSE
+
+run_Daycent=TRUE
+run_LDNDC=FALSE
+run_Millennial=FALSE
+county_numbers<-296:306   #295:3100
+cat("************************************\n")
+cat("************************************\n")
+
 
 # Set workspace
 if (Sys.info()['sysname'] == "Linux"){ 
@@ -43,19 +54,6 @@ if (Sys.info()['sysname'] == "Linux"){
 
 cat("date and time are ")
 print(Sys.time())
-
-cat("************************************\n")
-cat("******** FLAGS etc *****************\n")
-Test <- TRUE # if TRUE, only run 3 counties, filtered below
-del_input_files<-FALSE
-
-run_Daycent=TRUE
-run_LDNDC=FALSE
-run_Millennial=FALSE
-county_numbers<-296:306   #295:3100
-cat("************************************\n")
-cat("************************************\n")
-
 
 # x = the number of counties to run
 # county_number<-args[1]

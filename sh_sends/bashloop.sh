@@ -3,8 +3,8 @@
 ### Job name
 #PBS -N daycent_processing_bashloop
 #PBS -A UEMO0003
-#PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day.stdout
-#PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day.stderr 
+#PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stdout
+#PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stderr 
 ### Queue name
 #PBS -q main
 #PBS -l walltime=1:00:00
@@ -39,7 +39,7 @@ task () {
 NUM_PARALLEL=10
 
 # Read the input arguments from a file and run the command in parallel
-for i in $(seq 307 317); do
+for i in $(seq 307 316); do
   echo "Starting task $i"
   task $i &
   if (( $i % $NUM_PARALLEL == 0 )); then
