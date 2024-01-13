@@ -9,8 +9,6 @@
 # parallel script will create 6 tables, one for each variable and model (nclim, cmip6)
 ######################################################
 # 
-# library(dplyr) # for piping & tibble
-# library(doParallel) # for parallel processing
 library(tictoc) # for timing
 library(data.table) # for fwrite
 library(dplyr)
@@ -23,13 +21,13 @@ county_number<-args[2]
 cat(paste0("The county_number is: ", county_number, "\n"))
 cat("********************************\n")
 cat("******** FLAGS etc *****************\n")
-Test <- TRUE # if TRUE, only run 3 counties, filtered below
+Test <- FALSE # if TRUE, only run 3 counties, filtered below
 del_input_files<-FALSE
 
 run_Daycent=TRUE
 run_LDNDC=FALSE
 run_Millennial=FALSE
-county_numbers<-296:306   #295:3100
+# county_numbers<-296:306   #295:3100
 cat("************************************\n")
 cat("************************************\n")
 
@@ -125,10 +123,6 @@ cat("************************************")
 toc()
 run_time <- round(toc(echo=T)/60,1)
 print(paste0("Run time is ",run_time," minutes, ",run_time/60," hours."))
-
-# rm(list = ls()) # clear the workspace
-gc() # garbage collection, to save RAM fingers crossed
-
 
 
 
