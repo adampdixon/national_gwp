@@ -1,7 +1,7 @@
 #!/bin/bash 
 ########################
 ### Job name
-#PBS -N daycent_processing_bashloop
+#PBS -N daycent_processing_bashloop_50cpus_200_counties
 #PBS -A UEMO0003
 #PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stdout
 #PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stderr 
@@ -36,10 +36,10 @@ task () {
 }
 
 # Define the number of parallel processes
-NUM_PARALLEL=20
+NUM_PARALLEL=50
 
 # Read the input arguments from a file and run the command in parallel
-for i in $(seq 1001 1100); do
+for i in $(seq 1101 1300); do
   echo "Starting task $i"
   task $i &
   if (( $i % $NUM_PARALLEL == 0 )); then
