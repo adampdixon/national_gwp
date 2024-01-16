@@ -40,6 +40,8 @@ if (Sys.info()['sysname'] == "Linux"){
     Glade=FALSE
     print("************************************")
     print("*****Using linux mint *********")
+    cat("date and time are ")
+    print(Sys.time())
   } else {
     master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
     results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
@@ -47,11 +49,12 @@ if (Sys.info()['sysname'] == "Linux"){
     print("************************************")
     print("*****Using NCAR *********")
     print("***** SCRATCH SPACE *********")
+    cat("date and time are ")
+    print(Sys.time())
   }
 }
 
-cat("date and time are ")
-print(Sys.time())
+
 
 # x = the number of counties to run
 # county_number<-args[1]
@@ -60,17 +63,15 @@ tic()
 
 # Open a connection to stderr
 sink(stderr(), type = "message")
-# Print an error message to stderr
-cat(paste0("Starting county ", county_number, "\n"), file = stderr(), append = TRUE)
-
-setwd(master_path)
+# Open a connection to stdout
+sink(stdout(), type = "message")
 
 # master_path <- home_folder
-county_data<-read.csv(file.path('Data', 'County_start', 'county_centroids_elevation.csv'))
+county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation.csv'))
 
 if(identical(Test, TRUE)){
- county_data<-county_data%>%
-   filter(GEOID %in% c(1075, 13023, 13213, 20073, 31181, 42053))
+  county_data<-county_data%>%
+    filter(GEOID %in% c(1075, 13023, 13213, 20073, 31181, 42053))
 }
 
 # county_data<-county_data[county_data$GEOID==county_number,]
@@ -84,30 +85,48 @@ county_data<-county_data[county_number,]
 county_geoid<-county_data$GEOID # adapting 4 and 5 character geoids isn't necessary because we're always using paste statements with _ in front and behind
 county_name<-county_data$NAMELSAD
 state_name<-county_data$State_Name
-print("************************************")
-print(paste0("county geoid is: ", county_geoid))
-print(paste0("county name is: ", county_name))
-print(paste0("state name is: ", state_name))
-print("************************************")
-# TODO replace these when model is ready
-site_id <- county_data$GEOID
-# site_name <- paste0(gsub(" ", "_", county_data$NAMELSAD[i]),"_", gsub(" ", "_", county_data$State_Name[i]))
-.GlobalEnv$site_name <- paste0("GEOID_", site_id, "_", gsub(" ", "_", county_data$State_Name))
 
-print("************************************")
-print('working directory is: ')
-print(getwd())
-print("************************************")
 
-latitude = county_data$Lat
-longitude = county_data$Long
-elevation_m = county_data$Elev_mean_m
+if (file.exists(paste0(results_folder, "/Results_GEOID_",  county_geoid, "_", state_name, "/Annual_results_compilation_1_1_Daycent.csv"))){
+  print("************************************")
+  print("*****Results already exist *********")
+  print(paste0("Skipping county ", county_number, " ", state_name), file = stderr(), append = TRUE)
+  print("************************************")
+  stop()
+} else {
+  # Print an error message to stderr
+  cat(paste0("Starting county ", county_number, "\n"), file = stderr(), append = TRUE)
+  
+  setwd(master_path)
+  
 
-print(paste0("latitude is: ", latitude))
-print(paste0("longitude is: ", longitude))
-print(paste0("elevation_m is: ", elevation_m))
-
-source('00_Main_County.R', local = TRUE)
+  print("************************************")
+  print(paste0("county geoid is: ", county_geoid))
+  print(paste0("county name is: ", county_name))
+  print(paste0("state name is: ", state_name))
+  print("************************************")
+  # TODO replace these when model is ready
+  site_id <- county_data$GEOID
+  # site_name <- paste0(gsub(" ", "_", county_data$NAMELSAD[i]),"_", gsub(" ", "_", county_data$State_Name[i]))
+  .GlobalEnv$site_name <- paste0("GEOID_", site_id, "_", gsub(" ", "_", county_data$State_Name))
+  
+  print("************************************")
+  print('working directory is: ')
+  print(getwd())
+  print("************************************")
+  
+  latitude = county_data$Lat
+  longitude = county_data$Long
+  elevation_m = county_data$Elev_mean_m
+  
+  print(paste0("latitude is: ", latitude))
+  print(paste0("longitude is: ", longitude))
+  print(paste0("elevation_m is: ", elevation_m))
+  
+  source('00_Main_County.R', local = TRUE)
+}
+  
+  
 
 
 cat("************************************\n")
