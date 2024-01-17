@@ -11,6 +11,7 @@ library(rnassqs)
 # NASSQS_TOKEN="25DCA0AC-9720-345F-8989-49876C2D6C30"
 # nassqs_auth(key = NASSQS_TOKEN)
 
+home_folder<-'/home/ap/Documents/GitHub/national_gwp/Data/County_start'
 
 # Get county crop acreage
 params <- list(
@@ -22,6 +23,7 @@ crop_area<-nassqs_acres(params)
 head(crop_area)
 
 unique(crop_area$statisticcat_desc)
+unique(crop_area$commodity_desc)
 
 results_path<-'/home/ap/Daycent_results'
 
@@ -95,9 +97,9 @@ daycent_results<-function(state=NULL, Year=NULL, Results_path, crop_area=quickst
 
 
 
-result<-daycent_results(state='Georgia', Year=2017, Results_path=results_path)
-head(result)
-nrow(result)
+result_ga<-daycent_results(state='Georgia', Year=2017, Results_path=results_path)
+head(result_ga)
+nrow(result_ga)
 
 
 
@@ -232,15 +234,129 @@ corn
 
 
 
+##########################################################################################
+##########################################################################################
+##########################################################################################
 
-#
+daycent_map<-function(State=NULL, Year_=NULL, crop=NULL, Results_path=results_path){
+  ############ GET CROP ACREAGE FOR WHOLE US
+  result<-daycent_results(state=NULL, Year=Year_, Results_path=results_path)
+  head(result)
+  nrow(result)
+  
+  counties<-st_read(file.path(home_folder, "county_shp", "ne_conus_counties.shp")) %>%
+    mutate(GEOID2=as.integer(CODE_LOCAL))%>%
+    select(GEOID2, REGION, CODE_LOCAL, NAME, AREA_SQKM)
+  
+  crop_area2<-crop_area%>%
+    # filter(state_name=="GEORGIA")%>%
+    filter(statisticcat_desc=="AREA PLANTED", commodity_desc == crop)%>%
+    mutate(GEOID=as.integer(paste0(state_ansi, county_ansi)))%>%
+    filter(GEOID > 1000)%>% # this removes the "overall" row (which doesn't have a GEOID)
+    select(statisticcat_desc, commodity_desc, GEOID, state_name, county_name, 
+           state_ansi, county_ansi, source_desc, Value, unit_desc)%>%
+    arrange(GEOID)%>%
+    as_tibble()
+  
+  counties_df<-st_drop_geometry(counties)%>%as_tibble()
+  
+  # #Get Daycent crop code  
+  # if(crop=="CORN"){
+  #   cr<-MaizeYld_Mgha
+  # }  
+  # if(crop=="SOYBEANS"){
+  #   cr<-SoyYld_Mgha
+  # }  
+  # if(crop=="WHEAT"){
+  #   cr<-WheatYld_Mgha
+  # }
+  
+  ta<-0.446089561 # TONS/ACRE conversion from Mg/ha
+  # THIS GETS ALL THE DATA
+  all_data<-left_join(crop_area2, result, by="GEOID")%>%
+    mutate(TONS_ACRE=ifelse(commodity_desc=="CORN", MaizeYld_Mgha*ta*Value, 
+                            ifelse(commodity_desc=="SOYBEANS", SoyYld_Mgha*ta*Value, 
+                                   ifelse(commodity_desc=="WHEAT", WheatYld_Mgha*ta*Value, NA
+                                   ))))%>%
+    select(year, state_name, county_name, GEOID, commodity_desc, Value, unit_desc, TONS_ACRE)
+  
+  
+  # NOW DO SPATIAL JOIN
+  all_data_sp<-left_join(all_data, counties, by=c("GEOID"="GEOID2"))
+  
+  
+  us<-ggplot() +
+    geom_sf(data = counties, aes(geometry = geometry)) +
+    geom_sf(data = all_data_sp, aes(geometry = geometry, fill = TONS_ACRE)) +
+    scale_fill_viridis_c(option = "plasma", trans = "sqrt") +
+    ggtitle(paste0("Daycent ", crop, " yield (tons/acre) - ", Year_))+
+    theme_bw()
+  
+  return(us)
+}
+
+
+corn<-daycent_map(State=NULL, Year_=2017, crop='CORN', Results_path=results_path)
+soy<-daycent_map(State=NULL, Year_=2018, crop='SOYBEANS', Results_path=results_path)
+wheat<-daycent_map(State=NULL, Year_=2019, crop='WHEAT', Results_path=results_path)
+
+ggsave('/home/ap/Documents/GitHub/scratch_figs/us_corn.png',plot=corn, dpi=300)
+ggsave('/home/ap/Documents/GitHub/scratch_figs/us_soy.png',plot=soy, dpi=300)
+ggsave('/home/ap/Documents/GitHub/scratch_figs/us_wheat.png',plot=wheat, dpi=300)
 
 
 
 
 
 
+daycent_map_SOC<-function(State=NULL, Year_=NULL, crop=NULL, Results_path=results_path){
+  ############ GET CROP ACREAGE FOR WHOLE US
+  result<-daycent_results(state=NULL, Year=Year_, Results_path=results_path)
+  head(result)
+  nrow(result)
+  
+  counties<-st_read(file.path(home_folder, "county_shp", "ne_conus_counties.shp")) %>%
+    mutate(GEOID2=as.integer(CODE_LOCAL))%>%
+    select(GEOID2, REGION, CODE_LOCAL, NAME, AREA_SQKM)
+  
+  crop_area2<-crop_area%>%
+    # filter(state_name=="GEORGIA")%>%
+    filter(statisticcat_desc=="AREA PLANTED", commodity_desc == crop)%>%
+    mutate(GEOID=as.integer(paste0(state_ansi, county_ansi)))%>%
+    filter(GEOID > 1000)%>% # this removes the "overall" row (which doesn't have a GEOID)
+    select(statisticcat_desc, commodity_desc, GEOID, state_name, county_name, 
+           state_ansi, county_ansi, source_desc, Value, unit_desc)%>%
+    arrange(GEOID)%>%
+    as_tibble()
 
+  ta<-0.446089561 # TONS/ACRE conversion from Mg/ha
+  # THIS GETS ALL THE DATA
+  all_data<-left_join(crop_area2, result, by="GEOID")%>%
+    mutate(TONS_ACRE=SOC_Mgha*ta)%>%
+    select(year, state_name, county_name, GEOID, commodity_desc, Value, unit_desc, TONS_ACRE)
+  
+  
+  # NOW DO SPATIAL JOIN
+  all_data_sp<-left_join(all_data, counties, by=c("GEOID"="GEOID2"))
+  
+  
+  us<-ggplot() +
+    geom_sf(data = counties, aes(geometry = geometry)) +
+    geom_sf(data = all_data_sp, aes(geometry = geometry, fill = TONS_ACRE)) +
+    scale_fill_viridis_c(option = "plasma", trans = "sqrt") +
+    ggtitle(paste0("Daycent ", crop, " field SOC (tons/acre) - ", Year_))+
+    theme_bw()
+  
+  return(us)
+}
+
+corn_soc<-daycent_map_SOC(State=NULL, Year_=2017, crop='CORN', Results_path=results_path)
+soy_soc<-daycent_map_SOC(State=NULL, Year_=2018, crop='SOYBEANS', Results_path=results_path)
+wheat_soc<-daycent_map_SOC(State=NULL, Year_=2019, crop='WHEAT', Results_path=results_path)
+
+ggsave('/home/ap/Documents/GitHub/scratch_figs/us_corn_SOC.png',plot=corn_soc, dpi=300)
+ggsave('/home/ap/Documents/GitHub/scratch_figs/us_soy_SOC.png',plot=soy_soc, dpi=300)
+ggsave('/home/ap/Documents/GitHub/scratch_figs/us_wheat_SOC.png',plot=wheat_soc, dpi=300)
 
 
 
