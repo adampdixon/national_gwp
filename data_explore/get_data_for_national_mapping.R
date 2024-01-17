@@ -15,7 +15,7 @@ us_counties_48<-counties()%>%
   select(STATEFP, GEOID, NAME)%>%
   st_transform(5070)
 
-st_write(us_counties_48, file.path(home_dir, "county_shp/tiger_counties_lower_48.shp"))
+st_write(us_counties_48, file.path(home_dir, "county_shp/tiger_counties_lower_48.shp"), overwrite=T)
 
 # GET NATIONAL CDL
 url <- "https://www.nass.usda.gov/Research_and_Science/Cropland/Release/datasets/2017_30m_cdls.zip"
