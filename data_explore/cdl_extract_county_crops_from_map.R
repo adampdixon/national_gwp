@@ -1,19 +1,6 @@
 # Tabulate area of major crops in CDL
 
 # for each county extract corn, soy, cotton, wheat and count number of pixels
-
-library(tigris)
-options(tigris_use_cache = TRUE)
-library(terra)
-library(sf)
-# library(doFuture)
-# plan(multisession, workers=3)
-# library(foreach)
-library(tictoc)
-library(dplyr)
-library(parallel)
-
-
 home_dir<-'/glade/derecho/scratch/apdixon/national_gwp/Data/County_start'
 
 # home_dir<-'/home/ap/Documents/GitHub/national_gwp'
@@ -66,7 +53,7 @@ get_cdl_area<-function(county_number){
 library(parallel)
 library(tictoc)
 ncores<-detectCores(logical = T)
-cl<-makeCluster(ncores-1)
+cl<-makeCluster(20)
 tic()
 county_number<-c(1:100)
 county_cdl<-clusterApply(cl, county_number, get_cdl_area)
