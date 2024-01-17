@@ -9,5 +9,5 @@ r1<-list.files('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=
 
 for (i in 1:length(r2)){
   paste0('Copying ', gsub("/", "_", r2[i]))
-  copyFile(r1[i], paste0('/glade/derecho/scratch/apdixon/national_gwp_results_send/',gsub("/", "_", r2[i]))) 
+  copyFile(r1[i], paste0('/glade/derecho/scratch/apdixon/national_gwp_results_send/',gsub("/", "_", r2[i])), skip=TRUE) 
 }
