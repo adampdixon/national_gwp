@@ -3,6 +3,7 @@
 library(sf)
 library(dplyr)
 library(tigris)
+options(tigris_use_cache = TRUE)
 
 home_dir<-'/glade/derecho/scratch/apdixon/national_gwp/Data/County_start'
 
@@ -21,7 +22,7 @@ url <- "https://www.nass.usda.gov/Research_and_Science/Cropland/Release/datasets
 
 file_home<-'/glade/derecho/scratch/apdixon/CDL_national'
 
-create.dir(file_home)
+dir.create(file_home)
 destination<- file.path(file_home, "2017_30m_cdls.zip")
 download.file(url, destination) 
 unzip(destination, exdir = file_home)
