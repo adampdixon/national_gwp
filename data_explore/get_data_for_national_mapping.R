@@ -2,6 +2,7 @@
 
 library(sf)
 library(dplyr)
+library(tigris)
 
 home_dir<-'/glade/derecho/scratch/apdixon/national_gwp/Data/County_start'
 
