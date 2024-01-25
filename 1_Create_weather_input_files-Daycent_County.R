@@ -59,7 +59,7 @@ suppressMessages({
                              #   "mint_C.x","rain_cm.x")]
 
     # write data file with no headers, tab-delimited, for experimental period
-    write.table(DAYCENT_basic, file=file.path(master_path, 'Daycent',site_name,"basic_exp.wth"),
+    write.table(DAYCENT_basic, file=file.path(daycent_path2,"basic_exp.wth"),
                 row.names=F, quote=F, col.names=F, sep=' ')
     
     print("**********DAYCENT_basic**********")

@@ -19,3 +19,10 @@ crop layers/scenarios/-- how I am inputting the data, then we ll talk about LDND
 
 From 2 models, 
 1. baseline scenario -- 
+
+removed all calibration input files, commented out unnecessary code that was used for comparision, 
+got bulk density from SSURGO and soil_df
+
+created new schedule file for corn only, removed unneccessray Daycent runs
+
+spinup daycent run using same info for all counties

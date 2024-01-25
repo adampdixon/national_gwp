@@ -24,7 +24,7 @@ print("Starting 3_Create_management_input_files-Daycent4.R")
 # Base period -------------------------------------------------------------
 
 
-schedule_file <- file.path(master_path, daycent_path, "sched_base.sch")
+schedule_file <- file.path(master_path, substr(daycent_path, 1, nchar(daycent_path)-1), "sched_base.sch")
 
 ### 1850-1875 - start with continuous C1 corn ###
 

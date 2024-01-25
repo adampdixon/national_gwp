@@ -1,5 +1,7 @@
 # Tabulate area of major crops in CDL
 
+# Note: this never ran on Derecho. Ran on local machine in QGIS using zonal histogram. Probably 1,000 times easier.
+
 # for each county extract corn, soy, cotton, wheat and count number of pixels
 home_dir<-'/glade/derecho/scratch/apdixon/national_gwp/Data/County_start'
 

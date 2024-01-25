@@ -20,7 +20,9 @@ write.table(soil_df[,c("upper_depth_cm","lower_depth_cm","bdfiod_value_avg","DUL
                        "root_fraction","sand_frac","clay_frac","OM_frac",
                        "deltamin","ksat_cmsec","phaq_value_avg")],  
             #            file=paste0(daycent_path,"soils_",scenario_name,".in"),
-            file=paste0(daycent_path,"soils.in"),
+            file=file.path(daycent_path2,"soils.in"),
             row.names=F, quote=F, col.names=F, sep=' ')
+
+print("soil data written to soils.in")
 
 # phaq_value_avg, bdfiod_value_avg, #These were updated in the setup file

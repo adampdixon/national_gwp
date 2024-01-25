@@ -74,20 +74,7 @@ print("Starting 0_Controller2_County.R")
 # hist_raw_wth_filename <- "CDO_Lubbock_area.csv"
 # hist_wth_filename <- "NOAA-based Daily Lubbock 1940-2021.csv"
 # hist_wth_mon_filename <- "NOAA-based Monthly Lubbock 1940-2021 with OPE.csv"
-curr_local_wth_filename <- "" # included in GRACEnet spreadsheet (obs_filename)
-# #
-mgmt_path=paste0("Data/County/Management/")
-adjusted_ops_filename="clean_ops_ext_adj.csv"
-wth_path <- paste0("Data/County/Weather/")
-apsim_path <- paste0("APSIM/",site_name,"/")
-daycent_path <- paste0("Daycent/",site_name,"/")
-if(Sys.info()['sysname']=='Linux') {
-  dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
-} else {
-  dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
-}
-rothc_path <- paste0("RothC/",site_name,"/")
-mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
+
 #
 # clim_scenario_num <- 1
 # mgmt_scenario_grp <- 1 # scenario group number
@@ -118,7 +105,7 @@ source(paste0("0_Observations_and_constants_County.R"), local = TRUE)
 source('1_create_county_climate_wth_file_County.R', local = TRUE)
 
 
-source('1_Create_weather_input_files-Daycent_County.R', local = TRUE)
+source('1_Create_weather_input_files-Daycent_County_v2.R', local = TRUE)
 
 # source("3_Create_management_input_files-Daycent_CORN_.R", local = TRUE)
 # 
@@ -142,12 +129,12 @@ source("2_Create_soil_data-Daycent_County.R", local = TRUE)
 
 # Management input files (APSIM, Daycent, LDNDC)
 #
-source(paste0("3_Create_management_input_files-setup_County.R"), local = TRUE)
+# source(paste0("3_Create_management_input_files-setup_County.R"), local = TRUE)
 #
 # source(paste0("3_Create_management_input_files-APSIM_",site_name,".R"))
 #
 # if(mgmt_scenario_grp!=6) {
-source(paste0("3_Create_management_input_files-Daycent_County.R"), local = TRUE)
+source(paste0("3_Create_management_input_files-Daycent_County_Crop.R"), local = TRUE)
 #source(paste0("3_Create_management_input_files-LDNDC_",site_name,".R"))
 #
 ## Management input files for RothC, Millennial are created after Daycent runs
@@ -181,7 +168,13 @@ source(paste0("4_Create_additional_files-LDNDC_County.R"), local = TRUE)
 
 # Daycent
 if(identical(run_Daycent,TRUE)) {
-source(paste0("Daycent/Daycent_run_controller.R"), local = TRUE)
+  for (c in crops_){
+    crop<-c
+    scenario_name2<-paste0(scenario_name,"_",crop)
+    print(paste0("*************running Daycent for:", scenario_name2, "****************"))
+    source(paste0("Daycent/Daycent_run_controller.R"), local = TRUE)
+    source(paste0("9_Results_Daycent-setup_County.R"), local=TRUE) #TODO AD set this up?
+  }
 }
 
 #*************************************************************

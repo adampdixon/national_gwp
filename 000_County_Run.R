@@ -16,18 +16,25 @@ library(dplyr)
 args <- commandArgs(trailingOnly = TRUE)
 
 cat("********************************\n")
-county_number<-args[2]
+
 # Use the variable
-cat(paste0("The county_number is: ", county_number, "\n"))
+
 cat("********************************\n")
 cat("******** FLAGS etc *****************\n")
-Test <- FALSE # if TRUE, only run 3 counties, filtered below
-del_input_files<-FALSE
+# county_number<-args[2]
+county_number<-1
+Test <- TRUE # if TRUE, only run county, filtered below
+# crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
+
+
+del_input_files<-TRUE
 
 run_Daycent=TRUE
 run_LDNDC=FALSE
 run_Millennial=FALSE
 # county_numbers<-296:306   #295:3100
+cat(paste0("The county_number is: ", county_number, "\n"))
+
 cat("************************************\n")
 cat("************************************\n")
 
@@ -71,7 +78,7 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(1075, 13023, 13213, 20073, 31181, 42053))
+    filter(GEOID %in% c(20073)) #13023, 13213, 20073, 31181, 42053, 1075, 31181
 }
 
 # county_data<-county_data[county_data$GEOID==county_number,]
@@ -133,15 +140,15 @@ cat("************************************\n")
 cat("DELETE INPUT FILES???\n")
 if(identical(del_input_files, TRUE)){
  cat("Deleting input files\n")
- unlink(file.path(master_path, 'Daycent', site_name), recursive = T)
+ unlink(daycent_path2, recursive = T)
 } else{
  print("Saving input data files")}
-cat("************************************")
+cat("************************************\n")
 
 # end time
 toc()
 run_time <- round(toc(echo=T)/60,1)
-print(paste0("Run time is ",run_time," minutes, ",run_time/60," hours."))
+print(paste0("Run time is ",run_time," minutes"))
 
 
 

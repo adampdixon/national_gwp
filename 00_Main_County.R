@@ -50,29 +50,31 @@ tic()
 # latitude = 42.410
 # longitude = -85.372
 # elevation_m = 288
-experiment_start_year <- 1989
-experiment_end_year <- 2021
-experiment_year_range <- experiment_start_year:experiment_end_year
-experiment_start_date <- "1989-01-01"
-experiment_end_date <- "2021-12-31"
-end_exp_period_year <- 2021
+# experiment_start_year <- 1989
+# experiment_end_year <- 2021
+# experiment_year_range <- experiment_start_year:experiment_end_year
+# experiment_start_date <- "1989-01-01"
+# experiment_end_date <- "2021-12-31"
+# end_exp_period_year <- 2021
 end_fut_period_year <- 2050
 max_fut_period_year <- 2100
 calib_mgmt_grps <- c(1,2,3)
 calib_mgmt_nums <- c(1,2,3)
 #
-obs_path <- paste0("Data/County/Calibration/")
-obs_mgmt_path <- paste0("Data/County/Management/")
-hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
-hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
-curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
+# obs_path <- paste0("Data/County/Calibration/")
+# obs_mgmt_path <- paste0("Data/County/Management/")
+# hist_wth_filename <- "NOAA-based Daily Kalamazoo 1900-2020.csv"
+# hist_wth_mon_filename <- "Monthly Kalamazoo 1900-2020 with OPE.csv"
+# curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
 wth_path <- paste0("Data/County/Weather/")
-nasapower_output_filename <- paste0(site_name,"_np.csv")
-mgmt_path=paste0("Data/County/Management/")
-adjusted_ops_filename="clean_ops_ext_adj.csv"
-fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
-apsim_path <- paste0("APSIM/",site_name,"/")
+# nasapower_output_filename <- paste0(site_name,"_np.csv")
+# mgmt_path=paste0("Data/County/Management/")
+# adjusted_ops_filename="clean_ops_ext_adj.csv"
+# fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
+# apsim_path <- paste0("APSIM/",site_name,"/")
+
 daycent_path <- paste0("Daycent/",site_name,"/")
+daycent_path2<-file.path(master_path, 'Daycent' ,site_name)
 if(Sys.info()['sysname']=='Linux') {
  dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
 } else {
@@ -86,8 +88,8 @@ mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 print("Copying over KBS 'Daycent model' files --")
 # dir.create(file.path(master_path, 'Daycent', site_name))
 
-copy_from_ <-file.path(master_path, 'Daycent', 'KBS')
-copy_to_ <-file.path(master_path, 'Daycent', site_name)
+copy_from_ <-file.path(master_path, 'Daycent', 'KBS_4copy2')
+copy_to_ <-daycent_path2
 
 if(length(list.files(copy_to_))>1800) {
   print("Site daycent folder already exists. Skipping copy.")
@@ -131,6 +133,8 @@ if(length(list.files(copy_to_))>1800) {
 clim_nums <- c(1:1)
 mgmt_grps <- c(1:1) #calib_mgmt_grps #
 
+crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton')
+
 for (x in clim_nums) { # climate scenarios
   print("************************************")
   print("####### New climate scenario #######")
@@ -144,8 +148,8 @@ for (x in clim_nums) { # climate scenarios
                             if_else(y==5, 3,
                             if_else(y==6, 5, 1)))
 
-    for (z in 1:max_scenario_options) {
-      print("************************************")
+    for (z in  1:max_scenario_options) {
+      cat(paste0("*********Model will be run for Maize, Soybeans, Wheat, Cotton*********\n"))
       print(paste0("climate scenario: ",x))
       print(paste0("mgmt scenario: ",y))
       print(paste0("mgmt option: ",z))

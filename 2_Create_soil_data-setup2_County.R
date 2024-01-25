@@ -112,7 +112,7 @@ saxton_rawls_df <- soil_water_raw %>%
          Ks_cmsec = Ks/10/60/60,
          Ks_cmhr = Ks/10,
          phaq_value_avg = PH, # use soil ph -AD
-         bdfiod_value_avg = BD) # use soil bulk density -AD
+           bdfiod_value_avg = BD) # use soil bulk density -AD
 sps[[1]]$soil$SAT <- saxton_rawls_df$SAT
 sps[[1]]$soil$AirDry <- saxton_rawls_df$AirDry
 sps[[1]]$soil$LL15 <- saxton_rawls_df$LL15

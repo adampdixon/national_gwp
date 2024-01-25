@@ -16,7 +16,7 @@ print("Starting run_Daycent_eq.R")
 
 # Set the model path to the location of this site's files.
 prior_path <- getwd()
-model_path = file.path(master_path, "Daycent", site_name)
+model_path = daycent_path2
 #modelPath = paste0("~/Modeling/Daycent/KBS - Copy/") # for testing
 setwd(model_path)
 
@@ -33,8 +33,8 @@ setwd(model_path)
 # Every scenario run uses the same equilibrium schedule file, so there is only one
 print("**********Daycent equilibrium simulation*********")
 file.copy("outfiles_eq.in", "outfiles.in", overwrite=TRUE)
-unlink(paste0("sched_eq.bin"))
-unlink(paste0("sched_eq.lis"))
+# unlink(paste0("sched_eq.bin")) # deleting these on model reruns
+# unlink(paste0("sched_eq.lis"))
 # -s parameter is the schedule file name, -n parameter is the binary output file name,
 # minus the dot-extentions
 

@@ -17,7 +17,7 @@ print("Starting run_Daycent4.R")
 
 # Set the model path to the location of this site's files.
 prior_path <- getwd()
-model_path = file.path(master_path, "Daycent", site_name)
+model_path = daycent_path2
 #modelPath = paste0("~/Modeling/Daycent/KBS - Copy/") # for testing
 setwd(model_path)
 
