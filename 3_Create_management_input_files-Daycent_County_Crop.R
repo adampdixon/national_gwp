@@ -79,7 +79,8 @@ schedule_file_cotton <- file.path(daycent_path2 , paste0("sched_base_", scenario
 schedule_file_soybeans <- file.path(daycent_path2 , paste0("sched_base_", scenario_name, "_Soybean.sch"))
 schedule_file_wheat <- file.path(daycent_path2 , paste0("sched_base_", scenario_name, "_Wheat.sch"))
 
-MAIZE <- c('1850          Starting year ## start with assumed ground-breaking for agriculture until intensification',
+MAIZE <- c(
+          '1850          Starting year ## start with assumed ground-breaking for agriculture until intensification',
           '2050          Last year',
           'site.100  Site file name',
           '0             Labeling type ## all defaults turned off',
@@ -209,7 +210,8 @@ COTTON <- c('1850          Starting year ## start with assumed ground-breaking f
 
 
 
-SOYBEANS <- c('1850          Starting year ## start with assumed ground-breaking for agriculture until intensification',
+SOYBEANS <- c(
+          '1850          Starting year ## start with assumed ground-breaking for agriculture until intensification',
           '2050          Last year',
           'site.100  Site file name',
           '0             Labeling type ## all defaults turned off',
@@ -287,7 +289,8 @@ SOYBEANS <- c('1850          Starting year ## start with assumed ground-breaking
           '-999 -999 X')
 
 
-WHEAT <- c('1850          Starting year ## start with assumed ground-breaking for agriculture until intensification',
+WHEAT <- c(
+            '1850          Starting year ## start with assumed ground-breaking for agriculture until intensification',
             '2050          Last year',
             'site.100  Site file name',
             '0             Labeling type ## all defaults turned off',

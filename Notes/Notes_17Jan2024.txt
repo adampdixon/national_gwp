@@ -26,3 +26,26 @@ got bulk density from SSURGO and soil_df
 created new schedule file for corn only, removed unneccessray Daycent runs
 
 spinup daycent run using same info for all counties
+
+
+How about we start with no-till + corn/wheat/soy/cotton and no-till + corn/wheat/soy/cotton + cover crop? We can build on other scenarios once we figure out these two. Does that sound reasonable?
+
+
+use summary of whole county for soil?
+What about write script where we select 10 locations in cropland in each county and then average that
+
+
+
+26 Jan
+Make sure day on glade is secure, review 
+fertilizer scenarios 50% and 25%,
+then no till and cover crop
+residue remove - do 25% and 50%
+
+do nothing first. then, think about doing the below.
+address planting schedule very ballpark way, maybe march, april, may planting, latitude gradient, think about it in this way.
+maybe through an agroecological gradient. agroclimate zone.
+
+look for county summaryized soil data
+
+start with LDNDC

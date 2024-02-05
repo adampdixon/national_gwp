@@ -1,0 +1,140 @@
+https://ipad.fas.usda.gov/rssiws/al/crop_calendar/us.aspx
+
+https://usda.library.cornell.edu/concern/publications/vm40xr56k
+
+corn options  # Go with the varity Ellen has at the end. look up the majority variety in the US. See if there's any consensus on which corn variety.
+C1-C8
+C3, C2 medium yield
+C1 low yield
+
+soybean options
+SYBN
+SYBN1 - HIMAX lowered
+SYBN3 - PRDX lowered
+
+
+Cotton options
+COT - based on low yield corn
+
+wheat options  # go with spring wheat
+SW spring wheat low harvest cold tolerant
+SW3 spring wheat medium harvest
+W3 wheat high harvest index
+
+
+cover crop options
+VETCH - cover crop based on soybeans
+RYELG - rye legume crop mix
+RYELGR - rye legume radish
+C5COV - corn cover crop
+FSCOV - sorghum cover crop
+W3COV - wheat high harvest index cover crop
+MLCOV - millet cover crop
+
+
+Cover crop scenarios:
+1. legume - vetch
+2. cereal - rye
+3. mix eg. RYELR  --legume/cereal/brassica
+
+
+
+8. no till/Cover crops/crop rotation/types of cover crop/tillage+cover crop
+
+
+#prioritize the region where most of the crops come from. e.g. Cotton to Georgia, Corn to midwest, Wheat to NW
+
+
+Corn, Soybeans, Wheat, Cotton
+
+Corn
+Plant May 1
+Harvest Oct 1
+Till Nov 1
+Cover crop Nov 10
+
+Soybeans
+Plant May 15
+Harvest Oct 1
+Till Nov 1
+Cover crop Nov 10
+
+Wheat
+Plant May 1
+Harvest Sept 1
+Till Nov 1
+Cover crop Nov 10
+
+Cotton
+Plant May 1
+Harvest Oct 1	
+Till Nov 1
+Cover crop Nov 10
+
+
+Blocks
+
+
+
+
+corn 
+
+# Scenario 1 - notill, cover crop
+
+  '1 121 CULT H     ## May 1 Disk',
+  '1 124 CROP C4    ## May 4', # Crop is corn high yield
+  '1 124 NDRIL      ## May 4', # No-till drill
+  '1 296 HARV G90S	## Oct 23 - Harvest grains and 90% straw'
+  '1 305 CROP RYELG ## Nov 1, plant rye, legume, grass mix cover crop'
+  '1 305 NDRIL      ## Nov 1, plant rye, legume, grass mix cover crop'
+
+# Scenario 2 - notill
+
+  '1 121 CULT H     ## May 1 Disk',
+  '1 124 CROP C4    ## May 4', # Crop is corn high yield
+  '1 124 NDRIL      ## May 4', # No-till drill
+  '1 296 HARV G90S	## Oct 23 - Harvest grains and 90% straw'
+
+# try to find statistics that we typically harvest 90% straw
+
+# Scenario 3 - monocropping
+
+
+
+# Scenario 4 - cover crop
+ '1 91 CULT H      ## April 1 Disk', # does this need to be included?
+  '1 121 CULT D     ## May 1 Cultivate',
+  '1 124 CROP C4    ## May 4',
+  '1 124 PLTM       ## May 4',
+  '1 177 FERT (2.2N) ## June 26',
+  '1 296 HARV G90S	## Oct 23 - Harvest grains and 90% straw'
+  '1 300 CULT K     ## Oct 26 Moldboard plow', # till, disk, and cultivate again
+  '1 303 CULT D     ## Oct 29 Cultivate',
+  '1 305 CROP RYELG ## Nov 1, plant rye, legume, grass mix cover crop'
+  '1 305 PLTM       ## Nov 1,
+
+# get the national scale fertilizer rate, look in NASS data, perhaps look at county level
+# do the pre-plant fertilizer to start out
+
+# Scenario 5 - 2 year crop rotation
+
+    "1 138 CULT K     ## May 18 Moldboard plow",
+    "1 145 CULT H     ## May 25 Disc",
+    "1 145 CULT D     ## May 25 Cultivate",
+    "1 149 CROP SYBN2 ## May 29",
+    "1 149 PLTM       ## May 29 Plant soybean",
+    "1 290 HARV G90S  ## Oct 17 - Harvest grains and 90% straw",
+    "2 111 CULT K     ## April 21 Moldboard plow",
+    "2 121 CULT H     ## May 1 Disk",
+    "2 121 CULT D     ## May 1 Cultivate",
+    "2 124 CROP C6    ## May 4", 
+    "2 124 PLTM       ## May 4 ## Plant Corn", 
+    "2 177 FERT (8N)	## June 26",
+    "2 296 HARV G90S	## Oct 23 - Harvest grains and 90% straw",
+    "-999 -999 X")
+
+
+
+
+
+# would like to add residue removal and fertilizer reduction

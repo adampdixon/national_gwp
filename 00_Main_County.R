@@ -130,37 +130,60 @@ if(length(list.files(copy_to_))>1800) {
 
 # Loop through the scenarios; set which climate and management
 # scenario numbers to use for this run:
+
+
+
+
+# Management scenarios:
+# 1 - MC - Monocropping
+# 2 - NT - No-till
+# 3 - CCM - Cover crop mix (legumes/brassicas/cereals)
+# 4 - CCC - Cover crop cereal (rye)
+# 5 - CCL - -Cover crop legume (vetch)
+# 6 - CCNT - Cover crop mix + notill
+# 7 - CR - Crop rotation (corn-soybeans)
+
 clim_nums <- c(1:1)
-mgmt_grps <- c(1:1) #calib_mgmt_grps #
+mgmt_grps <- c(1:1) # These are left over from ellen's code
 
-crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton')
+# These variables are implemented in 0_Controller2_County.R
+mgmt_scenario_nums <- 1:6 # Management scenarios
+# mgmt_scenarios <- c('MC', 'NT', 'CCM', 'CCC', 'CCL', 'CCNT', 'CR') # Management scenarios codes
+crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
 
-for (x in clim_nums) { # climate scenarios
+for (x in clim_nums) { # climate scenarios, in case we want different versions
   print("************************************")
-  print("####### New climate scenario #######")
+  print("####### Climate scenario 2022 to 2050 #######")
   print("************************************")
   print(paste0("climate scenario: ",x))
   clim_scenario_num <- x
+  cat(paste0("*********Model will be run for Maize, Soybeans, Winter Wheat, Cotton, Maize-Soy Rotation*********\n"))
+  cat("********* mgmt scenarios", mgmt_scenarios, " *********\n")
+  
+  # Run controller
+  source("0_Controller2_County.R", local = TRUE)
+  
+  
   # source("1_Create_weather_input_files.R")
-  for (y in mgmt_grps) { # management scenario groups
-    .GlobalEnv$mgmt_scenario_grp <- y # scenario group number
-    max_scenario_options <- if_else(y==4, 4, # option numbers for those with incremental adjustments
-                            if_else(y==5, 3,
-                            if_else(y==6, 5, 1)))
+  # for (y in mgmt_grps) { # management scenario groups
+  #   mgmt_scenario_grp <- y # scenario group number
+  #   # max_scenario_options <- if_else(y==4, 4, # option numbers for those with incremental adjustments
+  #   #                         if_else(y==5, 3,
+  #   #                         if_else(y==6, 5, 1)))
 
-    for (z in  1:max_scenario_options) {
-      cat(paste0("*********Model will be run for Maize, Soybeans, Wheat, Cotton*********\n"))
-      print(paste0("climate scenario: ",x))
-      print(paste0("mgmt scenario: ",y))
-      print(paste0("mgmt option: ",z))
-      mgmt_scenario_opt <- if(max_scenario_options==1) "" else z
-      mgmt_scenario_num <- as.numeric(paste0(mgmt_scenario_grp,mgmt_scenario_opt))
-      .GlobalEnv$scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
-      source("0_Controller2_County.R", local = TRUE)
-      #p_Controller2()
-    }
+    # for (z in mgmt_scenario) {
+    #   cat(paste0("*********Model will be run for Maize, Soybeans, Winter Wheat, Cotton*********\n"))
+    #   print(paste0("climate scenario: ",x))
+    #   # print(paste0("mgmt scenario: ",y))
+    #   print(paste0("mgmt scenario: ",z))
+    #   # mgmt_scenario_opt <- if(max_scenario_options==1) "" else z
+    #   mgmt_scenario_num <- z
+    #   scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
+    #   source("0_Controller2_County.R", local = TRUE)
+    #   #p_Controller2()
+    # }
 
-  } # end loop through management scenario groups
+  # } # end loop through management scenario groups
 } # end loop through climate scenarios
 
  # source(paste0("10_Model_Ensemble_results-combined_scenarios_",site_name,".R"))

@@ -24,8 +24,10 @@ dd if=/dev/sda4 of=/dev/sdb3 bs=64K conv=noerror,sync
 rm -f .git/index.lock  # this fixes a messed up git
 https://stackoverflow.com/questions/38004148/another-git-process-seems-to-be-running-in-this-repository
 
+
+# get directory sizes
 ls -dlhRS .*/ */
 
-ls -lhRS */ | head -11^C
+ls -lhRS */ | head -11
 
 /home/ap/climate_data

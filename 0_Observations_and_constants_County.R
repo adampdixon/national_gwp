@@ -51,214 +51,214 @@ mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 #################### constants ###################
 ##################################################
 
-
-
-scenario_df <- data.frame(climate_scenario_num=c(1,1,1,1,1,1,1,1,1,1,
-                                                 1,1,1,1,1,
-                                                 2,2,2,2,2,2,2,2,2,2,
-                                                 2,2,2,2,2,
-                                                 3,3,3,3,3,3,3,3,3,3,
-                                                 3,3,3,3,3,
-                                                 4,4,4,4,4,4,4,4,4,4,
-                                                 4,4,4,4,4,
-                                                 5,5,5,5,5,5,5,5,5,5,
-                                                 5,5,5,5,5),
-                          mgmt_scenario_grp=c(1,2,3,4,4,4,4,5,5,5,
-                                              6,6,6,6,6,
-                                              1,2,3,4,4,4,4,5,5,5,
-                                              6,6,6,6,6,
-                                              1,2,3,4,4,4,4,5,5,5,
-                                              6,6,6,6,6,
-                                              1,2,3,4,4,4,4,5,5,5,
-                                              6,6,6,6,6,
-                                              1,2,3,4,4,4,4,5,5,5,
-                                              6,6,6,6,6),
-                          mgmt_scenario_opt=c("","","",1,2,3,4,1,2,3,
-                                              1,2,3,4,5,
-                                              "","","",1,2,3,4,1,2,3,
-                                              1,2,3,4,5,
-                                              "","","",1,2,3,4,1,2,3,
-                                              1,2,3,4,5,
-                                              "","","",1,2,3,4,1,2,3,
-                                              1,2,3,4,5,
-                                              "","","",1,2,3,4,1,2,3,
-                                              1,2,3,4,5),
-                          scenario_name=c("1_1","1_2","1_3","1_41",
-                                          "1_42","1_43","1_44","1_51",
-                                          "1_52","1_53","1_61","1_62",
-                                          "1_63","1_64","1_65",
-                                          "2_1","2_2","2_3","2_41",
-                                          "2_42","2_43","2_44","2_51",
-                                          "2_52","2_53","2_61","2_62",
-                                          "2_63","2_64","2_65",
-                                          "3_1","3_2","3_3","3_41",
-                                          "3_42","3_43","3_44","3_51",
-                                          "3_52","3_53","3_61","3_62",
-                                          "3_63","3_64","3_65",
-                                          "4_1","4_2","4_3","4_41",
-                                          "4_42","4_43","4_44","4_51",
-                                          "4_52","4_53","4_61","4_62",
-                                          "4_63","4_64","4_65",
-                                          "5_1","5_2","5_3","5_41",
-                                          "5_42","5_43","5_44","5_51",
-                                          "5_52","5_53","5_61","5_62",
-                                          "5_63","5_64","5_65"),
-                          scenario_abbrev=c("CR","NT-CR","CC-CR",
-                                            "RF05-CR","RF15-CR","RF25-CR",
-                                            "RF35-CR","RR50-CR","RR25-CR",
-                                            "RR00-CR","BC19-CR","BC38-CR",
-                                            "BC57-CR","BC76-CR","BC96-CR",
-                                            "CR","NT-CR","CC-CR",
-                                            "RF05-CR","RF15-CR","RF25-CR",
-                                            "RF35-CR","RR50-CR","RR25-CR",
-                                            "RR00-CR","BC19-CR","BC38-CR",
-                                            "BC57-CR","BC76-CR","BC96-CR",
-                                            "CR","NT-CR","CC-CR",
-                                            "RF05-CR","RF15-CR","RF25-CR",
-                                            "RF35-CR","RR50-CR","RR25-CR",
-                                            "RR00-CR","BC19-CR","BC38-CR",
-                                            "BC57-CR","BC76-CR","BC96-CR",
-                                            "CR","NT-CR","CC-CR",
-                                            "RF05-CR","RF15-CR","RF25-CR",
-                                            "RF35-CR","RR50-CR","RR25-CR",
-                                            "RR00-CR","BC19-CR","BC38-CR",
-                                            "BC57-CR","BC76-CR","BC96-CR",
-                                            "CR","NT-CR","CC-CR",
-                                            "RF05-CR","RF15-CR","RF25-CR",
-                                            "RF35-CR","RR50-CR","RR25-CR",
-                                            "RR00-CR","BC19-CR","BC38-CR",
-                                            "BC57-CR","BC76-CR","BC96-CR"),
-                          scenario_descriptor=c("Crop Rotation", #KBS T1
-                                                "No Till, Crop Rotation", #KBS T2
-                                                "Cover Crop, Crop Rotation", #KBS T3
-                                                "Redu Fert 5%, Crop Rotation",
-                                                "Redu Fert 15%, Crop Rotation",
-                                                "Redu Fert 25%, Crop Rotation",
-                                                "Redu Fert 35%, Crop Rotation",
-                                                "Rmv Resid 50%, Crop Rotation",
-                                                "Rmv Resid 25%, Crop Rotation",
-                                                "Rmv Resid 0%, Crop Rotation",
-                                                "Biochar 19 Mgha, Crop Rotation",
-                                                "Biochar 38 Mgha, Crop Rotation",
-                                                "Biochar 57 Mgha, Crop Rotation",
-                                                "Biochar 76 Mgha, Crop Rotation",
-                                                "Biochar 96 Mgha, Crop Rotation"),
-                          climate_esm=c("Baseline","Baseline","Baseline","Baseline",
-                                        "Baseline","Baseline","Baseline","Baseline",
-                                        "Baseline","Baseline","Baseline","Baseline",
-                                        "Baseline","Baseline","Baseline",
-                                        "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
-                                        "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
-                                        "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
-                                        "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
-                                        "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
-                                        "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
-                                        "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
-                                        "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
-                                        "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
-                                        "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
-                                        "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
-                                        "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
-                                        "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
-                                        "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
-                                        "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
-                                        "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL"),
-                          climate_esm_scenario=c("Baseline","Baseline","Baseline","Baseline",
-                                                 "Baseline","Baseline","Baseline","Baseline",
-                                                 "Baseline","Baseline","Baseline","Baseline",
-                                                 "Baseline","Baseline","Baseline",
-                                                 "SSP1-2.6","SSP1-2.6","SSP1-2.6","SSP1-2.6",
-                                                 "SSP1-2.6","SSP1-2.6","SSP1-2.6","SSP1-2.6",
-                                                 "SSP1-2.6","SSP1-2.6","SSP1-2.6","SSP1-2.6",
-                                                 "SSP1-2.6","SSP1-2.6","SSP1-2.6",
-                                                 "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
-                                                 "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
-                                                 "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
-                                                 "SSP5-8.5","SSP5-8.5","SSP5-8.5",
-                                                 "SSP1-2.6","SSP1-2.6","SSP1-2.6","SSP1-2.6",
-                                                 "SSP1-2.6","SSP1-2.6","SSP1-2.6","SSP1-2.6",
-                                                 "SSP1-2.6","SSP1-2.6","SSP1-2.6","SSP1-2.6",
-                                                 "SSP1-2.6","SSP1-2.6","SSP1-2.6",
-                                                 "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
-                                                 "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
-                                                 "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
-                                                 "SSP5-8.5","SSP5-8.5","SSP5-8.5"),
-                          climate_desc=c("Baseline","Baseline","Baseline","Baseline",
-                                         "Baseline","Baseline","Baseline","Baseline",
-                                         "Baseline","Baseline","Baseline","Baseline",
-                                         "Baseline","Baseline","Baseline",
-                                         "GFDL_Low","GFDL_Low","GFDL_Low","GFDL_Low",
-                                         "GFDL_Low","GFDL_Low","GFDL_Low","GFDL_Low",
-                                         "GFDL_Low","GFDL_Low","GFDL_Low","GFDL_Low",
-                                         "GFDL_Low","GFDL_Low","GFDL_Low",
-                                         "GFDL_High","GFDL_High","GFDL_High","GFDL_High",
-                                         "GFDL_High","GFDL_High","GFDL_High","GFDL_High",
-                                         "GFDL_High","GFDL_High","GFDL_High","GFDL_High",
-                                         "GFDL_High","GFDL_High","GFDL_High",
-                                         "UKESM_Low","UKESM_Low","UKESM_Low","UKESM_Low",
-                                         "UKESM_Low","UKESM_Low","UKESM_Low","UKESM_Low",
-                                         "UKESM_Low","UKESM_Low","UKESM_Low","UKESM_Low",
-                                         "UKESM_Low","UKESM_Low","UKESM_Low",
-                                         "UKESM_High","UKESM_High","UKESM_High","UKESM_High",
-                                         "UKESM_High","UKESM_High","UKESM_High","UKESM_High",
-                                         "UKESM_High","UKESM_High","UKESM_High","UKESM_High",
-                                         "UKESM_High","UKESM_High","UKESM_High")
-)
-
-scenario_abbrev <- 
-  if_else(mgmt_scenario_num=="1","CR",
-  if_else(mgmt_scenario_num=="2","NT-CR",
-  if_else(mgmt_scenario_num=="3","CC-CR",
-  if_else(mgmt_scenario_num=="41","RF05-CR",
-  if_else(mgmt_scenario_num=="42","RF15-CR",
-  if_else(mgmt_scenario_num=="43","RF25-CR",
-  if_else(mgmt_scenario_num=="44","RF35-CR",
-  if_else(mgmt_scenario_num=="51","RR50-CR",
-  if_else(mgmt_scenario_num=="52","RR25-CR",
-  if_else(mgmt_scenario_num=="53","RR00-CR",
-  if_else(mgmt_scenario_num=="61","BC19-CR",
-  if_else(mgmt_scenario_num=="62","BC38-CR",
-  if_else(mgmt_scenario_num=="63","BC57-CR",
-  if_else(mgmt_scenario_num=="64","BC76-CR",
-  if_else(mgmt_scenario_num=="65","BC96-CR",
-          "Missing Descriptor"
-          )))))))))))))))
-
-scenario_descriptor <- 
-  if_else(mgmt_scenario_num=="1","Crop Rotation", #KBS T1
-  if_else(mgmt_scenario_num=="2","No Till, Crop Rotation", #KBS T2
-  if_else(mgmt_scenario_num=="3","Cover Crop, Crop Rotation", #KBS T3
-  if_else(mgmt_scenario_num=="41","Redu Fert 5%, Crop Rotation",
-  if_else(mgmt_scenario_num=="42","Redu Fert 15%, Crop Rotation",
-  if_else(mgmt_scenario_num=="43","Redu Fert 25%, Crop Rotation",
-  if_else(mgmt_scenario_num=="44","Redu Fert 35%, Crop Rotation",
-  if_else(mgmt_scenario_num=="51","Rmv Resid 50%, Crop Rotation",
-  if_else(mgmt_scenario_num=="52","Rmv Resid 25%, Crop Rotation",
-  if_else(mgmt_scenario_num=="53","Rmv Resid 0%, Crop Rotation",
-  if_else(mgmt_scenario_num=="61","Biochar 19 Mgha, Crop Rotation",
-  if_else(mgmt_scenario_num=="62","Biochar 38 Mgha, Crop Rotation",
-  if_else(mgmt_scenario_num=="63","Biochar 57 Mgha, Crop Rotation",
-  if_else(mgmt_scenario_num=="64","Biochar 76 Mgha, Crop Rotation",
-  if_else(mgmt_scenario_num=="65","Biochar 96 Mgha, Crop Rotation",
-          "Missing Descriptor"
-          )))))))))))))))
-
-climate_scenario_descriptor <- 
-  if_else(clim_scenario_num=="1","Baseline",
-  if_else(clim_scenario_num=="2","GFDL_ESM4 Low",
-  if_else(clim_scenario_num=="3","GFDL_ESM4 High",
-  if_else(clim_scenario_num=="4","UKESM1-0-LL Low",
-  if_else(clim_scenario_num=="5","UKESM1-0-LL High",
-          "Missing Descriptor")))))
-  
-scenario_descriptor_full <- paste0(scenario_descriptor, "; ",climate_scenario_descriptor)
+# 
+# 
+# scenario_df <- data.frame(climate_scenario_num=c(1,1,1,1,1,1,1,1,1,1,
+#                                                  1,1,1,1,1,
+#                                                  2,2,2,2,2,2,2,2,2,2,
+#                                                  2,2,2,2,2,
+#                                                  3,3,3,3,3,3,3,3,3,3,
+#                                                  3,3,3,3,3,
+#                                                  4,4,4,4,4,4,4,4,4,4,
+#                                                  4,4,4,4,4,
+#                                                  5,5,5,5,5,5,5,5,5,5,
+#                                                  5,5,5,5,5),
+#                           mgmt_scenario_grp=c(1,2,3,4,4,4,4,5,5,5,
+#                                               6,6,6,6,6,
+#                                               1,2,3,4,4,4,4,5,5,5,
+#                                               6,6,6,6,6,
+#                                               1,2,3,4,4,4,4,5,5,5,
+#                                               6,6,6,6,6,
+#                                               1,2,3,4,4,4,4,5,5,5,
+#                                               6,6,6,6,6,
+#                                               1,2,3,4,4,4,4,5,5,5,
+#                                               6,6,6,6,6),
+#                           mgmt_scenario_opt=c("","","",1,2,3,4,1,2,3,
+#                                               1,2,3,4,5,
+#                                               "","","",1,2,3,4,1,2,3,
+#                                               1,2,3,4,5,
+#                                               "","","",1,2,3,4,1,2,3,
+#                                               1,2,3,4,5,
+#                                               "","","",1,2,3,4,1,2,3,
+#                                               1,2,3,4,5,
+#                                               "","","",1,2,3,4,1,2,3,
+#                                               1,2,3,4,5),
+#                           scenario_name=c("1_1","1_2","1_3","1_41",
+#                                           "1_42","1_43","1_44","1_51",
+#                                           "1_52","1_53","1_61","1_62",
+#                                           "1_63","1_64","1_65",
+#                                           "2_1","2_2","2_3","2_41",
+#                                           "2_42","2_43","2_44","2_51",
+#                                           "2_52","2_53","2_61","2_62",
+#                                           "2_63","2_64","2_65",
+#                                           "3_1","3_2","3_3","3_41",
+#                                           "3_42","3_43","3_44","3_51",
+#                                           "3_52","3_53","3_61","3_62",
+#                                           "3_63","3_64","3_65",
+#                                           "4_1","4_2","4_3","4_41",
+#                                           "4_42","4_43","4_44","4_51",
+#                                           "4_52","4_53","4_61","4_62",
+#                                           "4_63","4_64","4_65",
+#                                           "5_1","5_2","5_3","5_41",
+#                                           "5_42","5_43","5_44","5_51",
+#                                           "5_52","5_53","5_61","5_62",
+#                                           "5_63","5_64","5_65"),
+#                           scenario_abbrev=c("CR","NT-CR","CC-CR",
+#                                             "RF05-CR","RF15-CR","RF25-CR",
+#                                             "RF35-CR","RR50-CR","RR25-CR",
+#                                             "RR00-CR","BC19-CR","BC38-CR",
+#                                             "BC57-CR","BC76-CR","BC96-CR",
+#                                             "CR","NT-CR","CC-CR",
+#                                             "RF05-CR","RF15-CR","RF25-CR",
+#                                             "RF35-CR","RR50-CR","RR25-CR",
+#                                             "RR00-CR","BC19-CR","BC38-CR",
+#                                             "BC57-CR","BC76-CR","BC96-CR",
+#                                             "CR","NT-CR","CC-CR",
+#                                             "RF05-CR","RF15-CR","RF25-CR",
+#                                             "RF35-CR","RR50-CR","RR25-CR",
+#                                             "RR00-CR","BC19-CR","BC38-CR",
+#                                             "BC57-CR","BC76-CR","BC96-CR",
+#                                             "CR","NT-CR","CC-CR",
+#                                             "RF05-CR","RF15-CR","RF25-CR",
+#                                             "RF35-CR","RR50-CR","RR25-CR",
+#                                             "RR00-CR","BC19-CR","BC38-CR",
+#                                             "BC57-CR","BC76-CR","BC96-CR",
+#                                             "CR","NT-CR","CC-CR",
+#                                             "RF05-CR","RF15-CR","RF25-CR",
+#                                             "RF35-CR","RR50-CR","RR25-CR",
+#                                             "RR00-CR","BC19-CR","BC38-CR",
+#                                             "BC57-CR","BC76-CR","BC96-CR"),
+#                           scenario_descriptor=c("Crop Rotation", #KBS T1
+#                                                 "No Till, Crop Rotation", #KBS T2
+#                                                 "Cover Crop, Crop Rotation", #KBS T3
+#                                                 "Redu Fert 5%, Crop Rotation",
+#                                                 "Redu Fert 15%, Crop Rotation",
+#                                                 "Redu Fert 25%, Crop Rotation",
+#                                                 "Redu Fert 35%, Crop Rotation",
+#                                                 "Rmv Resid 50%, Crop Rotation",
+#                                                 "Rmv Resid 25%, Crop Rotation",
+#                                                 "Rmv Resid 0%, Crop Rotation",
+#                                                 "Biochar 19 Mgha, Crop Rotation",
+#                                                 "Biochar 38 Mgha, Crop Rotation",
+#                                                 "Biochar 57 Mgha, Crop Rotation",
+#                                                 "Biochar 76 Mgha, Crop Rotation",
+#                                                 "Biochar 96 Mgha, Crop Rotation"),
+#                           climate_esm=c("Baseline","Baseline","Baseline","Baseline",
+#                                         "Baseline","Baseline","Baseline","Baseline",
+#                                         "Baseline","Baseline","Baseline","Baseline",
+#                                         "Baseline","Baseline","Baseline",
+#                                         "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
+#                                         "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
+#                                         "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
+#                                         "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
+#                                         "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
+#                                         "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
+#                                         "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
+#                                         "GFDL_ESM4","GFDL_ESM4","GFDL_ESM4",
+#                                         "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
+#                                         "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
+#                                         "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
+#                                         "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
+#                                         "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
+#                                         "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
+#                                         "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL",
+#                                         "UKESM1-0-LL","UKESM1-0-LL","UKESM1-0-LL"),
+#                           climate_esm_scenario=c("Baseline","Baseline","Baseline","Baseline",
+#                                                  "Baseline","Baseline","Baseline","Baseline",
+#                                                  "Baseline","Baseline","Baseline","Baseline",
+#                                                  "Baseline","Baseline","Baseline",
+#                                                  "SSP1-2.6","SSP1-2.6","SSP1-2.6","SSP1-2.6",
+#                                                  "SSP1-2.6","SSP1-2.6","SSP1-2.6","SSP1-2.6",
+#                                                  "SSP1-2.6","SSP1-2.6","SSP1-2.6","SSP1-2.6",
+#                                                  "SSP1-2.6","SSP1-2.6","SSP1-2.6",
+#                                                  "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
+#                                                  "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
+#                                                  "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
+#                                                  "SSP5-8.5","SSP5-8.5","SSP5-8.5",
+#                                                  "SSP1-2.6","SSP1-2.6","SSP1-2.6","SSP1-2.6",
+#                                                  "SSP1-2.6","SSP1-2.6","SSP1-2.6","SSP1-2.6",
+#                                                  "SSP1-2.6","SSP1-2.6","SSP1-2.6","SSP1-2.6",
+#                                                  "SSP1-2.6","SSP1-2.6","SSP1-2.6",
+#                                                  "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
+#                                                  "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
+#                                                  "SSP5-8.5","SSP5-8.5","SSP5-8.5","SSP5-8.5",
+#                                                  "SSP5-8.5","SSP5-8.5","SSP5-8.5"),
+#                           climate_desc=c("Baseline","Baseline","Baseline","Baseline",
+#                                          "Baseline","Baseline","Baseline","Baseline",
+#                                          "Baseline","Baseline","Baseline","Baseline",
+#                                          "Baseline","Baseline","Baseline",
+#                                          "GFDL_Low","GFDL_Low","GFDL_Low","GFDL_Low",
+#                                          "GFDL_Low","GFDL_Low","GFDL_Low","GFDL_Low",
+#                                          "GFDL_Low","GFDL_Low","GFDL_Low","GFDL_Low",
+#                                          "GFDL_Low","GFDL_Low","GFDL_Low",
+#                                          "GFDL_High","GFDL_High","GFDL_High","GFDL_High",
+#                                          "GFDL_High","GFDL_High","GFDL_High","GFDL_High",
+#                                          "GFDL_High","GFDL_High","GFDL_High","GFDL_High",
+#                                          "GFDL_High","GFDL_High","GFDL_High",
+#                                          "UKESM_Low","UKESM_Low","UKESM_Low","UKESM_Low",
+#                                          "UKESM_Low","UKESM_Low","UKESM_Low","UKESM_Low",
+#                                          "UKESM_Low","UKESM_Low","UKESM_Low","UKESM_Low",
+#                                          "UKESM_Low","UKESM_Low","UKESM_Low",
+#                                          "UKESM_High","UKESM_High","UKESM_High","UKESM_High",
+#                                          "UKESM_High","UKESM_High","UKESM_High","UKESM_High",
+#                                          "UKESM_High","UKESM_High","UKESM_High","UKESM_High",
+#                                          "UKESM_High","UKESM_High","UKESM_High")
+# )
+# 
+# scenario_abbrev <- 
+#   if_else(mgmt_scenario_num=="1","CR",
+#   if_else(mgmt_scenario_num=="2","NT-CR",
+#   if_else(mgmt_scenario_num=="3","CC-CR",
+#   if_else(mgmt_scenario_num=="41","RF05-CR",
+#   if_else(mgmt_scenario_num=="42","RF15-CR",
+#   if_else(mgmt_scenario_num=="43","RF25-CR",
+#   if_else(mgmt_scenario_num=="44","RF35-CR",
+#   if_else(mgmt_scenario_num=="51","RR50-CR",
+#   if_else(mgmt_scenario_num=="52","RR25-CR",
+#   if_else(mgmt_scenario_num=="53","RR00-CR",
+#   if_else(mgmt_scenario_num=="61","BC19-CR",
+#   if_else(mgmt_scenario_num=="62","BC38-CR",
+#   if_else(mgmt_scenario_num=="63","BC57-CR",
+#   if_else(mgmt_scenario_num=="64","BC76-CR",
+#   if_else(mgmt_scenario_num=="65","BC96-CR",
+#           "Missing Descriptor"
+#           )))))))))))))))
+# 
+# scenario_descriptor <- 
+#   if_else(mgmt_scenario_num=="1","Crop Rotation", #KBS T1
+#   if_else(mgmt_scenario_num=="2","No Till, Crop Rotation", #KBS T2
+#   if_else(mgmt_scenario_num=="3","Cover Crop, Crop Rotation", #KBS T3
+#   if_else(mgmt_scenario_num=="41","Redu Fert 5%, Crop Rotation",
+#   if_else(mgmt_scenario_num=="42","Redu Fert 15%, Crop Rotation",
+#   if_else(mgmt_scenario_num=="43","Redu Fert 25%, Crop Rotation",
+#   if_else(mgmt_scenario_num=="44","Redu Fert 35%, Crop Rotation",
+#   if_else(mgmt_scenario_num=="51","Rmv Resid 50%, Crop Rotation",
+#   if_else(mgmt_scenario_num=="52","Rmv Resid 25%, Crop Rotation",
+#   if_else(mgmt_scenario_num=="53","Rmv Resid 0%, Crop Rotation",
+#   if_else(mgmt_scenario_num=="61","Biochar 19 Mgha, Crop Rotation",
+#   if_else(mgmt_scenario_num=="62","Biochar 38 Mgha, Crop Rotation",
+#   if_else(mgmt_scenario_num=="63","Biochar 57 Mgha, Crop Rotation",
+#   if_else(mgmt_scenario_num=="64","Biochar 76 Mgha, Crop Rotation",
+#   if_else(mgmt_scenario_num=="65","Biochar 96 Mgha, Crop Rotation",
+#           "Missing Descriptor"
+#           )))))))))))))))
+# 
+# climate_scenario_descriptor <- 
+#   if_else(clim_scenario_num=="1","Baseline",
+#   if_else(clim_scenario_num=="2","GFDL_ESM4 Low",
+#   if_else(clim_scenario_num=="3","GFDL_ESM4 High",
+#   if_else(clim_scenario_num=="4","UKESM1-0-LL Low",
+#   if_else(clim_scenario_num=="5","UKESM1-0-LL High",
+#           "Missing Descriptor")))))
+#   
+# scenario_descriptor_full <- paste0(scenario_descriptor, "; ",climate_scenario_descriptor)
 
 #create results folder if it doesn't already exist
 results_path <- file.path(results_folder, paste0("Results_", site_name))
 if(!dir.exists(results_path)) dir.create(results_path)
 
-write.table(scenario_df,file=file.path(results_path,"Scenario_table.csv"),
-            append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
+# write.table(scenario_df,file=file.path(results_path,"Scenario_table.csv"),
+#             append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
 
 # site_id <- 0
 # elevation_m = 288
@@ -272,45 +272,45 @@ land_conversion_year <- 1850
 depth_m <- 0.25
 equil_C_input <- 305.00 #244.21 #210.84 # g C/m^2 annually
 surface_C_init <- 60 # Mg C ha-1
-
-control_treatment <- "T8"
-control_treatment_num <- 8
-calib_mgmt_scenario_grps <- c(1:3)
-
-treatment <- if_else(mgmt_scenario_num==1, "T1",
-             if_else(mgmt_scenario_num==2, "T2",
-             if_else(mgmt_scenario_num==3, "T3",
-             if_else(mgmt_scenario_grp==4, "T1",
-             if_else(mgmt_scenario_grp==5, "T1",
-             if_else(mgmt_scenario_grp==6, "T1",
-             "Error"))))))
-treatment_num <- if_else(mgmt_scenario_num==1, 1,
-                 if_else(mgmt_scenario_num==2, 2,
-                 if_else(mgmt_scenario_num==3, 3,
-                 if_else(mgmt_scenario_grp==4, 1,
-                 if_else(mgmt_scenario_grp==5, 1,
-                 if_else(mgmt_scenario_grp==6, 1,
-                 0))))))
-soil_temp_bias <- if_else(mgmt_scenario_num==1, 5.0,
-                  if_else(mgmt_scenario_num==2, 4.5,
-                  if_else(mgmt_scenario_num==3, 4.5,
-                  if_else(mgmt_scenario_grp==4, 5.0,
-                  if_else(mgmt_scenario_grp==5, 5.0,
-                  if_else(mgmt_scenario_grp==6, 5.0,
-                  0))))))
-soil_moist_bias <- if_else(mgmt_scenario_num==1, 4.0,
-                   if_else(mgmt_scenario_num==2, 0,
-                   if_else(mgmt_scenario_num==3, 0,
-                   if_else(mgmt_scenario_grp==4, 2.0,
-                   if_else(mgmt_scenario_grp==5, 2.0,
-                   if_else(mgmt_scenario_grp==6, 4.0,
-                   0))))))
-covercrop_aftercorn <- "Oats"
-covercrop_afterwheat <- "Red Clover"
-covercrop_aftercorn_APSIM <- "Wintaroo"
-covercrop_afterwheat_APSIM <- "Colenso"
-covercrop_aftercorn_Daycent <- "OAT1"
-covercrop_afterwheat_Daycent <- "CLVC"
+# 
+# control_treatment <- "T8"
+# control_treatment_num <- 8
+# calib_mgmt_scenario_grps <- c(1:3)
+# 
+# treatment <- if_else(mgmt_scenario_num==1, "T1",
+#              if_else(mgmt_scenario_num==2, "T2",
+#              if_else(mgmt_scenario_num==3, "T3",
+#              if_else(mgmt_scenario_grp==4, "T1",
+#              if_else(mgmt_scenario_grp==5, "T1",
+#              if_else(mgmt_scenario_grp==6, "T1",
+#              "Error"))))))
+# treatment_num <- if_else(mgmt_scenario_num==1, 1,
+#                  if_else(mgmt_scenario_num==2, 2,
+#                  if_else(mgmt_scenario_num==3, 3,
+#                  if_else(mgmt_scenario_grp==4, 1,
+#                  if_else(mgmt_scenario_grp==5, 1,
+#                  if_else(mgmt_scenario_grp==6, 1,
+#                  0))))))
+# soil_temp_bias <- if_else(mgmt_scenario_num==1, 5.0,
+#                   if_else(mgmt_scenario_num==2, 4.5,
+#                   if_else(mgmt_scenario_num==3, 4.5,
+#                   if_else(mgmt_scenario_grp==4, 5.0,
+#                   if_else(mgmt_scenario_grp==5, 5.0,
+#                   if_else(mgmt_scenario_grp==6, 5.0,
+#                   0))))))
+# soil_moist_bias <- if_else(mgmt_scenario_num==1, 4.0,
+#                    if_else(mgmt_scenario_num==2, 0,
+#                    if_else(mgmt_scenario_num==3, 0,
+#                    if_else(mgmt_scenario_grp==4, 2.0,
+#                    if_else(mgmt_scenario_grp==5, 2.0,
+#                    if_else(mgmt_scenario_grp==6, 4.0,
+#                    0))))))
+# covercrop_aftercorn <- "Oats"
+# covercrop_afterwheat <- "Red Clover"
+# covercrop_aftercorn_APSIM <- "Wintaroo"
+# covercrop_afterwheat_APSIM <- "Colenso"
+# covercrop_aftercorn_Daycent <- "OAT1"
+# covercrop_afterwheat_Daycent <- "CLVC"
 
 # hist_path <- paste0("Data/",site_name,"/Historical Land Use and Yields/")
 # hist_path <- paste0("Data/County/Historical Land Use and Yields/")
@@ -329,96 +329,96 @@ covercrop_afterwheat_Daycent <- "CLVC"
 # obs_plant_cn_filename <- "73-tissue+carbon+and+nitrogen+1667424583.csv"
 # obs_biomass_filename <- "39-annual+crops+and+alfalfa+biomass+1667489393.csv"
 
-# 9-color palette with grey and black. Colors in order are:
-#[1]black, [2]dark blue, [3]green, [4]light blue, [5]lightest grey,
-#[6]pink, [7]red, [8]orange, [9]yellow
-cbPalette9 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
-                "#CC79A7","#D55E00","#E69F00","#F0E442")
-# 12-color palette with grey and black. Colors in order are:
-#[1]black, [2]dark blue, [3]mint green, [4]light blue, [5]lightest grey,
-#[6]pink, [7]red, [8]orange, [9]yellow, [10]mauve, 
-#[11]royal blue, [12]forest green
-cbPalette12 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
-                 "#CC79A7","#D55E00","#E69F00","#F0E442","#882255",
-                 "#332288","#0B6329"
-)
-# 20-color palette with more grey and black. Colors in order are:
-#[1]black, [2]dark blue, [3]mint green, [4]light blue, [5]lightest grey,
-#[6]pink, [7]red, [8]orange, [9]yellow, [10]mauve, 
-#[11]royal blue, [12]forest green, [13]dark grey, [14]med grey, [15]light grey,
-#[16]bright blue, [17]cotton candy, [18]lime green, [19]brick red, #[20]dark mauve
-cbPalette20 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
-                 "#CC79A7","#D55E00","#E69F00","#F0E442","#882255",
-                 "#332288","#0B6329","#333333","#555555","#777777",
-                 "#4948DD","#D832BC","#71C4A6","#5F2A01","#48122D"
-)
-
-APSIM_color <- cbPalette9[8]
-Daycent_color <- cbPalette9[2]
-Millennial_color <- cbPalette9[6]
-RothC_color <- cbPalette9[3]
-Observed_color <- cbPalette9[1]
-Historical_color <- cbPalette9[4]
-Fertilizer_color <- cbPalette9[7]
-
-N2O_color <- cbPalette12[8]
-NO3_color <- cbPalette12[6]
-SoilT_color <- cbPalette12[7]
-SW_20cm_color <- cbPalette12[2]
-SW_25cm_color <- cbPalette12[2]
-SW_40cm_color <- cbPalette12[3]
-SW_60cm_color <- cbPalette12[4]
-WFPS_20cm_color <- cbPalette12[2]
-WFPS_40cm_color <- cbPalette12[3]
-WFPS_60cm_color <- cbPalette12[4]
-WFPS_2cm_color <- cbPalette12[11]
-WFPS_5cm_color <- cbPalette12[12]
-WFPS_10cm_color <- cbPalette12[2]
-CH4_color <- cbPalette12[10]
-
-BiomC_25cm_color <- cbPalette20[10]
-#BiomC_40cm_color <- cbPalette20[]
-#BiomC_60cm_color <- cbPalette20[]
-BiomN_25cm_color <- cbPalette20[6]
-#BiomN_40cm_color <- cbPalette20[]
-#BiomN_60cm_color <- cbPalette20[]
-HumC_25cm_color <- cbPalette20[19]
-#HumC_40cm_color <- cbPalette20[]
-#HumC_60cm_color <- cbPalette20[]
-HumN_25cm_color <- cbPalette20[8]
-#HumN_40cm_color <- cbPalette20[]
-#HumN_60cm_color <- cbPalette20[]
-CtoBiom_25cm_color <- cbPalette20[5]
-CtoHum_25cm_color <- cbPalette20[15]
-CBtoHum_25cm_color <- cbPalette20[14]
-TotalSOC_25cm_color <- cbPalette20[1]
-Cin_25cm_color <- cbPalette20[15]
-
-GFDL_L_color <- cbPalette12[4]
-GFDL_H_color <- cbPalette12[11]
-UKESM_L_color <- cbPalette12[8]
-UKESM_H_color <- cbPalette12[7]
-
-BC19_color <- cbPalette20[1]
-BC38_color <- cbPalette20[13]
-BC57_color <- cbPalette20[14]
-BC76_color <- cbPalette20[15]
-BC96_color <- cbPalette20[5]
-CC_color <- cbPalette20[6]
-CC_NT_color <- cbPalette20[10]
-CN_color <- cbPalette20[16]
-CR_color <- cbPalette20[17]
-NT_color <- cbPalette20[20]
-RF05_color <- cbPalette20[19]
-RF15_color <- cbPalette20[9]
-RF25_color <- cbPalette20[8]
-RF35_color <- cbPalette20[7]
-RR00_color <- cbPalette20[2]
-RR00_NT_color <- cbPalette20[3]
-RR25_color <- cbPalette20[4]
-RR25_NT_color <- cbPalette20[11]
-RR50_color <- cbPalette20[12]
-RR50_NT_color <- cbPalette20[18]
+# # 9-color palette with grey and black. Colors in order are:
+# #[1]black, [2]dark blue, [3]green, [4]light blue, [5]lightest grey,
+# #[6]pink, [7]red, [8]orange, [9]yellow
+# cbPalette9 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
+#                 "#CC79A7","#D55E00","#E69F00","#F0E442")
+# # 12-color palette with grey and black. Colors in order are:
+# #[1]black, [2]dark blue, [3]mint green, [4]light blue, [5]lightest grey,
+# #[6]pink, [7]red, [8]orange, [9]yellow, [10]mauve, 
+# #[11]royal blue, [12]forest green
+# cbPalette12 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
+#                  "#CC79A7","#D55E00","#E69F00","#F0E442","#882255",
+#                  "#332288","#0B6329"
+# )
+# # 20-color palette with more grey and black. Colors in order are:
+# #[1]black, [2]dark blue, [3]mint green, [4]light blue, [5]lightest grey,
+# #[6]pink, [7]red, [8]orange, [9]yellow, [10]mauve, 
+# #[11]royal blue, [12]forest green, [13]dark grey, [14]med grey, [15]light grey,
+# #[16]bright blue, [17]cotton candy, [18]lime green, [19]brick red, #[20]dark mauve
+# cbPalette20 <- c("#000000","#0072B2","#009E73","#56B4E9","#999999",
+#                  "#CC79A7","#D55E00","#E69F00","#F0E442","#882255",
+#                  "#332288","#0B6329","#333333","#555555","#777777",
+#                  "#4948DD","#D832BC","#71C4A6","#5F2A01","#48122D"
+# )
+# 
+# APSIM_color <- cbPalette9[8]
+# Daycent_color <- cbPalette9[2]
+# Millennial_color <- cbPalette9[6]
+# RothC_color <- cbPalette9[3]
+# Observed_color <- cbPalette9[1]
+# Historical_color <- cbPalette9[4]
+# Fertilizer_color <- cbPalette9[7]
+# 
+# N2O_color <- cbPalette12[8]
+# NO3_color <- cbPalette12[6]
+# SoilT_color <- cbPalette12[7]
+# SW_20cm_color <- cbPalette12[2]
+# SW_25cm_color <- cbPalette12[2]
+# SW_40cm_color <- cbPalette12[3]
+# SW_60cm_color <- cbPalette12[4]
+# WFPS_20cm_color <- cbPalette12[2]
+# WFPS_40cm_color <- cbPalette12[3]
+# WFPS_60cm_color <- cbPalette12[4]
+# WFPS_2cm_color <- cbPalette12[11]
+# WFPS_5cm_color <- cbPalette12[12]
+# WFPS_10cm_color <- cbPalette12[2]
+# CH4_color <- cbPalette12[10]
+# 
+# BiomC_25cm_color <- cbPalette20[10]
+# #BiomC_40cm_color <- cbPalette20[]
+# #BiomC_60cm_color <- cbPalette20[]
+# BiomN_25cm_color <- cbPalette20[6]
+# #BiomN_40cm_color <- cbPalette20[]
+# #BiomN_60cm_color <- cbPalette20[]
+# HumC_25cm_color <- cbPalette20[19]
+# #HumC_40cm_color <- cbPalette20[]
+# #HumC_60cm_color <- cbPalette20[]
+# HumN_25cm_color <- cbPalette20[8]
+# #HumN_40cm_color <- cbPalette20[]
+# #HumN_60cm_color <- cbPalette20[]
+# CtoBiom_25cm_color <- cbPalette20[5]
+# CtoHum_25cm_color <- cbPalette20[15]
+# CBtoHum_25cm_color <- cbPalette20[14]
+# TotalSOC_25cm_color <- cbPalette20[1]
+# Cin_25cm_color <- cbPalette20[15]
+# 
+# GFDL_L_color <- cbPalette12[4]
+# GFDL_H_color <- cbPalette12[11]
+# UKESM_L_color <- cbPalette12[8]
+# UKESM_H_color <- cbPalette12[7]
+# 
+# BC19_color <- cbPalette20[1]
+# BC38_color <- cbPalette20[13]
+# BC57_color <- cbPalette20[14]
+# BC76_color <- cbPalette20[15]
+# BC96_color <- cbPalette20[5]
+# CC_color <- cbPalette20[6]
+# CC_NT_color <- cbPalette20[10]
+# CN_color <- cbPalette20[16]
+# CR_color <- cbPalette20[17]
+# NT_color <- cbPalette20[20]
+# RF05_color <- cbPalette20[19]
+# RF15_color <- cbPalette20[9]
+# RF25_color <- cbPalette20[8]
+# RF35_color <- cbPalette20[7]
+# RR00_color <- cbPalette20[2]
+# RR00_NT_color <- cbPalette20[3]
+# RR25_color <- cbPalette20[4]
+# RR25_NT_color <- cbPalette20[11]
+# RR50_color <- cbPalette20[12]
+# RR50_NT_color <- cbPalette20[18]
 
 
 
@@ -826,100 +826,99 @@ if (identical(Glade, TRUE)){
 # write calibration header file ---------------------------------------
 
 # make separate file with column headers (empty table with NA row)
-log_col_headers <- c("Date_time","Model",
-                     "Climate_Scenario","Mgmt_Scenario","Scenario_Name",
-                     "Scenario_Abbr",
-                     "Maize_slope_1to1","Maize_yint_1to1","Maize_R2_1to1","Maize_RMSE_1to1",
-                     "Maize_diff",
-                     "Soy_slope_1to1","Soy_yint_1to1","Soy_R2_1to1","Soy_RMSE_1to1",
-                     "Soy_diff",
-                     "Wheat_slope_1to1","Wheat_yint_1to1","Wheat_R2_1to1","Wheat_RMSE_1to1",
-                     "Wheat_diff",
-                     "SOC_slope_1to1","SOC_yint_1to1","SOC_R2_1to1","SOC_RMSE_1to1",
-                     "SOC_diff","SOC_diff_noout",
-                     "Temp_slope_1to1","Temp_yint_1to1","Temp_R2_1to1","Temp_RMSE_1to1",
-                     "Temp_diff",
-                     "Moist_slope_1to1","Moist_yint_1to1","Moist_R2_1to1","Moist_RMSE_1to1",
-                     "Moist_diff",
-                     "N2O_slope_1to1","N2O_yint_1to1","N2O_R2_1to1","N2O_RMSE_1to1",
-                     "N2O_diff",
-                     "CH4_slope_1to1","CH4_yint_1to1","CH4_R2_1to1","CH4_RMSE_1to1",
-                     "CH4_diff",
-                     "MBio_slope_1to1","MBio_yint_1to1","MBio_R2_1to1","MBio_RMSE_1to1",
-                     "MBio_diff",
-                     "Cotton_slope_1to1","Cotton_yint_1to1","Cotton_R2_1to1","Cotton_RMSE_1to1",
-                     "Cotton_diff",
-                     "Sorghum_slope_1to1","Sorghum_yint_1to1","Sorghum_R2_1to1","Sorghum_RMSE_1to1",
-                     "Sorghum_diff",
-                     "Maize_cultivar","Soybean_cultivar","Wheat_cultivar",
-                     "Cotton_cultivar","Sorghum_cultivar",
-                     "Maize_slope_time","Maize_yint_time","Maize_R2_time","Maize_RMSE_time",
-                     "Soy_slope_time","Soy_yint_time","Soy_R2_time","Soy_RMSE_time",
-                     "Wheat_slope_time","Wheat_yint_time","Wheat_R2_time","Wheat_RMSE_time",
-                     "SOC_slope_time","SOC_yint_time","SOC_R2_time","SOC_RMSE_time",
-                     "SOC_slope_time_noout","SOC_yint_time_noout","SOC_R2_time_noout","SOC_RMSE_time_noout",
-                     "Temp_slope_time","Temp_yint_time","Temp_R2_time","Temp_RMSE_time",
-                     "Moist_slope_time","Moist_yint_time","Moist_R2_time","Moist_RMSE_time",
-                     "N2O_slope_time","N2O_yint_time","N2O_R2_time","N2O_RMSE_time",
-                     "CH4_slope_time","CH4_yint_time","CH4_R2_time","CH4_RMSE_time",
-                     "MBio_slope_time","MBio_yint_time","MBio_R2_time","MBio_RMSE_time",
-                     "Cotton_slope_time","Cotton_yint_time","Cotton_R2_time","Cotton_RMSE_time",
-                     "Sorghum_slope_time","Sorghum_yint_time","Sorghum_R2_time","Sorghum_RMSE_time"
-)
-dummy<-data.frame(matrix(ncol=length(log_col_headers)))
-colnames(dummy) <- log_col_headers
-
-write.table(dummy,file=file.path(results_path,"Calibration_log_columns.csv"),
-            append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
-
-# Log results -------------------------------------------------------------
+# log_col_headers <- c("Date_time","Model",
+#                      "Climate_Scenario","Mgmt_Scenario","Scenario_Name",
+#                      "Scenario_Abbr",
+#                      "Maize_slope_1to1","Maize_yint_1to1","Maize_R2_1to1","Maize_RMSE_1to1",
+#                      "Maize_diff",
+#                      "Soy_slope_1to1","Soy_yint_1to1","Soy_R2_1to1","Soy_RMSE_1to1",
+#                      "Soy_diff",
+#                      "Wheat_slope_1to1","Wheat_yint_1to1","Wheat_R2_1to1","Wheat_RMSE_1to1",
+#                      "Wheat_diff",
+#                      "SOC_slope_1to1","SOC_yint_1to1","SOC_R2_1to1","SOC_RMSE_1to1",
+#                      "SOC_diff","SOC_diff_noout",
+#                      "Temp_slope_1to1","Temp_yint_1to1","Temp_R2_1to1","Temp_RMSE_1to1",
+#                      "Temp_diff",
+#                      "Moist_slope_1to1","Moist_yint_1to1","Moist_R2_1to1","Moist_RMSE_1to1",
+#                      "Moist_diff",
+#                      "N2O_slope_1to1","N2O_yint_1to1","N2O_R2_1to1","N2O_RMSE_1to1",
+#                      "N2O_diff",
+#                      "CH4_slope_1to1","CH4_yint_1to1","CH4_R2_1to1","CH4_RMSE_1to1",
+#                      "CH4_diff",
+#                      "MBio_slope_1to1","MBio_yint_1to1","MBio_R2_1to1","MBio_RMSE_1to1",
+#                      "MBio_diff",
+#                      "Cotton_slope_1to1","Cotton_yint_1to1","Cotton_R2_1to1","Cotton_RMSE_1to1",
+#                      "Cotton_diff",
+#                      "Sorghum_slope_1to1","Sorghum_yint_1to1","Sorghum_R2_1to1","Sorghum_RMSE_1to1",
+#                      "Sorghum_diff",
+#                      "Maize_cultivar","Soybean_cultivar","Wheat_cultivar",
+#                      "Cotton_cultivar","Sorghum_cultivar",
+#                      "Maize_slope_time","Maize_yint_time","Maize_R2_time","Maize_RMSE_time",
+#                      "Soy_slope_time","Soy_yint_time","Soy_R2_time","Soy_RMSE_time",
+#                      "Wheat_slope_time","Wheat_yint_time","Wheat_R2_time","Wheat_RMSE_time",
+#                      "SOC_slope_time","SOC_yint_time","SOC_R2_time","SOC_RMSE_time",
+#                      "SOC_slope_time_noout","SOC_yint_time_noout","SOC_R2_time_noout","SOC_RMSE_time_noout",
+#                      "Temp_slope_time","Temp_yint_time","Temp_R2_time","Temp_RMSE_time",
+#                      "Moist_slope_time","Moist_yint_time","Moist_R2_time","Moist_RMSE_time",
+#                      "N2O_slope_time","N2O_yint_time","N2O_R2_time","N2O_RMSE_time",
+#                      "CH4_slope_time","CH4_yint_time","CH4_R2_time","CH4_RMSE_time",
+#                      "MBio_slope_time","MBio_yint_time","MBio_R2_time","MBio_RMSE_time",
+#                      "Cotton_slope_time","Cotton_yint_time","Cotton_R2_time","Cotton_RMSE_time",
+#                      "Sorghum_slope_time","Sorghum_yint_time","Sorghum_R2_time","Sorghum_RMSE_time"
+# )
+# dummy<-data.frame(matrix(ncol=length(log_col_headers)))
+# colnames(dummy) <- log_col_headers
 # 
-# if(clim_scenario_num == 1 & mgmt_scenario_num %in% calib_mgmt_nums) {
-#   # add this run's results to model log file and file collecting all final
-#   # model runs
-#   calib_log_tab <- cbind(as.character(Sys.time()),"Observed",
-#                          clim_scenario_num,mgmt_scenario_num, scenario_name,
-#                          scenario_abbrev,
-#                          NA, NA, NA, NA, # Corn 1 to 1
-#                          NA, # diff (obs - mod)
-#                          NA, NA, NA, NA, # Soybeans 1 to 1
-#                          NA, # diff
-#                          NA, NA, NA, NA, # Wheat 1 to 1
-#                          NA, # diff
-#                          NA, NA, NA, NA, # SOC 1 to 1
-#                          NA, NA, # diffs (w/ and w/o outliers)
-#                          NA, NA, NA, NA, # Temperature 1 to 1
-#                          NA, # diff
-#                          NA, NA, NA, NA, # Moisture 1 to 1
-#                          NA, # diff
-#                          NA, NA, NA, NA, # N2O 1 to 1
-#                          NA, # diff
-#                          NA, NA, NA, NA, # CH4 1 to 1
-#                          NA, # diff
-#                          NA, NA, NA, NA, # M Bio 1 to 1
-#                          NA, # diff
-#                          NA, NA, NA, NA, # Cotton 1 to 1
-#                          NA, # diff
-#                          NA, NA, NA, NA, # Sorghum 1 to 1
-#                          NA, # diff
-#                          NA, NA, NA, NA, NA, # M,S,W,C,S cultivars
-#                          ObsMYfit_coef[2], NA, ObsMYfit_r2, NA, # Corn time series
-#                          ObsSYfit_coef[2], NA, ObsSYfit_r2, NA, # Soybeans time series
-#                          ObsWYfit_coef[2], NA, ObsWYfit_r2, NA, # Wheat time series
-#                          ObsCfit_coef[2], NA, ObsCfit_r2, NA, # SOC time series
-#                          ObsCfit_coef_noout[2], NA, ObsCfit_r2_noout, NA, # SOC time series without outliers
-#                          ObsTfit_coef[2], NA, ObsTfit_r2, NA, # Temperature time series
-#                          ObsMfit_coef[2], NA, ObsMfit_r2, NA, # Moisture time series
-#                          ObsN2Ofit_coef[2], NA, ObsN2Ofit_r2, NA, # N2O time series
-#                          ObsCH4fit_coef[2], NA, ObsCH4fit_r2, NA, # CH4 time series
-#                          ObsMBfit_coef[2], NA, ObsMBfit_r2, NA, # M Bio time series
-#                          NA, NA, NA, NA, # Cotton time series
-#                          NA, NA, NA, NA # Sorghum time series
-  # )
-  
-#   source("p_Edit_calib_file.R", local=TRUE)
-#   p_Edit_calib_file(calib_log_tab,"Observed",scenario_name)
-# }
-
+# write.table(dummy,file=file.path(results_path,"Calibration_log_columns.csv"),
+#             append=FALSE,col.names=TRUE,row.names=FALSE,sep=",")
+# 
+# # Log results -------------------------------------------------------------
+# # 
+# # if(clim_scenario_num == 1 & mgmt_scenario_num %in% calib_mgmt_nums) {
+# #   # add this run's results to model log file and file collecting all final
+# #   # model runs
+# #   calib_log_tab <- cbind(as.character(Sys.time()),"Observed",
+# #                          clim_scenario_num,mgmt_scenario_num, scenario_name,
+# #                          scenario_abbrev,
+# #                          NA, NA, NA, NA, # Corn 1 to 1
+# #                          NA, # diff (obs - mod)
+# #                          NA, NA, NA, NA, # Soybeans 1 to 1
+# #                          NA, # diff
+# #                          NA, NA, NA, NA, # Wheat 1 to 1
+# #                          NA, # diff
+# #                          NA, NA, NA, NA, # SOC 1 to 1
+# #                          NA, NA, # diffs (w/ and w/o outliers)
+# #                          NA, NA, NA, NA, # Temperature 1 to 1
+# #                          NA, # diff
+# #                          NA, NA, NA, NA, # Moisture 1 to 1
+# #                          NA, # diff
+# #                          NA, NA, NA, NA, # N2O 1 to 1
+# #                          NA, # diff
+# #                          NA, NA, NA, NA, # CH4 1 to 1
+# #                          NA, # diff
+# #                          NA, NA, NA, NA, # M Bio 1 to 1
+# #                          NA, # diff
+# #                          NA, NA, NA, NA, # Cotton 1 to 1
+# #                          NA, # diff
+# #                          NA, NA, NA, NA, # Sorghum 1 to 1
+# #                          NA, # diff
+# #                          NA, NA, NA, NA, NA, # M,S,W,C,S cultivars
+# #                          ObsMYfit_coef[2], NA, ObsMYfit_r2, NA, # Corn time series
+# #                          ObsSYfit_coef[2], NA, ObsSYfit_r2, NA, # Soybeans time series
+# #                          ObsWYfit_coef[2], NA, ObsWYfit_r2, NA, # Wheat time series
+# #                          ObsCfit_coef[2], NA, ObsCfit_r2, NA, # SOC time series
+# #                          ObsCfit_coef_noout[2], NA, ObsCfit_r2_noout, NA, # SOC time series without outliers
+# #                          ObsTfit_coef[2], NA, ObsTfit_r2, NA, # Temperature time series
+# #                          ObsMfit_coef[2], NA, ObsMfit_r2, NA, # Moisture time series
+# #                          ObsN2Ofit_coef[2], NA, ObsN2Ofit_r2, NA, # N2O time series
+# #                          ObsCH4fit_coef[2], NA, ObsCH4fit_r2, NA, # CH4 time series
+# #                          ObsMBfit_coef[2], NA, ObsMBfit_r2, NA, # M Bio time series
+# #                          NA, NA, NA, NA, # Cotton time series
+# #                          NA, NA, NA, NA # Sorghum time series
+#   # )
+#   
+# #   source("p_Edit_calib_file.R", local=TRUE)
+# #   p_Edit_calib_file(calib_log_tab,"Observed",scenario_name)
+# # }
+# 
 }) # end suppressMessages
-

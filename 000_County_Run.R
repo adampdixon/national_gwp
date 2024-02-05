@@ -1,14 +1,10 @@
 ######################################################
-# This script gathers the csvs for each US county from historic climate data (1951-2021) and creates a table
-# for Daycent 
+# This script sets up variables to run Daycent for a single county. The process is then parallelized using a bash script.
+# 
 # A Dixon
-# Jan 8, 2024
+# Feb 3, 2024
 ###########################
 
-######################################################
-# parallel script will create 6 tables, one for each variable and model (nclim, cmip6)
-######################################################
-# 
 library(tictoc) # for timing
 library(data.table) # for fwrite
 library(dplyr)
@@ -27,7 +23,7 @@ Test <- TRUE # if TRUE, only run county, filtered below
 # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
 
 
-del_input_files<-TRUE
+del_input_files<-FALSE
 
 run_Daycent=TRUE
 run_LDNDC=FALSE
@@ -78,7 +74,7 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(20073)) #13023, 13213, 20073, 31181, 42053, 1075, 31181
+    filter(GEOID %in% c(13023)) #13023, 13213, 20073, 31181, 42053, 1075
 }
 
 # county_data<-county_data[county_data$GEOID==county_number,]
@@ -94,13 +90,13 @@ county_name<-county_data$NAMELSAD
 state_name<-county_data$State_Name
 
 
-if (file.exists(paste0(results_folder, "/Results_GEOID_",  county_geoid, "_", state_name, "/Annual_results_compilation_1_1_Daycent.csv"))){
-  print("************************************")
-  print("*****Results already exist *********")
-  print(paste0("Skipping county ", county_number, " ", state_name), file = stderr(), append = TRUE)
-  print("************************************")
-  stop()
-} else {
+# if (length(list.files(paste0(results_folder, "/Results_GEOID_",  county_geoid, "_", state_name), pattern = "Annual_results_compilation")) >= 7) {
+#   print("************************************")
+#   print("*****Results already exist *********")
+#   print(paste0("Skipping county ", county_number, " ", state_name), file = stderr(), append = TRUE)
+#   print("************************************")
+#   stop()
+# } else {
   # Print an error message to stderr
   cat(paste0("Starting county ", county_number, "\n"), file = stderr(), append = TRUE)
   
@@ -131,7 +127,7 @@ if (file.exists(paste0(results_folder, "/Results_GEOID_",  county_geoid, "_", st
   print(paste0("elevation_m is: ", elevation_m))
   
   source('00_Main_County.R', local = TRUE)
-}
+# }
   
   
 

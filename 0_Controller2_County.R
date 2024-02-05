@@ -134,7 +134,7 @@ source("2_Create_soil_data-Daycent_County.R", local = TRUE)
 # source(paste0("3_Create_management_input_files-APSIM_",site_name,".R"))
 #
 # if(mgmt_scenario_grp!=6) {
-source(paste0("3_Create_management_input_files-Daycent_County_Crop.R"), local = TRUE)
+source(paste0("3_Create_management_input_files-Daycent_County_Scenarios.R"), local = TRUE)
 #source(paste0("3_Create_management_input_files-LDNDC_",site_name,".R"))
 #
 ## Management input files for RothC, Millennial are created after Daycent runs
@@ -166,16 +166,48 @@ source(paste0("4_Create_additional_files-LDNDC_County.R"), local = TRUE)
 
 #*************************************************************
 
+
+# Note: Soybeans have no yield results prior to 1900 becuase they weren't grown in US and the model is set up for corn during that time
+
 # Daycent
 if(identical(run_Daycent,TRUE)) {
   for (c in crops_){
-    crop<-c
-    scenario_name2<-paste0(scenario_name,"_",crop)
-    print(paste0("*************running Daycent for:", scenario_name2, "****************"))
-    source(paste0("Daycent/Daycent_run_controller.R"), local = TRUE)
-    source(paste0("9_Results_Daycent-setup_County.R"), local=TRUE) #TODO AD set this up?
+    for (m in mgmt_scenario_nums){
+      if (c == "Rotation" & m > 1){  # Rotation only has 1 scenario, so skip to next
+        next
+      }else{
+        crop<-c
+        mgmt_scenario_num<-m
+        scenario_name <- paste0(clim_scenario_num,"_", m)
+        scenario_name2<-paste0(scenario_name, "_", crop)
+        
+        # check if results file already exists
+        if(file.exists(file.path(results_path, paste0("Annual_results_compilation_", scenario_name2,"_Daycent.csv")))){
+          print(paste0("*************Daycent results already exist for: ", scenario_name2, " ... skipping...****************"))
+          next
+        } else{
+          print("...writing schedule file...")
+          
+          # Pair scenarios with schedule file, combine as vector
+          crop_schedule<-c(get(paste0(tolower(crop), '_1')), # opening set of schedule file blocks
+                           get(paste0(tolower(crop), '_scenario_', m)), # scenario-specific schedule file blocks
+                           
+                           output_sch<-file.path(daycent_path2 , paste0("sched_base_", scenario_name, "_", crop, ".sch")))
+          
+          # write to sch file
+          writeLines(crop_schedule, output_sch) # schedule file name, e.g. schedule_file_maize
+          
+          print(paste0("*************running Daycent for: ", scenario_name2, "****************"))
+          source(paste0("Daycent/Daycent_run_controller.R"), local = TRUE)
+          source(paste0("9_Results_Daycent-setup_County.R"), local=TRUE) #TODO AD set this up?
+        }
+        
+
+      } # end of if statement
+
+    }
+    }
   }
-}
 
 #*************************************************************
 
@@ -208,7 +240,7 @@ if(identical(run_Daycent,TRUE)) {
 
 # Daycent
 # if(mgmt_scenario_grp!=6) {
-source(paste0("9_Results_Daycent-setup_County.R"), local=TRUE) #TODO AD set this up?
+# source(paste0("9_Results_Daycent-setup_County.R"), local=TRUE) #TODO AD set this up?
 # model_name <- "Daycent"
 #   if(clim_scenario_num==1 & mgmt_scenario_num %in% calib_mgmt_nums) {
 #     source(paste0("9_Results_Daycent-calibration_County.R"))
