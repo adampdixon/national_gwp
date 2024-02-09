@@ -101,6 +101,7 @@ for (i in 0:3108){
     names(county_data)<-c('GEOID', 'Depth_cm', 'BD', 'Clay', 'pH', 'Sand', 'Silt', 'SOC')
     
     fwrite(county_data, output_file)
+    
   } else {
     print(paste0('file already exists', county_number))
   }
