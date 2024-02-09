@@ -8,6 +8,9 @@
 ######################################################
 # parallel script will create 6 tables, one for each variable and model (nclim, cmip6)
 ######################################################
+args <- commandArgs(trailingOnly = TRUE)
+
+print(args)
 
 library(dplyr) # for piping & tibble
 library(tictoc) # for timing
@@ -40,7 +43,7 @@ geo_link<-read.csv(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
   as_tibble()
 
 
-args <- commandArgs(trailingOnly = TRUE)
+
 
 # GEOID, value
 
