@@ -46,7 +46,7 @@ geo_link<-read.csv(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
 # county_number<-args[2]
 # print(paste0("The county_number is: ", county_number, " \n"))
 
-output_file<-file.path(output_dir, paste('GEOID_', GEOID, '_gNATSGO.csv', sep = ''))
+
 
 # parameters<-c('Bulk Density', 'Clay', 'pH', 'Sand', 'Silt', 'SOC')
 depths<-c('0 to 2', '2 to 5', '5 to 10', '10 to 20', '20 to 30', 
@@ -68,6 +68,8 @@ for (i in 0:3108){
       zh_GEOID<-filter(geo_link, zh_geoid==county_number)$zh_geoid
       GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
       Depth<-depths[i]
+      
+      output_file<-file.path(output_dir, paste('GEOID_', GEOID, '_gNATSGO.csv', sep = ''))
       
       # print(Depth)
       
@@ -98,7 +100,7 @@ for (i in 0:3108){
     
     names(county_data)<-c('GEOID', 'Depth_cm', 'BD', 'Clay', 'pH', 'Sand', 'Silt', 'SOC')
     
-    fwrite(county_data, )
+    fwrite(county_data, output_file)
   } else {
     print(paste0('file already exists', county_number))
   }
