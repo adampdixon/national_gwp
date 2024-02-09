@@ -15,6 +15,12 @@ library(data.table) # for fwrite
 
 tic()
 
+# Open a connection to stderr
+sink(stderr(), type = "message")
+# Open a connection to stdout
+sink(stdout(), type = "message")
+
+
 # county data to link
 geo_link_dir<-'/glade/u/home/apdixon/Documents/national_gwp/Data/County_start'
 output_dir<-'/glade/work/apdixon/soils'
