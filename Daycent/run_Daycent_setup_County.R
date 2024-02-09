@@ -45,22 +45,22 @@ if(Sys.info()['sysname']=='Linux') {
 # --------------- Install this scenario's input files ---------------------
 #
 # Load scenario-specific input files.
-if(mgmt_scenario_grp==2) {
-  file.copy("soils_2.in","soils.in", overwrite=TRUE)
-  file.copy("site_2.100","site.100", overwrite=TRUE)
-  file.copy("fix_2.100","fix.100", overwrite=TRUE)
-} else if(mgmt_scenario_grp==3) {
-  file.copy("soils_3.in","soils.in", overwrite=TRUE)
-  file.copy("site_3.100","site.100", overwrite=TRUE)
-  file.copy("fix_3.100","fix.100", overwrite=TRUE)
-} else {
+# if(mgmt_scenario_grp==2) {
+#   file.copy("soils_2.in","soils.in", overwrite=TRUE)
+#   file.copy("site_2.100","site.100", overwrite=TRUE)
+#   file.copy("fix_2.100","fix.100", overwrite=TRUE)
+# } else if(mgmt_scenario_grp==3) {
+#   file.copy("soils_3.in","soils.in", overwrite=TRUE)
+#   file.copy("site_3.100","site.100", overwrite=TRUE)
+#   file.copy("fix_3.100","fix.100", overwrite=TRUE)
+# } else {
   file.copy("soils_1.in","soils.in", overwrite=TRUE)
   file.copy("site_1.100","site.100", overwrite=TRUE)
   file.copy("fix_1.100","fix.100", overwrite=TRUE)
-}
-
-# use default crop.100 except for future for scenario 3
-file.copy("crop_allothers.100","crop.100", overwrite=TRUE)
+# }
+# 
+# # use default crop.100 except for future for scenario 3
+# file.copy("crop_allothers.100","crop.100", overwrite=TRUE)
 
 
 # --------------- Reset working directory --------------- 

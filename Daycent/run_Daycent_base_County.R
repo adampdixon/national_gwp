@@ -63,6 +63,8 @@ system(paste0(daycent_executable," -s sched_base_", scenario_name2,
 system(paste0(daycent_list100," sched_base_",scenario_name2 ," sched_base_", scenario_name2,
               " outvars.txt"), wait=TRUE)
 
+
+# Change daycent output name to have scenario designation at end
 file.copy("cflows.out", paste0("cflows_base_",scenario_name2,".out"), overwrite=TRUE)
 #file.copy("dc_sip.csv", "dc_sip_base.csv", overwrite=TRUE)
 file.copy("harvest.csv", paste0("harvest_base_",scenario_name2,".csv"), overwrite=TRUE)

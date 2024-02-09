@@ -207,26 +207,26 @@ maize_scenario_6<-c(
 )
 
 
-# Scenario 7 - crop rotation
-maize_scenario_7<-c(
-  '5       Block ## Higher-yielding corn with fertilizer',
-  '2050    Last year',
-  '2       Repeats # of years',
-  '2022    Output starting year',
-  '12       Output month',
-  '1  Output interval',
-  'C       Weather choice ## Continue',
-  "1 138 CULT K     ## May 18 Moldboard plow",
-  "1 145 CULT H     ## May 25 Disc",
-  "1 145 CULT D     ## May 25 Cultivate",
-  "1 149 CROP SYBN2 ## May 29",
-  "1 149 PLTM       ## May 29 Plant soybean",
-  "1 290 HARV G90S  ## Oct 17 - Harvest grains and 90% straw",
-  "2 111 CULT K     ## April 21 Moldboard plow",
-  "2 121 CULT H     ## May 1 Disk",
-  "2 121 CULT D     ## May 1 Cultivate",
-  "2 124 CROP C6    ## May 4", 
-  "2 124 PLTM       ## May 4 ## Plant Corn", 
-  "2 177 FERT (8N)	## June 26",
-  "2 296 HARV G90S	## Oct 23 - Harvest grains and 90% straw",
-  "-999 -999 X")
+# # Scenario 7 - crop rotation
+# maize_scenario_7<-c(
+#   '5       Block ## Higher-yielding corn with fertilizer',
+#   '2050    Last year',
+#   '2       Repeats # of years',
+#   '2022    Output starting year',
+#   '12       Output month',
+#   '1  Output interval',
+#   'C       Weather choice ## Continue',
+#   "1 138 CULT K     ## May 18 Moldboard plow",
+#   "1 145 CULT H     ## May 25 Disc",
+#   "1 145 CULT D     ## May 25 Cultivate",
+#   "1 149 CROP SYBN2 ## May 29",
+#   "1 149 PLTM       ## May 29 Plant soybean",
+#   "1 290 HARV G90S  ## Oct 17 - Harvest grains and 90% straw",
+#   "2 111 CULT K     ## April 21 Moldboard plow",
+#   "2 121 CULT H     ## May 1 Disk",
+#   "2 121 CULT D     ## May 1 Cultivate",
+#   "2 124 CROP C6    ## May 4", 
+#   "2 124 PLTM       ## May 4 ## Plant Corn", 
+#   "2 177 FERT (8N)	## June 26",
+#   "2 296 HARV G90S	## Oct 23 - Harvest grains and 90% straw",
+#   "-999 -999 X")

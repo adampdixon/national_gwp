@@ -158,7 +158,7 @@ for (x in clim_nums) { # climate scenarios, in case we want different versions
   print(paste0("climate scenario: ",x))
   clim_scenario_num <- x
   cat(paste0("*********Model will be run for Maize, Soybeans, Winter Wheat, Cotton, Maize-Soy Rotation*********\n"))
-  cat("********* mgmt scenarios", mgmt_scenarios, " *********\n")
+  cat("********* mgmt scenarios", mgmt_scenario_nums, " *********\n")
   
   # Run controller
   source("0_Controller2_County.R", local = TRUE)

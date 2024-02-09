@@ -215,8 +215,6 @@ soil_type_code <- toupper(if_else(find_col=="Cl","clay",
                           )
 
 
-
-
 ####* NOTE: Will need to address issue of negative values in lower limit,
 ####* as well as LL15-deltamin resulting in a negative value
 ####* 

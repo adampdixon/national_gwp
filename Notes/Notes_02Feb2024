@@ -157,4 +157,39 @@ corn
 cp -r gNATSGO climate_df.csv /glade/work/apdixon/
 cp -r /glade/cheyenne/scratch/edvlmaas/nClimGrid /glade/derecho/scratch/apdixon/data/
 
+cp -r /glade/cheyenne/scratch/edvlmaas/nClimGrid /glade/derecho/scratch/apdixon/data/
+
+rsync -ah --progress /glade/cheyenne/scratch/edvlmaas/nClimGrid /glade/derecho/scratch/apdixon/data/
+rsync -avu --progress /glade/cheyenne/scratch/edvlmaas/nClimGrid/ /glade/derecho/scratch/apdixon/data/nClimGrid/
+
+
+
+Bulk Density 0 to 2cm1_Lookup.csv      pH 0 to 2cm1_Lookup.csv        Silt 0 to 2cm1_Lookup.csv
+Bulk Density 105 to 120cm1_Lookup.csv  pH 105 to 120cm1_Lookup.csv    Silt 105 to 120cm1_Lookup.csv
+Bulk Density 10 to 20cm1_Lookup.csv    pH 10 to 20cm1_Lookup.csv      Silt 10 to 20cm1_Lookup.csv
+Bulk Density 120 to 150cm1_Lookup.csv  pH 120 to 150cm1_Lookup.csv    Silt 120 to 150cm1_Lookup.csv
+Bulk Density 150 to 180cm1_Lookup.csv  pH 150 to 180cm1_Lookup.csv    Silt 150 to 180cm1_Lookup.csv
+Bulk Density 180 to 200cm1_Lookup.csv  pH 180 to 200cm1_Lookup.csv    Silt 180 to 200cm1_Lookup.csv
+Bulk Density 20 to 30cm1_Lookup.csv    pH 20 to 30cm1_Lookup.csv      Silt 20 to 30cm1_Lookup.csv
+Bulk Density 2 to 5cm1_Lookup.csv      pH 2 to 5cm1_Lookup.csv        Silt 2 to 5cm1_Lookup.csv
+Bulk Density 30 to 45cm1_Lookup.csv    pH 30 to 45cm1_Lookup.csv      Silt 30 to 45cm1_Lookup.csv
+Bulk Density 45 to 60cm1_Lookup.csv    pH 45 to 60cm1_Lookup.csv      Silt 45 to 60cm1_Lookup.csv
+Bulk Density 5 to 10cm1_Lookup.csv     pH 5 to 10cm1_Lookup.csv       Silt 5 to 10cm1_Lookup.csv
+Bulk Density 60 to 75cm1_Lookup.csv    pH 60 to 75cm1_Lookup.csv      Silt 60 to 75cm1_Lookup.csv
+Bulk Density 75 to 90cm1_Lookup.csv    pH 75 to 90cm1_Lookup.csv      Silt 75 to 90cm1_Lookup.csv
+Bulk Density 90 to 105cm1_Lookup.csv   pH 90 to 105cm1_Lookup.csv     Silt 90 to 105cm1_Lookup.csv
+Clay 0 to 2cm1_Lookup.csv              Sand 0 to 2cm1_Lookup.csv      SOC 0 to 2cm1_Lookup.csv
+Clay 105 to 120cm1_Lookup.csv          Sand 105 to 120cm1_Lookup.csv  SOC 105 to 120cm1_Lookup.csv
+Clay 10 to 20cm1_Lookup.csv            Sand 10 to 20cm1_Lookup.csv    SOC 10 to 20cm1_Lookup.csv
+Clay 120 to 150cm1_Lookup.csv          Sand 120 to 150cm1_Lookup.csv  SOC 120 to 150cm1_Lookup.csv
+Clay 150 to 180cm1_Lookup.csv          Sand 150 to 180cm1_Lookup.csv  SOC 150 to 180cm1_Lookup.csv
+Clay 180 to 200cm1_Lookup.csv          Sand 180 to 200cm1_Lookup.csv  SOC 180 to 200cm1_Lookup.csv
+Clay 20 to 30cm1_Lookup.csv            Sand 20 to 30cm1_Lookup.csv    SOC 20 to 30cm1_Lookup.csv
+Clay 2 to 5cm1_Lookup.csv              Sand 2 to 5cm1_Lookup.csv      SOC 2 to 5cm1_Lookup.csv
+Clay 30 to 45cm1_Lookup.csv            Sand 30 to 45cm1_Lookup.csv    SOC 30 to 45cm1_Lookup.csv
+Clay 45 to 60cm1_Lookup.csv            Sand 45 to 60cm1_Lookup.csv    SOC 45 to 60cm1_Lookup.csv
+Clay 5 to 10cm1_Lookup.csv             Sand 5 to 10cm1_Lookup.csv     SOC 5 to 10cm1_Lookup.csv
+Clay 60 to 75cm1_Lookup.csv            Sand 60 to 75cm1_Lookup.csv    SOC 60 to 75cm1_Lookup.csv
+Clay 75 to 90cm1_Lookup.csv            Sand 75 to 90cm1_Lookup.csv    SOC 75 to 90cm1_Lookup.csv
+Clay 90 to 105cm1_Lookup.csv           Sand 90 to 105cm1_Lookup.csv   SOC 90 to 105cm1_Lookup.csv
 

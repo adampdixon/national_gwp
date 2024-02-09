@@ -28,6 +28,9 @@ conda activate r-4.3
 module restore R_
 
 
+ml load ncarenv-basic/23.10 gcc gdal geos proj udunits conda rstudio
+
+
 /glade/u/home/apdixon
 /glade/derecho/scratch/apdixon/national_gwp
 /glade/work/apdixon/climate
