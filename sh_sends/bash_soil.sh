@@ -1,13 +1,13 @@
 #!/bin/bash 
 ########################
 ### Job name
-#PBS -N daycent_processing_bashloop_50cpus_1107_counties
+#PBS -N daycent_NATSGo_processing
 #PBS -A UEMO0003
 #PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stdout
 #PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stderr 
 ### Queue name
 #PBS -q main
-#PBS -l walltime=1:30:00
+#PBS -l walltime=00:10:00
 ### Send email on abort, begin and end
 #PBS -m e
 ### Specify mail recipient
