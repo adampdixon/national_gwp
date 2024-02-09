@@ -8,6 +8,7 @@
 ######################################################
 # parallel script will create 6 tables, one for each variable and model (nclim, cmip6)
 ######################################################
+print("starting soils processing")
 args <- commandArgs(trailingOnly = TRUE)
 
 print(args)
@@ -54,7 +55,7 @@ depths<-c('0 to 2', '2 to 5', '5 to 10', '10 to 20', '20 to 30',
 
 
 county_number<-args[2]
-print(paste0("The county_number is: ", county_number, "\n"))
+print(paste0("The county_number is: ", county_number, " \n"))
 
 # GEOID, Depth, BD, Clay, pH, Sand, Silt, SOC
 
