@@ -51,15 +51,19 @@ depths<-c('0 to 2', '2 to 5', '5 to 10', '10 to 20', '20 to 30',
 
 
 county_number<-args[2]
+print(paste0("The county_number is: ", county_number, "\n"))
 
 # GEOID, Depth, BD, Clay, pH, Sand, Silt, SOC
 
 county_data<-data.frame()
 
 for(i in 1:length(depths)){
+
   zh_GEOID<-filter(geo_link, zh_geoid==county_number)$zh_geoid
   GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
   Depth<-depths[i]
+  
+  print(Depth)
   
   # Get paramter csvs lined up
   BD<-fread(list.files(gnatsgo_dir, full.names = T, pattern = paste('Bulk Density', Depth, sep = ' ')))

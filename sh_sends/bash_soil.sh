@@ -1,7 +1,7 @@
 #!/bin/bash 
 ########################
 ### Job name
-#PBS -N daycent_NATSGo_processing
+#PBS -N NATSGO_processing
 #PBS -A UEMO0003
 #PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/soils.stdout
 #PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/soils.stderr 
@@ -28,7 +28,7 @@ echo "Running 2_Create_soil_data_input_files_gNATSGO.R in bash parallel"
 
 # Define the task to be executed in parallel
 task () {
-  ml load conda
+  ml load ncarenv-basic/23.09 gcc gdal geos proj udunits conda
   conda activate r-4.3
   Rscript /glade/derecho/scratch/apdixon/national_gwp/2_Create_soil_data_input_files_gNATSGO.R --args $1
   sleep 0.5
