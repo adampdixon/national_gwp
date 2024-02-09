@@ -28,7 +28,7 @@ echo "Running 2_Create_soil_data_input_files_gNATSGO.R in bash parallel"
 
 # Define the task to be executed in parallel
 task () {
-  ml load ncarenv-basic/23.09 gcc gdal geos proj udunits conda
+  ml load conda
   conda activate r-4.3
   Rscript /glade/derecho/scratch/apdixon/national_gwp/2_Create_soil_data_input_files_gNATSGO.R --args $1
   sleep 0.5
@@ -39,7 +39,7 @@ task () {
 NUM_PARALLEL=20
 
 # Read the input arguments from a file and run the command in parallel
-for i in $(seq 0 3108); do
+for i in $(seq 0 19); do
   echo "Starting task $i"
   task $i &
   if (( $i % $NUM_PARALLEL == 0 )); then
