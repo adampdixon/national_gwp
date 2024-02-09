@@ -63,6 +63,8 @@ for (i in 0:3108){
     
     for(i in 1:length(depths)){
       
+      county_number<-i
+      
       zh_GEOID<-filter(geo_link, zh_geoid==county_number)$zh_geoid
       GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
       Depth<-depths[i]
