@@ -53,17 +53,13 @@ depths<-c('0 to 2', '2 to 5', '5 to 10', '10 to 20', '20 to 30',
           '30 to 45', '45 to 60', '60 to 75', '75 to 90', '90 to 105',
           '105 to 120', '120 to 150', '150 to 180', '180 to 200')
 
-for (i in 0:3108){
-  if(!file.exists(output_file)){
-    
-    # GEOID, value
-    # GEOID, Depth, BD, Clay, pH, Sand, Silt, SOC
-    
-    county_data<-data.frame()
-    
-    for(i in 1:length(depths)){
-      
-      county_number<-i
+for (c in 0:3108){
+  
+  # create data frame
+  county_data<-data.frame()
+  for(i in 1:length(depths)){
+    if(!file.exists(output_file)){
+      county_number<-c
       
       zh_GEOID<-filter(geo_link, zh_geoid==county_number)$zh_geoid
       GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
@@ -89,7 +85,6 @@ for (i in 0:3108){
       Silt2<-filter(Silt, GEOID==zh_GEOID)[,2][[1]]
       SOC2<-filter(SOC, GEOID==zh_GEOID)[,2][[1]]
       
-      
       # bind data
       
       data<-cbind(GEOID, Depth, BD2, Clay2, pH2, Sand2, Silt2, SOC2)
@@ -97,16 +92,18 @@ for (i in 0:3108){
       county_data<-rbind(county_data, data)
       
     }
-    
-    names(county_data)<-c('GEOID', 'Depth_cm', 'BD', 'Clay', 'pH', 'Sand', 'Silt', 'SOC')
-    
-    fwrite(county_data, output_file)
-    
-  } else {
-    print(paste0('file already exists', county_number))
+    else {
+      print(paste0('file already exists', county_number))
+    }
   }
+  names(county_data)<-c('GEOID', 'Depth_cm', 'BD', 'Clay', 'pH', 'Sand', 'Silt', 'SOC')
   
+  fwrite(county_data, output_file)
+    
 }
+
+  
+
 
 
 
