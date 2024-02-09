@@ -67,7 +67,7 @@ for(i in 1:length(depths)){
   GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
   Depth<-depths[i]
   
-  print(Depth)
+  # print(Depth)
   
   # Get paramter csvs lined up
   BD<-fread(list.files(gnatsgo_dir, full.names = T, pattern = paste('Bulk Density', Depth, sep = ' ')))
@@ -97,5 +97,7 @@ for(i in 1:length(depths)){
 names(county_data)<-c('GEOID', 'Depth_cm', 'BD', 'Clay', 'pH', 'Sand', 'Silt', 'SOC')
 
 fwrite(county_data, file.path(output_dir, paste('GEOID_', GEOID, '_gNATSGO.csv', sep = '')))
+
+print(paste0('done with soils processing', county_number))
 
 toc()
