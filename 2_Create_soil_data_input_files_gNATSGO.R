@@ -55,20 +55,19 @@ depths<-c('0 to 2', '2 to 5', '5 to 10', '10 to 20', '20 to 30',
 
 for (c in 0:3108){
   
+  county_number<-c
+  
+  zh_GEOID<-filter(geo_link, zh_geoid==county_number)$zh_geoid
+  GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
+  Depth<-depths[i]
+  
+  output_file<-file.path(output_dir, paste('GEOID_', GEOID, '_gNATSGO.csv', sep = ''))
+  
   # create data frame
   county_data<-data.frame()
   for(i in 1:length(depths)){
     if(!file.exists(output_file)){
-      county_number<-c
-      
-      zh_GEOID<-filter(geo_link, zh_geoid==county_number)$zh_geoid
-      GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
-      Depth<-depths[i]
-      
-      output_file<-file.path(output_dir, paste('GEOID_', GEOID, '_gNATSGO.csv', sep = ''))
-      
-      # print(Depth)
-      
+
       # Get paramter csvs lined up
       BD<-fread(list.files(gnatsgo_dir, full.names = T, pattern = paste('Bulk Density', Depth, sep = ' ')))
       Clay<-fread(list.files(gnatsgo_dir, full.names = T, pattern = paste('Clay', Depth, sep = ' ')))
