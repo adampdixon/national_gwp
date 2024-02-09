@@ -9,9 +9,9 @@
 # parallel script will create 6 tables, one for each variable and model (nclim, cmip6)
 ######################################################
 print("starting soils processing")
-args <- commandArgs(trailingOnly = TRUE)
-
-print(args)
+# args <- commandArgs(trailingOnly = TRUE)
+# 
+# print(args)
 
 library(dplyr) # for piping & tibble
 library(tictoc) # for timing
@@ -44,7 +44,7 @@ geo_link<-read.csv(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
   as_tibble()
 
 # county_number<-args[2]
-print(paste0("The county_number is: ", county_number, " \n"))
+# print(paste0("The county_number is: ", county_number, " \n"))
 
 output_file<-file.path(output_dir, paste('GEOID_', GEOID, '_gNATSGO.csv', sep = ''))
 
