@@ -3,8 +3,8 @@
 ### Job name
 #PBS -N daycent_NATSGo_processing
 #PBS -A UEMO0003
-#PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stdout
-#PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stderr 
+#PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/soils.stdout
+#PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/soils.stderr 
 ### Queue name
 #PBS -q main
 #PBS -l walltime=00:10:00
