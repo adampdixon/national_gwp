@@ -17,19 +17,18 @@ cat("********************************\n")
 
 cat("********************************\n")
 cat("******** FLAGS etc *****************\n")
-county_number<-args[2]
-# county_number<-1
-Test <- FALSE # if TRUE, only run county, filtered below
-# crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
-
-
 del_input_files<-FALSE
 
 run_Daycent=TRUE
 run_LDNDC=FALSE
 run_Millennial=FALSE
 # county_numbers<-296:306   #295:3100
-cat(paste0("The county_number is: ", county_number, "\n"))
+# crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
+crops_ <- c('Maize') # Crops
+# These variables are implemented in 0_Controller2_County.R
+# mgmt_scenario_nums <- 1:1 # Management scenarios
+mgmt_scenario_nums <- 1:6 # Management scenarios
+
 
 cat("************************************\n")
 cat("************************************\n")
@@ -40,6 +39,9 @@ if (Sys.info()['sysname'] == "Linux"){
   if(Sys.info()['user']=='ap') {
     master_path<-'/home/ap/Documents/GitHub/national_gwp'
     results_folder<-'/home/ap/Documents/national_gwp_results'
+    county_number<-1
+    Test <- TRUE # if TRUE, only run county, filtered below
+    # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
     Glade=FALSE
     print("************************************")
     print("*****Using linux mint *********")
@@ -48,6 +50,8 @@ if (Sys.info()['sysname'] == "Linux"){
   } else {
     master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
     results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
+    Test <- FALSE # if TRUE, only run county, filtered below
+    county_number<-args[2]
     Glade=TRUE
     print("************************************")
     print("*****Using NCAR *********")
@@ -57,6 +61,8 @@ if (Sys.info()['sysname'] == "Linux"){
   }
 }
 
+
+cat(paste0("The county_number is: ", county_number, "\n"))
 
 
 # x = the number of counties to run

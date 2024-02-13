@@ -146,10 +146,9 @@ if(length(list.files(copy_to_))>1800) {
 clim_nums <- c(1:1)
 mgmt_grps <- c(1:1) # These are left over from ellen's code
 
-# These variables are implemented in 0_Controller2_County.R
-mgmt_scenario_nums <- 1:6 # Management scenarios
+
 # mgmt_scenarios <- c('MC', 'NT', 'CCM', 'CCC', 'CCL', 'CCNT', 'CR') # Management scenarios codes
-crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
+
 
 for (x in clim_nums) { # climate scenarios, in case we want different versions
   print("************************************")
@@ -157,7 +156,7 @@ for (x in clim_nums) { # climate scenarios, in case we want different versions
   print("************************************")
   print(paste0("climate scenario: ",x))
   clim_scenario_num <- x
-  cat(paste0("*********Model will be run for Maize, Soybeans, Winter Wheat, Cotton, Maize-Soy Rotation*********\n"))
+  cat(paste0("*********Model will be run for", crops_, "*********\n"))
   cat("********* mgmt scenarios", mgmt_scenario_nums, " *********\n")
   
   # Run controller
