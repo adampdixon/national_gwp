@@ -1,19 +1,19 @@
 #!/bin/bash 
 ########################
 ### Job name
-#PBS -N daycent_processing_bashloop_50cpus_1107_counties
+#PBS -N daycent_v2
 #PBS -A UEMO0003
 #PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stdout
 #PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stderr 
 ### Queue name
 #PBS -q main
-#PBS -l walltime=6:00:00
+#PBS -l walltime=00:30:00
 ### Send email on abort, begin and end
 #PBS -m e
 ### Specify mail recipient
 #PBS -M apdixon@pm.me
 ### Number of nodes
-#PBS -l select=1:ncpus=2:mem=2GB
+#PBS -l select=1:ncpus=3:mem=3GB
 ###PBS -l select=1:ncpus=2:mem=235GB
 ########################
 
@@ -36,10 +36,10 @@ task () {
 }
 
 # Define the number of parallel processes
-NUM_PARALLEL=2
+NUM_PARALLEL=3
 
 # Read the input arguments from a file and run the command in parallel
-for i in $(seq 0 1); do
+for i in $(seq 1 3); do
   echo "Starting task $i"
   task $i &
   if (( $i % $NUM_PARALLEL == 0 )); then
