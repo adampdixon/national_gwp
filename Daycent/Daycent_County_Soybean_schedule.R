@@ -61,8 +61,8 @@ soybean_1 <- c(
   '1 138 CULT K     ## May 18 Moldboard plow',
   '1 145 CULT H     ## May 25 Disc',
   '1 145 CULT D     ## May 25 Cultivate',
-  '1 149 CROP SYBN3 ## May 29',
-  '1 149 PLTM       ## May 29 Plant soybean',
+  '1 149 CROP C3    ## May 29',
+  '1 149 PLTM       ## May 29 Plant Corn',
   '1 290 HARV G90S  ## Oct 17 - Harvest grains and 90% straw',
   '-999 -999 X',
   '4       Block ## ',
@@ -75,7 +75,7 @@ soybean_1 <- c(
   '1 138 CULT K     ## May 18 Moldboard plow',
   '1 145 CULT H     ## May 25 Disc',
   '1 145 CULT D     ## May 25 Cultivate',
-  '1 149 CROP SYBN3 ## May 29',
+  '1 149 CROP SYBN2 ## May 29',
   '1 149 PLTM       ## May 29 Plant soybean',
   '1 290 HARV G90S  ## Oct 17 - Harvest grains and 90% straw',
   '-999 -999 X')
@@ -107,7 +107,7 @@ soybean_scenario_2<-c(
   '12       Output month',
   '1  Output interval',
   'C       Weather choice ## Continue',
-  '1 124 CULT NDRIL      ## May 4', # No-till drill
+  '1 124 CULT NDRIL ## May 4', # No-till drill
   '1 124 CROP SYBN3 ## May 29', # Plant soybean
   '1 124 PLTM       ## ',
   '1 290 HARV G90S  ## Oct 17 - Harvest grains and 90% straw',
@@ -189,7 +189,7 @@ soybean_scenario_6<-c(
   '1 149 CROP SYBN3 ## May 29', # Plant soybean
   '1 149 PLTM       ## ',
   '1 290 HARV G90S  ## Oct 17 - Harvest grains and 90% straw',
-  '1 305 CULT NDRIL       ## Nov 1',
+  '1 305 CULT NDRIL ## Nov 1',
   '1 305 CROP RYELG ## Nov 1, plant rye, legume, grass mix cover crop',
   '1 305 PLTM       ## ',
   '-999 -999 X'

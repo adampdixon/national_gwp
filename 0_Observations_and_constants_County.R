@@ -427,6 +427,16 @@ surface_C_init <- 60 # Mg C ha-1
 ###########################################################
 
 
+####################### soils #######################
+if (identical(Glade, TRUE)){
+  soil_data_path<-'/glade/work/apdixon/soils'
+  print(paste0('*********soils_data_path is ', soil_data_path, " **************"))
+} else {
+  soil_data_path<-'/home/ap/soils'
+  print(paste0('*********soils_data_path is ', soil_data_path, " **************"))
+}
+
+
 ####################### climate #######################
 if (identical(Glade, TRUE)){
   climate_data_path<-'/glade/work/apdixon/climate'

@@ -181,8 +181,11 @@ if(identical(run_Daycent,TRUE)) {
         scenario_name <- paste0(clim_scenario_num,"_", m)
         scenario_name2<-paste0(scenario_name, "_", crop)
         
+        model_path<-file.path(results_path, paste0("Annual_results_compilation_", scenario_name2,"_Daycent.csv"))
+        
         # check if results file already exists
-        if(file.exists(file.path(results_path, paste0("Annual_results_compilation_", scenario_name2,"_Daycent.csv")))){
+        if(file.exists(model_path) &
+           nrow(fread(model_path))> 200){ # # check if all rows have been reported
           print(paste0("*************Daycent results already exist for: ", scenario_name2, " ... skipping...****************"))
           next
         } else{

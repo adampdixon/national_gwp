@@ -17,9 +17,9 @@ cat("********************************\n")
 
 cat("********************************\n")
 cat("******** FLAGS etc *****************\n")
-# county_number<-args[2]
-county_number<-1
-Test <- TRUE # if TRUE, only run county, filtered below
+county_number<-args[2]
+# county_number<-1
+Test <- FALSE # if TRUE, only run county, filtered below
 # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
 
 

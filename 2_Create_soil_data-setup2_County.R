@@ -17,7 +17,7 @@
 #!!!!!!
 
 
-library(apsimx)
+# library(apsimx)
 library(stringr)
 library(dplyr)
 library(tidyverse)
@@ -50,10 +50,14 @@ library(sf)
 # download soil data from SSURGO for the lat/lon into a list of "soil.profile"
 # classes, pre-formatted for APSIM
 
-print(paste0('getting soil data for lat ', latitude, ' and lon ', longitude, " at ", site_name))
+soils<-fread(list.files(soil_data_path, full.names = TRUE, pattern = paste0("_", county_geoid, "_")))%>%
+  select(-GEOID)
 
-sps_raw <- get_ssurgo_soil_profile(lonlat = c(longitude, latitude), nsoil=1)
-sps <- sps_raw
+
+# print(paste0('getting soil data for lat ', latitude, ' and lon ', longitude, " at ", site_name))
+# 
+# sps_raw <- get_ssurgo_soil_profile(lonlat = c(longitude, latitude), nsoil=1)
+# sps <- sps_raw
 
 # edit attributes from site data and APSIM calibration, relative to each scenario
 # based on deep soil cores from 2001 and APSIM calibration
@@ -79,16 +83,26 @@ sps <- sps_raw
 #                         if(mgmt_scenario_num==3)
 #                            c(0.93, 0.44, 0.44, 0.354, 0.19, 0.15, 0.1, 0.1, 0.1, 0.1)
 
-sps[[1]]$soil$Carbon <- c(0.87, 0.43, 0.43, 0.233, 0.19, 0.15, 0.1, 0.1, 0.1, 0.1)
-sps[[1]]$soil$ParticleSizeClay <- c(19, 19, 19, 23, 12, 5, 5, 5, 1, 1)
-sps[[1]]$soil$ParticleSizeSilt <- c(38, 38, 38, 26, 17, 8, 8, 8, 4, 4)
-sps[[1]]$soil$ParticleSizeSand <- c(43, 43, 43, 51, 71, 87, 87, 87, 95, 95)
+# sps[[1]]$soil$Carbon <- c(0.87, 0.43, 0.43, 0.233, 0.19, 0.15, 0.1, 0.1, 0.1, 0.1)
+# sps[[1]]$soil$ParticleSizeClay <- c(19, 19, 19, 23, 12, 5, 5, 5, 1, 1)
+# sps[[1]]$soil$ParticleSizeSilt <- c(38, 38, 38, 26, 17, 8, 8, 8, 4, 4)
+# sps[[1]]$soil$ParticleSizeSand <- c(43, 43, 43, 51, 71, 87, 87, 87, 95, 95)
+
+# sps$Carbon <- c(0.87, 0.43, 0.43, 0.233, 0.19, 0.15, 0.1, 0.1, 0.1, 0.1)
+# sps$ParticleSizeClay <- c(19, 19, 19, 23, 12, 5, 5, 5, 1, 1)
+# sps$ParticleSizeSilt <- c(38, 38, 38, 26, 17, 8, 8, 8, 4, 4)
+# sps$ParticleSizeSand <- c(43, 43, 43, 51, 71, 87, 87, 87, 95, 95)
+
+
+sps<-soils%>%
+  mutate(ParticleSizeClay = Clay, ParticleSizeSilt = Silt, ParticleSizeSand = Sand, Carbon = SOC, PH = pH)
 
 
 ##########################################################################
 ## save this much to a data frame and calculate the water attributes
 # extract just soil data into a dataframe
-soil_water_raw <- sps[[1]]$soil
+# soil_water_raw <- sps[[1]]$soil
+soil_water_raw <- sps
 
 saxton_rawls_df <- soil_water_raw %>%
   mutate(sand_frac = ParticleSizeSand/100,
@@ -112,13 +126,24 @@ saxton_rawls_df <- soil_water_raw %>%
          Ks_cmsec = Ks/10/60/60,
          Ks_cmhr = Ks/10,
          phaq_value_avg = PH, # use soil ph -AD
-           bdfiod_value_avg = BD) # use soil bulk density -AD
-sps[[1]]$soil$SAT <- saxton_rawls_df$SAT
-sps[[1]]$soil$AirDry <- saxton_rawls_df$AirDry
-sps[[1]]$soil$LL15 <- saxton_rawls_df$LL15
-sps[[1]]$soil$DUL <- saxton_rawls_df$DUL
-sps[[1]]$soil$bdfiod_value_avg <- saxton_rawls_df$bdfiod_value_avg
-sps[[1]]$soil$phaq_value_avg <- saxton_rawls_df$phaq_value_avg
+           bdfiod_value_avg = BD,# use soil bulk density -AD
+         AirDry = 0.1318797) # using average from geoid 13023 TODO CHECK WITH DEBJANI
+# sps[[1]]$soil$SAT <- saxton_rawls_df$SAT
+# sps[[1]]$soil$AirDry <- saxton_rawls_df$AirDry
+# sps[[1]]$soil$LL15 <- saxton_rawls_df$LL15
+# sps[[1]]$soil$DUL <- saxton_rawls_df$DUL
+# sps[[1]]$soil$bdfiod_value_avg <- saxton_rawls_df$bdfiod_value_avg
+# sps[[1]]$soil$phaq_value_avg <- saxton_rawls_df$phaq_value_avg
+sps$SAT <- saxton_rawls_df$SAT
+sps$AirDry <- saxton_rawls_df$AirDry
+sps$LL15 <- saxton_rawls_df$LL15
+sps$DUL <- saxton_rawls_df$DUL
+sps$bdfiod_value_avg <- saxton_rawls_df$bdfiod_value_avg
+sps$phaq_value_avg <- saxton_rawls_df$phaq_value_avg
+sps$KS<-saxton_rawls_df$Ks
+# sps$Ks_mmday<-saxton_rawls_df$Ks_mmday
+# sps$Ks_cmsec<-saxton_rawls_df$Ks_cmsec
+# sps$Ks_cmhr<-saxton_rawls_df$Ks_cmhr
 
 ####################################################################
 ## continue with remaining soil elements
@@ -147,39 +172,49 @@ sps[[1]]$soil$phaq_value_avg <- saxton_rawls_df$phaq_value_avg
 # }
 
 # extract just soil data into a dataframe
-soil_df_raw <- sps[[1]]$soil
+# soil_df_raw <- sps[[1]]$soil
+soil_df_raw <- sps
 
 # add three more depths at the top (for Daycent, recommended for trace gas subroutines),
 # then add new columns which Daycent also needs
 
-three_layers <- rbind(soil_df_raw[1,], soil_df_raw[1,], soil_df_raw[1,])
-three_layers[1,"Depth"] <- "0-2"
-three_layers[1,"Thickness"] <- 20
-three_layers[1,"FOM"] <- 25
-three_layers[2,"Depth"] <- "2-5"
-three_layers[2,"Thickness"] <- 30
-three_layers[2,"FOM"] <- 25
-three_layers[3,"Depth"] <- "5-10"
-three_layers[3,"Thickness"] <- 50
-three_layers[3,"FOM"] <- 50
+# three_layers <- rbind(soil_df_raw[1,], soil_df_raw[1,], soil_df_raw[1,])
+# three_layers[1,"Depth"] <- "0-2"
+# three_layers[1,"Thickness"] <- 20
+# three_layers[1,"FOM"] <- 25
+# three_layers[2,"Depth"] <- "2-5"
+# three_layers[2,"Thickness"] <- 30
+# three_layers[2,"FOM"] <- 25
+# three_layers[3,"Depth"] <- "5-10"
+# three_layers[3,"Thickness"] <- 50
+# three_layers[3,"FOM"] <- 50
+# 
+# names(three_layers)
+names(soil_df_raw)
 
-soil_df <- three_layers %>%
-  rbind(soil_df_raw) %>%
+soil_df_raw<-soil_df_raw%>%
+  mutate(Depth = gsub(' to ', '-', Depth_cm))%>%
+  select(-Depth_cm)
+
+
+soil_df <- #three_layers %>%
+  # rbind(soil_df_raw) %>%
+  soil_df_raw%>%
   mutate(upper_depth_cm = as.numeric(word(Depth, 1, sep="-")),
          lower_depth_cm = as.numeric(word(Depth, 2, sep="-")),
          root_fraction = c(0.01, 0.04, 0.25, 0.30, 0.15, 0.1, 0.05, 0.04, 0.03,
-                           0.02, 0.01, 0, 0),
+                           0.02, 0.01, 0, 0, 0), # adding a 0 so that there's 14 rows # DOUBLE CHECK
          sand_frac = ParticleSizeSand/100,
          clay_frac = ParticleSizeClay/100,
          OM_frac = Carbon*2/100,
          deltamin = c(0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 
-                      0.01, 0.01, 0.01, 0.01),
+                      0.01, 0.01, 0.01, 0.01, 0.01), # adding a 0.01 # DOUBLE CHECK
          ksat_cmsec = KS/(10*24*60*60),
-         evap_coef = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
-soil_df[4,"Depth"] <- "10-20"
-soil_df[4,"Thickness"] <- 100
-soil_df[4,"FOM"] <- 50
-soil_df[4,"upper_depth_cm"] <- 10
+         evap_coef = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)) # adding a 0 # DOUBLE CHECK
+# soil_df[4,"Depth"] <- "10-20"  # What is this for?
+# soil_df[4,"Thickness"] <- 100
+# soil_df[4,"FOM"] <- 50
+# soil_df[4,"upper_depth_cm"] <- 10
 
 soil_df$KS_cmmin <- soil_df$KS * (1/(10*24*60))
 
@@ -201,7 +236,7 @@ soil_texture_df <- soil_texture_df %>%
          SILT=SILT*100,
          CLAY=CLAY*100)
 
-soil_type_ar <- TT.points.in.classes(tri.data=soil_texture_df,class.sys="USDA.TT")
+soil_type_ar <- TT.points.in.classes(tri.data=soil_texture_df,class.sys="USDA.TT") # soiltexture library
 
 ## find the non-zero column which is the soil type
 find_col <- names(which(colSums(soil_type_ar)==1))

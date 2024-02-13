@@ -30,7 +30,7 @@ wheat_1 <- c(
   '1 89 CULT K			## Mar 30',
   '1 118 CULT K  ## Apr 28',
   '1 140 CULT ROW  ## May 20',
-  '1 140 CROP W4EG ## May 20',
+  '1 140 CROP W2 ## May 20',
   '1 161 PLTM 			## Jun 10',
   '1 225 HARV G90S	## Oct 23 - Harvest grains and 90% straw',
   '-999 -999 X',
