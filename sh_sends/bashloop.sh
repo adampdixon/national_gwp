@@ -7,14 +7,14 @@
 #PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stderr 
 ### Queue name
 #PBS -q main
-#PBS -l walltime=1:30:00
+#PBS -l walltime=6:00:00
 ### Send email on abort, begin and end
 #PBS -m e
 ### Specify mail recipient
 #PBS -M apdixon@pm.me
 ### Number of nodes
-#PBS -l select=1:ncpus=20:mem=20GB
-###PBS -l select=1:ncpus=32:mem=235GB
+#PBS -l select=1:ncpus=2:mem=2GB
+###PBS -l select=1:ncpus=2:mem=235GB
 ########################
 
 
@@ -36,10 +36,10 @@ task () {
 }
 
 # Define the number of parallel processes
-NUM_PARALLEL=20
+NUM_PARALLEL=2
 
 # Read the input arguments from a file and run the command in parallel
-for i in $(seq 3000 3108); do
+for i in $(seq 0 1); do
   echo "Starting task $i"
   task $i &
   if (( $i % $NUM_PARALLEL == 0 )); then
