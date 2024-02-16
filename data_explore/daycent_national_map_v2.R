@@ -122,7 +122,7 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
 }
 
 
-results<-daycent_results(Year=2017, Crop = 'Soybean', scenario = 1, Results_path=results_path, Crop_area_path=crop_area_path)
+# results<-daycent_results(Year=2017, Crop = 'Soybean', scenario = 1, Results_path=results_path, Crop_area_path=crop_area_path)
 # State='Nebraska'; Year=2017; Crop = 'Soybean'; scenario = 1; Results_path=results_path; Crop_area_path=crop_area_path
 
 ############ GET STATE LEVEL MAPS
