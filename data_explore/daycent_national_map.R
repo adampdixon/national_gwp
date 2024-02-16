@@ -95,7 +95,7 @@ daycent_results<-function(state=NULL, Year=NULL, Results_path, crop_area=quickst
 }
 
 
-
+result<-daycent_results(Year=2017, Results_path=results_path)
 
 result_ga<-daycent_results(state='Georgia', Year=2017, Results_path=results_path)
 head(result_ga)
@@ -137,14 +137,17 @@ all_data
 
 # NOW DO SPATIAL JOIN
 
-all_data_sp<-left_join(all_data, counties, by=c("GEOID"="GEOID2"))
+all_data_sp<-left_join(all_data, the_state, by=c("GEOID"="GEOID2"))
 
 
 state_plot<-ggplot() +
-  geom_sf(data = counties, aes(geometry = geometry)) +
+  geom_sf(data = the_state, aes(geometry = geometry)) +
   geom_sf(data = all_data_sp, aes(geometry = geometry, fill = TONS_ACRE)) +
   scale_fill_viridis_c(option = "plasma", trans = "sqrt") +
   theme_bw()
+
+
+state_plot
 
 
 

@@ -16,6 +16,9 @@ ncdu - for file size
 https://dev.yorhel.nl/ncdu/man
 
 
+# count number of directories
+ls -l | grep -c ^d
+
 count number of files in directory
 ls -1 | wc -l
 
@@ -31,3 +34,5 @@ ls -dlhRS .*/ */
 ls -lhRS */ | head -11
 
 /home/ap/climate_data
+
+
