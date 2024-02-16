@@ -21,7 +21,7 @@ if (Sys.info()['sysname'] == "Linux"){
     crop_area_path<-file.path(master_path, 'Data', 'County_start', 'main_county_crops.csv')
     output_figs<-'/glade/derecho/scratch/apdixon/national_gwp_figs'
     Test <- FALSE # if TRUE, only run county, filtered below
-    county_number<-args[2]
+    # county_number<-args[2]
     Glade=TRUE
     print("************************************")
     print("*****Using NCAR *********")
@@ -45,8 +45,8 @@ library(png)
 # NASSQS_TOKEN="25DCA0AC-9720-345F-8989-49876C2D6C30"
 # nassqs_auth(key = NASSQS_TOKEN)
 
-home_folder<-'/home/ap/Documents/GitHub/national_gwp/Data/County_start'
-cdl_count<-'/home/ap/CDL/main_county_crops.csv'
+# home_folder<-'/home/ap/Documents/GitHub/national_gwp/Data/County_start'
+# cdl_count<-'/home/ap/CDL/main_county_crops.csv'
 
 daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, Crop_area_path){
   # State: Full name capitalized, eg. Georgia
