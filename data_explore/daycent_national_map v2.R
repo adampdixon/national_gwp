@@ -270,7 +270,7 @@ national_map_all_scenarios<-function(Year_, Crop_, Output){
           scale_fill_viridis_c(option = "plasma", trans = "sqrt", label=comma) +
           labs(title = paste0("Daycent county ", crop, " yield (Mg) - ", year),
                subtitle = paste0(scenario, " scenario")) +
-          theme(plot.margin=unit(c(-0.30,0,0,0), "null")) + # remove margin around plot
+          # theme(plot.margin=unit(c(-0.30,0,0,0), "null")) + # remove margin around plot
           theme_bw()
         
         us_soc<-ggplot() +
@@ -279,7 +279,7 @@ national_map_all_scenarios<-function(Year_, Crop_, Output){
           scale_fill_viridis_c(option = "plasma", trans = "sqrt", label=comma) +
           labs(title= paste0("Daycent county ", crop, " field SOC (Mg) - ", year),
                subtitle = paste0(scenario, " scenario")) +
-          theme(plot.margin=unit(c(-0.30,0,0,0), "null")) + # remove margin around plot
+          # theme(plot.margin=unit(c(-0.30,0,0,0), "null")) + # remove margin around plot
          theme_bw()
         
         out<-arrangeGrob(us, us_soc, ncol = 2, widths = c(5,5), heights = c(3,3))
@@ -295,7 +295,7 @@ national_map_all_scenarios<-function(Year_, Crop_, Output){
           scale_fill_viridis_c(option = "plasma", trans = "sqrt", label=comma) +
           labs(
             subtitle = paste0(scenario, " scenario")) +
-          theme(plot.margin=unit(c(-0.30,0,0,0), "null")) + # remove margin around plot
+          # theme(plot.margin=unit(c(-0.30,0,0,0), "null")) + # remove margin around plot
           theme_bw()
         
         us_soc<-ggplot() +
@@ -304,7 +304,7 @@ national_map_all_scenarios<-function(Year_, Crop_, Output){
           scale_fill_viridis_c(option = "plasma", trans = "sqrt", label=comma) +
           labs(
             subtitle = paste0(scenario, " scenario")) +
-          theme(plot.margin=unit(c(-0.30,0,0,0), "null")) +# remove margin around plot
+          # theme(plot.margin=unit(c(-0.30,0,0,0), "null")) +# remove margin around plot
           theme_bw()
         
         out<-arrangeGrob(us, us_soc, ncol = 2, widths = c(5,5), heights = c(3,3))
@@ -325,10 +325,8 @@ national_map_all_scenarios<-function(Year_, Crop_, Output){
   #        marrangeGrob(grobs = plots2, nrow=6, ncol=1, top=NULL), device = "png", 
   #        width = 10, height = 30, dpi=300)
   
-  return(output)
+  # return(output)
 } # end of function
-
-
 
 # Year_ = 2017; Crop_ = 'Maize'; scenario_ = 2; Output = output_figs
 
