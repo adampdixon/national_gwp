@@ -1,7 +1,7 @@
 #!/bin/bash 
 ########################
 ### Job name
-#PBS -N NATSGO_processing
+#PBS -N results_processing
 #PBS -A UEMO0003
 #PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/get_csv.stdout
 #PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/get_csv.stderr 
@@ -24,7 +24,7 @@
 
 #!/bin/bash
 
-### echo "Running get results in bash parallel"
+echo "Running get results in bash parallel"
 
 # Define the task to be executed in parallel
 task () {
