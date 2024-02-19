@@ -43,9 +43,15 @@ Day_harvest_raw <- Day_base_harvest %>% # rbind(Day_base_harvest,Day_exp_harvest
 #limit to future scenario time period
 Day_harvest <- Day_harvest_raw[Day_harvest_raw$year <= end_fut_period_year,]
 
-## soil temperature
 
-additional<-FALSE
+
+
+## soil temperature
+################################################################################
+################################################################################
+additional<-FALSE  # AD I have these not reporting because I don't think they are important, but I also don't know
+################################################################################
+################################################################################
 if (identical(additional, TRUE)){
 
   Day_base_soiltavg <- read.fwf(file.path(daycent_path2,paste0("soiltavg_base_",scenario_name2,".out")),
@@ -228,7 +234,11 @@ if (identical(additional, TRUE)){
   #     
   #   }
 }
-  Day_methane <- read.fwf(file.path(daycent_path2,paste0("methane_base_",scenario_name2,".out")),
+################################################################################
+################################################################################
+
+
+Day_methane <- read.fwf(file.path(daycent_path2,paste0("methane_base_",scenario_name2,".out")),
                                   widths=c(4,6,12,12,12,12,12,12,12,12,12,12,12,12,12,
                                            12,12,12,12,12,12),
                                   col.names=c("year","dayofyear","aglivc","bglivcj","bglivcm",
@@ -241,91 +251,91 @@ if (identical(additional, TRUE)){
   
   
   
-  ################################################################################
-  
-  #   Day_methane_raw <- rbind(Day_exp_methane[,c("year","DOY","date","CH4_Ep","CH4_Ebl","CH4_oxid")],
-  #                      Day_fut_methane[,c("year","DOY","date","CH4_Ep","CH4_Ebl","CH4_oxid")]) %>%
-  #   mutate(CH4_emis_gCmd=CH4_Ep+CH4_Ebl,
-  #          CH4_emis_gChad=CH4_emis_gCmd*10000,
-  #          dayofyear=DOY)
-  # 
-  # Day_methane <- Day_methane_raw[Day_methane_raw$year <= end_fut_period_year,]
-  
+################################################################################
 
-  
-  Day_base_summary <- read.fwf(file.path(daycent_path2,paste0("summary_base_", scenario_name2, ".out")),
-                               widths=c(10,5,9,9,9,13,13,13,13,13),
-                               col.names=c("time","dayofyear","tmax","tmin","ppt",
-                                           "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"), # TODO Check with Debjani on this. CH4_gChad to CH4_oxid_gChad
-                               skip=1)
-  # Day_exp_summary <- read.fwf(file.path(daycent_path2,paste0("summary_exp_",scenario_name,".out")),
-  #                             widths=c(10,5,9,9,9,13,13,13,13,13),
-  #                             col.names=c("time","dayofyear","tmax","tmin","ppt",
-  #                                         "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"),
-  #                             skip=1) 
-  
-  
-  ###############################################################################
-  ####### The following block is a work-around for odd behavior in no-till where
-  ####### future methane oxidation suddenly increases more than double in all
-  ####### climate scenarios, including the baseline. 
-  ###############################################################################
-  # calculate what 29-year past total was, then reduce each day by a fraction
-  # until the sum is the same for the future 29 years
-  # if(mgmt_scenario_num==2) {
-  #   num_years <- end_fut_period_year - end_exp_period_year
-  #   start_exp <- end_exp_period_year - num_years
-  #   Day_exp_summary <- Day_exp_summary %>%
-  #     mutate(year=floor(time))
-  #   sum_exp_oxid_sum <- sum(Day_exp_summary[Day_exp_summary$year>=start_exp,"CH4_oxid_gChad"])
-  #   
-  # 
-  # Day_fut_summary <- read.fwf(file.path(daycent_path2,paste0("summary_fut_",scenario_name,".out")),
-  #                             widths=c(10,5,9,9,9,13,13,13,13,13),
-  #                             col.names=c("time","dayofyear","tmax","tmin","ppt",
-  #                                         "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"),
-  #                             skip=1) %>%
-  #   mutate(year=floor(time),
-  #          CH4_oxid_gChad=CH4_oxid_gChad*0.465)
-  # 
-  # sum_fut_oxid_sum <- sum(Day_fut_summary[Day_fut_summary$year < min(Day_fut_summary$year)+num_years-1,
-  #                                     "CH4_oxid_gChad"])
-  # 
-  # 
-  # } else {
-  #   
-  #   Day_fut_summary <- read.fwf(file.path(daycent_path2,paste0("summary_fut_",scenario_name,".out")),
-  #                               widths=c(10,5,9,9,9,13,13,13,13,13),
-  #                               col.names=c("time","dayofyear","tmax","tmin","ppt",
-  #                                           "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"),
-  #                               skip=1) 
-  #   
-  #   # this is a work-around for all other scenarios, which show the same odd dip
-  #   # noted above for the no-till scenario, but it happens just in 2022. work-around is
-  #   # to duplicate 2023 back to 2022, otherwise the massive dip in the first year messes
-  #   # up the slope of change over time, giving misleading results. only for ch4 oxidation.
-  #   Day_fut_summary[Day_fut_methane$year==2022,"CH4_oxid_gChad"] <- Day_fut_summary[Day_fut_methane$year==2023,"CH4_oxid_gChad"]
-  #   
-  # }
-  
-  ###############################################################################
+#   Day_methane_raw <- rbind(Day_exp_methane[,c("year","DOY","date","CH4_Ep","CH4_Ebl","CH4_oxid")],
+#                      Day_fut_methane[,c("year","DOY","date","CH4_Ep","CH4_Ebl","CH4_oxid")]) %>%
+#   mutate(CH4_emis_gCmd=CH4_Ep+CH4_Ebl,
+#          CH4_emis_gChad=CH4_emis_gCmd*10000,
+#          dayofyear=DOY)
+# 
+# Day_methane <- Day_methane_raw[Day_methane_raw$year <= end_fut_period_year,]
 
-  
-  # Adding soil_df Bulk Density here AD
-  ObsBD<-data.frame(mean_BD = mean(soil_df$BD))
-  
-  Day_summary_raw<-Day_base_summary%>%
-    # Day_summary <- rbind(Day_base_summary,Day_exp_summary,Day_fut_summary)
-    # Day_summary_raw <- rbind(Day_exp_summary,Day_fut_summary) %>%
-    mutate(year=floor(time)) %>%
-    merge(Day_methane, by=c("year","dayofyear")) %>%
-    mutate(CH4_net_gChad = -(CH4_oxid_gChad)* 0.2) %>% # make it negative
-    #  mutate(CH4_net_gChad=CH4_emis_gChad-CH4_oxid_gChad) %>%
-    arrange(year,dayofyear)
-  
-  # Day_summary <- Day_summary_raw[Day_summary_raw$year <= end_fut_period_year,]
-  Day_summary <- Day_summary_raw
-  
+
+# Is CO2 flux here good enough?
+Day_base_summary <- read.fwf(file.path(daycent_path2,paste0("summary_base_", scenario_name2, ".out")),
+                             widths=c(10,5,9,9,9,13,13,13,13,13),
+                             col.names=c("time","dayofyear","tmax","tmin","ppt",
+                                         "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"), # TODO Check with Debjani on this. CH4_gChad to CH4_oxid_gChad
+                             skip=1)
+# Day_exp_summary <- read.fwf(file.path(daycent_path2,paste0("summary_exp_",scenario_name,".out")),
+#                             widths=c(10,5,9,9,9,13,13,13,13,13),
+#                             col.names=c("time","dayofyear","tmax","tmin","ppt",
+#                                         "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"),
+#                             skip=1) 
+
+
+###############################################################################
+####### The following block is a work-around for odd behavior in no-till where
+####### future methane oxidation suddenly increases more than double in all
+####### climate scenarios, including the baseline. 
+###############################################################################
+# calculate what 29-year past total was, then reduce each day by a fraction
+# until the sum is the same for the future 29 years
+# if(mgmt_scenario_num==2) {
+#   num_years <- end_fut_period_year - end_exp_period_year
+#   start_exp <- end_exp_period_year - num_years
+#   Day_exp_summary <- Day_exp_summary %>%
+#     mutate(year=floor(time))
+#   sum_exp_oxid_sum <- sum(Day_exp_summary[Day_exp_summary$year>=start_exp,"CH4_oxid_gChad"])
+#   
+# 
+# Day_fut_summary <- read.fwf(file.path(daycent_path2,paste0("summary_fut_",scenario_name,".out")),
+#                             widths=c(10,5,9,9,9,13,13,13,13,13),
+#                             col.names=c("time","dayofyear","tmax","tmin","ppt",
+#                                         "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"),
+#                             skip=1) %>%
+#   mutate(year=floor(time),
+#          CH4_oxid_gChad=CH4_oxid_gChad*0.465)
+# 
+# sum_fut_oxid_sum <- sum(Day_fut_summary[Day_fut_summary$year < min(Day_fut_summary$year)+num_years-1,
+#                                     "CH4_oxid_gChad"])
+# 
+# 
+# } else {
+#   
+#   Day_fut_summary <- read.fwf(file.path(daycent_path2,paste0("summary_fut_",scenario_name,".out")),
+#                               widths=c(10,5,9,9,9,13,13,13,13,13),
+#                               col.names=c("time","dayofyear","tmax","tmin","ppt",
+#                                           "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"),
+#                               skip=1) 
+#   
+#   # this is a work-around for all other scenarios, which show the same odd dip
+#   # noted above for the no-till scenario, but it happens just in 2022. work-around is
+#   # to duplicate 2023 back to 2022, otherwise the massive dip in the first year messes
+#   # up the slope of change over time, giving misleading results. only for ch4 oxidation.
+#   Day_fut_summary[Day_fut_methane$year==2022,"CH4_oxid_gChad"] <- Day_fut_summary[Day_fut_methane$year==2023,"CH4_oxid_gChad"]
+#   
+# }
+
+###############################################################################
+
+
+# Adding soil_df Bulk Density here AD
+ObsBD<-data.frame(mean_BD = mean(as.numeric(soil_df$bdfiod_value_avg)))
+
+Day_summary_raw<-Day_base_summary%>%
+  # Day_summary <- rbind(Day_base_summary,Day_exp_summary,Day_fut_summary)
+  # Day_summary_raw <- rbind(Day_exp_summary,Day_fut_summary) %>%
+  mutate(year=floor(time)) %>%
+  merge(Day_methane, by=c("year","dayofyear")) %>%
+  mutate(CH4_net_gChad = -(CH4_oxid_gChad)* 0.2) %>% # make it negative
+  #  mutate(CH4_net_gChad=CH4_emis_gChad-CH4_oxid_gChad) %>%
+  arrange(year,dayofyear)
+
+# Day_summary <- Day_summary_raw[Day_summary_raw$year <= end_fut_period_year,]
+Day_summary <- Day_summary_raw
+
   
   
 if (identical(additional, TRUE)){
@@ -514,40 +524,48 @@ DayY_Mgha_pivwid <- pivot_wider(DayY_Mgha,names_from="crop",values_from="yield")
 
 
 
-DayGN_ghaday <- Day_summary[,c("time","dayofyear","N2O_gNhad")] %>%
+DayGN_ghaday <- Day_summary[,c("time","dayofyear","N2O_gNhad", "CO2resp")] %>% # AD adding CO2resp
   mutate(year=floor(time),
          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
 
-
-
+############# ANNUAL ############# 
+# N20 Emissions and added CO2 resp - annually
 DayGN_ann_gha <- DayGN_ghaday %>%
   group_by(year) %>%
-  summarize(N2OEmissions_ghayr=sum(N2O_gNhad))
+  summarize(N2OEmissions_ghayr=sum(N2O_gNhad),
+            CO2resp_yr=sum(CO2resp)) # don't know units of CO2resp AD
+############ ####### #############
 
-DayGN_cum_gha <- DayGN_ghaday[,c("year","dayofyear","date","N2O_gNhad")] %>%
-  mutate(N2O_gha = cumsum(N2O_gNhad)) %>%
-  select(-N2O_gNhad)
+DayGN_cum_gha <- DayGN_ghaday[,c("year","dayofyear","date","N2O_gNhad", "CO2resp")] %>% # AD adding CO2resp
+  mutate(N2O_gha = cumsum(N2O_gNhad),
+         CO2_gha = cumsum(CO2resp)) %>% # AD don't know what gha is (units?)
+  select(-N2O_gNhad, -CO2resp)
 
 # DayGN_cum_calib <- DayGN_ghaday[DayGN_ghaday$date %in% pull(ObsGas[!is.na(ObsGas$N2O_N),], date),] %>%
 #   group_by(year) %>%
 #   summarize(tot_N2O_ghayr=sum(N2O_gNhad))
 # 
 # 
-# #DayGC_ghaday <- Day_summary_base[,c("time","dayofyear","N2Oflux")] %>%
-# #  mutate(year=floor(time))
-# 
-# DayGM_ghaday <- Day_summary[,c("time","dayofyear","CH4_net_gChad")] %>%
-#   mutate(year=floor(time),
-#          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
-# 
-# DayGM_ann_gha <- DayGM_ghaday %>%
-#   group_by(year) %>%
-#   summarize(CH4Emissions_ghayr=sum(CH4_net_gChad))
-# 
-# DayGM_cum_gha <- DayGM_ghaday[,c("year","dayofyear","date","CH4_net_gChad")] %>%
-#   mutate(CH4_gha = cumsum(CH4_net_gChad)) %>%
-#   select(-CH4_net_gChad)
-# 
+DayGC_ghaday <- Day_summary[,c("time","dayofyear","NOflux")] %>% # changed from Day_summary_base, N2Oflux
+ mutate(year=floor(time))
+
+DayGM_ghaday <- Day_summary[,c("time","dayofyear","CH4_net_gChad")] %>%
+  mutate(year=floor(time),
+         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+
+
+############# ANNUAL ############# 
+# CH4 Emissions annual
+DayGM_ann_gha <- DayGM_ghaday %>%
+  group_by(year) %>%
+  summarize(CH4Emissions_ghayr=sum(CH4_net_gChad))
+############ ####### #############
+
+# Daily CH4 Emissions? 
+DayGM_cum_gha <- DayGM_ghaday[,c("year","dayofyear","date","CH4_net_gChad")] %>%
+  mutate(CH4_gha = cumsum(CH4_net_gChad)) %>% # this sums the cumulative amount of daily CH4
+  select(-CH4_net_gChad)
+
 # DayGM_cum_calib <- DayGM_ghaday[DayGM_ghaday$date %in% pull(ObsGas[!is.na(ObsGas$CH4_C),], date),] %>%
 #   group_by(year) %>%
 #   summarize(tot_CH4_ghayr=sum(CH4_net_gChad))
@@ -558,20 +576,20 @@ DayGN_cum_gha <- DayGN_ghaday[,c("year","dayofyear","date","N2O_gNhad")] %>%
 #   select(year,crpval,cgrain,`egrain(N)`,cstraw,`estraw(N)`,
 #          cn_grain_ratio,cn_stover_ratio) %>%
 #   mutate(crop=if_else(substr(crpval,2,2)=="C", "Maize",
-#              if_else(substr(crpval,2,2)=="S", "Soybean", 
+#              if_else(substr(crpval,2,2)=="S", "Soybean",
 #                      if_else(substr(crpval,2,2)=="W", "Wheat", "Unknown")))
 #   )
 # 
-# DayCI_gm2yr <- lis_output[!((lis_output$cinput == 0 & 
+# DayCI_gm2yr <- lis_output[!((lis_output$cinput == 0 &
 #                                (lis_output$time == experiment_start_year | lis_output$time == experiment_end_year+1)) |
-#                               lis_output$time == end_fut_period_year),c("time","clitad.2.")] %>%  
+#                               lis_output$time == end_fut_period_year),c("time","clitad.2.")] %>%
 #   mutate(year=floor(time),
 #          base=`clitad.2.`
 #   )
-#   
-# DayNI_gm2yr <- lis_output[!((lis_output$cinput == 0 & 
+# 
+# DayNI_gm2yr <- lis_output[!((lis_output$cinput == 0 &
 #                                (lis_output$time == experiment_start_year | lis_output$time == experiment_end_year+1)) |
-#                               lis_output$time == end_fut_period_year),c("time","elitad.2.1.")] %>%  
+#                               lis_output$time == end_fut_period_year),c("time","elitad.2.1.")] %>%
 #   mutate(year=floor(time),
 #          base=`elitad.2.1.`
 #   )
@@ -580,60 +598,44 @@ DayGN_cum_gha <- DayGN_ghaday[,c("year","dayofyear","date","N2O_gNhad")] %>%
 
 # write out results for use later in ensemble results
 
-if(crop=="Wheat" | crop == "Cotton" | crop == "Maize"){
-  
-  print(paste0("creating annual output table for ", crop))
-  
-  output_annual_data <- cbind(merge(DayY_Mgha_pivwid[,c("year",crop)], #"Soybean","Wheat"
-  # output_annual_data <- cbind(merge(DayY_Mgha_pivwid[,c("year", "Maize" ,"Soybean", "Wheat", "Cotton")],
-                                    DayC_Mgha[,c("time","base")],
-                                    by.x="year", by.y="time",
-                                    all=TRUE),
-                              "Daycent",scenario_name2,clim_scenario_num,
-                              mgmt_scenario_num) #,mgmt_scenario_opt)
-  
-  
-  # ,"SoyYld_Mgha","WheatYld_Mgha" removed these from below AD
-  colnames(output_annual_data) <- c("year", paste0(crop, "Yld_Mgha"),"SOC_Mgha","model_name", 
-                                    "scenario_name","climate_scenario_num",
-                                    "mgmt_scenario_num") #,"mgmt_scenario_opt_num")
-  
-} 
+######################## ANNUAL OUTPUT ########################
+######################## ############# ########################
 
-if(crop=="Soybean" | crop == "Rotation"){
-  
-  print(paste0("creating annual output table for ", crop))
-  
-  # output_annual_data <- cbind(merge(DayY_Mgha_pivwid[,c("year",crop)], #"Soybean","Wheat"
-output_annual_data <- cbind(merge(DayY_Mgha_pivwid[,c("year", "Maize" ,"Soybean")],
-                                    DayC_Mgha[,c("time","base")],
-                                    by.x="year", by.y="time",
-                                    all=TRUE),
-                              "Daycent",scenario_name2,clim_scenario_num,
-                              mgmt_scenario_num) #,mgmt_scenario_opt)
-  
-  
-  # ,"SoyYld_Mgha","WheatYld_Mgha" removed these from below AD
-  colnames(output_annual_data) <- c("year", "MaizeYld_Mgha", "SoybeanYld_Mgha", "SOC_Mgha","model_name", 
-                                    "scenario_name","climate_scenario_num",
-                                    "mgmt_scenario_num") #,"mgmt_scenario_opt_num")
-  
+# if(crop=="Wheat" | crop == "Cotton" | crop == "Maize"){
+
+
+
+# soybeans and rotation is different because soybeans weren't widely grown until 1920, so corn is crop from 1850 until 1920
+# so both versions have two columns for crop, so columns needs to be processed differently than above
+# set crop column with if statement
+if(crop=="Soybean" | crop=="Rotation"){
+  crop_names <-c("Maize" ,"Soybean")
+}
+if(crop=="Wheat" | crop == "Cotton" | crop == "Maize"){
+  crop_names <- crop  
 }
 
+print("creating annual output table for ", paste(crop_names))
+
+  
+# CH4, NO2, CO2rep data - all ok?
+
+# Merge all the annual data together
+output_annual_data <- cbind(merge( # merge the two interior merges
+  merge(DayY_Mgha_pivwid[,c("year",crop_names)],DayC_Mgha[,c("time","base")], by.x="year", by.y="time", all=TRUE), # interior merge 1
+  merge(DayGN_ann_gha, DayGM_ann_gha, by = "year", all = TRUE), # interior merge 2
+  by = "year", all=TRUE),
+  "Daycent",scenario_name2,clim_scenario_num, mgmt_scenario_num) # add these columns for reference
 
 
+# ,"SoyYld_Mgha","WheatYld_Mgha" removed these from below AD
+colnames(output_annual_data) <- c("year", paste0(crop_names, "Yld_Mgha"),"SOC_Mgha",
+                                  'N2OEmissions_ghayr', 'CO2resp_yr', 'CH4Emissions_ghayr',
+                                  "model_name", 
+                                  "scenario_name","climate_scenario_num",
+                                  "mgmt_scenario_num") #,"mgmt_scenario_opt_num")
+  
 
-# output_daily_data <- cbind(DayGN_ghaday[,c("date","year","dayofyear","N2O_gNhad")],
-#                            DayGN_cum_gha[,"N2O_gha"],
-#                            DayGM_ghaday[,"CH4_net_gChad"],
-#                            DayGM_cum_gha[,"CH4_gha"],
-#                            "Daycent",scenario_name,clim_scenario_num,
-#                            mgmt_scenario_grp,mgmt_scenario_opt)
-# 
-# colnames(output_daily_data) <- c("date","year","dayofyear","N2O_emit_gha","N2O_cum_gha",
-#                                  "CH4_net_gha","CH4_cum_gha",
-#                                  "model_name","scenario_name","climate_scenario_num",
-#                                  "mgmt_scenario_grp_num","mgmt_scenario_opt_num")
 
 write.table(output_annual_data,file=file.path(results_path, paste0("Annual_results_compilation_",
                                            scenario_name2,"_Daycent.csv")),
@@ -645,3 +647,39 @@ if(file.exists(file.path(results_path, paste0("Annual_results_compilation_",
   print(paste0("Annual results compilation file written for ", scenario_name2))
   cat("************************************\n")
 }
+
+######################## ############# ########################
+######################## ############# ########################
+######################## ############ ########################
+
+######################## DAILY OUTPUT ########################
+######################## ############ ########################
+
+output_daily_data <- cbind(DayGN_ghaday[,c("date","year","dayofyear","N2O_gNhad")],
+                           DayGN_cum_gha[,"N2O_gha"],
+                           DayGN_cum_gha[,"CO2_gha"], # AD adding CO2
+                           DayGM_ghaday[,"CH4_net_gChad"],
+                           DayGM_cum_gha[,"CH4_gha"],
+                           "Daycent",scenario_name,clim_scenario_num) 
+# mgmt_scenario_grp,mgmt_scenario_opt)
+# 
+colnames(output_daily_data) <- c("date","year","dayofyear","N2O_emit_gha","N2O_cum_gha",
+                                 "CH4_net_gha","CH4_cum_gha",
+                                 "model_name","scenario_name","climate_scenario_num")
+# "mgmt_scenario_grp_num","mgmt_scenario_opt_num")
+
+# head(output_daily_data)
+
+write.table(output_daily_data,file=file.path(results_path, paste0("Daily_results_compilation_",
+                                                                   scenario_name2,"_Daycent.csv")),
+            col.names=T,row.names=F,sep=",",append=F)
+
+if(file.exists(file.path(results_path, paste0("Daily_results_compilation_",
+                                              scenario_name2,"_Daycent.csv")))){
+  cat("************************************\n")
+  print(paste0("Daily results compilation file written for ", scenario_name2))
+  cat("************************************\n")
+}
+
+
+######################## ############ ########################

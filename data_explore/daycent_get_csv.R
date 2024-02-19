@@ -33,7 +33,7 @@ if (Sys.info()['sysname'] == "Linux"){
 }
 
 #####################
-year_<-2017
+year_<-2050
 ###################
 
 # library(tigris)
@@ -57,7 +57,7 @@ date<-gsub("-", "", Sys.Date())
 
 daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, Crop_area_path){
   # State: Full name capitalized, eg. Georgia
-  # Crop options: Maize, Wheat, Cotton, Soybean
+  # Crop options: Maize, Wheat, Cotton, Soybean, Rotation (maize and soybean)
   # Scenario options: 1, 2, 3, 4, 5, 6
   
   print(paste0("State: ", State, ", Year: ", Year, ", Crop: ", Crop, ", scenario: ", scenario))
@@ -86,8 +86,6 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
   } else{
     crop_area_var<-paste0(Crop,'_ha')
   }
-  
-  
   
   crop_area_df<-read.csv(crop_area_path)%>%
     select(GEOID, eval(crop_area_var))%>%

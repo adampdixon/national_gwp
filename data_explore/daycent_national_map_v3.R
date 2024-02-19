@@ -50,233 +50,12 @@ library(png)
 
 date<-gsub("-", "", Sys.Date())
 
-daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, Crop_area_path){
-  # State: Full name capitalized, eg. Georgia
-  # Crop options: Maize, Wheat, Cotton, Soybean
-  # Scenario options: 1, 2, 3, 4, 5, 6
-  
-  print(paste0("State: ", State, ", Year: ", Year, ", Crop: ", Crop, ", scenario: ", scenario))
-  
-  file_name<-paste0("Annual_results_compilation_1_", scenario, "_", Crop, "_Daycent.csv")
-  
-  if (!is.null(State)){ # get State only results
-    dir_list<-dir(Results_path, pattern = State, full.names = T)
-    print("Getting State only results")
-    print(State)
-  } else {
-    dir_list<-dir(Results_path, full.names = T)
-    print("Getting results from all States")
-    }
-  
-  csv_list<-unlist(lapply(dir_list, function(x) list.files(x, full.names=T, recursive = T, pattern = file_name))) # FULL NAMES
-  
-  files<-unlist(lapply(dir_list, function(x) list.files(x, full.names=F, recursive = T, pattern = file_name))) # NOT FULL NAMES
-  
-  # /Results_GEOID_42091_Pennsylvania/Annual_results_compilation_1_1_Cotton_Daycent.csv
-  
-  # TODO decide if going to worry about state. Probs best is to worry about Crop + scenario
-  
-  if(identical(Crop, "Rotation")){ # if rotation, set area to same as maize
-    crop_area_var<-'Maize_ha'
-  } else{
-    crop_area_var<-paste0(Crop,'_ha')
-  }
-
-
-  
-  crop_area_df<-read.csv(crop_area_path)%>%
-    select(GEOID, eval(crop_area_var))%>%
-    as_tibble()
-  
-  # gets<-grep(state, csv_list)
-  # csv_list<-csv_list[gets]
-  # files<-files[gets]
-  
-  # read csvs in list and place in df
-  df<-data.frame()
-  for (i in 1:length(csv_list)){
-    # print(paste0("Reading ", csv_list[i]))
-    
-    # Split file name to get geoid
-    # geoid<-as.integer(strsplit(files[i], "_")[[1]][3])
-    geoid<-as.integer(strsplit(basename(dirname(csv_list[i])), "_")[[1]][3])
-    
-
-    r_county<-read.csv(csv_list[i])
-    if (!is.null(Year)){
-      r_county<-filter(r_county, year==Year)
-    }
-    # Add county GEOID
-    r_county$GEOID<-geoid
-
-    df<-rbind(df, r_county)
-  }
-  # # Add crop totals
-  # 
-  # if(!is.null(Crop)){
-  #   crop_area2<-filter(crop_area_df, commodity_desc==Crop)
-  # }
-  
-  if(identical(Crop, "Rotation")){
-    if(is.na(df$MaizeYld_Mgha)[1]){ # if year is selected in rotation that crop is not grown, result will be NA
-      crop_var<-'SoybeanYld_Mgha'
-      Crop<-"Rotation_Soybean"
-    } else
-      crop_var<-'MaizeYld_Mgha'
-  } else{
-    crop_var<-paste0(Crop,'Yld_Mgha')
-  }
-
-  df2<-left_join(df, crop_area_df, by=c("GEOID"="GEOID"))%>% # add crop area
-    mutate(Cty_Crp_Yld_Mg=get(crop_var)*get(crop_area_var))%>% # calculate crop area in county multiplied by yield per ha
-    mutate(Cty_SOC_Mg=SOC_Mgha*get(crop_area_var))%>% # calculate SOC in crop area in county 
-    mutate(crop_yld_Mgha=get(crop_var), crop = Crop, 
-           crop_ha = get(crop_area_var))%>% # convert crop yield col name to generic crop_yld to assemble table later with all crops/scenarios
-    select(GEOID, year, crop, crop_yld_Mgha, crop_ha, SOC_Mgha, Cty_Crp_Yld_Mg, Cty_SOC_Mg, 
-           climate_scenario_num, mgmt_scenario_num, model_name, scenario_name)%>%
-    arrange(GEOID)%>%
-    as_tibble()
-  return(df2)
-  
-}
-
-
-# results<-daycent_results(Year=2017, Crop = 'Soybean', scenario = 1, Results_path=results_path, Crop_area_path=crop_area_path)
-# State='Nebraska'; Year=2017; Crop = 'Rotation'; scenario = 1; Results_path=results_path; Crop_area_path=crop_area_path
-
-
-
-# res<-data.frame()
-# for (i in c("Maize", "Soybean", "Wheat", "Cotton", "Rotation")){
-#   for (j in 1:6){
-#     if(i=="Rotation" & j>1){
-#       next
-#     }
-#     print(i)
-#     print(j)
-#     results<-daycent_results(Year=2017, Crop = i, scenario = j, Results_path=results_path, Crop_area_path=crop_area_path)
-#     # print(results)
-#     print("***********")
-#     res<-rbind(res, results)
-#   }
-# 
-# }
-# 
-# write.csv(res, file=file.path(output_figs, paste0("all_crops_scenarios_2017_", date, ".csv")))
-
-
-# END OF DATA AGGREGATING
-#################################################################
-#################################################################
-#################################################################
-### START MAPS
-#################################################################
-#################################################################
-#################################################################
-
-
-
-############ GET STATE LEVEL MAPS
-
-
-state_map<-function(){
-  the_state<-counties() %>%
-    filter(STATEFP %in% unique(substr(results$GEOID, 1, 2)))%>%
-    mutate(GEOID2=as.integer(GEOID))
-  
-  # NOW DO SPATIAL JOIN
-  
-  all_data_sp<-left_join(results, the_state, by=c("GEOID"="GEOID2"))
-  
-  crop_state_plot<-ggplot() +
-    geom_sf(data = the_state, aes(geometry = geometry), linewidth = 0) +
-    geom_sf(data = all_data_sp, aes(geometry = geometry, fill = Cty_Crp_Yld_Mg), linewidth = 0) +
-    scale_fill_viridis_c(option = "plasma", trans = "sqrt", label=comma) +
-    theme_bw()
-  
-  SOC_state_plot<-ggplot() +
-    geom_sf(data = the_state, aes(geometry = geometry), size = 0) +
-    geom_sf(data = all_data_sp, aes(geometry = geometry, fill = Cty_SOC_Mg), linewidth = 0) +
-    scale_fill_viridis_c(option = "plasma", trans = "sqrt", label=comma) +
-    theme_bw()
-  
-  return(grid.arrange(crop_state_plot, SOC_state_plot, ncol = 2))
-}
-
-
-
-
-############ GET MAPS FOR WHOLE US
-
-
-national_map<-function(Year_, Crop_, scenario_, Output){
-  # call results from above function
-  result<-results<-daycent_results(Year=Year_, Crop = Crop_, scenario = scenario_, Results_path=results_path, Crop_area_path=crop_area_path)
-  head(result)
-  nrow(result)
-  
-  lower_48<-sprintf("%02d" , c(1,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,26,27,28,29,
-                               30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48,49,50,51,53,54,55,56))
-  
-  counties<-counties() %>%
-    filter(STATEFP %in% lower_48)%>%
-    mutate(GEOID2=as.integer(GEOID))
-  
-  # NOW DO SPATIAL JOIN
-  
-  all_data_sp<-left_join(results, counties, by=c("GEOID"="GEOID2"))
-  
-  # For map titles and file naming
-  crop<-str_to_lower(strsplit(colnames(all_data_sp[4]), "_")[[1]][1])
-  year<-all_data_sp$year[1]
-  
-  scenario<-ifelse(result$mgmt_scenario_num[1]==1, "Monocropping", 
-                   ifelse(result$mgmt_scenario_num[1]==2, "No-till",
-                          ifelse(result$mgmt_scenario_num[1]==3, "Cover crop species mix",
-                                 ifelse(result$mgmt_scenario_num[1]==4, "Cover crop rye",
-                                        ifelse(result$mgmt_scenario_num[1]==5, "Cover crop legume",
-                   "No-till and cover crop mix"
-                   )))))
-  
-  us<-ggplot() +
-    geom_sf(data = counties, aes(geometry = geometry), linewidth = 0) +
-    geom_sf(data = all_data_sp, aes(geometry = geometry, fill = Cty_Crp_Yld_Mg), linewidth = 0) +
-    scale_fill_viridis_c(option = "plasma", trans = "sqrt", label=comma) +
-    labs(title = paste0("Daycent county ", crop, " yield (Mg) - ", year),
-            subtitle = paste0(scenario, " scenario")) +
-    theme_bw()
-
-  us_soc<-ggplot() +
-    geom_sf(data = counties, aes(geometry = geometry), linewidth = 0) +
-    geom_sf(data = all_data_sp, aes(geometry = geometry, fill = Cty_SOC_Mg), linewidth = 0) +
-    scale_fill_viridis_c(option = "plasma", trans = "sqrt", label=comma) +
-    labs(title= paste0("Daycent county ", crop, " field SOC (Mg) - ", year),
-            subtitle = paste0(scenario, " scenario")) +
-    theme_bw()
-
-  output<-grid.arrange(us, us_soc, ncol = 2)
-
-  # ggsave(file.path(output_figs, paste0(crop, "_county_yield_Mg_", year, ".png")),plot=output, dpi=300)
-  ggsave(file.path(Output, paste0(crop, "_", year, ".png")), plot=output, dpi=300, width = 10, height = 5)
-  
-  return(output)
-
-}
-
-
-# Year_ = 2017; Crop_ = 'Maize'; scenario_ = 1
-
-# out<-national_map(Year_ = 2017, Crop_ = 'Maize', scenario_ = 1, Output = output_figs)
-
-
-
-
-
-
 ############ GET MAPS FOR WHOLE US AND ALL SCENARIOS
 
 
 national_map_all_scenarios<-function(Year_, Crop_, Output){
+  
+  
   for(i in 1:6){
     # call results from above function
     # result<-results<-daycent_results(Year=Year_, Crop = Crop_, scenario = i, Results_path=results_path, Crop_area_path=crop_area_path)
@@ -286,10 +65,12 @@ national_map_all_scenarios<-function(Year_, Crop_, Output){
     result<-list.files(output_figs, pattern = "csv", full.names = TRUE)%>%
       lapply(read.csv)%>%
       bind_rows()%>%
-      as_tibble()
+      as_tibble()%>%
+      filter(crop == Crop_, mgmt_scenario_num == i, year == Year_)%>%
+      select(GEOID, year, crop, crop_yld_Mgha, crop_ha, SOC_Mgha, mgmt_scenario_num, scenario_name)
     
     print(paste0("Scenario ", i, " has ", nrow(result), " rows"))
-    # print(result)
+    print(result)
 
     lower_48<-sprintf("%02d" , c(1,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,26,27,28,29,
                                  30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48,49,50,51,53,54,55,56))
@@ -322,8 +103,9 @@ national_map_all_scenarios<-function(Year_, Crop_, Output){
         # possible columns to map: crop_yld_Mgha crop_ha SOC_Mgha
         # scenario_ = 1; crop_ = 'Maize'; year_ = 2017
         
-        df<-all_data_sp%>%
-          filter(crop == Crop_, mgmt_scenario_num == scenario_, year == Year_)
+        df<-all_data_sp
+        # print(df)
+          # filter(crop == Crop_, mgmt_scenario_num == scenario_, year == Year_)
         
         # For map titles and file naming
         crop<-tolower(strsplit(colnames(all_data_sp[4]), "_")[[1]][1])
@@ -389,7 +171,7 @@ national_map_all_scenarios<-function(Year_, Crop_, Output){
 
 # Year_ = 2017; Crop_ = 'Maize'; Output = output_figs
   
-national_map_all_scenarios(Year_ = 2017, Crop_ = 'Maize', Output = output_figs)
+national_map_all_scenarios(Year_ = 2045, Crop_ = 'Maize', Output = output_figs)
 
 
 # Year_, Crop_, Output

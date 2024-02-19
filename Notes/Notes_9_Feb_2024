@@ -1,5 +1,5 @@
 
-
+Talking with Debjani, Feb 16 
 
 do a x axis with time
 then do an average for all counties, or plot all lines
@@ -19,3 +19,82 @@ compare with gNATSGO with full soil profile
 change units to Mg ha
 
 check out USDA carbon and yield
+
+
+
+Yield
+SOC - get from 0-30, 0-100, 0-200
+CO2 flux - (check to see if we're getting it from the top 
+Methane flux - 
+Nitrous Oxide - 
+
+things that are important, so put them in your output
+soil temperature moisture
+soil nitrogen - nitrogen ammonium
+total nitrogen if you can get easy
+
+send doc for LDNDC
+
+send average from 0-30 so Debjani can see
+
+top 30cm. then whole profile
+
+she'll probalby ask to combine the fluxes from top 30 cm
+
+flux units will be per time. per time. 
+stock - mass per area
+flux - mass per area per time (per day is best)
+
+to do the global warming potential - look and see how ellen calculated accumulated emission. so you'll get the sum
+accumulated methane over time,
+accumulated carbon over time,
+then you'll get the final stock.
+
+#######################################################
+
+
+
+
+
+# params to potentially change in site.100
+42.410         SITLAT KBS, MI
+-85.372        SITLNG KBS, MI
+ 48.           ELEV    # sitepar elevation
+ 0.0           SITSLP  # sitepar slope    
+ 0.0           ASPECT  # sitepar aspect   
+ 0.0           EHORIZ  # sitepar ehoriz   
+ 0.0           WHORIZ  # sitepar whoriz   
+
+
+-200.          HPOTD   # sitepar hpotdeep  - hydraulic potential
+ 3.0E-4        KSATD   # sitepar ksatdeep
+ 0.0           TBMIN   # sitepar tbotmn - minimum temperature for bottom soil layer
+ 12.4          TBMAX   # sitepar tbotmx
+ 0.004         DMPFCT  # sitepar dmp   # edm was 0.006 - Dampens strong fluxes of water between soil layers
+ 30.           TIMLAG  # sitepar timlag #- days from Jan 1 to coolest temp at bottom of soil (days)
+ 0.03          NCOEFF  # sitepar Ncoeff #- minimum water/temperature limitation coefficient for nitrify
+ 0.0           DNSTRT  # sitepar jdayStart #- turn off respiration restraint on denitrification starting on this day days
+ 0.0           DNEND   # sitepar jdayEnd  #- turn off respiration restraint on denitrification ends on this
+day
+ 0.012         NADJFC  # sitepar N2Oadjust_fc - maximum proportion of nitrified N lost as N2O @ field
+capacity
+ 0.012         NADJWP  # sitepar N2Oadjust_wp - minimum proportion of nitrified N lost as N2O @ wilting
+point
+ 1.            MAXNIT  # sitepar MaxNitAmt - maximum daily nitrification amount  
+ 0.2           MINO3   # sitepar netmn_to_no3 - fraction of new net mineralization that goes to NO3 (0.0-
+1.0)
+ 1.            WFPSNIP # sitepar wfpsdnitadj - adjustment on inflection point for the water filled pore space effect on denitrification curve
+ 1.            N2N2OA  # sitepar N2N2Oadj    - N2/N2O ratio adjustment factor for computing the N2/N2O ratio during non-flooded conditions.Values > 1.0 increase this ratio,values(0.0-1.0)              
+                       # decrease this ratio. For flooded conditions see FLN2OR in fix.100.
+                       
+                       
+  '*** Organic matter initial values',
+  ' 4.3797       SOM1CI(1,1) # edm was 25., was 12',
+  ' 0.0           SOM1CI(1,2)',
+  ' 31.58        SOM1CI(2,1) # edm was 189., was 94',
+  ' 0.0           SOM1CI(2,2)',
+  ' 21.516       SOM2CI(1,1) # edm was 119., was 64',
+  ' 0.0           SOM2CI(1,2)',
+  ' 500.69       SOM2CI(2,1) # edm was 2967., was 1500.',
+  ' 0.0           SOM2CI(2,2)',
+  ' 400.49       SOM3CI(1) # edm was 2783., was 1400.',

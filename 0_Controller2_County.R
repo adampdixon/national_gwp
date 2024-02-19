@@ -114,11 +114,20 @@ source('1_Create_weather_input_files-Daycent_County_v2.R', local = TRUE)
 # source('3_Create_fix100_file-Daycent_AD_.R', local = TRUE)
 
 
+print("*****writing soils data")
+
 # Soil data
 source("2_Create_soil_data-setup2_County.R", local = TRUE)
-  #
-  # source("2_Create_soil_data-APSIM.R")
-source("2_Create_soil_data-Daycent_County.R", local = TRUE)
+
+
+print("*****writing site data")
+# Site data
+source("2_1_Create_site_file-Daycent_County.R", local = TRUE)
+
+
+
+# source("2_Create_soil_data-APSIM.R")
+source("2_Create_soil_site_data-Daycent_County.R", local = TRUE)
 # source("2_Create_soil_data-LDNDC.R")
 # RothC only uses clay content, which is included in the weather input file.
 # source(paste0("2_Create_soil_data-Millennial_",site_name,".R"))
@@ -185,7 +194,7 @@ if(identical(run_Daycent,TRUE)) {
         
         # check if results file already exists
         if(file.exists(model_path)){ 
-          # & nrow(fread(model_path))> 200# # check if all rows have been reported
+          # & nrow(fread(model_path))> 200# # check if all rows have been reported; note this didn't work well
           print(paste0("*************Daycent results already exist for: ", scenario_name2, " ... skipping...****************"))
           next
         } else{
@@ -195,7 +204,7 @@ if(identical(run_Daycent,TRUE)) {
           crop_schedule<-c(get(paste0(tolower(crop), '_1')), # opening set of schedule file blocks
                            get(paste0(tolower(crop), '_scenario_', m)), # scenario-specific schedule file blocks
                            
-                           output_sch<-file.path(daycent_path2 , paste0("sched_base_", scenario_name, "_", crop, ".sch")))
+          output_sch<-file.path(daycent_path2 , paste0("sched_base_", scenario_name, "_", crop, ".sch")))
           
           # write to sch file
           writeLines(crop_schedule, output_sch) # schedule file name, e.g. schedule_file_maize
