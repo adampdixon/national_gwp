@@ -27,6 +27,7 @@ setwd(model_path)
 # Base cropping schedule: date of land conversion -> start of experimental period
 # Every scenario run uses the same base schedule file, so there is only one
 print("**********Daycent base simulation*********")
+unlink(paste0("co2_base_",scenario_name2,".out"))
 unlink(paste0("sched_base_", scenario_name2, ".bin"))
 unlink(paste0("sched_base_", scenario_name2, "lis"))
 unlink("cflows.out")
@@ -65,6 +66,7 @@ system(paste0(daycent_list100," sched_base_",scenario_name2 ," sched_base_", sce
 
 
 # Change daycent output name to have scenario designation at end
+file.copy("co2.out", paste0("co2_base_",scenario_name2,".out"), overwrite=TRUE)
 file.copy("cflows.out", paste0("cflows_base_",scenario_name2,".out"), overwrite=TRUE)
 #file.copy("dc_sip.csv", "dc_sip_base.csv", overwrite=TRUE)
 file.copy("harvest.csv", paste0("harvest_base_",scenario_name2,".csv"), overwrite=TRUE)

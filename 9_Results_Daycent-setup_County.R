@@ -43,16 +43,13 @@ Day_harvest_raw <- Day_base_harvest %>% # rbind(Day_base_harvest,Day_exp_harvest
 #limit to future scenario time period
 Day_harvest <- Day_harvest_raw[Day_harvest_raw$year <= end_fut_period_year,]
 
-
-
-
 ## soil temperature
-################################################################################
-################################################################################
-additional<-FALSE  # AD I have these not reporting because I don't think they are important, but I also don't know
-################################################################################
-################################################################################
-if (identical(additional, TRUE)){
+# ################################################################################
+# ################################################################################
+# additional<-TRUE  # AD I have these not reporting because I don't think they are important, but I also don't know
+# ################################################################################
+# ################################################################################
+# if (identical(additional, TRUE)){
 
   Day_base_soiltavg <- read.fwf(file.path(daycent_path2,paste0("soiltavg_base_",scenario_name2,".out")),
                                 widths=c(12,5,8,8,8,8,8,8,8,6),
@@ -80,7 +77,7 @@ if (identical(additional, TRUE)){
   #          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
   
   # DayT_C_raw <- rbind(Day_exp_soiltavg,Day_fut_soiltavg)
-  # 
+  # # 
   # DayT_C_raw <- DayT_C_raw %>%
   #   mutate(mean_3_4=round(rowMeans(DayT_C_raw[,c("layer3","layer4")]),2),
   #          mean_15cm=round(((layer1*2/15)+(layer2*3/15)+(layer3*5/15)+(layer4*5/15)),2), # weighted average
@@ -88,18 +85,18 @@ if (identical(additional, TRUE)){
   #          )
   # 
   # DayT_C <- DayT_C_raw[DayT_C_raw$year <= end_fut_period_year,]
-  
+
   # DayT_C_range <- range(DayT_C[DayT_C$date %in% ObsTemp$date, "mean_3_4"],na.rm=T)
   
   # additional version including base phase data
-  DayT_C_all_raw <- rbind(Day_base_soiltavg) %>% #,Day_exp_soiltavg,Day_fut_soiltavg
-    mutate(year=floor(time),
-           date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
-  DayT_C_all_raw <- DayT_C_all_raw %>%
-    mutate(mean_3_4=round(rowMeans(DayT_C_all_raw[,c("layer3","layer4")]),2))
-  
-  
-  DayT_C_all <- DayT_C_all_raw[DayT_C_all_raw$year <= end_fut_period_year,]
+  # DayT_C_all_raw <- rbind(Day_base_soiltavg) %>% #,Day_exp_soiltavg,Day_fut_soiltavg
+  #   mutate(year=floor(time),
+  #          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+  # DayT_C_all_raw <- DayT_C_all_raw %>%
+  #   mutate(mean_3_4=round(rowMeans(DayT_C_all_raw[,c("layer3","layer4")]),2))
+  # 
+  # 
+  # DayT_C_all <- DayT_C_all_raw[DayT_C_all_raw$year <= end_fut_period_year,]
   
   # ### calibrated version
   # DayT_C_calib <- rbind(Day_exp_soiltavg,Day_fut_soiltavg) %>%
@@ -107,13 +104,12 @@ if (identical(additional, TRUE)){
   #          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01")))
   
   ## soil moisture
-  
-  Day_base_vswc <- read.fwf(file.path(daycent_path2,paste0("vswc_base_",scenario_name2,".out")),
-                            widths=c(10,7,10,10,10,10,10,10,10,6),
-                            col.names=c("time","dayofyear","layer1","layer2","layer3",
-                                        "layer4","layer5","layer6","layer7","layer8"),
-                            colClasses=c("numeric","numeric","numeric","numeric","numeric",
-                                         "numeric","numeric","numeric","numeric","numeric"))
+Day_base_vswc <- read.fwf(file.path(daycent_path2,paste0("vswc_base_",scenario_name2,".out")),
+                  widths=c(10,7,10,10,10,10,10,10,10,6),
+                  col.names=c("time","dayofyear","layer1","layer2","layer3",
+                              "layer4","layer5","layer6","layer7","layer8"),
+                  colClasses=c("numeric","numeric","numeric","numeric","numeric",
+                               "numeric","numeric","numeric","numeric","numeric"))
   # Day_exp_vswc <- read.fwf(file.path(daycent_path2,paste0("vswc_exp_",scenario_name,".out")),
   #                          widths=c(10,7,10,10,10,10,10,10,10,6), 
   #                          col.names=c("time","dayofyear","layer1","layer2","layer3",
@@ -155,19 +151,19 @@ if (identical(additional, TRUE)){
   #   )
   
   # DayM_V_all_raw <- rbind(Day_base_vswc,Day_exp_vswc,Day_fut_vswc) %>%
-  DayM_V_all_raw <- Day_base_vswc %>%
-    mutate(year=floor(time),
-           date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1,
-           layer1_pct=layer1*100,
-           layer2_pct=layer2*100,
-           layer3_pct=layer3*100,
-           layer4_pct=layer4*100,
-           layer5_pct=layer5*100,
-           layer6_pct=layer6*100,
-           layer7_pct=layer7*100,
-           layer8_pct=layer8*100)
-  
-  DayM_V_all <- DayM_V_all_raw[DayM_V_all_raw$year <= end_fut_period_year,]
+DayM_V_all_raw <- Day_base_vswc %>%
+  mutate(year=floor(time),
+         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1,
+         layer1_pct=layer1*100,
+         layer2_pct=layer2*100,
+         layer3_pct=layer3*100,
+         layer4_pct=layer4*100,
+         layer5_pct=layer5*100,
+         layer6_pct=layer6*100,
+         layer7_pct=layer7*100,
+         layer8_pct=layer8*100)
+
+DayM_V_all <- DayM_V_all_raw[DayM_V_all_raw$year <= end_fut_period_year,]
   
   
   ## N2O and CH4 emissions
@@ -233,7 +229,7 @@ if (identical(additional, TRUE)){
   #     
   #     
   #   }
-}
+# }
 ################################################################################
 ################################################################################
 
@@ -338,7 +334,7 @@ Day_summary <- Day_summary_raw
 
   
   
-if (identical(additional, TRUE)){
+# if (identical(additional, TRUE)){
   
   ## NO3
   
@@ -437,7 +433,7 @@ if (identical(additional, TRUE)){
   
   Day_soiln_all <- Day_soiln_all_raw[Day_soiln_all_raw$year,]
   
-}
+# }
 
 
 # water-filled pore space
@@ -468,7 +464,7 @@ if (identical(additional, TRUE)){
 
 #**********************************************************************
 
-
+# Soil Organic Carbon
 ### future .lis contains all data from year 1 in equilibrium through end of future simulation
 # lis_output_raw <- read.table(file.path(daycent_path2,paste0("sched_fut_",scenario_name,".lis")),
 lis_output <- read.table(paste0(daycent_path,paste0("sched_base_",scenario_name2,".lis")),
@@ -523,6 +519,28 @@ DayY_Mgha_pivwid <- pivot_wider(DayY_Mgha,names_from="crop",values_from="yield")
 #Daycent doesn't output bulk density
 
 
+
+
+
+# CO2 out
+Day_base_co2 <- read.fwf(paste0(daycent_path,paste0("co2_base_",scenario_name2,".out")),
+                           widths=c(8,6,14,14,14,14,14,14,14,14,14,14,14,14,14,14),
+                           col.names=c("time","dayofyear", "CO2_ppm0","CO2_ppm1",
+                                       "CO2_ppm2","CO2_ppm3","CO2_ppm4","CO2_ppm5","CO2_ppm6",
+                                       "CO2_ppm7","CO2_ppm8","CO2_ppm9","CO2_ppm10",
+                                       "CO2_ppm11","CO2_ppm12", "CO2_ppm13"), # don't need ppm13
+                           skip=1)
+
+# CO2_ppm[0] (Column 3) – CO2 concentration in first layer of soil profile (index 0), as defined in the
+# soils.in file (ppm)
+# CO2_ppm[1] (Column 4) – CO2 concentration in second layer of soil profile (index 1), as defined in the
+# soils.in file (ppm)
+
+
+
+
+
+# CO2resp Heterotrophic CO2 respiration for the day (g C ha-1 d-1)
 
 DayGN_ghaday <- Day_summary[,c("time","dayofyear","N2O_gNhad", "CO2resp")] %>% # AD adding CO2resp
   mutate(year=floor(time),
@@ -615,7 +633,7 @@ if(crop=="Wheat" | crop == "Cotton" | crop == "Maize"){
   crop_names <- crop  
 }
 
-print("creating annual output table for ", paste(crop_names))
+print(paste0("creating annual output table for ", paste(crop_names)))
 
   
 # CH4, NO2, CO2rep data - all ok?
@@ -683,3 +701,4 @@ if(file.exists(file.path(results_path, paste0("Daily_results_compilation_",
 
 
 ######################## ############ ########################
+

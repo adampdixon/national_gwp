@@ -1,0 +1,51 @@
+Notes 19 Feb
+
+Outputs from Daycent to get
+Soil temperature - 
+Soil moisture - potentially Day_base_vswc, DayM_V_all
+Crop yield - done
+SOC (get from top soil layer)
+CO2 flux - (check to see if we're getting it from the top soil layer)
+CH4 flux (get from 0-30, 0-100, 0-200cm)
+N2O (get from top soil layer?)
+NO3 - nitrate
+NH4 - ammonium
+
+
+also look at NO3 and NH4. Ellen might have ignored N2O production from nitrification. Please go back and turn that function on for your model runs. 
+
+ghay indicates g/ha/year (it is g C/ha/year for CH4 and g N/ha/year for N2O)
+I can't tell the unit of CO2resp (it is per yr but just check if that is calculated as g C per time step or not)
+
+Daily data columns: N2O_emit_gha, N2O_cum_gha, CH4_net_gha, CH4_cum_gha
+These are g C/ha (for CH4) and g N/ha (for N2O)
+net indicates net emission at a particular time step
+cum indicates cumulative emission over time
+
+
+
+Day_base_vswc
+
+
+N2O_gNhad  NOflux CH4_oxid_gChad     NIT  CO2resp
+
+
+How to calculate CO2? Same as like NO3?
+ NO3_ppm=NO3_ppm0+NO3_ppm1+NO3_ppm2,
+ NO3_10to60cm_ppm=NO3_ppm3+NO3_ppm4+NO3_ppm5,
+ #NO3_kgha=(weight of soil in kg/ha, using bulk density from 
+ # 2_Create_soil_data-setup2_KBS to soil depth in m)*ppm which = mg/kg
+ #          then divide by 1000000 mg/kg conversion factor
+ NO3_kgha=((0.10*10000*ObsBD$mean_BD*1000)*NO3_ppm)/1000000, 
+ NO3_hgha=NO3_kgha/10, 
+ NO3_10to60cm_kgha=((0.50*10000*ObsBD$mean_BD*1000)*NO3_10to60cm_ppm)/1000000, 
+ NO3_10to60cm_hgha=NO3_10to60cm_kgha/10, 
+ date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1,
+ NO3_2cm_kgha=((0.02*10000*ObsBD$mean_BD*1000)*NO3_ppm0)/1000000,
+ NO3_5cm_kgha=((0.03*10000*ObsBD$mean_BD*1000)*NO3_ppm1)/1000000,
+ NO3_10cm_kgha=((0.05*10000*ObsBD$mean_BD*1000)*NO3_ppm2)/1000000,
+ NO3_20cm_kgha=((0.1*10000*ObsBD$mean_BD*1000)*NO3_ppm3)/1000000,
+ NO3_40cm_kgha=((0.2*10000*1.2*1000)*NO3_ppm4)/1000000,
+ NO3_60cm_kgha=((0.2*10000*1.6*1000)*NO3_ppm5)/1000000,
+ NO3_0to60cm_kgha=NO3_2cm_kgha+NO3_5cm_kgha+NO3_10cm_kgha+
+   NO3_20cm_kgha+NO3_40cm_kgha+NO3_60cm_kgha)

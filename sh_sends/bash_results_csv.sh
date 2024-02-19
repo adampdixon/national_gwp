@@ -39,7 +39,7 @@ task () {
 NUM_PARALLEL=2
 
 # Read the input arguments from a file and run the command in parallel
-for i in $(seq 1 6); do
+for i in $(seq 5 6); do
 echo "Starting task $i"
 task $i &
   if (( $i % $NUM_PARALLEL == 0 )); then
