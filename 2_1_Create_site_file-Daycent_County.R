@@ -92,8 +92,8 @@ site_2<-c(
   ' 0.0           ASPECT  # sitepar aspect   ',
   ' 0.0           EHORIZ  # sitepar ehoriz   ',
   ' 0.0           WHORIZ  # sitepar whoriz   ',
-  ' 7.            NLAYER #soil layers in soil.in', # this should be 13?
-  ' 6.            NLAYPG',
+  ' 7.            NLAYER #soil layers in soil.in', # these two add up to total layers in soils.in?
+  ' 6.            NLAYPG', # Number of soil layers in the top level of the water model;determines avh2o(1), used for plant growth and root death.
   ' 0.0           DRAIN',
   ' 0.3           BASEF',
   ' 0.0           STORMF',

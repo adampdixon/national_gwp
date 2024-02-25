@@ -49,3 +49,18 @@ How to calculate CO2? Same as like NO3?
  NO3_60cm_kgha=((0.2*10000*1.6*1000)*NO3_ppm5)/1000000,
  NO3_0to60cm_kgha=NO3_2cm_kgha+NO3_5cm_kgha+NO3_10cm_kgha+
    NO3_20cm_kgha+NO3_40cm_kgha+NO3_60cm_kgha)
+   
+   
+# get yield data from NASS
+# compare SOC with gNATSGO
+
+crop growing area/noncrop area
+Use the CDL to guide the areas that you want to run the model
+use that for the region that you're growing
+
+use counties is less than 5 or 10 ha then you can ignore
+Ellen and her thought 5%
+First - ignore the counties that aren't growing at all. See how that drops out the counties, and if that doens't drop out enough, then go to 5%
+
+(if that doens't work, then perhaps use )
+

@@ -268,14 +268,14 @@ maize_scenario_4<-c(
   'C       Weather choice ## Continue',
   '1 111 FERT (16.8N)   ##April 21 Fertilizer event',
   '1 121 CULT H     	 ##May1 Disk',
- '1 126 CULT D     	  ##May 6 Cultivate',
- '1 126 CROP C6 	    ##May 6',
- '1 126 PLTM       	  ##May 6',
- '1 296 HARV G90S	   ##Oct 23 - Harvest grains and 90% straw',
- '1 302 CULT H     	 ##Oct 28 Disk',
- '1 303 CULT D     	 ##Oct 29 Cultivate',
- '1 305 CROP RYE 	   ##Nov 1, plant rye cover crop',
- '1 305 PLTM       	 ##Nov 1',
+  '1 126 CULT D     	  ##May 6 Cultivate',
+  '1 126 CROP C6 	    ##May 6',
+  '1 126 PLTM       	  ##May 6',
+  '1 296 HARV G90S	   ##Oct 23 - Harvest grains and 90% straw',
+  '1 302 CULT H     	 ##Oct 28 Disk',
+  '1 303 CULT D     	 ##Oct 29 Cultivate',
+  '1 305 CROP RYE 	   ##Nov 1, plant rye cover crop',
+  '1 305 PLTM       	 ##Nov 1',
  '-999 -999 X'
 )
 

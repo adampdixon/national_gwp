@@ -38,14 +38,14 @@ ksat_cmsec -- partial derivative of root/sand/clay fraction
 
 
 What I think it should be in fix.100:
-10.000        'ADEP(1)'   # 10 soil layers 1, 2, 3  -- these should add up to 240 cm, following example in COLO STATE manual
-20.000        'ADEP(2)'   # 20 soil layers 4 ,5 -- as explained, these are to map Daycent soil layers to the old Century model
-15.000        'ADEP(3)'   # 40 layer 6 -- which is still part of the codebase. See fig 2.
-15.000        'ADEP(4)'   # 60 layer 7
-30.000        'ADEP(5)'   # 80 layers 8, 9
-30.000        'ADEP(6)'   # 100 layers 10 ,11
-30.000        'ADEP(7)'   # 120 layer 12
-30.000        'ADEP(8)'   # 140 layer 13
-30.000        'ADEP(9)'   # 160 layer 14
-30.000        'ADEP(10)'  # 200 not used
+10.000        'ADEP(1)'   #10 # 10 soil layers 1, 2, 3  -- these should add up to 240 cm, following example in COLO STATE manual
+20.000        'ADEP(2)'   #20 # 20 soil layers 4 ,5 -- as explained, these are to map Daycent soil layers to the old Century model
+15.000        'ADEP(3)'   #35 # 40 layer 6 -- which is still part of the codebase. See fig 2.
+15.000        'ADEP(4)'   #50 # 60 layer 7
+30.000        'ADEP(5)'   #80 # 80 layers 8, 9
+30.000        'ADEP(6)'   #110 # 100 layers 10 ,11
+30.000        'ADEP(7)'   #140 # 120 layer 12
+30.000        'ADEP(8)'   #170 # 140 layer 13
+30.000        'ADEP(9)'   #200 # 160 layer 14
+30.000        'ADEP(10)'  #230 # 200 not used
 

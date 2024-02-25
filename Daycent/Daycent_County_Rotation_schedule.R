@@ -106,3 +106,148 @@ rotation_scenario_1<-c(
   "2 177 FERT (8N)	## June 26",
   "2 296 HARV G90S	## Oct 23 - Harvest grains and 90% straw",
   "-999 -999 X")
+
+
+# # Scenario 2- no-till
+rotation_scenario_2<-c(
+  '6       Block ## Higher-yielding corn with fertilizer',
+  '2050    Last year',
+  '2       Repeats # of years',
+  '2022    Output starting year',
+  '12       Output month',
+  '1  Output interval',
+  'C       Weather choice ## Continue',
+  '1 124 CULT NDRIL ## May 4', # No-till drill
+  "1 149 CROP SYBN2 ## May 29",
+  "1 149 PLTM       ## May 29 Plant soybean",
+  "1 290 HARV G90S  ## Oct 17 - Harvest grains and 90% straw",
+  '1 111 FERT (16.8N) ##April 21 ', # US avg fertilizer amount
+  '1 124 CULT NDRIL   ## May 4', # No-till drill
+  '1 124 CROP C6    ## May 4', # Crop is corn high yield
+  '1 124 PLTM       ## May 4',
+  "2 296 HARV G90S	## Oct 23 - Harvest grains and 90% straw",
+  
+  '-999 -999 X'
+)
+
+# Scenario 3 - cover crop mix
+rotation_scenario_3<-c(
+  '6       Block ## Higher-yielding corn with fertilizer',
+  '2050    Last year',
+  '2       Repeats # of years',
+  '2022    Output starting year',
+  '12       Output month',
+  '1  Output interval',
+  'C       Weather choice ## Continue',
+  '1 121 CULT H     	  ##May1 Disk',
+  "1 149 CROP SYBN2 ## May 29",
+  "1 149 PLTM       ## May 29 Plant soybean",
+  "1 290 HARV G90S  ## Oct 17 - Harvest grains and 90% straw",
+  '1 302 CULT H     	  ##Oct 28 Disk',
+  '1 303 CULT D     	  ## Oct 29 Cultivate',
+  '1 305 CROP RYELG 	  ##Nov 1, plant rye, legume, grass mix cover crop',
+  '1 305 PLTM       	  ##Nov 1',
+  '1 111 FERT (16.8N)   ##April 21 ',
+  '1 121 CULT H     	  ##May1 Disk',
+  '1 126 CULT D     	  ##May 6 Cultivate',
+  '1 126 CROP C6	      ##May 6',
+  '1 126 PLTM       	  ## May 6',
+  '1 296 HARV G90S	    ##Oct 23 - Harvest grains and 90% straw',
+  '1 302 CULT H     	  ##Oct 28 Disk',
+  '1 303 CULT D     	  ## Oct 29 Cultivate',
+  '1 305 CROP RYELG 	  ##Nov 1, plant rye, legume, grass mix cover crop',
+  '1 305 PLTM       	  ##Nov 1',
+  '-999 -999 X'
+)
+
+
+# Scenario 4 - cover crop cereal
+rotation_scenario_4<-c(
+  '6       Block ## Higher-yielding corn with fertilizer',
+  '2050    Last year',
+  '2       Repeats # of years',
+  '2022    Output starting year',
+  '12       Output month',
+  '1  Output interval',
+  'C       Weather choice ## Continue',
+  '1 121 CULT H     	  ##May1 Disk',
+  "1 149 CROP SYBN2 ## May 29",
+  "1 149 PLTM       ## May 29 Plant soybean",
+  "1 290 HARV G90S  ## Oct 17 - Harvest grains and 90% straw",
+  '1 302 CULT H     	  ##Oct 28 Disk',
+  '1 303 CULT D     	  ## Oct 29 Cultivate',
+  '1 305 CROP RYE 	   ##Nov 1, plant rye cover crop',
+  '1 305 PLTM       	  ##Nov 1',
+  '1 111 FERT (16.8N)   ##April 21 ',
+  '1 121 CULT H     	  ##May1 Disk',
+  '1 126 CULT D     	  ##May 6 Cultivate',
+  '1 126 CROP C6	      ##May 6',
+  '1 126 PLTM       	  ## May 6',
+  '1 296 HARV G90S	    ##Oct 23 - Harvest grains and 90% straw',
+  '1 302 CULT H     	  ##Oct 28 Disk',
+  '1 303 CULT D     	  ## Oct 29 Cultivate',
+  '1 305 CROP RYE 	   ##Nov 1, plant rye cover crop',
+  '1 305 PLTM       	  ##Nov 1',
+  '-999 -999 X'
+) 
+
+
+# Scenario 5 - cover crop legume (vetch)
+rotation_scenario_5<-c(
+  '6       Block ## Higher-yielding corn with fertilizer',
+  '2050    Last year',
+  '2       Repeats # of years',
+  '2022    Output starting year',
+  '12       Output month',
+  '1  Output interval',
+  'C       Weather choice ## Continue',
+  '1 121 CULT H     	  ##May1 Disk',
+  "1 149 CROP SYBN2 ## May 29",
+  "1 149 PLTM       ## May 29 Plant soybean",
+  "1 290 HARV G90S  ## Oct 17 - Harvest grains and 90% straw",
+  '1 302 CULT H     	  ##Oct 28 Disk',
+  '1 303 CULT D     	  ## Oct 29 Cultivate',
+  '1 305 CROP VETCH 	  ##Nov 1, plant vetch cover crop',
+  '1 305 PLTM       	  ##Nov 1',
+  '1 111 FERT (16.8N)   ##April 21 ',
+  '1 121 CULT H     	  ##May1 Disk',
+  '1 126 CULT D     	  ##May 6 Cultivate',
+  '1 126 CROP C6	      ##May 6',
+  '1 126 PLTM       	  ## May 6',
+  '1 296 HARV G90S	    ##Oct 23 - Harvest grains and 90% straw',
+  '1 302 CULT H     	  ##Oct 28 Disk',
+  '1 303 CULT D     	  ## Oct 29 Cultivate',
+  '1 305 CROP VETCH 	  ##Nov 1, plant vetch cover crop',
+  '1 305 PLTM       	  ##Nov 1',
+  '-999 -999 X'
+)
+
+# Scenario 6 - notill + cover crop
+rotation_scenario_6<-c(
+  '6       Block ## Higher-yielding corn with fertilizer',
+  '2050    Last year',
+  '2       Repeats # of years',
+  '2022    Output starting year',
+  '12       Output month',
+  '1  Output interval',
+  'C       Weather choice ## Continue',
+  '1 147 CULT NDRIL     ## No till',
+  "1 149 CROP SYBN2     ## May 29",
+  "1 149 PLTM           ## May 29 Plant soybean",
+  "1 290 HARV G90S      ## Oct 17 - Harvest grains and 90% straw",
+  '1 305 CULT NDRIL     ##  Nov 1',
+  '1 305 CROP RYELG     ##Nov 1',
+  '1 305 PLTM       	  ##Nov 1',
+  '1 111 FERT (16.8N)   ##April 21 ',
+  '1 125 CULT NDRIL     ## No till',
+  '1 126 CROP C6	      ##May 6',
+  '1 126 PLTM       	  ## May 6',
+  '1 296 HARV G90S	    ##Oct 23 - Harvest grains and 90% straw',
+  '1 302 CULT H     	  ##Oct 28 Disk',
+  '1 303 CULT D     	  ## Oct 29 Cultivate',
+  '1 305 CULT NDRIL     ##  Nov 1',
+  '1 305 CROP RYELG     ##Nov 1',
+  '1 305 PLTM       	  ##Nov 1',
+  '-999 -999 X'
+)
+
