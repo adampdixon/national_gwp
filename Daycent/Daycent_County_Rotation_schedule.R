@@ -121,10 +121,10 @@ rotation_scenario_2<-c(
   "1 149 CROP SYBN2 ## May 29",
   "1 149 PLTM       ## May 29 Plant soybean",
   "1 290 HARV G90S  ## Oct 17 - Harvest grains and 90% straw",
-  '1 111 FERT (16.8N) ##April 21 ', # US avg fertilizer amount
-  '1 124 CULT NDRIL   ## May 4', # No-till drill
-  '1 124 CROP C6    ## May 4', # Crop is corn high yield
-  '1 124 PLTM       ## May 4',
+  '2 111 FERT (16.8N) ##April 21 ', # US avg fertilizer amount
+  '2 124 CULT NDRIL   ## May 4', # No-till drill
+  '2 124 CROP C6    ## May 4', # Crop is corn high yield
+  '2 124 PLTM       ## May 4',
   "2 296 HARV G90S	## Oct 23 - Harvest grains and 90% straw",
   
   '-999 -999 X'
@@ -147,16 +147,16 @@ rotation_scenario_3<-c(
   '1 303 CULT D     	  ## Oct 29 Cultivate',
   '1 305 CROP RYELG 	  ##Nov 1, plant rye, legume, grass mix cover crop',
   '1 305 PLTM       	  ##Nov 1',
-  '1 111 FERT (16.8N)   ##April 21 ',
-  '1 121 CULT H     	  ##May1 Disk',
-  '1 126 CULT D     	  ##May 6 Cultivate',
-  '1 126 CROP C6	      ##May 6',
-  '1 126 PLTM       	  ## May 6',
-  '1 296 HARV G90S	    ##Oct 23 - Harvest grains and 90% straw',
-  '1 302 CULT H     	  ##Oct 28 Disk',
-  '1 303 CULT D     	  ## Oct 29 Cultivate',
-  '1 305 CROP RYELG 	  ##Nov 1, plant rye, legume, grass mix cover crop',
-  '1 305 PLTM       	  ##Nov 1',
+  '2 111 FERT (16.8N)   ##April 21 ',
+  '2 121 CULT H     	  ##May1 Disk',
+  '2 126 CULT D     	  ##May 6 Cultivate',
+  '2 126 CROP C6	      ##May 6',
+  '2 126 PLTM       	  ## May 6',
+  '2 296 HARV G90S	    ##Oct 23 - Harvest grains and 90% straw',
+  '2 302 CULT H     	  ##Oct 28 Disk',
+  '2 303 CULT D     	  ## Oct 29 Cultivate',
+  '2 305 CROP RYELG 	  ##Nov 1, plant rye, legume, grass mix cover crop',
+  '2 305 PLTM       	  ##Nov 1',
   '-999 -999 X'
 )
 
@@ -178,16 +178,16 @@ rotation_scenario_4<-c(
   '1 303 CULT D     	  ## Oct 29 Cultivate',
   '1 305 CROP RYE 	   ##Nov 1, plant rye cover crop',
   '1 305 PLTM       	  ##Nov 1',
-  '1 111 FERT (16.8N)   ##April 21 ',
-  '1 121 CULT H     	  ##May1 Disk',
-  '1 126 CULT D     	  ##May 6 Cultivate',
-  '1 126 CROP C6	      ##May 6',
-  '1 126 PLTM       	  ## May 6',
-  '1 296 HARV G90S	    ##Oct 23 - Harvest grains and 90% straw',
-  '1 302 CULT H     	  ##Oct 28 Disk',
-  '1 303 CULT D     	  ## Oct 29 Cultivate',
-  '1 305 CROP RYE 	   ##Nov 1, plant rye cover crop',
-  '1 305 PLTM       	  ##Nov 1',
+  '2 111 FERT (16.8N)   ##April 21 ',
+  '2 121 CULT H     	  ##May1 Disk',
+  '2 126 CULT D     	  ##May 6 Cultivate',
+  '2 126 CROP C6	      ##May 6',
+  '2 126 PLTM       	  ## May 6',
+  '2 296 HARV G90S	    ##Oct 23 - Harvest grains and 90% straw',
+  '2 302 CULT H     	  ##Oct 28 Disk',
+  '2 303 CULT D     	  ## Oct 29 Cultivate',
+  '2 305 CROP RYE 	   ##Nov 1, plant rye cover crop',
+  '2 305 PLTM       	  ##Nov 1',
   '-999 -999 X'
 ) 
 
@@ -209,16 +209,16 @@ rotation_scenario_5<-c(
   '1 303 CULT D     	  ## Oct 29 Cultivate',
   '1 305 CROP VETCH 	  ##Nov 1, plant vetch cover crop',
   '1 305 PLTM       	  ##Nov 1',
-  '1 111 FERT (16.8N)   ##April 21 ',
-  '1 121 CULT H     	  ##May1 Disk',
-  '1 126 CULT D     	  ##May 6 Cultivate',
-  '1 126 CROP C6	      ##May 6',
-  '1 126 PLTM       	  ## May 6',
-  '1 296 HARV G90S	    ##Oct 23 - Harvest grains and 90% straw',
-  '1 302 CULT H     	  ##Oct 28 Disk',
-  '1 303 CULT D     	  ## Oct 29 Cultivate',
-  '1 305 CROP VETCH 	  ##Nov 1, plant vetch cover crop',
-  '1 305 PLTM       	  ##Nov 1',
+  '2 111 FERT (16.8N)   ##April 21 ',
+  '2 121 CULT H     	  ##May1 Disk',
+  '2 126 CULT D     	  ##May 6 Cultivate',
+  '2 126 CROP C6	      ##May 6',
+  '2 126 PLTM       	  ## May 6',
+  '2 296 HARV G90S	    ##Oct 23 - Harvest grains and 90% straw',
+  '2 302 CULT H     	  ##Oct 28 Disk',
+  '2 303 CULT D     	  ## Oct 29 Cultivate',
+  '2 305 CROP VETCH 	  ##Nov 1, plant vetch cover crop',
+  '2 305 PLTM       	  ##Nov 1',
   '-999 -999 X'
 )
 
@@ -238,16 +238,16 @@ rotation_scenario_6<-c(
   '1 305 CULT NDRIL     ##  Nov 1',
   '1 305 CROP RYELG     ##Nov 1',
   '1 305 PLTM       	  ##Nov 1',
-  '1 111 FERT (16.8N)   ##April 21 ',
-  '1 125 CULT NDRIL     ## No till',
-  '1 126 CROP C6	      ##May 6',
-  '1 126 PLTM       	  ## May 6',
-  '1 296 HARV G90S	    ##Oct 23 - Harvest grains and 90% straw',
-  '1 302 CULT H     	  ##Oct 28 Disk',
-  '1 303 CULT D     	  ## Oct 29 Cultivate',
-  '1 305 CULT NDRIL     ##  Nov 1',
-  '1 305 CROP RYELG     ##Nov 1',
-  '1 305 PLTM       	  ##Nov 1',
+  '2 111 FERT (16.8N)   ##April 21 ',
+  '2 125 CULT NDRIL     ## No till',
+  '2 126 CROP C6	      ##May 6',
+  '2 126 PLTM       	  ## May 6',
+  '2 296 HARV G90S	    ##Oct 23 - Harvest grains and 90% straw',
+  '2 302 CULT H     	  ##Oct 28 Disk',
+  '2 303 CULT D     	  ## Oct 29 Cultivate',
+  '2 305 CULT NDRIL     ##  Nov 1',
+  '2 305 CROP RYELG     ##Nov 1',
+  '2 305 PLTM       	  ##Nov 1',
   '-999 -999 X'
 )
 

@@ -1,5 +1,7 @@
 
 # Wheat schedule vectors
+# https://www.holyokeenterprise.com/opinion/early-history-winter-wheat-central-plains
+# https://www.uswheat.org/wheatletter/u-s-wheat-seeding-involves-careful-planning-and-varietal-selection/
 
 wheat_1 <- c(
   '1850          Starting year ## start with assumed ground-breaking for agriculture until intensification',
@@ -19,8 +21,8 @@ wheat_1 <- c(
   '              Initial tree',
   '    ',
   'Year Month Option',
-  '1       Block ## Wheat W4EG',
-  '1959    Last year',
+  '1       Block ## Wheat low output, spring wheat',
+  '1900    Last year',
   '1       Repeats # of years',
   '1850    Output starting year',
   '12      Output month',
@@ -30,128 +32,181 @@ wheat_1 <- c(
   '1 89 CULT K			## Mar 30',
   '1 118 CULT K  ## Apr 28',
   '1 140 CULT ROW  ## May 20',
-  '1 140 CROP W2 ## May 20',
+  '1 140 CROP W1 ## May 20',
   '1 161 PLTM 			## Jun 10',
   '1 225 HARV G90S	## Oct 23 - Harvest grains and 90% straw',
   '-999 -999 X',
-  '2       Block ## Switch to cotton',
-  '2021    Last year',
-  '1       Repeats # of years',
-  '1960    Output starting year',
+  '2       Block # first year for widespread winter wheat',
+  '1901    Last year', # just one year
+  '1       Repeats # of years', # get winter growing season started
+  '1901    Output starting year',
   '12      Output month',
   '1       Output interval',
   'C       Weather choice ## Continue',
-  '1 118 CULT K  ## Apr 28',
-  '1 140 CULT ROW  ## May 20',
-  '1 140 CROP W4EG ## May 20',
-  '1 140 PLTM  ## May 20',
-  '1 225 HARV G90S	## Oct 23 - Harvest grains and 90% straw',
+  '1 214 CULT K  ## Aug 1',
+  '1 214 CULT ROW  ## Aug 1',
+  '1 300 FERT (2.0N)   ## Fertlizer before planting',
+  '1 306 CROP W2 ## Nov 1',
+  '1 306 PLTM  ## Nov 1',
+  '-999 -999 X',
+  '3       Block # first year for widespread winter wheat',
+  '1942    Last year',
+  '1       Repeats # of years', # year starts with harvest
+  '1902    Output starting year',
+  '12      Output month',
+  '1       Output interval',
+  'C       Weather choice ## Continue',
+  '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
+  '1 214 CULT K  ## Apr 28 of ',
+  '1 214 CULT ROW  ## Aug 1',
+  '1 300 FERT (2.0N)   ## Fertlizer before planting',
+  '1 306 CROP W2 ## Nov 1',
+  '1 306 PLTM  ## Nov 1',
+  '-999 -999 X',
+  '4       Block # second phase winter wheat',
+  '1970    Last year',
+  '1       Repeats # of years', # year starts with harvest
+  '1942    Output starting year',
+  '12      Output month',
+  '1       Output interval',
+  'C       Weather choice ## Continue',
+  '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
+  '1 214 CULT K  ## Apr 28 of ',
+  '1 214 CULT ROW  ## Aug 1',
+  '1 300 FERT (8.0N)   ## Fertlizer before planting',
+  '1 306 CROP W3EG ## Nov 1',
+  '1 306 PLTM  ## Nov 1',
+  '-999 -999 X',
+  '5       Block # second phase winter wheat',
+  '2020    Last year',
+  '1       Repeats # of years', # year starts with harvest
+  '1971    Output starting year',
+  '12      Output month',
+  '1       Output interval',
+  'C       Weather choice ## Continue',
+  '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
+  '1 214 CULT K  ## Apr 28 of ',
+  '1 214 CULT ROW  ## Aug 1',
+  '1 300 FERT (16.8N)   ## Fertilizer before planting',
+  '1 306 CROP W4EG ## Nov 1',
+  '1 306 PLTM  ## Nov 1',
   '-999 -999 X')
-
 
 # # Scenario 1 - no change, monoculture
 wheat_scenario_1<-c(
-  '2       Block ',
+  '6       Block ',
   '2050    Last year',
   '1       Repeats # of years',
   '2022    Output starting year',
   '12      Output month',
   '1       Output interval',
   'C       Weather choice ## Continue',
-  '1 118 CULT K  ## Apr 28',
-  '1 140 CULT ROW  ## May 20',
-  '1 140 CROP W4EG ## May 20',
-  '1 140 PLTM  ## May 20',
-  '1 225 HARV G90S	## Oct 23 - Harvest grains and 90% straw',
+  '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
+  '1 214 CULT K  ## Apr 28 of ',
+  '1 214 CULT ROW  ## Aug 1',
+  '1 300 FERT (16.8N)   ## Fertilizer before planting',
+  '1 306 CROP W4EG ## Nov 1',
+  '1 306 PLTM  ## Nov 1',
   '-999 -999 X'
 )
   
 
 # # Scenario 2- no-till
 wheat_scenario_2<-c(
-  '2       Block ## wheat',
+  '6       Block ## wheat',
   '2050    Last year',
   '1       Repeats # of years',
   '2022    Output starting year',
   '12      Output month',
   '1       Output interval',
   'C       Weather choice ## Continue',
-  '1 140 CULT NDRIL      ## May 20', # No-till drill
-  '1 140 CROP W4EG ## May 20',
-  '1 140 PLTM  ## May 20',
-  '1 225 HARV G90S	## Oct 23 - Harvest grains and 90% straw',
+  '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
+  '1 306 FERT (16.8N)   ## Fertilizer during planting',
+  '1 306 CULT NDRIL      ## May 20', # No-till drill
+  '1 306 CROP W4EG ## Nov 1',
+  '1 306 PLTM  ## Nov 1',
   '-999 -999 X'
 )
 
 # Scenario 3 - cover crop mix
 wheat_scenario_3<-c(
-  '2       Block ## wheat',
+  '6       Block ## wheat',
   '2050    Last year',
   '1       Repeats # of years',
   '2022    Output starting year',
   '12      Output month',
   '1       Output interval',
   'C       Weather choice ## Continue',
-  '1 140 CROP W4EG ## May 20',
-  '1 140 PLTM  ## May 20',
-  '1 225 HARV G90S	## Oct 23 - Harvest grains and 90% straw',
-  '1 305 CROP RYELG ## Nov 1, plant rye, legume, grass mix cover crop',
-  '1 305 PLTM       ## Nov 1',
+  '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
+  '1 214 CULT K  ## Aug 1 ',
+  '1 214 CULT ROW  ## Aug 1',
+  '1 224 CROP RYELG ## Aug 10, plant rye, legume, grass mix cover crop',
+  '1 224 PLTM  ## Aug 10',
+  '1 300 FERT (16.8N)   ## Fertilizer before planting',
+  '1 306 CROP W4EG ## Nov 1',
+  '1 306 PLTM  ## Nov 1',
   '-999 -999 X'
 )
 
 
 # Scenario 4 - cover crop cereal
 wheat_scenario_4<-c(
-  '2       Block ## wheat',
+  '6       Block ## wheat',
   '2050    Last year',
   '1       Repeats # of years',
   '2022    Output starting year',
   '12      Output month',
   '1       Output interval',
   'C       Weather choice ## Continue',
-  '1 140 CROP W4EG ## May 20',
-  '1 140 PLTM  ## May 20',
-  '1 225 HARV G90S	## Oct 23 - Harvest grains and 90% straw',
-  '1 305 CROP RYE ## Nov 1, plant rye cover crop',
-  '1 305 PLTM       ## Nov 1',
+  '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
+  '1 214 CULT K  ## Aug 1 ',
+  '1 214 CULT ROW  ## Aug 1',
+  '1 224 CROP RYE ## Aug 10, plant rye, legume, grass mix cover crop',
+  '1 224 PLTM  ## Aug 10',
+  '1 300 FERT (16.8N)   ## Fertilizer before planting',
+  '1 306 CROP W4EG ## Nov 1',
+  '1 306 PLTM  ## Nov 1',
   '-999 -999 X'
 )
 
 
 # Scenario 5 - cover crop legume (vetch)
 wheat_scenario_5<-c(
-  '2       Block ## wheat',
+  '6       Block ## wheat',
   '2050    Last year',
   '1       Repeats # of years',
   '2022    Output starting year',
   '12      Output month',
   '1       Output interval',
   'C       Weather choice ## Continue',
-  '1 140 CROP W4EG ## May 20',
-  '1 140 PLTM  ## May 20',
-  '1 225 HARV G90S	## Oct 23 - Harvest grains and 90% straw',
-  '1 305 CROP VETCH ## Nov 1, plant vetch cover crop',
-  '1 305 PLTM       ## Nov 1',
+  '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
+  '1 214 CULT K  ## Aug 1',
+  '1 214 CULT ROW  ## Aug 1',
+  '1 224 CROP VETCH ## Aug 10, plant rye, legume, grass mix cover crop',
+  '1 224 PLTM  ## Aug 10',
+  '1 300 FERT (16.8N)   ## Fertilizer before planting',
+  '1 306 CROP W4EG ## Nov 1',
+  '1 306 PLTM  ## Nov 1',
   '-999 -999 X'
 )
 
 # Scenario 6 - notill + cover crop
 wheat_scenario_6<-c(
-  '2       Block ## wheat',
+  '6       Block ## wheat',
   '2050    Last year',
   '1       Repeats # of years',
   '2022    Output starting year',
   '12      Output month',
   '1       Output interval',
   'C       Weather choice ## Continue',
-  '1 140 CULT NDRIL     ## May 20', # No-till drill
-  '1 140 CROP W4EG ## May 20',
-  '1 140 PLTM       ## ',
-  '1 225 HARV G90S	## Oct 23 - Harvest grains and 90% straw',
-  '1 305 CULT NDRIL      ## May 20', # No-till drill
-  '1 305 CROP RYELG ## Nov 1, plant rye, legume, grass mix cover crop',
-  '1 305 PLTM       ## Nov 1',
+  '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
+  '1 224 CULT NDRIL      ## May 20', # No-till drill
+  '1 224 CROP RYELG ## Aug 10, plant rye, legume, grass mix cover crop',
+  '1 224 PLTM  ## Aug 10',
+  '1 300 FERT (16.8N)   ## Fertilizer before planting',
+  '1 306 CULT NDRIL      ## May 20', # No-till drill
+  '1 306 CROP W4EG ## Nov 1',
+  '1 306 PLTM  ## Nov 1',
   '-999 -999 X'
 )
 

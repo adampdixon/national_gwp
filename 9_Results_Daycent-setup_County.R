@@ -16,7 +16,7 @@ library(broom)
 #test
 
 
-
+# tic()
 
 #*********************************************************************
 #soil layers to report
@@ -323,6 +323,9 @@ DayC_Mgha <- lis_output %>%   #[,c("time","somsc_gm2","year")] Just grab all for
   mutate(SOC_Mgha=round(somsc_gm2/100,1)
   )
 
+# Also get SOC from the soils processing
+# SOCgNATSGO<-data.frame(SOCgNATSGO = sps$SOC)
+
 # CO2 out
 Day_base_co2 <- read.fwf(paste0(daycent_path,paste0("co2_base_",scenario_name2,".out")),
                            widths=c(8,6,rep(14, 13)),
@@ -339,9 +342,9 @@ Day_base_co2 <- read.fwf(paste0(daycent_path,paste0("co2_base_",scenario_name2,"
 
 # CO2resp Heterotrophic CO2 respiration for the day (g C ha-1 d-1)
 # Don't think this is needed as reporting full summary table now
-# DayGN_ghaday <- Day_summary[,c("time","dayofyear","N2O_gNhad", "CO2resp")] %>% # AD adding CO2resp
-#   mutate(year=floor(time),
-#          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+DayGN_ghaday <- Day_summary[,c("time","dayofyear","N2O_gNhad")] %>% # AD adding CO2resp
+  mutate(year=floor(time),
+         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
 
 # ############# ANNUAL ############## AD don't think needed now
 # # N20 Emissions and added CO2 resp - annually
@@ -456,7 +459,7 @@ colnames(output_annual_data) <- c("year", paste0(crop_names, "Yld_Mgha"),"SOC_Mg
 # probably most important columns are the extra carbon pools
 output_annual_data<-left_join(output_annual_data, select(DayC_Mgha, -SOC_Mgha, -time), by = 'year')
 
-DayGN_ann_gha
+# DayGN_ann_gha
 
 
 write.table(output_annual_data,file=file.path(results_path, paste0("Annual_results_compilation_",
@@ -547,6 +550,8 @@ if(file.exists(file.path(results_path, paste0("Daily_results_compilation_",
   cat("************************************\n")
 }
 
+# run_time <- round(toc(echo=T)/60,1)
+# print(paste0("Results run time is ",run_time," minutes"))
 
 ######################## ############ ########################
 

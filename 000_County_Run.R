@@ -80,7 +80,7 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(31181)) #13023, 13213, 20073, 31181, 42053, 1075
+    filter(GEOID %in% c(13213)) #13023, 13213, 20073, 31181, 42053, 1075
 }
 
 # county_data<-county_data[county_data$GEOID==county_number,]
@@ -151,6 +151,7 @@ cat("************************************\n")
 toc()
 run_time <- round(toc(echo=T)/60,1)
 print(paste0("Run time is ",run_time," minutes"))
+
 
 
 

@@ -182,9 +182,9 @@ source(paste0("4_Create_additional_files-LDNDC_County.R"), local = TRUE)
 if(identical(run_Daycent,TRUE)) {
   for (c in crops_){
     for (m in mgmt_scenario_nums){
-      if (c == "Rotation" & m > 1){  # Rotation only has 1 scenario, so skip to next
-        next
-      }else{
+      # if (c == "Rotation" & m > 1){  # Rotation only has 1 scenario, so skip to next
+      #   next
+      # }else{
         crop<-c
         mgmt_scenario_num<-m
         scenario_name <- paste0(clim_scenario_num,"_", m)
@@ -215,7 +215,7 @@ if(identical(run_Daycent,TRUE)) {
         }
         
 
-      } # end of if statement
+      # } # end of if statement
 
     }
     }

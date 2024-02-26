@@ -5,10 +5,10 @@ X     Fixed_values   Aug 2015 Inventory 2014 format satdec with optional paramet
 20.000        'ADEP(4)'   # 60
 20.000        'ADEP(5)'   # 80
 20.000        'ADEP(6)'   # 100
-100.000       'ADEP(7)'   # 200
-50.000        'ADEP(8)'   # 
-20.000        'ADEP(9)'   # 
-40.000        'ADEP(10)'  # 
+100.000        'ADEP(7)'   # 120
+20.000        'ADEP(8)'   # 140
+20.000        'ADEP(9)'   # 160
+40.000        'ADEP(10)'  # 200
 -40.00        'AGPPA'
 7.7000        'AGPPB'
 1.5000        'ANEREF(1)'
