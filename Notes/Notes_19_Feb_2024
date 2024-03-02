@@ -64,3 +64,13 @@ First - ignore the counties that aren't growing at all. See how that drops out t
 
 (if that doens't work, then perhaps use )
 
+
+
+# used to get the county centroids elevation crops data together
+df<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation.csv'))
+
+crops<-read.csv(file.path(master_path, 'Data', 'County_start', 'main_county_crops v2.csv'))
+
+df_crops<-as_tibble(left_join(df, crops, by = c("GEOID" = "GEOID")))
+
+write.csv(df_crops, file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))

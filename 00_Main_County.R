@@ -91,7 +91,7 @@ print("Copying over KBS 'Daycent model' files --")
 copy_from_ <-file.path(master_path, 'Daycent', 'KBS_4copy2')
 copy_to_ <-daycent_path2
 
-if(length(list.files(copy_to_))>1800) {
+if(length(list.files(copy_to_))>11) { # There are 12 daycent files to copy over, so this is a good threshold
   print("Site daycent folder already exists. Skipping copy.")
 } else {
   

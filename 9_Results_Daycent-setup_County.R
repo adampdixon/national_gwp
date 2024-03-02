@@ -1,8 +1,6 @@
-# title: "9_Results_Daycent-setup3.R"
-# author: "Ellen Maas"
-# date: "8/8/2022"
-# output: html_document
-#test
+# title: "9_Results_Daycent-setup_County.R"
+# author: Ellen Maas, adapted by Adam Dixon
+# date: 2024-03
 
 print(paste0("Starting 9_Results_Daycent-setup_County.R"))
 
@@ -14,7 +12,6 @@ library(graphics)
 library(ggplot2)
 library(broom)
 #test
-
 
 # tic()
 
@@ -32,8 +29,8 @@ nlayers <- 12 # beyond the surface layer, so 13 layers total, calcs below will s
 
 ### harvest - annual
 
-Day_base_harvest <- read_csv(file.path(daycent_path2,paste0("harvest_base_",scenario_name2,".csv")),
-                             col_names = TRUE, show_col_types = F)
+Day_base_harvest <- fread(file.path(daycent_path2,paste0("harvest_base_",scenario_name2,".csv")))
+                             # col_names = TRUE, show_col_types = F)
 # Day_exp_harvest <- read_csv(paste0(daycent_path,paste0("harvest_exp_",scenario_name,".csv")),
 #                             col_names = TRUE, show_col_types = F)
 # Day_fut_harvest <- read_csv(paste0(daycent_path,paste0("harvest_fut_",scenario_name,".csv")),
@@ -68,8 +65,11 @@ DayY_Mgha_pivwid <- pivot_wider(DayY_Mgha,names_from="crop",values_from="yield")
 ## soil temperature - daily
 
 # soil average temperature
-Day_base_soiltavg <- read.fwf(file.path(daycent_path2,paste0("soiltavg_base_",scenario_name2,".out")),
-                                widths=c(12, 5, rep(8, nlayers+1)), # date, day of year, 13 layers
+fread(file.path(daycent_path2,paste0("soiltavg_base_",scenario_name2,".out")))
+
+
+Day_base_soiltavg <- fread(file.path(daycent_path2,paste0("soiltavg_base_",scenario_name2,".out")),
+                                # widths=c(12, 5, rep(8, nlayers+1)), # date, day of year, 13 layers
                                 col.names=c("time","dayofyear", paste0('soil_tavg_layer', 0:nlayers)),
                                 colClasses=rep('numeric', nlayers+2+1)) %>% # first two date columns + 2, then nlayers +1 = 13 soil layers
     mutate(year=floor(time),
@@ -77,8 +77,8 @@ Day_base_soiltavg <- read.fwf(file.path(daycent_path2,paste0("soiltavg_base_",sc
 
 ################################################################################
 ## soil moisture - voulumetric soil water content
-Day_base_vswc <- read.fwf(file.path(daycent_path2,paste0("vswc_base_",scenario_name2,".out")),
-                  widths=c(10,7, rep(10, nlayers+1)), # date, day of year, 13 layers
+Day_base_vswc <- fread(file.path(daycent_path2,paste0("vswc_base_",scenario_name2,".out")),
+                  # widths=c(10,7, rep(10, nlayers+1)), # date, day of year, 13 layers
                   col.names=c("time","dayofyear", paste0('vswc_pct_layer', 0:nlayers)),  # NOTE! will calculated percent in next step. Adding column name here for ease
                   colClasses=rep('numeric', nlayers+2+1))# first two date columns +2, then nlayers +1 = 13 soil layers
 
@@ -159,9 +159,9 @@ DayM_V_all <- DayM_V_all_raw[DayM_V_all_raw$year <= end_fut_period_year,] # this
 ################################################################################
 
 
-Day_methane <- read.fwf(file.path(daycent_path2,paste0("methane_base_",scenario_name2,".out")),
-                                  widths=c(4,6,12,12,12,12,12,12,12,12,12,12,12,12,12,
-                                           12,12,12,12,12,12),
+Day_methane <- fread(file.path(daycent_path2,paste0("methane_base_",scenario_name2,".out")),
+                                  # widths=c(4,6,12,12,12,12,12,12,12,12,12,12,12,12,12,
+                                  #          12,12,12,12,12,12),
                                   col.names=c("year","dayofyear","aglivc","bglivcj","bglivcm",
                                               "prev_mcprd1","prev_mcprd2","prev_mcprd3",
                                               "COM","ppt","irri","watr2sat","avgst_10cm",
@@ -175,8 +175,8 @@ Day_methane <- Day_methane[Day_methane$year <= end_fut_period_year,]
 ################################################################################
 
 # The summary output file
-Day_base_summary <- read.fwf(file.path(daycent_path2,paste0("summary_base_", scenario_name2, ".out")),
-                             widths=c(10,5,9,9,9,13,13,13,13,13),
+Day_base_summary <- fread(file.path(daycent_path2,paste0("summary_base_", scenario_name2, ".out")),
+                             # widths=c(10,5,9,9,9,13,13,13,13,13),
                              col.names=c("time","dayofyear","tmax","tmin","ppt",
                                          "N2O_gNhad","NOflux","CH4_oxid_gChad","NIT","CO2resp"), # TODO Check with Debjani on this. CH4_gChad to CH4_oxid_gChad, N20flux to N20_gNhad
                              skip=1)
@@ -250,8 +250,8 @@ Day_summary <- Day_summary_raw
 
 ## NO3
   
-Day_base_soiln <- read.fwf(paste0(daycent_path,paste0("soiln_base_",scenario_name2,".out")),
-                             widths=c(8,6,14,14,14,14,14,14,14,14,14,14,14,14,14,14),
+Day_base_soiln <- fread(paste0(daycent_path,paste0("soiln_base_",scenario_name2,".out")),
+                             # widths=c(8,6,14,14,14,14,14,14,14,14,14,14,14,14,14,14),
                              col.names=c("time","dayofyear","ammonium","NO3_ppm0","NO3_ppm1",
                                          "NO3_ppm2","NO3_ppm3","NO3_ppm4","NO3_ppm5","NO3_ppm6",
                                          "NO3_ppm7","NO3_ppm8","NO3_ppm9","NO3_ppm10",
@@ -286,8 +286,8 @@ Day_soiln_all <- Day_base_soiln[Day_base_soiln$year <= end_fut_period_year,]
 
 # water-filled pore space
 
-Day_base_wfps <- read.fwf(file.path(daycent_path2,paste0("wfps_base_",scenario_name2,".out")),
-                          widths=c(8,5, rep(9, 13)), # 13 soil layers
+Day_base_wfps <- fread(file.path(daycent_path2,paste0("wfps_base_",scenario_name2,".out")),
+                          # widths=c(8,5, rep(9, 13)), # 13 soil layers
                           col.names=c("time","dayofyear", paste0("wfps_layer", 0:nlayers))) %>%
   mutate(year=floor(time),
          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
@@ -299,7 +299,7 @@ Day_base_wfps <- read.fwf(file.path(daycent_path2,paste0("wfps_base_",scenario_n
 # Soil Organic Carbon
 ### future .lis contains all data from year 1 in equilibrium through end of future simulation
 # lis_output_raw <- read.table(file.path(daycent_path2,paste0("sched_fut_",scenario_name,".lis")),
-lis_output <- read.table(paste0(daycent_path,paste0("sched_base_",scenario_name2,".lis")),
+lis_output <- fread(paste0(daycent_path,paste0("sched_base_",scenario_name2,".lis")),
                                                   col.names = c("time","somsc_gm2","somtc","somte(1)",
                                        "crpval","cinput","somse(1)","petann",
                                        "tminrl(1)","minerl(1,1)","minerl(2,1)",
@@ -327,8 +327,8 @@ DayC_Mgha <- lis_output %>%   #[,c("time","somsc_gm2","year")] Just grab all for
 # SOCgNATSGO<-data.frame(SOCgNATSGO = sps$SOC)
 
 # CO2 out
-Day_base_co2 <- read.fwf(paste0(daycent_path,paste0("co2_base_",scenario_name2,".out")),
-                           widths=c(8,6,rep(14, 13)),
+Day_base_co2 <- fread(paste0(daycent_path,paste0("co2_base_",scenario_name2,".out")),
+                           # widths=c(8,6,rep(14, 13)),
                            col.names=c("time","dayofyear", paste0("CO2_ppm", 0:nlayers)), 
                            skip=1)%>%
   mutate(year=floor(time),
@@ -461,8 +461,8 @@ output_annual_data<-left_join(output_annual_data, select(DayC_Mgha, -SOC_Mgha, -
 
 # DayGN_ann_gha
 
-
-write.table(output_annual_data,file=file.path(results_path, paste0("Annual_results_compilation_",
+# write out the annual results
+fwrite(output_annual_data,file=file.path(results_path, paste0("Annual_results_compilation_",
                                            scenario_name2,"_Daycent.csv")),
             col.names=T,row.names=F,sep=",",append=F)
 
@@ -539,7 +539,7 @@ output_daily<-
 
 # head(output_daily_data)
 
-write.table(output_daily,file=file.path(results_path, paste0("Daily_results_compilation_",
+fwrite(output_daily,file=file.path(results_path, paste0("Daily_results_compilation_",
                                                                    scenario_name2,"_Daycent.csv")),
             col.names=T,row.names=F,sep=",",append=F)
 

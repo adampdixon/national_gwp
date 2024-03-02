@@ -1,5 +1,7 @@
 
 # Cotton schedule vectors
+# https://extension.okstate.edu/fact-sheets/cotton-yield-goal-nitrogen-rate-recommendation.html
+# using N fert rates same as LRF
 
 
 cotton_1 <- c(
@@ -43,6 +45,7 @@ cotton_1 <- c(
   '1       Output interval',
   'C       Weather choice ## Continue',
   '1 118 CULT K  ## Apr 28',
+  '1 120 FERT (2.8N)  ## May 20',
   '1 140 CULT ROW  ## May 20',
   '1 140 CROP COT ## May 20',
   '1 140 PLTM  ## May 20',
@@ -59,6 +62,7 @@ cotton_scenario_1<-c(
   '1       Output interval',
   'C       Weather choice ## Continue',
   '1 118 CULT K  ## Apr 28',
+  '1 120 FERT (2.8N)  ## May 20',
   '1 140 CULT ROW  ## May 20',
   '1 140 CROP COT ## May 20',
   '1 140 PLTM  ## May 20',
@@ -75,6 +79,7 @@ cotton_scenario_2<-c(
   '12      Output month',
   '1       Output interval',
   'C       Weather choice ## Continue',
+  '1 120 FERT (2.8N)  ## May 20',
   '1 140 CULT NDRIL      ## May 4', # No-till drill
   '1 140 CROP COT ## May 20',
   '1 140 PLTM  ## May 20',
@@ -92,6 +97,7 @@ cotton_scenario_3<-c(
   '1       Output interval',
   'C       Weather choice ## Continue',
   '1 118 CULT K  ## Apr 28',
+  '1 120 FERT (2.8N)  ## May 20',
   '1 140 CULT ROW  ## May 20',
   '1 140 CROP COT ## May 20',
   '1 140 PLTM  ## May 20',
@@ -112,6 +118,7 @@ cotton_scenario_4<-c(
   '1       Output interval',
   'C       Weather choice ## Continue',
   '1 118 CULT K  ## Apr 28',
+  '1 120 FERT (2.8N)  ## May 20',
   '1 140 CULT ROW  ## May 20',
   '1 140 CROP COT ## May 20',
   '1 140 PLTM  ## May 20',
@@ -132,6 +139,7 @@ cotton_scenario_5<-c(
   '1       Output interval',
   'C       Weather choice ## Continue',
   '1 118 CULT K  ## Apr 28',
+  '1 120 FERT (2.8N)  ## May 20',
   '1 140 CULT ROW  ## May 20',
   '1 140 CROP COT ## May 20',
   '1 140 PLTM  ## May 20',
@@ -150,6 +158,7 @@ cotton_scenario_6<-c(
   '12      Output month',
   '1       Output interval',
   'C       Weather choice ## Continue',
+  '1 120 FERT (2.8N)  ## May 20',
   '1 140 CULT NDRIL      ## May 4', # No-till drill
   '1 140 CROP COT ## May 20',
   '1 140 PLTM       ## ',

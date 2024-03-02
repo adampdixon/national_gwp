@@ -6,7 +6,7 @@
 ###########################
 
 library(tictoc) # for timing
-library(data.table) # for fwrite
+library(data.table) # for fwrite fread
 library(dplyr)
 
 args <- commandArgs(trailingOnly = TRUE)
@@ -76,11 +76,11 @@ sink(stderr(), type = "message")
 sink(stdout(), type = "message")
 
 # master_path <- home_folder
-county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation.csv'))
+county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))
 
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(13213)) #13023, 13213, 20073, 31181, 42053, 1075
+    filter(GEOID %in% c(42053)) #13023, 13213, 20073, 31181, 42053, 1075
 }
 
 # county_data<-county_data[county_data$GEOID==county_number,]

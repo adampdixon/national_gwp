@@ -2,6 +2,8 @@
 # Wheat schedule vectors
 # https://www.holyokeenterprise.com/opinion/early-history-winter-wheat-central-plains
 # https://www.uswheat.org/wheatletter/u-s-wheat-seeding-involves-careful-planning-and-varietal-selection/
+# Winter wheat is planted in fall and harvested in early summer so needs a 2 year calendar. We assume that winter wheat did not become wides
+# spread until 1901.
 
 wheat_1 <- c(
   '1850          Starting year ## start with assumed ground-breaking for agriculture until intensification',
@@ -57,28 +59,28 @@ wheat_1 <- c(
   '1       Output interval',
   'C       Weather choice ## Continue',
   '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
-  '1 214 CULT K  ## Apr 28 of ',
+  '1 214 CULT K  ## Aug 1 ', # disc fields
   '1 214 CULT ROW  ## Aug 1',
   '1 300 FERT (2.0N)   ## Fertlizer before planting',
-  '1 306 CROP W2 ## Nov 1',
+  '1 306 CROP W2 ## Nov 1', # plant
   '1 306 PLTM  ## Nov 1',
   '-999 -999 X',
   '4       Block # second phase winter wheat',
   '1970    Last year',
   '1       Repeats # of years', # year starts with harvest
-  '1942    Output starting year',
+  '1943    Output starting year',
   '12      Output month',
   '1       Output interval',
   'C       Weather choice ## Continue',
   '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
   '1 214 CULT K  ## Apr 28 of ',
   '1 214 CULT ROW  ## Aug 1',
-  '1 300 FERT (8.0N)   ## Fertlizer before planting',
-  '1 306 CROP W3EG ## Nov 1',
+  '1 300 FERT (8.0N)   ## Fertlizer before planting', # increase fertilizer amount
+  '1 306 CROP W3EG ## Nov 1', # wheat is higher yielding
   '1 306 PLTM  ## Nov 1',
   '-999 -999 X',
   '5       Block # second phase winter wheat',
-  '2020    Last year',
+  '2021    Last year',
   '1       Repeats # of years', # year starts with harvest
   '1971    Output starting year',
   '12      Output month',
@@ -87,7 +89,7 @@ wheat_1 <- c(
   '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
   '1 214 CULT K  ## Apr 28 of ',
   '1 214 CULT ROW  ## Aug 1',
-  '1 300 FERT (16.8N)   ## Fertilizer before planting',
+  '1 300 FERT (16.8N)   ## Fertilizer before planting', # increase fertilizer amount
   '1 306 CROP W4EG ## Nov 1',
   '1 306 PLTM  ## Nov 1',
   '-999 -999 X')

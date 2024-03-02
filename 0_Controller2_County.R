@@ -181,10 +181,14 @@ source(paste0("4_Create_additional_files-LDNDC_County.R"), local = TRUE)
 # Daycent
 if(identical(run_Daycent,TRUE)) {
   for (c in crops_){
-    for (m in mgmt_scenario_nums){
-      # if (c == "Rotation" & m > 1){  # Rotation only has 1 scenario, so skip to next
-      #   next
-      # }else{
+    crop_amount<-county_data[,eval(paste0(c, "_ha"))] # get crop amount in county
+    if (crop_amount<1){
+      next # if crop amount is less than 1 ha in county, then skip
+    } else {
+      for (m in mgmt_scenario_nums){
+        # if (c == "Rotation" & m > 1){  # Rotation only has 1 scenario, so skip to next
+        #   next
+        # }else{
         crop<-c
         mgmt_scenario_num<-m
         scenario_name <- paste0(clim_scenario_num,"_", m)
@@ -204,7 +208,7 @@ if(identical(run_Daycent,TRUE)) {
           crop_schedule<-c(get(paste0(tolower(crop), '_1')), # opening set of schedule file blocks
                            get(paste0(tolower(crop), '_scenario_', m)), # scenario-specific schedule file blocks
                            
-          output_sch<-file.path(daycent_path2 , paste0("sched_base_", scenario_name, "_", crop, ".sch")))
+                           output_sch<-file.path(daycent_path2 , paste0("sched_base_", scenario_name, "_", crop, ".sch")))
           
           # write to sch file
           writeLines(crop_schedule, output_sch) # schedule file name, e.g. schedule_file_maize
@@ -213,11 +217,9 @@ if(identical(run_Daycent,TRUE)) {
           source(paste0("Daycent/Daycent_run_controller.R"), local = TRUE)
           source(paste0("9_Results_Daycent-setup_County.R"), local=TRUE) #TODO AD set this up?
         }
-        
+      } 
 
-      # } # end of if statement
-
-    }
+    } # end of else statement
     }
   }
 
