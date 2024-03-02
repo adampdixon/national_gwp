@@ -184,6 +184,8 @@ if(identical(run_Daycent,TRUE)) {
     crop_amount<-county_data[,eval(paste0(c, "_ha"))] # get crop amount in county
     if (crop_amount<1){
       print(paste0("*************** skipping because less than 1 ha of ", c, " in county **********************************"))
+      fileConn<-file(file.path(results_path, paste0("note - there is no ", c, " in county.txt")))
+      close(fileConn)
       next # if crop amount is less than 1 ha in county, then skip
     } else {
       for (m in mgmt_scenario_nums){
