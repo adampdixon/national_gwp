@@ -178,14 +178,15 @@ source(paste0("4_Create_additional_files-LDNDC_County.R"), local = TRUE)
 
 # Note: Soybeans have no yield results prior to 1900 becuase they weren't grown in US and the model is set up for corn during that time
 
+
 # Daycent
 if(identical(run_Daycent,TRUE)) {
   for (c in crops_){
     crop_amount<-county_data[,eval(paste0(c, "_ha"))] # get crop amount in county
     if (crop_amount<1){
       print(paste0("*************** skipping because less than 1 ha of ", c, " in county **********************************"))
-      fileConn<-file(file.path(results_path, paste0("note - there is no ", c, " in county.txt")))
-      close(fileConn)
+      file.create(file.path(results_path, paste0("note - there is no ", c, " in county ", county_geoid,".txt")))
+      
       next # if crop amount is less than 1 ha in county, then skip
     } else {
       for (m in mgmt_scenario_nums){
