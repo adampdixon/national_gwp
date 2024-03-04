@@ -26,6 +26,9 @@ r2<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, patt
 r1<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, pattern='Nebraska', full.names=T)
 
 for (i in 1:length(r2)){
-  print(paste0('Copying ', gsub("/", "_", r2[i])))
-  copyDirectory(r1[i], paste0('/glade/derecho/scratch/apdixon/national_gwp_results_send/',gsub("/", "_", r2[i])), skip=TRUE) 
+  files<-list.files(r1[i], full.names=T, recursive=T, pattern='Annual_results', full.names=F)
+  for (f in files){
+    print(paste0('Copying ', f))
+    copyFile(f, file.path('/glade/derecho/scratch/apdixon/national_gwp_results_send', dirname(f), basename(f)), skip=TRUE) 
+  }
 }
