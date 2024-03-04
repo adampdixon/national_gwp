@@ -29,6 +29,6 @@ for (i in 1:length(r2)){
   files<-list.files(r1[i], full.names=T, recursive=T, pattern='Annual_results')
   for (f in files){
     print(paste0('Copying ', f))
-    copyFile(f, file.path(dirname(f), basename(f)), skip=TRUE) 
+    copyFile(f, file.path('/glade/derecho/scratch/apdixon/national_gwp_results', dirname(basename(f))), skip=TRUE) 
   }
 }
