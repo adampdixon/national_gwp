@@ -21,9 +21,9 @@ library(R.utils)
 
 
 # Dir name
-r2<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, pattern='Kansas', full.names=F)
+r2<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, pattern='Nebraska', full.names=F)
 # Dir name and full path
-r1<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, pattern='Kansas', full.names=T)
+r1<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, pattern='Nebraska', full.names=T)
 
 for (i in 1:length(r2)){
   print(paste0('Copying ', gsub("/", "_", r2[i])))
