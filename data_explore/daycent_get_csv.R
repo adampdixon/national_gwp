@@ -150,16 +150,16 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
 res<-data.frame()
 
 for (i in c("Maize", "Soybean", "Wheat", "Cotton", "Rotation")){
-  if(i=="Rotation" & scenario_arg>1){ # skip rotation scenarios 2-6
-    next
-  } else {
+  # if(i=="Rotation" & scenario_arg>1){ # skip rotation scenarios 2-6
+  #   next
+  # } else {
     print(i)
     print(scenario_arg)
     results<-daycent_results(Year=year_, Crop = i, scenario = scenario_arg, Results_path=results_path, Crop_area_path=crop_area_path)
     # print(results)
     print("***********")
     res<-rbind(res, results)
-  }
+  # }
 }
 
 write.csv(res, file=file.path(output_figs, 
