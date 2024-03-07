@@ -22,7 +22,7 @@ r1<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, patt
 # 
 for (i in 1:length(r2)){
   files<-list.files(r1[i], full.names=T, recursive=T, pattern='Annual_results')
-  dir.create(r1[i])
+  dir.create(file.path('/glade/derecho/scratch/apdixon/national_gwp_results_send', basename(dirname(files[1])))) # create the folder for next step
   print('creating dir')
   for (f in files){
     print(paste0('Copying ', f))
