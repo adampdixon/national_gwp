@@ -16,9 +16,9 @@ library(R.utils)
 
 # 
 # Dir name
-r2<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, pattern='Nebraska', full.names=F)
+r2<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, pattern = 'Nebr', full.names=F)
 # Dir name and full path
-r1<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, pattern='Nebraksa', full.names=T)
+r1<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, pattern = 'Nebr', full.names=T)
 # 
 
 county_n<-0
