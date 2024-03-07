@@ -38,6 +38,7 @@ task () {
 # Define the number of parallel processes
 NUM_PARALLEL=6
 
+# 6 for the number of scenarios
 # Read the input arguments from a file and run the command in parallel
 for i in $(seq 1 6); do
 echo "Starting task $i"
