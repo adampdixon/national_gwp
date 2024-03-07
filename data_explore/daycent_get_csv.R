@@ -87,7 +87,7 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
     crop_area_var<-paste0(Crop,'_ha')
   }
   
-  crop_area_df<-read.csv(crop_area_path)%>%
+  crop_area_df<-read.csv(crop_area_path)%>% # whole CONUS
     select(GEOID, eval(crop_area_var))%>%
     as_tibble()
   
@@ -105,7 +105,7 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
     geoid<-as.integer(strsplit(basename(dirname(csv_list[i])), "_")[[1]][3])
     
     
-    r_county<-read.csv(csv_list[i])
+    r_county<-as_tibble(select(read.csv(csv_list[i]), 1:12)) # just get first bunch of columns
     if (!is.null(Year)){
       r_county<-filter(r_county, year==Year)
     }
@@ -131,6 +131,7 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
   }
   
   df2<-left_join(df, crop_area_df, by=c("GEOID"="GEOID"))%>% # add crop area
+
     mutate(Cty_Crp_Yld_Mg=get(crop_var)*get(crop_area_var))%>% # calculate crop area in county multiplied by yield per ha
     mutate(Cty_SOC_Mg=SOC_Mgha*get(crop_area_var))%>% # calculate SOC in crop area in county 
     mutate(crop_yld_Mgha=get(crop_var), crop = Crop, 
@@ -155,6 +156,7 @@ for (i in c("Maize", "Soybean", "Wheat", "Cotton", "Rotation")){
   # } else {
     print(i)
     print(scenario_arg)
+    # Year=year_; Crop = i; scenario = scenario_arg; Results_path=results_path; Crop_area_path=crop_area_path
     results<-daycent_results(Year=year_, Crop = i, scenario = scenario_arg, Results_path=results_path, Crop_area_path=crop_area_path)
     # print(results)
     print("***********")
