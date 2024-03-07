@@ -16,14 +16,17 @@ library(R.utils)
 
 # 
 # Dir name
-r2<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, pattern='Kansas', full.names=F)
+r2<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, pattern='Nebraska', full.names=F)
 # Dir name and full path
-r1<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, pattern='Kansas', full.names=T)
+r1<-dir('/glade/derecho/scratch/apdixon/national_gwp_results', recursive=F, pattern='Nebraksa', full.names=T)
 # 
+
+county_n<-0
 for (i in 1:length(r2)){
   files<-list.files(r1[i], full.names=T, recursive=T, pattern='Annual_results')
   dir.create(file.path('/glade/derecho/scratch/apdixon/national_gwp_results_send', basename(dirname(files[1])))) # create the folder for next step
-  print('creating dir')
+  county_n<-county_n+1
+  print(paste0('creating dir ', county_n))
   for (f in files){
     print(paste0('Copying ', f))
     copyFile(f, file.path('/glade/derecho/scratch/apdixon/national_gwp_results_send', basename(dirname(f)), basename(f)), skip=TRUE)
