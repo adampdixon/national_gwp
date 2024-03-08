@@ -298,10 +298,10 @@ national_map_all_scenarios<-function(Year_, Crop_, Output){
 # } # end of function
 
 
-# Year_ = 2050; Crop_ = 'Maize'; Output = output_figs
+# Year_ = 2050; Crop_ = 'Rotation'; Output = output_figs
 
 
-for (i in c('Soybean', 'Wheat', 'Cotton', 'Maize')){
+for (i in c('Soybean', 'Wheat', 'Cotton', 'Maize', 'Rotation')){
   print(i)
   national_map_all_scenarios(Year_ = 2050, Crop_ = i, Output = output_figs)
 }

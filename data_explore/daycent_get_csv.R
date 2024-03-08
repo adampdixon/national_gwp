@@ -123,7 +123,7 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
   if(identical(Crop, "Rotation")){
     if(is.na(df$MaizeYld_Mgha)[1]){ # if year is selected in rotation that crop is not grown, result will be NA
       crop_var<-'SoybeanYld_Mgha'
-      Crop<-"Rotation_Soybean"
+      Crop<-"Rotation"
     } else
       crop_var<-'MaizeYld_Mgha'
   } else{
