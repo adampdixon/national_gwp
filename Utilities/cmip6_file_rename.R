@@ -6,7 +6,7 @@ if (Sys.info()['sysname'] == "Linux"){
     geo_link_dir<-'/home/ap/Documents/GitHub/national_gwp/Data/County_start'
     output_dir<-'/home/ap/Scratch'
     
-    county_number = 1
+    # county_number = 1
     
     cmip6_dir<-'/home/ap/Documents/GitHub/national_gwp/cmip6_climate'
     print("************************************")
@@ -18,7 +18,7 @@ if (Sys.info()['sysname'] == "Linux"){
     
     cmip6_dir<-'/glade/work/apdixon/Output_climate' # say output climate, but it's Zhuonan's output folder when he was processing
     
-    county_number = args[1]
+    # county_number = args[1]
     
     print("************************************")
     print("*****Using NCAR *********")

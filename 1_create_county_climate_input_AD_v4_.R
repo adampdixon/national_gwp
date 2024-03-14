@@ -111,7 +111,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
         GEOID2<-GEOID_$REAL_GEOID
         
         #read multiple csvs into data.frame
-        data_df<-fread(year)%>%as_tibble()%>%filter(GEOID==GEOID2)
+        data_df<-fread(year)%>%filter(GEOID==GEOID2)
         # add the variable name to column, table will be long format
         
         data_df$variable<-var2

@@ -28,7 +28,7 @@ echo "Running get climate cmip6 data in bash parallel"
 
 # Define the task to be executed in parallel
 task () {
-  ml load ncarenv-basic/23.09 gcc gdal geos proj udunits conda
+  ml load ncarenv-basic/23.09 gcc conda
   conda activate r-4.3
   Rscript /glade/derecho/scratch/apdixon/national_gwp/1_create_county_climate_input_AD_v4_.R --args $1
   sleep 0.5
@@ -39,7 +39,7 @@ task () {
 NUM_PARALLEL=10
 
 # Read the input arguments from a file and run the command in parallel
-for i in $(seq 1 3108); do
+for i in $(seq 1 10); do
   echo "Starting task $i"
   task $i &
   if (( $i % $NUM_PARALLEL == 0 )); then
