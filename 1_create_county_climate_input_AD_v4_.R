@@ -89,9 +89,9 @@ if(is.na(GEOID)){ # stop if GEOID is NA
     #####################################
     # check if output file exists, if so, skip
     
-    climate_code<-'_ssp126_gfdl-esm4'
-    output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6.csv'))
-    # output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6', climate_code, '.csv'))
+    climate_code<-'_ssp585'
+    # output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6.csv'))
+    output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6', climate_code, '.csv'))
     #####################################
     if(file.exists(output_filename2)){
       next
@@ -100,7 +100,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
 
       #empty df to rbind
       future_climate_df<-data.frame()
-      # read csvs #get only ssp126 scenario
+      # read csvs #get correct scenario
       data_raw<-list.files(cmip6_dir, pattern = paste0(var, climate_code), full.names = T) #get correct variable
       # data<-data_raw[grep('gfdl-esm4', data_raw)] # get gfdl-esm4 #not needed
       # data<-data_raw[grep('.csv', data)] # get only csvs  #not needed
