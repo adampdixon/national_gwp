@@ -55,7 +55,7 @@ if (Sys.info()['sysname'] == "Linux"){
 
 
 # add geolink table to make GEOIDS align with census GEOID
-geo_link<-read.csv(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
+geo_link<-fread(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
   select(zh_geoid, REAL_GEOID)%>%
   as_tibble()
 
