@@ -77,7 +77,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
    # GET FUTURE DATA
   for (var in c('pr','tasmax','tasmin')){
     # use if statements to convert cmip6 naming convention to nclims so they align later
-    if(var=='pr'){ # change var names to align with nclim/daycent processing
+    if(var=='pr'){ # change var names to align with nclim/daycent
       var2='prcp'
     }
     if(var=='tasmax'){
@@ -88,13 +88,16 @@ if(is.na(GEOID)){ # stop if GEOID is NA
     }
     #####################################
     # check if output file exists, if so, skip
-    output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6_ssp585.csv'))
+    
+    climate_code<-'_ssp126_gfdl-esm4'
+    output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6.csv'))
+    # output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6', climate_code, '.csv'))
     #####################################
     if(file.exists(output_filename2)){
       next
       
     } else {
-      climate_code<-'_ssp126_gfdl-esm4'
+
       #empty df to rbind
       future_climate_df<-data.frame()
       # read csvs #get only ssp126 scenario
