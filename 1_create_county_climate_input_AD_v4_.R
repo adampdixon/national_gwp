@@ -88,7 +88,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
     }
     #####################################
     # check if output file exists, if so, skip
-    output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6.csv'))
+    output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6_ssp585.csv'))
     #####################################
     if(file.exists(output_filename2)){
       next
