@@ -33,7 +33,7 @@ if (Sys.info()['sysname'] == "Linux"){
 
     cmip6_dir<-'/glade/work/apdixon/Output_climate' # say output climate, but it's Zhuonan's output folder when he was processing
     
-    county_number = args[1]
+    county_number = args[2]
     
     print("************************************")
     print("*****Using NCAR *********")
