@@ -20,6 +20,8 @@ if (Sys.info()['sysname'] == "Linux"){
   if(Sys.info()['user']=='ap') {
     geo_link_dir<-'/home/ap/Documents/GitHub/national_gwp/Data/County_start'
     output_dir<-'/home/ap/Scratch'
+    
+    county_number = 1
 
     cmip6_dir<-'/home/ap/Documents/GitHub/national_gwp/cmip6_climate'
     print("************************************")
@@ -29,7 +31,9 @@ if (Sys.info()['sysname'] == "Linux"){
     geo_link_dir<-'/glade/u/home/apdixon/Documents/national_gwp/Data/County_start'
     output_dir<-'/glade/work/apdixon/climate'
 
-    cmip6_dir<-'/glade/work/apdixon/Output_climate'
+    cmip6_dir<-'/glade/work/apdixon/Output_climate' # say output climate, but it's Zhuonan's output folder when he was processing
+    
+    county_number = args[1]
     
     print("************************************")
     print("*****Using NCAR *********")
@@ -38,6 +42,17 @@ if (Sys.info()['sysname'] == "Linux"){
 }
 
 
+# From: https://wcrp-cmip.org/cmip-model-and-experiment-documentation/#models
+# <<<<ssp585>>>>
+# Future scenario with high radiative forcing by the end of century. 
+# Following approximately RCP8.5 global forcing pathway but with new forcing based on 
+# SSP5. Concentration-driven. As a tier 2 option, this simulation should be extended to year 2300
+
+# <<<<ssp126>>>>
+# Future scenario with low radiative forcing by the end of century. Following approximately 
+# RCP2.6 global forcing pathway but with new forcing based on SSP1. Concentration-driven. 
+# As a tier 2 option, this simulation should be extended to year 2300
+
 
 # add geolink table to make GEOIDS align with census GEOID
 geo_link<-read.csv(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
@@ -45,7 +60,7 @@ geo_link<-read.csv(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
   as_tibble()
 
 
-county_number = 1#args[1]
+
 
 
 # Open a connection to stderr
@@ -62,7 +77,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
    # GET FUTURE DATA
   for (var in c('pr','tasmax','tasmin')){
     # use if statements to convert cmip6 naming convention to nclims so they align later
-    if(var=='pr'){ # change var names to align with nclim
+    if(var=='pr'){ # change var names to align with nclim/daycent processing
       var2='prcp'
     }
     if(var=='tasmax'){
@@ -79,7 +94,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
       next
       
     } else {
-      climate_code<-'_ssp126_gfdl-esm4'
+      climate_code<-'_ssp585_gfdl-esm4'
       #empty df to rbind
       future_climate_df<-data.frame()
       # read csvs #get only ssp126 scenario
