@@ -94,7 +94,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
       next
       
     } else {
-      climate_code<-'_ssp585_gfdl-esm4'
+      climate_code<-'_ssp126_gfdl-esm4'
       #empty df to rbind
       future_climate_df<-data.frame()
       # read csvs #get only ssp126 scenario
