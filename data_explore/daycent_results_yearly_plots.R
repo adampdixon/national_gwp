@@ -39,6 +39,7 @@ if (Sys.info()['sysname'] == "Linux"){
 
 library(dplyr)
 library(ggplot2)
+library(reshape2) 
 
 
 # line plots of crops and scenarios
@@ -50,6 +51,10 @@ r1<-dir(results_path, recursive=F, full.names=T)
 # 
 
 
+
+
+# create plots for all crops
+# for all scenarios
 
 
 county_n<-0
@@ -77,7 +82,7 @@ for (i in 1:length(r2)){
 
 
 # Plot
-library("reshape2")   
+  
  
 gfg_plot <- ggplot(maize_scenario1, aes(x = year,
                                         y = CH4Emissions_ghayr,

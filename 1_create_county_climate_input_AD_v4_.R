@@ -118,7 +118,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
         # add the variable name to column, table will be long format
         
         data_df$variable<-var2
-        data_df$model<-climate_code
+        data_df$model<-paste0('cmip6_gfdl-esm4-', climate_code)
         # create col names that are usable across variables
         # GEOID,tasmin,year,doy
         # change actual data column to value for long table format
