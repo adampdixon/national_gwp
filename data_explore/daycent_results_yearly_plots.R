@@ -53,44 +53,94 @@ r1<-dir(results_path, recursive=F, full.names=T)
 
 
 
-# create plots for all crops
+
 # for all scenarios
 
 
-county_n<-0
+# create plots for all crops
 
-maize_scenario1<-data.frame()
-
-for (i in 1:length(r2)){
-  files<-list.files(r1[i], full.names=T, recursive=T, pattern='Annual_results_compilation_1_1_Maize_Daycent.csv')
-  county_n<-county_n+1
-  print(paste0('creating plot ', county_n))
-  for (f in files){
-    print(paste0('working on ', f))
-    county_string<-basename(dirname(f))
-    county_string_split<-strsplit(county_string, '_')
-    GEOID<-county_string_split[[1]][3]
-    State<-county_string_split[[1]][4]
-
-    data<-read.csv(f)%>%
-      mutate(GEOID=GEOID, State=State)%>%
-      select(GEOID, State, year, MaizeYld_Mgha, SOC_Mgha, N2OEmissions_ghayr, CH4Emissions_ghayr)
+for (c in c('Maize', 'Soybeans', 'Wheat', 'Cotton', 'Rotation')) {
+  
+  for (s in 1:6){
+    county_n<-0
     
-    maize_scenario1<-rbind(maize_scenario1, data)
+    maize_scenario1<-data.frame()
+    
+    for (i in 1:length(r2)){
+      files<-list.files(r1[i], full.names=T, recursive=T, pattern='Annual_results_compilation_1_1_Maize_Daycent.csv')
+      county_n<-county_n+1
+      print(paste0('creating plot ', county_n))
+      for (f in files){
+        print(paste0('working on ', f))
+        county_string<-basename(dirname(f))
+        county_string_split<-strsplit(county_string, '_')
+        GEOID<-county_string_split[[1]][3]
+        State<-county_string_split[[1]][4]
+        
+        data<-read.csv(f)%>%
+          mutate(GEOID=GEOID, State=State)%>%
+          select(GEOID, State, year, MaizeYld_Mgha, SOC_Mgha, N2OEmissions_ghayr, CH4Emissions_ghayr)
+        
+        maize_scenario1<-rbind(maize_scenario1, data)
+      }
+    }
+  
+  
+  
+  # Plot
+  
+  gfg_plot <- function(){
+    p<-ggplot(maize_scenario1, aes(x = year,
+                                          y = CH4Emissions_ghayr,
+                                          color = GEOID)) +  
+    geom_line(show.legend = FALSE) +
+    stat_summary(geom="line", fun = "mean", color="black", linewidth=.5) +
+    geom_vline(xintercept=2022, color = 'gray20', linetype="dashed") +
+    scale_x_continuous(breaks = seq(1850, 2050, by = 10)) +
+    theme_classic() +
+    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+    
+  return(p)
+  
   }
+  
+  scen_1_1<-gfg_plot(type='crop_yld', breaks = crop_breaks, scenario_number = 1)
+  scen_1_2<-gfg_plot(type='SOC', breaks = soc_breaks, scenario_number = 1)
+  
+  scen_2_1<-gfg_plot(type='crop_yld', breaks = crop_breaks, scenario_number = 2)
+  scen_2_2<-gfg_plot(type='SOC', breaks = soc_breaks, scenario_number = 2)
+  
+  scen_3_1<-gfg_plot(type='crop_yld', breaks = crop_breaks, scenario_number = 3)
+  scen_3_2<-gfg_plot(type='SOC', breaks = soc_breaks, scenario_number = 3)
+  
+  scen_4_1<-gfg_plot(type='crop_yld', breaks = crop_breaks, scenario_number = 4)
+  scen_4_2<-gfg_plot(type='SOC', breaks = soc_breaks, scenario_number = 4)
+  
+  scen_5_1<-gfg_plot(type='crop_yld', breaks = crop_breaks, scenario_number = 5)
+  scen_5_2<-gfg_plot(type='SOC', breaks = soc_breaks, scenario_number = 5)
+  
+  scen_6_1<-gfg_plot(type='crop_yld', breaks = crop_breaks, scenario_number = 6)
+  scen_6_2<-gfg_plot(type='SOC', breaks = soc_breaks, scenario_number = 6)
+  
+  
+  out<-arrangeGrob(scen_1_1, scen_1_2, 
+                   scen_2_1, scen_2_2, 
+                   scen_3_1, scen_3_2, 
+                   scen_4_1, scen_4_2,
+                   scen_5_1, scen_5_2,
+                   scen_6_1, scen_6_2,
+                   ncol = 2, nrow = 6)
+  
+  
+  crop_out<-file.path(Output, paste0(Crop_, "_Yield_SOC.png"))
+  
+  ggsave(file = crop_out, plot=out, dpi=300, width = 10, height = 16)
+  
+  }
+  
 }
 
 
-# Plot
-  
- 
-gfg_plot <- ggplot(maize_scenario1, aes(x = year,
-                                        y = CH4Emissions_ghayr,
-                                        color = GEOID)) +  
-  geom_line(show.legend = FALSE) +
-  stat_summary(geom="line", fun = "mean", color="black", linewidth=.5) +
-  theme_classic()
-gfg_plot
 
 
 

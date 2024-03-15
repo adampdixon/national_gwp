@@ -20,9 +20,9 @@ if (Sys.info()['sysname'] == "Linux"){
   if(Sys.info()['user']=='ap') {
     geo_link_dir<-'/home/ap/Documents/GitHub/national_gwp/Data/County_start'
     output_dir<-'/home/ap/Scratch'
-    args=(commandArgs(TRUE))
-    print(args[2])
-    county_number<-args[2]
+    # args=(commandArgs(TRUE))
+    # print(args[2])
+    county_number<-1
 
     cmip6_dir<-'/home/ap/Documents/GitHub/national_gwp/cmip6_climate'
     print("************************************")
@@ -91,7 +91,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
     #####################################
     # check if output file exists, if so, skip
     #####################################
-    climate_code<-'_ssp585'
+    climate_code<-'_ssp126'
     #####################################
     # output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6.csv'))
     output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6', climate_code, '.csv'))
@@ -118,7 +118,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
         # add the variable name to column, table will be long format
         
         data_df$variable<-var2
-        data_df$model<-paste0('cmip6_gfdl-esm4-', climate_code)
+        data_df$model<-paste0('cmip6_gfdl-esm4-', substr(climate_code, 2, nchar(climate_code)))
         # create col names that are usable across variables
         # GEOID,tasmin,year,doy
         # change actual data column to value for long table format
