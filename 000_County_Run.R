@@ -39,7 +39,7 @@ if (Sys.info()['sysname'] == "Linux"){
   if(Sys.info()['user']=='ap') {
     master_path<-'/home/ap/Documents/GitHub/national_gwp'
     results_folder<-'/home/ap/Documents/national_gwp_results'
-    county_number<-1
+    county_number<-args[2]
     Test <- TRUE # if TRUE, only run county, filtered below
     # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
     Glade=FALSE

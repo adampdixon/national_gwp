@@ -20,8 +20,9 @@ if (Sys.info()['sysname'] == "Linux"){
   if(Sys.info()['user']=='ap') {
     geo_link_dir<-'/home/ap/Documents/GitHub/national_gwp/Data/County_start'
     output_dir<-'/home/ap/Scratch'
-    
-    county_number = 1
+    args=(commandArgs(TRUE))
+    print(args[2])
+    county_number<-args[2]
 
     cmip6_dir<-'/home/ap/Documents/GitHub/national_gwp/cmip6_climate'
     print("************************************")
@@ -33,6 +34,7 @@ if (Sys.info()['sysname'] == "Linux"){
 
     cmip6_dir<-'/glade/work/apdixon/Output_climate' # say output climate, but it's Zhuonan's output folder when he was processing
     
+    args=(commandArgs(TRUE))
     county_number = args[2]
     
     print("************************************")
@@ -88,8 +90,9 @@ if(is.na(GEOID)){ # stop if GEOID is NA
     }
     #####################################
     # check if output file exists, if so, skip
-    
+    #####################################
     climate_code<-'_ssp585'
+    #####################################
     # output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6.csv'))
     output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6', climate_code, '.csv'))
     #####################################
