@@ -89,7 +89,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
   cat("GEOID is NA\n")
   break
 } else{
-  for (climate_code in c('_cmip6_ssp585_gfdl-esm4', '_cmip6_ssp126_gfdl-esm4')){
+  for (climate_code in c('_ssp585_gfdl-esm4_', '_ssp126_gfdl-esm4_')){
      # GET FUTURE DATA
     for (var in c('pr','tasmax','tasmin','sfcwind','rsds')){
       # use if statements to convert cmip6 naming convention to nclims so they align later
@@ -119,7 +119,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
       
       #####################################
       # output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID ,'_cmip6.csv'))
-      output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID , climate_code, '.csv'))
+      output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID , climate_code, '_cmip6.csv'))
       #####################################
       if(file.exists(output_filename2)){
         next
@@ -130,10 +130,12 @@ if(is.na(GEOID)){ # stop if GEOID is NA
         future_climate_df<-data.frame()
         # read csvs #get correct scenario
         data_raw<-list.files(cmip6_dir, pattern = paste0(var, climate_code), full.names = T) #get correct variable
-        # data_raw2<-data_raw[grep(paste0('Y', 2022:2050), data_raw)] # get gfdl-esm4 #not needed
+        
+        data_raw2<-data_raw[grep(paste(paste0('Y', 2022:2051), collapse = '|'), data_raw)] # get only 2022 to 2050, using ~ 'Y2022' at end
+
         # data<-data_raw[grep('.csv', data)] # get only csvs  #not needed
         
-        for (year in data_raw){
+        for (year in data_raw2){
           # translate from geo_link, and use for file name at end
           GEOID_<-geo_link%>%filter(zh_geoid==county_number)
           GEOID2<-GEOID_$REAL_GEOID
