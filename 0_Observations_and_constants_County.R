@@ -36,14 +36,20 @@ library(stringr)
 # #
 # mgmt_path=paste0("Data/County/Management/")
 # adjusted_ops_filename="clean_ops_ext_adj.csv"
+##################################################
+#################### Weather and Daycent paths ###
+##################################################
 wth_path <- paste0("Data/County/Weather/")
 # apsim_path <- paste0("APSIM/",site_name,"/")
 daycent_path <- paste0("Daycent/",site_name,"/")
-if(Sys.info()['sysname']=='Linux') {
+##################################################
+#################### ######### ###################
+##################################################
+
+if(identical(run_LDNDC,TRUE)) {
   dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
-} else {
-  dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
-}
+} 
+
 # rothc_path <- paste0("RothC/",site_name,"/")
 mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 

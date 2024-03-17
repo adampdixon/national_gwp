@@ -57,9 +57,9 @@ tic()
 # experiment_end_date <- "2021-12-31"
 # end_exp_period_year <- 2021
 end_fut_period_year <- 2050
-max_fut_period_year <- 2100
-calib_mgmt_grps <- c(1,2,3)
-calib_mgmt_nums <- c(1,2,3)
+# max_fut_period_year <- 2100
+# calib_mgmt_grps <- c(1,2,3)
+# calib_mgmt_nums <- c(1,2,3)
 #
 # obs_path <- paste0("Data/County/Calibration/")
 # obs_mgmt_path <- paste0("Data/County/Management/")
@@ -75,12 +75,13 @@ wth_path <- paste0("Data/County/Weather/")
 
 daycent_path <- paste0("Daycent/",site_name,"/")
 daycent_path2<-file.path(master_path, 'Daycent' ,site_name)
-if(Sys.info()['sysname']=='Linux') {
- dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
-} else {
- dndc_path <- paste0("LDNDC/ldndc-1.35.2.win64/projects/",site_name,"/")
+
+# Create LDNDC dir
+if(identical(run_LDNDC, TRUE)) {
+dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
+dir.create(file.path(dndc_path))
 }
-rothc_path <- paste0("RothC/",site_name,"/")
+
 mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 
 
@@ -143,48 +144,24 @@ if(length(list.files(copy_to_))>11) { # There are 12 daycent files to copy over,
 # 6 - CCNT - Cover crop mix + notill
 # 7 - CR - Crop rotation (corn-soybeans)
 
-clim_nums <- c(1:1)
-mgmt_grps <- c(1:1) # These are left over from ellen's code
-
-
-# mgmt_scenarios <- c('MC', 'NT', 'CCM', 'CCC', 'CCL', 'CCNT', 'CR') # Management scenarios codes
-
-
+# mgmt_grps <- c(1:1) # These are left over from ellen's code
 for (x in clim_nums) { # climate scenarios, in case we want different versions
-  print("************************************")
-  print("####### Climate scenario 2022 to 2050 #######")
-  print("************************************")
-  print(paste0("climate scenario: ",x))
-  clim_scenario_num <- x
-  cat(paste0("*********Model will be run for ", crops_, "*********\n"))
-  cat("********* mgmt scenarios", mgmt_scenario_nums, " *********\n")
-  
-  # Run controller
-  source("0_Controller2_County.R", local = TRUE)
-  
-  
-  # source("1_Create_weather_input_files.R")
-  # for (y in mgmt_grps) { # management scenario groups
-  #   mgmt_scenario_grp <- y # scenario group number
-  #   # max_scenario_options <- if_else(y==4, 4, # option numbers for those with incremental adjustments
-  #   #                         if_else(y==5, 3,
-  #   #                         if_else(y==6, 5, 1)))
+    print("************************************")
+    print("####### Climate scenario 2022 to 2050 #######")
+    print("************************************")
+    print(paste0("climate scenario: ",x))
+    clim_scenario_num <- x
+    cat(paste0("*********Model will be run for ", crops_, "*********\n"))
+    cat("********* mgmt scenarios", mgmt_scenario_nums, " *********\n")
+    
+    # Run controller
+    source("0_Controller2_County.R", local = TRUE)
 
-    # for (z in mgmt_scenario) {
-    #   cat(paste0("*********Model will be run for Maize, Soybeans, Winter Wheat, Cotton*********\n"))
-    #   print(paste0("climate scenario: ",x))
-    #   # print(paste0("mgmt scenario: ",y))
-    #   print(paste0("mgmt scenario: ",z))
-    #   # mgmt_scenario_opt <- if(max_scenario_options==1) "" else z
-    #   mgmt_scenario_num <- z
-    #   scenario_name <- paste0(clim_scenario_num,"_",mgmt_scenario_num)
-    #   source("0_Controller2_County.R", local = TRUE)
-    #   #p_Controller2()
-    # }
+}
 
-  # } # end loop through management scenario groups
-} # end loop through climate scenarios
 
+  
+  
  # source(paste0("10_Model_Ensemble_results-combined_scenarios_",site_name,".R"))
  # source(paste0("10_Model_Ensemble_results-combined_scenarios_and_sites_compbaseline-two_climate_scenarios4.R"))
 

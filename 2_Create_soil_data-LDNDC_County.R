@@ -13,12 +13,12 @@
 
 library(xml2)
 
-soil_filename <- paste0(dndc_path,"/site_",mgmt_scenario_num,".xml")
+soil_filename <- paste0(dndc_path,"site_", clim_scenario_num, "_", mgmt_scenario_num,".xml")
 
 
 # Remove old file ---------------------------------------------------------
 
-unlink(soil_filename)
+# unlink(soil_filename)
 
 
 
@@ -34,7 +34,7 @@ xml_add_child(doc, "soil")
 
 ## these are the third level
 description_nodes <- xml_find_all(doc, "//description")
-xml_add_child(description_nodes, "author", "Ellen Maas")
+xml_add_child(description_nodes, "author", "Adam Dixon")
 xml_add_child(description_nodes, "date", as.character(Sys.Date()))
 xml_add_child(description_nodes, "dataset", site_name)
 
@@ -49,7 +49,7 @@ xml_add_child(soil_nodes, "layers")
 layer_nodes <- xml_find_all(doc, "//layers")
 
 ## flip order of soil layers (bug in xml2?)
-flipped_soil_df <- soil_df[order(nrow(soil_df):1),]
+flipped_soil_df <- soil_df_L[order(nrow(soil_df_L):1),]
 
 ## LDNDC requires non-zero Corg values, so add a tiny amount in lower depths
 flipped_soil_df[flipped_soil_df$orgC_fraction==0,"orgC_fraction"] <- 0.001
@@ -71,12 +71,12 @@ xml_add_child((layer_nodes), paste("layer ",
                                    #paste0("wcmax=\"",flipped_soil_df$DUL_dm3m3,"\""),
                                    paste0("wcmin=\"",flipped_soil_df$LL15_dm3m3,"\""),
                                    paste0("wcmax=\"",flipped_soil_df$DUL_dm3m3,"\""),
-                                   paste0("ph=\"",flipped_soil_df$PH,"\""),
+                                   paste0("ph=\"",flipped_soil_df$phaq_value_avg,"\""),
                                    paste0("corg=\"",flipped_soil_df$orgC_fraction,"\""),
-                                   paste0("clay=\"",flipped_soil_df$clay_fraction,"\""),
-                                   paste0("sand=\"",flipped_soil_df$sand_fraction,"\""),
-                                   paste0("bd=\"",flipped_soil_df$BD,"\""),
-                                   paste0("depth=\"",flipped_soil_df$Thickness,"\""),
+                                   paste0("clay=\"",flipped_soil_df$clay_frac,"\""), #fraction
+                                   paste0("sand=\"",flipped_soil_df$sand_frac,"\""), #fraction
+                                   paste0("bd=\"",flipped_soil_df$bdfiod_value_avg,"\""), # BD
+                                   paste0("depth=\"",flipped_soil_df$Thickness,"\""), # AD added reasonable numbers
                                    paste0("sks=\"",flipped_soil_df$KS_cmmin,"\"")#,
                                    # paste0("stonefraction=\"",flipped_soil_df$stonefraction,"\""),
                                    # paste0("iron=\"",flipped_soil_df$iron,"\""),
@@ -89,7 +89,6 @@ xml_add_child((layer_nodes), paste("layer ",
               )
 
 #doc
-
 write_xml(doc,file=soil_filename,
           append=F)
 

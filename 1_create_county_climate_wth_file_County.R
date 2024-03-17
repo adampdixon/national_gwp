@@ -14,6 +14,8 @@
 # Dec 2023 - Adpated from Maas scripts and colo state reference
 #######################################
 
+print('Putting climate tables together')
+
 
 # Create in the form of:
 # # ----------------------------------------------------------------------
@@ -63,14 +65,24 @@ historic_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, "_nc
   select(day, month, year, jday, tmax, tmin, precip)
 
 # Future 2022 - 2050
-future_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, "_cmip6.csv"), climate_data)]),
+if (x == 1) {
+  # climate scenario low change
+  cmip_scen<-'_cmip6_ssp126.csv'
+}
+if (x == 2) {
+  # climate scenario high change
+  cmip_scen<-'_cmip6_ssp585.csv'
+}
+
+
+future_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, cmip_scen), climate_data)]),
                                    tmax = value)%>%
   left_join(
-    mutate(fread(climate_data[grep(paste0("tmin_", county_geoid, "_cmip6.csv"), climate_data)]),
+    mutate(fread(climate_data[grep(paste0("tmin_", county_geoid, cmip_scen), climate_data)]),
            tmin = value), 
     by=c('year', 'doy'))%>%
   left_join(
-    mutate(fread(climate_data[grep(paste0("prcp_", county_geoid, "_cmip6.csv"), climate_data)]),
+    mutate(fread(climate_data[grep(paste0("prcp_", county_geoid, cmip_scen), climate_data)]),
            precip = value),
     by=c('year', 'doy'))%>%
   select(year, doy, tmax, tmin, precip)%>%

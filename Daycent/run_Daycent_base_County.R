@@ -51,6 +51,9 @@ unlink(paste0("vswc_base_",scenario_name2,".out"))
 unlink("wfps.out")
 unlink(paste0("wfps_base_",scenario_name2,".out"))
 
+unlink(paste0("mresp_base_",scenario_name2,".out"))
+unlink(paste0("gresp_base_",scenario_name2,".out"))
+
 file.copy("outfiles_base.in", "outfiles.in", overwrite=TRUE)
 
 
@@ -58,9 +61,11 @@ file.copy("outfiles_base.in", "outfiles.in", overwrite=TRUE)
 system(paste0('chmod u+x ', file.path(model_path, 'DDcentEVI_rev279')))
 system(paste0('chmod u+x ', file.path(model_path, 'DDlist100_rev279')))
 
+
 system(paste0(daycent_executable," -s sched_base_", scenario_name2,
               " -n sched_base_", scenario_name2,
               " -e sched_eq"), wait=TRUE)
+
 system(paste0(daycent_list100," sched_base_",scenario_name2 ," sched_base_", scenario_name2,
               " outvars.txt"), wait=TRUE)
 
@@ -78,6 +83,9 @@ file.copy("soiltavg.out", paste0("soiltavg_base_",scenario_name2,".out"), overwr
 file.copy("summary.out", paste0("summary_base_",scenario_name2,".out"), overwrite=TRUE)
 file.copy("vswc.out", paste0("vswc_base_",scenario_name2,".out"), overwrite=TRUE)
 file.copy("wfps.out", paste0("wfps_base_",scenario_name2,".out"), overwrite=TRUE)
+
+file.copy("gresp.out", paste0("resp_base_",scenario_name2,".out"), overwrite=TRUE)
+file.copy("mresp.out", paste0("resp_base_",scenario_name2,".out"), overwrite=TRUE)
 
 
 # --------------- Reset working directory --------------- 

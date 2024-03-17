@@ -298,7 +298,7 @@ soil_texture_df <- soil_texture_df %>%
 
 soil_type_ar <- TT.points.in.classes(tri.data=soil_texture_df,class.sys="USDA.TT") # soiltexture library
 
-## find the non-zero column which is the soil type
+## find the non-zero column which is the soil type - for LDNDC
 find_col <- names(which(colSums(soil_type_ar)==1))
 soil_type_code <- toupper(if_else(find_col=="Cl","clay",
                           if_else(find_col=="Lo","loam",
@@ -308,6 +308,18 @@ soil_type_code <- toupper(if_else(find_col=="Cl","clay",
                           if_else(find_col=="SaClLo","sncl",
                                   find_col))))))
                           )
+
+# LDNDC soil table
+soil_df_L<-soil_df%>%
+  select(upper_depth_cm, lower_depth_cm, bdfiod_value_avg, DUL_dm3m3, LL15_dm3m3, evap_coef,
+         root_fraction, sand_frac, clay_frac, OM_frac, deltamin, ksat_cmsec, phaq_value_avg, 
+         orgC_fraction, KS_cmmin)%>%
+  mutate(soil_type_code = soil_type_code)
+
+soil_df_L$Thickness<-c(2, 3, 5, 10, 20, 20, 20, 20, 20, 20, 20, 20, 20)
+
+
+
 
 
 # change the significant digits of columns to match original soil.in file

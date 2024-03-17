@@ -19,7 +19,10 @@ cat("********************************\n")
 cat("******** FLAGS etc *****************\n")
 del_input_files<-FALSE
 
-run_Daycent=TRUE
+results_only=FALSE # only results
+
+run_Daycent=TRUE 
+
 run_LDNDC=FALSE
 run_Millennial=FALSE
 # county_numbers<-296:306   #295:3100
@@ -28,6 +31,9 @@ crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
 # These variables are implemented in 0_Controller2_County.R
 # mgmt_scenario_nums <- 1:1 # Management scenarios
 mgmt_scenario_nums <- 1:6 # Management scenarios
+
+# climate scenarios
+  clim_nums <- 1:2 #c(1:2), can be 1:2
 
 
 cat("************************************\n")
@@ -39,7 +45,9 @@ if (Sys.info()['sysname'] == "Linux"){
   if(Sys.info()['user']=='ap') {
     master_path<-'/home/ap/Documents/GitHub/national_gwp'
     results_folder<-'/home/ap/Documents/national_gwp_results'
-    county_number<-args[2]
+    args=(commandArgs(TRUE))
+    county_number<-1
+
     Test <- TRUE # if TRUE, only run county, filtered below
     # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
     Glade=FALSE
@@ -51,7 +59,8 @@ if (Sys.info()['sysname'] == "Linux"){
     master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
     results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
     Test <- FALSE # if TRUE, only run county, filtered below
-    county_number<-args[2]
+    args=(commandArgs(TRUE))
+    county_number = args[2]
     Glade=TRUE
     print("************************************")
     print("*****Using NCAR *********")
@@ -80,7 +89,7 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(13213)) #13023, 13213, 20073, 31181, 42053, 1075
+    filter(GEOID %in% c(42053)) #13023, 13213, 20073, 31181, 42053, 1075
 }
 
 # county_data<-county_data[county_data$GEOID==county_number,]

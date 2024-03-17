@@ -107,12 +107,6 @@ source('1_create_county_climate_wth_file_County.R', local = TRUE)
 
 source('1_Create_weather_input_files-Daycent_County_v2.R', local = TRUE)
 
-# source("3_Create_management_input_files-Daycent_CORN_.R", local = TRUE)
-# 
-# source("3_Create_site100files-Daycent_AD_.R", local = TRUE)
-# 
-# source('3_Create_fix100_file-Daycent_AD_.R', local = TRUE)
-
 
 print("*****writing soils data")
 
@@ -120,7 +114,6 @@ print("*****writing soils data")
 source("2_Create_soil_data-setup2_County.R", local = TRUE)
 
 
-print("*****writing site data")
 # Site data
 source("2_1_Create_site_file-Daycent_County.R", local = TRUE)
 
@@ -128,7 +121,11 @@ source("2_1_Create_site_file-Daycent_County.R", local = TRUE)
 
 # source("2_Create_soil_data-APSIM.R")
 source("2_Create_soil_site_data-Daycent_County.R", local = TRUE)
-# source("2_Create_soil_data-LDNDC.R")
+
+if(identical(run_LDNDC,TRUE)) {
+source("2_Create_soil_data-LDNDC.R", local = TRUE)
+}
+
 # RothC only uses clay content, which is included in the weather input file.
 # source(paste0("2_Create_soil_data-Millennial_",site_name,".R"))
 # }
@@ -136,16 +133,16 @@ source("2_Create_soil_site_data-Daycent_County.R", local = TRUE)
 
 #*************************************************************
 
-# Management input files (APSIM, Daycent, LDNDC)
-#
-# source(paste0("3_Create_management_input_files-setup_County.R"), local = TRUE)
-#
-# source(paste0("3_Create_management_input_files-APSIM_",site_name,".R"))
-#
+# Management input files (Daycent, LDNDC)
+
 # if(mgmt_scenario_grp!=6) {
 source(paste0("3_Create_management_input_files-Daycent_County_Scenarios.R"), local = TRUE)
-#source(paste0("3_Create_management_input_files-LDNDC_",site_name,".R"))
+
+if(identical(run_LDNDC,TRUE)) {
+source(paste0("3_Create_management_input_files-LDNDC_",site_name,".R"), local = TRUE)
+}
 #
+  
 ## Management input files for RothC, Millennial are created after Daycent runs
 # }
 
@@ -180,7 +177,7 @@ source(paste0("4_Create_additional_files-LDNDC_County.R"), local = TRUE)
 
 
 # Daycent
-if(identical(run_Daycent,TRUE)) {
+# if(identical(run_Daycent,TRUE)) {
   for (c in crops_){
     crop_amount<-county_data[,eval(paste0(c, "_ha"))] # get crop amount in county
     if (crop_amount<1){
@@ -200,8 +197,8 @@ if(identical(run_Daycent,TRUE)) {
         
         model_path<-file.path(results_path, paste0("Annual_results_compilation_", scenario_name2,"_Daycent.csv"))
         
-        # check if results file already exists
-        if(file.exists(model_path)){ 
+        # check if results file already exists and only want results
+        if(file.exists(model_path) & identical(results_only, FALSE)){ 
           # & nrow(fread(model_path))> 200# # check if all rows have been reported; note this didn't work well
           print(paste0("*************Daycent results already exist for: ", scenario_name2, " ... skipping...****************"))
           next
@@ -217,15 +214,26 @@ if(identical(run_Daycent,TRUE)) {
           # write to sch file
           writeLines(crop_schedule, output_sch) # schedule file name, e.g. schedule_file_maize
           
-          print(paste0("*************running Daycent for: ", scenario_name2, "****************"))
-          source(paste0("Daycent/Daycent_run_controller.R"), local = TRUE)
-          source(paste0("9_Results_Daycent-setup_County.R"), local=TRUE) #TODO AD set this up?
+          
+          # Run Daycent
+          if(identical(run_Daycent,TRUE)) {
+            print(paste0("*************running Daycent for: ", scenario_name2, "****************"))
+            source(paste0("Daycent/Daycent_run_controller.R"), local = TRUE)
+            source(paste0("9_Results_Daycent-setup_County.R"), local=TRUE) #TODO AD set this up?
+          }
+          
+          # Daycent has already been run, update results only
+          if(identical(results_only, TRUE)){
+            print(paste0("*************generation results table for: ", scenario_name2, "****************"))
+            # Table generation script
+            source('9_Results_Daycent-setup_County.R', local = TRUE)
+          }
         }
       } 
 
     } # end of else statement
     }
-  }
+  # }
 
 #*************************************************************
 

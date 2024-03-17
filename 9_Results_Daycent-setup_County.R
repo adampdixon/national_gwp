@@ -327,12 +327,22 @@ DayC_Mgha <- lis_output %>%   #[,c("time","somsc_gm2","year")] Just grab all for
 # SOCgNATSGO<-data.frame(SOCgNATSGO = sps$SOC)
 
 # CO2 out
-Day_base_co2 <- fread(paste0(daycent_path,paste0("co2_base_",scenario_name2,".out")),
-                           # widths=c(8,6,rep(14, 13)),
-                           col.names=c("time","dayofyear", paste0("CO2_ppm", 0:nlayers)), 
-                           skip=1)%>%
-  mutate(year=floor(time),
-         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+# Day_base_co2 <- fread(paste0(daycent_path,paste0("co2_base_",scenario_name2,".out")),
+#                            # widths=c(8,6,rep(14, 13)),
+#                            col.names=c("time","dayofyear", paste0("CO2_ppm", 0:nlayers)), 
+#                            skip=1)%>%
+#   mutate(year=floor(time),
+#          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+
+
+
+# ############# ANNUAL ############## 
+# # CO2 Emissions  - annually - delete
+# Day_ann_co2 <- Day_base_co2 %>%
+#   group_by(year) %>%
+#   summarize(N2OEmissions_ghayr=sum(N2O_gNhad))
+# ############ ####### #############
+
 
 # CO2_ppm[0] (Column 3) – CO2 concentration in first layer of soil profile (index 0), as defined in the
 # soils.in file (ppm)
@@ -342,7 +352,7 @@ Day_base_co2 <- fread(paste0(daycent_path,paste0("co2_base_",scenario_name2,".ou
 
 # CO2resp Heterotrophic CO2 respiration for the day (g C ha-1 d-1)
 # Don't think this is needed as reporting full summary table now
-DayGN_ghaday <- Day_summary[,c("time","dayofyear","N2O_gNhad")] %>% # AD adding CO2resp
+DayGN_ghaday <- Day_summary[,c("time","dayofyear","N2O_gNhad", "CO2resp")] %>% # AD adding CO2resp
   mutate(year=floor(time),
          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
 
@@ -350,15 +360,19 @@ DayGN_ghaday <- Day_summary[,c("time","dayofyear","N2O_gNhad")] %>% # AD adding 
 # # N20 Emissions and added CO2 resp - annually
 DayGN_ann_gha <- DayGN_ghaday %>%
   group_by(year) %>%
-  summarize(N2OEmissions_ghayr=sum(N2O_gNhad))
+  summarize(N2OEmissions_ghayr=sum(N2O_gNhad),
+            CO2resp_ghayr=sum(CO2resp))
 # ############ ####### #############
 # 
 
 
 # Reported in daily output
-DayGN_cum_gha <- DayGN_ghaday[,c("year","dayofyear","date","N2O_gNhad")] %>% 
+DayGN_cum_gha <- DayGN_ghaday[,c("year","dayofyear","date","N2O_gNhad","CO2resp")] %>% 
   mutate(N2O_cum_gha = cumsum(N2O_gNhad),
-         N2O_emit_gha = N2O_gNhad)
+         N2O_emit_gha = N2O_gNhad,
+         CO2cum_gha = cumsum(CO2resp),
+         CO2_emit_gha = CO2resp)%>%
+  select(-N2O_gNhad, -CO2resp)
 
 # DayGN_cum_calib <- DayGN_ghaday[DayGN_ghaday$date %in% pull(ObsGas[!is.na(ObsGas$N2O_N),], date),] %>%
 #   group_by(year) %>%
@@ -450,7 +464,7 @@ output_annual_data <- cbind(merge( # merge the two interior merges
 
 # ,"SoyYld_Mgha","WheatYld_Mgha" removed these from below AD
 colnames(output_annual_data) <- c("year", paste0(crop_names, "Yld_Mgha"),"SOC_Mgha",
-                                   'N2OEmissions_ghayr', 'CH4Emissions_ghayr',
+                                   'N2OEmissions_ghayr', 'CO2resp_ghayr','CH4Emissions_ghayr',
                                    "model_name", 
                                    "scenario_name","climate_scenario_num",
                                    "mgmt_scenario_num") #,"mgmt_scenario_opt_num")
@@ -508,10 +522,11 @@ if(file.exists(file.path(results_path, paste0("Annual_results_compilation_",
 
 # this table should grab everything
 output_daily<-
-  left_join(Day_summary, select(Day_base_co2, -dayofyear, -time), by =  c('year','date'))%>%
-  left_join(select(Day_soiln_all, -dayofyear, -time), by =  c('year','date'))%>%
+  # left_join(Day_summary, select(Day_base_co2, -dayofyear, -time), by =  c('year','date'))%>%
+  left_join(Day_summary, select(Day_soiln_all, -dayofyear, -time), by =  c('year','date'))%>%
   left_join(select(DayM_V_all, -dayofyear, -time), by =  c('year','date'))%>%
-  left_join(select(Day_base_soiltavg, -dayofyear, -time), by =  c('year','date'))
+  left_join(select(Day_base_soiltavg, -dayofyear, -time), by =  c('year','date'))%>%
+  left_join(select(DayGN_cum_gha, -dayofyear), by =  c('year','date'))
 
 
 # N2O_gNhad, CH4_net_gChad, NOflux, CH4_net_gChad, N2O_gNhad.y CO2resp.x, ppt
@@ -540,7 +555,7 @@ output_daily<-
 # head(output_daily_data)
 
 fwrite(output_daily,file=file.path(results_path, paste0("Daily_results_compilation_",
-                                                                   scenario_name2,"_Daycent.csv")),
+                                                                    scenario_name2,"_Daycent.csv")),
             col.names=T,row.names=F,sep=",",append=F)
 
 if(file.exists(file.path(results_path, paste0("Daily_results_compilation_",
