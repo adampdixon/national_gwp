@@ -89,7 +89,7 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(42053)) #13023, 13213, 20073, 31181, 42053, 1075
+    filter(GEOID %in% c(31181)) #13023, 13213, 20073, 31181, 42053, 1075
 }
 
 

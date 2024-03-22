@@ -286,11 +286,11 @@ Day_soiln_all <- Day_base_soiln[Day_base_soiln$year <= end_fut_period_year,]
 
 # water-filled pore space
 
-Day_base_wfps <- fread(file.path(daycent_path2,paste0("wfps_base_",scenario_name2,".out")),
-                          # widths=c(8,5, rep(9, 13)), # 13 soil layers
-                          col.names=c("time","dayofyear", paste0("wfps_layer", 0:nlayers))) %>%
-  mutate(year=floor(time),
-         date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+# Day_base_wfps <- fread(file.path(daycent_path2,paste0("wfps_base_",scenario_name2,".out")),
+#                           # widths=c(8,5, rep(9, 13)), # 13 soil layers
+#                           col.names=c("time","dayofyear", paste0("wfps_layer", 0:nlayers))) %>%
+#   mutate(year=floor(time),
+#          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
 
 
 
