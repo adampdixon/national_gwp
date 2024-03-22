@@ -1,7 +1,7 @@
 #!/bin/bash 
 ########################
 ### Job name
-#PBS -N daycent_v3
+#PBS -N daycent_v4
 #PBS -A UEMO0003
 #PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stdout
 #PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stderr 

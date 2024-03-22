@@ -569,7 +569,7 @@ if(file.exists(file.path(results_path, paste0("Annual_results_compilation_",
 #   left_join(select(Day_base_soiltavg, -dayofyear, -time), by =  c('year','date'))
 
 
-# this table should grab everything
+# this table should grab everything, consider changing to data.table::merge
 output_daily<-
   # left_join(Day_summary, select(Day_base_co2, -dayofyear, -time), by =  c('year','date'))%>%
   left_join(Day_summary, select(Day_soiln_all, -dayofyear, -time), by =  c('year','date'))%>%
