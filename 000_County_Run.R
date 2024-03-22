@@ -2,7 +2,7 @@
 # This script sets up variables to run Daycent for a single county. The process is then parallelized using a bash script.
 # 
 # A Dixon
-# Feb 3, 2024
+# March 21, 2024
 ###########################
 
 library(tictoc) # for timing
