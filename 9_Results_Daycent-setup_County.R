@@ -247,9 +247,9 @@ Day_summary <- Day_summary_raw[Day_summary_raw$year <= end_fut_period_year,]
 Day_summary <- Day_summary_raw
 
 
-
+###############################################################################
 ## NO3
-  
+###############################################################################
 Day_base_soiln <- fread(paste0(daycent_path,paste0("soiln_base_",scenario_name2,".out")),
                              # widths=c(8,6,14,14,14,14,14,14,14,14,14,14,14,14,14,14),
                              col.names=c("time","dayofyear","ammonium","NO3_ppm0","NO3_ppm1",
@@ -295,8 +295,9 @@ Day_base_wfps <- fread(file.path(daycent_path2,paste0("wfps_base_",scenario_name
 
 
 #**********************************************************************
-
+###############################################################################
 # Soil Organic Carbon
+###############################################################################
 ### future .lis contains all data from year 1 in equilibrium through end of future simulation
 # lis_output_raw <- read.table(file.path(daycent_path2,paste0("sched_fut_",scenario_name,".lis")),
 lis_output <- fread(paste0(daycent_path,paste0("sched_base_",scenario_name2,".lis")),
@@ -333,6 +334,38 @@ DayC_Mgha <- lis_output %>%   #[,c("time","somsc_gm2","year")] Just grab all for
 #                            skip=1)%>%
 #   mutate(year=floor(time),
 #          date=as.Date(dayofyear,origin=paste0(as.character(year),"-01-01"))-1)
+
+
+###############################################################################
+# Other forms of C
+###############################################################################
+
+
+# Annual
+# grspann(1) – total annual growth respiration for grass/crop system (g C m-2 yr-1)
+gresp_out<- fread(paste0(daycent_path,paste0("gresp_base_",scenario_name2,".out")))%>%
+  select(time, dayofyr, 'grspann(1)')%>%
+  filter(dayofyr==365)%>% # only want the last day of the year
+  mutate(year=floor(time),
+         date=as.Date(dayofyr,origin=paste0(as.character(year),"-01-01"))-1)
+
+# Annual
+# mrspann(1) (Column 27) – Accumulator for annual maintenance respiration for grass/crop (g C m-2 yr-1)
+mresp_out<- fread(paste0(daycent_path,paste0("mresp_base_",scenario_name2,".out")))%>%
+  select(time, dayofyr, 'mrspann(1)') %>%
+  filter(dayofyr==365)%>% # only want the last day of the year
+  mutate(year=floor(time),
+         date=as.Date(dayofyr,origin=paste0(as.character(year),"-01-01"))-1)
+
+# Daily
+# sysc (Column 6) – System C (g C m-2) (livec + deadc + soilc)
+sysc_out<- fread(paste0(daycent_path,paste0("sysc_base_",scenario_name2,".out")))%>%
+  select(time, dayofyr, 'sysc')%>%
+  mutate(year=floor(time), date=as.Date(dayofyr,origin=paste0(as.character(year),"-01-01"))-1)
+
+
+
+
 
 
 
@@ -455,23 +488,39 @@ print(paste0("creating annual output table for ", paste(crop_names)))
 
 
 # Merge all the annual data together
-output_annual_data <- cbind(merge( # merge the two interior merges
-  # get year and yield from DayY_Mgha, and time and base from DayC_Mgha
-  merge(DayY_Mgha_pivwid[,c("year",crop_names)],DayC_Mgha[,c('SOC_Mgha', 'time')], by.x="year", by.y="time", all=TRUE), # interior merge 1
-  merge(DayGN_ann_gha, DayGM_ann_gha, by = "year", all = TRUE), # interior merge 2
-  by = "year", all=TRUE),
-  "Daycent",scenario_name2,clim_scenario_num, mgmt_scenario_num) # add these columns for reference
+
+output_annual_data<-
+  left_join(DayY_Mgha_pivwid[,c("year",crop_names)], DayC_Mgha[,c('SOC_Mgha', 'time')], by = c("year" = "time"))%>%
+  left_join(DayGN_ann_gha, by = "year")%>%
+  left_join(DayGM_ann_gha, by = "year")%>%
+  left_join(gresp_out[,c('year', 'grspann(1)')], by = "year")%>%
+  left_join(mresp_out[,c('year', 'mrspann(1)')], by = "year")
+
+# Add columns for reference
+output_annual_data$model_name<- 'Daycent'
+output_annual_data$scenario_name2<- scenario_name2
+output_annual_data$climate_scenario_num<- clim_scenario_num
+output_annual_data$mgmt_scenario_num<- mgmt_scenario_num
+
 
 # ,"SoyYld_Mgha","WheatYld_Mgha" removed these from below AD
-colnames(output_annual_data) <- c("year", paste0(crop_names, "Yld_Mgha"),"SOC_Mgha",
-                                   'N2OEmissions_ghayr', 'CO2resp_ghayr','CH4Emissions_ghayr',
-                                   "model_name", 
-                                   "scenario_name","climate_scenario_num",
-                                   "mgmt_scenario_num") #,"mgmt_scenario_opt_num")
+colnames(output_annual_data) <- c("year", 
+                                  paste0(crop_names, "Yld_Mgha"),
+                                  "SOC_Mgha",
+                                  'N2OEmissions_ghayr', 
+                                  'CO2resp_ghayr',
+                                  'CH4Emissions_ghayr',
+                                  'grespann1_ghayr',
+                                  'mrespann1_ghayr',
+                                  "model_name",
+                                  "scenario_name",
+                                  "climate_scenario_num",
+                                  "mgmt_scenario_num") #,"mgmt_scenario_opt_num")
 
-# combining this way as an easy way to ensure SOC is in first set of columns. Otherwise it's lost in the back.
-# probably most important columns are the extra carbon pools
-output_annual_data<-left_join(output_annual_data, select(DayC_Mgha, -SOC_Mgha, -time), by = 'year')
+# Delete
+# # combining this way as an easy way to ensure SOC is in first set of columns. Otherwise it's lost in the back.
+# # probably most important columns are the extra carbon pools
+# output_annual_data<-left_join(output_annual_data, select(DayC_Mgha, -SOC_Mgha, -time), by = 'year')
 
 # DayGN_ann_gha
 
@@ -526,7 +575,8 @@ output_daily<-
   left_join(Day_summary, select(Day_soiln_all, -dayofyear, -time), by =  c('year','date'))%>%
   left_join(select(DayM_V_all, -dayofyear, -time), by =  c('year','date'))%>%
   left_join(select(Day_base_soiltavg, -dayofyear, -time), by =  c('year','date'))%>%
-  left_join(select(DayGN_cum_gha, -dayofyear), by =  c('year','date'))
+  left_join(select(DayGN_cum_gha, -dayofyear), by =  c('year','date')) %>%
+  left_join(select(sysc_out, -dayofyr), by =  c('year','date'))
 
 
 # N2O_gNhad, CH4_net_gChad, NOflux, CH4_net_gChad, N2O_gNhad.y CO2resp.x, ppt

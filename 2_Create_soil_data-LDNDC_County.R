@@ -13,7 +13,7 @@
 
 library(xml2)
 
-soil_filename <- paste0(dndc_path,"site_", clim_scenario_num, "_", mgmt_scenario_num,".xml")
+soil_filename <- paste0(dndc_path,"GEOID_", county_geoid, "_soil.xml")
 
 
 # Remove old file ---------------------------------------------------------

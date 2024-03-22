@@ -65,13 +65,13 @@ historic_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, "_nc
   select(day, month, year, jday, tmax, tmin, precip)
 
 # Future 2022 - 2050
-if (x == 1) {
+if (fut_climate == 1) {
   # climate scenario low change
-  cmip_scen<-'_cmip6_ssp126.csv'
+  cmip_scen<-'_ssp126_gfdl-esm4__cmip6.csv'
 }
-if (x == 2) {
+if (fut_climate == 2) {
   # climate scenario high change
-  cmip_scen<-'_cmip6_ssp585.csv'
+  cmip_scen<-'_ssp585_gfdl-esm4__cmip6.csv'
 }
 
 

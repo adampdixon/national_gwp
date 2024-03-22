@@ -5,7 +5,7 @@ historical land
 
 add vertical line just to sperate where the future is starting at 2022
 
-add CO2 as an annual output
+add CO2 as an annual output - done
 
 add 1 more scenario where we keep 100% of the residue - hold off on this
 
@@ -16,3 +16,9 @@ look up the climate data that was used
 
 Run second climate scenario
 reproduce the figures with high emission scenarios	- done
+
+
+grspann(1)  in gresp.out, get the value at end of year (day 365)
+
+totsysc , soilc in sysc.out
+mrspann(1) - in mrespout, get value at end of year

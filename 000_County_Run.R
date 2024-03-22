@@ -19,7 +19,7 @@ cat("********************************\n")
 cat("******** FLAGS etc *****************\n")
 del_input_files<-FALSE
 
-results_only=FALSE # only results
+results_only=FALSE # only results, works for Daycent 
 
 run_Daycent=TRUE 
 
@@ -92,6 +92,9 @@ if(identical(Test, TRUE)){
     filter(GEOID %in% c(42053)) #13023, 13213, 20073, 31181, 42053, 1075
 }
 
+
+
+
 # county_data<-county_data[county_data$GEOID==county_number,]
 county_data<-county_data[county_number,]
 
@@ -152,6 +155,7 @@ cat("DELETE INPUT FILES???\n")
 if(identical(del_input_files, TRUE)){
  cat("Deleting input files\n")
  unlink(daycent_path2, recursive = T)
+ unlink(dndc_path, recursive = T)
 } else{
  print("Saving input data files")}
 cat("************************************\n")

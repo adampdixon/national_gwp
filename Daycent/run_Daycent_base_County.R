@@ -53,6 +53,8 @@ unlink(paste0("wfps_base_",scenario_name2,".out"))
 
 unlink(paste0("mresp_base_",scenario_name2,".out"))
 unlink(paste0("gresp_base_",scenario_name2,".out"))
+unlink(paste0("resp_base_",scenario_name2,".out"))
+unlink(paste0("sysc_base_",scenario_name2,".out"))
 
 file.copy("outfiles_base.in", "outfiles.in", overwrite=TRUE)
 
@@ -69,7 +71,7 @@ system(paste0(daycent_executable," -s sched_base_", scenario_name2,
 system(paste0(daycent_list100," sched_base_",scenario_name2 ," sched_base_", scenario_name2,
               " outvars.txt"), wait=TRUE)
 
-
+# not all these will print out. flag outputs in outfiles.in
 # Change daycent output name to have scenario designation at end
 file.copy("co2.out", paste0("co2_base_",scenario_name2,".out"), overwrite=TRUE)
 file.copy("cflows.out", paste0("cflows_base_",scenario_name2,".out"), overwrite=TRUE)
@@ -84,8 +86,10 @@ file.copy("summary.out", paste0("summary_base_",scenario_name2,".out"), overwrit
 file.copy("vswc.out", paste0("vswc_base_",scenario_name2,".out"), overwrite=TRUE)
 file.copy("wfps.out", paste0("wfps_base_",scenario_name2,".out"), overwrite=TRUE)
 
-file.copy("gresp.out", paste0("resp_base_",scenario_name2,".out"), overwrite=TRUE)
-file.copy("mresp.out", paste0("resp_base_",scenario_name2,".out"), overwrite=TRUE)
+file.copy("gresp.out", paste0("gresp_base_",scenario_name2,".out"), overwrite=TRUE)
+file.copy("mresp.out", paste0("mresp_base_",scenario_name2,".out"), overwrite=TRUE)
+file.copy("resp.out", paste0("resp_base_",scenario_name2,".out"), overwrite=TRUE) # not working?
+file.copy("sysc.out", paste0("sysc_base_",scenario_name2,".out"), overwrite=TRUE)
 
 
 # --------------- Reset working directory --------------- 

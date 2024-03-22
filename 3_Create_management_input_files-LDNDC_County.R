@@ -13,7 +13,7 @@
 # 10/3/2022: Changed hairy vetch crop type to white clover
 #*************************************************
 
-print(paste0("Starting 3_Create_management_input_files-LDNDC_",site_name,".R"))
+print(paste0("Starting 3_Create_management_input_files-LDNDC_County.R"))
 
 mgmt_filename <- paste0(dndc_path,"mana_",mgmt_scenario_num,".xml")
 

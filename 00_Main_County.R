@@ -76,11 +76,15 @@ wth_path <- paste0("Data/County/Weather/")
 daycent_path <- paste0("Daycent/",site_name,"/")
 daycent_path2<-file.path(master_path, 'Daycent' ,site_name)
 
+
+#######################################
 # Create LDNDC dir
 if(identical(run_LDNDC, TRUE)) {
 dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
+unlink(dndc_path, recursive = TRUE)
 dir.create(file.path(dndc_path))
 }
+#######################################
 
 mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 
@@ -145,12 +149,13 @@ if(length(list.files(copy_to_))>11) { # There are 12 daycent files to copy over,
 # 7 - CR - Crop rotation (corn-soybeans)
 
 # mgmt_grps <- c(1:1) # These are left over from ellen's code
-for (x in clim_nums) { # climate scenarios, in case we want different versions
+for (fut_climate in clim_nums) { # climate scenarios, in case we want different versions
     print("************************************")
     print("####### Climate scenario 2022 to 2050 #######")
     print("************************************")
-    print(paste0("climate scenario: ",x))
-    clim_scenario_num <- x
+    clim_scenario_num <- fut_climate
+    print(paste0("climate scenario: ", clim_scenario_num))
+
     cat(paste0("*********Model will be run for ", crops_, "*********\n"))
     cat("********* mgmt scenarios", mgmt_scenario_nums, " *********\n")
     
