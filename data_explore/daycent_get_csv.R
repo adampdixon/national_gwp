@@ -106,7 +106,7 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
     geoid<-as.integer(strsplit(basename(dirname(csv_list[i])), "_")[[1]][3])
     
     
-    r_county<-as_tibble(select(read.csv(csv_list[i]), 1:12)) # just get first bunch of columns
+    r_county<-as_tibble(read.csv(csv_list[i])) 
     if (!is.null(Year)){
       r_county<-filter(r_county, year==Year)
     }
@@ -131,6 +131,8 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
     crop_var<-paste0(Crop,'Yld_Mgha')
   }
   
+  
+  
   df2<-left_join(df, crop_area_df, by=c("GEOID"="GEOID"))%>% # add crop area
 
     mutate(Cty_Crp_Yld_Mg=get(crop_var)*get(crop_area_var))%>% # calculate crop area in county multiplied by yield per ha
@@ -138,7 +140,7 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
     mutate(crop_yld_Mgha=get(crop_var), crop = Crop, 
            crop_ha = get(crop_area_var))%>% # convert crop yield col name to generic crop_yld to assemble table later with all crops/scenarios
     select(GEOID, year, crop, crop_yld_Mgha, crop_ha, SOC_Mgha, Cty_Crp_Yld_Mg, Cty_SOC_Mg,
-           N2OEmissions_ghayr,	CO2resp_ghayr,	CH4Emissions_ghayr,
+           N2OEmissions_ghayr, CH4Emissions_ghayr, CO2resp_ghayr,
            climate_scenario_num, mgmt_scenario_num, model_name, scenario_name)%>%
     arrange(GEOID)%>%
     as_tibble()
