@@ -37,6 +37,8 @@ if (Sys.info()['sysname'] == "Linux"){
 year_<-2050
 ###################
 
+print(paste0("Scenario to be run is ", scenario_arg))
+
 # library(tigris)
 # options(tigris_use_cache = TRUE)
 # library(ggplot2)
