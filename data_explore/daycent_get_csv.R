@@ -1,4 +1,5 @@
-# Daycent results at county level to CSV
+# Retrieve daycent results of a given year at county level to CSV
+# For national maps
 # Feb 17 2024
 # Set workspace
 if (Sys.info()['sysname'] == "Linux"){ 
@@ -136,7 +137,8 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
     mutate(Cty_SOC_Mg=SOC_Mgha*get(crop_area_var))%>% # calculate SOC in crop area in county 
     mutate(crop_yld_Mgha=get(crop_var), crop = Crop, 
            crop_ha = get(crop_area_var))%>% # convert crop yield col name to generic crop_yld to assemble table later with all crops/scenarios
-    select(GEOID, year, crop, crop_yld_Mgha, crop_ha, SOC_Mgha, Cty_Crp_Yld_Mg, Cty_SOC_Mg, 
+    select(GEOID, year, crop, crop_yld_Mgha, crop_ha, SOC_Mgha, Cty_Crp_Yld_Mg, Cty_SOC_Mg,
+           N2OEmissions_ghayr,	CO2resp_ghayr,	CH4Emissions_ghayr,
            climate_scenario_num, mgmt_scenario_num, model_name, scenario_name)%>%
     arrange(GEOID)%>%
     as_tibble()
