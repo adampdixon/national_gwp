@@ -98,15 +98,15 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
   
   # read csvs in list and place in df
   df<-data.frame()
-  for (i in 1:length(csv_list)){
+  for (d in 1:length(csv_list)){
     # print(paste0("Reading ", csv_list[i]))
     
     # Split file name to get geoid
     # geoid<-as.integer(strsplit(files[i], "_")[[1]][3])
-    geoid<-as.integer(strsplit(basename(dirname(csv_list[i])), "_")[[1]][3])
+    geoid<-as.integer(strsplit(basename(dirname(csv_list[d])), "_")[[1]][3])
     
     
-    r_county<-as_tibble(read.csv(csv_list[i])) 
+    r_county<-as_tibble(read.csv(csv_list[d])) 
     if (!is.null(Year)){
       r_county<-filter(r_county, year==Year)
     }
@@ -161,7 +161,7 @@ for (i in c("Maize", "Soybean", "Wheat", "Cotton", "Rotation")){
     print(i)
     print(scenario_arg)
     # Year=year_; Crop = i; scenario = scenario_arg; Results_path=results_path; Crop_area_path=crop_area_path
-    results<-daycent_results(Year=year_, Crop = i, scenario = scenario_arg, Results_path=results_path, Crop_area_path=crop_area_path)
+    results<-daycent_results(Year=year_, Crop = i, scenario = scenario_arg, Results_path=results_path, Crop_area_path=crop_area_path, State= 'Nebraska')
     # print(results)
     print("***********")
     res<-rbind(res, results)
