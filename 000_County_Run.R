@@ -163,7 +163,7 @@ cat("************************************\n")
 # end time
 toc()
 run_time <- round(toc(echo=T)/60,1)
-print(paste0("Run time is ",run_time," minutes"))
+print(paste0("Final run time is ",run_time," minutes"))
 
 
 
