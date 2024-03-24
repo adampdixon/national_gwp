@@ -76,9 +76,15 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
     print("Getting results from all States")
   }
   
+  # list all csvs in dir_list
   csv_list<-unlist(lapply(dir_list, function(x) list.files(x, full.names=T, recursive = T, pattern = file_name))) # FULL NAMES
   
   files<-unlist(lapply(dir_list, function(x) list.files(x, full.names=F, recursive = T, pattern = file_name))) # NOT FULL NAMES
+  
+  if(length(csv_list)==0){
+    print("No files found")
+    return(NULL)
+  }
   
   # /Results_GEOID_42091_Pennsylvania/Annual_results_compilation_1_1_Cotton_Daycent.csv
   
@@ -136,7 +142,7 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
   
   
   df2<-left_join(df, crop_area_df, by=c("GEOID"="GEOID"))%>% # add crop area
-
+    # mutate(CO2resp_ghayr = SOC_Mgha)%>% # !! remove this line when CO2resp is fixed
     mutate(Cty_Crp_Yld_Mg=get(crop_var)*get(crop_area_var))%>% # calculate crop area in county multiplied by yield per ha
     mutate(Cty_SOC_Mg=SOC_Mgha*get(crop_area_var))%>% # calculate SOC in crop area in county 
     mutate(crop_yld_Mgha=get(crop_var), crop = Crop, 
@@ -151,8 +157,8 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
 }
 
 
-# results<-daycent_results(Year=2017, Crop = 'Soybean', scenario = 1, Results_path=results_path, Crop_area_path=crop_area_path)
-# State='Nebraska'; Year=2017; Crop = 'Rotation'; scenario = 1; Results_path=results_path; Crop_area_path=crop_area_path
+# results<-daycent_results(Year=2017, Crop = 'Cotton', scenario = 1, Results_path=results_path, Crop_area_path=crop_area_path)
+# State='Nebraska'; Year=2017; Crop = 'Maize'; scenario = 1; Results_path=results_path; Crop_area_path=crop_area_path
 
 res<-data.frame()
 

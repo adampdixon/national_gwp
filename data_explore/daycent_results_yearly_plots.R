@@ -3,7 +3,7 @@
 # then do an average for all counties, or plot all lines
 
 
-# Daycent results at county level mapped out
+# Daycent results at yearly level in ggplot
 # January 15 2023
 # Set workspace
 if (Sys.info()['sysname'] == "Linux"){ 
@@ -42,6 +42,7 @@ library(ggplot2)
 library(reshape2) 
 library(gridExtra)
 library(grid)
+library(data.table)
 # library(patchwork)
 
 
