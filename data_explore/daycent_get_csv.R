@@ -169,7 +169,7 @@ for (i in c("Maize", "Soybean", "Wheat", "Cotton", "Rotation")){
     print(i)
     print(scenario_arg)
     # Year=year_; Crop = i; scenario = scenario_arg; Results_path=results_path; Crop_area_path=crop_area_path
-    results<-daycent_results(Year=year_, Crop = i, scenario = scenario_arg, Results_path=results_path, Crop_area_path=crop_area_path, State= 'Nebraska')
+    results<-daycent_results(Year=year_, Crop = i, scenario = scenario_arg, Results_path=results_path, Crop_area_path=crop_area_path)
     # print(results)
     print("***********")
     res<-rbind(res, results)
