@@ -65,7 +65,8 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
   
   print(paste0("State: ", State, ", Year: ", Year, ", Crop: ", Crop, ", scenario: ", scenario))
   
-  file_name<-paste0("Annual_results_compilation_1_", scenario, "_", Crop, "_Daycent.csv")
+  file_name1<-paste0("Annual_results_compilation_1_", scenario, "_", Crop, "_Daycent.csv")
+  file_name2<-paste0("Annual_results_compilation_2_", scenario, "_", Crop, "_Daycent.csv") # climate scenario2
   
   if (!is.null(State)){ # get State only results
     dir_list<-dir(Results_path, pattern = State, full.names = T)
@@ -76,10 +77,16 @@ daycent_results<-function(State=NULL, Year=NULL, Crop, scenario, Results_path, C
     print("Getting results from all States")
   }
   
-  # list all csvs in dir_list
-  csv_list<-unlist(lapply(dir_list, function(x) list.files(x, full.names=T, recursive = T, pattern = file_name))) # FULL NAMES
+  # list all csvs in dir_list, first for climate scenario 1 then 2
+  csv_list_1<-unlist(lapply(dir_list, function(x) list.files(x, full.names=T, recursive = T, pattern = file_name1))) # FULL NAMES
+  csv_list_2<-unlist(lapply(dir_list, function(x) list.files(x, full.names=T, recursive = T, pattern = file_name2))) # FULL NAMES
   
-  files<-unlist(lapply(dir_list, function(x) list.files(x, full.names=F, recursive = T, pattern = file_name))) # NOT FULL NAMES
+  csv_list<-c(csv_list_1, csv_list_2)
+  
+  files_1<-unlist(lapply(dir_list, function(x) list.files(x, full.names=F, recursive = T, pattern = file_name1))) # NOT FULL NAMES
+  files_2<-unlist(lapply(dir_list, function(x) list.files(x, full.names=F, recursive = T, pattern = file_name2))) # NOT FULL NAMES
+  
+  files<-c(files_1, files_2)
   
   if(length(csv_list)==0){
     print("No files found")
