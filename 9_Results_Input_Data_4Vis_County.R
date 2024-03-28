@@ -68,7 +68,7 @@ county_climate_high_change<-data.frame()
 
     # Get average value per year for each county
     # put table together
-for (county_geoid in county_data$GEOID){
+for (county_geoid in county_data$GEOID[1:5]){
       tryCatch(
         expr = {
           print(county_geoid)
