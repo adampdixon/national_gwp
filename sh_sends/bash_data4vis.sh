@@ -27,5 +27,5 @@
 echo "Running data4vis"
 
 
-Rscript /glade/derecho/scratch/apdixon/national_gwp/data_explore/9_Results_Input_Data_4Vis_County.R
+Rscript /glade/derecho/scratch/apdixon/national_gwp/9_Results_Input_Data_4Vis_County.R
   
