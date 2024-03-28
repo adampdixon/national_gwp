@@ -154,7 +154,7 @@ for (fut_climate in clim_nums) { # climate scenarios, in case we want different 
     print("####### Climate scenario 2022 to 2050 #######")
     print("************************************")
     clim_scenario_num <- fut_climate
-    print(paste0("climate scenario: ", clim_scenario_num))
+    print(paste0("climate scenario: ", clim_scenario_num)) # why needed?
 
     cat(paste0("*********Model will be run for ", crops_, "*********\n"))
     cat("********* mgmt scenarios", mgmt_scenario_nums, " *********\n")

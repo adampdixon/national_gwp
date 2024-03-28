@@ -21,8 +21,10 @@ del_input_files<-FALSE
 
 results_only=FALSE # only results, works for Daycent 
 
-run_Daycent=TRUE 
+run_ag_models=FALSE
+compile_input_data_4visualizations=TRUE
 
+run_Daycent=FALSE 
 run_LDNDC=FALSE
 run_Millennial=FALSE
 # county_numbers<-296:306   #295:3100
@@ -33,7 +35,9 @@ crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
 mgmt_scenario_nums <- 1:6 # Management scenarios
 
 # climate scenarios
-  clim_nums <- 1:2 #c(1:2), can be 1:2
+clim_nums <- 1:2 #c(1:2), can be 1:2
+
+
 
 
 cat("************************************\n")

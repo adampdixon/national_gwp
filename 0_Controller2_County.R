@@ -139,7 +139,9 @@ if(identical(run_LDNDC,TRUE)) {
 
 #*************************************************************
 
-
+if(identical(compile_input_data_4visualizations, TRUE)){
+  
+}
 
 
 #*************************************************************
@@ -164,7 +166,7 @@ if(identical(run_LDNDC,TRUE)) {
 
 
 # Daycent
-# if(identical(run_Daycent,TRUE)) {
+if(identical(run_ag_models,TRUE)) {
   # link to schedule files
   source(paste0("3_Create_management_input_files-Daycent_County_Scenarios.R"), local = TRUE)
   
@@ -235,7 +237,7 @@ if(identical(run_LDNDC,TRUE)) {
 
     } # end of else statement
     }
-  # }
+  }
 
 #*************************************************************
 
