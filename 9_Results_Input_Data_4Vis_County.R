@@ -118,7 +118,7 @@ for (county_geoid in county_data$GEOID){
         },
         error = function(e){ 
           
-          weather2<-data.frame(GEOID = county_geoid, State =  NA, year =NA, day = NA, month = NA, jday = NA, tmax = NA, tmin = NA, precip = NA)
+          weather2<-data.frame(GEOID = county_geoid, State =  NA, year =NA, tmax = NA, tmin = NA, precip = NA)
           county_climate_high_change<-rbind(county_climate_high_change, weather2)
           
           county_climate_low_change<-rbind(county_climate_low_change, weather2)
