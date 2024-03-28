@@ -38,6 +38,8 @@ library(dplyr)
 library(data.table)
 library(lubridate)
 
+date<-gsub("-", "", Sys.Date())
+
 
 county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))%>%
   select(GEOID, NAME, State_Name)
@@ -68,7 +70,7 @@ county_climate_high_change<-data.frame()
 
     # Get average value per year for each county
     # put table together
-for (county_geoid in county_data$GEOID[1:5]){
+for (county_geoid in county_data$GEOID){
       tryCatch(
         expr = {
           print(county_geoid)
@@ -138,9 +140,9 @@ for (county_geoid in county_data$GEOID[1:5]){
     }
 
 
-fwrite(county_climate_low_change, file.path(results_path, 'county_climate_low_change.csv'))
+fwrite(county_climate_low_change, file.path(results_path, paste0('county_climate_low_change_', date, '.csv')))
 
-fwrite(county_climate_high_change, file.path(results_path, 'county_climate_high_change.csv'))
+fwrite(county_climate_high_change, file.path(results_path, paste0('county_climate_high_change.csv', date, '.csv')))
 
 
 
