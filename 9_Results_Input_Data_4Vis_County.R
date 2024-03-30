@@ -7,7 +7,7 @@ if (Sys.info()['sysname'] == "Linux"){
   if(Sys.info()['user']=='ap') {
     master_path<-'/home/ap/Documents/GitHub/national_gwp'
     climate_folder<-'/home/ap/Scratch'
-    results_path<-'/home/ap/figs'
+    data_path<-'/home/ap/figs/climate_figs'
     # args=(commandArgs(TRUE))
     # county_number<-1
     
@@ -37,118 +37,172 @@ if (Sys.info()['sysname'] == "Linux"){
 library(dplyr)
 library(data.table)
 library(lubridate)
+library(readr)
+library(ggplot2)
+library(gridExtra)
 
 date<-gsub("-", "", Sys.Date())
 
 
-county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))%>%
-  select(GEOID, NAME, State_Name)
-# county_data<-county_data[county_data$GEOID==county_number,]
-# county_data<-county_data[county_number,]
+length(unique(low_change_data$GEOID))
 
-if(identical(Test, TRUE)){
-  county_data<-county_data%>%
-    filter(GEOID %in% c(31181, 13023, 13213, 20073, 31181, 42053, 1075))
+# county_summary_low<-low_change_data%>%
+#   group_by(GEOID)%>%
+#   summarise(mean_tmin=mean(tmin), mean_tmax=mean(tmax), mean_precip=mean(precip))
+# 
+# state_summary_low<-low_change_data%>%
+#   group_by(State)%>%
+#   summarise(mean_tmin=mean(tmin), mean_tmax=mean(tmax), mean_precip=mean(precip))
+
+df1<-low_change_data%>%
+  mutate(period = ifelse(year<2022, 'historic', 'future'))%>%
+  group_by(GEOID, period)%>%
+  summarise(mean_tmin=mean(tmin), mean_tmax=mean(tmax), mean_precip=mean(precip))
+
+
+
+clim_hist<-function(grouping, climvar){
+  
+  low_change_data<-read_csv(file.path(data_path, 'county_climate_low_change_20240329.csv'))
+  
+  high_change_data<-read_csv(file.path(data_path, 'county_climate_high_change_20240329.csv'))
+  
+  df_l<-low_change_data%>%
+    mutate(period = ifelse(year<2022, 'historic', 'future'))%>%
+    group_by({{grouping}}, period)%>%
+    summarise(mean_tmin=mean(tmin), mean_tmax=mean(tmax), mean_precip=mean(precip))%>%
+    select({{climvar}}, period)
+
+    df_h<-high_change_data%>%
+    mutate(period = ifelse(year<2022, 'historic', 'future'))%>%
+    group_by({{grouping}}, period)%>%
+    summarise(mean_tmin=mean(tmin), mean_tmax=mean(tmax), mean_precip=mean(precip))%>%
+    select({{climvar}}, period)
+  
+  # climvar_<-df1[,climvar]
+  
+  # Overlaid histograms
+  h1<-ggplot(df_l, aes(x={{climvar}}, color = period)) +
+    # geom_histogram(fill="white", alpha=0.5, position="identity")
+    geom_histogram(fill="white", alpha = .5) +
+    ggtitle(paste0("Low Change ", colnames(df_l)[2]))+
+    theme_classic()
+  
+  h2<-ggplot(df_h, aes(x={{climvar}}, color = period)) +
+    # geom_histogram(fill="white", alpha=0.5, position="identity")
+    geom_histogram(fill="white", alpha = .5) +
+    ggtitle(paste0("High Change ", colnames(df_l)[2]))+
+    theme_classic()
+  
+  return(grid.arrange(h1, h2, nrow = 1))
+  
 }
 
-setwd(master_path)
-
-####################### climate #######################
-if (identical(Glade, TRUE)){
-  climate_data_path<-'/glade/work/apdixon/climate'
-  print(paste0('*********climate_data_path is ', climate_data_path, " **************"))
-} else {
-  climate_data_path<-'/home/ap/Scratch'
-  print(paste0('*********climate_data_path is ', climate_data_path, " **************"))
-}
-####################### ####### #######################
-
-county_climate_low_change<-data.frame()
-county_climate_high_change<-data.frame()
-
-
-
-    # Get average value per year for each county
-    # put table together
-for (county_geoid in county_data$GEOID){
-      tryCatch(
-        expr = {
-          print(county_geoid)
-          
-          state<-filter(county_data, GEOID==county_geoid)$State_Name
-          
-          for (fut_climate in c(1:2)){
-            print(fut_climate)
-            
-            if (fut_climate==1){ # LOW CHANGE
-              # create climate tables
-              source('1_create_county_climate_wth_file_County.R', local = TRUE)
-              
-              # summarize at yearly level
-              weather2<-weather%>%
-                group_by(year)%>%
-                summarise_at(vars(tmax, tmin, precip), mean)
-              
-              add_df<-data.frame(GEOID = county_geoid, State = state)
-              
-              weather3<- cbind(add_df, weather2)
-              
-              # weather is outout of source file
-              county_climate_low_change<-rbind(county_climate_low_change, weather3)
-              
-            } 
-            
-            if (fut_climate==2){ # HIGH CHANGE
-              # create climate tables
-              source('1_create_county_climate_wth_file_County.R', local = TRUE)
-              
-              # summarize at yearly level
-              weather2<-weather%>%
-                group_by(year)%>%
-                summarise_at(vars(tmax, tmin, precip), mean)
-              
-              add_df<-data.frame(GEOID = county_geoid, State = state)
-              
-              weather3<- cbind(add_df, weather2)
-              
-              # weather is outout of source file
-              county_climate_high_change<-rbind(county_climate_high_change, weather3)
-            }
-            
-          }
-          
-        },
-        error = function(e){ 
-          
-          weather2<-data.frame(GEOID = county_geoid, State =  NA, year =NA, tmax = NA, tmin = NA, precip = NA)
-          county_climate_high_change<-rbind(county_climate_high_change, weather2)
-          
-          county_climate_low_change<-rbind(county_climate_low_change, weather2)
-          
-          
-        },
-        warning = function(w){
-          # (Optional)
-          # Do this if a warning is caught...
-        },
-        finally = {
-          # (Optional)
-          # Do this at the end before quitting the tryCatch structure...
-        }
-      )
-      
-    }
-
-
-fwrite(county_climate_low_change, file.path(results_path, paste0('county_climate_low_change_', date, '.csv')))
-
-fwrite(county_climate_high_change, file.path(results_path, paste0('county_climate_high_change.csv', date, '.csv')))
-
-
-
+clim_hist(grouping = State, climvar = mean_tmax)
+clim_hist(grouping = State, climvar = mean_tmin)
+clim_hist(grouping = State, climvar = mean_precip)
 # create histogram
 
+
+
+clim_hist2<-function(grouping){
+  
+  low_change_data<-read_csv(file.path(data_path, 'county_climate_low_change_20240329.csv'))%>%
+    filter(year > 2021)%>%
+    group_by({{grouping}})%>% # {{grouping}}
+    summarise(mean_tmin=mean(tmin), mean_tmax=mean(tmax), mean_precip=mean(precip))%>%
+    mutate(clim = 'Low')
+  
+  high_change_data<-read_csv(file.path(data_path, 'county_climate_high_change_20240329.csv'))%>%
+    filter(year > 2021)%>%
+    group_by({{grouping}})%>%
+    summarise(mean_tmin=mean(tmin), mean_tmax=mean(tmax), mean_precip=mean(precip))%>%
+    mutate(clim = 'High')
+  
+  df<-rbind(low_change_data, high_change_data)
+
+  print(head(df))
+  
+  # df_h<-high_change_data%>%
+  #   # mutate(period = ifelse(year<2022, 'historic', 'future'))%>%
+  #   group_by({{grouping}}, period)%>%
+  #   summarise(mean_tmin=mean(tmin), mean_tmax=mean(tmax), mean_precip=mean(precip))%>%
+  #   select({{climvar}}, period)
+  
+  # climvar_<-df1[,climvar]
+  
+  # Overlaid histograms
+  h1<-ggplot(df, aes(x=mean_tmin, color = clim)) +
+    # geom_histogram(fill="white", alpha=0.5, position="identity")
+    geom_histogram(fill="white", alpha = .5) +
+    ggtitle("Future mean tmin 2022-2050")+
+    theme_classic()
+  
+  
+  h2<-ggplot(df, aes(x=mean_tmax, color = clim)) +
+    # geom_histogram(fill="white", alpha=0.5, position="identity")
+    geom_histogram(fill="white", alpha = .5) +
+    ggtitle("Future mean tmax 2022-2050")+
+    theme_classic()
+  h3<-ggplot(df, aes(x=mean_precip, color = clim)) +
+    # geom_histogram(fill="white", alpha=0.5, position="identity")
+    geom_histogram(fill="white", alpha = .5) +
+    ggtitle("Future mean precip 2022-2050")+
+    theme_classic()
+  
+
+  
+  return(grid.arrange(h1, h2, h3, nrow = 1))
+  
+}
+
+clim_hist2(grouping = State)
+
+
 # create box plots
+
+clim_box<-function(grouping, climvar){
+  low_change_data<-fread(file.path(data_path, 'county_climate_low_change_20240329.csv'))%>%
+    filter(year > 2021)%>%
+    group_by(GEOID, year)%>% # {{grouping}}
+    summarise(mean_tmin=mean(tmin), mean_tmax=mean(tmax), mean_precip=mean(precip))%>%
+    mutate(clim = 'Low')
+  
+  high_change_data<-fread(file.path(data_path, 'county_climate_high_change_20240329.csv'))%>%
+    filter(year > 2021)%>%
+    group_by({{grouping}}, year)%>%
+    summarise(mean_tmin=mean(tmin), mean_tmax=mean(tmax), mean_precip=mean(precip))%>%
+    mutate(clim = 'High')
+  
+  df<-rbind(low_change_data, high_change_data)
+  
+  b1<-ggplot(df, aes(x=as.factor(year), y=mean_tmin, fill=clim)) +
+    geom_boxplot() +
+    theme_classic() +
+    xlab('') +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  
+  b2<-ggplot(df, aes(x=as.factor(year), y=mean_tmax, fill=clim)) +
+    geom_boxplot() +
+    theme_classic() +
+    xlab('') +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  
+  b3<-ggplot(df, aes(x=as.factor(year), y=mean_precip, fill=clim)) +
+    geom_boxplot() +
+    theme_classic() +
+    xlab('') +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  
+  return(grid.arrange(b1, b2, b3, ncol = 1))
+}
+
+
+clim_box(grouping = State)
+
+clim_box(grouping = State)
+
+
 
 
 

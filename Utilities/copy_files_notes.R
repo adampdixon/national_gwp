@@ -32,3 +32,19 @@ file.copy(cmip_files, '/glade/u/home/apdixon/Documents/national_gwp/cmip6_climat
 file.copy(nclim_files, '/glade/u/home/apdixon/Documents/national_gwp/climate_nclim')
 
 
+
+# getting newer wind and radiation files for ldndc
+
+c<-list.files('/glade/work/apdixon/climate', full.names = T)
+
+c2<-c[str_detect(c, '31181') | str_detect(c, '13023') | str_detect(c, '13213') | str_detect(c, '20073') |
+         str_detect(c, '42053') | str_detect(c, '1075')]
+
+
+file.copy(c2, '/glade/derecho/scratch/apdixon/climate_send')
+
+c<-list.files('/glade/work/apdixon/climate', full.names = T, pattern =
+
+c(31181)) #13023, 13213, 20073, 31181, 42053, 1075
+
+
