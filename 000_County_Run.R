@@ -21,11 +21,11 @@ del_input_files<-FALSE
 
 results_only=FALSE # only results, works for Daycent 
 
-run_ag_models=FALSE
+run_ag_models=TRUE
 compile_input_data_4visualizations=TRUE
 
 run_Daycent=FALSE 
-run_LDNDC=FALSE
+run_LDNDC=TRUE
 run_Millennial=FALSE
 # county_numbers<-296:306   #295:3100
 crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops

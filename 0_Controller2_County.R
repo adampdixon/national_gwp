@@ -119,7 +119,10 @@ source(paste0("0_Observations_and_constants_County.R"), local = TRUE)
 # }
 
 if(identical(run_LDNDC,TRUE)) {
-  # source("1_Create_weather_input_files-LDNDC_County.R", local = TRUE)
+  
+  browser()
+  
+  source("1_Create_weather_input_files-LDNDC_County.R", local = TRUE)
   source("2_Create_soil_data-LDNDC_County.R", local = TRUE)
 }
 
@@ -139,9 +142,9 @@ if(identical(run_LDNDC,TRUE)) {
 
 #*************************************************************
 
-if(identical(compile_input_data_4visualizations, TRUE)){
-  
-}
+# if(identical(compile_input_data_4visualizations, TRUE)){
+#   
+# }
 
 
 #*************************************************************
@@ -166,7 +169,7 @@ if(identical(compile_input_data_4visualizations, TRUE)){
 
 
 # Daycent
-if(identical(run_ag_models,TRUE)) {
+# if(identical(run_ag_models,TRUE)) {
   # link to schedule files
   source(paste0("3_Create_management_input_files-Daycent_County_Scenarios.R"), local = TRUE)
   
@@ -237,7 +240,7 @@ if(identical(run_ag_models,TRUE)) {
 
     } # end of else statement
     }
-  }
+  # }
 
 #*************************************************************
 
