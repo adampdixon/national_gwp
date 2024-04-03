@@ -13,7 +13,7 @@
 
 library(xml2)
 
-soil_filename <- paste0(dndc_path,"GEOID_", county_geoid, "_soil.xml")
+soil_filename <- paste0(dndc_path, site_name, "_soil.xml")
 
 
 # Remove old file ---------------------------------------------------------
@@ -97,3 +97,4 @@ write_xml(doc,file=soil_filename,
 
 rm(doc, description_nodes, soil_nodes, general_node, layer_nodes,
    flipped_soil_df)
+

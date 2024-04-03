@@ -10,14 +10,108 @@
 # Calls custom nasapower_download function."
 #######################################
 
+print("Starting 1_Create_weather_input_files-LDNDC_County.R")
+
+
+climate_data<-list.files(climate_data_path, full.names = TRUE, pattern = ".csv")
+
 print("Starting 1_Create_weather_input_files-LDNDC.R")
 
+
+# Future 2022 - 2050
+if (fut_climate == 1) {
+  # climate scenario low change
+  cmip_scen<-'_ssp126_gfdl-esm4__cmip6.csv'
+}
+if (fut_climate == 2) {
+  # climate scenario high change
+  cmip_scen<-'_ssp585_gfdl-esm4__cmip6.csv'
+}
+
+rad_wind_year_mean<-mutate(fread(climate_data[grep(paste0("rsds_", county_geoid, cmip_scen), climate_data)]),
+                           radiation = value)%>%
+  select(radiation, year, doy)%>%
+  left_join(
+    mutate(fread(climate_data[grep(paste0("sfcwind_", county_geoid, cmip_scen), climate_data)]),
+           wind = value),
+    by=c('year', 'doy'))%>%
+  select(GEOID, wind, radiation, year, doy)%>%
+  group_by(doy)%>% # grouping by doy produces an average year
+  summarise(wind = mean(wind),
+            radiation = mean(radiation))
+
+
+
 # if(clim_scenario_num==1) {
+
+# historic period - 1951 to 2021
+
+#historic - 1950-2021
+historic_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, "_nclim.csv"), climate_data)]),
+                      tmax = value)%>%
+  left_join(
+    mutate(fread(climate_data[grep(paste0("tmin_", county_geoid, "_nclim.csv"), climate_data)]),
+           tmin = value), 
+    by=c('year', 'doy'))%>%
+  left_join(
+    mutate(fread(climate_data[grep(paste0("prcp_", county_geoid, "_nclim.csv"), climate_data)]),
+           precip = value),
+    by=c('year', 'doy'))%>%
+  select(year, doy, tmax, tmin, precip)%>%
+  mutate(date_object = lubridate::ymd(paste(year, "-01-01")) + days(doy - 1))%>% #chatgpt derived
+  mutate(month = lubridate::month(date_object),
+         day = lubridate::day(date_object),
+         jday = doy)%>%
+  select(day, month, year, jday, tmax, tmin, precip)
+
+# Add wind and radiation year average to each year
+historic_data2<-left_join(historic_data, rad_wind_year_mean, by=c('jday' = 'doy'))%>%
+  mutate(tavg = (tmax + tmin)/2)%>% # SO WRONG :(
+  select(year, jday, precip, tavg, tmax, tmin, radiation, wind)
+
+
+# TODO add the future data and rbind
+
+future_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, cmip_scen), climate_data)]),
+                    tmax = value)%>%
+  left_join(
+    select(mutate(fread(climate_data[grep(paste0("tmin_", county_geoid, cmip_scen), climate_data)]),
+                  tmin = value),
+           year, doy, tmin),
+    by=c('year', 'doy'))%>%
+  left_join(
+    select(mutate(fread(climate_data[grep(paste0("prcp_", county_geoid, cmip_scen), climate_data)]),
+                  precip = value),
+           year, doy, precip),
+    by=c('year', 'doy'))%>%
+  left_join(
+    select(mutate(fread(climate_data[grep(paste0("rsds_", county_geoid, cmip_scen), climate_data)]),
+                  radiation = value),
+           year, doy, radiation),
+    by=c('year', 'doy'))%>%
+  left_join(
+    select(mutate(fread(climate_data[grep(paste0("sfcwind_", county_geoid, cmip_scen), climate_data)]),
+                  wind = value),
+           year, doy, wind),
+    by=c('year', 'doy'))%>%
+  mutate(date_object = lubridate::ymd(paste(year, "-01-01")) + days(doy - 1))%>% #chatgpt derived
+  mutate(month = lubridate::month(date_object),
+         day = lubridate::day(date_object),
+         jday = doy,
+         tavg = (tmax+tmin)/2)%>% # TODO TERRIBLE WAY TO DO THIS
+  select(year, jday, precip, tavg, tmax, tmin, radiation, wind)
+
+
+
+clim_data<-rbind(historic_data2, future_data)
+
+names(clim_data)<-c("year","dayofyear","rain_mm","tavg","maxt_C","mint_C","radn_Wm2","meanw_ms")
+
+
   
-  # experimental period only (1989-2021)
   
   ## Select year, dayofyear, radiation (W/m^2), maxt, mint, precip (mm), mean wind (m/s)
-  DNDC_basic <- new_dat[,c("year","dayofyear","rain_mm","tavg","maxt_C","mint_C",
+  DNDC_basic <- clim_data[,c("year","dayofyear","rain_mm","tavg","maxt_C","mint_C",
                            "radn_Wm2","meanw_ms")]
   colnames(DNDC_basic) <- c("year","dayofyear","prec","tavg","tmax","tmin","grad","wind")
   
@@ -39,7 +133,7 @@ print("Starting 1_Create_weather_input_files-LDNDC.R")
   
   
   ## output header data
-  DNDC_wth_file <- paste0(dndc_path,"climate_exp.txt")
+  DNDC_wth_file <- paste0(dndc_path,"climate_", clim_scenario_num, ".txt")
   
   header_txt <- c("%global",
                   paste0("        time = \"",time,"\"\n"),

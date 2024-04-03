@@ -52,7 +52,7 @@ print("Starting 0_Controller2_County.R")
 # curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
 # nasapower_output_filename <- paste0(site_name,"_np.csv")
 # #
-# site_id <- 2
+site_id <- 0
 # site_name <- "LRF"
 # latitude = 33.684
 # longitude = -101.768
@@ -119,8 +119,6 @@ source(paste0("0_Observations_and_constants_County.R"), local = TRUE)
 # }
 
 if(identical(run_LDNDC,TRUE)) {
-  
-  browser()
   
   source("1_Create_weather_input_files-LDNDC_County.R", local = TRUE)
   source("2_Create_soil_data-LDNDC_County.R", local = TRUE)
@@ -192,54 +190,64 @@ if(identical(run_LDNDC,TRUE)) {
         
         model_path<-file.path(results_path, paste0("Annual_results_compilation_", scenario_name2,"_Daycent.csv"))
         
-        # check if results file already exists and only want results
-        if(file.exists(model_path) & identical(results_only, FALSE)){ 
-          # & nrow(fread(model_path))> 200# # check if all rows have been reported; note this didn't work well
-          print(paste0("*************Daycent results already exist for: ", scenario_name2, " ... skipping...****************"))
-          next
-        } else{
-          print("...writing schedule file...")
+        if(identical(run_Daycent, TRUE)) {
           
-          # Pair scenarios with schedule file, combine as vector
-          crop_schedule<-c(get(paste0(tolower(crop), '_1')), # opening set of schedule file blocks
-                           get(paste0(tolower(crop), '_scenario_', m)), # scenario-specific schedule file blocks
-                           
-                           output_sch<-file.path(daycent_path2 , paste0("sched_base_", scenario_name, "_", crop, ".sch")))
-          
-          # write to sch file
-          writeLines(crop_schedule, output_sch) # schedule file name, e.g. schedule_file_maize
-          
-          
-          # Run Daycent
-          if(identical(run_Daycent,TRUE)) {
-            print(paste0("*************running Daycent for: ", scenario_name2, "****************"))
-            source(paste0("Daycent/Daycent_run_controller.R"), local = TRUE)
-            source(paste0("9_Results_Daycent-setup_County.R"), local=TRUE) #TODO AD set this up?
-          }
-          
+          # check if results file already exists and only want results
+          if(file.exists(model_path) & identical(results_only, FALSE)){ 
+            # & nrow(fread(model_path))> 200# # check if all rows have been reported; note this didn't work well
+            print(paste0("*************Daycent results already exist for: ", scenario_name2, " ... skipping...****************"))
+            next
+          } else{
+            print("...writing schedule file...")
+            
+            # Pair scenarios with schedule file, combine as vector
+            crop_schedule<-c(get(paste0(tolower(crop), '_1')), # opening set of schedule file blocks
+                             get(paste0(tolower(crop), '_scenario_', m)), # scenario-specific schedule file blocks
+                             
+                             output_sch<-file.path(daycent_path2 , paste0("sched_base_", scenario_name, "_", crop, ".sch")))
+            
+            # write to sch file
+            writeLines(crop_schedule, output_sch) # schedule file name, e.g. schedule_file_maize
 
-          # LDNDC
-          if(identical(run_LDNDC,TRUE)) {
-            source(paste0("3_Create_management_input_files-LDNDC_County.R"), local = TRUE)
-            source(paste0("4_Create_additional_files-LDNDC_County.R"), local = TRUE)
-            }
-          #
+          
+          } # end if file exists
+        } # end if run_Daycent
           
           
-          
-          
-          
-          # Daycent has already been run, update results only
-          if(identical(results_only, TRUE)){
-            print(paste0("*************generation results table for: ", scenario_name2, "****************"))
-            # Table generation script
-            source('9_Results_Daycent-setup_County.R', local = TRUE)
-          }
+        # Run Daycent
+        if(identical(run_Daycent,TRUE)) {
+          print(paste0("*************running Daycent for: ", scenario_name2, "****************"))
+          source(paste0("Daycent/Daycent_run_controller.R"), local = TRUE)
+          source(paste0("9_Results_Daycent-setup_County.R"), local=TRUE) #TODO AD set this up?
         }
-      } 
+        
 
-    } # end of else statement
-    }
+        # LDNDC
+        if(identical(run_LDNDC,TRUE)) {
+          print(paste0("*************running LDNDC for: ", scenario_name2, "****************"))
+          print(paste0("*************Create_management_input_files-LDNDC_County: ", scenario_name2, "****************"))
+          source(paste0("3_Create_management_input_files-LDNDC_County.R"), local = TRUE)
+          
+          print(paste0("*************4 Create_additional_files-LDNDC_County: ", scenario_name2, "****************"))
+          source(paste0("4_Create_additional_files-LDNDC_County.R"), local = TRUE)
+          
+          source(file.path(ldndc_run_path, "run_LDNDC.R"))
+          
+          } # end of run_LDNDC
+        #
+          
+          
+       # Daycent has already been run, update results only
+        if(identical(results_only, TRUE)){
+          print(paste0("*************generation results table for: ", scenario_name2, "****************"))
+          # Table generation script
+          source('9_Results_Daycent-setup_County.R', local = TRUE)
+        }
+        
+      } # end of mgmt_scenario_nums loop 
+
+    } # end of else statement if crop amount is less than 1 ha in county
+    } # end of crops loop
   # }
 
 #*************************************************************

@@ -53,11 +53,11 @@ tic()
 # experiment_start_year <- 1989
 # experiment_end_year <- 2021
 # experiment_year_range <- experiment_start_year:experiment_end_year
-# experiment_start_date <- "1989-01-01"
+experiment_start_date <- "1951-01-01" # for LDNDC
 # experiment_end_date <- "2021-12-31"
 # end_exp_period_year <- 2021
 end_fut_period_year <- 2050
-# max_fut_period_year <- 2100
+max_fut_period_year <- 2050 # for LDNDC
 # calib_mgmt_grps <- c(1,2,3)
 # calib_mgmt_nums <- c(1,2,3)
 #
@@ -68,7 +68,7 @@ end_fut_period_year <- 2050
 # curr_local_wth_filename <- "12-lter+weather+station+daily+weather+all+variates+1657202230.csv"
 wth_path <- paste0("Data/County/Weather/")
 # nasapower_output_filename <- paste0(site_name,"_np.csv")
-# mgmt_path=paste0("Data/County/Management/")
+# mgmt_path=paste0("Data/KBS/Management/")
 # adjusted_ops_filename="clean_ops_ext_adj.csv"
 # fut_weather_path <- paste0("Data/CMIP6/",site_name,"/")
 # apsim_path <- paste0("APSIM/",site_name,"/")

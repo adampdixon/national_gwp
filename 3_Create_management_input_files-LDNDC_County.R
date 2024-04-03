@@ -1,11 +1,17 @@
 # Create management xml LDNDC file
 
+library(XML)
+
+
 
 # this is the top level - "event" encapsulates the whole doc
 doc <- newXMLDoc()
 root = newXMLNode("event", doc=doc)
 
-full_df<-read.csv('/home/ap/Downloads/test3.csv')
+full_df<-county_mana%>%
+  filter(Crop_Name==crop)%>%
+  filter(Scenario==0 | Scenario==m) # 0 is the time before scenarios start, m is mgmt scenario from controller
+
 # this is the second level - also "event" tags, with attributes and sub-child nodes
 for(i in 1:nrow(full_df)) {
   event_node <- newXMLNode("event", parent=root)
@@ -27,7 +33,5 @@ for(i in 1:nrow(full_df)) {
                                    name = full_df[i,"dndc_plant_type"])
   )
 }
-doc
-
 
 saveXML(doc,file=paste0(dndc_path,"mana_",mgmt_scenario_num,".xml"))

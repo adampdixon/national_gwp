@@ -26,12 +26,15 @@ print("Starting 4_Create_additional_files-LDNDC.R")
 library(xml2)
 
 dndc_setup_filename <- paste0(dndc_path,"setup.xml")
-dndc_project_filename <- paste0(dndc_path,site_name,"_",scenario_name,".ldndc")
+dndc_project_filename <- paste0(dndc_path,site_name,"_",scenario_name2,".ldndc")
+
+print(dndc_project_filename)
+
 dndc_speciesparams_filename <- paste0(dndc_path,"speciesparameters.xml")
 dndc_airchem_filename <- paste0(dndc_path,"airchem.txt")
-dndc_batch_filename <- paste0(dndc_path,site_name,"_",scenario_name,".bat")
-dndc_shell_filename <- paste0(dndc_path,site_name,"_",scenario_name,".sh")
-dndc_callshell_filename <- paste0(dndc_path,"callsh_",scenario_name,".sh")
+dndc_batch_filename <- paste0(dndc_path,site_name,"_",scenario_name2,".bat")
+dndc_shell_filename <- paste0(dndc_path,site_name,"_",scenario_name2,".sh")
+dndc_callshell_filename <- paste0(dndc_path,"callsh_",site_name,"_",scenario_name2,".sh")
 
 
 #*************************************************************
@@ -76,15 +79,15 @@ write_xml(doc_setup,file=dndc_setup_filename)
 unlink(dndc_project_filename)
 
 # set the treatment details (soil and management) the scenario is based on
-base_treatment <- ifelse(mgmt_scenario_grp %in% c(1,4,5,6),1,mgmt_scenario_grp)
+# base_treatment <- ifelse(mgmt_scenario_grp %in% c(1,4,5,6),1,mgmt_scenario_grp)
 
 doc_proj <- read_xml(paste0("<?xml version=\"1.0\" ?><ldndcproject PackageMinimumVersionRequired=\"1.35.2\">",
                  paste0('<schedule time=\"',experiment_start_date,'/24 -> ',max_fut_period_year,'-12-31\" />'),
                  #paste0('<schedule time=\"1989-01-01/24 -> 2075-12-31\" />'),
                  "<input>",
-                 paste0('<sources sourceprefix=\"',site_name,'/" >'),
+                 paste0('<sources sourceprefix=\"',site_name,'/" >'), 
                  "<setup source=\"setup.xml\" />",
-                 paste0('<site source=\"site_',base_treatment,'.xml\" />'),
+                 paste0('<site source=\"', site_name, "_soil",'.xml\" />'), # includes soil characteristics, changed from "base_treatment"
                  "<airchemistry source=\"airchem.txt\" format=\"txt\" />",
                  paste0('<climate source=\"climate_',clim_scenario_num,'.txt\" />'),
                  paste0('<event source=\"mana_',mgmt_scenario_num,'.xml\" />'),
@@ -97,13 +100,13 @@ doc_proj <- read_xml(paste0("<?xml version=\"1.0\" ?><ldndcproject PackageMinimu
                   "</input>",
                   "<output>",
                  paste0('<sinks sinkprefix=\"',site_name,'/',site_name,'_output/" >'),
-                 paste0("<soilchemistrydaily sink=\"soil_chem_daily_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
-                 paste0("<soilchemistryyearly sink=\"soil_chem_yearly_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
-                 paste0("<microclimatedaily sink=\"soil_temp_daily_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
-                 paste0("<physiologydaily sink=\"physiology_daily_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
-                 paste0("<arablereportharvest sink=\"harvest_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
-                 paste0("<watercycledaily sink=\"soil_water_daily_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
-                 paste0("<metrxdaily sink=\"metrx-daily_",scenario_name,".csv\" format=\"txt\" delimiter=\",\" />"),
+                 paste0("<soilchemistrydaily sink=\"soil_chem_daily_",scenario_name2,".csv\" format=\"txt\" delimiter=\",\" />"),
+                 paste0("<soilchemistryyearly sink=\"soil_chem_yearly_",scenario_name2,".csv\" format=\"txt\" delimiter=\",\" />"),
+                 paste0("<microclimatedaily sink=\"soil_temp_daily_",scenario_name2,".csv\" format=\"txt\" delimiter=\",\" />"),
+                 paste0("<physiologydaily sink=\"physiology_daily_",scenario_name2,".csv\" format=\"txt\" delimiter=\",\" />"),
+                 paste0("<arablereportharvest sink=\"harvest_",scenario_name2,".csv\" format=\"txt\" delimiter=\",\" />"),
+                 paste0("<watercycledaily sink=\"soil_water_daily_",scenario_name2,".csv\" format=\"txt\" delimiter=\",\" />"),
+                 paste0("<metrxdaily sink=\"metrx-daily_",scenario_name2,".csv\" format=\"txt\" delimiter=\",\" />"),
                  "</sinks>",
                   "</output>",
                  "</ldndcproject>"))
@@ -153,24 +156,114 @@ writeLines(airchem_txt,dndc_airchem_filename)
 
 unlink(dndc_speciesparams_filename)
 
-doc_specparam <- read_xml(paste0(
-  "<ldndcspeciesparameters>",
-  "<speciesparameters>",
-  "<species group=\"crop\" mnemonic=\"soyb\">",
-  "<par name=\"gdd_base_temperature\" value=\"7\" />", #7
-  "<par name=\"gdd_maturity\" value=\"1819\" />", #default=1819
-  "<par name=\"gdd_grain_filling\" value=\"-1\" />", #default=est. at 1000
-  "<par name=\"fraction_foliage\" value=\"0.43\" />", #default=0.43
-  "<par name=\"fraction_fruit\" value=\"0.4\" />", #default=0.4
-  "<par name=\"fraction_root\" value=\"0.06\" />", #default=0.06
-  "<par name=\"fyield\" value=\"0.18\" />", #default=0.25
-  "<par name=\"slamax\" value=\"20\" />", #default=20
-  "<par name=\"vcmax25\" value=\"125.6\" />", #default=125.6
-  "<par name=\"h2oref_a\" value=\"0.5\" />", #default=0.5
-  "</species>",
-  "</speciesparameters>",
-  "</ldndcspeciesparameters>"
-))
+if(identical(crop, "Soybean")){
+  doc_specparam <- read_xml(paste0(
+    "<ldndcspeciesparameters>",
+    "<speciesparameters>",
+    "<species group=\"crop\" mnemonic=\"soyb\">",
+    "<par name=\"gdd_base_temperature\" value=\"7\" />", #7
+    "<par name=\"gdd_maturity\" value=\"1819\" />", #default=1819
+    "<par name=\"gdd_grain_filling\" value=\"-1\" />", #default=est. at 1000
+    "<par name=\"fraction_foliage\" value=\"0.43\" />", #default=0.43
+    "<par name=\"fraction_fruit\" value=\"0.4\" />", #default=0.4
+    "<par name=\"fraction_root\" value=\"0.06\" />", #default=0.06
+    "<par name=\"fyield\" value=\"0.18\" />", #default=0.25
+    "<par name=\"slamax\" value=\"20\" />", #default=20
+    "<par name=\"vcmax25\" value=\"125.6\" />", #default=125.6
+    "<par name=\"h2oref_a\" value=\"0.5\" />", #default=0.5
+    "</species>",
+    "</speciesparameters>",
+    "</ldndcspeciesparameters>"
+  ))
+}
+
+if(identical(crop, "Maize")){
+  print("Maize")
+  
+  doc_specparam <- read_xml(paste0(
+    "<ldndcspeciesparameters>",
+    "<speciesparameters>",
+    "<species group=\"crop\" mnemonic=\"foco\">",
+    "<par name=\"gdd_base_temperature\" value=\"7\" />", #7
+    "<par name=\"gdd_maturity\" value=\"1819\" />", #default=1819
+    "<par name=\"gdd_grain_filling\" value=\"-1\" />", #default=est. at 1000
+    "<par name=\"fraction_foliage\" value=\"0.43\" />", #default=0.43
+    "<par name=\"fraction_fruit\" value=\"0.4\" />", #default=0.4
+    "<par name=\"fraction_root\" value=\"0.06\" />", #default=0.06
+    "<par name=\"fyield\" value=\"0.18\" />", #default=0.25
+    "<par name=\"slamax\" value=\"20\" />", #default=20
+    "<par name=\"vcmax25\" value=\"125.6\" />", #default=125.6
+    "<par name=\"h2oref_a\" value=\"0.5\" />", #default=0.5
+    "</species>",
+    "</speciesparameters>",
+    "</ldndcspeciesparameters>"
+  ))
+}
+
+if(identical(crop, "Wheat")){
+  doc_specparam <- read_xml(paste0(
+    "<ldndcspeciesparameters>",
+    "<speciesparameters>",
+    "<species group=\"crop\" mnemonic=\"spwh\">",
+    "<par name=\"gdd_base_temperature\" value=\"7\" />", #7
+    "<par name=\"gdd_maturity\" value=\"1819\" />", #default=1819
+    "<par name=\"gdd_grain_filling\" value=\"-1\" />", #default=est. at 1000
+    "<par name=\"fraction_foliage\" value=\"0.43\" />", #default=0.43
+    "<par name=\"fraction_fruit\" value=\"0.4\" />", #default=0.4
+    "<par name=\"fraction_root\" value=\"0.06\" />", #default=0.06
+    "<par name=\"fyield\" value=\"0.18\" />", #default=0.25
+    "<par name=\"slamax\" value=\"20\" />", #default=20
+    "<par name=\"vcmax25\" value=\"125.6\" />", #default=125.6
+    "<par name=\"h2oref_a\" value=\"0.5\" />", #default=0.5
+    "</species>",
+    "</speciesparameters>",
+    "</ldndcspeciesparameters>"
+  ))
+}
+
+
+if(identical(crop, "Cotton")){
+  doc_specparam <- read_xml(paste0(
+    "<ldndcspeciesparameters>",
+    "<speciesparameters>",
+    "<species group=\"crop\" mnemonic=\"cott\">",
+    "<par name=\"gdd_base_temperature\" value=\"7\" />", #7
+    "<par name=\"gdd_maturity\" value=\"1819\" />", #default=1819
+    "<par name=\"gdd_grain_filling\" value=\"-1\" />", #default=est. at 1000
+    "<par name=\"fraction_foliage\" value=\"0.43\" />", #default=0.43
+    "<par name=\"fraction_fruit\" value=\"0.4\" />", #default=0.4
+    "<par name=\"fraction_root\" value=\"0.06\" />", #default=0.06
+    "<par name=\"fyield\" value=\"0.18\" />", #default=0.25
+    "<par name=\"slamax\" value=\"20\" />", #default=20
+    "<par name=\"vcmax25\" value=\"125.6\" />", #default=125.6
+    "<par name=\"h2oref_a\" value=\"0.5\" />", #default=0.5
+    "</species>",
+    "</speciesparameters>",
+    "</ldndcspeciesparameters>"
+  ))
+}
+
+if(identical(crop, "Rotation")){
+  doc_specparam <- read_xml(paste0(
+    "<ldndcspeciesparameters>",
+    "<speciesparameters>",
+    "<species group=\"crop\" mnemonic=\"cott\">",
+    "<par name=\"gdd_base_temperature\" value=\"7\" />", #7
+    "<par name=\"gdd_maturity\" value=\"1819\" />", #default=1819
+    "<par name=\"gdd_grain_filling\" value=\"-1\" />", #default=est. at 1000
+    "<par name=\"fraction_foliage\" value=\"0.43\" />", #default=0.43
+    "<par name=\"fraction_fruit\" value=\"0.4\" />", #default=0.4
+    "<par name=\"fraction_root\" value=\"0.06\" />", #default=0.06
+    "<par name=\"fyield\" value=\"0.18\" />", #default=0.25
+    "<par name=\"slamax\" value=\"20\" />", #default=20
+    "<par name=\"vcmax25\" value=\"125.6\" />", #default=125.6
+    "<par name=\"h2oref_a\" value=\"0.5\" />", #default=0.5
+    "</species>",
+    "</speciesparameters>",
+    "</ldndcspeciesparameters>"
+  ))
+}
+
 
 write_xml(doc_specparam,file=dndc_speciesparams_filename)
 
@@ -199,7 +292,7 @@ shell_txt <- c("#!/bin/bash",
   "ldndc=\"../../bin/ldndc\"",
   "",
   "#Target project",
-  paste0("project=\"./", site_name, scenario_name,".ldndc\""),
+  paste0("project=\"./", site_name, "_", scenario_name2,".ldndc\""),
   "",
   "#Run target project",
   "$ldndc $project",
@@ -217,7 +310,7 @@ system(paste0("chmod u+x ",dndc_shell_filename))
   
 # callsh shell file (calls the shell file above (which runs LDNDC) and captures
 # the output)
-callsh_txt <- paste0("./", site_name, "_", scenario_name,".sh > mylog.txt 2>&1")
+callsh_txt <- paste0("./", site_name, "_", scenario_name2,".sh > mylog.txt 2>&1")
 
 writeLines(callsh_txt,dndc_callshell_filename)
 
@@ -232,7 +325,7 @@ system(paste0("chmod u+x ",dndc_callshell_filename))
 
 rm(dndc_setup_filename,dndc_project_filename,#dndc_speciesparams_filename,
    dndc_airchem_filename,dndc_batch_filename,dndc_shell_filename,
-   dndc_callshell_filename,doc_setup,base_treatment,doc_proj,doc_specparam,
+   dndc_callshell_filename,doc_setup,doc_proj,doc_specparam, # AD removed base_treatment
    batch_txt,shell_txt,callsh_txt)
 
 

@@ -134,7 +134,7 @@ time <- paste0(as.character(as.Date(first(DNDC_basic$dayofyear)-1,
 
 
 ## output header data
-DNDC_wth_file <- paste0(dndc_path,"climate_exp.txt")
+DNDC_wth_file <- paste0(dndc_path,"climate_", clim_scenario_num, ".txt")
 
 header_txt <- c("%global",
                 paste0("        time = \"",time,"\"\n"),
