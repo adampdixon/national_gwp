@@ -87,7 +87,7 @@ wheat_1 <- c(
   '1       Output interval',
   'C       Weather choice ## Continue',
   '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
-  '1 214 CULT K  ## Apr 28 of ',
+  '1 214 CULT K  ## Apr 28 ',
   '1 214 CULT ROW  ## Aug 1',
   '1 300 FERT (16.8N)   ## Fertilizer before planting', # increase fertilizer amount
   '1 306 CROP W4EG ## Nov 1',

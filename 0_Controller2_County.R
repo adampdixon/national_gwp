@@ -233,6 +233,8 @@ if(identical(run_LDNDC,TRUE)) {
           
           source(file.path(ldndc_run_path, "run_LDNDC.R"))
           
+          source('9_Results_LDNDC-setup_County.R', local = TRUE)
+          
           } # end of run_LDNDC
         #
           

@@ -26,7 +26,7 @@ output_path <- paste0(dndc_path,site_name,"_output/")
 
 ## soil moisture
 
-LDNDC_soil_water_day_raw <- read.csv(paste0(output_path,"soil_water_daily_",scenario_name,".csv")) %>%
+LDNDC_soil_water_day_raw <- read.csv(paste0(output_path,"soil_water_daily_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime))
 
 LDNDC_soil_water_day <- LDNDC_soil_water_day_raw[LDNDC_soil_water_day_raw$year < end_fut_period_year
@@ -59,7 +59,7 @@ LDNDC_soil_water_day <- LDNDC_soil_water_day_raw[LDNDC_soil_water_day_raw$year <
 #          ag_biomass_kgm2=`DW_above.kgDWm.2.`) %>%
 #   select(date,year,crop,grain_yield_kgm2,ag_biomass_kgm2)
 
-LDNDC_harvest_raw <- read.csv(paste0(output_path,"harvest_",scenario_name,".csv")) %>%
+LDNDC_harvest_raw <- read.csv(paste0(output_path,"harvest_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime),
          date=date(datetime)-1, # harvest is actually one day earlier
          crop=ifelse(species=="FOCO","Maize",
@@ -68,7 +68,7 @@ LDNDC_harvest_raw <- read.csv(paste0(output_path,"harvest_",scenario_name,".csv"
 
 LDNDC_harvest <- LDNDC_harvest_raw[LDNDC_harvest_raw$year < end_fut_period_year,] 
 
-LDNDC_physiology_daily_raw <- read.csv(paste0(output_path,"physiology_daily_",scenario_name,".csv")) %>%
+LDNDC_physiology_daily_raw <- read.csv(paste0(output_path,"physiology_daily_",scenario_name2,".csv")) %>%
   mutate(date=date(datetime),
          year=year(date))
 
@@ -93,7 +93,7 @@ LDNDC_yield <- pivot_wider(LDNDC_physiology_day,names_from=crop,
 
 ## soil carbon, annual ghg, no3
 
-LDNDC_soil_chem_ann_raw <- read.csv(paste0(output_path,"soil_chem_yearly_",scenario_name,".csv")) %>%
+LDNDC_soil_chem_ann_raw <- read.csv(paste0(output_path,"soil_chem_yearly_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime))
 
 LDNDC_soil_chem_ann <- LDNDC_soil_chem_ann_raw[LDNDC_soil_chem_ann_raw$year < end_fut_period_year
@@ -123,7 +123,7 @@ LDNDC_soil_chem_ann <- LDNDC_soil_chem_ann_raw[LDNDC_soil_chem_ann_raw$year < en
 
 ## soil temperature
 
-LDNDC_soil_temp_day_raw <- read.csv(paste0(output_path,"soil_temp_daily_",scenario_name,".csv")) %>%
+LDNDC_soil_temp_day_raw <- read.csv(paste0(output_path,"soil_temp_daily_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime))
 
 LDNDC_soil_temp_day <- LDNDC_soil_temp_day_raw[LDNDC_soil_temp_day_raw$year < end_fut_period_year,] %>%
@@ -138,7 +138,7 @@ LDNDC_soil_temp_day <- LDNDC_soil_temp_day_raw[LDNDC_soil_temp_day_raw$year < en
 
 ## all daily GHG
 
-LDNDC_soil_chem_day_raw <-  read.csv(paste0(output_path,"soil_chem_daily_",scenario_name,".csv")) %>%
+LDNDC_soil_chem_day_raw <-  read.csv(paste0(output_path,"soil_chem_daily_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime))
 
 LDNDC_soil_chem_day <- LDNDC_soil_chem_day_raw[LDNDC_soil_chem_day_raw$year < end_fut_period_year,
@@ -158,7 +158,7 @@ LDNDC_soil_chem_day <- LDNDC_soil_chem_day_raw[LDNDC_soil_chem_day_raw$year < en
 
 ## MeTrx model output
 
-LDNDC_metrx_day_raw <- read.csv(paste0(output_path,"metrx-daily_",scenario_name,".csv"))
+LDNDC_metrx_day_raw <- read.csv(paste0(output_path,"metrx-daily_",scenario_name2,".csv"))
 
 LDNDC_metrx_day <- LDNDC_metrx_day_raw[,names(LDNDC_metrx_day_raw)[c(1,3,7,10,65,66,71)]] %>%
   mutate(date=as.Date(datetime),
@@ -173,12 +173,16 @@ LDNDC_metrx_day <- LDNDC_metrx_day_raw[,names(LDNDC_metrx_day_raw)[c(1,3,7,10,65
 # construct dataframes of obs data ----------------------------------------
 
 # yield
-LDNDCY_Mgha <- LDNDC_yield[,c("year","Maize","Soybean",
-                            "Wheat")] %>%
-  group_by(year) %>%
-  summarize(MaizeYield_Mgha=Maize,
-            SoyYield_Mgha=Soybean,
-            WheatYield_Mgha=Wheat)
+# LDNDCY_Mgha <- LDNDC_yield[,c("year","Maize","Soybean",
+#                             "Wheat")] %>%
+
+LDNDCY_Mgha<-select(LDNDC_yield, year, eval(crop))
+# LDNDCY_Mgha <- select(LDNDC_yield, year, eval(crop)) %>%
+#   group_by(year) %>%
+#   summarize(Yield_Mgha=eval(crop))
+# summarize(Yield_Mgha=Maize,
+#           SoyYield_Mgha=Soybean,
+#           WheatYield_Mgha=Wheat)
 
 # soil carbon
 LDNDCC_Mgha <- LDNDC_soil_chem_ann[,c("year","orgC_25cm_Mgha")] %>%
@@ -200,7 +204,10 @@ LDNDCM_V <- LDNDC_soil_water_day[,c("date","year","dayofyear","soilwater_20cm")]
 ## N2O emissions
 LDNDCGN_ghaday <- LDNDC_soil_chem_day[,c("date","year","dayofyear","n2o_kgha")] %>%
   mutate(N2OEmissions_ghaday = round(n2o_kgha*1000,2),
-         dayofyear = yday(date))
+         dayofyear = yday(date))%>%
+  mutate(cum_N2O_gha = cumsum(N2OEmissions_ghaday)) %>%
+  select(date,year,N2OEmissions_ghaday, cum_N2O_gha)
+  
 
 LDNDCGN_ann_gha <- LDNDCGN_ghaday %>%
   group_by(year) %>%
@@ -211,14 +218,16 @@ LDNDCGN_ann_gha <- LDNDCGN_ghaday %>%
 # LDNDCGN2_ann_gha <- LDNDC_soil_chem_ann[,c("year","n2o_kgha")] %>%
 #   mutate(N2OEmissions_ghaday = round(n2o_kgha*1000,2))
 
-LDNDCGN_cum_gha <- LDNDCGN_ghaday %>%
-  mutate(N2O_gha = cumsum(N2OEmissions_ghaday)) %>%
-  select(date,year,N2O_gha)
+# LDNDCGN_cum_gha <- LDNDCGN_ghaday %>%
+#   mutate(cum_N2O_gha = cumsum(N2OEmissions_ghaday)) %>%
+#   select(date,year,cum_N2O_gha)
 
 ## CH4 emissions
 LDNDCGM_ghaday <- LDNDC_soil_chem_day[,c("date","year","dayofyear","ch4_kgha")] %>%
   mutate(CH4Emissions_ghaday = round(ch4_kgha*1000,2),
-         dayofyear = yday(date))
+         dayofyear = yday(date))%>%
+  mutate(cum_CH4_gha = cumsum(CH4Emissions_ghaday)) %>%
+  select(date,year,cum_CH4_gha, CH4Emissions_ghaday)
 
 LDNDCGM_ann_gha <- LDNDCGM_ghaday %>%
   group_by(year) %>%
@@ -229,9 +238,9 @@ LDNDCGM_ann_gha <- LDNDCGM_ghaday %>%
 # LDNDCGM2_ann_gha <- LDNDC_soil_chem_ann[,c("year","ch4_gha")] %>%
 #   mutate(CH4Emissions_ghaday = round(ch4_gha*1000,2))
 
-LDNDCGM_cum_gha <- LDNDCGM_ghaday %>%
-  mutate(CH4_gha = cumsum(CH4Emissions_ghaday)) %>%
-  select(date,year,CH4_gha)
+# LDNDCGM_cum_gha <- LDNDCGM_ghaday %>%
+#   mutate(cum_CH4_gha = cumsum(CH4Emissions_ghaday)) %>%
+#   select(date,year,CH4_gha)
 
 ### test threshold for CH4 production:
 ### Fe3+ < METRX_FRAC_FE_CH4_PROD (0.3) * (Fe3+ + Fe2+)
@@ -247,190 +256,219 @@ ch4_prod <- data.frame(date=LDNDC_metrx_day$date,
                        o2_kgm2=LDNDC_metrx_day$o2_kgm2,
                        ph=LDNDC_metrx_day$ph_soil_surface)
 
+
+# CO2
+
+# head(LDNDC_soil_chem_day)
+
+CO2_resp_ann<-LDNDC_soil_chem_day%>%
+  group_by(year)%>%
+  summarize(CO2_resp_gha=sum(co2_hetero_kgha*1000))
+
 #**********************************************************************
+
+model_name = 'LDNDC'
 
 # write out results -------------------------------------------------------
 
 # write out results for use later in ensemble results
-output_annual_data <- cbind(LDNDCY_Mgha,LDNDCC_Mgha[,"TotalSOC_25cm_Mgha"],
-                            "LDNDC",scenario_name,clim_scenario_num,
-                            mgmt_scenario_grp,mgmt_scenario_opt)
-colnames(output_annual_data) <- c("year","MaizeYld_Mgha","SoyYld_Mgha",
-                                  "WheatYld_Mgha","SOC_Mgha","model_name",
-                                  "scenario_name","climate_scenario_num",
-                                  "mgmt_scenario_grp_num","mgmt_scenario_opt_num")
+head(LDNDCY_Mgha)
+head(LDNDCC_Mgha)
+head(LDNDCGM_ann_gha)
+head(LDNDCGM_ann_gha)
 
-output_daily_data <- cbind(LDNDCGN_ghaday[,c("date","year","dayofyear",
-                                             "N2OEmissions_ghaday")],
-                           LDNDCGN_cum_gha[,"N2O_gha"],NA,NA,
-                           "LDNDC",scenario_name,clim_scenario_num,
-                           mgmt_scenario_grp,mgmt_scenario_opt)
-colnames(output_daily_data) <- c("date","year","dayofyear","N2O_emit_gha","N2O_cum_gha",
-                                 "CH4_net_gha","CH4_cum_gha",
-                                 "model_name","scenario_name","climate_scenario_num",
-                                 "mgmt_scenario_grp_num","mgmt_scenario_opt_num")
 
-write.table(output_annual_data,file=paste0(results_path,"Annual_results_compilation_",
-                                           scenario_name,"_LDNDC.csv"),
+output_annual_data <- left_join(LDNDCY_Mgha,
+                                LDNDCC_Mgha, by=c("year")) %>%
+  left_join(LDNDCGM_ann_gha, by=c("year")) %>%
+  left_join(LDNDCGN_ann_gha, by=c("year"))%>%
+  left_join(CO2_resp_ann, by=c("year"))%>%
+  mutate(scenario_name = scenario_name2,
+         climate_scenario_num = clim_scenario_num,
+         model_name = model_name)
+         
+# 
+# colnames(output_annual_data) <- c("year",paste0(crop, "Yld_Mgha"),"SOC_Mgha","model_name",
+#                                   "scenario_name","climate_scenario_num")
+#                                   # "mgmt_scenario_grp_num","mgmt_scenario_opt_num")
+
+# head(LDNDCGN_ghaday)
+# head(LDNDCGM_ghaday)
+
+output_daily_data<-left_join(LDNDCGN_ghaday,
+                             select(LDNDCGM_ghaday, -year), by=c("date"))%>%
+  mutate(scenario_name = scenario_name2,
+         climate_scenario_num = clim_scenario_num,
+         model_name = model_name)
+  
+
+#                          # mgmt_scenario_grp,mgmt_scenario_opt)
+# colnames(output_daily_data) <- c("date","year","dayofyear","N2O_emit_gha","N2O_cum_gha",
+#                                  # "CH4_net_gha","CH4_cum_gha",
+#                                  "model_name","scenario_name","climate_scenario_num")
+#                                  # "mgmt_scenario_grp_num","mgmt_scenario_opt_num")
+
+fwrite(output_annual_data,file=file.path(results_path, paste0("Annual_results_compilation_",
+                                           scenario_name2,"_LDNDC.csv")),
             col.names=T,row.names=F,sep=",",append=F)
-write.table(output_daily_data,file=paste0(results_path,"Daily_results_compilation_",
-                                          scenario_name,"_LDNDC.csv"),
+fwrite(output_daily_data,file=file.path(results_path, paste0("Daily_results_compilation_",
+                                          scenario_name2,"_LDNDC.csv")),
             col.names=T,row.names=F,sep=",",append=F)
 
 #**********************************************************************
 
 # merge observed and modeled data -----------------------------------------
-
-MaizeYld_Mgha <- right_join(ObsYield[ObsYield$crop=="Maize",c("year","mean_yield")],
-                       LDNDCY_Mgha[!is.na(LDNDCY_Mgha$MaizeYield_Mgha),
-                                   c("year","MaizeYield_Mgha")],
-                       by="year") %>%
-  merge(HistY_Mgha[,c("year","maize_yield_mgha")],
-        by="year",
-        all=TRUE)
-colnames(MaizeYld_Mgha) <- c("year","Observed","LDNDC","Historical")
-
-MaizeYld_Mgha_piv <- pivot_longer(MaizeYld_Mgha, c(-year),
-                                  names_to = "source",
-                                  values_to = "yield_val")
-
-##
-SoyYld_Mgha <- right_join(ObsYield[ObsYield$crop=="Soybean",c("year","mean_yield")],
-                     LDNDCY_Mgha[!is.na(LDNDCY_Mgha$SoyYield_Mgha),
-                                 c("year","SoyYield_Mgha")],
-                     by="year") %>%
-  merge(HistY_Mgha[HistY_Mgha$year>=1954,c("year","soybean_yield_mgha")],
-        by="year",
-        all=TRUE)
-colnames(SoyYld_Mgha) <- c("year","Observed","LDNDC","Historical")
-
-SoyYld_Mgha_piv <- pivot_longer(SoyYld_Mgha, c(-year),
-                                names_to = "source",
-                                values_to = "yield_val")
-
-##
-WheatYld_Mgha <- right_join(ObsYield[ObsYield$crop=="Wheat",c("year","mean_yield")],
-                       LDNDCY_Mgha[!is.na(LDNDCY_Mgha$WheatYield_Mgha),
-                                   c("year","WheatYield_Mgha")],
-                       by="year") %>%
-  merge(HistY_Mgha[,c("year","wheat_yield_mgha")],
-        by="year",
-        all=TRUE)
-colnames(WheatYld_Mgha) <- c("year","Observed","LDNDC","Historical")
-
-WheatYld_Mgha_piv <- pivot_longer(WheatYld_Mgha, c(-year),
-                                  names_to = "source",
-                                  values_to = "yield_val")
-
-##
-Cstock_Mgha <- full_join(ObsC_Mgha[,c("year","cstock")],
-                     LDNDCC_Mgha,
-                     by="year")
-colnames(Cstock_Mgha) <- c("year","Observed","LDNDC")
-
-Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year),
-                                 names_to = "source",
-                                 values_to = "C_val")
-
-##
-SoilTemp_C <- merge(ObsTemp[,c("date","soil_temperature")],
-                    LDNDCT_C[,c("date","SoilTemp_20cm_C")],
-                    by="date",
-                    all=TRUE)
-colnames(SoilTemp_C) <- c("date","Observed","LDNDC")
-
-SoilTemp_C_piv <- pivot_longer(SoilTemp_C, c(-date),
-                               names_to = "source",
-                               values_to = "temp_val") %>%
-  mutate(year=year(date))
-
-##
-SoilMoist_VSM <- merge(ObsVSM[,c("date","mean_VSM")],
-                       LDNDCM_V[,c("date","VolH2O_20cm")],
-                       by="date",
-                       all=TRUE)
-colnames(SoilMoist_VSM) <- c("date","Observed","LDNDC")
-
-SoilMoist_VSM_piv <- pivot_longer(SoilMoist_VSM, c(-date),
-                                  names_to = "source",
-                                  values_to = "h2o_val") %>%
-  mutate(year=year(date))
-
-##
-# SoilBD_gcc <- merge(ObsBD[,c("year","mean_BD")],
-#                     LDNDCB_gcc[LDNDCB_gcc$date=="1996-01-01",c("year","BulkDensity_gcc")],
-#                     by="year",
-#                     all=TRUE)
-# colnames(SoilBD_gcc) <- c("year","Observed","LDNDC")
 # 
-# SoilBD_gcc_piv <- pivot_longer(SoilBD_gcc, c(-year),
+# MaizeYld_Mgha <- right_join(ObsYield[ObsYield$crop=="Maize",c("year","mean_yield")],
+#                        LDNDCY_Mgha[!is.na(LDNDCY_Mgha$MaizeYield_Mgha),
+#                                    c("year","MaizeYield_Mgha")],
+#                        by="year") %>%
+#   merge(HistY_Mgha[,c("year","maize_yield_mgha")],
+#         by="year",
+#         all=TRUE)
+# colnames(MaizeYld_Mgha) <- c("year","Observed","LDNDC","Historical")
+# 
+# MaizeYld_Mgha_piv <- pivot_longer(MaizeYld_Mgha, c(-year),
+#                                   names_to = "source",
+#                                   values_to = "yield_val")
+# 
+# ##
+# SoyYld_Mgha <- right_join(ObsYield[ObsYield$crop=="Soybean",c("year","mean_yield")],
+#                      LDNDCY_Mgha[!is.na(LDNDCY_Mgha$SoyYield_Mgha),
+#                                  c("year","SoyYield_Mgha")],
+#                      by="year") %>%
+#   merge(HistY_Mgha[HistY_Mgha$year>=1954,c("year","soybean_yield_mgha")],
+#         by="year",
+#         all=TRUE)
+# colnames(SoyYld_Mgha) <- c("year","Observed","LDNDC","Historical")
+# 
+# SoyYld_Mgha_piv <- pivot_longer(SoyYld_Mgha, c(-year),
+#                                 names_to = "source",
+#                                 values_to = "yield_val")
+# 
+# ##
+# WheatYld_Mgha <- right_join(ObsYield[ObsYield$crop=="Wheat",c("year","mean_yield")],
+#                        LDNDCY_Mgha[!is.na(LDNDCY_Mgha$WheatYield_Mgha),
+#                                    c("year","WheatYield_Mgha")],
+#                        by="year") %>%
+#   merge(HistY_Mgha[,c("year","wheat_yield_mgha")],
+#         by="year",
+#         all=TRUE)
+# colnames(WheatYld_Mgha) <- c("year","Observed","LDNDC","Historical")
+# 
+# WheatYld_Mgha_piv <- pivot_longer(WheatYld_Mgha, c(-year),
+#                                   names_to = "source",
+#                                   values_to = "yield_val")
+# 
+# ##
+# Cstock_Mgha <- full_join(ObsC_Mgha[,c("year","cstock")],
+#                      LDNDCC_Mgha,
+#                      by="year")
+# colnames(Cstock_Mgha) <- c("year","Observed","LDNDC")
+# 
+# Cstock_Mgha_piv <-  pivot_longer(Cstock_Mgha, c(-year),
+#                                  names_to = "source",
+#                                  values_to = "C_val")
+# 
+# ##
+# SoilTemp_C <- merge(ObsTemp[,c("date","soil_temperature")],
+#                     LDNDCT_C[,c("date","SoilTemp_20cm_C")],
+#                     by="date",
+#                     all=TRUE)
+# colnames(SoilTemp_C) <- c("date","Observed","LDNDC")
+# 
+# SoilTemp_C_piv <- pivot_longer(SoilTemp_C, c(-date),
 #                                names_to = "source",
-#                                values_to = "bd_val")
-
-##
-N2O_ghaday <- merge(ObsGas[,c("date","N2O_N")],
-                    LDNDCGN_ghaday[,c("date","N2OEmissions_ghaday")],
-                    by="date",
-                    all=TRUE)
-colnames(N2O_ghaday) <- c("date","Observed","LDNDC")
-
-N2O_ghaday_piv <- pivot_longer(N2O_ghaday, c(-date),
-                               names_to = "source",
-                               values_to = "n2o_val")
-
-N2O_ghayr <- LDNDCGN_ann_gha
-colnames(N2O_ghayr) <- c("year","LDNDC")
-
-N2O_ghayr_piv <- pivot_longer(N2O_ghayr, c(-year),
-                              names_to = "source",
-                              values_to = "n2o_val")
-
-##
-CH4_ghaday <- merge(ObsGas[,c("date","CH4_C")],
-                    LDNDCGM_ghaday[,c("date","CH4Emissions_ghaday")],
-                    by="date",
-                    all=TRUE)
-colnames(CH4_ghaday) <- c("date","Observed","LDNDC")
-
-CH4_ghaday_piv <- pivot_longer(CH4_ghaday, c(-date),
-                               names_to = "source",
-                               values_to = "ch4_val")
-
-CH4_ghayr <- LDNDCGM_ann_gha
-colnames(CH4_ghayr) <- c("year","LDNDC")
-
-CH4_ghayr_piv <- pivot_longer(CH4_ghayr, c(-year),
-                              names_to = "source",
-                              values_to = "ch4_val")
-
-#**********************************************************************
-
-# calculate mean differences ----------------------------------------------
-
-# calculate mean differences between observed and modeled results
-
-Maize_obsmod_diff_Mgha <- sum(MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed) &
-                                              !is.na(MaizeYld_Mgha$LDNDC),"Observed"] -
-                                MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed) &
-                                                !is.na(MaizeYld_Mgha$LDNDC),"LDNDC"])
-Soybean_obsmod_diff_Mgha <- sum(SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed &
-                                                     SoyYld_Mgha$LDNDC),"Observed"] -
-                                  SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed &
-                                                       SoyYld_Mgha$LDNDC),"LDNDC"])
-Wheat_obsmod_diff_Mgha <- sum(WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed &
-                                                     WheatYld_Mgha$LDNDC),"Observed"] -
-                                WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed &
-                                                       WheatYld_Mgha$LDNDC),"LDNDC"])
-SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
-                                                 Cstock_Mgha$LDNDC),"Observed"] -
-                              Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
-                                                   Cstock_Mgha$LDNDC),"LDNDC"])
-N2O_obsmod_diff_gha <- sum(N2O_ghaday[!is.na(N2O_ghaday$Observed) &
-                                        !is.na(N2O_ghaday$LDNDC),"Observed"] -
-                             N2O_ghaday[!is.na(N2O_ghaday$Observed) &
-                                          !is.na(N2O_ghaday$LDNDC),"LDNDC"])
-CH4_obsmod_diff_gha <- sum(CH4_ghaday[!is.na(CH4_ghaday$Observed) &
-                                        !is.na(CH4_ghaday$Daycent),"Observed"] -
-                             CH4_ghaday[!is.na(CH4_ghaday$Observed) &
-                                          !is.na(CH4_ghaday$Daycent),"Daycent"])
+#                                values_to = "temp_val") %>%
+#   mutate(year=year(date))
+# 
+# ##
+# SoilMoist_VSM <- merge(ObsVSM[,c("date","mean_VSM")],
+#                        LDNDCM_V[,c("date","VolH2O_20cm")],
+#                        by="date",
+#                        all=TRUE)
+# colnames(SoilMoist_VSM) <- c("date","Observed","LDNDC")
+# 
+# SoilMoist_VSM_piv <- pivot_longer(SoilMoist_VSM, c(-date),
+#                                   names_to = "source",
+#                                   values_to = "h2o_val") %>%
+#   mutate(year=year(date))
+# 
+# ##
+# # SoilBD_gcc <- merge(ObsBD[,c("year","mean_BD")],
+# #                     LDNDCB_gcc[LDNDCB_gcc$date=="1996-01-01",c("year","BulkDensity_gcc")],
+# #                     by="year",
+# #                     all=TRUE)
+# # colnames(SoilBD_gcc) <- c("year","Observed","LDNDC")
+# # 
+# # SoilBD_gcc_piv <- pivot_longer(SoilBD_gcc, c(-year),
+# #                                names_to = "source",
+# #                                values_to = "bd_val")
+# 
+# ##
+# N2O_ghaday <- merge(ObsGas[,c("date","N2O_N")],
+#                     LDNDCGN_ghaday[,c("date","N2OEmissions_ghaday")],
+#                     by="date",
+#                     all=TRUE)
+# colnames(N2O_ghaday) <- c("date","Observed","LDNDC")
+# 
+# N2O_ghaday_piv <- pivot_longer(N2O_ghaday, c(-date),
+#                                names_to = "source",
+#                                values_to = "n2o_val")
+# 
+# N2O_ghayr <- LDNDCGN_ann_gha
+# colnames(N2O_ghayr) <- c("year","LDNDC")
+# 
+# N2O_ghayr_piv <- pivot_longer(N2O_ghayr, c(-year),
+#                               names_to = "source",
+#                               values_to = "n2o_val")
+# 
+# ##
+# CH4_ghaday <- merge(ObsGas[,c("date","CH4_C")],
+#                     LDNDCGM_ghaday[,c("date","CH4Emissions_ghaday")],
+#                     by="date",
+#                     all=TRUE)
+# colnames(CH4_ghaday) <- c("date","Observed","LDNDC")
+# 
+# CH4_ghaday_piv <- pivot_longer(CH4_ghaday, c(-date),
+#                                names_to = "source",
+#                                values_to = "ch4_val")
+# 
+# CH4_ghayr <- LDNDCGM_ann_gha
+# colnames(CH4_ghayr) <- c("year","LDNDC")
+# 
+# CH4_ghayr_piv <- pivot_longer(CH4_ghayr, c(-year),
+#                               names_to = "source",
+#                               values_to = "ch4_val")
+# 
+# #**********************************************************************
+# 
+# # calculate mean differences ----------------------------------------------
+# 
+# # calculate mean differences between observed and modeled results
+# 
+# Maize_obsmod_diff_Mgha <- sum(MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed) &
+#                                               !is.na(MaizeYld_Mgha$LDNDC),"Observed"] -
+#                                 MaizeYld_Mgha[!is.na(MaizeYld_Mgha$Observed) &
+#                                                 !is.na(MaizeYld_Mgha$LDNDC),"LDNDC"])
+# Soybean_obsmod_diff_Mgha <- sum(SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed &
+#                                                      SoyYld_Mgha$LDNDC),"Observed"] -
+#                                   SoyYld_Mgha[!is.na(SoyYld_Mgha$Observed &
+#                                                        SoyYld_Mgha$LDNDC),"LDNDC"])
+# Wheat_obsmod_diff_Mgha <- sum(WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed &
+#                                                      WheatYld_Mgha$LDNDC),"Observed"] -
+#                                 WheatYld_Mgha[!is.na(WheatYld_Mgha$Observed &
+#                                                        WheatYld_Mgha$LDNDC),"LDNDC"])
+# SOC_obsmod_diff_Mgha <- sum(Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
+#                                                  Cstock_Mgha$LDNDC),"Observed"] -
+#                               Cstock_Mgha[!is.na(Cstock_Mgha$Observed &
+#                                                    Cstock_Mgha$LDNDC),"LDNDC"])
+# N2O_obsmod_diff_gha <- sum(N2O_ghaday[!is.na(N2O_ghaday$Observed) &
+#                                         !is.na(N2O_ghaday$LDNDC),"Observed"] -
+#                              N2O_ghaday[!is.na(N2O_ghaday$Observed) &
+#                                           !is.na(N2O_ghaday$LDNDC),"LDNDC"])
+# CH4_obsmod_diff_gha <- sum(CH4_ghaday[!is.na(CH4_ghaday$Observed) &
+#                                         !is.na(CH4_ghaday$Daycent),"Observed"] -
+#                              CH4_ghaday[!is.na(CH4_ghaday$Observed) &
+#                                           !is.na(CH4_ghaday$Daycent),"Daycent"])
 
