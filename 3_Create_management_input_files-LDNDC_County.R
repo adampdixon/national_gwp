@@ -140,7 +140,7 @@ if(identical(crop, "Rotation")){
 } # end of if identical to Rotation
 
 
-saveXML(doc,file=paste0(dndc_path,"mana_",mgmt_scenario_num,".xml"))
+saveXML(doc,file=paste0(dndc_path,"mana_",scenario_name2,".xml"))
 
 
 

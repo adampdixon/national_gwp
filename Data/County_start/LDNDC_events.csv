@@ -76,9 +76,9 @@ Soybean,6,cover_notill_cover_mix,1,2022:2050,2022,2050,till,10-29,,,0,,,
 Soybean,6,cover_notill_cover_mix,1,2022:2050,2022,2050,plant,11-01,SRAPE,100,,,,yes
 Soybean,6,cover_notill_cover_mix,1,2022:2050,2022,2050,plant,11-01,COWP,100,,,,yes
 Soybean,6,cover_notill_cover_mix,1,2022:2050,2022,2050,plant,11-01,WINTERRYE,100,,,,yes
-Wheat,0,historic,1,1949:1949,1949,1970,till,08-01,,,0.11,,,no
-Wheat,0,historic,1,1949:1949,1949,1970,fertilize,10-27,,,,168,,
-Wheat,0,historic,1,1949:1949,1950,1970,plant,11-02,WIWH,80,,,,no
+Wheat,0,historic,1,1949:1949,1949,1949,till,08-01,,,0.11,,,
+Wheat,0,historic,1,1949:1949,1949,1949,fertilize,10-27,,,,80,,
+Wheat,0,historic,1,1949:1949,1949,1949,plant,11-02,WIWH,80,,,,no
 Wheat,0,historic,1,1950:2021,1950,1970,harvest,06-15,WIWH,,,,0.25,no
 Wheat,0,historic,1,1950:2021,1950,1970,till,08-01,,,0.11,,,
 Wheat,0,historic,1,1950:2021,1950,1970,fertilize,10-27,,,,168,,

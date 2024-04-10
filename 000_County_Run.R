@@ -29,7 +29,7 @@ run_LDNDC=TRUE
 run_Millennial=FALSE
 # county_numbers<-296:306   #295:3100
 # crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
-crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
+crops_ <- c('Maize', 'Soybean', 'Cotton', 'Rotation') # Crops
 # These variables are implemented in 0_Controller2_County.R
 # mgmt_scenario_nums <- 1:1 # Management scenarios
 mgmt_scenario_nums <- 1:6 # 1:6 Management scenarios 1:6

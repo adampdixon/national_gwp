@@ -90,7 +90,7 @@ doc_proj <- read_xml(paste0("<?xml version=\"1.0\" ?><ldndcproject PackageMinimu
                  paste0('<site source=\"', site_name, "_soil",'.xml\" />'), # includes soil characteristics, changed from "base_treatment"
                  "<airchemistry source=\"airchem.txt\" format=\"txt\" />",
                  paste0('<climate source=\"climate_',clim_scenario_num,'.txt\" />'),
-                 paste0('<event source=\"mana_',mgmt_scenario_num,'.xml\" />'),
+                 paste0('<event source=\"mana_',scenario_name2,'.xml\" />'),
                  "<speciesparameters source=\"speciesparameters.xml\" />",
                  "</sources>",
                  '<attributes use=\"0\" endless=\"0\" >',

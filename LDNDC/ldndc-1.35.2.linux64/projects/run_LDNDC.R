@@ -11,6 +11,7 @@
 
 
 print("Starting run_LDNDC.R")
+tic()
 
 # Set the model path to the location of your files.
 prior_path <- getwd()
@@ -38,3 +39,8 @@ system(paste0("./callsh_",site_name, "_", scenario_name2,".sh"), wait=TRUE)
 setwd(prior_path)
 
 print("Finished run_LDNDC.R")
+
+# end time
+toc()
+run_time_ld <- round(toc(echo=T)/60,1)
+print(paste0("LDNDC run time is ",run_time_ld," minutes"))

@@ -21,7 +21,7 @@ library(tidyverse)
 
 # import ------------------------------------------------------------------
 
-dir.create(paste0(dndc_path,site_name,"_output/"))
+# dir.create(paste0(dndc_path,site_name,"_output/"))
 output_path <- paste0(dndc_path,site_name,"_output/")
 
 ## soil moisture
@@ -74,14 +74,30 @@ LDNDC_physiology_daily_raw <- read.csv(paste0(output_path,"physiology_daily_",sc
 
 # Join with harvest data for the harvest date, when the maximum values
 # for yield, biomass, etc. are in physiology data
-LDNDC_physiology_day <- merge(LDNDC_harvest,
-                              LDNDC_physiology_daily_raw[LDNDC_physiology_daily_raw$year < end_fut_period_year
+# LDNDC_physiology_day <- merge(LDNDC_harvest,
+#                               LDNDC_physiology_daily_raw[LDNDC_physiology_daily_raw$year < end_fut_period_year
+#                                                          ,c("date","species","DW_fru.kgDWm.2.",
+#                                                             "DW_above.kgDWm.2.")],
+#                               by=c("date","species")) %>%
+#   group_by(year,crop) %>%
+#   summarize(grain_yield_kgm2=max(DW_fru.kgDWm.2.),
+#             ag_biomass_kgm2=max(DW_above.kgDWm.2. ),
+#             grain_yield_kgha=grain_yield_kgm2*10000,
+#             ag_biomass_kgha=ag_biomass_kgm2*10000,
+#             grain_yield_Mgha=grain_yield_kgm2*10,
+#             ag_biomass_Mgha=ag_biomass_kgm2*10)
+
+
+LDNDC_physiology_day <-LDNDC_physiology_daily_raw[LDNDC_physiology_daily_raw$year < end_fut_period_year
                                                          ,c("date","species","DW_fru.kgDWm.2.",
-                                                            "DW_above.kgDWm.2.")],
-                              by=c("date","species")) %>%
+                                                            "DW_above.kgDWm.2.")]%>%
+  mutate(year = year(date),
+         crop=ifelse(species=="FOCO","Maize",
+              ifelse(species=="SOYB","Soybean",
+                     ifelse(species=="WIWH","Wheat","Error"))))%>%
   group_by(year,crop) %>%
-  summarize(grain_yield_kgm2=max(`DW_fru.kgDWm.2.`),
-            ag_biomass_kgm2=max(`DW_above.kgDWm.2.`),
+  summarize(grain_yield_kgm2=max(DW_fru.kgDWm.2.),
+            ag_biomass_kgm2=max(DW_above.kgDWm.2. ),
             grain_yield_kgha=grain_yield_kgm2*10000,
             ag_biomass_kgha=ag_biomass_kgm2*10000,
             grain_yield_Mgha=grain_yield_kgm2*10,
