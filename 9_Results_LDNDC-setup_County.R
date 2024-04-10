@@ -26,21 +26,21 @@ output_path <- paste0(dndc_path,site_name,"_output/")
 
 ## soil moisture
 
-LDNDC_soil_water_day_raw <- read.csv(paste0(output_path,"soil_water_daily_",scenario_name2,".csv")) %>%
+LDNDC_soil_water_day_raw <- fread(paste0(output_path,"soil_water_daily_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime))
 
 LDNDC_soil_water_day <- LDNDC_soil_water_day_raw[LDNDC_soil_water_day_raw$year < end_fut_period_year
-                                                 ,c("datetime","year","prec.mm.","evapot.mm.",
-                                                    "soilwater_5cm...","soilwater_10cm...",
-                                                    "soilwater_15cm...","soilwater_20cm...")] %>%
+                                                 ,c("datetime","year","prec[mm]","evapot[mm]",
+                                                    "soilwater_5cm[%]","soilwater_10cm[%]",
+                                                    "soilwater_15cm[%]","soilwater_20cm[%]")] %>%
   mutate(date=as.Date(datetime),
          dayofyear=yday(date),
-         prec_mm=`prec.mm.`,
-         pot_evap_mm=`evapot.mm.`,
-         soilwater_5cm=`soilwater_5cm...`,
-         soilwater_10cm=`soilwater_10cm...`,
-         soilwater_15cm=`soilwater_15cm...`,
-         soilwater_20cm=`soilwater_20cm...`) %>%
+         prec_mm=`prec[mm]`,
+         pot_evap_mm=`evapot[mm]`,
+         soilwater_5cm=`soilwater_5cm[%]`,
+         soilwater_10cm=`soilwater_10cm[%]`,
+         soilwater_15cm=`soilwater_15cm[%]`,
+         soilwater_20cm=`soilwater_20cm[%]`) %>%
   select(date,year,dayofyear,prec_mm,pot_evap_mm,soilwater_5cm,soilwater_10cm,
          soilwater_15cm,soilwater_20cm)
 
@@ -59,12 +59,14 @@ LDNDC_soil_water_day <- LDNDC_soil_water_day_raw[LDNDC_soil_water_day_raw$year <
 #          ag_biomass_kgm2=`DW_above.kgDWm.2.`) %>%
 #   select(date,year,crop,grain_yield_kgm2,ag_biomass_kgm2)
 
-LDNDC_harvest_raw <- read.csv(paste0(output_path,"harvest_",scenario_name2,".csv")) %>%
+LDNDC_harvest_raw <- fread(paste0(output_path,"harvest_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime),
          date=date(datetime)-1, # harvest is actually one day earlier
          crop=ifelse(species=="FOCO","Maize",
                      ifelse(species=="SOYB","Soybean",
-                            ifelse(species=="WIWH","Wheat","Error"))))
+                            ifelse(species=="WIWH","Wheat",
+                                   ifelse(species=="COTT", "Cotton", "Error")))))
+                                   
 
 LDNDC_harvest <- LDNDC_harvest_raw[LDNDC_harvest_raw$year < end_fut_period_year,] 
 
@@ -92,9 +94,10 @@ LDNDC_physiology_day <-LDNDC_physiology_daily_raw[LDNDC_physiology_daily_raw$yea
                                                          ,c("date","species","DW_fru.kgDWm.2.",
                                                             "DW_above.kgDWm.2.")]%>%
   mutate(year = year(date),
-         crop=ifelse(species=="FOCO","Maize",
-              ifelse(species=="SOYB","Soybean",
-                     ifelse(species=="WIWH","Wheat","Error"))))%>%
+         crop=ifelse(species=="FOCO","MaizeYld_Mgha",
+              ifelse(species=="SOYB","SoybeanYld_Mgha",
+                     ifelse(species=="WIWH","WheatYld_Mgha",
+                            ifelse(species=="COTT", "CottonYld_Mgha", "Error")))))%>%
   group_by(year,crop) %>%
   summarize(grain_yield_kgm2=max(DW_fru.kgDWm.2.),
             ag_biomass_kgm2=max(DW_above.kgDWm.2. ),
@@ -109,27 +112,27 @@ LDNDC_yield <- pivot_wider(LDNDC_physiology_day,names_from=crop,
 
 ## soil carbon, annual ghg, no3
 
-LDNDC_soil_chem_ann_raw <- read.csv(paste0(output_path,"soil_chem_yearly_",scenario_name2,".csv")) %>%
+LDNDC_soil_chem_ann_raw <- fread(paste0(output_path,"soil_chem_yearly_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime))
 
 LDNDC_soil_chem_ann <- LDNDC_soil_chem_ann_raw[LDNDC_soil_chem_ann_raw$year < end_fut_period_year
-                                               ,c("datetime","year","aC_ch4_emis.kgCha.1.",
-                                               "aC_co2_emis_auto.kgCha.1.","aC_co2_emis_hetero.kgCha.1.",
-                                               "aN_n2o_emis.kgNha.1.","aN_no3_leach.kgNha.1.",
-                                               "aC_doc_leach.kgCha.1.",
-                                               "C_soil_min.kgCha.1.","C_soil_min_20cm.kgCha.1.",
-                                               "C_soil_min_30cm.kgCha.1.")] %>%
+                                               ,c("datetime","year","aC_ch4_emis[kgCha-1]",
+                                               "aC_co2_emis_auto[kgCha-1]","aC_co2_emis_hetero[kgCha-1]",
+                                               "aN_n2o_emis[kgNha-1]","aN_no3_leach[kgNha-1]",
+                                               "aC_doc_leach[kgCha-1]",
+                                               "C_soil_min[kgCha-1]","C_soil_min_20cm[kgCha-1]",
+                                               "C_soil_min_30cm[kgCha-1]")] %>%
   mutate(date=as.Date(datetime),
          dayofyear=yday(date),
-         ch4_kgha=`aC_ch4_emis.kgCha.1.`,
-         n2o_kgha=`aN_n2o_emis.kgNha.1.`,
-         no3_kgha=`aN_no3_leach.kgNha.1.`,
-         doc_kgha=`aC_doc_leach.kgCha.1.`,
-         orgC_prof_kgha=`C_soil_min.kgCha.1.`,
-         orgC_20cm_kgha=`C_soil_min_20cm.kgCha.1.`,
-         orgC_30cm_kgha=`C_soil_min_30cm.kgCha.1.`,
-         co2_auto_kgha=`aC_co2_emis_auto.kgCha.1.`,
-         co2_hetero_kgha=`aC_co2_emis_hetero.kgCha.1.`,
+         ch4_kgha=`aC_ch4_emis[kgCha-1]`,
+         n2o_kgha=`aN_n2o_emis[kgNha-1]`,
+         no3_kgha=`aN_no3_leach[kgNha-1]`,
+         doc_kgha=`aC_doc_leach[kgCha-1]`,
+         orgC_prof_kgha=`C_soil_min[kgCha-1]`,
+         orgC_20cm_kgha=`C_soil_min_20cm[kgCha-1]`,
+         orgC_30cm_kgha=`C_soil_min_30cm[kgCha-1]`,
+         co2_auto_kgha=`aC_co2_emis_auto[kgCha-1]`,
+         co2_hetero_kgha=`aC_co2_emis_hetero[kgCha-1]`,
          ch4_gha=ch4_kgha*1000,
          orgC_prof_Mgha=orgC_prof_kgha/1000,
          orgC_20cm_Mgha=orgC_20cm_kgha/1000,
@@ -139,48 +142,49 @@ LDNDC_soil_chem_ann <- LDNDC_soil_chem_ann_raw[LDNDC_soil_chem_ann_raw$year < en
 
 ## soil temperature
 
-LDNDC_soil_temp_day_raw <- read.csv(paste0(output_path,"soil_temp_daily_",scenario_name2,".csv")) %>%
+LDNDC_soil_temp_day_raw <- fread(paste0(output_path,"soil_temp_daily_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime))
 
 LDNDC_soil_temp_day <- LDNDC_soil_temp_day_raw[LDNDC_soil_temp_day_raw$year < end_fut_period_year,] %>%
   mutate(date=as.Date(datetime),
          dayofyear=yday(date),
-         temp_5cm=round(`temp_5cm.oC.`,1),
-         temp_10cm=round(`temp_10cm.oC.`),
-         temp_15cm=round(`temp_15cm.oC.`),
-         temp_20cm=round(`temp_20cm.oC.`),
-         temp_30cm=round(`temp_30cm.oC.`)) %>%
+         temp_5cm=round(`temp_5cm[oC]`,1),
+         temp_10cm=round(`temp_10cm[oC]`),
+         temp_15cm=round(`temp_15cm[oC]`),
+         temp_20cm=round(`temp_20cm[oC]`),
+         temp_30cm=round(`temp_30cm[oC]`)) %>%
   select(date,year,dayofyear,temp_5cm,temp_10cm,temp_15cm,temp_20cm,temp_30cm)
 
 ## all daily GHG
 
-LDNDC_soil_chem_day_raw <-  read.csv(paste0(output_path,"soil_chem_daily_",scenario_name2,".csv")) %>%
+LDNDC_soil_chem_day_raw <-  fread(paste0(output_path,"soil_chem_daily_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime))
 
 LDNDC_soil_chem_day <- LDNDC_soil_chem_day_raw[LDNDC_soil_chem_day_raw$year < end_fut_period_year,
-                                               c("datetime","year","dC_ch4_emis.kgCha.1.",
-                                                  "dC_co2_emis_auto.kgCha.1.","dC_co2_emis_hetero.kgCha.1.",
-                                                  "dN_n2o_emis.kgNha.1.","dN_no3_leach.kgNha.1.",
-                                                  "dC_doc_leach.kgCha.1.")] %>%
+                                               c("datetime","year","dC_ch4_emis[kgCha-1]",
+                                                  "dC_co2_emis_auto[kgCha-1]","dC_co2_emis_hetero[kgCha-1]",
+                                                  "dN_n2o_emis[kgNha-1]","dN_no3_leach[kgNha-1]",
+                                                  "dC_doc_leach[kgCha-1]")] %>%
   mutate(date=as.Date(datetime),
          dayofyear=yday(date),
-         ch4_kgha=`dC_ch4_emis.kgCha.1.`,
-         n2o_kgha=`dN_n2o_emis.kgNha.1.`,
-         no3_kgha=`dN_no3_leach.kgNha.1.`,
-         doc_kgha=`dC_doc_leach.kgCha.1.`,
-         co2_auto_kgha=`dC_co2_emis_auto.kgCha.1.`,
-         co2_hetero_kgha=`dC_co2_emis_hetero.kgCha.1.`
+         ch4_kgha=`dC_ch4_emis[kgCha-1]`,
+         n2o_kgha=`dN_n2o_emis[kgNha-1]`,
+         no3_kgha=`dN_no3_leach[kgNha-1]`,
+         doc_kgha=`dC_doc_leach[kgCha-1]`,
+         co2_auto_kgha=`dC_co2_emis_auto[kgCha-1]`,
+         co2_hetero_kgha=`dC_co2_emis_hetero[kgCha-1]`
   ) 
 
 ## MeTrx model output
 
-LDNDC_metrx_day_raw <- read.csv(paste0(output_path,"metrx-daily_",scenario_name2,".csv"))
+LDNDC_metrx_day_raw <- fread(paste0(output_path,"metrx-daily_",scenario_name2,".csv"))
 
-LDNDC_metrx_day <- LDNDC_metrx_day_raw[,names(LDNDC_metrx_day_raw)[c(1,3,7,10,65,66,71)]] %>%
+LDNDC_metrx_day <- LDNDC_metrx_day_raw%>%
+  select(c(1,3,7,10,65,66,71)) %>%
   mutate(date=as.Date(datetime),
          year=year(date),
-         wfps=`wfps...`,
-         o2_kgm2=`o2.kgm.2.`
+         wfps=`wfps[%]`,
+         o2_kgm2=`o2[kgm-2]`
          ) %>%
   select(date,year,source,fe3_tot,fe2_tot,o2_kgm2,ph_soil_surface,wfps)
 
@@ -192,7 +196,7 @@ LDNDC_metrx_day <- LDNDC_metrx_day_raw[,names(LDNDC_metrx_day_raw)[c(1,3,7,10,65
 # LDNDCY_Mgha <- LDNDC_yield[,c("year","Maize","Soybean",
 #                             "Wheat")] %>%
 
-LDNDCY_Mgha<-select(LDNDC_yield, year, eval(crop))
+LDNDCY_Mgha<-select(LDNDC_yield, year, eval(paste0(crop,'Yld_Mgha')))
 # LDNDCY_Mgha <- select(LDNDC_yield, year, eval(crop)) %>%
 #   group_by(year) %>%
 #   summarize(Yield_Mgha=eval(crop))
@@ -330,6 +334,27 @@ fwrite(output_annual_data,file=file.path(results_path, paste0("Annual_results_co
 fwrite(output_daily_data,file=file.path(results_path, paste0("Daily_results_compilation_",
                                           scenario_name2,"_LDNDC.csv")),
             col.names=T,row.names=F,sep=",",append=F)
+
+
+# Read last lines of mylog.txt file, save, then delete
+# this is because it's a 100MB file and only the last lines give useful info
+# https://stackoverflow.com/questions/5596107/reading-the-last-n-lines-from-a-huge-text-file
+ReadLastLines <- function(x,n,...){    
+  con <- file(x)
+  open(con)
+  out <- scan(con,n,what="char(0)",sep="\n",quiet=TRUE,...)
+  
+  while(TRUE){
+    tmp <- scan(con,1,what="char(0)",sep="\n",quiet=TRUE)
+    if(length(tmp)==0) {close(con) ; break }
+    out <- c(out[-1],tmp)
+  }
+  out
+}
+
+log<-ReadLastLines(paste0(getwd(), '/', dndc_path, "mylog.txt"),10)
+writeLines(log, paste0(dndc_path, paste0("mylog_",scenario_name2,"_LDNDC.txt")))
+unlink(file.path(dndc_path, "mylog.txt")) # delete log file
 
 #**********************************************************************
 

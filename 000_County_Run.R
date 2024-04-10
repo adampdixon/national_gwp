@@ -29,7 +29,7 @@ run_LDNDC=TRUE
 run_Millennial=FALSE
 # county_numbers<-296:306   #295:3100
 # crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
-crops_ <- c('Maize', 'Soybean', 'Cotton', 'Rotation') # Crops
+crops_ <- c('Rotation') # Crops
 # These variables are implemented in 0_Controller2_County.R
 # mgmt_scenario_nums <- 1:1 # Management scenarios
 mgmt_scenario_nums <- 1:6 # 1:6 Management scenarios 1:6
@@ -49,6 +49,7 @@ if (Sys.info()['sysname'] == "Linux"){
   if(Sys.info()['user']=='ap') {
     master_path<-'/home/ap/Documents/GitHub/national_gwp'
     results_folder<-'/home/ap/Documents/national_gwp_results'
+    ldndc_results_folder<-'/home/ap/Documents/national_gwp_results_ldndc'
     args=(commandArgs(TRUE))
     county_number<-1
 
@@ -62,6 +63,7 @@ if (Sys.info()['sysname'] == "Linux"){
   } else {
     master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
     results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
+    ldndc_results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results_ldndc'
     Test <- FALSE # if TRUE, only run county, filtered below
     args=(commandArgs(TRUE))
     county_number = args[2]
@@ -93,7 +95,7 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(31181)) #13023, 13213, 20073, 31181, 42053, 1075
+    filter(GEOID %in% c(1075)) #13023, 13213, 20073, 31181, 42053, 1075
 }
 
 

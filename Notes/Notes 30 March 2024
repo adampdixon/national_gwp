@@ -36,7 +36,8 @@ cowpeas for legume?
 
 # TODO debug LDNDC wheat
 # figure out why Maize has no yield
-# add units to crop annual output field
+# add units to crop annual output field - done
 # run different GEOID than Nebraska, see what corn does
 
-
+# add crop type to mana file, follow guide
+# fix results to handle rotation as crop
