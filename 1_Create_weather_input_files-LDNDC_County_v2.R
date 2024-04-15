@@ -10,7 +10,7 @@
 # Calls custom nasapower_download function."
 #######################################
 
-print("Starting 1_Create_weather_input_files-LDNDC_County.R")
+print("Starting 1_Create_weather_input_files-LDNDC_County_v2.R")
 
 
 climate_data<-list.files(climate_data_path, full.names = TRUE, pattern = ".csv")
@@ -20,6 +20,8 @@ print("Starting 1_Create_weather_input_files-LDNDC.R")
 #https://pcmdi.llnl.gov/CMIP6/Guide/dataUsers.html
 
 # best description of rsds units https://pcmdi.llnl.gov/mips/cmip3/variableList.html, search "rsds"
+
+# v2 uses global radiation data from NREL, see utilities for script that creates file
 
 
 # Future 2022 - 2050
@@ -32,19 +34,41 @@ if (fut_climate == 2) {
   cmip_scen<-'_ssp585_gfdl-esm4__cmip6.csv'
 }
 
-rad_cov<-100
+# rad_cov<-100
 
-rad_wind_year_mean<-mutate(fread(climate_data[grep(paste0("rsds_", county_geoid, cmip_scen), climate_data)]),
-                           radiation = value/rad_cov)%>%
-  select(radiation, year, doy)%>%
-  left_join(
-    mutate(fread(climate_data[grep(paste0("sfcwind_", county_geoid, cmip_scen), climate_data)]),
-           wind = value),
-    by=c('year', 'doy'))%>%
-  select(GEOID, wind, radiation, year, doy)%>%
+wind_year_mean<-mutate(fread(climate_data[grep(paste0("sfcwind_", county_geoid, cmip_scen), climate_data)]),
+           wind = value)%>%
+  select(GEOID, wind, year, doy)%>%
   group_by(doy)%>% # grouping by doy produces an average year
-  summarise(wind = mean(wind),
-            radiation = mean(radiation))
+  summarise(wind = mean(wind))
+
+
+jan = 1:31
+feb = 32:59
+mar = 60:90
+apr = 91:120
+may = 121:151
+jun = 152:181
+jul = 182:212
+aug = 213:243
+sep = 244:273
+oct = 274:304
+nov = 305:334
+dec = 335:366
+
+month<-c('jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec')
+
+doy_table<-data.frame()
+for(m in month){
+  doy_table<-rbind(doy_table, data.frame(month = m, doy = get(m)))
+}
+
+rad_year_mean<-fread(file.path(master_path, 'Data', 'County_start', 'solar_glob_rad.csv'))%>%
+  filter(GEOID == county_geoid)%>%
+  right_join(doy_table, by=c('month' = 'month'))%>%
+  mutate(radiation=solar_glob_rad_Wm2)%>%
+  select(doy, radiation)
+
 
 
 
@@ -71,7 +95,8 @@ historic_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, "_nc
   select(day, month, year, jday, tmax, tmin, precip)
 
 # Add wind and radiation year average to each year
-historic_data2<-left_join(historic_data, rad_wind_year_mean, by=c('jday' = 'doy'))%>%
+historic_data2<-left_join(historic_data, wind_year_mean, by=c('jday' = 'doy'))%>%
+  left_join(rad_year_mean, by=c('jday' = 'doy'))%>%
   mutate(tavg = (tmax + tmin)/2)%>% # SO WRONG :(
   # mutate(radiation2 = 1360)%>% # TODO major assumption TERRIBLE
   select(year, jday, precip, tavg, tmax, tmin, radiation, wind)
@@ -91,11 +116,11 @@ future_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, cmip_s
                   precip = value),
            year, doy, precip),
     by=c('year', 'doy'))%>%
-  left_join(
-    select(mutate(fread(climate_data[grep(paste0("rsds_", county_geoid, cmip_scen), climate_data)]),
-                  radiation = value/rad_cov), # convert from kW to W ?
-           year, doy, radiation),
-    by=c('year', 'doy'))%>%
+  # left_join(
+  #   select(mutate(fread(climate_data[grep(paste0("rsds_", county_geoid, cmip_scen), climate_data)]),
+  #                 radiation = value/rad_cov), # convert from kW to W ?
+  #          year, doy, radiation),
+  #   by=c('year', 'doy'))%>%
   left_join(
     select(mutate(fread(climate_data[grep(paste0("sfcwind_", county_geoid, cmip_scen), climate_data)]),
                   wind = value),
@@ -107,6 +132,7 @@ future_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, cmip_s
          jday = doy,
          tavg = (tmax+tmin)/2)%>% # TODO TERRIBLE WAY TO DO THIS
   # mutate(radiation2 = 1360)%>% # TODO major assumption TERRIBLE
+  left_join(rad_year_mean, by=c('jday' = 'doy'))%>%
   select(year, jday, precip, tavg, tmax, tmin, radiation, wind)
 
 

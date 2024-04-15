@@ -70,7 +70,7 @@ LDNDC_harvest_raw <- fread(paste0(output_path,"harvest_",scenario_name2,".csv"))
 
 LDNDC_harvest <- LDNDC_harvest_raw[LDNDC_harvest_raw$year < end_fut_period_year,] 
 
-LDNDC_physiology_daily_raw <- read.csv(paste0(output_path,"physiology_daily_",scenario_name2,".csv")) %>%
+LDNDC_physiology_daily_raw <- fread(paste0(output_path,"physiology_daily_",scenario_name2,".csv")) %>%
   mutate(date=date(datetime),
          year=year(date))
 
@@ -91,16 +91,16 @@ LDNDC_physiology_daily_raw <- read.csv(paste0(output_path,"physiology_daily_",sc
 
 
 LDNDC_physiology_day <-LDNDC_physiology_daily_raw[LDNDC_physiology_daily_raw$year < end_fut_period_year
-                                                         ,c("date","species","DW_fru.kgDWm.2.",
-                                                            "DW_above.kgDWm.2.")]%>%
+                                                         ,c("date","species","DW_fru[kgDWm-2]",
+                                                            "DW_above[kgDWm-2]")]%>%
   mutate(year = year(date),
          crop=ifelse(species=="FOCO","MaizeYld_Mgha",
               ifelse(species=="SOYB","SoybeanYld_Mgha",
                      ifelse(species=="WIWH","WheatYld_Mgha",
                             ifelse(species=="COTT", "CottonYld_Mgha", "Error")))))%>%
-  group_by(year,crop) %>%
-  summarize(grain_yield_kgm2=max(DW_fru.kgDWm.2.),
-            ag_biomass_kgm2=max(DW_above.kgDWm.2. ),
+  group_by(year, crop) %>%
+  summarize(grain_yield_kgm2=max(`DW_fru[kgDWm-2]`),
+            ag_biomass_kgm2=max(`DW_above[kgDWm-2]` ),
             grain_yield_kgha=grain_yield_kgm2*10000,
             ag_biomass_kgha=ag_biomass_kgm2*10000,
             grain_yield_Mgha=grain_yield_kgm2*10,
@@ -196,7 +196,11 @@ LDNDC_metrx_day <- LDNDC_metrx_day_raw%>%
 # LDNDCY_Mgha <- LDNDC_yield[,c("year","Maize","Soybean",
 #                             "Wheat")] %>%
 
-LDNDCY_Mgha<-select(LDNDC_yield, year, eval(paste0(crop,'Yld_Mgha')))
+if(crop=="Rotation"){
+  LDNDCY_Mgha<-select(LDNDC_yield, year, MaizeYld_Mgha, SoybeanYld_Mgha)
+} else {
+  LDNDCY_Mgha<-select(LDNDC_yield, year, eval(paste0(crop,'Yld_Mgha')))
+}
 # LDNDCY_Mgha <- select(LDNDC_yield, year, eval(crop)) %>%
 #   group_by(year) %>%
 #   summarize(Yield_Mgha=eval(crop))

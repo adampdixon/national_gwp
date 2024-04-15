@@ -53,7 +53,7 @@ tic()
 # experiment_start_year <- 1989
 # experiment_end_year <- 2021
 # experiment_year_range <- experiment_start_year:experiment_end_year
-experiment_start_date <- "1850-01-01" # for LDNDC
+experiment_start_date <- "1950-01-01" # for LDNDC
 # experiment_end_date <- "2021-12-31"
 # end_exp_period_year <- 2021
 end_fut_period_year <- 2050

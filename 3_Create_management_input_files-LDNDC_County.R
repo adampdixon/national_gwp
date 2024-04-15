@@ -3,7 +3,6 @@
 library(XML)
 
 
-
 # this is the top level - "event" encapsulates the whole doc
 doc <- newXMLDoc()
 root = newXMLNode("event", doc=doc)
@@ -44,9 +43,11 @@ if(!identical(crop, "Rotation")){
         )
         sub_node <- newXMLNode(management_period_df[i,"dndc_event"],parent=event_node)
         switch(management_period_df[i,"dndc_event"],
-               "plant" = {addAttributes(sub_node, type = management_period_df[i,"dndc_plant_type"])
+               "plant" = {addAttributes(sub_node, type = management_period_df[i,"dndc_plant_type"],
+                                        name =  management_period_df[i,"dndc_plant_type"])
                  sub2_node <- newXMLNode("crop",parent=sub_node)
-                 addAttributes(sub2_node, initialbiomass = management_period_df[i,"initialbiomass"])
+                 addAttributes(sub2_node, initialbiomass = management_period_df[i,"initialbiomass"],
+                               covercrop = management_period_df[i,"covercrop"])
                },
                "till" = addAttributes(sub_node, depth = management_period_df[i,"till_depth_m"]),
                "fertilize" = addAttributes(sub_node, amount = management_period_df[i,"n_rate_kg_ha"],

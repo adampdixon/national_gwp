@@ -120,7 +120,7 @@ source(paste0("0_Observations_and_constants_County.R"), local = TRUE)
 
 if(identical(run_LDNDC,TRUE)) {
   
-  source("1_Create_weather_input_files-LDNDC_County.R", local = TRUE)
+  source("1_Create_weather_input_files-LDNDC_County_v3.R", local = TRUE)
   source("2_Create_soil_data-LDNDC_County.R", local = TRUE)
 }
 

@@ -10,7 +10,9 @@
 # Calls custom nasapower_download function."
 #######################################
 
-print("Starting 1_Create_weather_input_files-LDNDC_County.R")
+library(zoo) # to impute missing data
+
+print("Starting 1_Create_weather_input_files-LDNDC_County_v3 NASA POWER.R")
 
 
 climate_data<-list.files(climate_data_path, full.names = TRUE, pattern = ".csv")
@@ -20,6 +22,8 @@ print("Starting 1_Create_weather_input_files-LDNDC.R")
 #https://pcmdi.llnl.gov/CMIP6/Guide/dataUsers.html
 
 # best description of rsds units https://pcmdi.llnl.gov/mips/cmip3/variableList.html, search "rsds"
+
+# v2 uses global radiation data from NREL, see utilities for script that creates file
 
 
 # Future 2022 - 2050
@@ -32,19 +36,21 @@ if (fut_climate == 2) {
   cmip_scen<-'_ssp585_gfdl-esm4__cmip6.csv'
 }
 
-rad_cov<-100
+# rad_cov<-100
 
-rad_wind_year_mean<-mutate(fread(climate_data[grep(paste0("rsds_", county_geoid, cmip_scen), climate_data)]),
-                           radiation = value/rad_cov)%>%
-  select(radiation, year, doy)%>%
-  left_join(
-    mutate(fread(climate_data[grep(paste0("sfcwind_", county_geoid, cmip_scen), climate_data)]),
-           wind = value),
-    by=c('year', 'doy'))%>%
-  select(GEOID, wind, radiation, year, doy)%>%
+wind_year_mean<-mutate(fread(climate_data[grep(paste0("sfcwind_", county_geoid, cmip_scen), climate_data)]),
+           wind = value)%>%
+  select(GEOID, wind, year, doy)%>%
   group_by(doy)%>% # grouping by doy produces an average year
-  summarise(wind = mean(wind),
-            radiation = mean(radiation))
+  summarise(wind = mean(wind))
+
+
+nasa_power_files<-'/home/ap/NASA_POWER2'
+
+rad_year_nasa<-mutate(fread(list.files(nasa_power_files, full.names = T, pattern = paste0("_", county_geoid, "_"))),
+           radiation = radn_Wm2,
+           LW_radiation = LW_radn_Wm2)%>%
+  select(dayofyear, radiation, LW_radiation)
 
 
 
@@ -71,10 +77,11 @@ historic_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, "_nc
   select(day, month, year, jday, tmax, tmin, precip)
 
 # Add wind and radiation year average to each year
-historic_data2<-left_join(historic_data, rad_wind_year_mean, by=c('jday' = 'doy'))%>%
+historic_data2<-left_join(historic_data, wind_year_mean, by=c('jday' = 'doy'))%>%
+  left_join(rad_year_nasa, by=c('jday' = 'dayofyear'))%>%
   mutate(tavg = (tmax + tmin)/2)%>% # SO WRONG :(
   # mutate(radiation2 = 1360)%>% # TODO major assumption TERRIBLE
-  select(year, jday, precip, tavg, tmax, tmin, radiation, wind)
+  select(year, jday, precip, tavg, tmax, tmin, radiation, LW_radiation, wind)
 
 
 # TODO add the future data and rbind
@@ -91,11 +98,11 @@ future_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, cmip_s
                   precip = value),
            year, doy, precip),
     by=c('year', 'doy'))%>%
-  left_join(
-    select(mutate(fread(climate_data[grep(paste0("rsds_", county_geoid, cmip_scen), climate_data)]),
-                  radiation = value/rad_cov), # convert from kW to W ?
-           year, doy, radiation),
-    by=c('year', 'doy'))%>%
+  # left_join(
+  #   select(mutate(fread(climate_data[grep(paste0("rsds_", county_geoid, cmip_scen), climate_data)]),
+  #                 radiation = value/rad_cov), # convert from kW to W ?
+  #          year, doy, radiation),
+  #   by=c('year', 'doy'))%>%
   left_join(
     select(mutate(fread(climate_data[grep(paste0("sfcwind_", county_geoid, cmip_scen), climate_data)]),
                   wind = value),
@@ -107,21 +114,31 @@ future_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, cmip_s
          jday = doy,
          tavg = (tmax+tmin)/2)%>% # TODO TERRIBLE WAY TO DO THIS
   # mutate(radiation2 = 1360)%>% # TODO major assumption TERRIBLE
-  select(year, jday, precip, tavg, tmax, tmin, radiation, wind)
+  left_join(rad_year_nasa, by=c('jday' = 'dayofyear'))%>%
+  select(year, jday, precip, tavg, tmax, tmin, radiation, LW_radiation, wind)
 
 
 
 clim_data<-rbind(historic_data2, future_data)
 
-names(clim_data)<-c("year","dayofyear","rain_mm","tavg","maxt_C","mint_C","radn_Wm2","meanw_ms")
+nrow(na.omit(clim_data))
+nrow(clim_data)
+
+clim_data<-na.locf(clim_data)
+
+nrow(clim_data)
+
+
+
+names(clim_data)<-c("year","dayofyear","rain_mm","tavg","maxt_C","mint_C","grad", "lrad","meanw_ms")
 
 
   
   
   ## Select year, dayofyear, radiation (W/m^2), maxt, mint, precip (mm), mean wind (m/s)
   DNDC_basic <- clim_data[,c("year","dayofyear","rain_mm","tavg","maxt_C","mint_C",
-                           "radn_Wm2","meanw_ms")]
-  colnames(DNDC_basic) <- c("year","dayofyear","prec","tavg","tmax","tmin","grad","wind")
+                           "grad", "lrad", "meanw_ms")]
+  colnames(DNDC_basic) <- c("year","dayofyear","prec","tavg","tmax","tmin","grad", "lrad","wind")
   
   # DNDC_basic<-DNDC_basic %>% select(-grad)
   
