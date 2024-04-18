@@ -50,7 +50,7 @@ nasa_power_files<-'/home/ap/NASA_POWER2'
 rad_year_nasa<-mutate(fread(list.files(nasa_power_files, full.names = T, pattern = paste0("_", county_geoid, "_"))),
            radiation = radn_Wm2,
            LW_radiation = LW_radn_Wm2)%>%
-  select(dayofyear, radiation, LW_radiation)
+  select(dayofyear, radiation) # LW_radiation leaving out longwave radiation for now
 
 
 
@@ -80,8 +80,8 @@ historic_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, "_nc
 historic_data2<-left_join(historic_data, wind_year_mean, by=c('jday' = 'doy'))%>%
   left_join(rad_year_nasa, by=c('jday' = 'dayofyear'))%>%
   mutate(tavg = (tmax + tmin)/2)%>% # SO WRONG :(
-  # mutate(radiation2 = 1360)%>% # TODO major assumption TERRIBLE
-  select(year, jday, precip, tavg, tmax, tmin, radiation, LW_radiation, wind)
+  mutate(radiation2 = -99.99)%>% # TODO since can't get good values using what LDNDC tutorials did
+  select(year, jday, precip, tavg, tmax, tmin, radiation2, wind) # LW_radiation
 
 
 # TODO add the future data and rbind
@@ -113,9 +113,9 @@ future_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, cmip_s
          day = lubridate::day(date_object),
          jday = doy,
          tavg = (tmax+tmin)/2)%>% # TODO TERRIBLE WAY TO DO THIS
-  # mutate(radiation2 = 1360)%>% # TODO major assumption TERRIBLE
+  mutate(radiation2 = -99.99)%>% # TODO major assumption TERRIBLE
   left_join(rad_year_nasa, by=c('jday' = 'dayofyear'))%>%
-  select(year, jday, precip, tavg, tmax, tmin, radiation, LW_radiation, wind)
+  select(year, jday, precip, tavg, tmax, tmin, radiation2, wind) # LW_radiation
 
 
 
@@ -124,21 +124,30 @@ clim_data<-rbind(historic_data2, future_data)
 nrow(na.omit(clim_data))
 nrow(clim_data)
 
+# remove NAs
 clim_data<-na.locf(clim_data)
 
 nrow(clim_data)
 
 
 
-names(clim_data)<-c("year","dayofyear","rain_mm","tavg","maxt_C","mint_C","grad", "lrad","meanw_ms")
+names(clim_data)<-c("year","dayofyear","rain_mm","tavg","maxt_C","mint_C","grad","meanw_ms") # "lrad"
 
+
+# reduce the sig digits
+cols<-c("rain_mm","tavg","maxt_C","mint_C","grad", "meanw_ms")
+clim_data<-mutate_at(clim_data, all_of(cols), round, 2)
+
+# hist(clim_data$grad)
+# clim_data_tutorial<-read.table('/home/ap/Downloads/ldndc-1.35.2.linux64/tutorial_clim_data.txt', header =  T)
+# hist(clim_data_tutorial$grad)
 
   
   
   ## Select year, dayofyear, radiation (W/m^2), maxt, mint, precip (mm), mean wind (m/s)
   DNDC_basic <- clim_data[,c("year","dayofyear","rain_mm","tavg","maxt_C","mint_C",
-                           "grad", "lrad", "meanw_ms")]
-  colnames(DNDC_basic) <- c("year","dayofyear","prec","tavg","tmax","tmin","grad", "lrad","wind")
+                           "grad", "meanw_ms")] # "lrad", 
+  colnames(DNDC_basic) <- c("year","dayofyear","prec","tavg","tmax","tmin","grad", "wind") # "lrad",
   
   # DNDC_basic<-DNDC_basic %>% select(-grad)
   

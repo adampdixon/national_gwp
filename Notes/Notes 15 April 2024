@@ -3,4 +3,8 @@ Millenium model
 https://github.com/rabramoff/Millennial/tree/master?tab=readme-ov-file
 
 https://oceanhealthindex.org/news/cmip_2_what_is_this/
-https://pcmdi.llnl.gov/mips/cmip3/variableList.html
+https://pcmdi.llnl.gov/mips/cmip3/variableList.html 
+
+
+TODO consider creating a custom start up for wheat in xml and then concat with the 
+rest of the mgmt script

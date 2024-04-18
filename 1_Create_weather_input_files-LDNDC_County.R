@@ -32,10 +32,9 @@ if (fut_climate == 2) {
   cmip_scen<-'_ssp585_gfdl-esm4__cmip6.csv'
 }
 
-rad_cov<-100
 
 rad_wind_year_mean<-mutate(fread(climate_data[grep(paste0("rsds_", county_geoid, cmip_scen), climate_data)]),
-                           radiation = value/rad_cov)%>%
+                            radiation = value)%>%
   select(radiation, year, doy)%>%
   left_join(
     mutate(fread(climate_data[grep(paste0("sfcwind_", county_geoid, cmip_scen), climate_data)]),
@@ -47,6 +46,20 @@ rad_wind_year_mean<-mutate(fread(climate_data[grep(paste0("rsds_", county_geoid,
             radiation = mean(radiation))
 
 
+# This was for testing solar radiation from different data sources, delete later
+# rad_wind_year_mean<-read.table('/home/ap/Downloads/ldndc-1.35.2.linux64/KBS_clim_data.txt', header =  T)[1:365,]%>%
+#   mutate(radiation = grad, doy = X..1)%>%
+#   # rad_wind_year_mean<-mutate(fread(climate_data[grep(paste0("rsds_", county_geoid, cmip_scen), climate_data)]),
+#   #                            radiation = value)%>%
+#   select(radiation, doy)%>%
+#   right_join(
+#     mutate(fread(climate_data[grep(paste0("sfcwind_", county_geoid, cmip_scen), climate_data)]),
+#            wind = value),
+#     by=c('doy'))%>%
+#   select(GEOID, wind, radiation, doy)%>%
+#   group_by(doy)%>% # grouping by doy produces an average year
+#   summarise(wind = mean(wind),
+#             radiation = mean(radiation))
 
 # if(clim_scenario_num==1) {
 
@@ -61,7 +74,7 @@ historic_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, "_nc
     by=c('year', 'doy'))%>%
   left_join(
     mutate(fread(climate_data[grep(paste0("prcp_", county_geoid, "_nclim.csv"), climate_data)]),
-           precip = value),
+           precip = value*10),
     by=c('year', 'doy'))%>%
   select(year, doy, tmax, tmin, precip)%>%
   mutate(date_object = lubridate::ymd(paste(year, "-01-01")) + days(doy - 1))%>% #chatgpt derived
@@ -88,12 +101,12 @@ future_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, cmip_s
     by=c('year', 'doy'))%>%
   left_join(
     select(mutate(fread(climate_data[grep(paste0("prcp_", county_geoid, cmip_scen), climate_data)]),
-                  precip = value),
+                  precip = value*10),
            year, doy, precip),
     by=c('year', 'doy'))%>%
   left_join(
     select(mutate(fread(climate_data[grep(paste0("rsds_", county_geoid, cmip_scen), climate_data)]),
-                  radiation = value/rad_cov), # convert from kW to W ?
+                  radiation = value), 
            year, doy, radiation),
     by=c('year', 'doy'))%>%
   left_join(
@@ -105,7 +118,7 @@ future_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, cmip_s
   mutate(month = lubridate::month(date_object),
          day = lubridate::day(date_object),
          jday = doy,
-         tavg = (tmax+tmin)/2)%>% # TODO TERRIBLE WAY TO DO THIS
+         tavg = (tmax+tmin)/2)%>% # TODO TERRIBLE WAY TO DO THIS?
   # mutate(radiation2 = 1360)%>% # TODO major assumption TERRIBLE
   select(year, jday, precip, tavg, tmax, tmin, radiation, wind)
 
@@ -115,7 +128,21 @@ clim_data<-rbind(historic_data2, future_data)
 
 names(clim_data)<-c("year","dayofyear","rain_mm","tavg","maxt_C","mint_C","radn_Wm2","meanw_ms")
 
+nrow(na.omit(clim_data))
+nrow(clim_data)
 
+# remove NAs
+clim_data<-na.locf(clim_data)
+
+nrow(clim_data)
+
+# reduce the sig digits
+cols<-c("rain_mm","tavg","maxt_C","mint_C","radn_Wm2", "meanw_ms")
+clim_data<-mutate_at(clim_data, all_of(cols), round, 2)
+
+# hist(clim_data$radn_Wm2)
+# clim_data_tutorial<-read.table('/home/ap/Downloads/ldndc-1.35.2.linux64/KBS_clim_data.txt', header =  T)
+# hist(clim_data_tutorial$grad)
   
   
   ## Select year, dayofyear, radiation (W/m^2), maxt, mint, precip (mm), mean wind (m/s)
