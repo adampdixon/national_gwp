@@ -11,6 +11,7 @@
 #######################################
 
 library(data.table)
+library(zoo) # to impute missing data
 
 climate_data<-list.files(climate_data_path, full.names = TRUE, pattern = ".csv")
 

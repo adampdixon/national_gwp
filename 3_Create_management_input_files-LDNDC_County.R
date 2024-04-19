@@ -15,7 +15,7 @@ mgmt_hist<-unique(full_df$time_period)
 
 # create the management cycle for every year
 
-# Create loop for all crops besides rotation
+# Create loop for all crops besides rotation and wheat
 if(!identical(crop, "Rotation")){
   
   for(h in mgmt_hist){

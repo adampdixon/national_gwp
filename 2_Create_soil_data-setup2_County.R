@@ -311,7 +311,7 @@ soil_type_code <- toupper(if_else(find_col=="Cl","clay",
 
 # LDNDC soil table
 soil_df_L<-soil_df%>%
-  select(upper_depth_cm, lower_depth_cm, bdfiod_value_avg, DUL_dm3m3, LL15_dm3m3, evap_coef,
+  select(upper_depth_cm, lower_depth_cm, bdfiod_value_avg, DUL_dm3m3, LL15_dm3m3, evap_coef, #DUL_dm3m3, LL15_dm3m3
          root_fraction, sand_frac, clay_frac, OM_frac, deltamin, ksat_cmsec, phaq_value_avg, 
          orgC_fraction, KS_cmmin)%>%
   mutate(soil_type_code = soil_type_code)

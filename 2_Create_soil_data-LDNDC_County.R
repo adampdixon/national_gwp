@@ -13,7 +13,7 @@
 
 library(xml2)
 
-soil_filename <- paste0(dndc_path, site_name, "_soil.xml")
+soil_filename <- paste0(dndc_path, site_name, "_site.xml")
 
 
 # Remove old file ---------------------------------------------------------

@@ -87,7 +87,7 @@ doc_proj <- read_xml(paste0("<?xml version=\"1.0\" ?><ldndcproject PackageMinimu
                  "<input>",
                  paste0('<sources sourceprefix=\"',site_name,'/" >'), 
                  "<setup source=\"setup.xml\" />",
-                 paste0('<site source=\"', site_name, "_soil",'.xml\" />'), # includes soil characteristics, changed from "base_treatment"
+                 paste0('<site source=\"', site_name, "_site",'.xml\" />'), # includes soil characteristics, changed from "base_treatment"
                  "<airchemistry source=\"airchem.txt\" format=\"txt\" />",
                  paste0('<climate source=\"climate_',clim_scenario_num,'.txt\" />'),
                  paste0('<event source=\"mana_',scenario_name2,'.xml\" />'),
@@ -207,11 +207,11 @@ if(identical(crop, "Wheat")){
     "<species group=\"crop\" mnemonic=\"wiwh\">",
     "<par name=\"gdd_base_temperature\" value=\"7\" />", #7
     "<par name=\"gdd_maturity\" value=\"1819\" />", #default=1819
-    "<par name=\"gdd_grain_filling\" value=\"1000\" />", #default=est. at 1000 # AD changed from -1
+    "<par name=\"gdd_grain_filling\" value=\"-1\" />", #default=est. at 1000 # AD changed from -1
     "<par name=\"fraction_foliage\" value=\"0.43\" />", #default=0.43
     "<par name=\"fraction_fruit\" value=\"0.4\" />", #default=0.4
     "<par name=\"fraction_root\" value=\"0.06\" />", #default=0.06
-    "<par name=\"fyield\" value=\"0.25\" />", #default=0.25 # AD changed from .18
+    "<par name=\"fyield\" value=\"0.18\" />", #default=0.25 # AD changed from .18
     "<par name=\"slamax\" value=\"20\" />", #default=20
     "<par name=\"vcmax25\" value=\"125.6\" />", #default=125.6
     "<par name=\"h2oref_a\" value=\"0.5\" />", #default=0.5

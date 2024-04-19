@@ -6,5 +6,11 @@ https://oceanhealthindex.org/news/cmip_2_what_is_this/
 https://pcmdi.llnl.gov/mips/cmip3/variableList.html 
 
 
-TODO consider creating a custom start up for wheat in xml and then concat with the 
-rest of the mgmt script
+
+Can wheat have cover crops growing when planted?
+
+Go through cover crops available in LDNDC (cowpea, rapeseed, winterrye)
+
+What is DUL and LL15 in the soil file? It appears to be messing up root_system at year 2022, for just wheat
+
+Get Cotton running
