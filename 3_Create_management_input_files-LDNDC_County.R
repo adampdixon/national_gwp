@@ -25,7 +25,7 @@ if(!identical(crop, "Rotation")){
     last_year<-as.integer(substr(h, 6, 9))
     
     management_period_df<-full_df%>%
-      filter(time_period==h)
+      filter(time_period==h) # gest only the scenario and drops historic data coded 0
     
     paste0("Creating events for LDNDC from ", first_year, " to ", last_year)
     
@@ -70,8 +70,11 @@ if(identical(crop, "Rotation")){
     first_year<-as.integer(substr(h, 1, 4))
     last_year<-as.integer(substr(h, 6, 9))
     
+    # Filter for time period
     management_period_df<-full_df%>%
       filter(time_period==h)
+    
+    print(management_period_df)
     
     paste0("Creating events for Rotation for LDNDC from ", first_year, " to ", last_year)
     
@@ -90,9 +93,11 @@ if(identical(crop, "Rotation")){
           )
           sub_node <- newXMLNode(management_period_df[i,"dndc_event"],parent=event_node)
           switch(management_period_df[i,"dndc_event"],
-                 "plant" = {addAttributes(sub_node, type = management_period_df[i,"dndc_plant_type"])
-                   sub2_node <- newXMLNode("crop",parent=sub_node)
-                   addAttributes(sub2_node, initialbiomass = management_period_df[i,"initialbiomass"])
+               "plant" = {addAttributes(sub_node, type = management_period_df[i,"dndc_plant_type"], # TODO Change this to same as above
+                                        name =  management_period_df[i,"dndc_plant_type"])
+                 sub2_node <- newXMLNode("crop",parent=sub_node)
+                 addAttributes(sub2_node, initialbiomass = management_period_df[i,"initialbiomass"],
+                               covercrop = management_period_df[i,"covercrop"])
                  },
                  "till" = addAttributes(sub_node, depth = management_period_df[i,"till_depth_m"]),
                  "fertilize" = addAttributes(sub_node, amount = management_period_df[i,"n_rate_kg_ha"],
@@ -108,9 +113,9 @@ if(identical(crop, "Rotation")){
     
       # go through each year and repeat the management cycle
       for(y in seq(first_year, last_year, by = 2)){
-        # print(y)
+        print(y)
         for (p in 0:1){ # run the loop twice for each year
-          print(paste0("sequence year: ", y+p))
+          print(paste0("sequence year: ", y+p)) ## THIS IS THE DIFFERENCE, ADDING A YEAR TO EACH SEQUENCE YEAR
           management_period_df2<-filter(management_period_df, sequence_years==p)
           # this is the second level - also "event" tags, with attributes and sub-child nodes
             for(i in 1:nrow(management_period_df2)) {

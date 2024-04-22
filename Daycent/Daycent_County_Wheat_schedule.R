@@ -5,6 +5,9 @@
 # Winter wheat is planted in fall and harvested in early summer so needs a 2 year calendar. We assume that winter wheat did not become wides
 # spread until 1901.
 
+# Fertilizer amount from:
+# https://www.no-tillfarmer.com/articles/12363-when-and-how-much-nitrogen-to-apply-to-wheat
+
 wheat_1 <- c(
   '1850          Starting year ## start with assumed ground-breaking for agriculture until intensification',
   '2050          Last year',
@@ -73,7 +76,7 @@ wheat_1 <- c(
   '1       Output interval',
   'C       Weather choice ## Continue',
   '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
-  '1 214 CULT K  ## Apr 28 of ',
+  '1 214 CULT K  ## ',
   '1 214 CULT ROW  ## Aug 1',
   '1 300 FERT (8.0N)   ## Fertlizer before planting', # increase fertilizer amount
   '1 306 CROP W3EG ## Nov 1', # wheat is higher yielding
@@ -89,7 +92,7 @@ wheat_1 <- c(
   '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
   '1 214 CULT K  ## Apr 28 ',
   '1 214 CULT ROW  ## Aug 1',
-  '1 300 FERT (16.8N)   ## Fertilizer before planting', # increase fertilizer amount
+  '1 300 FERT (12.3N)   ## Fertilizer before planting', # increase fertilizer amount
   '1 306 CROP W4EG ## Nov 1',
   '1 306 PLTM  ## Nov 1',
   '-999 -999 X')
@@ -106,7 +109,7 @@ wheat_scenario_1<-c(
   '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
   '1 214 CULT K  ## Apr 28 of ',
   '1 214 CULT ROW  ## Aug 1',
-  '1 300 FERT (16.8N)   ## Fertilizer before planting',
+  '1 300 FERT (12.3N)   ## Fertilizer before planting',
   '1 306 CROP W4EG ## Nov 1',
   '1 306 PLTM  ## Nov 1',
   '-999 -999 X'
@@ -123,7 +126,7 @@ wheat_scenario_2<-c(
   '1       Output interval',
   'C       Weather choice ## Continue',
   '1 168 HARV G90S	## June 15 - Harvest grains and 90% straw',
-  '1 306 FERT (16.8N)   ## Fertilizer during planting',
+  '1 306 FERT (12.3N)   ## Fertilizer during planting',
   '1 306 CULT NDRIL      ## May 20', # No-till drill
   '1 306 CROP W4EG ## Nov 1',
   '1 306 PLTM  ## Nov 1',
@@ -144,7 +147,7 @@ wheat_scenario_3<-c(
   '1 214 CULT ROW  ## Aug 1',
   '1 224 CROP RYELG ## Aug 10, plant rye, legume, grass mix cover crop',
   '1 224 PLTM  ## Aug 10',
-  '1 300 FERT (16.8N)   ## Fertilizer before planting',
+  '1 300 FERT (12.3N)   ## Fertilizer before planting',
   '1 306 CROP W4EG ## Nov 1',
   '1 306 PLTM  ## Nov 1',
   '-999 -999 X'
@@ -165,7 +168,7 @@ wheat_scenario_4<-c(
   '1 214 CULT ROW  ## Aug 1',
   '1 224 CROP RYE ## Aug 10, plant rye, legume, grass mix cover crop',
   '1 224 PLTM  ## Aug 10',
-  '1 300 FERT (16.8N)   ## Fertilizer before planting',
+  '1 300 FERT (12.3N)   ## Fertilizer before planting',
   '1 306 CROP W4EG ## Nov 1',
   '1 306 PLTM  ## Nov 1',
   '-999 -999 X'
@@ -186,7 +189,7 @@ wheat_scenario_5<-c(
   '1 214 CULT ROW  ## Aug 1',
   '1 224 CROP VETCH ## Aug 10, plant rye, legume, grass mix cover crop',
   '1 224 PLTM  ## Aug 10',
-  '1 300 FERT (16.8N)   ## Fertilizer before planting',
+  '1 300 FERT (12.3N)   ## Fertilizer before planting',
   '1 306 CROP W4EG ## Nov 1',
   '1 306 PLTM  ## Nov 1',
   '-999 -999 X'
@@ -205,7 +208,7 @@ wheat_scenario_6<-c(
   '1 224 CULT NDRIL      ## May 20', # No-till drill
   '1 224 CROP RYELG ## Aug 10, plant rye, legume, grass mix cover crop',
   '1 224 PLTM  ## Aug 10',
-  '1 300 FERT (16.8N)   ## Fertilizer before planting',
+  '1 300 FERT (12.3N)   ## Fertilizer before planting',
   '1 306 CULT NDRIL      ## May 20', # No-till drill
   '1 306 CROP W4EG ## Nov 1',
   '1 306 PLTM  ## Nov 1',

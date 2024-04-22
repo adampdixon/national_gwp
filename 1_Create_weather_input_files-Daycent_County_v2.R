@@ -32,20 +32,20 @@ suppressMessages({
   #                                 c("day","month","year","dayofyear",
   #                                   "TMAX","TMIN","prec_cm")]  
   
-  DAYCENT_basic_eq <- filter(weather, year %in% 1950:2021)%>% # ORIGINAL
-    mutate_if(is.double, round, 2)
-                               # c("day","month","year","dayofyear",
-                               #   "TMAX","TMIN","prec_cm")]
-
-
-    write.table(DAYCENT_basic_eq, file=file.path(daycent_path2, "basic_eq.wth"),
-                row.names=F, quote=F, col.names=F, sep=' ')
-
-    print("**********DAYCENT DailyWeather equilibrisum**********")
-    print(paste0('min max temp is: ', min(DAYCENT_basic_eq$tmax), " and ", max(DAYCENT_basic_eq$tmax)))
-    print(paste0('min max precip is: ', min(DAYCENT_basic_eq$precip), " and ", max(DAYCENT_basic_eq$precip)))
-    print(paste0("min and max year are ", min(DAYCENT_basic_eq$year), ", ", max(DAYCENT_basic_eq$year)))
-    print(paste0("number of rows are: ", nrow(DAYCENT_basic_eq)))
+  # DAYCENT_basic_eq <- filter(weather, year %in% 1950:2021)%>% # ORIGINAL
+  #   mutate_if(is.double, round, 2)
+  #                              # c("day","month","year","dayofyear",
+  #                              #   "TMAX","TMIN","prec_cm")]
+  # 
+  # 
+  #   write.table(DAYCENT_basic_eq, file=file.path(daycent_path2, "basic_eq.wth"),
+  #               row.names=F, quote=F, col.names=F, sep=' ')
+  # 
+  #   print("**********DAYCENT DailyWeather equilibrisum**********")
+  #   print(paste0('min max temp is: ', min(DAYCENT_basic_eq$tmax), " and ", max(DAYCENT_basic_eq$tmax)))
+  #   print(paste0('min max precip is: ', min(DAYCENT_basic_eq$precip), " and ", max(DAYCENT_basic_eq$precip)))
+  #   print(paste0("min and max year are ", min(DAYCENT_basic_eq$year), ", ", max(DAYCENT_basic_eq$year)))
+  #   print(paste0("number of rows are: ", nrow(DAYCENT_basic_eq)))
     
     # experimental period (2003-2021, even though experiment ends 2010)
 

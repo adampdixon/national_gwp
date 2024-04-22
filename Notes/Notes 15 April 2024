@@ -14,3 +14,19 @@ Go through cover crops available in LDNDC (cowpea, rapeseed, winterrye)
 What is DUL and LL15 in the soil file? It appears to be messing up root_system at year 2022, for just wheat
 
 Get Cotton running
+
+just a soil decomposition model,
+take plant input, soil temp and mosture, and Mill will make soil carbon
+for input take average input for Daycent and LDNDC, inputs are averaged, then Mill spits out soil carbon, soil temperature and soil moisture
+
+
+think about writing a simple manual of what you did
+explain each derecho folder system
+how each thing runs
+technically guiding this is what I did
+so that it's reproducible
+
+TODO
+figure out waht DUL and LL15 are in the soil file, also wcmin/max
+make histogram of values
+

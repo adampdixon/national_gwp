@@ -67,8 +67,6 @@ flipped_soil_df$wfps_min <- as.numeric(c(0.217839,0.217839,0.217839,0.217839,0.0
 xml_add_child((layer_nodes), paste("layer ",
                                    #paste0("wcmin=\"",flipped_soil_df$LL15,"\""),
                                    #paste0("wcmax=\"",flipped_soil_df$DUL,"\""),
-                                   #paste0("wcmin=\"",flipped_soil_df$LL15_dm3m3,"\""),
-                                   #paste0("wcmax=\"",flipped_soil_df$DUL_dm3m3,"\""),
                                    paste0("wcmin=\"",flipped_soil_df$LL15_dm3m3,"\""),
                                    paste0("wcmax=\"",flipped_soil_df$DUL_dm3m3,"\""),
                                    paste0("ph=\"",flipped_soil_df$phaq_value_avg,"\""),
@@ -91,6 +89,14 @@ xml_add_child((layer_nodes), paste("layer ",
 #doc
 write_xml(doc,file=soil_filename,
           append=F)
+
+# For looking at the data
+# library(flextable)
+# klaus<-select(flipped_soil_df, LL15_dm3m3, DUL_dm3m3, phaq_value_avg, orgC_fraction, clay_frac, sand_frac, bdfiod_value_avg, Thickness, KS_cmmin) #, upper_depth_cm, lower_depth_cm, DUL_dm3m3, LL15_dm3m3)
+# 
+# names(klaus)<-c('wcmin', 'wcmax', 'ph', 'corg', 'clay', 'sand', 'bd', 'depth', 'sks')
+# flextable(klaus)%>%
+#   colformat_double(digits = 3)
 
 
 # Clean up ----------------------------------------------------------------

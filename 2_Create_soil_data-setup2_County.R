@@ -172,8 +172,9 @@ saxton_rawls_df <- soil_water_raw %>%
          O1500t = -0.024*sand_frac + 0.487*clay_frac + 0.006*OM_frac +
            0.005*sand_frac*OM_frac - 0.013*clay_frac*OM_frac +
            0.068*sand_frac*clay_frac + 0.031, # helper equation to LL15
-         LL15 = ifelse(O1500t + (0.14 * O1500t - 0.02)<=0, .000001, 
-                       O1500t + (0.14 * O1500t - 0.02)), # permanent wilting point, %   #!!!! AD WARNING: this is a hack to avoid negative values
+         LL15 = O1500t + (0.14 * O1500t - 0.02), # permanent wilting point, %
+         # LL15 = ifelse(O1500t + (0.14 * O1500t - 0.02)<=0, .000001, 
+         #               O1500t + (0.14 * O1500t - 0.02)), # permanent wilting point, %   #!!!! AD WARNING: this is a hack to avoid negative values
          O33t = -0.251*sand_frac + 0.195*clay_frac + 0.011*OM_frac +
            0.006*sand_frac*OM_frac - 0.027*clay_frac*OM_frac +
            0.452*sand_frac*clay_frac + 0.299, # helper equation to DUL

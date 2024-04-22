@@ -10,6 +10,8 @@
 # Calls custom nasapower_download function."
 #######################################
 
+library(zoo) # to impute missing data
+
 print("Starting 1_Create_weather_input_files-LDNDC_County.R")
 
 
@@ -90,6 +92,38 @@ historic_data2<-left_join(historic_data, rad_wind_year_mean, by=c('jday' = 'doy'
   select(year, jday, precip, tavg, tmax, tmin, radiation, wind)
 
 
+## Create historic average for years 1850-1950 as LDNDC does not have a rewind
+
+# historic_average<-filter(historic_data2, year %in% 1951:1961)%>% # if you take average there's rain every day
+historic_average<-filter(historic_data2, year == 1951)%>%
+  select(-year)#%>%
+  # group_by(jday)%>%
+  # summarize_at(vars(precip, tavg, tmax, tmin, radiation, wind), mean)%>%
+  # filter(jday != 366)
+
+days_to_add<-data.frame(jday = 1:365)
+years_to_add<-data.frame(year =rep(1850:1950, each = 365))
+
+first100<-cbind(years_to_add, days_to_add)
+
+historic_average<-left_join(first100, historic_average, by = 'jday')%>%
+  select(year, jday, precip, tavg, tmax, tmin, radiation, wind)
+
+historic_data3<-rbind(historic_average, historic_data2)
+
+# ggplot(filter(historic_data3, year > 1920), aes(x=as.factor(year), y=tmin)) +
+#   geom_boxplot(width=0.1)+
+#   theme(axis.text.x = element_text(angle = 90))
+# 
+# ggplot(historic_data3, aes(x=as.factor(year), y=precip)) +
+#   geom_boxplot(width=0.1) +
+#   theme(axis.text.x = element_text(angle = 90))
+# 
+# ggplot(historic_data3, aes(x=as.factor(year), y=radiation)) +
+#   geom_boxplot(width=0.1) +
+#   theme(axis.text.x = element_text(angle = 90))
+
+
 # TODO add the future data and rbind
 
 future_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, cmip_scen), climate_data)]),
@@ -124,7 +158,7 @@ future_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, cmip_s
 
 
 
-clim_data<-rbind(historic_data2, future_data)
+clim_data<-rbind(historic_data3, future_data)
 
 names(clim_data)<-c("year","dayofyear","rain_mm","tavg","maxt_C","mint_C","radn_Wm2","meanw_ms")
 
@@ -138,7 +172,7 @@ nrow(clim_data)
 
 # reduce the sig digits
 cols<-c("rain_mm","tavg","maxt_C","mint_C","radn_Wm2", "meanw_ms")
-clim_data<-mutate_at(clim_data, all_of(cols), round, 2)
+clim_data<-mutate_at(clim_data, all_of(cols), round, 3)
 
 # hist(clim_data$radn_Wm2)
 # clim_data_tutorial<-read.table('/home/ap/Downloads/ldndc-1.35.2.linux64/KBS_clim_data.txt', header =  T)
