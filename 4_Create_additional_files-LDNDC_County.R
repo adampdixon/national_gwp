@@ -163,11 +163,11 @@ if(identical(crop, "Soybean")){
     "<species group=\"crop\" mnemonic=\"soyb\">",
     "<par name=\"gdd_base_temperature\" value=\"7\" />", #7
     "<par name=\"gdd_maturity\" value=\"1819\" />", #default=1819
-    "<par name=\"gdd_grain_filling\" value=\"1000\" />", #default=est. at 1000 # AD changed from -1
+    "<par name=\"gdd_grain_filling\" value=\"-1\" />", #default=est. at 1000 # AD changed from -1
     "<par name=\"fraction_foliage\" value=\"0.43\" />", #default=0.43
     "<par name=\"fraction_fruit\" value=\"0.4\" />", #default=0.4
     "<par name=\"fraction_root\" value=\"0.06\" />", #default=0.06
-    "<par name=\"fyield\" value=\"0.25\" />", #default=0.25 # AD changed from .16
+    "<par name=\"fyield\" value=\"0.16\" />", #default=0.25 # AD changed from .16
     "<par name=\"slamax\" value=\"20\" />", #default=20
     "<par name=\"vcmax25\" value=\"125.6\" />", #default=125.6
     "<par name=\"h2oref_a\" value=\"0.5\" />", #default=0.5
@@ -186,11 +186,11 @@ if(identical(crop, "Maize")){
     "<species group=\"crop\" mnemonic=\"foco\">",
     "<par name=\"gdd_base_temperature\" value=\"7\" />", #7
     "<par name=\"gdd_maturity\" value=\"1819\" />", #default=1819
-    "<par name=\"gdd_grain_filling\" value=\"1000\" />", #default=est. at 1000 # AD changed from -1
+    "<par name=\"gdd_grain_filling\" value=\"-1\" />", #default=est. at 1000 # AD changed from -1
     "<par name=\"fraction_foliage\" value=\"0.43\" />", #default=0.43
     "<par name=\"fraction_fruit\" value=\"0.4\" />", #default=0.4
     "<par name=\"fraction_root\" value=\"0.06\" />", #default=0.06
-    "<par name=\"fyield\" value=\"0.25\" />", #default=0.25 # AD changed from .18
+    "<par name=\"fyield\" value=\"0.18\" />", #default=0.25 # AD changed from .18
     "<par name=\"slamax\" value=\"20\" />", #default=20
     "<par name=\"vcmax25\" value=\"125.6\" />", #default=125.6
     "<par name=\"h2oref_a\" value=\"0.5\" />", #default=0.5
@@ -229,11 +229,11 @@ if(identical(crop, "Cotton")){
     "<species group=\"crop\" mnemonic=\"cott\">",
     "<par name=\"gdd_base_temperature\" value=\"7\" />", #7
     "<par name=\"gdd_maturity\" value=\"1819\" />", #default=1819
-    "<par name=\"gdd_grain_filling\" value=\"1000\" />", #default=est. at 1000 # AD changed from -1
+    "<par name=\"gdd_grain_filling\" value=\"-1\" />", #default=est. at 1000 # AD changed from -1
     "<par name=\"fraction_foliage\" value=\"0.43\" />", #default=0.43
     "<par name=\"fraction_fruit\" value=\"0.4\" />", #default=0.4
     "<par name=\"fraction_root\" value=\"0.06\" />", #default=0.06
-    "<par name=\"fyield\" value=\"0.25\" />", #default=0.25 # AD changed from .18
+    "<par name=\"fyield\" value=\"0.18\" />", #default=0.25 # AD changed from .18
     "<par name=\"slamax\" value=\"20\" />", #default=20
     "<par name=\"vcmax25\" value=\"125.6\" />", #default=125.6
     "<par name=\"h2oref_a\" value=\"0.5\" />", #default=0.5
@@ -250,11 +250,11 @@ if(identical(crop, "Rotation")){
     "<species group=\"crop\" mnemonic=\"foco\">",
     "<par name=\"gdd_base_temperature\" value=\"7\" />", #7
     "<par name=\"gdd_maturity\" value=\"1819\" />", #default=1819
-    "<par name=\"gdd_grain_filling\" value=\"1000\" />", #default=est. at 1000 # AD changed from -1
+    "<par name=\"gdd_grain_filling\" value=\"-1\" />", #default=est. at 1000 # AD changed from -1
     "<par name=\"fraction_foliage\" value=\"0.43\" />", #default=0.43
     "<par name=\"fraction_fruit\" value=\"0.4\" />", #default=0.4
     "<par name=\"fraction_root\" value=\"0.06\" />", #default=0.06
-    "<par name=\"fyield\" value=\"0.25\" />", #default=0.25 # AD changed from .18
+    "<par name=\"fyield\" value=\"0.18\" />", #default=0.25 # AD changed from .18
     "<par name=\"slamax\" value=\"20\" />", #default=20
     "<par name=\"vcmax25\" value=\"125.6\" />", #default=125.6
     "<par name=\"h2oref_a\" value=\"0.5\" />", #default=0.5
@@ -262,11 +262,11 @@ if(identical(crop, "Rotation")){
     "<species group=\"crop\" mnemonic=\"soyb\">",
     "<par name=\"gdd_base_temperature\" value=\"7\" />", #7
     "<par name=\"gdd_maturity\" value=\"1819\" />", #default=1819
-    "<par name=\"gdd_grain_filling\" value=\"1000\" />", #default=est. at 1000 # AD changed from -1
+    "<par name=\"gdd_grain_filling\" value=\"-1\" />", #default=est. at 1000 # AD changed from -1
     "<par name=\"fraction_foliage\" value=\"0.43\" />", #default=0.43
     "<par name=\"fraction_fruit\" value=\"0.4\" />", #default=0.4
     "<par name=\"fraction_root\" value=\"0.06\" />", #default=0.06
-    "<par name=\"fyield\" value=\"0.25\" />", #default=0.25 # AD changed from .18
+    "<par name=\"fyield\" value=\"0.18\" />", #default=0.25 # AD changed from .18
     "<par name=\"slamax\" value=\"20\" />", #default=20
     "<par name=\"vcmax25\" value=\"125.6\" />", #default=125.6
     "<par name=\"h2oref_a\" value=\"0.5\" />", #default=0.5
@@ -301,7 +301,7 @@ shell_txt <- c("#!/bin/bash",
   "if [ -e $HOME/.ldndc ]; ",
   "then",
   "#LandscapeDNDC program",
-  "ldndc=\"../../bin/ldndc\"",
+  "ldndc=\"../../bin/ldndc --create-checkpoint\"",
   "",
   "#Target project",
   paste0("project=\"./", site_name, "_", scenario_name2,".ldndc\""),

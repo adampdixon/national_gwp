@@ -80,14 +80,17 @@ daycent_path2<-file.path(master_path, 'Daycent' ,site_name)
 #######################################
 # Create LDNDC dir
 if(identical(run_LDNDC, TRUE)) {
-dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
+dndc_path <- paste0("LDNDC/ldndc-1.36.linux64/projects/",site_name,"/")
 unlink(dndc_path, recursive = TRUE)
 dir.create(file.path(dndc_path))
 }
 #######################################
-
-mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
-
+# Create Millenium dir
+if(identical(run_Millenium, TRUE)) {
+  mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
+  unlink(mill_path, recursive = TRUE)
+  dir.create(file.path(mill_path))
+}
 
 #######################################
 print("Copying over KBS 'Daycent model' files --")

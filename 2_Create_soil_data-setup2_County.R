@@ -26,6 +26,7 @@ library(xml2)
 library(lubridate)
 library(soilDB)
 library(sf)
+library(zoo)
 
 
 # local constants
@@ -86,7 +87,19 @@ library(sf)
 soils<-fread(list.files(soil_data_path, full.names = TRUE, pattern = paste0("_", county_geoid, "_")))%>%
   select(-GEOID)
 
+# tell Debjani!!!! Murray County georgia had an erroneous pH value as well as really strange values overall
+#, so using this to avoid
+# note: zoo library loaded in climate script run prior
+soils<-mutate(soils, pH = ifelse(pH > 7.5, NA, pH)) # remove pH values greater than 7.5, some are obviously in error
 
+# Stopped doing this because of error in Ks values in saxton_rawls_df
+# soils<-mutate(soils, pH = ifelse(BD < 1, NA, pH)) # remove pH less than 1, less than this throws an error
+# soils<-mutate(soils, BD = ifelse(BD < .5, NA, pH)) # remove bulk density values less than .5, less than this throws an error
+
+soils<-na.locf(soils) # This sets NA values to the last non-NA value
+
+
+# soils<-mutate(soils, pH = ifelse(pH<5.5, 5.5, ifelse(pH>7.5, 7.5, pH))) # keep pH within 5.5 and 7.5
 
 # to get gNATSGO correct, at present, we need to re-arrange the rows so it matches the way soils data was
 # arranged before. To do this, we'll manipulate the data as follows:
@@ -150,10 +163,11 @@ soils_new<-rbind(soils_1, soils_2_2, soils_3)
 sps_0<-soils_new%>%
   mutate(ParticleSizeClay = Clay, ParticleSizeSilt = Silt, ParticleSizeSand = Sand, Carbon = SOC, PH = pH)
 
+# This was fixed using Zoo library na.conf, so not necessay
 sps_0$pH<-ifelse(sps_0$pH>9, NA, sps_0$pH) # I found a really high pH in the data, which is not possible, so am imputing as a quick fix here
 # TODO need to go into gNATSGO processing and see what it might be
 
-sps_0<-sps_0%>%fill(pH, .direction = "down")
+sps_0<-sps_0%>%fill(pH, .direction = "down") # fill from tidyr
 
 sps<-sps_0%>%
   mutate(ParticleSizeClay = Clay, ParticleSizeSilt = Silt, ParticleSizeSand = Sand, Carbon = SOC, PH = pH)
@@ -182,7 +196,7 @@ saxton_rawls_df <- soil_water_raw %>%
          SAT = 1 - BD/2.65, # moisture at saturation, %; 2.65 = assumed particle density
          B = (log(1500) - log(33))/(log(DUL) - log(LL15)), # moisture-tension coefficient
          lamda = 1/B, # slope of tension-moisture curve
-         Ks = 1930*(SAT-DUL)^(3-lamda), # saturated conductivity (mm h-1)
+         Ks = 1930*(SAT-DUL)^(3-lamda), # saturated conductivity (mm h-1) # talk to Debjani about taking cube of non-integer and R problems with that
          Ks_mmday = Ks*24,
          Ks_cmsec = Ks/10/60/60,
          Ks_cmhr = Ks/10,

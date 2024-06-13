@@ -65,7 +65,10 @@ LDNDC_harvest_raw <- fread(paste0(output_path,"harvest_",scenario_name2,".csv"))
          crop=ifelse(species=="FOCO","Maize",
                      ifelse(species=="SOYB","Soybean",
                             ifelse(species=="WIWH","Wheat",
-                                   ifelse(species=="COTT", "Cotton", "Error")))))
+                                   ifelse(species=="COTT", "Cotton",
+                                          ifelse(species=="SRAPE", "Rapeseed", # These cover crops are needed to prevent error row in df
+                                                 ifelse(species=="COWP", "Cowpea",
+                                                        ifelse(species=="WINTERRYE", "Winter Rye", "Error"))))))))
                                    
 
 LDNDC_harvest <- LDNDC_harvest_raw[LDNDC_harvest_raw$year < end_fut_period_year,] 
@@ -90,7 +93,15 @@ LDNDC_physiology_daily_raw <- fread(paste0(output_path,"physiology_daily_",scena
 #             ag_biomass_Mgha=ag_biomass_kgm2*10)
 
 
-LDNDC_physiology_day <-LDNDC_physiology_daily_raw[LDNDC_physiology_daily_raw$year < end_fut_period_year
+# for cover crops, ldndc reports harvest amounts, so exclude those
+LDNDC_physiology_daily_raw_no_cover_crops<-LDNDC_physiology_daily_raw%>%
+  filter(species =="FOCO" | # ldndc reports this when there's more than 1 crop
+           species == "SOYB" |
+           species == "COTT" |
+           species == "WIWH")
+
+
+LDNDC_physiology_day <-LDNDC_physiology_daily_raw_no_cover_crops[LDNDC_physiology_daily_raw_no_cover_crops$year < end_fut_period_year
                                                          ,c("date","species","DW_fru[kgDWm-2]",
                                                             "DW_above[kgDWm-2]")]%>%
   mutate(year = year(date),
@@ -180,13 +191,13 @@ LDNDC_soil_chem_day <- LDNDC_soil_chem_day_raw[LDNDC_soil_chem_day_raw$year < en
 LDNDC_metrx_day_raw <- fread(paste0(output_path,"metrx-daily_",scenario_name2,".csv"))
 
 LDNDC_metrx_day <- LDNDC_metrx_day_raw%>%
-  select(c(1,3,7,10,65,66,71)) %>%
+  select(c(source, datetime, fe2_tot, fe3_tot, `o2[kgha-1]`,ph_soil_surface,`wfps[%]`)) %>%
   mutate(date=as.Date(datetime),
          year=year(date),
          wfps=`wfps[%]`,
-         o2_kgm2=`o2[kgm-2]`
+         o2_kgha=`o2[kgha-1]`
          ) %>%
-  select(date,year,source,fe3_tot,fe2_tot,o2_kgm2,ph_soil_surface,wfps)
+  select(date,year,source,fe2_tot,fe3_tot, o2_kgha,ph_soil_surface,wfps)
 
 #**********************************************************************
 
@@ -277,7 +288,7 @@ ch4_prod <- data.frame(date=LDNDC_metrx_day$date,
                        metrx_frac_fe_ch4_prod=0.3,
                        fe_tot=fe_tot,
                        fe2_tot=LDNDC_metrx_day$fe2_tot,
-                       o2_kgm2=LDNDC_metrx_day$o2_kgm2,
+                       o2_kgha=LDNDC_metrx_day$o2_kgha,
                        ph=LDNDC_metrx_day$ph_soil_surface)
 
 

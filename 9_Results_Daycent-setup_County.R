@@ -89,6 +89,19 @@ DayM_V_all_raw <- Day_base_vswc %>%
 
 
 DayM_V_all <- DayM_V_all_raw[DayM_V_all_raw$year <= end_fut_period_year,] # this just clips at 2050 in case there are any extra years
+
+
+################################################################################
+## NPP - Net Primary Productivity (For Millenium)
+Day_dc_sip <- fread(file.path(daycent_path2,paste0("dc_sip_base_",scenario_name2,".out")))
+
+Day_dc_sip2 <- Day_dc_sip %>%
+  mutate(year=floor(time),
+         date=as.Date(dayofyr,origin=paste0(as.character(year),"-01-01"))-1)%>%
+  select(year, date, NPP)
+
+
+Day_NPP <- Day_dc_sip2[Day_dc_sip2$year <= end_fut_period_year,] # this just clips at 2050 in case there are any extra years
   
 
   ## N2O and CH4 emissions
@@ -576,7 +589,8 @@ output_daily<-
   left_join(select(DayM_V_all, -dayofyear, -time), by =  c('year','date'))%>%
   left_join(select(Day_base_soiltavg, -dayofyear, -time), by =  c('year','date'))%>%
   left_join(select(DayGN_cum_gha, -dayofyear), by =  c('year','date')) %>%
-  left_join(select(sysc_out, -dayofyr), by =  c('year','date'))
+  left_join(select(sysc_out, -dayofyr, -time), by =  c('year','date')) %>%
+  left_join(Day_NPP, by =  c('year','date'))
 
 
 # N2O_gNhad, CH4_net_gChad, NOflux, CH4_net_gChad, N2O_gNhad.y CO2resp.x, ppt

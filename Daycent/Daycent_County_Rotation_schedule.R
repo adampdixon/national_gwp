@@ -262,7 +262,7 @@ rotation_scenario_6<-c(
   '2 303 CULT D     	  ## Oct 29 Cultivate',
   '2 305 CULT NDRIL     ##  Nov 1',
   '2 305 CROP RYELG     ##Nov 1',
-  '27.5 305 PLTM       	  ##Nov 1',
+  '2 305 PLTM       	  ##Nov 1',
   '-999 -999 X'
 )
 

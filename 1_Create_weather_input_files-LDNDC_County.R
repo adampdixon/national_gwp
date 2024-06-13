@@ -231,6 +231,15 @@ clim_data<-mutate_at(clim_data, all_of(cols), round, 3)
               append=TRUE,
               row.names = F,
               col.names = F)
+
+  
+print("**********LDNDC Daily Weather**********")
+print(paste0('min max temp is: ', min(DNDC_basic$tmax), " and ", max(DNDC_basic$tmax)))
+print(paste0('min max precip is: ', min(DNDC_basic$prec), " and ", max(DNDC_basic$prec)))
+print(paste0("min max years are ", min(DNDC_basic$year), ", ", max(DNDC_basic$year)))
+print(paste0("min max global radiation are ", min(DNDC_basic$grad), ", ", max(DNDC_basic$grad)))
+print(paste0("min max wind speed are ", min(DNDC_basic$wind), ", ", max(DNDC_basic$wind)))
+print(paste0("number of rows are: ", nrow(DNDC_basic)))
   
 #   
 #   # future period (1994-2021 repeated 3 times)

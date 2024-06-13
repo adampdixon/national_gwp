@@ -49,8 +49,8 @@ daycent_path <- paste0("Daycent/",site_name,"/")
 if(identical(run_LDNDC,TRUE)) {
   county_mana<-read.csv(file.path(master_path, 'Data', 'County_start', 'LDNDC_events.csv'))
   
-  ldndc_run_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/")
-  dndc_path <- paste0("LDNDC/ldndc-1.35.2.linux64/projects/",site_name,"/")
+  ldndc_run_path <- paste0("LDNDC/ldndc-1.36.linux64/projects/")
+  dndc_path <- paste0("LDNDC/ldndc-1.36.linux64/projects/",site_name,"/")
 } 
 
 # rothc_path <- paste0("RothC/",site_name,"/")
