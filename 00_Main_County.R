@@ -86,11 +86,25 @@ dir.create(file.path(dndc_path))
 }
 #######################################
 # Create Millenium dir
-if(identical(run_Millenium, TRUE)) {
+if(identical(run_Millennial, TRUE)) {
   mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
   unlink(mill_path, recursive = TRUE)
   dir.create(file.path(mill_path))
-}
+  
+  copy_from_<-file.path("Millennial/R/simulation/Millennial copy files")
+  files_to_copy<-list.files(copy_from_, full.names = T)
+  copy_to_<-mill_path
+  
+  # copy the files
+  file.copy(from = files_to_copy, to = copy_to_, overwrite = TRUE, recursive = FALSE, 
+            copy.mode = TRUE)
+  
+  print("Copy over Millennial files --")
+    
+  }
+  
+  
+
 
 #######################################
 print("Copying over KBS 'Daycent model' files --")
@@ -115,6 +129,26 @@ if(length(list.files(copy_to_))>11) { # There are 12 daycent files to copy over,
 
 }
 #######################################
+
+# Copy over Millennial files
+if(length(list.files(copy_to_))>11) { # There are 12 daycent files to copy over, so this is a good threshold
+  print("Site daycent folder already exists. Skipping copy.")
+} else {
+  
+  #create the directory
+  dir.create(copy_to_)
+  
+  #list all the files to copy
+  files_to_copy <- list.files(copy_from_, full.names = T)
+  
+  # copy the files
+  file.copy(from = files_to_copy, to = copy_to_, overwrite = TRUE, recursive = FALSE, 
+            copy.mode = TRUE)
+  
+}
+
+
+
 
 #**********************************************************************
 

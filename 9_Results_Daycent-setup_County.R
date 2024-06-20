@@ -93,6 +93,18 @@ DayM_V_all <- DayM_V_all_raw[DayM_V_all_raw$year <= end_fut_period_year,] # this
 
 ################################################################################
 ## NPP - Net Primary Productivity (For Millenium)
+# mcprd(1) (Column 23) – Daily NPP for shoots for grass/crop system (g C m-2 d-1)
+# mcprd(2) (Column 24) – Daily NPP for juvenile roots for grass/crop system (g C m-2 d-1)
+# mcprd(3) (Column 25) – Daily NPP for mature roots for grass/crop system (g C m-2 d-1)
+# mfprd(1) (Column 26) – Daily NPP for live leaves for tree system (g C m-2 d-1)
+# 291May 2, 2018
+# mfprd(2) (Column 27) – Daily NPP for live juvenile fine roots for tree system (g C m-2 d-1)
+# mfprd(6) (Column 28) – Daily NPP for live mature fine roots for tree system (g C m-2 d-1)
+# mfprd(3) (Column 29) – Daily NPP for live fine branches for tree system (g C m-2 d-1)
+# mfprd(4) (Column 30) – Daily NPP for live large wood for tree system (g C m-2 d-1)
+# mfprd(5) (Column 31) – Daily NPP for live coarse roots for tree system (g C m-2 d-1)
+# NPP (Column 32) – Summation of all production values (g C m-2 d-1)
+
 Day_dc_sip <- fread(file.path(daycent_path2,paste0("dc_sip_base_",scenario_name2,".out")))
 
 Day_dc_sip2 <- Day_dc_sip %>%
@@ -373,7 +385,7 @@ mresp_out<- fread(paste0(daycent_path,paste0("mresp_base_",scenario_name2,".out"
 # Daily
 # sysc (Column 6) – System C (g C m-2) (livec + deadc + soilc)
 sysc_out<- fread(paste0(daycent_path,paste0("sysc_base_",scenario_name2,".out")))%>%
-  select(time, dayofyr, 'sysc')%>%
+  select(time, dayofyr, sysc, soilc)%>%
   mutate(year=floor(time), date=as.Date(dayofyr,origin=paste0(as.character(year),"-01-01"))-1)
 
 

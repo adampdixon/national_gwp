@@ -24,9 +24,9 @@
   run_ag_models=TRUE
   compile_input_data_4visualizations=TRUE
   
-  run_Daycent=TRUE 
+  run_Daycent=FALSE 
   run_LDNDC=FALSE
-  run_Millenium=TRUE
+  run_Millennial=TRUE
   # county_numbers<-296:306   #295:3100
   # crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
   crops_ <- c('Maize') # Crops

@@ -29,7 +29,7 @@ output_path <- paste0(dndc_path,site_name,"_output/")
 LDNDC_soil_water_day_raw <- fread(paste0(output_path,"soil_water_daily_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime))
 
-LDNDC_soil_water_day <- LDNDC_soil_water_day_raw[LDNDC_soil_water_day_raw$year < end_fut_period_year
+LDNDC_soil_water_day <- LDNDC_soil_water_day_raw[LDNDC_soil_water_day_raw$year <= end_fut_period_year
                                                  ,c("datetime","year","prec[mm]","evapot[mm]",
                                                     "soilwater_5cm[%]","soilwater_10cm[%]",
                                                     "soilwater_15cm[%]","soilwater_20cm[%]")] %>%
@@ -71,29 +71,31 @@ LDNDC_harvest_raw <- fread(paste0(output_path,"harvest_",scenario_name2,".csv"))
                                                         ifelse(species=="WINTERRYE", "Winter Rye", "Error"))))))))
                                    
 
-LDNDC_harvest <- LDNDC_harvest_raw[LDNDC_harvest_raw$year < end_fut_period_year,] 
+LDNDC_harvest <- LDNDC_harvest_raw[LDNDC_harvest_raw$year <= end_fut_period_year,] 
 
 LDNDC_physiology_daily_raw <- fread(paste0(output_path,"physiology_daily_",scenario_name2,".csv")) %>%
   mutate(date=date(datetime),
-         year=year(date))
+         year=year(date))%>%
+  mutate(NPP_gCm2 = (`dC_fol_grow[kgCm-2]` + `dC_fru_grow[kgCm-2]` +
+                  `dC_frt_grow[kgCm-2]` + `dC_lst_grow[kgCm-2]`)*1000) # convert to grams
 
 # Join with harvest data for the harvest date, when the maximum values
 # for yield, biomass, etc. are in physiology data
-# LDNDC_physiology_day <- merge(LDNDC_harvest,
-#                               LDNDC_physiology_daily_raw[LDNDC_physiology_daily_raw$year < end_fut_period_year
-#                                                          ,c("date","species","DW_fru.kgDWm.2.",
-#                                                             "DW_above.kgDWm.2.")],
-#                               by=c("date","species")) %>%
-#   group_by(year,crop) %>%
-#   summarize(grain_yield_kgm2=max(DW_fru.kgDWm.2.),
-#             ag_biomass_kgm2=max(DW_above.kgDWm.2. ),
-#             grain_yield_kgha=grain_yield_kgm2*10000,
-#             ag_biomass_kgha=ag_biomass_kgm2*10000,
-#             grain_yield_Mgha=grain_yield_kgm2*10,
-#             ag_biomass_Mgha=ag_biomass_kgm2*10)
+LDNDC_physiology_day <- merge(LDNDC_harvest,
+                              LDNDC_physiology_daily_raw[LDNDC_physiology_daily_raw$year <= end_fut_period_year
+                                                         ,c("date","species","DW_fru[kgDWm-2]",
+                                                            "DW_above[kgDWm-2]")],
+                              by=c("date","species")) %>%
+  group_by(year,crop) %>%
+  summarize(grain_yield_kgm2=max(`DW_fru[kgDWm-2]`),
+            ag_biomass_kgm2=max(`DW_above[kgDWm-2]`),
+            grain_yield_kgha=grain_yield_kgm2*10000,
+            ag_biomass_kgha=ag_biomass_kgm2*10000,
+            grain_yield_Mgha=grain_yield_kgm2*10,
+            ag_biomass_Mgha=ag_biomass_kgm2*10)
 
 
-# for cover crops, ldndc reports harvest amounts, so exclude those
+# AD for cover crops, ldndc reports harvest amounts, so exclude those
 LDNDC_physiology_daily_raw_no_cover_crops<-LDNDC_physiology_daily_raw%>%
   filter(species =="FOCO" | # ldndc reports this when there's more than 1 crop
            species == "SOYB" |
@@ -101,14 +103,24 @@ LDNDC_physiology_daily_raw_no_cover_crops<-LDNDC_physiology_daily_raw%>%
            species == "WIWH")
 
 
-LDNDC_physiology_day <-LDNDC_physiology_daily_raw_no_cover_crops[LDNDC_physiology_daily_raw_no_cover_crops$year < end_fut_period_year
+LDNDC_physiology_day <-LDNDC_physiology_daily_raw_no_cover_crops[LDNDC_physiology_daily_raw_no_cover_crops$year <= end_fut_period_year
                                                          ,c("date","species","DW_fru[kgDWm-2]",
-                                                            "DW_above[kgDWm-2]")]%>%
+                                                            "DW_above[kgDWm-2]", "NPP_gCm2")]%>%
   mutate(year = year(date),
          crop=ifelse(species=="FOCO","MaizeYld_Mgha",
               ifelse(species=="SOYB","SoybeanYld_Mgha",
                      ifelse(species=="WIWH","WheatYld_Mgha",
-                            ifelse(species=="COTT", "CottonYld_Mgha", "Error")))))%>%
+                            ifelse(species=="COTT", "CottonYld_Mgha", "Error")))))
+
+
+LDNDC_physiology_ann <-LDNDC_physiology_daily_raw_no_cover_crops[LDNDC_physiology_daily_raw_no_cover_crops$year <= end_fut_period_year
+                                                                 ,c("date","species","DW_fru[kgDWm-2]",
+                                                                    "DW_above[kgDWm-2]")]%>%
+  mutate(year = year(date),
+         crop=ifelse(species=="FOCO","MaizeYld_Mgha",
+                     ifelse(species=="SOYB","SoybeanYld_Mgha",
+                            ifelse(species=="WIWH","WheatYld_Mgha",
+                                   ifelse(species=="COTT", "CottonYld_Mgha", "Error")))))%>%
   group_by(year, crop) %>%
   summarize(grain_yield_kgm2=max(`DW_fru[kgDWm-2]`),
             ag_biomass_kgm2=max(`DW_above[kgDWm-2]` ),
@@ -118,15 +130,22 @@ LDNDC_physiology_day <-LDNDC_physiology_daily_raw_no_cover_crops[LDNDC_physiolog
             ag_biomass_Mgha=ag_biomass_kgm2*10)
 
 ### pivot to wider format to match APSIM and Daycent
-LDNDC_yield <- pivot_wider(LDNDC_physiology_day,names_from=crop,
+LDNDC_yield <- pivot_wider(LDNDC_physiology_ann,names_from=crop,
                            values_from=grain_yield_Mgha)
+
+
+# LDNDC_soil_chem_daily_raw <- fread(paste0(output_path,"soil_chem_daily_",scenario_name2,".csv")) %>%
+#   mutate(year=year(datetime))
+# colnames(LDNDC_soil_chem_daily_raw)
+
+
 
 ## soil carbon, annual ghg, no3
 
 LDNDC_soil_chem_ann_raw <- fread(paste0(output_path,"soil_chem_yearly_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime))
 
-LDNDC_soil_chem_ann <- LDNDC_soil_chem_ann_raw[LDNDC_soil_chem_ann_raw$year < end_fut_period_year
+LDNDC_soil_chem_ann <- LDNDC_soil_chem_ann_raw[LDNDC_soil_chem_ann_raw$year <= end_fut_period_year
                                                ,c("datetime","year","aC_ch4_emis[kgCha-1]",
                                                "aC_co2_emis_auto[kgCha-1]","aC_co2_emis_hetero[kgCha-1]",
                                                "aN_n2o_emis[kgNha-1]","aN_no3_leach[kgNha-1]",
@@ -156,22 +175,22 @@ LDNDC_soil_chem_ann <- LDNDC_soil_chem_ann_raw[LDNDC_soil_chem_ann_raw$year < en
 LDNDC_soil_temp_day_raw <- fread(paste0(output_path,"soil_temp_daily_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime))
 
-LDNDC_soil_temp_day <- LDNDC_soil_temp_day_raw[LDNDC_soil_temp_day_raw$year < end_fut_period_year,] %>%
+LDNDC_soil_temp_day <- LDNDC_soil_temp_day_raw[LDNDC_soil_temp_day_raw$year <= end_fut_period_year,] %>%
   mutate(date=as.Date(datetime),
          dayofyear=yday(date),
-         temp_5cm=round(`temp_5cm[oC]`,1),
-         temp_10cm=round(`temp_10cm[oC]`),
-         temp_15cm=round(`temp_15cm[oC]`),
-         temp_20cm=round(`temp_20cm[oC]`),
-         temp_30cm=round(`temp_30cm[oC]`)) %>%
-  select(date,year,dayofyear,temp_5cm,temp_10cm,temp_15cm,temp_20cm,temp_30cm)
+         s_temp_5cm=round(`temp_5cm[oC]`,1),
+         s_temp_10cm=round(`temp_10cm[oC]`),
+         s_temp_15cm=round(`temp_15cm[oC]`),
+         s_temp_20cm=round(`temp_20cm[oC]`),
+         s_temp_30cm=round(`temp_30cm[oC]`)) %>%
+  select(date,year,dayofyear,s_temp_5cm,s_temp_10cm,s_temp_15cm,s_temp_20cm,s_temp_30cm)
 
 ## all daily GHG
 
 LDNDC_soil_chem_day_raw <-  fread(paste0(output_path,"soil_chem_daily_",scenario_name2,".csv")) %>%
   mutate(year=year(datetime))
 
-LDNDC_soil_chem_day <- LDNDC_soil_chem_day_raw[LDNDC_soil_chem_day_raw$year < end_fut_period_year,
+LDNDC_soil_chem_day <- LDNDC_soil_chem_day_raw[LDNDC_soil_chem_day_raw$year <= end_fut_period_year,
                                                c("datetime","year","dC_ch4_emis[kgCha-1]",
                                                   "dC_co2_emis_auto[kgCha-1]","dC_co2_emis_hetero[kgCha-1]",
                                                   "dN_n2o_emis[kgNha-1]","dN_no3_leach[kgNha-1]",
@@ -190,16 +209,38 @@ LDNDC_soil_chem_day <- LDNDC_soil_chem_day_raw[LDNDC_soil_chem_day_raw$year < en
 
 LDNDC_metrx_day_raw <- fread(paste0(output_path,"metrx-daily_",scenario_name2,".csv"))
 
+colnames(LDNDC_metrx_day_raw)
+
+# get bulk density to convert SOC % to kg/ha
+# https://www.soilquality.org.au/factsheets/organic-carbon
+
+# SOC stock in tonnes of carbon per hectare (tC/ha) = (soil organic carbon %) x (mass of soil in a given volume)
+# 
+# For example, a soil with a SOC of 1.3% (0.013) and a bulk density of 1.2 grams per cubic centimetre 
+# (equivalent to 1.2 tonnes per cubic metre), would have SOC to a depth of 10 cm (0.1 m) per hectare (10 000 m2) of:
+#   SOC %      BD(t/m3)   depth(m)    area ha
+#   (0.013) x (1.2 x 0.1 x 10 000) = 15.6 tC/ha.
+
+# gNATSGO bulk density in g/cm3
+
+bulk_density<-filter(soil_df_L, lower_depth_cm==20)$bdfiod_value_avg # assume is g/cm3
+
 LDNDC_metrx_day <- LDNDC_metrx_day_raw%>%
-  select(c(source, datetime, fe2_tot, fe3_tot, `o2[kgha-1]`,ph_soil_surface,`wfps[%]`)) %>%
+  # select(c(source, datetime, fe2_tot, fe3_tot, `o2[kgha-1]`,ph_soil_surface,`wfps[%]`,
+  #          `soc_20cm[%]`, `soc_40cm[%]`)) %>%
   mutate(date=as.Date(datetime),
          year=year(date),
          wfps=`wfps[%]`,
          o2_kgha=`o2[kgha-1]`
          ) %>%
-  select(date,year,source,fe2_tot,fe3_tot, o2_kgha,ph_soil_surface,wfps)
+  # % SOC * bulk_Density kg/ha * depth cm (20) * tonnes to kg (1000) = C kgha-1
+  mutate(`SOC_20cm[tonnesha-1]`= `soc_20cm[%]`*bulk_density*.2*10000,
+         `SOC_20cm[gm2-1]`= `soc_20cm[%]`*bulk_density*.2*100,
+         `SOC_40cm[tonnesha-1]`= `soc_40cm[%]`*bulk_density*.2*10000,
+         `SOC_40cm[gm2-1]`= `soc_40cm[%]`*bulk_density*.2*100) %>% # check with Debjani
+  select(date,year,source,fe2_tot,fe3_tot, o2_kgha,ph_soil_surface,wfps, `SOC_40cm[gm2-1]`)
 
-#**********************************************************************
+#***********************2***********************************************
 
 # construct dataframes of obs data ----------------------------------------
 
@@ -215,24 +256,24 @@ if(crop=="Rotation"){
 # LDNDCY_Mgha <- select(LDNDC_yield, year, eval(crop)) %>%
 #   group_by(year) %>%
 #   summarize(Yield_Mgha=eval(crop))
-# summarize(Yield_Mgha=Maize,
-#           SoyYield_Mgha=Soybean,
-#           WheatYield_Mgha=Wheat)
+  # summarize(Yield_Mgha=Maize,
+  #         SoyYield_Mgha=Soybean,
+  #         WheatYield_Mgha=Wheat)
 
-# soil carbon
-LDNDCC_Mgha <- LDNDC_soil_chem_ann[,c("year","orgC_25cm_Mgha")] %>%
-  mutate(TotalSOC_25cm_Mgha=round(orgC_25cm_Mgha,1)) %>%
-  select(year,TotalSOC_25cm_Mgha)
+# soil carbon - annual
+LDNDCC_Mgha <- LDNDC_soil_chem_ann[,c("year","orgC_30cm_Mgha")] %>%
+  mutate(TotalSOC_30cm_Mgha=round(orgC_30cm_Mgha,1)) %>%
+  select(year,TotalSOC_30cm_Mgha)
 
-## soil temperature
-LDNDCT_C <- LDNDC_soil_temp_day[,c("date","year","dayofyear","temp_20cm")] %>%
-  mutate(SoilTemp_20cm_C=round(temp_20cm,1)) 
+## soil temperature - daily
+LDNDCT_C <- LDNDC_soil_temp_day[,c("date","year","dayofyear","s_temp_20cm")] %>%
+  mutate(SoilTemp_20cm_C=round(s_temp_20cm,1)) 
 
 ## volumetric soil moisture
 LDNDCM_V <- LDNDC_soil_water_day[,c("date","year","dayofyear","soilwater_20cm")] %>%
   mutate(VolH2O_20cm=round(soilwater_20cm,0))
 
-# ## bulk density
+## bulk density
 # LDNDCB_gcc <- LDNDC_out[,c("date","year","BulkDensity_gcc(1)")] %>%
 #   mutate(BulkDensity_gcc=round(LDNDC_out$`BulkDensity_gcc(1)`,2))
 
@@ -250,12 +291,12 @@ LDNDCGN_ann_gha <- LDNDCGN_ghaday %>%
 
 ### verify that adding daily emissions equals the annual given in
 ### LDNDC soil chem yearly file - it does
-# LDNDCGN2_ann_gha <- LDNDC_soil_chem_ann[,c("year","n2o_kgha")] %>%
-#   mutate(N2OEmissions_ghaday = round(n2o_kgha*1000,2))
+LDNDCGN2_ann_gha <- LDNDC_soil_chem_ann[,c("year","n2o_kgha")] %>%
+  mutate(N2OEmissions_ghaday = round(n2o_kgha*1000,2))
 
-# LDNDCGN_cum_gha <- LDNDCGN_ghaday %>%
-#   mutate(cum_N2O_gha = cumsum(N2OEmissions_ghaday)) %>%
-#   select(date,year,cum_N2O_gha)
+LDNDCGN_cum_gha <- LDNDCGN_ghaday %>%
+  mutate(cum_N2O_gha = cumsum(N2OEmissions_ghaday)) %>%
+  select(date,year,cum_N2O_gha)
 
 ## CH4 emissions
 LDNDCGM_ghaday <- LDNDC_soil_chem_day[,c("date","year","dayofyear","ch4_kgha")] %>%
@@ -270,26 +311,26 @@ LDNDCGM_ann_gha <- LDNDCGM_ghaday %>%
 
 ### verify that adding daily emissions equals the annual given in
 ### LDNDC soil chem yearly file - it does
-# LDNDCGM2_ann_gha <- LDNDC_soil_chem_ann[,c("year","ch4_gha")] %>%
-#   mutate(CH4Emissions_ghaday = round(ch4_gha*1000,2))
+LDNDCGM2_ann_gha <- LDNDC_soil_chem_ann[,c("year","ch4_gha")] %>%
+  mutate(CH4Emissions_ghaday = round(ch4_gha*1000,2))
 
-# LDNDCGM_cum_gha <- LDNDCGM_ghaday %>%
-#   mutate(cum_CH4_gha = cumsum(CH4Emissions_ghaday)) %>%
-#   select(date,year,CH4_gha)
+LDNDCGM_cum_gha <- LDNDCGM_ghaday %>%
+  mutate(cum_CH4_gha = cumsum(CH4Emissions_ghaday)) %>%
+  select(date,year,cum_CH4_gha)
 
 ### test threshold for CH4 production:
 ### Fe3+ < METRX_FRAC_FE_CH4_PROD (0.3) * (Fe3+ + Fe2+)
-fe_tot <- 0.3 * (LDNDC_metrx_day$fe3_tot + LDNDC_metrx_day$fe2_tot)
-ch4_prod <- data.frame(date=LDNDC_metrx_day$date,
-                       year=LDNDC_metrx_day$year,
-                       production=ifelse(LDNDC_metrx_day$fe3_tot<fe_tot,TRUE,FALSE),
-                       wfps=LDNDC_metrx_day$wfps,
-                       fe3_tot=LDNDC_metrx_day$fe3_tot,
-                       metrx_frac_fe_ch4_prod=0.3,
-                       fe_tot=fe_tot,
-                       fe2_tot=LDNDC_metrx_day$fe2_tot,
-                       o2_kgha=LDNDC_metrx_day$o2_kgha,
-                       ph=LDNDC_metrx_day$ph_soil_surface)
+# fe_tot <- 0.3 * (LDNDC_metrx_day$fe3_tot + LDNDC_metrx_day$fe2_tot)
+# ch4_prod <- data.frame(date=LDNDC_metrx_day$date,
+#                        year=LDNDC_metrx_day$year,
+#                        production=ifelse(LDNDC_metrx_day$fe3_tot<fe_tot,TRUE,FALSE),
+#                        wfps=LDNDC_metrx_day$wfps,
+#                        fe3_tot=LDNDC_metrx_day$fe3_tot,
+#                        metrx_frac_fe_ch4_prod=0.3,
+#                        fe_tot=fe_tot,
+#                        fe2_tot=LDNDC_metrx_day$fe2_tot,
+#                        o2_kgha=LDNDC_metrx_day$o2_kgha,
+#                        ph=LDNDC_metrx_day$ph_soil_surface)
 
 
 # CO2
@@ -313,15 +354,28 @@ head(LDNDCGM_ann_gha)
 head(LDNDCGM_ann_gha)
 
 
-output_annual_data <- left_join(LDNDCY_Mgha,
-                                LDNDCC_Mgha, by=c("year")) %>%
+# LDNDC_yield
+# LDNDC_soil_chem_ann
+# LDNDCY_Mgha
+# LDNDCGN_ann_gha
+# LDNDCGN2_ann_gha
+# LDNDCGM_ann_gha
+# LDNDCGM2_ann_gha
+# CO2_resp_ann
+
+
+output_annual_data <- 
+  left_join(LDNDC_yield, LDNDC_soil_chem_ann, by=c("year")) %>%
   left_join(LDNDCGM_ann_gha, by=c("year")) %>%
   left_join(LDNDCGN_ann_gha, by=c("year"))%>%
   left_join(CO2_resp_ann, by=c("year"))%>%
   mutate(scenario_name = scenario_name2,
          climate_scenario_num = clim_scenario_num,
-         model_name = model_name)
-         
+         model_name = model_name)%>%
+  select(year, scenario_name, climate_scenario_num, model_name, grain_yield_kgm2:CO2_resp_gha)
+  
+colnames(output_annual_data)
+
 # 
 # colnames(output_annual_data) <- c("year",paste0(crop, "Yld_Mgha"),"SOC_Mgha","model_name",
 #                                   "scenario_name","climate_scenario_num")
@@ -330,11 +384,31 @@ output_annual_data <- left_join(LDNDCY_Mgha,
 # head(LDNDCGN_ghaday)
 # head(LDNDCGM_ghaday)
 
-output_daily_data<-left_join(LDNDCGN_ghaday,
-                             select(LDNDCGM_ghaday, -year), by=c("date"))%>%
+
+# LDNDC_soil_water_day
+# LDNDC_physiology_day
+# LDNDC_soil_chem_day
+# LDNDC_soil_temp_day
+# LDNDC_metrx_day
+# LDNDCGN_ghaday
+# LDNDCGN_cum_gha
+# LDNDCGM_ghaday
+# LDNDCGM_cum_gha
+# ch4_prod
+# LDNDC_physiology_day
+
+output_daily_data<-left_join(LDNDCGN_ghaday, select(LDNDCGM_ghaday, -year), by=c("date"))%>%
+  left_join(select(LDNDC_soil_water_day, -year, -dayofyear), by=c("date"))%>%
+  left_join(select(LDNDC_physiology_day, -year), by=c("date"))%>%
+  left_join(select(LDNDC_soil_chem_day, -year, -dayofyear), by=c("date"))%>%
+  left_join(select(LDNDC_soil_temp_day, -year), by=c("date"))%>%
+  left_join(select(LDNDC_metrx_day, -year), by=c("date"))%>%
   mutate(scenario_name = scenario_name2,
          climate_scenario_num = clim_scenario_num,
-         model_name = model_name)
+         model_name = model_name)%>%
+  select(date, year, dayofyear, scenario_name, climate_scenario_num, model_name, N2OEmissions_ghaday:`SOC_40cm[gm2-1]`)
+
+colnames(output_daily_data)
   
 
 #                          # mgmt_scenario_grp,mgmt_scenario_opt)

@@ -19,11 +19,14 @@
 # param_pc = slope of mineral C - clay relationship from Georgiou et al.
 # soil_df[4,] is the 10-20 cm depth
 parameters <- data.frame(param_name = c("param_pH","param_bulkd","param_pc","param_claysilt"),
-                         param_value = c(soil_water_raw[4,"pH"],soil_water_raw[4,"BD"]*1000,0.86,
-                                         (soil_water_raw[4,"ParticleSizeClay"]+soil_water_raw[4,"ParticleSizeSilt"])))
+                         param_value = c(soil_water_raw[4,"pH"][[1]],soil_water_raw[4,"BD"][[1]]*1000,0.86,
+                                         (soil_water_raw[4,"ParticleSizeClay"][[1]]+soil_water_raw[4,"ParticleSizeSilt"][[1]])))
+
+
+
   
 ###########################
 # write parameter files
 ## this does NOT need scenario designators; always the same for the site
-write.table(parameters, file=paste0(mill_path,"siteparams_in.txt"),
+write.table(parameters, file=paste0(mill_path,"siteparams_", scenario_name2, "_in.txt"),
             row.names=F, quote=F, col.names=F, sep=' ')

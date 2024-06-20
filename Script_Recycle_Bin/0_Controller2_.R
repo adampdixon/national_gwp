@@ -208,7 +208,7 @@ source(paste0("Daycent/Daycent_run_controller_.R"), local = TRUE)
 
 # LDNDC
 if(identical(run_LDNDC, TRUE)){
-source(paste0("LDNDC/ldndc-1.35.2.linux64/projects/run_LDNDC.R"), local = TRUE)
+source(paste0("LDNDC/ldndc-1.36.linux64/projects/run_LDNDC.R"), local = TRUE)
 }
 
 

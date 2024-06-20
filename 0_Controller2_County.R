@@ -246,6 +246,19 @@ for (c in crops_){
         source('9_Results_Daycent-setup_County.R', local = TRUE)
       }
       
+      
+      if(identical(run_Millennial,TRUE)) {
+        print(paste0("*************Running Millenial for: ", scenario_name2, "****************"))
+        # # Millennial
+        source(paste0("3_Create_management_input_files-Millennial_County.R"), local = TRUE)
+        source(paste0(mill_path,"run_Millennial.R"))
+      }
+      # # Millennial
+      # source(paste0("3_Create_management_input_files-Millennial_",site_name,".R"))
+      # source(paste0(mill_path,"run_Millennial.R"))
+      
+      
+      
     } # end of mgmt_scenario_nums loop 
 
   } # end of else statement if crop amount is less than 1 ha in county
