@@ -18,7 +18,7 @@ library(ggplot2)
 
 # local constants
 
-mill_baseinput_filename <- "siteenviron_base_in.txt"
+# mill_baseinput_filename <- "siteenviron_base_in.txt" # already in global environment
 
 
 
@@ -28,12 +28,14 @@ mill_baseinput_filename <- "siteenviron_base_in.txt"
 
 
 mill_base_df_raw <- read.csv(file=paste0(mill_path,"base_out_",scenario_name,".csv"))
-mill_scen_df_raw <- read.csv(file=paste0(mill_path,"scenario_out_",scenario_name,".csv"))
+# mill_scen_df_raw <- read.csv(file=paste0(mill_path,"scenario_out_",scenario_name,".csv"))
 
 # limit future output to end of future period
-mill_scen_df <- mill_scen_df_raw[mill_scen_df_raw$year <= end_fut_period_year,]
+# mill_scen_df <- mill_scen_df_raw[mill_scen_df_raw$year <= end_fut_period_year,]
 
-mill_daily_df <- rbind(mill_base_df_raw,mill_scen_df)
+# mill_daily_df <- rbind(mill_base_df_raw,mill_scen_df)
+mill_daily_df <-mill_base_df_raw
+
 mill_df <- mill_daily_df[month(mill_daily_df$date)==1 & day(mill_daily_df$date)==1,] %>%
   mutate(TOC_Mgha=TOC/100)
 

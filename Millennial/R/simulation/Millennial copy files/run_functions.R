@@ -11,7 +11,7 @@
 ##  data repeated 10 times, then repeat.times = 10, but if every year to be simulated
 ##  is already represented in the input data, then repeat.times = 1. (optional; default = 100)
 ##5 initial states of pools (optional; default = 1 for all pools and 0 for CO2 flux)
-Run_Model  <- function(inputdata,derivs,parameters,repeat.times=100,
+Run_Model  <- function(inputdata,derivs,parameters,repeat.times=1,
                        state=c(POM = 1, LMWC = 1, AGG = 1, MIC = 1, MAOM=1, CO2=0)) {
   
   print("Starting Run_Model")
@@ -42,6 +42,9 @@ Solve_Model  <- function(inputdata,derivs,parameters,calc_eigens=0,
   print("Starting Solve_Model")
   
   SStime = 1000*365 #time at which steady state solution is evaluated
+  # AD changed from 1000 to 100 because of NA values the 70Kth time
+  
+  print(paste0("steady state time - SStime: ", SStime, " years "))
   
   #Define constant forcing functions
   forc_st <- approxfun(1:SStime, rep(mean(inputdata$forc_st),SStime)) #temperature input function

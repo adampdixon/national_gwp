@@ -42,6 +42,7 @@ rootdir <- "../../../"
 ##forc_sw: volumetric soil moisture in mm3/mm3
 ##forc_npp: daily plant inputs in gC/m2/day
 equil_input_raw <- read.table(paste0("siteenviron_eq_", crop, "_in.txt"),header=T)
+names(equil_input_raw)<-c('forc_st', 'forc_sw', 'forc_npp')
 # equil_inputdata <- select(equil_input_raw,-c("month","day"))
 equil_inputdata <-equil_input_raw
 
@@ -175,17 +176,17 @@ plot(base_output$year,base_output$TOC, xlab="year", ylab="pool (gC m-2)",
 
 
 ### save end state of last segment as a named numeric array
-basestate <- as.numeric(tail(base_output[,c("POM","LMWC","AGG","MIC","MAOM")],n=1))
-names(basestate) <- c("POM","LMWC","AGG","MIC","MAOM")
-
-scen_output <- as.data.frame(Run_Model(scen_inputdata,derivs_V2_MM,parameters,
-                                  repeat.times=1,
-                                  state=c(basestate, CO2=0)))
-scen_output$year <- year(scen_input_raw$date)
-scen_output$date <- scen_input_raw$date
-scen_output$TOC <- scen_output$POM+scen_output$LMWC+scen_output$AGG+scen_output$MIC+scen_output$MAOM
-
-write.csv(scen_output, file=paste0("scenario_out_",scenario_name,".csv"),row.names = F)
+# basestate <- as.numeric(tail(base_output[,c("POM","LMWC","AGG","MIC","MAOM")],n=1))
+# names(basestate) <- c("POM","LMWC","AGG","MIC","MAOM")
+# 
+# scen_output <- as.data.frame(Run_Model(scen_inputdata,derivs_V2_MM,parameters,
+#                                   repeat.times=1,
+#                                   state=c(basestate, CO2=0)))
+# scen_output$year <- year(scen_input_raw$date)
+# scen_output$date <- scen_input_raw$date
+# scen_output$TOC <- scen_output$POM+scen_output$LMWC+scen_output$AGG+scen_output$MIC+scen_output$MAOM
+# 
+# write.csv(scen_output, file=paste0("scenario_out_",scenario_name,".csv"),row.names = F)
 
 
 #*************************************************************
@@ -194,10 +195,10 @@ write.csv(scen_output, file=paste0("scenario_out_",scenario_name,".csv"),row.nam
 
 
 ### Make the plots
-plot.pools(scen_output[,c("year","POM","LMWC","AGG","MIC","MAOM")])
-plot.co2(scen_output)
-plot(scen_output$year,scen_output$TOC, xlab="year", ylab="pool (gC m-2)",
-     col=1, type="l", ylim=c(0,max(scen_output$TOC, na.rm=T)))
+# plot.pools(scen_output[,c("year","POM","LMWC","AGG","MIC","MAOM")])
+# plot.co2(scen_output)
+# plot(scen_output$year,scen_output$TOC, xlab="year", ylab="pool (gC m-2)",
+#      col=1, type="l", ylim=c(0,max(scen_output$TOC, na.rm=T)))
 
 
 

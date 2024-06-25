@@ -142,7 +142,8 @@ data_in<-daily_data%>%
 
 base_data_in<-data_in%>%
   # filter(year>2021)%>%
-  select(forc_st, forc_sw, forc_npp, date, crop)
+  select(forc_st, forc_sw, forc_npp, date, crop)%>%
+  na.locf() # fill in missing values with last observation (issue on 12-31-2050)
 
 
 write.table(base_data_in, file=mill_baseinput_filename,
