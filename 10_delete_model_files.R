@@ -18,7 +18,7 @@ if (Sys.info()['sysname'] == "Linux"){
     print("*****Using linux mint *********")
   } else {
     daycent_input_folder<-'/glade/derecho/scratch/apdixon/national_gwp/Daycent'
-    results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
+    # results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
     Glade=TRUE
     print("************************************")
     print("*****Using NCAR *********")
