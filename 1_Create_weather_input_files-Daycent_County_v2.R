@@ -41,7 +41,7 @@ suppressMessages({
     write.table(DAYCENT_basic_eq, file=file.path(daycent_path2, "basic_eq.wth"),
                 row.names=F, quote=F, col.names=F, sep=' ')
 
-    print("**********DAYCENT DailyWeather equilibrisum**********")
+    print("**********DAYCENT DailyWeather equilibrium**********")
     print(paste0('min max temp is: ', min(DAYCENT_basic_eq$tmax), " and ", max(DAYCENT_basic_eq$tmax)))
     print(paste0('min max precip is: ', min(DAYCENT_basic_eq$precip), " and ", max(DAYCENT_basic_eq$precip)))
     print(paste0("min and max year are ", min(DAYCENT_basic_eq$year), ", ", max(DAYCENT_basic_eq$year)))

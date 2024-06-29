@@ -417,12 +417,8 @@ colnames(output_daily_data)
 #                                  "model_name","scenario_name","climate_scenario_num")
 #                                  # "mgmt_scenario_grp_num","mgmt_scenario_opt_num")
 
-fwrite(output_annual_data,file=file.path(results_path, paste0("Annual_results_compilation_",
-                                           scenario_name2,"_LDNDC.csv")),
-            col.names=T,row.names=F,sep=",",append=F)
-fwrite(output_daily_data,file=file.path(results_path, paste0("Daily_results_compilation_",
-                                          scenario_name2,"_LDNDC.csv")),
-            col.names=T,row.names=F,sep=",",append=F)
+fwrite(output_annual_data,file=ldndc_annual_out, col.names=T,row.names=F,sep=",",append=F)
+fwrite(output_daily_data,file=ldndc_daily_out, col.names=T,row.names=F,sep=",",append=F)
 
 
 # Read last lines of mylog.txt file, save, then delete

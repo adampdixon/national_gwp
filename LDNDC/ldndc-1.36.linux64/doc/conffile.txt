@@ -1,0 +1,121 @@
+
+# LDNDC configuration file
+
+reserved section (also called block) keyword ("global") and freely
+namable sections opened via
+
+        [<section-name>]
+        
+a section ends either at EOF or before start of next section.
+
+
+following there is a list of supported keys from the global
+section. for defaults see source code.
+
+all switches (keys that accept a true/false setting) are
+boolean type keys [bool]. allowed values for boolean keys
+are (case-insensitive)
+        { "1", "yes", "on", "true", "set"}
+        and
+        { "0", "no", "off", "false", "unset"}
+
+respectively. 
+
+
+configuration options marked with [E] support sequence expansion
+(e.g. output path, log file) supported format sequences are:
+
+        %r      expands to process rank. in non-mpi builds this
+                sequence expands to 0. zero padding of given
+                length is possible: %0Nr where N is a positive
+                integer.
+
+        %p      expands to process ID; zero padding of given
+                length is possible: %0Np where N is a positive
+                integer.
+
+        ~       home directory (if something like that exists)
+
+		%u		user name (unixoids only)
+
+		%h		hostname (unixoids only)
+
+		%C		LandscapeDNDC configuration path (default ~/.ldndc)
+
+		%I		input path (set in configuration file)
+		%i		input prefix (set in project file)
+		%O		output path (set in configuration file)
+		%o		output prefix (set in project file)
+
+		%R		resources path (set in configuration file)
+
+		%V		LandscapeDNDC version string
+
+
+[global]
+
+## fall back to this project file if none was given
+project_file = "./input/my_project/my_project.xml"
+
+## filename for log file. if location is writable is not
+## checked.
+## [E]
+log_file = { <file>, stdout, stderr, stdlog}
+
+## specifies whether logging messages are to be appended to
+## possibly existing logging file
+## yes appends (default), no truncates the existing file
+log_append = [bool]
+
+## set verbosity level. "debug" and higher is only available in
+## debug build.
+log_level = { "silent", "error", "warn", "info", "verbose", "debug"}
+
+## specify which components should emit log messages. this is an
+## or'd integer. each component set to one in mask will be
+## silenced. components (targets) are defined in llog.h
+## components: apps (1), framework (2), kernels (4), tests (8)
+## (default is 0, i.e. all components log)
+log_targets_mask = or'd integer
+
+## random seed to use (not set by library, needs to be
+## explicitely set by user program) [default=0]
+## 32bit unsigned integer
+random_seed = "31415926535"
+
+## [not implemented] default search paths for modules (kernels?)
+## the idea is to support plugin-architecture for modules ...
+## [E]
+module_path = "./lib/modules:~/.ldndc/modules"
+
+## specify whether to perform balance checks
+balance_check = [bool]
+## balance check tolerance
+balance_tolerance = 1.0e-09
+
+## specifies where the Lresources file can be found
+## [E]
+resources_path = "<path>"
+
+## [not used] switch on/off reading inputs
+#input = "off"
+## global base path for inputs
+## [E] (NOTE  do not use %i,%I,%o or %O here)
+input_path = "<path>"
+
+## switch on/off writing outputs (not affecting log)
+output = "off"
+## global base path for created outputs
+## [E] (NOTE  do not use %i,%I,%o or %O here)
+output_path = "<path>"
+
+## [not implemented] continue initialization even if kernels fail
+deactivate_init_fail = [bool]
+
+## [not implemented] quit after <max_failing_kernels> have been
+## deactivated if set to -1 keep going until all kernels have
+## failed.
+## if <max_failing_kernels> is greater than or equal to total
+## number of kernels it is equivalent to -1.
+max_failing_kernels = -1
+

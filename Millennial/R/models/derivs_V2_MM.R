@@ -16,7 +16,8 @@
 derivs_V2_MM <- function(step.num,state,parameters,forc_st,forc_sw,forc_npp) {
 
 # #for debugging:
-#  print(paste0("derivs_V2_MM step.num: ",step.num))  
+ # print(paste0("derivs_V2_MM step.num: ",step.num))
+  
   
   with(as.list(c(state,parameters)), {
           
@@ -40,16 +41,29 @@ derivs_V2_MM <- function(step.num,state,parameters,forc_st,forc_sw,forc_npp) {
   gas_const <- 8.31446
    
   #Equation 3
-    vmax_pl = parameters$alpha_pl * exp(-parameters$eact_pl / (gas_const * (forc_st(step.num) + 273.15)))
-    
+  vmax_pl = parameters$alpha_pl * exp(-parameters$eact_pl / (gas_const * (forc_st(step.num) + 273.15)))
+  
+  # print('stopping')
+  # browser()
+  # 
+  # print(paste0('POM ', POM))
+  # print(paste0('MIC ', MIC))
+  # 
+  # if(!is.na(POM)){
+  #   print("POM values present")
+  # }
+  
+  
   #Equation 2
-    # POM -> LMWC
-    if(POM>0 && MIC>0){
-      f_PO_LM = vmax_pl * scalar_wd * POM * MIC / (parameters$kaff_pl + MIC)
-    }else{
-      f_PO_LM=0
-    }
-    
+  # POM -> LMWC
+  if(POM>0 && MIC>0){
+    # print('POM/MIC values present')
+    f_PO_LM = vmax_pl * scalar_wd * POM * MIC / (parameters$kaff_pl + MIC)
+     } else {
+    # print('no values for POM and/or MIC')
+    f_PO_LM=0
+     }
+  
   #Equation 5
     # POM -> AGG
     if(POM>0){

@@ -1,10 +1,8 @@
 #######################################
 # Function: "Create_soil_data"
-# Author: "Ellen Maas"
+# Author: "Ellen Maas and then Adam Dixon"
 # Date: "July 11, 2022"
-# Output: Function doesn't return any data, hence the "p" (procedure) naming
-# convention. It creates files in the appropriate folder for each model.
-# Description: "This procedure generates soil data for the site."
+# This creates the county level soils input files
 #######################################
 
 
@@ -23,7 +21,7 @@ write.table(soil_df,
             file=file.path(daycent_path2,"soils.in"),
             row.names=F, quote=F, col.names=F, sep=' ')
 
-# I don't know why this won't run without the extra soils and site files
+# I don't know why this won't run without the extra soils and site files. I am making these all identical.
 write.table(soil_df,
             file=file.path(daycent_path2,"soils_1.in"),
             row.names=F, quote=F, col.names=F, sep=' ')

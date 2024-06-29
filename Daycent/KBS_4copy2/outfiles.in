@@ -21,7 +21,7 @@ Output (0/1)    file_name       description
 1             dN2Olyr.out       # daily denitrification N2O fluxes by layer
 1             gresp.out         # daily growth respiration
 0             dels.out          # daily delta 13C/14C values
-0             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
+1             dc_sip.csv        # daily evap, tran, resp, system C, and NPP
 1             harvest.csv       # state of the system at time of harvest
 0             cflows.out        # daily carbon flows due to decompostion
 0             year_cflows.out   # annual accumulators of decomp carbon flows

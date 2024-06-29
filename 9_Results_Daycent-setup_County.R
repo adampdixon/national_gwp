@@ -550,12 +550,9 @@ colnames(output_annual_data) <- c("year",
 # DayGN_ann_gha
 
 # write out the annual results
-fwrite(output_annual_data,file=file.path(results_path, paste0("Annual_results_compilation_",
-                                           scenario_name2,"_Daycent.csv")),
-            col.names=T,row.names=F,sep=",",append=F)
+fwrite(output_annual_data,file=daycent_annual_out,col.names=T,row.names=F,sep=",",append=F)
 
-if(file.exists(file.path(results_path, paste0("Annual_results_compilation_",
-                                           scenario_name2,"_Daycent.csv")))){
+if(file.exists(daycent_annual_out)){
   cat("************************************\n")
   print(paste0("Annual results compilation file written for ", scenario_name2))
   cat("************************************\n")
@@ -630,12 +627,9 @@ output_daily<-
 
 # head(output_daily_data)
 
-fwrite(output_daily,file=file.path(results_path, paste0("Daily_results_compilation_",
-                                                                    scenario_name2,"_Daycent.csv")),
-            col.names=T,row.names=F,sep=",",append=F)
+fwrite(output_daily,file=daycent_daily_out,col.names=T,row.names=F,sep=",",append=F)
 
-if(file.exists(file.path(results_path, paste0("Daily_results_compilation_",
-                                              scenario_name2,"_Daycent.csv")))){
+if(file.exists(daycent_daily_out)){
   cat("************************************\n")
   print(paste0("Daily results compilation file written for ", scenario_name2))
   cat("************************************\n")

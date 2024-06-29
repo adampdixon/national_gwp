@@ -1,0 +1,34 @@
+
+## Run LandscapeDNDC from the command line from within
+## the base folder of the archive you received as follows:
+##
+## For the command line examples here, we assume that the
+## directory "a_forest_site" contains a valid LandscapeDNDC
+## project with an according project file "a_forest.ldndc".
+
+on Unix or MAC OS X platforms:
+
+$> ./bin/ldndc -c ldndc.conf projects/forest/a_forest/a_forest.ldndc
+
+
+on Windows platforms:
+
+$> .\bin\ldndc -c ldndc.conf projects\forest\a_forest\a_forest.ldndc
+
+
+general synopsis:
+
+        ldndc [options] <project file>
+
+
+## If you have any questions, you are welcome to send an
+## email to the LandscapeDNDC users mailing list at
+
+        ldndc-users@lists.kit.edu
+
+## If you are not a member of this list, you may consider
+## joining the list (send join request) or otherwise send
+## your question directly to a person officially affiliated
+## with the developement of LandscapeDNDC. For contact
+## information see https://ldndc.imk-ifu.kit.edu
+

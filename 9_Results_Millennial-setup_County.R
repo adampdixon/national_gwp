@@ -86,7 +86,7 @@ mill_base_df_raw <- fread(file=paste0(mill_path,"base_out_",scenario_name,".csv"
 #* Daily data
 #* 
 
-fwrite(mill_base_df_raw,file=file.path(results_path, paste0("Daily_results_compilation_",scenario_name2,"_Millennial.csv")))
+fwrite(mill_base_df_raw,file=file.path(results_path, mill_daily_out))
 
 
 
