@@ -18,6 +18,8 @@ if (Sys.info()['sysname'] == "Linux"){
     print("*****Using linux mint *********")
   } else {
     daycent_input_folder<-'/glade/derecho/scratch/apdixon/national_gwp/Daycent'
+    ldndc_input_folder<-'/glade/derecho/scratch/apdixon/national_gwp/LDNDC/ldndc-1.36.linux64/projects'
+    mill_input_folder<-'/glade/derecho/scratch/apdixon/national_gwp/Millennial/R/simulation'
     # results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
     Glade=TRUE
     print("************************************")
@@ -46,6 +48,8 @@ delete_data<-c(results_data, daycent_input_data, ldndc_input_data, mill_input_da
 ##################################################
 # CAREFUL WITH THIS
 ##################################################
+
+print("***** DELETING FILES *********")
 
 for (i in 1:length(delete_data)){
   if (file.exists(delete_data[i])) {

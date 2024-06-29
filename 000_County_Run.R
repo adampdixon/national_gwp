@@ -60,7 +60,7 @@ if (Sys.info()['sysname'] == "Linux"){
     print(Sys.time())
   } else {
     master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
-    results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
+    results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results_2024_June'
 
     Test <- FALSE # if TRUE, only run county, filtered below
     args=(commandArgs(TRUE))
@@ -90,7 +90,8 @@ sink(stderr(), type = "message")
 sink(stdout(), type = "message")
 
 # County data contains lat/long, elevation, and other important variables
-county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))
+county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))%>%
+  filter(State_Name == 'South Dakota')
 
 # These GEOIDs were the test counties. They are spread around the US. Georgia, Kansas, Nebraska, Pennsylvania, etc.
 if(identical(Test, TRUE)){
