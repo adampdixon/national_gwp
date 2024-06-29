@@ -91,7 +91,8 @@ sink(stdout(), type = "message")
 
 # County data contains lat/long, elevation, and other important variables
 county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))%>%
-  filter(State_Name == 'South Dakota')
+  filter(State_Name == 'South Dakota') # For debugging, only run South Dakota counties
+
 
 # These GEOIDs were the test counties. They are spread around the US. Georgia, Kansas, Nebraska, Pennsylvania, etc.
 if(identical(Test, TRUE)){
