@@ -43,8 +43,8 @@ results_data<-results_data[grepl("Results_GEOID_", results_data)]
 ##################################################
 # CAREFUL WITH THIS
 ##################################################
-delete_data<-c(results_data, daycent_input_data, ldndc_input_data, mill_input_data)
-# delete_data<-c(daycent_input_data)
+delete_data<-c(daycent_input_data, ldndc_input_data, mill_input_data)
+# delete_data<-c(daycent_input_data) results_data
 ##################################################
 # CAREFUL WITH THIS
 ##################################################
