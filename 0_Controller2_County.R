@@ -252,6 +252,10 @@ for (c in crops_){
         # # Millennial
         source(paste0("3_Create_management_input_files-Millennial_County.R"), local = TRUE)
         source(paste0(mill_path,"run_Millennial.R"))
+        
+        # There doesn't seem to be any point to running results setup, expect to put the results into the results folder specifically and 
+        # not the Millenial folder
+        source(paste0("9_Results_Millennial-setup_County.R"), local = TRUE)
       }
       # # Millennial
       # source(paste0("3_Create_management_input_files-Millennial_",site_name,".R"))
