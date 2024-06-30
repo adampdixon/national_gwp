@@ -20,7 +20,7 @@ if (Sys.info()['sysname'] == "Linux"){
     daycent_input_folder<-'/glade/derecho/scratch/apdixon/national_gwp/Daycent'
     ldndc_input_folder<-'/glade/derecho/scratch/apdixon/national_gwp/LDNDC/ldndc-1.36.linux64/projects'
     mill_input_folder<-'/glade/derecho/scratch/apdixon/national_gwp/Millennial/R/simulation'
-    # results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
+    results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results_2024_June'
     Glade=TRUE
     print("************************************")
     print("*****Using NCAR *********")
@@ -43,8 +43,8 @@ results_data<-results_data[grepl("Results_GEOID_", results_data)]
 ##################################################
 # CAREFUL WITH THIS
 ##################################################
-delete_data<-c(daycent_input_data, ldndc_input_data, mill_input_data)
-# delete_data<-c(daycent_input_data) results_data
+delete_data<-c(results_data, daycent_input_data, ldndc_input_data, mill_input_data)
+# delete_data<-c(daycent_input_data) 
 ##################################################
 # CAREFUL WITH THIS
 ##################################################
