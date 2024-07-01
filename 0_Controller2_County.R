@@ -1,6 +1,6 @@
 #######################################
 # File: "0_Controller"
-# Author: "Ellen Maas and Adam Dixon"
+# Author: "Ellen Maas and then Adam Dixon"
 # Date: "June 2024"
 # Description: This script is the control file for the project. 
 # It generates all the data input files for all models for a 
@@ -44,8 +44,6 @@ source("2_Create_soil_data-setup2_County.R", local = TRUE) # some soil vars need
 # This for loop sets up mgmt event files for each crop and mgmt scenario for both Daycent and LDNDC.
 # It then runs the models. 'If' statements are included to control which models run and to check if output files already exist, which was helpful for
 # development and debugging.
-
-
 for (c in crops_){
   # First check crop amount in county so it's not analyzed unnecessarily.
   crop_amount<-county_data[,eval(paste0(c, "_ha"))] # get crop amount in county
@@ -109,6 +107,11 @@ for (c in crops_){
           print(paste0("*************running Daycent for: ", scenario_name2, "****************"))
           source(paste0("Daycent/Daycent_run_controller.R"), local = TRUE)
           source(paste0("9_Results_Daycent-setup_County.R"), local=TRUE) #TODO AD set this up?
+          
+          # Create climate plots for output 
+          # if(identical(input_data_plots, TRUE)){
+            source(file.path('data_explore', 'county_climate_viz.R'), local=TRUE)
+          # }
 
         
         } # end else file exists
@@ -149,8 +152,7 @@ for (c in crops_){
         # Table generation script
         source('9_Results_Daycent-setup_County.R', local = TRUE)
       }
-      
-      
+
       if(identical(run_Millennial,TRUE)) {
         
         # Just outputting daily for millennial, for no reason other than it's easy to summarize at yearly level later
@@ -174,6 +176,7 @@ for (c in crops_){
     } # end of mgmt_scenario_nums loop 
   } # end of else statement if crop amount is less than 1 ha in county
 } # end of crops loop
+
 
 
 #*************************************************************

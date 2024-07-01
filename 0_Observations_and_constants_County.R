@@ -54,6 +54,10 @@ mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
 results_path <- file.path(results_folder, paste0("Results_", site_name))
 if(!dir.exists(results_path)) dir.create(results_path)
 
+# For figs and data to save
+figs_input_data<-file.path(results_path, 'data_and_figs')
+dir.create(figs_input_data, showWarnings = FALSE)
+
 land_conversion_year <- 1850
 
 depth_m <- 0.25

@@ -20,6 +20,7 @@ results_only=FALSE # only results, works for Daycent
 run_Daycent=TRUE 
 run_LDNDC=TRUE
 run_Millennial=TRUE
+input_data_plots=TRUE # climate plots
 cat("********************************\n")
 cat("********************************\n")
 
@@ -49,7 +50,7 @@ if (Sys.info()['sysname'] == "Linux"){
 
     args=(commandArgs(TRUE))
     
-    county_number<-1 # county number is only variable that changes
+    county_number<-1 # county number changes row selected in county_data
     
     Test <- TRUE # if TRUE, only run county, filtered below
     # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
@@ -57,6 +58,7 @@ if (Sys.info()['sysname'] == "Linux"){
     print("************************************")
     print("*****Using linux mint *********")
     cat("date and time are ")
+    print("************************************")
     print(Sys.time())
   } else {
     master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
@@ -72,6 +74,7 @@ if (Sys.info()['sysname'] == "Linux"){
     print("*****Using NCAR *********")
     print("***** SCRATCH SPACE *********")
     cat("date and time are ")
+    print("************************************")
     print(Sys.time())
   }
 }
@@ -90,14 +93,14 @@ sink(stderr(), type = "message")
 sink(stdout(), type = "message")
 
 # County data contains lat/long, elevation, and other important variables
-county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))%>%
-  filter(State_Name == 'South Dakota') # For debugging, only run South Dakota counties
+county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))#%>%
+  # filter(State_Name == 'South Dakota') # For debugging, only run South Dakota counties
 
 
 # These GEOIDs were the test counties. They are spread around the US. Georgia, Kansas, Nebraska, Pennsylvania, etc.
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(13213)) #13023, 13213, 20073, 31181, 42053, 1075
+    filter(GEOID %in% c(20073)) #13023, 13213, 20073, 31181, 42053, 1075
 }
 
 # county_data<-county_data[county_data$GEOID==county_number,]
@@ -135,15 +138,24 @@ print(paste0("latitude is: ", latitude))
 print(paste0("longitude is: ", longitude))
 print(paste0("elevation_m is: ", elevation_m))
 
+### ### ### ### ### ### ### ### ### ### ### 
+### START MODELS
 source('00_Main_County.R', local = TRUE)
+### ### ### ### ### ### ### ### ### ### ### 
 
 cat("************************************\n")
 cat("DELETE INPUT FILES???\n")
 if(identical(del_input_files, TRUE)){
  cat("Deleting input files\n")
- unlink(daycent_path2, recursive = T)
- unlink(dndc_path, recursive = T)
- unlink(mill_path, recursive = T)
+  if(identical(run_Daycent, TRUE)) {
+    unlink(daycent_path2, recursive = T)
+  }
+ if(identical(run_LDNDC, TRUE)) {
+   unlink(dndc_path, recursive = T)
+ }
+  if(identical(run_Millennial, TRUE)) {
+    unlink(mill_path, recursive = T)
+  }
 } else{
  print("Saving input data files")}
 cat("************************************\n")

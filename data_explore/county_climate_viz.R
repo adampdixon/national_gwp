@@ -6,6 +6,8 @@
 
 
 weather_plots<-function(clim_data){
+  print("Creating climate plots")
+  
   mean_clim<-clim_data%>%
     mutate(season = case_when(dayofyear %in% 90:152 ~ "1 spring",
                               dayofyear %in% c(153:243) ~ "2 summer",
@@ -64,10 +66,8 @@ weather_plots<-function(clim_data){
   
   # create figs dir if doesn't exist
   
-  out_path<-file.path(results_path, "figs")
-  
-  dir.create(out_path, showWarnings = FALSE)
-  
+  out_path<-figs_input_data
+
   plot_out<-file.path(out_path, paste0(site_name, "_input_climate_figs.png"))
   
   ggsave(file = plot_out, plot=out, dpi=300, width = 8.5, height = 10)

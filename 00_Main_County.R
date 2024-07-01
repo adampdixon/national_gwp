@@ -15,6 +15,8 @@ library(dplyr)
 #######################################
 
 
+
+
 experiment_start_date <- "1850-01-01" # for LDNDC
 
 end_fut_period_year <- 2050
@@ -24,6 +26,9 @@ wth_path <- paste0("Data/County/Weather/")
 
 daycent_path <- paste0("Daycent/",site_name,"/")
 daycent_path2<-file.path(master_path, 'Daycent' ,site_name)
+
+
+
 
 
 #######################################
@@ -92,3 +97,6 @@ for (fut_climate in clim_nums) { # climate scenarios
     source("0_Controller2_County.R", local = TRUE)
 
 }
+
+
+

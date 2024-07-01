@@ -44,7 +44,7 @@ library(gridExtra)
 date<-gsub("-", "", Sys.Date())
 
 
-length(unique(low_change_data$GEOID))
+# length(unique(low_change_data$GEOID))
 
 # county_summary_low<-low_change_data%>%
 #   group_by(GEOID)%>%
@@ -54,10 +54,10 @@ length(unique(low_change_data$GEOID))
 #   group_by(State)%>%
 #   summarise(mean_tmin=mean(tmin), mean_tmax=mean(tmax), mean_precip=mean(precip))
 
-df1<-low_change_data%>%
-  mutate(period = ifelse(year<2022, 'historic', 'future'))%>%
-  group_by(GEOID, period)%>%
-  summarise(mean_tmin=mean(tmin), mean_tmax=mean(tmax), mean_precip=mean(precip))
+# df1<-low_change_data%>%
+#   mutate(period = ifelse(year<2022, 'historic', 'future'))%>%
+#   group_by(GEOID, period)%>%
+#   summarise(mean_tmin=mean(tmin), mean_tmax=mean(tmax), mean_precip=mean(precip))
 
 
 

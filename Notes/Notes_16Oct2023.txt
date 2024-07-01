@@ -83,7 +83,7 @@ qsub
 qstat
 qinteractive
 qcmd
-qhist
+qhist -u apdixon -h
 
 
 LandscapeDNDC - google group - there's a user group - 

@@ -253,6 +253,9 @@ sps$KS<-saxton_rawls_df$Ks
 # soil_df_raw <- sps[[1]]$soil
 soil_df_raw <- sps
 
+# save soil data in case useful later on
+fwrite(soil_df_raw, file.path(figs_input_data, paste0("soil_df_", site_name, ".csv")))
+
 # add three more depths at the top (for Daycent, recommended for trace gas subroutines),
 # then add new columns which Daycent also needs
 

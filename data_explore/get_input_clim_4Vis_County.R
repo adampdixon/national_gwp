@@ -1,36 +1,22 @@
-# Visualize climate data
+#######################################
+# Script: get_input_clim_4Vis_County.R
+# Author: Adam Dixon
+# Date: June 2024
+# Output: .csv
+# Description: This creates yearly averages of climate data for each county and outputs csv. The
+# data can then be used for exploration/visualization later.
+# Note for use on NCAR, the script will sample 40% of the counties to save time.
+#######################################
 
 
 
-# Set workspace
 if (Sys.info()['sysname'] == "Linux"){ 
   if(Sys.info()['user']=='ap') {
-    master_path<-'/home/ap/Documents/GitHub/national_gwp'
-    climate_folder<-'/home/ap/Scratch'
-    results_path<-'/home/ap/figs'
-    # args=(commandArgs(TRUE))
-    # county_number<-1
-    
-    Test <- TRUE # if TRUE, only run county, filtered below
-    # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
-    Glade=FALSE
-    print("************************************")
-    print("*****Using linux mint *********")
-    cat("date and time are ")
-    print(Sys.time())
+    source('/home/ap/Documents/GitHub/national_gwp/000_Workspace_Dirs.R', local = TRUE)
+    Test=TRUE
   } else {
-    master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
-    climate_folder<-'/glade/work/apdixon/climate'
-    results_path<-'/glade/derecho/scratch/apdixon/national_gwp_figs'
-    Test <- FALSE # if TRUE, only run county, filtered below
-    # args=(commandArgs(TRUE))
-    # county_number = args[2]
-    Glade=TRUE
-    print("************************************")
-    print("*****Using NCAR *********")
-    print("***** SCRATCH SPACE *********")
-    cat("date and time are ")
-    print(Sys.time())
+    source('/glade/derecho/scratch/apdixon/national_gwp/000_Workspace_Dirs.R', local = TRUE)
+    Test=FALSE
   }
 }
 
@@ -40,7 +26,6 @@ library(lubridate)
 
 date<-gsub("-", "", Sys.Date())
 
-
 county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))%>%
   select(GEOID, NAME, State_Name)
 # county_data<-county_data[county_data$GEOID==county_number,]
@@ -49,27 +34,23 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
     filter(GEOID %in% c(31181, 13023, 13213, 20073, 31181, 42053, 1075))
+} else {
+  sample_percent<-.4
+  print('note: sampling climate from 40% of counties')
+  sample_number<-floor(nrow(county_data)*.4)
+  county_data<-county_data[sample(nrow(county_data), sample_number), ]
 }
 
 setwd(master_path)
-
-####################### climate #######################
-if (identical(Glade, TRUE)){
-  climate_data_path<-'/glade/work/apdixon/climate'
-  print(paste0('*********climate_data_path is ', climate_data_path, " **************"))
-} else {
-  climate_data_path<-'/home/ap/Scratch'
-  print(paste0('*********climate_data_path is ', climate_data_path, " **************"))
-}
-####################### ####### #######################
 
 county_climate_low_change<-data.frame()
 county_climate_high_change<-data.frame()
 
 
+  # Get average value per year for each county
+  # put table together
 
-    # Get average value per year for each county
-    # put table together
+
 for (county_geoid in county_data$GEOID){
       tryCatch(
         expr = {
@@ -82,12 +63,13 @@ for (county_geoid in county_data$GEOID){
             
             if (fut_climate==1){ # LOW CHANGE
               # create climate tables
+
               source('1_create_county_climate_wth_file_County.R', local = TRUE)
               
               # summarize at yearly level
               weather2<-weather%>%
                 group_by(year)%>%
-                summarise_at(vars(tmax, tmin, precip), mean)
+                summarise_at(vars(tmax, tmin, precip), list(mean = mean, sd = sd))
               
               add_df<-data.frame(GEOID = county_geoid, State = state)
               
@@ -105,7 +87,7 @@ for (county_geoid in county_data$GEOID){
               # summarize at yearly level
               weather2<-weather%>%
                 group_by(year)%>%
-                summarise_at(vars(tmax, tmin, precip), mean)
+                summarise_at(vars(tmax, tmin, precip), list(mean = mean, sd = sd))
               
               add_df<-data.frame(GEOID = county_geoid, State = state)
               
@@ -137,12 +119,13 @@ for (county_geoid in county_data$GEOID){
         }
       )
       
-    }
+}
 
 
-fwrite(county_climate_low_change, file.path(results_path, paste0('county_climate_low_change_', date, '.csv')))
 
-fwrite(county_climate_high_change, file.path(results_path, paste0('county_climate_high_change_', date, '.csv')))
+fwrite(county_climate_low_change, file.path(national_figs, paste0('county_climate_low_change_', date, '.csv')))
+
+fwrite(county_climate_high_change, file.path(national_figs, paste0('county_climate_high_change_', date, '.csv')))
 
 print('done')
 
