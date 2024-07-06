@@ -10,7 +10,7 @@
 # 9/23/2022: Created script.
 #######################################
 
-print("Starting 3_Create_management_input_files-Millennial2.R")
+print("Starting 3_Create_management_input_files-Millennial.R")
 
 #**********************************************************************
 # AD Brought over from 3_Create_management_input_files-setupRM2
@@ -37,7 +37,7 @@ mill_baseinput_filename <- paste0(mill_path, mill_scenario_filename)
 # Daycent soilc -> C in soil organic matter pools (g C m-2)
 # NPP – Summation of all production values (g C m-2 d-1)
 Daycent_daily_data<-fread(daycent_daily_out)%>%
-  mutate(daily_soilC_gm2_daycent = soilc,
+  mutate(daily_soilC_gm2_daycent = SOC_Mgha,
          dayofyr = dayofyear,
          month = month(date),
          water_content_daycent = vswc_pct_layer4,
@@ -46,9 +46,9 @@ Daycent_daily_data<-fread(daycent_daily_out)%>%
   select(year, date, dayofyear, dayofyr, month, NPP_daycent, water_content_daycent, soil_temp_daycent, daily_soilC_gm2_daycent)
 
 LDNDC_daily_data<-fread(ldndc_daily_out)%>%
-  mutate(daily_soilC_gm2_ldndc = `SOC_40cm[gm2-1]`,
+  mutate(daily_soilC_gm2_ldndc = SOC_Mgha,
          dayofyr = dayofyear,
-         month = month(date),
+         month = month(datetime),
          water_content_ldndc = soilwater_20cm,
          soil_temp_ldndc = s_temp_20cm,
          NPP_ldndc = ifelse(is.na(NPP_gCm2), 0, NPP_gCm2))%>%

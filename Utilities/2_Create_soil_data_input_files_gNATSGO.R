@@ -1,6 +1,6 @@
 ######################################################
-# This script gathers the csvs for each US county from historic climate data (1951-2021) and creates a table
-# for Daycent 
+# This script gathers the csvs for each US county from gNatsgo
+# 
 # A Dixon
 # Dec 4, 2023
 ###########################

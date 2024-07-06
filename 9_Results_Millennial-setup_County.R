@@ -27,14 +27,21 @@ library(ggplot2)
 # MIC -   microbial biomass g C m− 2
 # MAOM -  mineral-associated organic matter g C m− 2
 # CO2 -   carbon dioxide production g C m− 2 d− 1
+# TOC -   total organic carbon? ? kg C m− 2
 
 
 #*************************************************************
 
 # import Millennial
 
-
-mill_base_df_raw <- fread(file=paste0(mill_path,"base_out_",scenario_name,".csv"))
+# SOC to 25 cm
+## DAILY ##
+mill_base_df_raw <- fread(file=paste0(mill_path,"base_out_",scenario_name,".csv"))%>%
+  mutate(SOC_Mgha=TOC/100,
+         CO2resp_gha=CO2*10, # g m2 to kg ha
+         mgmt_scenario_num = mgmt_scenario_num, 
+         climate_scenario_num = clim_scenario_num)%>%
+  select(Mill_annual_output_columns, everything())
 # mill_scen_df_raw <- read.csv(file=paste0(mill_path,"scenario_out_",scenario_name,".csv"))
 
 # limit future output to end of future period
@@ -107,13 +114,20 @@ fwrite(mill_base_df_raw,file=file.path(results_path, mill_daily_out))
 
 #*************************************************************
 #*
-#*
+#* ANNUAL DATA
 #*
 #**********************************************************************
 
 # write out results for use later in ensemble results
-# output_annual_data <- ???
+output_annual_data <- mill_base_df_raw%>%
+  group_by(year)%>%
+  summarize(SOC_Mghayr=sum(SOC_Mgha),
+            CO2resp_ghayr=sum(CO2resp_gha))%>%
+  mutate(mgmt_scenario_num = mgmt_scenario_num,
+         climate_scenario_num = clim_scenario_num)%>%
+  select(Mill_annual_output_columns, everything())
 
+fwrite(output_annual_data,file=file.path(results_path, mill_annual_out))
 
 #*************************************************************
 

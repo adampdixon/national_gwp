@@ -4,6 +4,7 @@
 # column names:
 # year dayofyear rain_mm    tavg  maxt_C  mint_C radn_Wm2 meanw_ms
 
+library(gridExtra)
 
 weather_plots<-function(clim_data){
   print("Creating climate plots")

@@ -1,43 +1,27 @@
-
+#######################################
+# File: "All_Models_Results_yearly_plots.R"
+# Author: "Adam Dixon"
+# Date: "June 2024"
+# Description: This script generates a 5 across x 6 wide set of line graphs for each crop and scenario, showing model
+# outputs 1850-2050.
+#
+#######################################
 # do a x axis with time
 # then do an average for all counties, or plot all lines
 
 # version 2 is to plot both climate scenarios on same plot
 
 
-# Daycent results at yearly level in ggplot
-# January 15 2023
-# Set workspace
+
 if (Sys.info()['sysname'] == "Linux"){ 
   if(Sys.info()['user']=='ap') {
-    master_path<-'/home/ap/Documents/GitHub/national_gwp'
-    results_path<-'/home/ap/Daycent_results'
-    crop_area_path<-file.path(master_path, 'Data', 'County_start', 'main_county_crops.csv')
-    output_figs<-'/home/ap/figs'
-    county_number<-1
-
-    # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
-    Glade=FALSE
-    print("************************************")
-    print("*****Using linux mint *********")
-    cat("date and time are ")
-    print(Sys.time())
+    source('/home/ap/Documents/GitHub/national_gwp/000_Workspace_Dirs.R', local = TRUE)
   } else {
-    master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
-    results_path<-'/glade/derecho/scratch/apdixon/national_gwp_results'
-    crop_area_path<-file.path(master_path, 'Data', 'County_start', 'main_county_crops.csv')
-    output_figs<-'/glade/derecho/scratch/apdixon/national_gwp_figs'
-    
-    # county_number<-args[2]
-    Glade=TRUE
-    print("************************************")
-    print("*****Using NCAR *********")
-    print("***** SCRATCH SPACE *********")
-    cat("date and time are ")
-    print(Sys.time())
+    source('/glade/derecho/scratch/apdixon/national_gwp/000_Workspace_Dirs.R', local = TRUE)
   }
 }
 
+output_figs<-national_figs
 
 library(dplyr)
 library(ggplot2)
@@ -45,74 +29,18 @@ library(reshape2)
 library(gridExtra)
 library(grid)
 library(data.table)
-# library(patchwork)
+
+# this script has get model table functions
+source(file.path(master_path, 'data_explore', 'get_model_tables.R'), local = TRUE)
+
 
 
 # line plots of crops and scenarios
 # 
-# Dir name
-r2<-dir(results_path, recursive=F, full.names=F)
-# Dir name and full path
-r1<-dir(results_path, recursive=F, full.names=T)
-# 
-
-
-
-
-
-# for all scenarios
-
-
-# create plots for all crops
-
-
-for (cr in c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation')) {
-  crop_scenario_df<-data.frame()
-  for (s in 1:6){
-    print(paste0('working on ', cr, ', practice scenario ', s, ' table, ', 'in both climate scenarios '))
-    
-    # county_n<-0 # counter
-    
-    for (i in 1:length(r2)){
-      files_1<-list.files(r1[i], full.names=T, recursive=T, pattern=paste0('Annual_results_compilation_1_', s, '_', cr, '_Daycent.csv'))
-      files_2<-list.files(r1[i], full.names=T, recursive=T, pattern=paste0('Annual_results_compilation_2_', s, '_', cr, '_Daycent.csv'))
-      # county_n<-county_n+1
-      
-      files<-c(files_1, files_2)
-      
-      for (f in files){
-        # print(paste0('working on ', f))
-        county_string<-basename(dirname(f))
-        county_string_split<-strsplit(county_string, '_')
-        GEOID<-county_string_split[[1]][3]
-        State<-county_string_split[[1]][4]
-        
-        if(identical('Rotation', cr)){ # deal with Rotation having maize and soybean yield by pulling both columns in select below
-          select_var = c('Maize', 'Soybean')
-        } else {
-          select_var = cr
-        }
-        
-        data<-fread(f)%>%
-          mutate(GEOID=GEOID, State=State,
-                 climate_scen = ifelse(climate_scenario_num == 1, 'low', 'high'))%>%
-          select(GEOID, State, year, mgmt_scenario_num, climate_scen,
-                 paste0(select_var, 'Yld_Mgha'), SOC_Mgha, N2OEmissions_ghayr, CH4Emissions_ghayr, CO2resp_ghayr)
-        
-        if(identical('Rotation', cr)){ # populate new column called 'RotationYld_Mgha' depending on which one is NA
-          data$RotationYld_Mgha <- ifelse(is.na(data$MaizeYld_Mgha), data$SoybeanYld_Mgha, data$MaizeYld_Mgha)
-        }
-        
-        data$Scenario<-s
-        crop_scenario_df<-rbind(crop_scenario_df, data)
-        
-        
-        
-      } # end of for loop listing files
-      
-    } # end of for loop reading files
-    
-  } # end of for loop scenarios
+df<-get_all_models_df(crops_to_get = c('Maize', 'Rotation'))
+  
+  # nrow(crop_scenario_df)
+  # table(crop_scenario_df$GEOID)
   
   # TODO add a smoother?
   
@@ -164,12 +92,13 @@ for (cr in c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation')) {
     
     return(p)
   }
+}
   
   print('plotting')
   
   # MaizeYld_Mgha, SOC_Mgha, N2OEmissions_ghayr, CH4Emissions_ghayr
   
-  s1<-filter(crop_scenario_df, Scenario == 1)%>%
+  s1<-filter(crop_scenario_df, scenario == 1)%>%
     group_by(year, climate_scen) %>%
     summarise(across(
       .cols = where(is.numeric), 
@@ -177,35 +106,35 @@ for (cr in c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation')) {
       .names = "{col}_{fn}"
     ))
 
-  s2<-filter(crop_scenario_df, Scenario == 2)%>%
+  s2<-filter(crop_scenario_df, scenario == 2)%>%
     group_by(year, climate_scen) %>%
     summarise(across(
       .cols = where(is.numeric), 
       .fns = list(Mean = mean, SD = sd), na.rm = TRUE, 
       .names = "{col}_{fn}"
     ))
-  s3<-filter(crop_scenario_df, Scenario == 3)%>%
+  s3<-filter(crop_scenario_df, scenario == 3)%>%
     group_by(year, climate_scen) %>%
     summarise(across(
       .cols = where(is.numeric), 
       .fns = list(Mean = mean, SD = sd), na.rm = TRUE, 
       .names = "{col}_{fn}"
     ))
-  s4<-filter(crop_scenario_df, Scenario == 4)%>%
+  s4<-filter(crop_scenario_df, scenario == 4)%>%
     group_by(year, climate_scen) %>%
     summarise(across(
       .cols = where(is.numeric), 
       .fns = list(Mean = mean, SD = sd), na.rm = TRUE, 
       .names = "{col}_{fn}"
     ))
-  s5<-filter(crop_scenario_df, Scenario == 5)%>%
+  s5<-filter(crop_scenario_df, scenario == 5)%>%
     group_by(year, climate_scen) %>%
     summarise(across(
       .cols = where(is.numeric), 
       .fns = list(Mean = mean, SD = sd), na.rm = TRUE, 
       .names = "{col}_{fn}"
     ))
-  s6<-filter(crop_scenario_df, Scenario == 6)%>%
+  s6<-filter(crop_scenario_df, scenario == 6)%>%
     group_by(year, climate_scen) %>%
     summarise(across(
       .cols = where(is.numeric), 
@@ -289,13 +218,13 @@ for (cr in c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation')) {
   
   
   
-  crop_out<-file.path(output_figs, paste0('both_clim_scen_', cr,  "_results.png"))
+  crop_out<-file.path(output_figs, paste0('both_clim_scen_', cr,  "_results_", date, ".png"))
   
   ggsave(file = crop_out, plot=out, dpi=300, width = 20, height = 16)
   
   print('done')
   
-} # end of crop loop
+# } # end of crop loop
 
 
 

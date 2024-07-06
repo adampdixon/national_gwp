@@ -1,4 +1,10 @@
-
+#######################################
+# File: "soils_boxplots_function.R"
+# Author: "Adam Dixon"
+# Date: "June 2024"
+# Description: This script creates boxplots of soil data parameters.
+#
+#######################################
 
 library(ggplot2)
 library(dplyr)
@@ -89,7 +95,7 @@ soils_boxplots<-function(){
   ggsave(file = file.path(national_figs, paste0('soil_boxplots', date, '.png')), plot=out, dpi=300, width = 8, height = 8)
   
   print("soil plots saved to")
-  print(national_figs)
+  # print(national_figs)
   
 }
 

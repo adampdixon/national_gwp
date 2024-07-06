@@ -15,25 +15,24 @@ args <- commandArgs(trailingOnly = TRUE)
 cat("********************************\n")
 cat("********************************\n")
 cat("******** FLAGS etc *****************\n")
-del_input_files<-TRUE # deletes intermediate files created in national_gwp directory. Important for file size management.
-results_only=FALSE # only results, works for Daycent
-run_Daycent=TRUE 
-run_LDNDC=TRUE
-run_Millennial=TRUE
+del_input_files<-FALSE # deletes files that results tables are made from in national_gwp directory. Important for directory space management.
+results_only=TRUE # only results, works for Daycent and LDNDC, note all run flags must be opposite of this TRUE or FALSE
+run_Daycent=FALSE 
+run_LDNDC=FALSE
+run_Millennial=FALSE
 input_data_plots=TRUE # climate plots
 cat("********************************\n")
 cat("********************************\n")
 
 # county_numbers<-296:306   #295:3100
-crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
-# crops_ <- c('Maize') # Crops
-
+# crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
+crops_ <- c('Maize') # Crops
 
 # mgmt_scenario_nums <- 1:1 # Management scenarios
 mgmt_scenario_nums <- 1:6 # 1:6 Management scenarios 1:6
 
 # climate scenarios
-clim_nums <- 1:2 #c(1:2), can be 1:2
+clim_nums <- 1:1 #c(1:2), can be 1:2
 
 
 
@@ -50,7 +49,7 @@ if (Sys.info()['sysname'] == "Linux"){
 
     args=(commandArgs(TRUE))
     
-    county_number<-1 # county number changes row selected in county_data
+    county_number<-1 #args[2] # county number changes row selected in county_data
     
     Test <- TRUE # if TRUE, only run county, filtered below
     # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
@@ -86,11 +85,12 @@ cat(paste0("The county_number is: ", county_number, "\n"))
 
 setwd(master_path)
 
-# for debugging, create a log file
+# for debugging, create a log file that saves all console outputs
 # Open a connection to stderr
-sink(stderr(), type = "message")
-# Open a connection to stdout
-sink(stdout(), type = "message")
+# sink(stderr(), type = "message")
+# # Open a connection to stdout
+# sink(stdout(), type = "message")
+
 
 # County data contains lat/long, elevation, and other important variables
 county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))#%>%
@@ -100,7 +100,7 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 # These GEOIDs were the test counties. They are spread around the US. Georgia, Kansas, Nebraska, Pennsylvania, etc.
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(20073)) #13023, 13213, 20073, 31181, 42053, 1075
+    filter(GEOID %in% c(20073)) #c(31181, 13023, 13213, 20073, 42053, 1075))
 }
 
 # county_data<-county_data[county_data$GEOID==county_number,]
@@ -111,20 +111,28 @@ county_geoid<-county_data$GEOID # adapting 4 and 5 character geoids isn't necess
 county_name<-county_data$NAMELSAD
 state_name<-county_data$State_Name
 
+site_name <- paste0("GEOID_", county_data$GEOID, "_", gsub(" ", "_", county_data$State_Name))
+
+#create results folder if it doesn't already exist
+results_path <- file.path(results_folder, paste0("Results_", site_name))
+if(!dir.exists(results_path)) dir.create(results_path)
+
+# For figs and data to save
+figs_input_data<-file.path(results_path, 'data_and_figs')
+dir.create(figs_input_data, showWarnings = FALSE)
+
+# create a log file that saves all console outputs
+# con <- file(file.path(figs_input_data, paste0("1_", site_name, "_R_console_out.log")))
+# 
+# sink(con)
+
+print("************************************")
 cat(paste0("Starting county ", county_number, "\n"), file = stderr(), append = TRUE)
-
-
-
 print("************************************")
 print(paste0("county geoid is: ", county_geoid))
 print(paste0("county name is: ", county_name))
 print(paste0("state name is: ", state_name))
 print("************************************")
-
-# site_id <- county_data$GEOID
-# site_name <- paste0(gsub(" ", "_", county_data$NAMELSAD[i]),"_", gsub(" ", "_", county_data$State_Name[i]))
-.GlobalEnv$site_name <- paste0("GEOID_", county_data$GEOID, "_", gsub(" ", "_", county_data$State_Name))
-
 print("************************************")
 print('working directory is: ')
 print(getwd())
@@ -164,6 +172,9 @@ cat("************************************\n")
 toc()
 run_time <- round(toc(echo=T)/60,1)
 print(paste0("Final run time is ",run_time," minutes"))
+
+# sink() # close console output
+# sink(type="message") # restore to console
 
 
 

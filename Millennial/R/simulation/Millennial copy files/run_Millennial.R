@@ -142,30 +142,32 @@ write.csv(base_output, file=paste0("base_out_",scenario_name,".csv"),row.names =
 
 ### Plot model results
 
+# AD Don't need the plots but they work
+
 #Define function which plots the evolution of Millennial model pools over time
-plot.pools <- function(output){
-plot(output[,"year"],output[,"POM"], xlab="year", ylab="pool (gC m-2)", col=1, 
-     type="l", ylim=c(0,max(output[,-1], na.rm=T)))
-lines(output[,"year"],output[,"LMWC"], col=2)
-lines(output[,"year"],output[,"AGG"], col=3)
-lines(output[,"year"],output[,"MIC"], col=4)
-lines(output[,"year"],output[,"MAOM"], col=5)
-legend("topleft", c("POM","LMWC","AGG","MIC","MAOM"), col=1:5, lwd=1)
-}
-
-#Define function which plots the modeled CO2 emissions over time
-##CO2 emissions are cumulative, so we have to take the difference between 
-##timesteps to plot the CO2 emission rate
-plot.co2 <- function(base_output){
-plot(base_output[1:(dim(base_output)[1]-1),"year"], diff(base_output[,"CO2"]), 
-     xlab="year", ylab="co2 (gC m-2 d-1)", col=1, type="l")
-}
-
-#Make the plots
-plot.pools(base_output[,c("year","POM","LMWC","AGG","MIC","MAOM")])
-plot.co2(base_output)
-plot(base_output$year,base_output$TOC, xlab="year", ylab="pool (gC m-2)", 
-     col=1, type="l", ylim=c(0,max(base_output$TOC, na.rm=T)))
+# plot.pools <- function(output){
+# plot(output[,"year"],output[,"POM"], xlab="year", ylab="pool (gC m-2)", col=1, 
+#      type="l", ylim=c(0,max(output[,-1], na.rm=T)))
+# lines(output[,"year"],output[,"LMWC"], col=2)
+# lines(output[,"year"],output[,"AGG"], col=3)
+# lines(output[,"year"],output[,"MIC"], col=4)
+# lines(output[,"year"],output[,"MAOM"], col=5)
+# legend("topleft", c("POM","LMWC","AGG","MIC","MAOM"), col=1:5, lwd=1)
+# }
+# 
+# #Define function which plots the modeled CO2 emissions over time
+# ##CO2 emissions are cumulative, so we have to take the difference between 
+# ##timesteps to plot the CO2 emission rate
+# plot.co2 <- function(base_output){
+# plot(base_output[1:(dim(base_output)[1]-1),"year"], diff(base_output[,"CO2"]), 
+#      xlab="year", ylab="co2 (gC m-2 d-1)", col=1, type="l")
+# }
+# 
+# #Make the plots
+# plot.pools(base_output[,c("year","POM","LMWC","AGG","MIC","MAOM")])
+# plot.co2(base_output)
+# plot(base_output$year,base_output$TOC, xlab="year", ylab="pool (gC m-2)", 
+#      col=1, type="l", ylim=c(0,max(base_output$TOC, na.rm=T)))
 
 
 #*************************************************************

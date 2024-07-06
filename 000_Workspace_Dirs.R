@@ -1,4 +1,12 @@
-# Directory script for national_gwp
+#######################################
+# File: "000_Workspace_Dirs.R"
+# Author: "Adam Dixon"
+# Date: "June 2024"
+# Description: # Directory script for national_gwp
+#
+#######################################
+
+
 
 if (Sys.info()['sysname'] == "Linux"){ 
   if(Sys.info()['user']=='ap') {

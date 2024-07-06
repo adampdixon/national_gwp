@@ -1,7 +1,7 @@
 ######################################################
 #  Delete all the input data folders as they are not needed and troublesome during model reruns
 # Comment out results files when they are needed!!!
-# for Daycent and LDNDC
+# for Daycent, LDNDC, and Millennial
 # BE CAREFUL !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # A Dixon
 # Apr 24, 2024

@@ -87,7 +87,7 @@ print('*** Soil data setup County ***')
 
 
 
-soils<-fread(list.files(soil_data_path, full.names = TRUE, pattern = paste0("_", county_geoid, "_")))%>%
+soils<-fread(input = file.path(soil_data_path, paste0("GEOID_", county_geoid, "_gNATSGO.csv")))%>%
   select(-GEOID)
 
 # tell Debjani!!!! Murray County georgia had an erroneous pH value as well as really strange values overall

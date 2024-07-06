@@ -527,14 +527,14 @@ Maize,5,cover_legume,0,2022:2022,2022,2022,,till,10-29,,,0.005,,,,,covermixrotat
 Maize,5,cover_legume,0,2022:2022,2022,2022,,plant,11-01,COWP,120,,,,yes,cowp,covermixrotation
 ,,,,,,,,,,,,,,,,,
 Maize,5,cover_legume,0,2023:2050,2023,2050,,harvest,04-20,COWP,100,,,80,yes,cowp,covermixrotation
-Maize,5,cover_legume,0,2023:2051,2023,2051,,till,04-21,,,0.11,,,,,covermixrotation
-Maize,5,cover_legume,0,2023:2052,2023,2052,,fertilize,05-01,,,,168,,,,covermixrotation
-Maize,5,cover_legume,0,2023:2053,2023,2053,,till,04-21,,,0.005,,,,,covermixrotation
-Maize,5,cover_legume,0,2023:2054,2023,2054,,plant,05-06,FOCO,120,,,,no,foco,covermixrotation
-Maize,5,cover_legume,0,2023:2055,2023,2055,,harvest,10-23,FOCO,,,,0.1,no,foco,covermixrotation
-Maize,5,cover_legume,0,2023:2056,2023,2056,,till,10-28,,,0.11,,,,,covermixrotation
-Maize,5,cover_legume,0,2023:2057,2023,2057,,till,10-29,,,0.005,,,,,covermixrotation
-Maize,5,cover_legume,0,2023:2058,2023,2058,,plant,11-01,COWP,120,,,,yes,cowp,covermixrotation
+Maize,5,cover_legume,0,2023:2050,2023,2050,,till,04-21,,,0.11,,,,,covermixrotation
+Maize,5,cover_legume,0,2023:2050,2023,2050,,fertilize,05-01,,,,168,,,,covermixrotation
+Maize,5,cover_legume,0,2023:2050,2023,2050,,till,04-21,,,0.005,,,,,covermixrotation
+Maize,5,cover_legume,0,2023:2050,2023,2050,,plant,05-06,FOCO,120,,,,no,foco,covermixrotation
+Maize,5,cover_legume,0,2023:2050,2023,2050,,harvest,10-23,FOCO,,,,0.1,no,foco,covermixrotation
+Maize,5,cover_legume,0,2023:2050,2023,2050,,till,10-28,,,0.11,,,,,covermixrotation
+Maize,5,cover_legume,0,2023:2050,2023,2050,,till,10-29,,,0.005,,,,,covermixrotation
+Maize,5,cover_legume,0,2023:2050,2023,2050,,plant,11-01,COWP,120,,,,yes,cowp,covermixrotation
 ,,,,,,,,,,,,,,,,,
 Maize,6,cover_notill_cover_mix,0,2022:2022,2022,2022,Go through full two year rotation,plant,01-01,SRAPE,100,,,,yes,srape,covermixrotation
 Maize,6,cover_notill_cover_mix,0,2022:2022,2022,2022,,plant,01-01,COWP,100,,,,yes,cowp,covermixrotation

@@ -15,6 +15,17 @@ library(dplyr)
 #######################################
 
 
+#######################################
+# These are core Daycent, LDNDC, Millennial table outputs to make sure they are consistent, other model specific columns are also outputted. See Results script.
+annual_output_columns<-c('year', 'scenario_name', 'mgmt_scenario_num', 'climate_scenario_num', 'model_name', 
+                         'SOC_Mghayr', 'CH4Emissions_ghayr', 'N2OEmissions_ghayr', 'CO2resp_ghayr')
+
+Mill_annual_output_columns<-c('year', 'scenario_name', 'mgmt_scenario_num', 'climate_scenario_num', 'model_name', 'SOC_Mghayr', 'CO2resp_ghayr')
+
+daily_outputs_columns<-c('year', 'dayofyear','scenario_name', 'mgmt_scenario_num', 'climate_scenario_num', 'model_name', 
+                         'SOC_Mgha', 'CH4Emissions_ghaday', 'N2OEmissions_ghaday', 'CO2resp_gha')
+
+
 
 
 experiment_start_date <- "1850-01-01" # for LDNDC
@@ -27,22 +38,20 @@ wth_path <- paste0("Data/County/Weather/")
 daycent_path <- paste0("Daycent/",site_name,"/")
 daycent_path2<-file.path(master_path, 'Daycent' ,site_name)
 
-
-
-
-
 #######################################
 # Create LDNDC dir
-if(identical(run_LDNDC, TRUE)) {
+
 dndc_path <- paste0("LDNDC/ldndc-1.36.linux64/projects/",site_name,"/")
-unlink(dndc_path, recursive = TRUE)
-dir.create(file.path(dndc_path))
+if(identical(results_only, FALSE)){
+  # unlink(dndc_path, recursive = TRUE) # Do we need to delete?
+  dir.create(file.path(dndc_path))
 }
+
 #######################################
 # Create Millennial dir
 if(identical(run_Millennial, TRUE)) {
   mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
-  unlink(mill_path, recursive = TRUE)
+  # unlink(mill_path, recursive = TRUE)
   dir.create(file.path(mill_path))
   
   copy_from_<-file.path("Millennial/R/simulation/Millennial copy files")
@@ -65,7 +74,7 @@ print("Copying over KBS 'Daycent model' files --")
 copy_from_ <-file.path(master_path, 'Daycent', 'KBS_4copy2')
 copy_to_ <-daycent_path2
 
-if(length(list.files(copy_to_))>11) { # There are 12 daycent files to copy over, so this is a good threshold
+if(length(list.files(copy_to_))>11) { # There are 12 daycent files to copy over, so this is a good threshold. Not a great solution though.
   print("Site daycent folder already exists. Skipping copy.")
 } else {
   
