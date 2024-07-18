@@ -7,8 +7,13 @@
 #
 #######################################
 
-source('/home/ap/Documents/GitHub/national_gwp/000_Workspace_Dirs.R', local = TRUE)
-
+if (Sys.info()['sysname'] == "Linux"){ 
+  if(Sys.info()['user']=='ap') {
+    source('/home/ap/Documents/GitHub/national_gwp/000_Workspace_Dirs.R', local = TRUE)
+  } else {
+    source('/glade/derecho/scratch/apdixon/national_gwp/000_Workspace_Dirs.R', local = TRUE)
+  }
+}
 
 # TODOS
 # data exploration
@@ -27,6 +32,18 @@ source(file.path(master_path, 'data_explore', 'climate_input_plots_county.R'))
 
 # get model data for data visualization
 
-
 # output ghg boxplots, histograms, line graphs, maps
+source(file.path(master_path, 'data_explore', 'All_models_national_results_yearly_plots.R'))
+create_national_model_linegraphs(crop='Maize')
+create_national_model_linegraphs(crop='Soybean')
+create_national_model_linegraphs(crop='Cotton')
+create_national_model_linegraphs(crop='Wheat')
+create_national_model_linegraphs(crop='Rotation')
+
+# Maps
+
+
+
+
+
 

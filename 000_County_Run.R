@@ -15,27 +15,28 @@ args <- commandArgs(trailingOnly = TRUE)
 cat("********************************\n")
 cat("********************************\n")
 cat("******** FLAGS etc *****************\n")
-del_input_files<-FALSE # deletes files that results tables are made from in national_gwp directory. Important for directory space management.
-results_only=TRUE # only results, works for Daycent and LDNDC, note all run flags must be opposite of this TRUE or FALSE
-run_Daycent=FALSE 
-run_LDNDC=FALSE
-run_Millennial=FALSE
-input_data_plots=TRUE # climate plots
+del_input_files<-FALSE # deletes files that results tables are made from in national_gwp directory. Important for directory space management when saving files to GLADE.
+results_only=FALSE # only results, works for Daycent and LDNDC, note all run flags must be opposite of this TRUE or FALSE
+
+# Run flags for models. If all FALSE, then input climate and soil data will be loaded in global environment.
+run_Daycent=TRUE 
+run_LDNDC=TRUE
+run_Millennial=TRUE
+
+data_plots=FALSE # county level climate and results plots
+
 cat("********************************\n")
 cat("********************************\n")
 
 # county_numbers<-296:306   #295:3100
-# crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
-crops_ <- c('Maize') # Crops
+crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
+# crops_ <- c('Maize') # Crops
 
 # mgmt_scenario_nums <- 1:1 # Management scenarios
 mgmt_scenario_nums <- 1:6 # 1:6 Management scenarios 1:6
 
 # climate scenarios
-clim_nums <- 1:1 #c(1:2), can be 1:2
-
-
-
+clim_nums <- 1:2 #c(1:2), can be 1:2
 
 cat("************************************\n")
 cat("************************************\n")
@@ -49,7 +50,7 @@ if (Sys.info()['sysname'] == "Linux"){
 
     args=(commandArgs(TRUE))
     
-    county_number<-1 #args[2] # county number changes row selected in county_data
+    county_number<-args[2] # county number changes row selected in county_data
     
     Test <- TRUE # if TRUE, only run county, filtered below
     # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
@@ -100,7 +101,7 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 # These GEOIDs were the test counties. They are spread around the US. Georgia, Kansas, Nebraska, Pennsylvania, etc.
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(20073)) #c(31181, 13023, 13213, 20073, 42053, 1075))
+    filter(GEOID %in% c(31181, 13023, 13213, 20073, 42053, 1075))
 }
 
 # county_data<-county_data[county_data$GEOID==county_number,]

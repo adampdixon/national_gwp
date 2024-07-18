@@ -133,7 +133,7 @@ base_output <- as.data.frame(Run_Model(base_inputdata,derivs_V2_MM,parameters,
                                   state=c(steadystate$y, CO2=0)))
 base_output$year <- year(base_input_raw$date)
 base_output$date <- base_input_raw$date
-base_output$TOC <- base_output$POM+base_output$LMWC+base_output$AGG+base_output$MIC+base_output$MAOM
+base_output$TOC <- base_output$POM + base_output$LMWC + base_output$AGG + base_output$MIC + base_output$MAOM
 
 write.csv(base_output, file=paste0("base_out_",scenario_name,".csv"),row.names = F)
 

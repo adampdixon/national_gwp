@@ -42,9 +42,8 @@ Solve_Model  <- function(inputdata,derivs,parameters,calc_eigens=0,
   print("Starting Solve_Model")
   
   SStime = 1000*365 #time at which steady state solution is evaluated
-  # AD changed from 1000 to 100 because of NA values the 70Kth time
   
-  print(paste0("steady state time - SStime: ", SStime, " years "))
+  print(paste0("steady state time - SStime: ", SStime, " years ")) # is this correct?
   
   #Define constant forcing functions
   forc_st <- approxfun(1:SStime, rep(mean(inputdata$forc_st),SStime)) #temperature input function

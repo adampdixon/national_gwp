@@ -16,17 +16,17 @@ library(dplyr)
 
 
 #######################################
-# These are core Daycent, LDNDC, Millennial table outputs to make sure they are consistent, other model specific columns are also outputted. See Results script.
-annual_output_columns<-c('year', 'scenario_name', 'mgmt_scenario_num', 'climate_scenario_num', 'model_name', 
+# These are core Daycent, LDNDC, Millennial table outputs. Placing here to make sure they are consistent, other model specific columns are also outputted. See Results script.
+annual_output_columns<-c('year', 'GEOID', 'scenario_name', 'mgmt_scenario_num', 'climate_scenario_num', 'model_name', 
                          'SOC_Mghayr', 'CH4Emissions_ghayr', 'N2OEmissions_ghayr', 'CO2resp_ghayr')
 
-Mill_annual_output_columns<-c('year', 'scenario_name', 'mgmt_scenario_num', 'climate_scenario_num', 'model_name', 'SOC_Mghayr', 'CO2resp_ghayr')
-
-daily_outputs_columns<-c('year', 'dayofyear','scenario_name', 'mgmt_scenario_num', 'climate_scenario_num', 'model_name', 
+daily_outputs_columns<-c('year', 'GEOID', 'dayofyear','scenario_name', 'mgmt_scenario_num', 'climate_scenario_num', 'model_name', 
                          'SOC_Mgha', 'CH4Emissions_ghaday', 'N2OEmissions_ghaday', 'CO2resp_gha')
 
+Mill_annual_output_columns<-c('year', 'GEOID', 'scenario_name', 'mgmt_scenario_num', 'climate_scenario_num', 'model_name', 'SOC_Mghayr', 'CO2resp_ghayr')
 
-
+Mill_daily_output_columns<-c('year', 'GEOID', 'dayofyear', 'scenario_name', 'mgmt_scenario_num', 'climate_scenario_num', 'model_name', 'SOC_Mgha', 'CO2resp_gha')
+#######################################
 
 experiment_start_date <- "1850-01-01" # for LDNDC
 
@@ -108,4 +108,31 @@ for (fut_climate in clim_nums) { # climate scenarios
 }
 
 
+
+# Think about putting these in a separate data vis script
+
+
+
+
+
+# Run county graph function
+if(identical(data_plots, TRUE)){
+  # check if files are already there
+  if(file.exists(file.path(figs_input_data, paste0(site_name, "_input_climate_figs.png")))){
+    # Run climate graph
+    source(file.path('data_explore', 'county_climate_viz.R'), local=TRUE) # create climate plots 
+  }
+  # check if files are already there
+  if(file.exists(file.path(output_figs, paste0('GEOID_', county_geoid,'_model_results_', cr, ".png")))){
+    # Add county graph function
+    source(file.path('data_explore', 'All_models_county_only_yearly_plots.R'), local=TRUE) # create graph plots
+    for (c in crops_){
+      print(c)
+      # At end of crops loop, create output graphs
+      try(create_model_linegraphs(crop = c))
+  
+      Sys.sleep(5) # wait 5 seconds for plot to be made
+    }
+  }
+}
 

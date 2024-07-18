@@ -1,10 +1,10 @@
 # ---
 # title: "9_Results_Millennial-setup.R"
-# author: "Ellen Maas"
-# date: "8/30/2022"
+# author: "Ellen Maas and then Adam Dixon"
+# date: "07/14/2024"
 # output: html_document
 
-print(paste0("Starting 9_Results_Millennial-setup.R"))
+print(paste0("Starting 9_Results_Millennial-setup_County.R"))
 
 library(readxl)
 #library(plotly)
@@ -20,14 +20,15 @@ library(ggplot2)
 
 # mill_baseinput_filename <- "siteenviron_base_in.txt" # already in global environment
 
-
+# units from Abromoff et al 2022
 # POM -   particulate organic matter g C m− 2
 # LMWC -  low molecular weight carbon g C m− 2
 # AGG -   aggregate carbon g C m− 2
 # MIC -   microbial biomass g C m− 2
 # MAOM -  mineral-associated organic matter g C m− 2
 # CO2 -   carbon dioxide production g C m− 2 d− 1
-# TOC -   total organic carbon? ? kg C m− 2
+# TOC -   total organic carbon? ? g C m− 2 because it is calculated as 
+  # POM + LMWC + AGG + MIC + MAOM
 
 
 #*************************************************************
@@ -36,12 +37,19 @@ library(ggplot2)
 
 # SOC to 25 cm
 ## DAILY ##
+# This is everything we're reporting now. Leaving the below in case helpful as outputs are refined
 mill_base_df_raw <- fread(file=paste0(mill_path,"base_out_",scenario_name,".csv"))%>%
-  mutate(SOC_Mgha=TOC/100,
-         CO2resp_gha=CO2*10, # g m2 to kg ha
+  mutate(SOC_Mgha=TOC*0.01, # g m2 to Mg ha
+         CO2resp_gha=CO2*0.01, # g m2 to Mg ha
          mgmt_scenario_num = mgmt_scenario_num, 
-         climate_scenario_num = clim_scenario_num)%>%
-  select(Mill_annual_output_columns, everything())
+         climate_scenario_num = clim_scenario_num,
+         scenario_name = scenario_name,
+         model_name = 'Millennial',
+         dayofyear = yday(date),
+         GEOID = county_geoid)%>%
+  select(all_of(Mill_daily_output_columns), everything())
+
+
 # mill_scen_df_raw <- read.csv(file=paste0(mill_path,"scenario_out_",scenario_name,".csv"))
 
 # limit future output to end of future period
@@ -118,14 +126,22 @@ fwrite(mill_base_df_raw,file=file.path(results_path, mill_daily_out))
 #*
 #**********************************************************************
 
-# write out results for use later in ensemble results
-output_annual_data <- mill_base_df_raw%>%
+# write out results for use in reporting
+output_annual_data_1 <- mill_base_df_raw%>%
   group_by(year)%>%
-  summarize(SOC_Mghayr=sum(SOC_Mgha),
-            CO2resp_ghayr=sum(CO2resp_gha))%>%
-  mutate(mgmt_scenario_num = mgmt_scenario_num,
-         climate_scenario_num = clim_scenario_num)%>%
-  select(Mill_annual_output_columns, everything())
+  summarize(CO2resp_ghayr=sum(CO2resp_gha))
+
+output_annual_data_2 <- mill_base_df_raw%>%
+  filter(dayofyear==365)%>% # only want the last day of the year
+  mutate(SOC_Mghayr = SOC_Mgha)%>%
+  select(-CO2resp_gha) # remove C02 resp since it's above
+
+# Merge tables together
+
+output_annual_data <- merge(output_annual_data_1,output_annual_data_2,by="year")%>%
+  mutate(model_name = 'Millennial',
+         GEOID = county_geoid)%>%
+  select(all_of(Mill_annual_output_columns), everything())
 
 fwrite(output_annual_data,file=file.path(results_path, mill_annual_out))
 

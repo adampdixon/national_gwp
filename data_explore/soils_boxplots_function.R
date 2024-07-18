@@ -25,13 +25,14 @@ if (Sys.info()['sysname'] == "Linux"){
 soils_boxplots<-function(){
   
   print("starting soil box plots")
+  print("reading all counties soil data")
   
   tbl_fread <- 
     list.files(soil_data_path, full.names = T, pattern = '.csv') %>% 
     map_df(~fread(.))%>%
     mutate(order = rep(1:14, 9))
   
-  # This same repetoire for ph is used in main model script
+  # This same repertoire for ph is used in main model script
   tbl_fread<-mutate(tbl_fread, pH = ifelse(pH > 7.5, NA, pH)) # remove pH values greater than 7.5, some are obviously in error
   tbl_fread<-na.locf(tbl_fread) # This sets NA values to the last non-NA value
   
@@ -92,9 +93,11 @@ soils_boxplots<-function(){
                    Clay_plot, Sand_plot, 
                    Silt_plot, SOC_plot, ncol = 1, nrow = 6)
   
-  ggsave(file = file.path(national_figs, paste0('soil_boxplots', date, '.png')), plot=out, dpi=300, width = 8, height = 8)
+  soil_file_out<-file.path(national_figs, paste0('soil_boxplots', date, '.png'))
   
-  print("soil plots saved to")
+  ggsave(file = soil_file_out, plot=out, dpi=300, width = 8, height = 8)
+  
+  print(paste("soil plots saved to", soil_file_out))
   # print(national_figs)
   
 }

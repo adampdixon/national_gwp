@@ -16,6 +16,7 @@ library(broom)
 # tic()
 
 #*********************************************************************
+#*Daycent daily outputs are separated into soil layers
 #soil layers to report
 nlayers <- 12 # beyond the surface layer, so 13 layers total, calcs below will start with 0 for surface layer
 #**********************************************************************
@@ -380,6 +381,7 @@ output_annual_data$model_name<- 'Daycent'
 output_annual_data$scenario_name<- scenario_name2
 output_annual_data$climate_scenario_num<- clim_scenario_num
 output_annual_data$mgmt_scenario_num<- mgmt_scenario_num
+output_annual_data$GEOID<- county_geoid
 
 # Doing a dplyr select instead of the below
 output_annual_data2<-output_annual_data%>%
@@ -438,7 +440,8 @@ output_daily<-
   mutate(scenario_name = scenario_name2,
          mgmt_scenario_num = mgmt_scenario_num,
          climate_scenario_num = clim_scenario_num,
-         model_name = 'Daycent'
+         model_name = 'Daycent',
+         GEOID = county_geoid
   )
 
 output_daily2<-output_daily%>%

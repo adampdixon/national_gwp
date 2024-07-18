@@ -375,7 +375,8 @@ output_annual_data <-
   mutate(scenario_name = scenario_name2,
          climate_scenario_num = clim_scenario_num, # NOTE: climate_scenario)num vs "clim"_scenario_num
          mgmt_scenario_num = mgmt_scenario_num,
-         model_name = model_name)%>%
+         model_name = model_name,
+         GEOID = county_geoid)%>%
   select(annual_output_columns, grain_yield_kgm2:orgC_25cm_Mgha)
   
 colnames(output_annual_data)
@@ -410,7 +411,8 @@ output_daily_data<-left_join(LDNDCGN_ghaday, select(LDNDCGM_ghaday, -year), by=c
   mutate(scenario_name = scenario_name2,
          climate_scenario_num = clim_scenario_num,
          model_name = model_name,
-         mgmt_scenario_num = mgmt_scenario_num)%>%
+         mgmt_scenario_num = mgmt_scenario_num,
+         GEOID = county_geoid)%>%
   select(daily_outputs_columns, cum_N2O_gha:wfps)
 
 colnames(output_daily_data)

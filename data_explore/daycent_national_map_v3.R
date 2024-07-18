@@ -1,35 +1,37 @@
 # Daycent results at county level mapped out
 # January 15 2023
 # Set workspace
-if (Sys.info()['sysname'] == "Linux"){ 
-  if(Sys.info()['user']=='ap') {
-    master_path<-'/home/ap/Documents/GitHub/national_gwp'
-    results_path<-'/home/ap/Daycent_results'
-    crop_area_path<-file.path(master_path, 'Data', 'County_start', 'main_county_crops.csv')
-    output_figs<-'/home/ap/figs'
-    county_number<-1
-    Test <- TRUE # if TRUE, only run county, filtered below
-    # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
-    Glade=FALSE
-    print("************************************")
-    print("*****Using linux mint *********")
-    cat("date and time are ")
-    print(Sys.time())
-  } else {
-    master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
-    results_path<-'/glade/derecho/scratch/apdixon/national_gwp_results'
-    crop_area_path<-file.path(master_path, 'Data', 'County_start', 'main_county_crops.csv')
-    output_figs<-'/glade/derecho/scratch/apdixon/national_gwp_figs'
-    Test <- FALSE # if TRUE, only run county, filtered below
-    # county_number<-args[2]
-    Glade=TRUE
-    print("************************************")
-    print("*****Using NCAR *********")
-    print("***** SCRATCH SPACE *********")
-    cat("date and time are ")
-    print(Sys.time())
-  }
-}
+# if (Sys.info()['sysname'] == "Linux"){ 
+#   if(Sys.info()['user']=='ap') {
+#     master_path<-'/home/ap/Documents/GitHub/national_gwp'
+#     results_path<-'/home/ap/Daycent_results'
+#     crop_area_path<-file.path(master_path, 'Data', 'County_start', 'main_county_crops.csv')
+#     output_figs<-'/home/ap/figs'
+#     county_number<-1
+#     Test <- TRUE # if TRUE, only run county, filtered below
+#     # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
+#     Glade=FALSE
+#     print("************************************")
+#     print("*****Using linux mint *********")
+#     cat("date and time are ")
+#     print(Sys.time())
+#   } else {
+#     master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
+#     results_path<-'/glade/derecho/scratch/apdixon/national_gwp_results'
+#     crop_area_path<-file.path(master_path, 'Data', 'County_start', 'main_county_crops.csv')
+#     output_figs<-'/glade/derecho/scratch/apdixon/national_gwp_figs'
+#     Test <- FALSE # if TRUE, only run county, filtered below
+#     # county_number<-args[2]
+#     Glade=TRUE
+#     print("************************************")
+#     print("*****Using NCAR *********")
+#     print("***** SCRATCH SPACE *********")
+#     cat("date and time are ")
+#     print(Sys.time())
+#   }
+# }
+
+source('/home/ap/Documents/GitHub/national_gwp/000_Workspace_Dirs.R', local = TRUE)
 
 library(tigris)
 options(tigris_use_cache = TRUE)
@@ -56,7 +58,7 @@ date<-gsub("-", "", Sys.Date())
 
 national_map_all_scenarios<-function(Year_, Crop_, Output, map_type){
   
-    result<-list.files(output_figs, pattern = "csv", full.names = TRUE)%>%
+    result<-list.files(results_folder, pattern = "Daycent_annual", full.names = TRUE)%>%
       lapply(read.csv)%>%
       bind_rows()%>%
       as_tibble()%>%
@@ -182,6 +184,6 @@ for (mt in c('crop_yld', 'SOC')) {
   print(mt)
   for (i in c('Soybean', 'Wheat', 'Cotton', 'Maize', 'Rotation')){
     print(i)
-    national_map_all_scenarios(Year_ = 2050, Crop_ = i, Output = output_figs, map_type = mt)
+    national_map_all_scenarios(Year_ = 2050, Crop_ = i, Output = results_folder, map_type = mt)
   }
 }

@@ -165,7 +165,7 @@ names(clim_data)<-c("year","dayofyear","rain_mm","tavg","maxt_C","mint_C","radn_
 nrow(na.omit(clim_data))
 nrow(clim_data)
 
-# remove NAs
+# remove NAs - fill with last value
 clim_data<-na.locf(clim_data)
 
 nrow(clim_data)

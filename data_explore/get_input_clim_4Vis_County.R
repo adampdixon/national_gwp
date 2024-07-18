@@ -127,7 +127,8 @@ fwrite(county_climate_low_change, file.path(national_figs, paste0('county_climat
 
 fwrite(county_climate_high_change, file.path(national_figs, paste0('county_climate_high_change_', date, '.csv')))
 
-print('done')
+print('saving csvs to national_figs')
+print(national_figs)
 
 
 

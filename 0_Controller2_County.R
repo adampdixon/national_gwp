@@ -26,23 +26,33 @@ site_id <- 0 # this is important for LDNDC management file for some reason
 ## These are used in multiple functions.
 source(paste0("0_Observations_and_constants_County.R"), local = TRUE)
 
-  
+#*************************************************************
+#*************************************************************
+#* Load soils and climate data for Daycent and LDNDC
+# Note: Soybeans have no yield results prior to 1900 because they weren't grown in US and the model is set up for corn during that time
+
+# Soil data
+source("2_Create_soil_data-setup2_County.R", local = TRUE) # some soil vars needed for Daycent and LDNDC, so keeping out of loop below
+
+print(paste0("*************Creating soils and climate data for Daycent and LDNDC ****************"))
+
+# daycent climate
+source('1_create_county_climate_wth_file_County.R', local = TRUE)
+source('1_Create_weather_input_files-Daycent_County_v2.R', local = TRUE)
+
+source("1_Create_weather_input_files-LDNDC_County.R", local = TRUE)
+source("2_Create_soil_data-LDNDC_County.R", local = TRUE)
+#*************************************************************
+#*#*************************************************************
+
+
 #*************************************************************
 #*************************************************************
 # Run models --------------------------------------------------------------
 #*************************************************************
 #*************************************************************
-#*************************************************************
 
-
-# Note: Soybeans have no yield results prior to 1900 becuase they weren't grown in US and the model is set up for corn during that time
-
-# Soil data
-source("2_Create_soil_data-setup2_County.R", local = TRUE) # some soil vars needed for Daycent and LDNDC, so keeping out of loop below
-
-
-
-# This for loop sets up mgmt event files for each crop and mgmt scenario for both Daycent and LDNDC.
+# This for loop sets up mgmt event files for each crop and mgmt scenario for Daycent, LDNDC, and Millennial
 # It then runs the models. 'If' statements are included to control which models run and to check if output files already exist, which was helpful for
 # development and debugging.
 for (c in crops_){
@@ -60,12 +70,13 @@ for (c in crops_){
       crop<-c
       mgmt_scenario_num<-m
       scenario_name <- paste0(clim_scenario_num,"_", m)
-      scenario_name2<-paste0(scenario_name, "_", crop)
+      scenario_name2<-paste0(scenario_name, "_", crop) # scenario code and crop name, used for output file 
       
       # output results path for Daycent
       daycent_annual_out<-file.path(results_path, paste0("Daycent_annual_results_compilation_", scenario_name2,".csv"))
       daycent_daily_out<-file.path(results_path, paste0("Daycent_daily_results_compilation_",scenario_name2,".csv"))
       
+
       
       if(identical(run_Daycent, TRUE)) {
         
@@ -75,11 +86,7 @@ for (c in crops_){
           print(paste0("*************Daycent results already exist for: ", scenario_name2, " ... skipping...****************"))
           # next
         } else{
-          
-          # daycent climate
-          source('1_create_county_climate_wth_file_County.R', local = TRUE)
-          source('1_Create_weather_input_files-Daycent_County_v2.R', local = TRUE)
-          
+
           print("*****writing site data Daycent")
           # Site data - need this first before soil_site
           source("2_1_Create_site_file-Daycent_County.R", local = TRUE)
@@ -115,6 +122,8 @@ for (c in crops_){
       ldndc_annual_out<-file.path(results_path, paste0("LDNDC_annual_results_compilation_", scenario_name2,".csv"))
       ldndc_daily_out<-file.path(results_path, paste0("LDNDC_daily_results_compilation_",scenario_name2,".csv"))
       
+
+      
       if(identical(run_LDNDC,TRUE)) {
         
         if(file.exists(ldndc_daily_out)){ 
@@ -122,11 +131,7 @@ for (c in crops_){
           print(paste0("*************LDNDC results already exist for: ", scenario_name2, " ... skipping...****************"))
           # next
         } else{
-          print(paste0("*************Creating soils and climate data for LDNDC for: ", scenario_name2, "****************"))
-          
-          source("1_Create_weather_input_files-LDNDC_County.R", local = TRUE)
-          source(file.path('data_explore', 'county_climate_viz.R'), local=TRUE) # create climate plots 
-          source("2_Create_soil_data-LDNDC_County.R", local = TRUE)
+
           
           print(paste0("*************running LDNDC for: ", scenario_name2, "****************"))
           print(paste0("*************Create_management_input_files-LDNDC_County: ", scenario_name2, "****************"))
@@ -143,36 +148,38 @@ for (c in crops_){
         
         } # end of run_LDNDC
       } # end of if statement checking if LDNDC model results already exist
+      
+      # milliennial output files
+      mill_daily_out<-paste0("Millennial_daily_results_compilation_",scenario_name2,".csv")
+      mill_annual_out<-paste0("Millennial_annual_results_compilation_",scenario_name2,".csv")
         
-     # Daycent has already been run, update results only. Useful for debugging.
-      if(identical(results_only, TRUE)){
-        print(paste0("*************generation results table for: ", scenario_name2, "****************"))
-        # Table generation script
-        source('9_Results_Daycent-setup_County.R', local = TRUE)
-        source('9_Results_LDNDC-setup_County.R', local = TRUE)
-      }
-
       if(identical(run_Millennial,TRUE)) {
         
-        # milliennial output files
-        mill_daily_out<-paste0("Millennial_daily_results_compilation_",scenario_name2,".csv")
-        mill_annual_out<-paste0("Millennial_annual_results_compilation_",scenario_name2,".csv")
+
         
         if(file.exists(file.path(results_path, mill_daily_out))){ 
           # & nrow(fread(model_path))> 200# # check if all rows have been reported; note this didn't work well
           print(paste0("*************Millennial results already exist for: ", scenario_name2, " ... skipping...****************"))
-          next
+          
         } else{
           print(paste0("*************Running Millenial for: ", scenario_name2, "****************"))
           # # Millennial
           source(paste0("3_Create_management_input_files-Millennial_County.R"), local = TRUE)
           source(paste0(mill_path,"run_Millennial.R"), local = TRUE)
           
-          # There doesn't seem to be any point to running results setup, expect to put the results into the results folder specifically and 
-          # not the Millenial folder
+          # There is very minimal processing to the millennial output.
           source(paste0("9_Results_Millennial-setup_County.R"), local = TRUE)
         } # end of if statement checking if Millennial model results already exist
       } # end of Millenial if statement
+      
+      # Daycent has already been run, update results only. Useful for debugging.
+      if(identical(results_only, TRUE)){
+        print(paste0("*************generation results table for: ", scenario_name2, "****************"))
+        # Table generation script
+        source('9_Results_Daycent-setup_County.R', local = TRUE)
+        source('9_Results_LDNDC-setup_County.R', local = TRUE)
+        source(paste0("9_Results_Millennial-setup_County.R"), local = TRUE)
+      }
     } # end of mgmt_scenario_nums loop 
   } # end of else statement if crop amount is less than 1 ha in county
 } # end of crops loop

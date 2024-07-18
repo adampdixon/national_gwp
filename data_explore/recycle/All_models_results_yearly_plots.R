@@ -3,7 +3,7 @@
 # Author: "Adam Dixon"
 # Date: "June 2024"
 # Description: This script generates a 5 across x 6 wide set of line graphs for each crop and scenario, showing model
-# outputs 1850-2050.
+# outputs 1850-2050. It is written to be run as the final set of operations after models have been run for a specific county.
 #
 #######################################
 # do a x axis with time

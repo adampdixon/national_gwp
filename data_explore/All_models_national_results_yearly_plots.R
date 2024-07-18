@@ -13,6 +13,7 @@
 
 
 
+
 if (Sys.info()['sysname'] == "Linux"){ 
   if(Sys.info()['user']=='ap') {
     source('/home/ap/Documents/GitHub/national_gwp/000_Workspace_Dirs.R', local = TRUE)
@@ -29,54 +30,75 @@ library(reshape2)
 library(gridExtra)
 library(grid)
 library(data.table)
+library(zoo) # na.locf is used for NAs
 
 # this script has get model table functions
 source(file.path(master_path, 'data_explore', 'get_model_tables.R'), local = TRUE)
 
 
-create_model_linegraphs<-function(crop){
+create_national_model_linegraphs<-function(crop){
   # c(31181, 13023, 13213, 20073, 42053, 1075))
   
   cr<-crop # should be in global environment
   
   # Function from get_model_tables.R
-  county_df<-get_county_models_df(crops_to_get = cr, GEOID = county_geoid) # county_geoid in global env
+  county_df<-get_all_models_national_df(crops_to_get = cr)
   
-  output_figs<-file.path(results_path, 'data_and_figs')
+  output_figs<-file.path(national_figs)
   
   print('plotting')
   
+  ###########################################################################
   # MaizeYld_Mgha, SOC_Mgha, N2OEmissions_ghayr, CH4Emissions_ghayr
   
-  s1<-filter(county_df, mgmt_scenario_num == 1)
-  s2<-filter(county_df, mgmt_scenario_num == 2)
-  s3<-filter(county_df, mgmt_scenario_num == 3)
-  s4<-filter(county_df, mgmt_scenario_num == 4)
-  s5<-filter(county_df, mgmt_scenario_num == 5)
-  s6<-filter(county_df, mgmt_scenario_num == 6)
+  s1<-filter(county_df, mgmt_scenario_num == 1)%>%
+    group_by(year, model, climate_scenario)%>%
+    summarise_at(vars(SOC_Mghayr:CH4Emissions_ghayr, contains('Yld')), .funs = list(mean = mean, sd = sd))
+  s2<-filter(county_df, mgmt_scenario_num == 2)%>%
+    group_by(year, model, climate_scenario)%>%
+    summarise_at(vars(SOC_Mghayr:CH4Emissions_ghayr, contains('Yld')), .funs = list(mean = mean, sd = sd))
+  s3<-filter(county_df, mgmt_scenario_num == 3)%>%
+    group_by(year, model, climate_scenario)%>%
+    summarise_at(vars(SOC_Mghayr:CH4Emissions_ghayr, contains('Yld')), .funs = list(mean = mean, sd = sd))
+  s4<-filter(county_df, mgmt_scenario_num == 4)%>%
+    group_by(year, model, climate_scenario)%>%
+    summarise_at(vars(SOC_Mghayr:CH4Emissions_ghayr, contains('Yld')), .funs = list(mean = mean, sd = sd))
+  s5<-filter(county_df, mgmt_scenario_num == 5)%>%
+    group_by(year, model, climate_scenario)%>%
+    summarise_at(vars(SOC_Mghayr:CH4Emissions_ghayr, contains('Yld')), .funs = list(mean = mean, sd = sd))
+  s6<-filter(county_df, mgmt_scenario_num == 6)%>%
+    group_by(year, model, climate_scenario)%>%
+    summarise_at(vars(SOC_Mghayr:CH4Emissions_ghayr, contains('Yld')), .funs = list(mean = mean, sd = sd))
   
+  ###########################################################################
+  ###########################################################################
   gfg_plot <- function(df, result){
-    
-    # if rotation, name the crop yield rotation for both maize/soybeans
-    if(identical(cr, 'Rotation') & grepl("Yld_Mgha", result)){
-      df<-df%>%
-        mutate(RotationYld_Mgha = ifelse(is.na(MaizeYld_Mgha), SoybeanYld_Mgha, MaizeYld_Mgha))
-      
-      # check for, report, remove NAs
-      n<-sum(is.na(df$RotationYld_Mgha))
-      if(n>1){
-        print(paste(n, 'total NAs in RotationYld_Mgha', result))
-        df<-df%>%
-          na.locf(RotationYld_Mgha)
-      }
-      
-    }
+    # this function does some data postprocessing to get ready for plotting and then plots
     
     # remove millennial if it didn't output variable
     if (grepl("Yld_Mgha", result) | identical(result, 'N2OEmissions_ghayr') | identical(result, 'CH4Emissions_ghayr')){
       df<-df%>%
         filter(model != 'Millennial')
     }
+    
+    # if rotation, name the crop yield rotation for both maize/soybeans
+    if(identical(cr, 'Rotation') & grepl("Yld_Mgha", result)){
+      df<-df%>%
+        mutate(RotationYld_Mgha_mean = ifelse(is.na(MaizeYld_Mgha_mean), SoybeanYld_Mgha_mean, MaizeYld_Mgha_mean),
+               RotationYld_Mgha_sd = ifelse(is.na(MaizeYld_Mgha_sd), SoybeanYld_Mgha_sd, MaizeYld_Mgha_sd))%>%
+        select(year, model, climate_scenario, RotationYld_Mgha_mean, RotationYld_Mgha_sd)
+      
+      # check for, report, remove NAs
+      n<-sum(is.na(df$RotationYld_Mgha_mean))
+      if(n>1){
+        print(paste(n, 'total NAs in RotationYld_Mgha', result))
+        # df<-df%>%
+        #   na.locf(RotationYld_Mgha_mean)
+      }
+      
+    }
+    
+
     
     
     ##############################################################################
@@ -92,14 +114,10 @@ create_model_linegraphs<-function(crop){
       # as_tibble(df) # to check outputs
       
       # check for, report, remove NAs
-      n<-sum(is.na(select(df, contains('Yld_Mgha'))))
+      n<-sum(is.na(select(df, contains('Yld_Mgha_mean'))))
       if(n>1){
-        print(paste(n, ' total NAs in Yld_Mgha, replacing with previous value na.locf()'))
-        df<-df%>%
-          select(year, model, climate_scenario, contains('Yld_Mgha'))%>%
-          na.locf()
+        print(paste(n, ' total NAs in Yld_Mgha, if Soybean or Rotation this could be normal'))
       }
-      
       
       # get min max from county_df
       a<-select(county_df, contains('Yld_Mgha'))
@@ -107,12 +125,13 @@ create_model_linegraphs<-function(crop){
       
     }
     
+    
     ##############################################################################
     # N20
     if (identical(result, 'N2OEmissions_ghayr')){
       
       # check for, report, remove NAs
-      n<-sum(is.na(select(df, 'N2OEmissions_ghayr')))
+      n<-sum(is.na(select(df, 'N2OEmissions_ghayr_mean')))
       if(n>1){
         print(paste(n, ' total NAs in N2OEmissions_ghayr, replacing with previous value na.locf()'))
         df<-df%>%
@@ -132,7 +151,7 @@ create_model_linegraphs<-function(crop){
     if (identical(result, 'CH4Emissions_ghayr')){
       
       # check for, report, remove NAs
-      n<-sum(is.na(select(df, 'CH4Emissions_ghayr')))
+      n<-sum(is.na(select(df, 'CH4Emissions_ghayr_mean')))
       if(n>1){
         print(paste(n, ' total NAs in CH4Emissions_ghayr, replacing with previous value na.locf()'))
         df<-df%>%
@@ -162,11 +181,11 @@ create_model_linegraphs<-function(crop){
       # y_axis_<-seq(0, 100, by = 10)
       
       # check for, report, remove NAs
-      n<-sum(is.na(select(df, 'SOC_Mghayr')))
+      n<-sum(is.na(select(df, 'SOC_Mghayr_mean')))
       if(n>1){
         print(paste(n, ' total NAs in SOC_Mghayr, replacing with previous value na.locf()'))
         df<-df%>%
-          select(year, model, climate_scenario, SOC_Mghayr)%>%
+          select(year, model, climate_scenario, SOC_Mghayr_mean, SOC_Mghayr_sd)%>%
           na.locf()
       }
       
@@ -180,7 +199,7 @@ create_model_linegraphs<-function(crop){
     if (identical(result, 'CO2resp_ghayr')){
       
       # check for, report, remove NAs
-      n<-sum(is.na(select(df, 'CO2resp_ghayr')))
+      n<-sum(is.na(select(df, 'CO2resp_ghayr_mean')))
       if(n>1){
         print(paste(n, ' total NAs in CO2resp_ghayr, replacing with previous value na.locf()'))
         df<-df%>%
@@ -196,13 +215,23 @@ create_model_linegraphs<-function(crop){
     # print(y_axis_)
     ##############################################################################
     
+    result_m<-paste0(result, '_mean')
+    result_s<-paste0(result, '_sd')
+    
     # add model_climate column so ggplot can group by it
-    df2<-select(df, year, model, climate_scenario, all_of(result))%>%
+    df2<-select(df, year, model, climate_scenario, all_of(result_m), all_of(result_s))%>%
       mutate(model_climate = paste0(model, ' ', climate_scenario))
     
+    group.linecolors <- c(Daycent = "darkgreen", LDNDC = "red", Millennial ="blue")
+    # group.shadecolors <- c(Daycent = "lightgrey", LDNDC = "grey99", Millennial ="grey70")
+    
     p<-ggplot(df2) +
-      geom_line(aes(x=year, y=get(result), group = interaction(model, climate_scenario), 
+      geom_line(aes(x=year, y=get(result_m), group = interaction(model, climate_scenario), 
                     color = model, linetype = climate_scenario)) +
+      scale_color_manual(values=group.linecolors) +
+      geom_ribbon(aes(x =  year, y = get(result_m), ymin = get(result_m) - get(result_s), 
+                      ymax = get(result_m) + get(result_s), fill = model), alpha = .2) +
+      scale_fill_manual(values=group.linecolors) +
       geom_vline(xintercept=2022, color = 'gray20', linetype="twodash") +
       # scale_y_continuous(breaks = y_axis_) +
       scale_x_continuous(breaks = seq(1850, 2050, by = 20)) +
@@ -253,7 +282,7 @@ create_model_linegraphs<-function(crop){
   
   print('saving as grid.arrange object...')
 
-  title<-paste0(cr," -- ", county_name, ", ", state_name, " -- All models high/low radiative forcing climate scenarios")
+  title<-paste0(cr,"-- National Average -- All models high/low radiative forcing climate scenarios")
 
   left_justify<-.025 # setting as variable to make it easier to adjust
   
@@ -267,7 +296,7 @@ create_model_linegraphs<-function(crop){
                     nrow = 6,
                     top = textGrob(title,gp=gpar(fontsize=20,font=3)))
   
-  crop_out<-file.path(output_figs, paste0('GEOID_', county_geoid,'_model_results_', cr, ".png"))
+  crop_out<-file.path(output_figs, paste0('National_model_results_', cr,  "_", date, ".png"))
   
   ggsave(file = crop_out, plot=out, dpi=300, width = 20, height = 16)
   
