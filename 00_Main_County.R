@@ -31,7 +31,7 @@ Mill_daily_output_columns<-c('year', 'GEOID', 'dayofyear', 'scenario_name', 'mgm
 experiment_start_date <- "1850-01-01" # for LDNDC
 
 end_fut_period_year <- 2050
-max_fut_period_year <- 2050 # for LDNDC
+max_fut_period_year <- 2051 # for LDNDC, set to 2051 to make sure all processes are modeled through 2050
 
 wth_path <- paste0("Data/County/Weather/")
 

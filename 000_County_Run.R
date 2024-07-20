@@ -19,9 +19,9 @@ del_input_files<-FALSE # deletes files that results tables are made from in nati
 results_only=FALSE # only results, works for Daycent and LDNDC, note all run flags must be opposite of this TRUE or FALSE
 
 # Run flags for models. If all FALSE, then input climate and soil data will be loaded in global environment.
-run_Daycent=TRUE 
+run_Daycent=FALSE 
 run_LDNDC=TRUE
-run_Millennial=TRUE
+run_Millennial=FALSE
 
 data_plots=FALSE # county level climate and results plots
 
@@ -50,7 +50,7 @@ if (Sys.info()['sysname'] == "Linux"){
 
     args=(commandArgs(TRUE))
     
-    county_number<-args[2] # county number changes row selected in county_data
+    county_number<-1 #args[2] # county number changes row selected in county_data
     
     Test <- TRUE # if TRUE, only run county, filtered below
     # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
@@ -104,6 +104,7 @@ if(identical(Test, TRUE)){
     filter(GEOID %in% c(31181, 13023, 13213, 20073, 42053, 1075))
 }
 
+# Get first row in table
 # county_data<-county_data[county_data$GEOID==county_number,]
 county_data<-county_data[county_number,]
 
