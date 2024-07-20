@@ -276,5 +276,11 @@ get_county_models_df<-function(crops_to_get='All', GEOID){
     } # end of scenario loop
   } # end of crop loop
   
+  if(identical(write, TRUE)){
+    fwrite(crop_scenario_df, paste0('Results_National_', cr, '_scenario_', s, '.csv'))
+  }
+  
+  
+  
   return(crop_scenario_df)
 } # end of function

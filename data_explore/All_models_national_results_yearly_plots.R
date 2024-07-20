@@ -296,7 +296,7 @@ create_national_model_linegraphs<-function(crop){
                     nrow = 6,
                     top = textGrob(title,gp=gpar(fontsize=20,font=3)))
   
-  crop_out<-file.path(output_figs, paste0('National_model_results_', cr,  "_", date, ".png"))
+  crop_out<-file.path(output_figs, paste0('Linegraph_National_model_results_', cr,  "_", date, ".png"))
   
   ggsave(file = crop_out, plot=out, dpi=300, width = 20, height = 16)
   

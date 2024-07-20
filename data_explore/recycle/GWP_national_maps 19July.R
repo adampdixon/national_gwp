@@ -1,10 +1,6 @@
-#######################################
-# File: "GWP_national_maps.R"
-# Author: "Adam Dixon"
-# Date: "July 2024"
-# Description: Model results at county level mapped out for the whole US.
-#
-#######################################
+# Model results at county level mapped out
+# July 2024
+# Set workspace
 
 if (Sys.info()['sysname'] == "Linux"){ 
   if(Sys.info()['user']=='ap') {
@@ -45,12 +41,8 @@ print(date)
 
 
 
-national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
+national_map_all_scenarios<-function(Year_, Crop_, Output, map_type){
   
-  type = map_type
-  
-  
-
   # Function from get_model_tables.R
   county_df<-get_all_models_national_df(crops_to_get = Crop_)
   
@@ -108,7 +100,7 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
   }
   
   if(map_type=='CO2'){
-    breaks_df<-select(df, contains("CO2"))
+    breaks_df<-select(df, contains("CO@"))
     breaks<-unlist(breaks_df[,1])
     breaks_<-round(c(min(breaks), mean(breaks), max(breaks)),1)
     map_var<-'CO2resp_ghayr'
@@ -129,11 +121,9 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
   }
  
   ##############################################################################
-  map_out<-function(type, breaks, prac_scen, clim_scen, model){
+  map_out<-function(type, breaks, prac_scen, clim_scen){
     
-    df2<-filter(df, mgmt_scenario_num == prac_scen, 
-                climate_scenario == climate_scenario,
-                model == model)
+    df2<-filter(df, mgmt_scenario_num == prac_scen, climate_scenario == climate_scenario)
     
     text<-ifelse(df2$mgmt_scenario_num[1]==1, "Monocropping", 
                  ifelse(df2$mgmt_scenario_num[1]==2, "No-till",
@@ -148,31 +138,31 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
     clim_title<-ifelse(clim_scen=="low", " low clim.", " high clim.")
     
     if(prac_scen<2 & type=='Yld'){
-      yield_title<-paste0(model, ' ', Crop_, " yield (Mg ha yr) - ", Year_, clim_title)
+      yield_title<-paste0("County ", Crop_, " yield (Mg ha yr) - ", Year_, clim_title)
       print(yield_title)
       
     }
     
     if(prac_scen<2 & type=='SOC'){
-      yield_title<-paste0(model, ' ', Crop_, " SOC (Mg ha yr) - ", clim_title)
+      yield_title<-paste0("Daycent county ", Crop_, " field SOC (Mg ha yr) - ", clim_title)
       print(yield_title)
       
     }
     
     if(prac_scen<2 & type=='CH4'){
-      yield_title<-paste0(model, ' ', Crop_, " CH4 (g ha yr) - ", clim_title)
+      yield_title<-paste0("Daycent county ", Crop_, " field CH4 (g ha yr) - ", clim_title)
       print(yield_title)
 
     }
     
     if(prac_scen<2 & type=='N2O'){
-      yield_title<-paste0(model, ' ', Crop_, " ", 'N2O (g ha yr) - ', clim_title)
+      yield_title<-paste0("Daycent county ", Crop_, " field N2) (g ha yr) - ", clim_title)
       print(yield_title)
       
     }
     
     if(prac_scen<2 & type=='CO2'){
-      yield_title<-paste0(model, ' ', Crop_, " ", " CO2 (g ha yr) - ", clim_title)
+      yield_title<-paste0("Daycent county ", Crop_, " field SOC (g ha yr) - ", clim_title)
       print(yield_title)
       
     }
@@ -204,59 +194,49 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
   } # end of map function
   ##############################################################################
   
-  scen_d_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, model = 'Daycent')
-  scen_d_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, model = 'Daycent')
-  scen_d_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, model = 'Daycent')
-  scen_d_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, model = 'Daycent')
-  scen_d_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, model = 'Daycent')
-  scen_d_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, model = 'Daycent')
-
-  scen_l_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, model = 'LDNDC')
-  scen_l_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, model = 'LDNDC')
-  scen_l_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, model = 'LDNDC')
-  scen_l_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, model = 'LDNDC')
-  scen_l_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, model = 'LDNDC')
-  scen_l_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, model = 'LDNDC')
+  scen_1_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = 'low')
+  scen_2_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = 'high')
   
-  crop_out<-file.path(Output, paste0('Maps_', Crop_, "_" ,map_type,"_maps.png"))
+  scen_1_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = 'low')
+  scen_2_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = 'high')
   
-  # Outputs without Millennial
-  if (identical("Yld", map_type) | identical(map_type, 'N2O') | identical(map_type, 'CH4')){
-    out<-arrangeGrob(scen_d_1, scen_l_1, 
-                     scen_d_2, scen_l_2, 
-                     scen_d_3, scen_l_3, 
-                     scen_d_4, scen_l_4,
-                     scen_d_5, scen_l_5,
-                     scen_d_6, scen_l_6,
-                     ncol = 2, nrow = 6)
-    ggsave(file = crop_out, plot=out, dpi=300, width = 10, height = 16)
-    
-    print(paste0('map plots saved to ', crop_out))
-
-  } else { #Outputs with Millennial
-    
-    scen_m_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, model = 'Millennial')
-    scen_m_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, model = 'Millennial')
-    scen_m_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, model = 'Millennial')
-    scen_m_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, model = 'Millennial')
-    scen_m_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, model = 'Millennial')
-    scen_m_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, model = 'Millennial')
-    
-      out<-arrangeGrob(scen_d_1, scen_l_1, scen_m_1,
-                       scen_d_2, scen_l_2, scen_m_2,
-                       scen_d_3, scen_l_3, scen_m_3,
-                       scen_d_4, scen_l_4, scen_m_4,
-                       scen_d_5, scen_l_5, scen_m_5,
-                       scen_d_6, scen_l_6, scen_m_6,
-                       ncol = 3, nrow = 6)
-      ggsave(file = crop_out, plot=out, dpi=300, width = 14, height = 16)
-      
-      print(paste0('map plots saved to ', crop_out))
-      
-    }
-  }# end of function
+  scen_1_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = 'low')
+  scen_2_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = 'high')
   
+  scen_1_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = 'low')
+  scen_2_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = 'high')
+  
+  scen_1_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = 'low')
+  scen_2_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = 'high')
+  
+  scen_1_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = 'low')
+  scen_2_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = 'high')
+  
+  
+  out<-arrangeGrob(scen_1_1, scen_2_1, 
+                   scen_1_2, scen_2_2, 
+                   scen_1_3, scen_2_3, 
+                   scen_1_4, scen_2_4,
+                   scen_1_5, scen_2_5,
+                   scen_1_6, scen_2_6,
+                   ncol = 2, nrow = 6)
+  
+  
+  crop_out<-file.path(Output, paste0(Crop_, "_" ,map_type,"_maps.png"))
+  
+  ggsave(file = crop_out, plot=out, dpi=300, width = 10, height = 16)
+  
+  print(paste0('map plots saved to ', crop_out))
+  
+} # end of function
 
+    
 # Year_ = 2050; Crop_ = 'Rotation'; Output = output_figs
 
-# national_map_all_scenarios(Year_ = 2050, Crop_ = 'Maize', Output = results_folder, map_type = 'SOC', clim_scen = 'low')
+for (mt in c('Yld', 'SOC', 'CH4', 'N2O', 'CO2')) {
+  print(mt)
+  for (i in c('Soybean', 'Wheat', 'Cotton', 'Maize', 'Rotation')){
+    print(i)
+    national_map_all_scenarios(Year_ = 2050, Crop_ = i, Output = results_folder, map_type = mt)
+  }
+}

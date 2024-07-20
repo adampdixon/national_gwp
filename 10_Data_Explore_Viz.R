@@ -27,23 +27,47 @@ source(file.path(master_path, 'data_explore', 'soils_boxplots_function.R'))
 
 # -input climate boxplots and histograms
 # Get climate data
+# This first script reads and creates tables for the climate data
 source(file.path(master_path, 'data_explore', 'get_input_clim_4Vis_County.R'))
+# This script then makes boxplots with the data
 source(file.path(master_path, 'data_explore', 'climate_input_plots_county.R'))
 
 # get model data for data visualization
 
-# output ghg boxplots, histograms, line graphs, maps
+# output line graphs
 source(file.path(master_path, 'data_explore', 'All_models_national_results_yearly_plots.R'))
-create_national_model_linegraphs(crop='Maize')
-create_national_model_linegraphs(crop='Soybean')
-create_national_model_linegraphs(crop='Cotton')
-create_national_model_linegraphs(crop='Wheat')
-create_national_model_linegraphs(crop='Rotation')
+
+# This one takes a while to process
+for (c in c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')) {
+  create_national_model_linegraphs(crop=c)
+}
 
 # Maps
+source(file.path(master_path, 'data_explore', 'GWP_national_maps.R'))
+
+for (mt in c('Yld', 'SOC', 'CH4', 'N2O', 'CO2')) { #'Yld', 'SOC', 'CH4', 'N2O', 'CO2'
+  print(mt)
+  for (i in c('Soybean', 'Wheat', 'Cotton', 'Maize', 'Rotation')){
+    print(i)
+    national_map_all_scenarios(Year_ = 2050, Crop_ = i, Output = national_figs, map_type = mt, clim_scen = 'low')
+  }
+}
+
+# boxplots of output data
+source(file.path(master_path, 'data_explore', 'GWP_national_boxplots.R'))
+# This one takes a while to process
+for (c in c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')) {
+  national_boxplots_all_scenarios(Crop_=c)
+}
 
 
 
+# Get csvs of results
+source(file.path(master_path, 'data_explore', 'get_model_tables.R'))
+
+for (c in c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')) {
+  fwrite(get_all_models_national_df(crop=c), file.path(national_figs, paste0(c, '_national_results', date, '.csv')))
+}
 
 
 

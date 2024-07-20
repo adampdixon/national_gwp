@@ -12,6 +12,8 @@ library(data.table)
 library(gridExtra)
 library(scales)
 library(data.table)
+library(purrr)
+library(zoo)
 
 
 if (Sys.info()['sysname'] == "Linux"){ 
@@ -29,7 +31,7 @@ soils_boxplots<-function(){
   
   tbl_fread <- 
     list.files(soil_data_path, full.names = T, pattern = '.csv') %>% 
-    map_df(~fread(.))%>%
+    map_df(~fread(.))%>% # read all data
     mutate(order = rep(1:14, 9))
   
   # This same repertoire for ph is used in main model script
