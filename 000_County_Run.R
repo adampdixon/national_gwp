@@ -15,15 +15,15 @@ args <- commandArgs(trailingOnly = TRUE)
 cat("********************************\n")
 cat("********************************\n")
 cat("******** FLAGS etc *****************\n")
-del_input_files<-FALSE # deletes files that results tables are made from in national_gwp directory. Important for directory space management when saving files to GLADE.
+del_input_files<-TRUE # deletes files that results tables are made from in national_gwp directory. Important for directory space management when saving files to GLADE.
 results_only=FALSE # only results, works for Daycent and LDNDC, note all run flags must be opposite of this TRUE or FALSE
 
 # Run flags for models. If all FALSE, then input climate and soil data will be loaded in global environment.
-run_Daycent=FALSE 
+run_Daycent=TRUE 
 run_LDNDC=TRUE
-run_Millennial=FALSE
+run_Millennial=TRUE
 
-data_plots=FALSE # county level climate and results plots
+data_plots=TRUE # county level climate and results plots
 
 cat("********************************\n")
 cat("********************************\n")
@@ -62,7 +62,7 @@ if (Sys.info()['sysname'] == "Linux"){
     print(Sys.time())
   } else {
     master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
-    results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results_2024_June'
+    results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
 
     Test <- FALSE # if TRUE, only run county, filtered below
     args=(commandArgs(TRUE))
