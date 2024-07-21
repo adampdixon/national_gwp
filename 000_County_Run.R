@@ -16,6 +16,7 @@ cat("********************************\n")
 cat("********************************\n")
 cat("******** FLAGS etc *****************\n")
 del_input_files<-TRUE # deletes files that results tables are made from in national_gwp directory. Important for directory space management when saving files to GLADE.
+                      # helpful to have though when in development
 results_only=FALSE # only results, works for Daycent and LDNDC, note all run flags must be opposite of this TRUE or FALSE
 
 # Run flags for models. If all FALSE, then input climate and soil data will be loaded in global environment.

@@ -24,7 +24,7 @@ if (Sys.info()['sysname'] == "Linux"){
     print("************************************")
   } else {
     master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
-    results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results_2024_June'
+    results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
     Glade=TRUE # Save on Glade file system?
     
     soil_data_path<-'/glade/work/apdixon/soils'

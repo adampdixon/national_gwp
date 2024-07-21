@@ -97,10 +97,10 @@ create_model_linegraphs<-function(crop){
       # check for, report, remove NAs
       n<-sum(is.na(select(df, contains('Yld_Mgha'))))
       if(n>1){
-        print(paste(n, ' total NAs in Yld_Mgha, replacing with previous value na.locf()'))
-        df<-df%>%
-          select(year, model, climate_scenario, contains('Yld_Mgha'))%>%
-          na.locf()
+        print(paste(n, ' total NAs in Yld_Mgha this might be normal'))
+        # df<-df%>%
+        #   select(year, model, climate_scenario, contains('Yld_Mgha'))%>%
+          # na.locf()
       }
       
       
@@ -117,10 +117,10 @@ create_model_linegraphs<-function(crop){
       # check for, report, remove NAs
       n<-sum(is.na(select(df, 'N2OEmissions_ghayr')))
       if(n>1){
-        print(paste(n, ' total NAs in N2OEmissions_ghayr, replacing with previous value na.locf()'))
+        print(paste(n, ' total NAs in N2OEmissions_ghayr'))
         df<-df%>%
-          select(year, model, climate_scenario, N2OEmissions_ghayr)%>%
-          na.locf()
+          select(year, model, climate_scenario, N2OEmissions_ghayr)
+          # na.locf()
       }
       
       # get min max from county_df
@@ -137,10 +137,10 @@ create_model_linegraphs<-function(crop){
       # check for, report, remove NAs
       n<-sum(is.na(select(df, 'CH4Emissions_ghayr')))
       if(n>1){
-        print(paste(n, ' total NAs in CH4Emissions_ghayr, replacing with previous value na.locf()'))
+        print(paste(n, ' total NAs in CH4Emissions_ghayr'))
         df<-df%>%
-          select(year, model, climate_scenario, CH4Emissions_ghayr)%>%
-          na.locf()
+          select(year, model, climate_scenario, CH4Emissions_ghayr)
+          # na.locf()
       }
       
       a<-select(county_df, 'CH4Emissions_ghayr')
@@ -167,10 +167,10 @@ create_model_linegraphs<-function(crop){
       # check for, report, remove NAs
       n<-sum(is.na(select(df, 'SOC_Mghayr')))
       if(n>1){
-        print(paste(n, ' total NAs in SOC_Mghayr, replacing with previous value na.locf()'))
+        print(paste(n, ' total NAs in SOC_Mghayr'))
         df<-df%>%
-          select(year, model, climate_scenario, SOC_Mghayr)%>%
-          na.locf()
+          select(year, model, climate_scenario, SOC_Mghayr)
+          # na.locf()
       }
       
       a<-select(county_df, 'SOC_Mghayr')
@@ -185,10 +185,10 @@ create_model_linegraphs<-function(crop){
       # check for, report, remove NAs
       n<-sum(is.na(select(df, 'CO2resp_ghayr')))
       if(n>1){
-        print(paste(n, ' total NAs in CO2resp_ghayr, replacing with previous value na.locf()'))
+        print(paste(n, ' total NAs in CO2resp_ghayr'))
         df<-df%>%
-          select(year, model, climate_scenario, CO2resp_ghayr)%>%
-          na.locf()
+          select(year, model, climate_scenario, CO2resp_ghayr)
+          # na.locf()
       }
       
       a<-select(county_df, 'CO2resp_ghayr')
