@@ -20,7 +20,7 @@ if (Sys.info()['sysname'] == "Linux"){
     daycent_input_folder<-'/glade/derecho/scratch/apdixon/national_gwp/Daycent'
     ldndc_input_folder<-'/glade/derecho/scratch/apdixon/national_gwp/LDNDC/ldndc-1.36.linux64/projects'
     mill_input_folder<-'/glade/derecho/scratch/apdixon/national_gwp/Millennial/R/simulation'
-    results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results_2024_June'
+    results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
     Glade=TRUE
     print("************************************")
     print("*****Using NCAR *********")
