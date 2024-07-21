@@ -1,10 +1,10 @@
 #######################################
 # Script: 3_Create_management_input_files-Millennial2.R
-# Author: Ellen Maas
+# Author: Ellen Maas and then Adam Dixon
 # Date: Sept 23, 2022
 # Output: It creates files in the appropriate folder for each model.
 # Description: Creates input files with soil temperature, moisture, 
-# and daily C input as calculated via Daycent.
+# and daily C input as calculated via Daycent and LDNDC.
 #######################################
 # Audit Log
 # 9/23/2022: Created script.

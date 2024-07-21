@@ -101,7 +101,7 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 # These GEOIDs were the test counties. They are spread around the US. Georgia, Kansas, Nebraska, Pennsylvania, etc.
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(31181, 13023, 13213, 20073, 42053, 1075))
+    filter(GEOID %in% c(31181, 13023, 13213, 20073, 42053)) # 1075
 }
 
 # Get first row in table

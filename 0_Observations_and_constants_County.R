@@ -1,7 +1,7 @@
 #######################################
 # Procedure: 0_Observations_and_constants
-# Author: Ellen Maas
-# Date: Oct 2, 2022
+# Author: Ellen Maas, and then Adam Dixon
+# Date: July 2024
 # Description: It is designed to be run as-is from calling scripts in order
 # to create the variables in the local space. It imports data from files and sets 
 # values to shared variables that will be used throughout the project.
@@ -21,7 +21,6 @@ library(readxl)
 library(magrittr)
 library(lubridate)
 library(tidyverse)
-
 library(broom)
 library(dplyr)
 library(data.table)
