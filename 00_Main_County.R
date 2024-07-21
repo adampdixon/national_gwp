@@ -118,17 +118,19 @@ for (fut_climate in clim_nums) { # climate scenarios
 # Run county graph function
 if(identical(data_plots, TRUE)){
   # check if files are already there
-  if(file.exists(file.path(figs_input_data, paste0(site_name, "_input_climate_figs.png")))){
+  if(!file.exists(file.path(figs_input_data, paste0(site_name, "_input_climate_figs.png")))){
     # Run climate graph
     source(file.path('data_explore', 'county_climate_viz.R'), local=TRUE) # create climate plots 
   }
-  # check if files are already there
-  if(file.exists(file.path(output_figs, paste0('GEOID_', county_geoid,'_model_results_', cr, ".png")))){
-    # Add county graph function
-    source(file.path('data_explore', 'All_models_county_only_yearly_plots.R'), local=TRUE) # create graph plots
-    for (c in crops_){
+  
+  # Add county graph function
+  source(file.path('data_explore', 'All_models_county_only_yearly_plots.R'), local=TRUE) # create graph plots
+  
+  for (c in crops_){
+    # check if files are already there
+    if(!file.exists(file.path(figs_input_data, paste0('GEOID_', county_geoid,'_model_results_', c, ".png")))){
       print(c)
-      # At end of crops loop, create output graphs
+        # At end of crops loop, create output graphs
       try(create_model_linegraphs(crop = c))
   
       Sys.sleep(5) # wait 5 seconds for plot to be made

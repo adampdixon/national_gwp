@@ -57,6 +57,13 @@ create_model_linegraphs<-function(crop){
   
   gfg_plot <- function(df, result){
     
+    
+    # remove millennial if it didn't output variable
+    if (grepl("Yld_Mgha", result) | identical(result, 'N2OEmissions_ghayr') | identical(result, 'CH4Emissions_ghayr')){
+      df<-df%>%
+        filter(model != 'Millennial')
+    }
+    
     # if rotation, name the crop yield rotation for both maize/soybeans
     if(identical(cr, 'Rotation') & grepl("Yld_Mgha", result)){
       df<-df%>%
@@ -66,17 +73,13 @@ create_model_linegraphs<-function(crop){
       n<-sum(is.na(df$RotationYld_Mgha))
       if(n>1){
         print(paste(n, 'total NAs in RotationYld_Mgha', result))
-        df<-df%>%
-          na.locf(RotationYld_Mgha)
+        # df<-df%>% # this is not needed or appropriate probably
+        #   mutate(RotationYld_Mgha = na.locf(RotationYld_Mgha))
       }
       
     }
     
-    # remove millennial if it didn't output variable
-    if (grepl("Yld_Mgha", result) | identical(result, 'N2OEmissions_ghayr') | identical(result, 'CH4Emissions_ghayr')){
-      df<-df%>%
-        filter(model != 'Millennial')
-    }
+
     
     
     ##############################################################################

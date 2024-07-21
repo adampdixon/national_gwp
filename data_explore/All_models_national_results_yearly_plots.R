@@ -91,7 +91,7 @@ create_national_model_linegraphs<-function(crop){
       # check for, report, remove NAs
       n<-sum(is.na(df$RotationYld_Mgha_mean))
       if(n>1){
-        print(paste(n, 'total NAs in RotationYld_Mgha', result))
+        print(paste(n, 'total NAs in ', result))
         # df<-df%>%
         #   na.locf(RotationYld_Mgha_mean)
       }
@@ -119,13 +119,14 @@ create_national_model_linegraphs<-function(crop){
         print(paste(n, ' total NAs in Yld_Mgha, if Soybean or Rotation this could be normal'))
       }
       
-      # get min max from county_df
+      # get min max from county_df which includes the whole range of values (across scenarios) so that the graph scale is the same 
+      # for all 
       a<-select(county_df, contains('Yld_Mgha'))
       y_axis_<-c(0, max(a[,1], na.rm = TRUE))
       
     }
     
-    
+
     ##############################################################################
     # N20
     if (identical(result, 'N2OEmissions_ghayr')){
