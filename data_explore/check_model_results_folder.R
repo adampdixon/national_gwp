@@ -29,6 +29,8 @@ GEOIDS<-county_data$GEOID
 
 results_data<-data.frame()
 
+print('Starting results check...')
+
 for (i in GEOIDS){
   county_data_1<-filter(county_data, GEOID==i)
   
