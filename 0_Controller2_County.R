@@ -58,6 +58,8 @@ source("2_Create_soil_data-LDNDC_County.R", local = TRUE)
 for (c in crops_){
   # First check crop amount in county so it's not analyzed unnecessarily.
   crop_amount<-county_data[,eval(paste0(c, "_ha"))] # get crop amount in county
+  # Rotation ha is the same as Maize, since if you can grow corn you can grow soybeans
+  # Rotation has a column in the county_data csv so that it is checked here.
   if (crop_amount<1){
     print(paste0("*************** skipping because less than 1 ha of ", c, " in county **********************************"))
     file.create(file.path(results_path, paste0("1 - note - there is less than 1 ha ", c, " in county ", county_geoid,".txt")))

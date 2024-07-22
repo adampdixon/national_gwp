@@ -1,30 +1,22 @@
+#######################################
+# File: "check_model_results_folder.R"
+# Author: "Adam Dixon"
+# Date: "July 2024"
+# Description: This script loops through all county folders and checks the number of files and then rows in one of the 
+# model csvs. It also puts the crop hectares in the same row so that can be compared with results. If there is more than 1 ha
+# of the crop there should be a full set of results.
+#
+#######################################
 
-# Set workspace
+
 if (Sys.info()['sysname'] == "Linux"){ 
   if(Sys.info()['user']=='ap') {
-    master_path<-'/home/ap/Documents/GitHub/national_gwp'
-    results_folder<-'/home/ap/Documents/national_gwp_results'
-    county_number<-1
-    Test <- TRUE # if TRUE, only run county, filtered below
-    # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
-    Glade=FALSE
-    print("************************************")
-    print("*****Using linux mint *********")
-    cat("date and time are ")
-    print(Sys.time())
+    source('/home/ap/Documents/GitHub/national_gwp/000_Workspace_Dirs.R', local = TRUE)
   } else {
-    master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
-    results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
-    Test <- FALSE # if TRUE, only run county, filtered below
-    county_number<-args[2]
-    Glade=TRUE
-    print("************************************")
-    print("*****Using NCAR *********")
-    print("***** SCRATCH SPACE *********")
-    cat("date and time are ")
-    print(Sys.time())
+    source('/glade/derecho/scratch/apdixon/national_gwp/000_Workspace_Dirs.R', local = TRUE)
   }
 }
+
 
 library(dplyr)
 library(data.table)
@@ -48,48 +40,41 @@ for (i in GEOIDS[1:3]){
   Soybean_ha<-county_data_1$Soybean_ha
   Wheat_ha<-county_data_1$Wheat_ha
   
+  get_county_results_folder<-r[grep(paste0("_", county_geoid, "_"), r)]
   
-  tryCatch({
-    get_county_results_folder<-r[grep(paste0("_", county_geoid, "_"), r)]
-    
-    daycent_results<-list.files(get_county_results_folder, pattern = 'Daycent_', full.names = T)
-    ldndc_results<-list.files(get_county_results_folder, pattern = 'LDNDC_', full.names = T)
-    mill_results<-list.files(get_county_results_folder, pattern = 'Millennial_', full.names = T)
-    
-    day_files<-length(daycent_results)
-    ldndc_files<-length(ldndc_results)
-    mill_files<-length(mill_results)
-    
-    d_rows<-nrow(fread(daycent_results[1]))
-    ld_rows<-nrow(fread(ldndc_results[2]))
-    mill_rows<-nrow(fread(mill_results[6]))
-    
-  }, warning = function(war) {
-    
-  }, error = function(err) {
-    
-    day_files=0
-    ldndc_files=0
-    mill_files=0
-    d_rows=0
-    ld_rows=0
-    mill_rows=0
-    
-  }, finally = {
-    
-    # NOTE:  Finally is evaluated in the context of of the inital
-    # NOTE:  tryCatch block and 'e' will not exist if a warning
-    # NOTE:  or error occurred.
-    #print(paste("e =",e))
-  }) # END tryCatch
+  daycent_results<-list.files(get_county_results_folder, pattern = 'Daycent_', full.names = T)
+  ldndc_results<-list.files(get_county_results_folder, pattern = 'LDNDC_', full.names = T)
+  mill_results<-list.files(get_county_results_folder, pattern = 'Millennial_', full.names = T)
+  
+  day_files<-length(daycent_results)
+  ldndc_files<-length(ldndc_results)
+  mill_files<-length(mill_results)
+  
+  d_rows<-ifelse(day_files == 0, 0 , nrow(fread(daycent_results[1])))
+  ld_rows<-ifelse(ldndc_files == 0, 0 , nrow(fread(ldndc_results[2])))
+  mill_rows<-ifelse(mill_files == 0, 0 , nrow(fread(mill_results[6])))
+  
+  files_expected = 0 # essentially a counter
+  # number of files expected
+  if(Maize_ha > 1){files_expected = files_expected + 144} # if Maize is grown, Rotation is also run, so 72+72
+  # 1 crop x 6 practices x 2 climate scenarios x 2 types of data(annual/daily) x 3 models = 72 files
+  # number of files expected
+  if(Cotton_ha > 1){files_expected = files_expected + 72}
+  # number of files expected
+  if(Wheat_ha > 1){files_expected = files_expected + 72}
+  # number of files expected
+  if(Soybean_ha > 1){files_expected = files_expected + 72}
+  
+
   
   
   results_data<-rbind(results_data, 
                     data.frame(county_geoid, county_name, state_name, Maize_ha, Cotton_ha, Soybean_ha, 
                                Wheat_ha, day_files, ldndc_files, mill_files,
-                               d_rows, ld_rows, mill_rows))
+                               d_rows, ld_rows, mill_rows, files_expected))
   
 
 }
 
-  write.csv(results_data, file.path(results_folder, 'results_data.csv'))
+
+fwrite(results_data, file.path(national_figs, 'checking_results_data.csv'))
