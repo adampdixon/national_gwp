@@ -29,7 +29,7 @@ GEOIDS<-county_data$GEOID
 
 results_data<-data.frame()
 
-for (i in GEOIDS[1:3]){
+for (i in GEOIDS){
   county_data_1<-filter(county_data, GEOID==i)
   
   county_geoid<-county_data_1$GEOID 
