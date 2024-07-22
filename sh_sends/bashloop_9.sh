@@ -1,10 +1,10 @@
 #!/bin/bash 
 ########################
 ### Job name
-#PBS -N All_models
+#PBS -N All_9
 #PBS -A UEMO0003
-#PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stdout
-#PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stderr 
+#PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_9.stdout
+#PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_9.stderr 
 ### Queue name
 #PBS -q main
 #PBS -l walltime=12:00:00
@@ -13,7 +13,7 @@
 ### Specify mail recipient
 #PBS -M apdixon@pm.me
 ### Number of nodes
-#PBS -l select=1:ncpus=100:mem=120GB
+#PBS -l select=1:ncpus=50:mem=110GB
 ########################
 
 
@@ -35,10 +35,10 @@ task () {
 }
 
 # Define the number of parallel processes
-NUM_PARALLEL=100
+NUM_PARALLEL=50
 
 # Read the input arguments from a file and run the command in parallel
-for i in $(seq 2428 2728); do
+for i in $(seq 928 1108); do
   echo "Starting task $i"
   task $i &
   if (( $i % $NUM_PARALLEL == 0 )); then

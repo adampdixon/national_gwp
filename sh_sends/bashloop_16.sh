@@ -1,10 +1,10 @@
 #!/bin/bash 
 ########################
 ### Job name
-#PBS -N All_10
+#PBS -N All_models
 #PBS -A UEMO0003
-#PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_10.stdout
-#PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_10.stderr 
+#PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stdout
+#PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_.stderr 
 ### Queue name
 #PBS -q main
 #PBS -l walltime=10:00:00
