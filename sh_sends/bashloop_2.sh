@@ -13,7 +13,7 @@
 ### Specify mail recipient
 #PBS -M apdixon@pm.me
 ### Number of nodes
-#PBS -l select=1:ncpus=100:mem=120GB
+#PBS -l select=1:ncpus=100:mem=125GB
 ########################
 
 
