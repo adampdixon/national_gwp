@@ -95,6 +95,11 @@ setwd(master_path)
 
 
 # County data contains lat/long, elevation, and other important variables
+# Note: Counties removed because of no crop data:
+# Keweenaw County, MI
+# Greater Bridgeport Planning Region, CT
+# Naugatauk Valley Planning Region, CT
+# CT in general was strange because of planning regions
 county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))#%>%
   # filter(State_Name == 'South Dakota') # For debugging, only run South Dakota counties
 
