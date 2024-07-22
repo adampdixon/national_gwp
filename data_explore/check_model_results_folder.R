@@ -77,4 +77,8 @@ for (i in GEOIDS[1:3]){
 }
 
 
-fwrite(results_data, file.path(national_figs, 'checking_results_data.csv'))
+final<-file.path(national_figs, 'checking_results_data.csv')
+
+fwrite(results_data, final)
+
+print(paste0('done printing results data to ', final))
