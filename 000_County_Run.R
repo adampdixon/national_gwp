@@ -12,46 +12,16 @@ library(dplyr)
 # for pulling in county number from batch script
 args <- commandArgs(trailingOnly = TRUE)
 
-cat("********************************\n")
-cat("********************************\n")
-cat("******** FLAGS etc *****************\n")
-del_input_files<-TRUE # deletes files that results tables are made from in national_gwp directory. Important for directory space management when saving files to GLADE.
-                      # helpful to have though when in development
-results_only=FALSE # only results, works for Daycent and LDNDC, note all run flags must be opposite of this TRUE or FALSE
-
-# Run flags for models. If all FALSE, then input climate and soil data will be loaded in global environment.
-run_Daycent=TRUE 
-run_LDNDC=TRUE
-run_Millennial=TRUE
-
-data_plots=TRUE # county level climate and results plots
-
-cat("********************************\n")
-cat("********************************\n")
-
-# county_numbers<-296:306   #295:3100
-# crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
-crops_ <- c('Maize') # Crops
-
-# mgmt_scenario_nums <- 1:1 # Management scenarios
-mgmt_scenario_nums <- 1:1 # 1:6 Management scenarios 1:6
-
-# climate scenarios
-clim_nums <- 1:1 #c(1:2), can be 1:2
-
-cat("************************************\n")
-cat("************************************\n")
-
 
 # Set workspace
 if (Sys.info()['sysname'] == "Linux"){ 
   if(Sys.info()['user']=='ap') {
     master_path<-'/home/ap/Documents/GitHub/national_gwp'
     results_folder<-'/home/ap/Documents/national_gwp_results'
-
+    
     args=(commandArgs(TRUE))
     
-    county_number<-3 #args[2] # county number changes row selected in county_data
+    county_number<-5 #args[2] # county number changes row selected in county_data
     
     Test <- TRUE # if TRUE, only run county, filtered below
     # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
@@ -64,7 +34,7 @@ if (Sys.info()['sysname'] == "Linux"){
   } else {
     master_path<-'/glade/derecho/scratch/apdixon/national_gwp'
     results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
-
+    
     Test <- FALSE # if TRUE, only run county, filtered below
     args=(commandArgs(TRUE))
     
@@ -80,28 +50,15 @@ if (Sys.info()['sysname'] == "Linux"){
   }
 }
 
-tic()
-
-cat(paste0("The county_number is: ", county_number, "\n"))
-
-
 setwd(master_path)
 
-# for debugging, create a log file that saves all console outputs
-# Open a connection to stderr
-# sink(stderr(), type = "message")
-# # Open a connection to stdout
-# sink(stdout(), type = "message")
 
-
+# Set up county level data
+################################################################################
 # County data contains lat/long, elevation, and other important variables
-# Note: Counties removed because of no crop data:
-# Keweenaw County, MI
-# Greater Bridgeport Planning Region, CT
-# Naugatauk Valley Planning Region, CT
-# CT in general was strange because of planning regions
+# Note: Counties removed because of no crop data. See county notes.
 county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))#%>%
-  # filter(State_Name == 'South Dakota') # For debugging, only run South Dakota counties
+# filter(State_Name == 'South Dakota') # For debugging, only run South Dakota counties
 
 
 # These GEOIDs were the test counties. They are spread around the US. Georgia, Kansas, Nebraska, Pennsylvania, etc.
@@ -122,6 +79,7 @@ county_name<-county_data$NAMELSAD
 state_name<-county_data$State_Name
 
 site_name <- paste0("GEOID_", county_data$GEOID, "_", gsub(" ", "_", county_data$State_Name))
+################################################################################
 
 #create results folder if it doesn't already exist
 results_path <- file.path(results_folder, paste0("Results_", site_name))
@@ -131,21 +89,54 @@ if(!dir.exists(results_path)) dir.create(results_path)
 figs_input_data<-file.path(results_path, 'data_and_figs')
 dir.create(figs_input_data, showWarnings = FALSE)
 
-# create a log file that saves all console outputs
-# con <- file(file.path(figs_input_data, paste0("1_", site_name, "_R_console_out.log")))
-# 
-# sink(con)
+if(identical(Glade, TRUE)){
+  # If running on Glade, create a log file that saves all console outputs
+  # If statement is because otherwise the output to local console is diverted to just the file.
+  # create a log file that saves all console outputs
+  con <- file(file.path(figs_input_data, paste0("1_", site_name, "_R_console_out.log")))
+  sink(con)
+}
 
-print("************************************")
+tic()
+
+cat("********************************\n")
+cat("********************************\n")
+cat("******** FLAGS etc *****************\n")
+del_input_files<-TRUE # deletes files that results tables are made from in national_gwp directory. Important for directory space management when saving files to GLADE.
+                      # helpful to have though when in development
+results_only=FALSE # only results, works for Daycent and LDNDC, note all run flags must be opposite of this TRUE or FALSE. Useful for debugging.
+data_plots=TRUE # county level climate and results plots
+
+# Run flags for models. If all FALSE, then input climate and soil data will be loaded in global environment.
+run_Daycent=TRUE 
+run_LDNDC=TRUE
+run_Millennial=TRUE
+
+cat("********************************\n")
+cat("********************************\n")
+
+# county_numbers<-296:306   #295:3100
+# crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
+crops_ <- c('Maize') # Crops
+
+# mgmt_scenario_nums <- 1:1 # Management scenarios
+mgmt_scenario_nums <- 1:1 # 1:6 Management scenarios 1:6
+
+# climate scenarios
+clim_nums <- 1:1 #c(1:2), can be 1:2
+
+cat("************************************")
+cat("************************************\n")
+cat("************************************\n")
+cat(paste0("The county_number is: ", county_number, "\n"))
 cat(paste0("Starting county ", county_number, "\n"), file = stderr(), append = TRUE)
-print("************************************")
 county_print_marker<-paste("county geoid, name, stat is:", county_geoid, county_name, state_name)
-print(county_print_marker)
-print("************************************")
-print("************************************")
-print('working directory is: ')
-print(getwd())
-print("************************************")
+cat(county_print_marker)
+cat('working directory is: ')
+cat(getwd())
+cat("************************************")
+cat("************************************")
+cat("************************************")
 
 latitude = round(county_data$Lat, 5) # arbitrarily rounding during LDNDC debugging, shouldn't matter
 longitude = round(county_data$Long, 5)
@@ -183,8 +174,11 @@ run_time <- round(toc(echo=T)/60,1)
 print(paste0("Final run time is ",run_time," minutes"))
 
 
-# sink() # close console output
-# sink(type="message") # restore to console
+if(identical(Glade, TRUE)){
+  sink() # close console output
+  sink(type="message") # restore to console
+}
+
 
 
 

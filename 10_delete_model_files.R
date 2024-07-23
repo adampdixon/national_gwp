@@ -37,13 +37,14 @@ ldndc_input_data<-ldndc_input_data[grepl("GEOID", ldndc_input_data)]
 mill_input_data<-list.dirs(mill_input_folder)
 mill_input_data<-mill_input_data[grepl("GEOID", mill_input_data)]
 
-results_data<-results_data<-list.dirs(results_folder)
-results_data<-results_data[grepl("Results_GEOID_", results_data)]
+# results_data<-results_data<-list.dirs(results_folder)
+# results_data<-results_data[grepl("Results_GEOID_", results_data)]
 
 ##################################################
 # CAREFUL WITH THIS
 ##################################################
-delete_data<-c(results_data, daycent_input_data, ldndc_input_data, mill_input_data)
+#results_data
+delete_data<-c(daycent_input_data, ldndc_input_data, mill_input_data)
 # delete_data<-c(daycent_input_data) 
 ##################################################
 # CAREFUL WITH THIS
