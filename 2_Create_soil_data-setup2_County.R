@@ -93,7 +93,9 @@ soils<-fread(input = file.path(soil_data_path, paste0("GEOID_", county_geoid, "_
 # tell Debjani!!!! Murray County georgia had an erroneous pH value as well as really strange values overall
 #, so using this to avoid
 # note: zoo library loaded in climate script run prior
-soils<-mutate(soils, pH = ifelse(pH > 7.5, NA, pH)) # remove pH values greater than 7.5, some are obviously in error
+soils<-mutate(soils, pH = ifelse(pH > 7.5, NA, pH),
+              pH = ifelse(pH < 3, NA, pH)) # remove pH values greater than 7.5 or less than 3, some are obviously in error and this was likely throwing
+# and error in LDNDC ([EE] region construction failed)
 
 # Stopped doing this because of error in Ks values in saxton_rawls_df
 # soils<-mutate(soils, pH = ifelse(BD < 1, NA, pH)) # remove pH less than 1, less than this throws an error
@@ -287,6 +289,7 @@ soil_df <- #three_layers %>%
                            0.02, 0.01, 0, 0), 
          sand_frac = ParticleSizeSand/100,
          clay_frac = ParticleSizeClay/100,
+         silt_frac = ParticleSizeSilt/100,
          OM_frac = Carbon*2/100,
          deltamin = c(0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 
                       0.01, 0.01, 0.01, 0.01),
@@ -330,15 +333,45 @@ soil_type_code <- toupper(if_else(find_col=="Cl","clay",
                                   find_col))))))
                           )
 
+
+# Check if data row has reasonable, bulk density, sand, silt, clay
+# This was causing several errors in the LDNDC model
+check<-soil_df%>%
+  rowwise()%>%
+  mutate(check = sum(c_across(sand_frac:silt_frac)))%>%
+  select(upper_depth_cm, check)%>%
+  filter(check<0.3)
+
+# If any rows are found with unreasonably low ratio of parent material then replace values with the row above
+if (nrow(check)>0){
+  
+  fix<-soil_df%>%
+    rowwise()%>%
+    mutate(check = sum(c_across(sand_frac:silt_frac)))%>% # create a column with the sum of sand, silt, and clay
+    mutate(sand_frac = if_else(check<0.3, NA, sand_frac), # if those together are less than .3, something is wrong, so set all the relevant values to NA
+           clay_frac = if_else(check<0.3, NA, clay_frac),
+           silt_frac = if_else(check<0.3, NA, silt_frac),
+           OM_frac = if_else(check<0.3, NA, OM_frac),
+           bdfiod_value_avg = if_else(check<0.3, NA, bdfiod_value_avg),
+           DUL_dm3m3 = if_else(check<0.3, NA, DUL_dm3m3),
+           LL15_dm3m3 = if_else(check<0.3, NA, LL15_dm3m3),
+           SOC  = if_else(check<0.3, NA, SOC))%>%
+    na.locf() # then fill in the NAs with the last value
+  
+  soil_df<-fix # replace the original data with the fixed data
+  print('soil data imputed from previous row due to low sand, silt, clay ratios')
+  
+}
+
+
 # LDNDC soil table
 soil_df_L<-soil_df%>%
   select(upper_depth_cm, lower_depth_cm, bdfiod_value_avg, DUL_dm3m3, LL15_dm3m3, evap_coef, #DUL_dm3m3, LL15_dm3m3
-         root_fraction, sand_frac, clay_frac, OM_frac, deltamin, ksat_cmsec, phaq_value_avg, 
+         root_fraction, sand_frac, clay_frac, silt_frac, OM_frac, deltamin, ksat_cmsec, phaq_value_avg, 
          orgC_fraction, KS_cmmin)%>%
   mutate(soil_type_code = soil_type_code)
 
 soil_df_L$Thickness<-c(2, 3, 5, 10, 20, 20, 20, 20, 20, 20, 20, 20, 20)
-
 
 
 

@@ -98,6 +98,7 @@ for (fut_climate in clim_nums) { # climate scenarios
     print("************************************")
     clim_scenario_num <- fut_climate # not exactly sure why went with 2 variables for same thing
     print(paste0("climate scenario: ", clim_scenario_num)) # why needed?
+    print(county_print_marker) # print out for debugging with console print out
 
     cat(paste0("*********Model will be run for ", crops_, "*********\n"))
     cat("********* mgmt scenarios", mgmt_scenario_nums, " *********\n")

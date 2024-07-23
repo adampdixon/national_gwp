@@ -32,7 +32,7 @@ library(stringr)
 ##################################################
 #################### Weather and Daycent paths ###
 ##################################################
-wth_path <- paste0("Data/County/Weather/")
+# wth_path <- paste0("Data/County/Weather/")
 # apsim_path <- paste0("APSIM/",site_name,"/")
 daycent_path <- paste0("Daycent/",site_name,"/")
 ##################################################

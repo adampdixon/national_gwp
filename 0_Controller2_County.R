@@ -56,6 +56,7 @@ source("2_Create_soil_data-LDNDC_County.R", local = TRUE)
 # It then runs the models. 'If' statements are included to control which models run and to check if output files already exist, which was helpful for
 # development and debugging.
 for (c in crops_){
+  print(county_print_marker) # print out for debugging with console print out
   # First check crop amount in county so it's not analyzed unnecessarily.
   crop_amount<-county_data[,eval(paste0(c, "_ha"))] # get crop amount in county
   # Rotation ha is the same as Maize, since if you can grow corn you can grow soybeans
