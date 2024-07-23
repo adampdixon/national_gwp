@@ -36,3 +36,8 @@ ls -lhRS */ | head -11
 /home/ap/climate_data
 
 
+To find and recursively delete files by key string
+find -type f -name '*text*' -delete
+use without delete first to make sure not deleting anything useful.
+
+

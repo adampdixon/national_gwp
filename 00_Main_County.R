@@ -130,10 +130,17 @@ if(identical(data_plots, TRUE)){
   for (c in crops_){
     # check if files are already there
     if(!file.exists(file.path(figs_input_data, paste0('GEOID_', county_geoid,'_model_results_', c, ".png")))){
-      print(c)
+      # Also check if crop was run in that county
+      crop_amount2<-county_data[,eval(paste0(c, "_ha"))] # get crop amount in county
+      # Rotation ha is the same as Maize, since if you can grow corn you can grow soybeans
+      # Rotation has a column in the county_data csv so that it is checked here.
+      if (crop_amount2<1){
+        print(paste0("*************** skipping plotting less than 1 ha of ", c, " in county **********************************"))
+      } else {
         # At end of crops loop, create output graphs
-      try(create_model_linegraphs(crop = c))
-  
+        try(create_model_linegraphs(crop = c))
+      }
+
       Sys.sleep(5) # wait 5 seconds for plot to be made
     }
   }

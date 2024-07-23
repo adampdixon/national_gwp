@@ -28,8 +28,10 @@ geoids_to_fetch<-paste0('_', geoids_to_fetch, '_')
 soil_data<-list.files(soil_data_path, full.names = T)
 climate_data<-list.files(climate_data_path, full.names = T)
 
+print('copy soils over')
 # Get soils data over
 file.copy(soil_data[grepl(geoids_to_fetch, soil_data)], glade_soils_send)
 
+print('copy climate over')
 # Get climate data over
 file.copy(climate_data[grepl(geoids_to_fetch, climate_data)], glade_climate_send)

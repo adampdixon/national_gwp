@@ -21,7 +21,7 @@ if (Sys.info()['sysname'] == "Linux"){
     
     args=(commandArgs(TRUE))
     
-    county_number<-5 #args[2] # county number changes row selected in county_data
+    county_number<-2 #args[2] # county number changes row selected in county_data
     
     Test <- TRUE # if TRUE, only run county, filtered below
     # crop<- "Maize"   #Maize #Soybeans", "Wheat", "Cotton
@@ -64,9 +64,10 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 # These GEOIDs were the test counties. They are spread around the US. Georgia, Kansas, Nebraska, Pennsylvania, etc.
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(4011, 6113, 9001, 13103, 16067)) # 1075
+    filter(GEOID %in% c(5007, 4009, 5021, 4015)) # 1075
 }
-
+# 5007, 4009, 5021, 4015
+# 4011, 6113, 9001, 13103, 16067
 # 31181, 13023, 13213, 20073, 42053
 
 # Get first row in table
@@ -104,6 +105,7 @@ cat("********************************\n")
 cat("******** FLAGS etc *****************\n")
 del_input_files<-TRUE # deletes files that results tables are made from in national_gwp directory. Important for directory space management when saving files to GLADE.
                       # helpful to have though when in development
+                      # Note: files are only deleted upon successful model completion. Use 10_delete_model_files.R when need to clear out faulty model data.
 results_only=FALSE # only results, works for Daycent and LDNDC, note all run flags must be opposite of this TRUE or FALSE. Useful for debugging.
 data_plots=TRUE # county level climate and results plots
 
@@ -116,14 +118,14 @@ cat("********************************\n")
 cat("********************************\n")
 
 # county_numbers<-296:306   #295:3100
-# crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
-crops_ <- c('Maize') # Crops
+crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
+# crops_ <- c('Maize', 'Soybean', 'Wheat') # Crops
 
 # mgmt_scenario_nums <- 1:1 # Management scenarios
-mgmt_scenario_nums <- 1:1 # 1:6 Management scenarios 1:6
+mgmt_scenario_nums <- 1:6 # 1:6 Management scenarios 1:6
 
 # climate scenarios
-clim_nums <- 1:1 #c(1:2), can be 1:2
+clim_nums <- 1:2 #c(1:2), can be 1:2
 
 cat("************************************")
 cat("************************************\n")

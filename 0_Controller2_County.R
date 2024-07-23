@@ -82,7 +82,7 @@ for (c in crops_){
 
       
       if(identical(run_Daycent, TRUE)) {
-        
+        cat(county_print_marker)
         # check if results file already exists and only want results
         if(file.exists(daycent_daily_out) & identical(results_only, FALSE)){ 
           # & nrow(fread(model_path))> 200# # check if all rows have been reported; note this didn't work well
@@ -128,7 +128,7 @@ for (c in crops_){
 
       
       if(identical(run_LDNDC,TRUE)) {
-        
+        cat(county_print_marker)
         if(file.exists(ldndc_daily_out)){ 
           # & nrow(fread(model_path))> 200# # check if all rows have been reported; note this didn't work well
           print(paste0("*************LDNDC results already exist for: ", scenario_name2, " ... skipping...****************"))
@@ -157,8 +157,7 @@ for (c in crops_){
       mill_annual_out<-paste0("Millennial_annual_results_compilation_",scenario_name2,".csv")
         
       if(identical(run_Millennial,TRUE)) {
-        
-
+        cat(county_print_marker)
         
         if(file.exists(file.path(results_path, mill_daily_out))){ 
           # & nrow(fread(model_path))> 200# # check if all rows have been reported; note this didn't work well
