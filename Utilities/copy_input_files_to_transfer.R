@@ -12,12 +12,12 @@ if (Sys.info()['sysname'] == "Linux"){
     source('/home/ap/Documents/GitHub/national_gwp/000_Workspace_Dirs.R', local = TRUE)
   } else {
     source('/glade/derecho/scratch/apdixon/national_gwp/000_Workspace_Dirs.R', local = TRUE)
+    glade_soils_send<-'/glade/derecho/scratch/apdixon/soils_send'
+    glade_climate_send<-'/glade/derecho/scratch/apdixon/climate_send'
   }
 }
 
-glade_soils_send<-'/glade/derecho/scratch/apdixon/soils_send'
 
-glade_climate_send<-'/glade/derecho/scratch/apdixon/climate_send'
 
 geoids_to_fetch<-c(5007, 4009, 5021, 4015)
 
@@ -25,7 +25,7 @@ geoids_to_fetch<-c(5007, 4009, 5021, 4015)
 geoids_to_fetch<-paste(geoids_to_fetch, collapse = '_|_')
 geoids_to_fetch<-paste0('_', geoids_to_fetch, '_')
 
-soils_data<-list.files(soils_data_path, full.names = T)
+soil_data<-list.files(soils_data_path, full.names = T)
 climate_data<-list.files(climate_data_path, full.names = T)
 
 # Get soils data over

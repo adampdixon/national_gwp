@@ -62,6 +62,6 @@ for (i in 1:length(delete_data)){
 input_data<-list.dirs(daycent_input_folder)
 input_data<-input_data[grepl("GEOID", input_data)]
 print(input_data)
-results_data<-results_data<-list.dirs(results_folder)
-results_data<-results_data[grepl("Results_GEOID_", results_data)]
-print(results_data)
+# results_data<-results_data<-list.dirs(results_folder)
+# results_data<-results_data[grepl("Results_GEOID_", results_data)]
+# print(results_data)
