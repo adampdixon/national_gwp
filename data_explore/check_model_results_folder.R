@@ -53,8 +53,8 @@ for (i in GEOIDS){
   mill_files<-length(mill_results)
   
   d_rows<-ifelse(day_files == 0, 0 , nrow(fread(daycent_results[1])))
-  ld_rows<-ifelse(ldndc_files == 0, 0 , nrow(fread(ldndc_results[2])))
-  mill_rows<-ifelse(mill_files == 0, 0 , nrow(fread(mill_results[6])))
+  ld_rows<-ifelse(ldndc_files == 0, 0 , nrow(fread(ldndc_results[1])))
+  mill_rows<-ifelse(mill_files == 0, 0 , nrow(fread(mill_results[1])))
   
   files_expected = 0 # essentially a counter
   # number of files expected
