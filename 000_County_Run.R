@@ -102,8 +102,6 @@ dir.create(figs_input_data, showWarnings = FALSE)
 #   sink(con)
 # }
 
-print(figs_input_data)
-
 tic()
 
 cat("********************************\n")
@@ -154,8 +152,6 @@ print(paste0("latitude is: ", latitude))
 print(paste0("longitude is: ", longitude))
 print(paste0("elevation_m is: ", elevation_m))
 
-
-stop("stop here", call. = TRUE, domain = NULL)
 
 ### ### ### ### ### ### ### ### ### ### ### 
 ### START MODELS
