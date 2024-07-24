@@ -24,8 +24,8 @@ library(tidyverse)
 library(soiltexture)
 library(xml2)
 library(lubridate)
-library(soilDB)
-library(sf)
+# library(soilDB)
+# library(sf)
 library(zoo)
 
 

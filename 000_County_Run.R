@@ -111,12 +111,12 @@ del_input_files<-TRUE # deletes files that results tables are made from in natio
                       # helpful to have though when in development
                       # Note: files are only deleted upon successful model completion. Use 10_delete_model_files.R when need to clear out faulty model data.
 results_only=FALSE # only results, works for Daycent and LDNDC, note all run flags must be opposite of this TRUE or FALSE. Useful for debugging.
-data_plots=TRUE # county level climate and results plots
+data_plots=FALSE # county level climate and results plots
 
 # Run flags for models. If all FALSE, then input climate and soil data will be loaded in global environment.
-run_Daycent=TRUE 
-run_LDNDC=TRUE
-run_Millennial=TRUE
+run_Daycent=FALSE 
+run_LDNDC=FALSE
+run_Millennial=FALSE
 
 cat("********************************\n")
 cat("********************************\n")
