@@ -13,9 +13,7 @@
 ml load ncarenv-basic/23.09 udunits conda
 conda activate r-4.3
   
-   --args $1
-
 #conda activate casper_2023
 echo "Hello World from $PBS_ARRAY_INDEX"            
-CMD="Rscript /glade/derecho/scratch/apdixon/national_gwp/000_County_Run.R --args $PBS_ARRAY_INDEX >& $PBS_ARRAY_INDEX.log &"
+CMD="Rscript /glade/derecho/scratch/apdixon/national_gwp/sh_sends/casper_bash_proto.R --args $PBS_ARRAY_INDEX >& $PBS_ARRAY_INDEX.log &"
 echo $CMD  
