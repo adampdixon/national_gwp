@@ -11,6 +11,7 @@ args=(commandArgs(TRUE))
 
 county_number = args[2]
 
+print("at least this is printing")
 try(print("county_number"))
 try(print(county_number))
 try(print(args[1]))
