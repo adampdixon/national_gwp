@@ -63,6 +63,7 @@ cat(master_path)
 county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))#%>%
 # filter(State_Name == 'South Dakota') # For debugging, only run South Dakota counties
 
+print(county_data)
 
 # These GEOIDs were the test counties. They are spread around the US. Georgia, Kansas, Nebraska, Pennsylvania, etc.
 if(identical(Test, TRUE)){
