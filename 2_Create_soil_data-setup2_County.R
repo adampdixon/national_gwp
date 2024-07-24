@@ -93,12 +93,12 @@ soils<-fread(input = file.path(soil_data_path, paste0("GEOID_", county_geoid, "_
 # tell Debjani!!!! Murray County georgia had an erroneous pH value as well as really strange values overall
 #, so using this to avoid
 # note: zoo library loaded in climate script run prior
-soils<-mutate(soils, pH = ifelse(pH > 10, NA, pH),
-              pH = ifelse(pH < 3, NA, pH)) # remove pH values greater than 7.5 or less than 3, some are obviously in error and this was likely throwing
+soils<-mutate(soils, pH = ifelse(pH > 14, NA, pH),
+              pH = ifelse(pH < 2, NA, pH)) # remove pH values greater than 14 or less than 2, some are obviously in error and this was likely throwing
 # and error in LDNDC ([EE] region construction failed)
 
 # Stopped doing this because of error in Ks values in saxton_rawls_df
-# soils<-mutate(soils, pH = ifelse(BD < 1, NA, pH)) # remove pH less than 1, less than this throws an error
+# soils<-mutate(soils, pH = ifelse(BD < 1, NA, pH)) # remove pH less than 1, less than this hrows an error
 # soils<-mutate(soils, BD = ifelse(BD < .5, NA, pH)) # remove bulk density values less than .5, less than this throws an error
 
 soils<-na.locf(soils) # This sets NA values to the last non-NA value

@@ -137,8 +137,10 @@ if(identical(data_plots, TRUE)){
       if (crop_amount2<1){
         print(paste0("*************** skipping plotting less than 1 ha of ", c, " in county **********************************"))
       } else {
-        # At end of crops loop, create output graphs
-        try(create_model_linegraphs(crop = c))
+        if(file.exists(mill_annual_out) & file.exists(ldndc_annual_out) & file.exists(daycent_annual_out)){
+          # Run model line graphs
+          try(create_model_linegraphs(crop = c))
+        }
       }
 
       Sys.sleep(5) # wait 5 seconds for plot to be made
