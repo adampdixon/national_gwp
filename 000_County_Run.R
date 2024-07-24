@@ -11,6 +11,7 @@ library(dplyr)
 
 # for pulling in county number from batch script
 args <- commandArgs(trailingOnly = TRUE)
+print(args)
 
 
 # Set workspace
