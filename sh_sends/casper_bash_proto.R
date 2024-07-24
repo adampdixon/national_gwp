@@ -8,6 +8,9 @@ args <- commandArgs(trailingOnly = TRUE)
 
 args=(commandArgs(TRUE))
 
+qdir<-Sys.getenv("PBS_ARRAY_INDEX")
+pathname<-qdir[1]
+
 
 county_number = args[2]
 

@@ -12,11 +12,12 @@
 
 
 #conda activate casper_2023
-ml ncarenv-basic/23.10 udunits conda
+ml ncarenv/23.10 udunits conda
 ml conda
 conda activate r-4.3
   
 #conda activate casper_2023
 echo "Hello World from $PBS_ARRAY_INDEX"            
-CMD="Rscript /glade/derecho/scratch/apdixon/national_gwp/sh_sends/casper_bash_proto.R $PBS_ARRAY_INDEX >& $PBS_ARRAY_INDEX.log &"
-echo $CMD  
+CMD="Rscript /glade/derecho/scratch/apdixon/national_gwp/sh_sends/casper_bash_proto.R --args $PBS_ARRAY_INDEX >& $PBS_ARRAY_INDEX.log &"
+echo $CMD
+CMD
