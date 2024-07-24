@@ -1,8 +1,8 @@
 #!/bin/bash
-#PBS -N All_casper_1
+#PBS -N C1
 #PBS -A UEMO0003
-#PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/All_casper_1.stdout
-#PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/All_casper_1.stderr 
+#PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/C1.stdout
+#PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/C1.stderr 
 #PBS -l select=1:ncpus=1:mem=4GB
 #PBS -l walltime=00:01:00
 #PBS -q casper
