@@ -36,7 +36,7 @@ if (Sys.info()['sysname'] == "Linux"){
     results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
     
     Test <- FALSE # if TRUE, only run county, filtered below
-    # args=(commandArgs(TRUE)) # already have above?
+    args=(commandArgs(TRUE)) # already have above?
     
     county_number = args[2] # pulls in from batch script
     
