@@ -93,7 +93,7 @@ soils<-fread(input = file.path(soil_data_path, paste0("GEOID_", county_geoid, "_
 # tell Debjani!!!! Murray County georgia had an erroneous pH value as well as really strange values overall
 #, so using this to avoid
 # note: zoo library loaded in climate script run prior
-soils<-mutate(soils, pH = ifelse(pH > 7.5, NA, pH),
+soils<-mutate(soils, pH = ifelse(pH > 10, NA, pH),
               pH = ifelse(pH < 3, NA, pH)) # remove pH values greater than 7.5 or less than 3, some are obviously in error and this was likely throwing
 # and error in LDNDC ([EE] region construction failed)
 

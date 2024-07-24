@@ -64,8 +64,10 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 # These GEOIDs were the test counties. They are spread around the US. Georgia, Kansas, Nebraska, Pennsylvania, etc.
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(5007, 4009, 5021, 4015)) # 1075
+    filter(GEOID %in% c(4012, 8113)) # 1075
 }
+
+# 4012, 8113
 # 5007, 4009, 5021, 4015
 # 4011, 6113, 9001, 13103, 16067
 # 31181, 13023, 13213, 20073, 42053
@@ -118,14 +120,14 @@ cat("********************************\n")
 cat("********************************\n")
 
 # county_numbers<-296:306   #295:3100
-crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
-# crops_ <- c('Maize', 'Soybean', 'Wheat') # Crops
+# crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
+crops_ <- c('Maize','Wheat') # Crops
 
 # mgmt_scenario_nums <- 1:1 # Management scenarios
-mgmt_scenario_nums <- 1:6 # 1:6 Management scenarios 1:6
+mgmt_scenario_nums <- 2:2 # 1:6 Management scenarios 1:6
 
 # climate scenarios
-clim_nums <- 1:2 #c(1:2), can be 1:2
+clim_nums <- 1:1 #c(1:2), can be 1:2
 
 cat("************************************")
 cat("************************************\n")
