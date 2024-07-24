@@ -1,13 +1,13 @@
 #!/bin/bash 
 ########################
 ### Job name
-#PBS -N All_r1_secondrun
+#PBS -N All_r1_thirdrun
 #PBS -A UEMO0003
 #PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_r1.stdout
 #PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/day_r1.stderr 
 ### Queue name
 #PBS -q main
-#PBS -l walltime=5:00:00
+#PBS -l walltime=12:00:00
 ### Send email on abort, begin and end
 #PBS -m e
 ### Specify mail recipient
@@ -18,8 +18,8 @@
 
 
 ### Use scratch for temporary files to avoid space limits in /tmp
-###export TMPDIR=/glade/scratch/apdixon/temp
-###mkdir -p $TMPDIR
+export TMPDIR=/glade/scratch/apdixon/temp
+mkdir -p $TMPDIR
 
 #!/bin/bash
 
@@ -38,7 +38,7 @@ task () {
 NUM_PARALLEL=128
 
 # Read the input arguments from a file and run the command in parallel
-for i in $(seq 1750 1878); do
+for i in $(seq 1 3107); do
   echo "Starting task $i"
   task $i &
   if (( $i % $NUM_PARALLEL == 0 )); then

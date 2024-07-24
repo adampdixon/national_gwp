@@ -13,7 +13,7 @@
 ### Specify mail recipient
 #PBS -M apdixon@pm.me
 ### Number of nodes
-#PBS -l select=1:ncpus=128:mpiprocs=100:mem=235GB
+#PBS -l select=1:ncpus=128:mpiprocs=128:mem=235GB
 ########################
 
 
@@ -35,10 +35,10 @@ task () {
 }
 
 # Define the number of parallel processes
-NUM_PARALLEL=100
+NUM_PARALLEL=128
 
 # Read the input arguments from a file and run the command in parallel
-for i in $(seq 2087 2187); do
+for i in $(seq 2265 2393); do
   echo "Starting task $i"
   task $i &
   if (( $i % $NUM_PARALLEL == 0 )); then
