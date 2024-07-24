@@ -10,9 +10,10 @@
 #PBS -j oe
 #PBS -r y
 
-ml conda
+
 #conda activate casper_2023
-ml ncarenv-basic/23.09 udunits conda
+ml ncarenv-basic/23.10 udunits conda
+ml conda
 conda activate r-4.3
   
 #conda activate casper_2023
