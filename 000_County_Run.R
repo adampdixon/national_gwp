@@ -63,8 +63,6 @@ cat(master_path)
 county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))#%>%
 # filter(State_Name == 'South Dakota') # For debugging, only run South Dakota counties
 
-print(county_data)
-
 # These GEOIDs were the test counties. They are spread around the US. Georgia, Kansas, Nebraska, Pennsylvania, etc.
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
@@ -96,13 +94,15 @@ if(!dir.exists(results_path)) dir.create(results_path)
 figs_input_data<-file.path(results_path, 'data_and_figs')
 dir.create(figs_input_data, showWarnings = FALSE)
 
-if(identical(Glade, TRUE)){
-  # If running on Glade, create a log file that saves all console outputs
-  # If statement is because otherwise the output to local console is diverted to just the file.
-  # create a log file that saves all console outputs
-  con <- file(file.path(figs_input_data, paste0("1_", site_name, "_R_console_out.log")))
-  sink(con)
-}
+# if(identical(Glade, TRUE)){
+#   # If running on Glade, create a log file that saves all console outputs
+#   # If statement is because otherwise the output to local console is diverted to just the file.
+#   # create a log file that saves all console outputs
+#   con <- file(file.path(figs_input_data, paste0("1_", site_name, "_R_console_out.log")))
+#   sink(con)
+# }
+
+print(figs_input_data)
 
 tic()
 
