@@ -1,6 +1,6 @@
 # Test script for Casper PBS
 
-con <- file(file.path(figs_input_data, paste0("/glade/derecho/scratch/apdixon/national_gwp/sh_sends/test_R_console_out.log")))
+con <- file("/glade/derecho/scratch/apdixon/national_gwp/sh_sends/test_R_console_out.log")
 sink(con)
 
 # for pulling in county number from batch script
