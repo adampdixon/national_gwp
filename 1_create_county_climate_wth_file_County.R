@@ -37,7 +37,8 @@ print('Putting climate tables together')
 
 # county_geoid<-46087
 
-library(data.table)
+print(climate_data_path)
+stop("checking this")
 
 climate_data<-list.files(climate_data_path, full.names = TRUE, pattern = ".csv")
 
