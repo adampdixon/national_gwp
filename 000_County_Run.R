@@ -36,7 +36,7 @@ if (Sys.info()['sysname'] == "Linux"){
     results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
     
     Test <- FALSE # if TRUE, only run county, filtered below
-    args=(commandArgs(TRUE))
+    # args=(commandArgs(TRUE)) # already have above?
     
     county_number = args[2] # pulls in from batch script
     
@@ -51,6 +51,8 @@ if (Sys.info()['sysname'] == "Linux"){
 }
 
 setwd(master_path)
+cat("master path is")
+cat(master_path)
 
 
 # Set up county level data
@@ -133,7 +135,7 @@ cat("************************************")
 cat("************************************\n")
 cat("************************************\n")
 cat(paste0("The county_number is: ", county_number, "\n"))
-cat(paste0("Starting county ", county_number, "\n"), file = stderr(), append = TRUE)
+cat(paste0("Starting county ", county_number, "\n"))
 county_print_marker<-paste("county geoid, name, stat is:", county_geoid, county_name, state_name)
 cat(county_print_marker)
 cat('working directory is: ')
@@ -149,6 +151,9 @@ elevation_m = county_data$Elev_mean_m
 print(paste0("latitude is: ", latitude))
 print(paste0("longitude is: ", longitude))
 print(paste0("elevation_m is: ", elevation_m))
+
+
+stop("stop here", call. = TRUE, domain = NULL)
 
 ### ### ### ### ### ### ### ### ### ### ### 
 ### START MODELS
