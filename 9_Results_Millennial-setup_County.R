@@ -101,7 +101,7 @@ mill_base_df_raw <- fread(file=paste0(mill_path,"base_out_",scenario_name,".csv"
 #* Daily data
 #* 
 
-fwrite(mill_base_df_raw,file=file.path(results_path, mill_daily_out))
+fwrite(mill_base_df_raw,file=file.path(mill_daily_out))
 
 
 
@@ -143,7 +143,7 @@ output_annual_data <- merge(output_annual_data_1,output_annual_data_2,by="year")
          GEOID = county_geoid)%>%
   select(all_of(Mill_annual_output_columns), everything())
 
-fwrite(output_annual_data,file=file.path(results_path, mill_annual_out))
+fwrite(output_annual_data,file=file.path(mill_annual_out))
 
 #*************************************************************
 
