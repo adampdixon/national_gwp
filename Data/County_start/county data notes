@@ -2,6 +2,7 @@ Notes to data processing
 
 All Connecticut county GEOIDs were changed back to historic county GEOIDs rather than their current planning GEOID.
 
+old ones:
 9001
 9003
 9005
@@ -13,7 +14,7 @@ All Connecticut county GEOIDs were changed back to historic county GEOIDs rather
 
 Keenesaw county Michigan was deleted because there were no crops grown there and there was not climate data provided by Zhounan.
 
-This makes CONUS counties number 3,107
+This makes CONUS counties number 3,106
 
 Climate data was also missing from three counties. These climate data were replaced by proximate counties with likely similar data. Data from copied county was replaced with GEOID of the missing data county.
 

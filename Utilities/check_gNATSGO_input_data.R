@@ -17,7 +17,11 @@ if (Sys.info()['sysname'] == "Linux"){
 
 print('checking soils data...')
 
-soils_data<-list.files(soil_data_path, pattern = 'csv')
+# soils_data<-list.files(soil_data_path, pattern = 'csv')
+
+soils_data<-list.files('/home/ap/soils_all', pattern = 'csv')
+
+
 
 county_data<-fread(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))%>%
   select(GEOID, NAME, State_Name)
