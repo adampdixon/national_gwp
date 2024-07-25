@@ -21,6 +21,7 @@
 library(stringr)
 library(dplyr)
 library(tidyverse)
+library(tidyr)
 library(soiltexture)
 library(xml2)
 library(lubridate)
@@ -348,18 +349,12 @@ if (nrow(check)>0){
   fix<-soil_df%>%
     rowwise()%>%
     mutate(check = sum(c_across(sand_frac:silt_frac)))%>% # create a column with the sum of sand, silt, and clay
-    mutate(sand_frac = if_else(check<0.3, NA, sand_frac), # if those together are less than .3, something is wrong, so set all the relevant values to NA
-           clay_frac = if_else(check<0.3, NA, clay_frac),
-           silt_frac = if_else(check<0.3, NA, silt_frac),
-           OM_frac = if_else(check<0.3, NA, OM_frac),
-           bdfiod_value_avg = if_else(check<0.3, NA, bdfiod_value_avg),
-           DUL_dm3m3 = if_else(check<0.3, NA, DUL_dm3m3),
-           LL15_dm3m3 = if_else(check<0.3, NA, LL15_dm3m3),
-           SOC  = if_else(check<0.3, NA, SOC))%>%
-    na.locf() # then fill in the NAs with the last value
+    mutate(sand_frac = if_else(check<0.1, .3, sand_frac), # if those together are less than .1, something is wrong, so set all the relevant values to .3
+           clay_frac = if_else(check<0.1, .3, clay_frac),
+           silt_frac = if_else(check<0.1, .3, silt_frac))
   
   soil_df<-fix # replace the original data with the fixed data
-  print('soil data imputed from previous row due to low sand, silt, clay ratios')
+  print('soil data adapted due to low sand, silt, clay ratios. check code.')
   
 }
 
