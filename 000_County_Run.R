@@ -94,13 +94,13 @@ if(!dir.exists(results_path)) dir.create(results_path)
 figs_input_data<-file.path(results_path, 'data_and_figs')
 dir.create(figs_input_data, showWarnings = FALSE)
 
-# if(identical(Glade, TRUE)){
-#   # If running on Glade, create a log file that saves all console outputs
-#   # If statement is because otherwise the output to local console is diverted to just the file.
-#   # create a log file that saves all console outputs
-#   con <- file(file.path(figs_input_data, paste0("1_", site_name, "_R_console_out.log")))
-#   sink(con)
-# }
+if(identical(Glade, TRUE)){
+  # If running on Glade, create a log file that saves all console outputs
+  # If statement is because otherwise the output to local console is diverted to just the file.
+  # create a log file that saves all console outputs
+  con <- file(file.path(figs_input_data, paste0("1_", site_name, "_R_console_out.log")))
+  sink(con)
+}
 
 tic()
 
@@ -111,12 +111,12 @@ del_input_files<-TRUE # deletes files that results tables are made from in natio
                       # helpful to have though when in development
                       # Note: files are only deleted upon successful model completion. Use 10_delete_model_files.R when need to clear out faulty model data.
 results_only=FALSE # only results, works for Daycent and LDNDC, note all run flags must be opposite of this TRUE or FALSE. Useful for debugging.
-data_plots=FALSE # county level climate and results plots
+data_plots=TRUE # county level climate and results plots
 
 # Run flags for models. If all FALSE, then input climate and soil data will be loaded in global environment.
-run_Daycent=FALSE 
-run_LDNDC=FALSE
-run_Millennial=FALSE
+run_Daycent=TRUE 
+run_LDNDC=TRUE
+run_Millennial=TRUE
 
 cat("********************************\n")
 cat("********************************\n")
