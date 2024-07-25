@@ -15,6 +15,7 @@ if (Sys.info()['sysname'] == "Linux"){
   }
 }
 
+print('checking soils data...')
 
 soils_data<-list.files(soil_data_path, pattern = 'csv')
 
@@ -36,3 +37,8 @@ j<-left_join(county_data, df, by = c('GEOID' = 'soil_geoid'), keep = TRUE)
 
 
 fwrite(j, file.path(national_figs, 'check_gNATSGO_input_data.csv'))
+
+yesno<-file.exists(file.path(national_figs, 'check_gNATSGO_input_data.csv'))
+
+print('done soils data...')
+print(paste('soils data present:', yesno))
