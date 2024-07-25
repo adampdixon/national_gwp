@@ -118,17 +118,19 @@ run_Millennial=TRUE
 
 cat("********************************\n")
 cat("********************************\n")
-
+################################################################################
+################################################################################
 # county_numbers<-296:306   #295:3100
-# crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
-crops_ <- c('Rotation') # Crops
+crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
+# crops_ <- c('Rotation') # Crops
 
 # mgmt_scenario_nums <- 1:1 # Management scenarios
-mgmt_scenario_nums <- 1:1 # 1:6 Management scenarios 1:6
+mgmt_scenario_nums <- 1:6 # 1:6 Management scenarios 1:6
 
 # climate scenarios
-clim_nums <- 1:1 #c(1:2), can be 1:2
-
+clim_nums <- 1:2 #c(1:2), can be 1:2
+################################################################################
+################################################################################
 cat("************************************")
 cat("************************************\n")
 cat("************************************\n")
