@@ -19,7 +19,7 @@ if (Sys.info()['sysname'] == "Linux"){
 
 
 
-geoids_to_fetch<-c(32009, 32001)
+geoids_to_fetch<-c(54087)
 
 # get geoids ready for grepl search
 geoids_to_fetch<-paste(geoids_to_fetch, collapse = '_|_')
