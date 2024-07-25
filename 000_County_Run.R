@@ -134,7 +134,7 @@ clim_nums <- 1:1 #c(1:2), can be 1:2
 cat("************************************")
 cat("************************************\n")
 cat("************************************\n")
-cat(paste0("The county_number is: ", county_number, "\n"))
+cat(paste0("Starting county ", county_number, "\n"), file = stderr(), append = TRUE)
 cat(paste0("Starting county ", county_number, "\n"))
 county_print_marker<-paste("county geoid, name, stat is:", county_geoid, county_name, state_name)
 cat(county_print_marker)

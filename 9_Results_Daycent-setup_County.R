@@ -387,7 +387,7 @@ output_annual_data$GEOID<- county_geoid
 output_annual_data2<-output_annual_data%>%
   mutate(grespann1_ghayr = `grspann(1)`,
          mrespann1_ghayr = `mrspann(1)`)%>%
-  select(annual_output_columns, {crop_names_units} ,grespann1_ghayr, mrespann1_ghayr) 
+  select(all_of(annual_output_columns), {crop_names_units} ,grespann1_ghayr, mrespann1_ghayr) 
 
 # ,"SoyYld_Mgha","WheatYld_Mgha" removed these from below AD
 # colnames(output_annual_data) <- c("year", 
@@ -445,7 +445,7 @@ output_daily<-
   )
 
 output_daily2<-output_daily%>%
-  select(daily_outputs_columns, everything())
+  select(all_of(daily_outputs_columns), everything())
 
 fwrite(output_daily2,file=daycent_daily_out,col.names=T,row.names=F,sep=",",append=F)
 
