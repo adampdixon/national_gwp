@@ -44,7 +44,7 @@ date<-gsub("-", "", Sys.Date())
 print(paste0('master_path - ', master_path))
 print(paste0('results_folder - ', results_folder))
 print(paste0("date and time are ", Sys.time()))
-print(paste0('*********soils_data_path is ', soil_data_path, " **************"))
+print(paste0('*********soil_data_path is ', soil_data_path, " **************"))
 print(paste0('*********climate_data_path is ', climate_data_path, " **************"))
 print(paste0('*********national_figs saved to  ', national_figs, " **************"))
 
