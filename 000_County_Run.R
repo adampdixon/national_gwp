@@ -112,8 +112,8 @@ results_only=FALSE # only results, works for Daycent and LDNDC, note all run fla
 data_plots=TRUE # county level climate and results plots
 
 # Run flags for models. If all FALSE, then input climate and soil data will be loaded in global environment.
-run_Daycent=FALSE 
-run_LDNDC=FALSE
+run_Daycent=TRUE 
+run_LDNDC=TRUE
 run_Millennial=TRUE
 
 cat("********************************\n")
@@ -134,7 +134,7 @@ cat("************************************\n")
 cat("************************************\n")
 cat(paste0("Starting county ", county_number, "\n"), file = stderr(), append = TRUE)
 cat(paste0("Starting county ", county_number, "\n"))
-county_print_marker<-paste("county geoid, name, stat is:", county_geoid, county_name, state_name)
+county_print_marker<-paste("county geoid, name, state, number is:", county_geoid, county_name, state_name, county_number)
 cat(county_print_marker)
 cat('working directory is: ')
 cat(getwd())

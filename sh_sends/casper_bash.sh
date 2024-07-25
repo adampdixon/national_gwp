@@ -5,6 +5,10 @@
 #PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/Casper_1.stderr 
 #PBS -l select=1:ncpus=1:mem=5GB
 #PBS -l walltime=00:10:00
+### Send email on abort, begin and end
+#PBS -m e
+### Specify mail recipient
+#PBS -M apdixon@pm.me
 #PBS -q casper
 #PBS -J 3050-3060
 #PBS -j oe
