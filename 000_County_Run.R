@@ -64,7 +64,7 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 # These GEOIDs were the test counties. They are spread around the US. Georgia, Kansas, Nebraska, Pennsylvania, etc.
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(54087)) # 1075
+    filter(GEOID %in% c(5021)) # 1075
 }
 
 # 4012, 8113, 54087
@@ -97,7 +97,7 @@ if(identical(Glade, TRUE)){
   # If statement is because otherwise the output to local console is diverted to just the file.
   # create a log file that saves all console outputs
   con <- file(file.path(figs_input_data, paste0("1_", site_name, "_R_console_out.log")))
-  sink(con)
+  sink(con, split = TRUE) # split is supposed to get error and messages
 }
 
 tic()
@@ -120,14 +120,14 @@ cat("********************************\n")
 cat("********************************\n")
 
 # county_numbers<-296:306   #295:3100
-crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
-# crops_ <- c('Maize') # Crops
+# crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
+crops_ <- c('Rotation') # Crops
 
 # mgmt_scenario_nums <- 1:1 # Management scenarios
-mgmt_scenario_nums <- 1:6 # 1:6 Management scenarios 1:6
+mgmt_scenario_nums <- 1:1 # 1:6 Management scenarios 1:6
 
 # climate scenarios
-clim_nums <- 1:2 #c(1:2), can be 1:2
+clim_nums <- 1:1 #c(1:2), can be 1:2
 
 cat("************************************")
 cat("************************************\n")

@@ -182,7 +182,11 @@ for (c in crops_){
         source('9_Results_LDNDC-setup_County.R', local = TRUE)
         source(paste0("9_Results_Millennial-setup_County.R"), local = TRUE)
       }
-    } # end of mgmt_scenario_nums loop 
+
+    } # end of mgmt_scenario_nums loop
+    
+    print(county_print_marker) # print out for debugging with console print out
+
   } # end of else statement if crop amount is less than 1 ha in county
 } # end of crops loop
 

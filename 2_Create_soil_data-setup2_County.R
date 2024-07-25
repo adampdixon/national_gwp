@@ -25,7 +25,7 @@ library(tidyr)
 library(soiltexture)
 library(xml2)
 library(lubridate)
-# library(soilDB)
+# library(soilDB) # old way to get soils data
 # library(sf)
 library(zoo)
 
@@ -91,18 +91,67 @@ print('*** Soil data setup County ***')
 soils<-fread(input = file.path(soil_data_path, paste0("GEOID_", county_geoid, "_gNATSGO.csv")))%>%
   select(-GEOID)
 
+
+# This next section is leftovers of trying to figure out why soils were leading to LDNDC fail, it appears that pH and 
+# SOC were main causes of errors. Leaving everything else I tried commented out in case I have to come back to it.
+
 # tell Debjani!!!! Murray County georgia had an erroneous pH value as well as really strange values overall
 #, so using this to avoid
 # note: zoo library loaded in climate script run prior
-soils<-mutate(soils, pH = ifelse(pH > 14, NA, pH),
-              pH = ifelse(pH < 2, NA, pH)) # remove pH values greater than 14 or less than 2, some are obviously in error and this was likely throwing
+soils<-mutate(soils, pH = ifelse(pH > 14, 7, pH),
+              pH = ifelse(pH < 2, 2, pH)) # remove pH values greater than 14 or less than 2, some are obviously in error and this was likely throwing
 # and error in LDNDC ([EE] region construction failed)
 
 # Stopped doing this because of error in Ks values in saxton_rawls_df
 # soils<-mutate(soils, pH = ifelse(BD < 1, NA, pH)) # remove pH less than 1, less than this hrows an error
-# soils<-mutate(soils, BD = ifelse(BD < .5, NA, pH)) # remove bulk density values less than .5, less than this throws an error
+# soils<-mutate(soils, BD = ifelse(BD < .5, 1, pH)) # remove bulk density values less than .5, less than this throws an error
 
-soils<-na.locf(soils) # This sets NA values to the last non-NA value
+# soils<-mutate(soils, SOC = ifelse(SOC < .1, .1, SOC))
+
+# gSSURGO documentation says SOC is grams carbon per square meter, gNATSGO is supposed to be the same as gSSURGO, but units seem more like kg -m2
+# https://www.nrcs.usda.gov/sites/default/files/2022-08/gSSURGO_UserGuide_July2020.pdf
+# https://www.nrcs.usda.gov/sites/default/files/2022-08/gSSURGO%20Value%20Added%20Look%20Up%20Valu1%20Table%20Column%20Descriptions.pdf
+# This seems to be the upper threshold, otherwise an error with N2O happens in LDNDC
+# Issue was troubleshooted with geoid 54087
+soils<-mutate(soils, SOC = ifelse(SOC > 50, 50, SOC))
+
+# Check if data row has reasonable, bulk density, sand, silt, clay
+# This may be causing errors in the LDNDC model
+# check_parent<-soils%>%
+#   select(Depth_cm, BD, SOC, pH, Clay, Sand, Silt)%>% #rearrange can select Clay:Silt below (not sure of how to select them otherwise so this is workaround)
+#   rowwise()%>%
+#   mutate(check = sum(c_across(Clay:Silt)))
+
+
+# If any rows are found with unreasonably low ratio of parent material then replace values
+# This was an issue with Daycent (specifically geoid 16067)
+# This does a rowwise calculation if all the parent material (sand, silt, clay. excluding OM matter for now) doesn't add up to
+# 30% then it needs to be adjusted
+check<-soils%>%
+  select(Depth_cm, BD, SOC, pH, Clay, Sand, Silt)%>% #rearrange can select Clay:Silt below (not sure of how to select them otherwise so this is workaround)
+  rowwise()%>%
+  mutate(check = sum(c_across(Clay:Silt)))%>%
+  select(Depth_cm, check)%>%
+  filter(check<30)
+
+# now do the 'check' mutate operation again, and if it is less than 10 each, adjust to 30
+if (nrow(check)>0){
+  fix<-soils%>%
+    rowwise()%>%
+    mutate(check = sum(c_across(Clay:Silt)))%>% # create a column with the sum of sand, silt, and clay
+    mutate(Clay = if_else(check<10, 30, Clay), # if those together are less than .1, something is wrong, so set all the relevant values to .3
+           Sand = if_else(Sand<10, 30, Sand),
+           Silt = if_else(Silt<10, 30, Silt))%>%
+    as.data.frame()%>%
+    select(-check) # remove the check column (not needed anymore)
+
+  soils<-fix # replace the original data with the fixed data
+  print('soil data adapted due to low sand, silt, clay ratios. check code.')
+
+}
+
+# AD I was using na.locf but I found it was dropping rows and not imputing
+# soils<-na.locf(soils) # This sets NA values to the last non-NA value
 
 
 # soils<-mutate(soils, pH = ifelse(pH<5.5, 5.5, ifelse(pH>7.5, 7.5, pH))) # keep pH within 5.5 and 7.5
@@ -226,32 +275,6 @@ sps$KS<-saxton_rawls_df$Ks
 # sps$Ks_cmsec<-saxton_rawls_df$Ks_cmsec
 # sps$Ks_cmhr<-saxton_rawls_df$Ks_cmhr
 
-####################################################################
-## continue with remaining soil elements
-
-# sps[[1]]$soil$SoilCNRatio <- c(10, 10, 10, 10, 10, 10, 10, 10, 10, 10)
-# sps[[1]]$soil$PH <- c(5.5, 5.5, 5.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5, 6.5)
-# sps[[1]]$soil$Maize.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
-#                                 0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
-# sps[[1]]$soil$Soybean.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
-#                               0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
-# sps[[1]]$soil$Wheat.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
-#                                 0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
-# if(mgmt_scenario_num==3) {
-# sps[[1]]$soil$WhiteClover.KL <- c(0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06)
-# sps[[1]]$soil$WhiteClover.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
-#                                 0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
-# sps[[1]]$soil$WhiteClover.XF <- c(1,1,1,1,1,1,1,1,1,1)
-# sps[[1]]$soil$RedClover.KL <- c(0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06)
-# sps[[1]]$soil$RedClover.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
-#                                 0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
-# sps[[1]]$soil$RedClover.XF <- c(1,1,1,1,1,1,1,1,1,1)
-# sps[[1]]$soil$Oats.KL <- c(0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06,0.06)
-# sps[[1]]$soil$Oats.LL <- c(0.06753815, 0.06753815, 0.06753815, 0.13822352,
-#                                 0.06916603, 0.02266792, 0.02266792, 0.02266792, 0.02266792, 0.02266792)
-# sps[[1]]$soil$Oats.XF <- c(1,1,1,1,1,1,1,1,1,1)
-# }
-
 # extract just soil data into a dataframe
 # soil_df_raw <- sps[[1]]$soil
 soil_df_raw <- sps
@@ -335,29 +358,6 @@ soil_type_code <- toupper(if_else(find_col=="Cl","clay",
                           )
 
 
-# Check if data row has reasonable, bulk density, sand, silt, clay
-# This was causing several errors in the LDNDC model
-check<-soil_df%>%
-  rowwise()%>%
-  mutate(check = sum(c_across(sand_frac:silt_frac)))%>%
-  select(upper_depth_cm, check)%>%
-  filter(check<0.3)
-
-# If any rows are found with unreasonably low ratio of parent material then replace values with the row above
-if (nrow(check)>0){
-  
-  fix<-soil_df%>%
-    rowwise()%>%
-    mutate(check = sum(c_across(sand_frac:silt_frac)))%>% # create a column with the sum of sand, silt, and clay
-    mutate(sand_frac = if_else(check<0.1, .3, sand_frac), # if those together are less than .1, something is wrong, so set all the relevant values to .3
-           clay_frac = if_else(check<0.1, .3, clay_frac),
-           silt_frac = if_else(check<0.1, .3, silt_frac))
-  
-  soil_df<-fix # replace the original data with the fixed data
-  print('soil data adapted due to low sand, silt, clay ratios. check code.')
-  
-}
-
 
 # LDNDC soil table
 soil_df_L<-soil_df%>%
@@ -374,9 +374,13 @@ soil_df_L$Thickness<-c(2, 3, 5, 10, 20, 20, 20, 20, 20, 20, 20, 20, 20)
 # change the significant digits of columns to match original soil.in file
 # sig digs were: 0 0 2 2 8 0 2 2 2 4 2 scinum 1
 # select columns needed
-soil_df<-soil_df[,c("upper_depth_cm","lower_depth_cm","bdfiod_value_avg","DUL","LL15","evap_coef",
-                  "root_fraction","sand_frac","clay_frac","OM_frac",
-                  "deltamin","ksat_cmsec","phaq_value_avg")]
+# soil_df<-soil_df[,c("upper_depth_cm","lower_depth_cm","bdfiod_value_avg","DUL","LL15","evap_coef",
+#                   "root_fraction","sand_frac","clay_frac","OM_frac",
+#                   "deltamin","ksat_cmsec","phaq_value_avg")]
+
+soil_df<-soil_df%>%select(upper_depth_cm,lower_depth_cm,bdfiod_value_avg,DUL,LL15,evap_coef,
+                          root_fraction,sand_frac,clay_frac,OM_frac,
+                          deltamin,ksat_cmsec,phaq_value_avg)
 
 # change significant digits
 # upper_depth_cm
@@ -399,39 +403,7 @@ soil_df$phaq_value_avg<-formatC(soil_df$phaq_value_avg, digits=2, format="fg", f
 ####* NOTE: Will need to address issue of negative values in lower limit,
 ####* as well as LL15-deltamin resulting in a negative value
 ####* 
-####* 
-####*
 
-# notes
-#?check_apsimx_soil_profile
-#> ?compare_apsim_soil_profile - can return diffs between profiles
-#> # cmp created from example - shows bias, etc. between two sites
-#> 
-
-######################################
-#### testing
-######################################
-# hydrological, from Saxton and Rawls (2006)
-# full_soil_prof_df <- soil_df_raw %>%
-# mutate(sand_frac = ParticleSizeSand/100,
-#        silt_frac = ParticleSizeSilt/100,
-#        clay_frac = ParticleSizeClay/100,
-#        OM_frac = Carbon*1.724/100, # organic matter fraction
-#        O1500t = -0.024*sand_frac + 0.487*clay_frac + 0.006*OM_frac +
-#          0.005*sand_frac*OM_frac - 0.013*clay_frac*OM_frac +
-#          0.068*sand_frac*clay_frac + 0.031, # helper equation to LL15
-#        LL15 = O1500t + (0.14 * O1500t - 0.02), # permanent wilting point, %
-#        O33t = -0.251*sand_frac + 0.195*clay_frac + 0.011*OM_frac +
-#          0.006*sand_frac*OM_frac - 0.027*clay_frac*OM_frac +
-#          0.452*sand_frac*clay_frac + 0.299, # helper equation to DUL
-#        DUL = O33t + (1.283*O33t^2 - 0.374*O33t - 0.015), # field capacity, %
-#        SAT = 1 - BD/2.65, # moisture at saturation, %; 2.65 = assumed particle density
-#        B = (log(1500) - log(33))/(log(DUL) - log(LL15)), # moisture-tension coefficient
-#        lamda = 1/B, # slope of tension-moisture curve
-#        Ks = 1930*(SAT-DUL)^(3-lamda), # saturated conductivity (mm h-1)
-#        Ks_mmday = Ks*24,
-#        Ks_cmsec = Ks/10/60/60,
-#        Ks_cmhr = Ks/10)
        
        
 

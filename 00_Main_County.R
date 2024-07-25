@@ -42,7 +42,7 @@ daycent_path2<-file.path(master_path, 'Daycent' ,site_name)
 
 dndc_path <- paste0("LDNDC/ldndc-1.36.linux64/projects/",site_name,"/")
 if(identical(results_only, FALSE)){
-  # unlink(dndc_path, recursive = TRUE) # Do we need to delete?
+  unlink(dndc_path, recursive = TRUE) # Do we need to delete?
   dir.create(file.path(dndc_path))
 }
 
@@ -50,7 +50,7 @@ if(identical(results_only, FALSE)){
 # Create Millennial dir
 if(identical(run_Millennial, TRUE)) {
   mill_path <- paste0("Millennial/R/simulation/",site_name,"/")
-  # unlink(mill_path, recursive = TRUE)
+  unlink(mill_path, recursive = TRUE)
   dir.create(file.path(mill_path))
   
   copy_from_<-file.path("Millennial/R/simulation/Millennial copy files")
@@ -107,14 +107,16 @@ for (fut_climate in clim_nums) { # climate scenarios
 
 }
 
+if(identical(data_plots, TRUE)){
+  # check if files are already there
+  if(!file.exists(file.path(figs_input_data, paste0(site_name, "_input_climate_figs.png")))){
+    # Run climate graph
+    source(file.path('data_explore', 'county_climate_viz.R'), local=TRUE) # create climate plots 
+  }
+}
 
 
 # Think about putting these in a separate data vis script
-
-
-
-
-
 # Run county graph function
 if(identical(data_plots, TRUE)){
   # check if files are already there
@@ -137,14 +139,16 @@ if(identical(data_plots, TRUE)){
         print(paste0("*************** skipping plotting less than 1 ha of ", c, " in county **********************************"))
       } else {
         # Check if model data is there, if not skip
-        if(file.exists(mill_annual_out) & file.exists(ldndc_annual_out) & file.exists(daycent_annual_out)){
+        # if(file.exists(mill_annual_out) & file.exists(ldndc_annual_out) & file.exists(daycent_annual_out)){
+        # TODO need to find a way to check if model data is ready for plotting, the above if file.exists doesn't work
+        # because it only checks the last "annual" output file, not all of them
           # Run model line graphs
           try(create_model_linegraphs(crop = c))
-        }
+        # }
       }
-
+      
       Sys.sleep(5) # wait 5 seconds for plot to be made
     }
   }
-}
-
+} # end of data_plots if statement
+  
