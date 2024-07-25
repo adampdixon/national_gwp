@@ -112,8 +112,8 @@ results_only=FALSE # only results, works for Daycent and LDNDC, note all run fla
 data_plots=TRUE # county level climate and results plots
 
 # Run flags for models. If all FALSE, then input climate and soil data will be loaded in global environment.
-run_Daycent=TRUE 
-run_LDNDC=TRUE
+run_Daycent=FALSE 
+run_LDNDC=FALSE
 run_Millennial=TRUE
 
 cat("********************************\n")

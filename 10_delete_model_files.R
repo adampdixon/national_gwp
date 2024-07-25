@@ -12,7 +12,7 @@ if (Sys.info()['sysname'] == "Linux"){
     daycent_input_folder<-'/home/ap/Documents/GitHub/national_gwp/Daycent'
     ldndc_input_folder<-'/home/ap/Documents/GitHub/national_gwp/LDNDC/ldndc-1.36.linux64/projects'
     mill_input_folder<-'/home/ap/Documents/GitHub/national_gwp/Millennial/R/simulation'
-    results_folder<-'/home/ap/Documents/national_gwp_results'
+    # results_folder<-'/home/ap/Documents/national_gwp_results' # commenting out results for safety
     Glade=FALSE
     print("************************************")
     print("*****Using linux mint *********")
@@ -20,7 +20,7 @@ if (Sys.info()['sysname'] == "Linux"){
     daycent_input_folder<-'/glade/derecho/scratch/apdixon/national_gwp/Daycent'
     ldndc_input_folder<-'/glade/derecho/scratch/apdixon/national_gwp/LDNDC/ldndc-1.36.linux64/projects'
     mill_input_folder<-'/glade/derecho/scratch/apdixon/national_gwp/Millennial/R/simulation'
-    results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
+    # results_folder<-'/glade/derecho/scratch/apdixon/national_gwp_results'
     Glade=TRUE
     print("************************************")
     print("*****Using NCAR *********")

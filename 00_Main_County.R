@@ -130,7 +130,7 @@ if(identical(data_plots, TRUE)){
   
   for (c in crops_){
     # check if files are already there
-    if(!file.exists(file.path(figs_input_data, paste0('GEOID_', county_geoid,'_model_results_', c, ".png")))){
+    # if(!file.exists(file.path(figs_input_data, paste0('GEOID_', county_geoid,'_model_results_', c, ".png")))){
       # Also check if crop was run in that county
       crop_amount2<-county_data[,eval(paste0(c, "_ha"))] # get crop amount in county
       # Rotation ha is the same as Maize, since if you can grow corn you can grow soybeans
@@ -148,7 +148,7 @@ if(identical(data_plots, TRUE)){
       }
       
       Sys.sleep(5) # wait 5 seconds for plot to be made
-    }
+    # }
   }
 } # end of data_plots if statement
   
