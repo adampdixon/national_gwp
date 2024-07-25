@@ -153,8 +153,8 @@ for (c in crops_){
       } # end of if statement checking if LDNDC model results already exist
       
       # milliennial output files
-      mill_daily_out<-paste0("Millennial_daily_results_compilation_",scenario_name2,".csv")
-      mill_annual_out<-paste0("Millennial_annual_results_compilation_",scenario_name2,".csv")
+      mill_daily_out<-file.path(results_path, paste0("Millennial_daily_results_compilation_",scenario_name2,".csv"))
+      mill_annual_out<-file.path(results_path, paste0("Millennial_annual_results_compilation_",scenario_name2,".csv"))
         
       if(identical(run_Millennial,TRUE)) {
         cat(county_print_marker)

@@ -11,8 +11,6 @@ library(dplyr)
 
 # for pulling in county number from batch script
 args <- commandArgs(trailingOnly = TRUE)
-print(args)
-
 
 # Set workspace
 if (Sys.info()['sysname'] == "Linux"){ 
@@ -39,7 +37,7 @@ if (Sys.info()['sysname'] == "Linux"){
     Test <- FALSE # if TRUE, only run county, filtered below
     args=(commandArgs(TRUE)) # already have above?
     
-    county_number = args[2] # pulls in from batch script
+    county_number = args[2] # pulls in from bash script
     
     Glade=TRUE # Save on Glade file system?
     print("************************************")
@@ -122,14 +120,14 @@ cat("********************************\n")
 cat("********************************\n")
 
 # county_numbers<-296:306   #295:3100
-# crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
-crops_ <- c('Maize') # Crops
+crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
+# crops_ <- c('Maize') # Crops
 
 # mgmt_scenario_nums <- 1:1 # Management scenarios
-mgmt_scenario_nums <- 1:1 # 1:6 Management scenarios 1:6
+mgmt_scenario_nums <- 1:6 # 1:6 Management scenarios 1:6
 
 # climate scenarios
-clim_nums <- 1:1 #c(1:2), can be 1:2
+clim_nums <- 1:2 #c(1:2), can be 1:2
 
 cat("************************************")
 cat("************************************\n")
