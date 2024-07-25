@@ -5,9 +5,6 @@
 # Dec 4, 2023
 ###########################
 
-######################################################
-# parallel script will create 6 tables, one for each variable and model (nclim, cmip6)
-######################################################
 print("starting soils processing")
 # args <- commandArgs(trailingOnly = TRUE)
 # 
@@ -26,15 +23,14 @@ sink(stdout(), type = "message")
 
 
 # county data to link
-geo_link_dir<-'/glade/u/home/apdixon/Documents/national_gwp/Data/County_start'
-output_dir<-'/glade/work/apdixon/soils'
-gnatsgo_dir<-'/glade/work/apdixon/Output_gNATSGO'
+# geo_link_dir<-'/glade/u/home/apdixon/Documents/national_gwp/Data/County_start'
+# output_dir<-'/glade/work/apdixon/soils'
+# gnatsgo_dir<-'/glade/work/apdixon/Output_gNATSGO'
 
 # 
-# geo_link_dir<-'/home/ap/Documents/GitHub/national_gwp/Data/County_start'
-# output_dir<-'/home/ap/Scratch'
-# nclim_dir<-'/home/ap/Documents/GitHub/national_gwp/climate_nclim'
-# cmip6_dir<-'/home/ap/Documents/GitHub/national_gwp/climate_cmip6'
+geo_link_dir<-'/home/ap/Documents/GitHub/national_gwp/Data/County_start'
+output_dir<-'/home/ap/soils_all'
+gnatsgo_dir<-'/home/ap/gNATSGO'
 
 
 # add geolink table to make GEOIDS align with census GEOID
@@ -58,7 +54,7 @@ for (c in 0:3108){
     expr = {
       county_number<-c
       
-      # zh_GEOID<-filter(geo_link, zh_geoid==county_number)$zh_geoid
+      zh_GEOID<-filter(geo_link, zh_geoid==county_number)$zh_geoid
       GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
       
       
@@ -120,15 +116,6 @@ for (c in 0:3108){
 }
 
   
-  
-
-
-
-  
-
-
-
-
 print(paste0('done with soils processing', county_number))
 
 toc()
