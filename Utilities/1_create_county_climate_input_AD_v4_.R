@@ -160,6 +160,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
     
     # Print an error message to stderr
     cat(paste0("Finished ", county_number, file = stderr(), append = TRUE))
+    print(paste("data saved to", output_filename2))
     # Close the connection to stderr
     sink(type = "message")
 
