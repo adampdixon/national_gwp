@@ -19,7 +19,7 @@ print('checking soils data...')
 
 soils_data<-list.files(soil_data_path, pattern = 'csv')
 
-# soils_data<-list.files('/home/ap/soils_all', pattern = 'csv')
+# soils_d ata<-list.files('/home/ap/soils_all', pattern = 'csv')
 
 
 

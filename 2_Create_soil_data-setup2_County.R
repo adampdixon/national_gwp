@@ -10,11 +10,9 @@
 # 2/23/2023: Calculated SAT, LL15, DUL, and KS with Saxton and Rawls (2006).
 #######################################
 
-#!!!!!!!!!! Note: 
-######## Limit to 100 cm depth to avoid data issues, and this is also the depth
-######## limit on the study ########### But unsure how to do this for APSIM's
-######## custom format.
-#!!!!!!
+# TODO: decide how to fill in missing soils data. Will need to go back to Zhuonan's code and/or get missing county data another way (maybe easier)
+# also could check if file exists and if not use an adjacent county's data, but this is less ideal obviously
+# use check_gNATSGO_input_data.R to generate a csv of counties with and without data. At present there's about 15 that need data.
 
 
 # library(apsimx)

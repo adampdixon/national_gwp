@@ -44,15 +44,20 @@ climate_data<-list.files(climate_data_path, full.names = TRUE, pattern = ".csv")
 # Create historic data using mutate, left_join, select, and lubridate functions; use fread to read in the data
 # Then place in the format that Daycent needs
 
+# TODO: check again for missing climate data. Copied geoid 9003 to 9001 because 9001 was missing. Hartford County, CT.
+hist_tmax<-climate_data[grep(paste0("tmax_", county_geoid, "_nclim.csv"), climate_data)]
+hist_tmin<-climate_data[grep(paste0("tmin_", county_geoid, "_nclim.csv"), climate_data)]
+hist_prcp<-climate_data[grep(paste0("prcp_", county_geoid, "_nclim.csv"), climate_data)]
+
 #historic - 1950-2021
-historic_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, "_nclim.csv"), climate_data)]),
+historic_data<-mutate(fread(hist_tmax),
                       tmax = value)%>%
   left_join(
-    mutate(fread(climate_data[grep(paste0("tmin_", county_geoid, "_nclim.csv"), climate_data)]),
+    mutate(fread(hist_tmin),
     tmin = value), 
     by=c('year', 'doy'))%>%
   left_join(
-    mutate(fread(climate_data[grep(paste0("prcp_", county_geoid, "_nclim.csv"), climate_data)]),
+    mutate(fread(hist_prcp),
     precip = value),
     by=c('year', 'doy'))%>%
   select(year, doy, tmax, tmin, precip)%>%
@@ -72,15 +77,18 @@ if (fut_climate == 2) {
   cmip_scen<-'_ssp585_gfdl-esm4__cmip6.csv'
 }
 
+future_tmax<-climate_data[grep(paste0("tmax_", county_geoid, cmip_scen), climate_data)]
+future_tmin<-climate_data[grep(paste0("tmin_", county_geoid, cmip_scen), climate_data)]
+future_prcp<-climate_data[grep(paste0("prcp_", county_geoid, cmip_scen), climate_data)]
 
-future_data<-mutate(fread(climate_data[grep(paste0("tmax_", county_geoid, cmip_scen), climate_data)]),
+future_data<-mutate(fread(future_tmax),
                                    tmax = value)%>%
   left_join(
-    mutate(fread(climate_data[grep(paste0("tmin_", county_geoid, cmip_scen), climate_data)]),
+    mutate(fread(future_tmin),
            tmin = value), 
     by=c('year', 'doy'))%>%
   left_join(
-    mutate(fread(climate_data[grep(paste0("prcp_", county_geoid, cmip_scen), climate_data)]),
+    mutate(fread(future_prcp),
            precip = value),
     by=c('year', 'doy'))%>%
   select(year, doy, tmax, tmin, precip)%>%
