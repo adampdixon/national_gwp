@@ -118,6 +118,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
     nclim_out_filename<-file.path(output_dir, paste0(var,"_", GEOID ,'_nclim.csv'))
     #####################################
     if(file.exists(nclim_out_filename)){
+      print("skipping nclim, already there")
       next
     } else {
       hist_climate_df<-data.frame()
@@ -149,7 +150,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
 
       }
       # once all years have run and rbind, write to csv
-      fwrite(hist_climate_df, nclim_out_filename, append = F, col.names = T, row.names = F)
+      fwrite(hist_climate_df, nclim_out_filename, append = F)
       print(paste("historic climate data written", nclim_out_filename))
 
     } # end of after if file.exists
