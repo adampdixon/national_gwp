@@ -67,10 +67,31 @@ if (Sys.info()['sysname'] == "Linux"){
 # add geolink table to make GEOIDS align with census GEOID
 geo_link<-fread(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
   select(zh_geoid, REAL_GEOID)%>%
-  as_tibble()
-
-# %>%
-#   filter(REAL_GEOID %in% c(42053, 13023, 13213, 20073, 31181, 1075))
+  as_tibble()%>%
+  filter(REAL_GEOID %in% c(1001,
+                           9003,
+                           29093,
+                           29179,
+                           51059,
+                           51087,
+                           51089,
+                           51153,
+                           51161,
+                           51600,
+                           51685,
+                           51690,
+                           51760,
+                           51775,
+                           55011,
+                           55091,
+                           56031,
+                           56033,
+                           56035,
+                           56037,
+                           56039,
+                           56041,
+                           56043,
+                           56045)) # only use these counties
 
 
 
