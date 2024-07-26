@@ -61,7 +61,6 @@ for (c in c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')) {
 }
 
 
-
 # Get csvs of results
 source(file.path(master_path, 'data_explore', 'get_model_tables.R'))
 
