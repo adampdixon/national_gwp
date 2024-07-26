@@ -29,10 +29,12 @@ soils_boxplots<-function(){
   print("starting soil box plots")
   print("reading all counties soil data")
   
+  soil_files<-list.files(soil_data_path, full.names = T, pattern = '.csv')
+  
   tbl_fread <- 
-    list.files(soil_data_path, full.names = T, pattern = '.csv') %>% 
+    soil_files %>% 
     map_df(~fread(.))%>% # read all data
-    mutate(order = rep(1:14, 9))
+    mutate(order = rep(1:14, length(soil_files)))
   
   # This same repertoire for ph is used in main model script
   tbl_fread<-mutate(tbl_fread, pH = ifelse(pH > 7.5, NA, pH)) # remove pH values greater than 7.5, some are obviously in error
