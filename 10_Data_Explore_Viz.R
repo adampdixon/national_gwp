@@ -23,14 +23,14 @@ if (Sys.info()['sysname'] == "Linux"){
 # -table with counties and number of files per model
 # 
 # -input soils boxplots
-source(file.path(master_path, 'data_explore', 'soils_boxplots_function.R'))
+# source(file.path(master_path, 'data_explore', 'soils_boxplots_function.R'))
 
 # -input climate boxplots and histograms
 # Get climate data
 # This first script reads and creates tables for the climate data
-source(file.path(master_path, 'data_explore', 'get_input_clim_4Vis_County.R'))
+# source(file.path(master_path, 'data_explore', 'get_input_clim_4Vis_County.R'))# TODO get this working
 # This script then makes boxplots with the data
-# source(file.path(master_path, 'data_explore', 'climate_input_plots_county.R')) # RODO get this working
+# source(file.path(master_path, 'data_explore', 'climate_input_plots_county.R')) 
 
 # get model data for data visualization
 
