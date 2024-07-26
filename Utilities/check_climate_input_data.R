@@ -1,4 +1,6 @@
 # check CLIMATE county files for completion
+# Adam Dixon
+# 25 July 2024
 
 # if data is not present, it will not have a record in the climate_geoid column
 
@@ -21,27 +23,45 @@ print('checking climate data...')
 
 climate_data<-list.files(climate_data_path, pattern = 'csv')
 
+#unique climate types
+# list.files(climate_data_path, pattern = 'cmip6')
+# cmip6 - tmax, tmin, sfcwind, rsds, prcp - 5 total
+# list.files(climate_data_path, pattern = 'nclim')
+# nclim - prcp, tmax, tmin - 3 total
+
 county_data<-fread(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))%>%
   select(GEOID, NAME, State_Name)
 
 s<-strsplit(soils_data, '_')
 
-v<-data.frame()
+v<-data.frame(geoid = numeric(), ssp585 = numeric(), ssp126 = numeric(), nclim = numeric())
 for(i in 1:length(s)){
   g<-s[[i]][2] # gets geoid
   t<-s[[i]][3] # gets climate d type
-  v<-rbind(v, cbind(g, t))
+  
+  if (grepl('ssp585', t)){
+    ssp585 = 1;ssp126=0;nclim=0
+  } else if (grepl('ssp126', t)){
+    ssp126 = 1;ssp585=0;nclim=0
+  } else if (grepl('nclim', t)){
+    nclim = 1;ssp585=0;ssp126=0
+  }
+  v<-rbind(v, cbind(g, ssp585, ssp126, nclim))
 }
 
-df<-data.frame(soil_geoid = as.integer(v),
-               ID = 1:length(v))
+names(v) = c("climate_geoid", "ssp585", "ssp126", "nclim")
+v$climate_geoid<-as.numeric(v$climate_geoid)
 
-j<-left_join(county_data, df, by = c('GEOID' = 'soil_geoid'), keep = TRUE)
+v<-v%>%as_tibble()%>%mutate_all(as.numeric)
 
+j<-left_join(county_data, v, by = c('GEOID' = 'climate_geoid'))%>%
+  group_by(GEOID)%>%
+  summarize(ssp585 = sum(ssp585), ssp126 = sum(ssp126), nclim = sum(nclim))
 
-fwrite(j, file.path(national_figs, 'check_gNATSGO_input_data.csv'))
+output_<-file.path(national_figs, 'check_climate_input_data.csv')
 
-yesno<-file.exists(file.path(national_figs, 'check_gNATSGO_input_data.csv'))
+fwrite(j, output_)
 
-print('done soils data...')
-print(paste('soils data present:', yesno))
+yesno<-file.exists(output_)
+print('done climate data...')
+print(paste('climte results data present:', yesno, output_))
