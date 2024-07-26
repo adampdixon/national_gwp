@@ -117,7 +117,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
     # check if output file exists, if so, skip
     nclim_out_filename<-file.path(output_dir, paste0(var,"_", GEOID ,'_nclim.csv'))
     #####################################
-    if(file.exists(output_filename)){
+    if(file.exists(nclim_out_filename)){
       next
     } else {
       hist_climate_df<-data.frame()
