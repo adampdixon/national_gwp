@@ -150,7 +150,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
 
       }
       # once all years have run and rbind, write to csv
-      write.csv(hist_climate_df, nclim_out_filename)
+      write.csv(hist_climate_df, nclim_out_filename) # can't get fwrite to work
       print(paste("historic climate data written", nclim_out_filename))
 
     } # end of after if file.exists
