@@ -22,7 +22,7 @@ if (Sys.info()['sysname'] == "Linux"){
     
     # args=(commandArgs(TRUE))
     # print(args[2])
-    # county_number<-1
+    county_number<-1
 
     nclim_dir<-'/home/ap/Documents/GitHub/national_gwp/climate_nclim'
     cmip6_dir<-'/home/ap/Documents/GitHub/national_gwp/cmip6_climate'
@@ -150,7 +150,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
 
       }
       # once all years have run and rbind, write to csv
-      fwrite(hist_climate_df, nclim_out_filename, append = F)
+      write.csv(hist_climate_df, nclim_out_filename)
       print(paste("historic climate data written", nclim_out_filename))
 
     } # end of after if file.exists
