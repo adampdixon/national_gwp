@@ -103,7 +103,8 @@ sink(stderr(), type = "message")
 cat(paste0("Starting county ", county_number, "\n"), file = stderr(), append = TRUE)
   
 #County GEOID
-GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
+# GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
+GEOID<-geo_link[county_number,]$REAL_GEOID
 
 # GEOID<-geo_link[1,]$REAL_GEOID
 if(is.na(GEOID)){ # stop if GEOID is NA
