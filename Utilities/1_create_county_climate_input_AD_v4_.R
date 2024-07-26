@@ -159,7 +159,8 @@ if(is.na(GEOID)){ # stop if GEOID is NA
         
         for (year in data_raw2){
           # translate from geo_link, and use for file name at end
-          GEOID_<-geo_link%>%filter(zh_geoid==county_number)
+          # GEOID_<-geo_link%>%filter(zh_geoid==county_number)
+          GEOID_<-geo_link[county_number,]
           GEOID2<-GEOID_$REAL_GEOID
           
           #read multiple csvs into data.frame
