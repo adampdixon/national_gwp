@@ -32,7 +32,7 @@ climate_data<-list.files(climate_data_path, pattern = 'csv')
 county_data<-fread(file.path(master_path, 'Data', 'County_start', 'county_centroids_elevation_crops.csv'))%>%
   select(GEOID, NAME, State_Name)
 
-s<-strsplit(soils_data, '_')
+s<-strsplit(climate_data, '_')
 
 v<-data.frame(geoid = numeric(), ssp585 = numeric(), ssp126 = numeric(), nclim = numeric())
 for(i in 1:length(s)){
