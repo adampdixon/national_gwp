@@ -30,7 +30,7 @@ source(file.path(master_path, 'data_explore', 'soils_boxplots_function.R'))
 # This first script reads and creates tables for the climate data
 source(file.path(master_path, 'data_explore', 'get_input_clim_4Vis_County.R'))
 # This script then makes boxplots with the data
-source(file.path(master_path, 'data_explore', 'climate_input_plots_county.R'))
+# source(file.path(master_path, 'data_explore', 'climate_input_plots_county.R')) # RODO get this working
 
 # get model data for data visualization
 
