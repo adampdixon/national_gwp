@@ -6,10 +6,6 @@
 # Dec 4, 2023
 ###########################
 
-######################################################
-# parallel script will create 6 tables, one for each variable and model (nclim, cmip6)
-######################################################
-
 library(dplyr) # for piping & tibble
 
 # library(tictoc) # for timing
@@ -28,6 +24,7 @@ if (Sys.info()['sysname'] == "Linux"){
     # print(args[2])
     # county_number<-1
 
+    nclim_dir<-'/home/ap/Documents/GitHub/national_gwp/climate_nclim'
     cmip6_dir<-'/home/ap/Documents/GitHub/national_gwp/cmip6_climate'
     
     print("************************************")
@@ -37,6 +34,7 @@ if (Sys.info()['sysname'] == "Linux"){
     geo_link_dir<-'/glade/u/home/apdixon/Documents/national_gwp/Data/County_start'
     output_dir<-'/glade/work/apdixon/climate'
 
+    nclim_dir<-'/glade/work/apdixon/Output_climate/Output_nClimGrid'
     cmip6_dir<-'/glade/work/apdixon/Output_climate' # say output climate, but it's Zhuonan's output folder when he was processing
     
     args=(commandArgs(TRUE))
@@ -105,12 +103,60 @@ cat(paste0("Starting county ", county_number, "\n"), file = stderr(), append = T
 #County GEOID
 # GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
 GEOID<-geo_link[county_number,]$REAL_GEOID
+zh_geoid<-geo_link[county_number,]$zh_geoid
 
 # GEOID<-geo_link[1,]$REAL_GEOID
 if(is.na(GEOID)){ # stop if GEOID is NA
   cat("GEOID is NA\n")
   break
 } else{
+  
+  # GET HISTORIC DATA
+  for(var in c('prcp','tmax','tmin')){
+    #####################################
+    # check if output file exists, if so, skip
+    output_filename<-file.path(output_dir, paste0(var,"_", GEOID ,'_nclim.csv'))
+    #####################################
+    if(file.exists(output_filename)){
+      next
+    } else {
+      hist_climate_df<-data.frame()
+      # read csvs
+      data_raw<-list.files(nclim_dir, pattern = var, full.names = T)
+      data<-data_raw[grep('.csv', data_raw)]
+      for(year in data){
+        ##### READ DATA ######################
+        #read county csv for each year into data.frame, get county_number from out of function list
+        data_df<-fread(year)%>%as_tibble()%>%filter(GEOID==zh_geoid) # Note this is the Zhuonan GEOID, which was simply a sequence of 0 to 3108
+        ## GET GEOID #########################
+        # join with the GEOID given by Zhuonan
+        data_df_<-left_join(data_df, geo_link, by = c('GEOID' = 'zh_geoid'))
+        # drop Zhuonan geoid
+        data_df_<-select(data_df_, -GEOID)
+        colnames(data_df_)<-c('value', 'year', 'doy', 'GEOID')
+
+        # use select to put in columns in correct order
+        data_df_<-select(data_df_, GEOID, value, year, doy)
+
+        # Prepare data #
+        # add the variable name to column, table will be long format
+        data_df_$variable<-var
+        data_df_$model<-'nclim'
+
+        # combine years
+
+        hist_climate_df<-rbind(hist_climate_df, data_df_)
+
+      }
+      # once all years have run and rbind, write to csv
+      fwrite(hist_climate_df, output_filename)
+      print(paste("Climate data written", output_filename))
+
+    }
+
+  }
+  # FUTURE
+  
   for (climate_code in c('_ssp585_gfdl-esm4_', '_ssp126_gfdl-esm4_')){
      # GET FUTURE DATA
     for (var in c('pr','tasmax','tasmin','sfcwind','rsds')){
@@ -177,13 +223,14 @@ if(is.na(GEOID)){ # stop if GEOID is NA
           future_climate_df<-rbind(future_climate_df, data_df)
         }
         fwrite(future_climate_df, output_filename2, append = F)
+        print(paste("data saved to", output_filename2))
       }
     }
   } # end of climate_code loop
     
     # Print an error message to stderr
     cat(paste0("Finished ", county_number, file = stderr(), append = TRUE))
-    print(paste("data saved to", output_filename2))
+
     # Close the connection to stderr
     sink(type = "message")
 
