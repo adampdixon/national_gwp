@@ -3,7 +3,7 @@
 #PBS -A UEMO0003
 #PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/Casper_3.stdout
 #PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/Casper_3.stderr 
-#PBS -l select=1:ncpus=1:mem=10GB
+#PBS -l select=1:ncpus=1:mem=12GB
 #PBS -l walltime=06:00:00
 ### Send email on abort, begin and end
 #PBS -m e
