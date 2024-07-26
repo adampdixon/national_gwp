@@ -115,7 +115,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
   for(var in c('prcp','tmax','tmin')){
     #####################################
     # check if output file exists, if so, skip
-    output_filename<-file.path(output_dir, paste0(var,"_", GEOID ,'_nclim.csv'))
+    nclim_out_filename<-file.path(output_dir, paste0(var,"_", GEOID ,'_nclim.csv'))
     #####################################
     if(file.exists(output_filename)){
       next
@@ -149,10 +149,10 @@ if(is.na(GEOID)){ # stop if GEOID is NA
 
       }
       # once all years have run and rbind, write to csv
-      fwrite(hist_climate_df, output_filename)
-      print(paste("Climate data written", output_filename))
+      fwrite(hist_climate_df, nclim_out_filename)
+      print(paste("historic climate data written", nclim_out_filename))
 
-    }
+    } # end of after if file.exists
 
   }
   # FUTURE
@@ -190,6 +190,7 @@ if(is.na(GEOID)){ # stop if GEOID is NA
       output_filename2<-file.path(output_dir, paste0(var2,"_", GEOID , climate_code, '_cmip6.csv'))
       #####################################
       if(file.exists(output_filename2)){
+        print('skipping cmip, already there')
         next
         
       } else {
