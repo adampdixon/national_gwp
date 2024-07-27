@@ -136,7 +136,7 @@ create_national_model_linegraphs<-function(crop){
       if(n>1){
         print(paste(n, ' total NAs in N2OEmissions_ghayr, replacing with previous value na.locf()'))
         df<-df%>%
-          select(year, model, climate_scenario, N2OEmissions_ghayr)%>%
+          select(year, model, climate_scenario, N2OEmissions_ghayr_mean, N2OEmissions_ghayr_sd)%>%
           na.locf()
       }
       
@@ -156,7 +156,7 @@ create_national_model_linegraphs<-function(crop){
       if(n>1){
         print(paste(n, ' total NAs in CH4Emissions_ghayr, replacing with previous value na.locf()'))
         df<-df%>%
-          select(year, model, climate_scenario, CH4Emissions_ghayr)%>%
+          select(year, model, climate_scenario, CH4Emissions_ghayr_mean, CH4Emissions_ghayr_sd)%>%
           na.locf()
       }
       
