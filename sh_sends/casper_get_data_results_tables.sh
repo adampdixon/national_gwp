@@ -20,6 +20,6 @@ conda activate r-4.3
   
 #conda activate casper_2023
 echo "Hello World from run_get_model_tables"            
-CMD="Rscript /glade/derecho/scratch/apdixon/national_gwp/Utilities/run_get_model_tables.R"
+CMD="Rscript /glade/derecho/scratch/apdixon/national_gwp/data_explore/run_get_model_tables.R"
 echo $CMD
 $CMD
