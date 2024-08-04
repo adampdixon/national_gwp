@@ -2,13 +2,17 @@
 # File: "get_model_tables.R"
 # Author: "Adam Dixon"
 # Date: "July 2024"
-# Description: This script fetches and organizes model result tables for visualization. Made for "All_Models_Results_yearly_plots.R" script.  
+# Description: Functions to fetch and organize model result tables for visualization. Daycent and LDNDC function are grouped because 
+# they have similar output columns, whereas Millennial is more limited. The national and county level functions then use those model function to 
+# put a table together.
 #
 #######################################
 
 print("Running get_model_tables.R")
 
 library(data.table)
+library(fs) # for faster list.files
+library(dplyr)
 
 
 get_daycent_ldndc_df<-function(file_list, model_name, crop, scenario){
@@ -129,72 +133,98 @@ get_mill_df<-function(file_list, crop, scenario){
 
 # This function is for national results
 get_all_models_national_df<-function(crops_to_get='All'){
-  # crops_to_get is either 'All' or vector of crop names as shown.
   
-  # This function puts together all model data using the above functions.
+  # Data placed here. As written now will need to redo each time code is run on different day
+  data_location<-file.path(national_figs, paste0(c, '_national_results_', date, '.csv'))
   
-  # Dir name
-  r2<-dir(results_folder, recursive=F, full.names=F, pattern = 'Results_GEOID')
-  # Dir name and full path
-  r1<-dir(results_folder, recursive=F, full.names=T, pattern = 'Results_GEOID')
-  
-  if(identical(crops_to_get, 'All')){
-    # crops to get
-    crops_to_include<-c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation')
-  } else {
-    crops_to_include<-crops_to_get
-  }
-  
-  # print(crops_to_get)
-  crop_scenario_df<-data.frame()
-  # cr='Rotation'
-  for (cr in crops_to_include) { # crop loop # 'Soybean', 'Wheat', 'Cotton', 
+  if (!file.exists(data_location)){
+    # crops_to_get is either 'All' or vector of crop names as shown.
     
-    # print(paste0('Starting ', cr))
-    for (s in 1:6){ # scenario loop
-      print(paste0('working on ', cr, ', practice scenario ', s, ' table, ', 'in both climate scenarios '))
+    # This function puts together all model data using the above functions.
+    
+    # Dir name
+    r2<-dir(results_folder, recursive=F, full.names=F, pattern = 'Results_GEOID') # Full names FALSE
+    # Dir name and full path
+    r1<-dir(results_folder, recursive=F, full.names=T, pattern = 'Results_GEOID') # Full names TRUE
+    
+    if(identical(crops_to_get, 'All')){
+      # crops to get
+      crops_to_include<-c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation')
+    } else {
+      crops_to_include<-crops_to_get
+    }
+    
+    # print(crops_to_get)
+    crop_scenario_df<-data.frame()
+    # cr='Rotation'
+    for (cr in crops_to_include) { # crop loop # 'Soybean', 'Wheat', 'Cotton', 
       
-
-      # DAYCENT
-      # climate scenario 1
-      day_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
-      # climate scenario 2
-      day_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
-      
-      # LDNDC
-      # climate scenario 1
-      ld_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
-      # climate scenario 2
-      ld_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
-      
-      # Millennial
-      # climate scenario 1
-      m_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
-      # climate scenario 2
-      m_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
-      
-      # model output file lists
-      day_list<-c(day_1, day_2); ldndc_list<-c(ld_1, ld_2); mil<-c(m_1, m_2)
-      
-      ###########################################################
-      #################### Daycent and LDNDC ####################
-      
-      daycent_df<-get_daycent_ldndc_df(file_list = day_list, model_name = 'Daycent', crop=cr, scenario=s)
-      ldndc_df<-get_daycent_ldndc_df(file_list = ldndc_list, model_name = 'LDNDC', crop=cr, scenario=s)
-      
-      #################################################          
-      #################### Millennial #################
-      
-      mil_df<-get_mill_df(file_list = mil, crop=cr, scenario = s)
-
-      colnames(daycent_df)
-      colnames(ldndc_df)
-      # colnames(mil_df)
-      #put all model data together, they have same column names with Millennial having NAs for parameters it doesn't have
-      crop_scenario_df<-rbind(crop_scenario_df, daycent_df, ldndc_df, mil_df)
-      
-    } # end of scenario loop
-  } # end of crop loop
+      # print(paste0('Starting ', cr))
+      for (s in 1:6){ # scenario loop
+        print(paste0('working on ', cr, ', practice scenario ', s, ' table, ', 'in both climate scenarios '))
+        
+  
+        # # DAYCENT
+        # # climate scenario 1
+        # day_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # # climate scenario 2
+        # day_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        # 
+        # # LDNDC
+        # # climate scenario 1
+        # ld_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # # climate scenario 2
+        # ld_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        # 
+        # # Millennial
+        # # climate scenario 1
+        # m_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # # climate scenario 2
+        # m_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        
+        # DAYCENT
+        # climate scenario 1
+        day_1<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # climate scenario 2
+        day_2<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
+  
+        # LDNDC
+        # climate scenario 1
+        ld_1<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # climate scenario 2
+        ld_2<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
+  
+        # Millennial
+        # climate scenario 1
+        m_1<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # climate scenario 2
+        m_2<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        
+        # model output file lists
+        day_list<-c(day_1, day_2); ldndc_list<-c(ld_1, ld_2); mil<-c(m_1, m_2)
+        
+        ###########################################################
+        #################### Daycent and LDNDC ####################
+        
+        daycent_df<-get_daycent_ldndc_df(file_list = day_list, model_name = 'Daycent', crop=cr, scenario=s)
+        ldndc_df<-get_daycent_ldndc_df(file_list = ldndc_list, model_name = 'LDNDC', crop=cr, scenario=s)
+        
+        #################################################          
+        #################### Millennial #################
+        
+        mil_df<-get_mill_df(file_list = mil, crop=cr, scenario = s)
+  
+        colnames(daycent_df)
+        colnames(ldndc_df)
+        # colnames(mil_df)
+        #put all model data together, they have same column names with Millennial having NAs for parameters it doesn't have
+        crop_scenario_df<-rbind(crop_scenario_df, daycent_df, ldndc_df, mil_df)
+        
+      } # end of scenario loop
+    } # end of crop loop
+  } else {
+    crop_scenario_df<-fread(data_location)
+  }
   
   return(crop_scenario_df)
 } # end of function

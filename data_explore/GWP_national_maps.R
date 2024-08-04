@@ -54,6 +54,7 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
   # Function from get_model_tables.R
   county_df<-get_all_models_national_df(crops_to_get = Crop_)
   
+  # subset to just year 2050
   county_df<-county_df[year == 2050]
 
   # Get a rotation yield column if it's rotation

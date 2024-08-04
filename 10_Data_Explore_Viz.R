@@ -34,6 +34,17 @@ if (Sys.info()['sysname'] == "Linux"){
 
 # get model data for data visualization
 
+
+
+# First put together csvs of results. These can be used later so each graph doesn't need to put together again
+source(file.path(master_path, 'data_explore', 'get_model_tables.R'))
+
+for (c in c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')) {
+  fwrite(get_all_models_national_df(crop=c), file.path(national_figs, paste0(c, '_national_results_', date, '.csv')))
+}
+
+
+
 # output line graphs
 source(file.path(master_path, 'data_explore', 'All_models_national_results_yearly_plots.R'))
 
@@ -61,12 +72,6 @@ for (c in c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')) {
 }
 
 
-# Get csvs of results
-source(file.path(master_path, 'data_explore', 'get_model_tables.R'))
-
-for (c in c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')) {
-  fwrite(get_all_models_national_df(crop=c), file.path(national_figs, paste0(c, '_national_results', date, '.csv')))
-}
 
 
 
