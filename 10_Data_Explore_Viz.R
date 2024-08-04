@@ -3,8 +3,8 @@
 # Author: "Adam Dixon"
 # Date: "June 2024"
 # Description: This script starts the data exploration and visualization process. Input and output
-# data are explored and visualized.
-#
+# data are explored and visualized. It would be nice if all these functions ran at the same time, but
+# generally, this is just a compilation of the data vis functions.
 #######################################
 
 if (Sys.info()['sysname'] == "Linux"){ 
@@ -40,6 +40,7 @@ if (Sys.info()['sysname'] == "Linux"){
 source(file.path(master_path, 'data_explore', 'get_model_tables.R'))
 
 for (c in c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')) {
+  # write a table of the data
   fwrite(get_all_models_national_df(crop=c), file.path(national_figs, paste0(c, '_national_results_', date, '.csv')))
 }
 

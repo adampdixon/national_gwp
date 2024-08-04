@@ -4,6 +4,8 @@
 
 # if data is not present, it will not have a record in the climate_geoid column
 
+# Script is written to be executed on Casper/Derecho using 'Rscript check_climate_input_data.R'
+
 library(dplyr)
 library(tidyr)
 library(data.table)

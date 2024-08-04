@@ -3,7 +3,7 @@
 # Author: "Adam Dixon"
 # Date: "July 2024"
 # Description: This script helps easily get input climate and soils data to a send folder so that it's easy to transfer from Glade to local machine
-#
+# Script is written to be executed on Casper/Derecho using 'Rscript copy_input_files_to_transfer.R'
 #######################################
 
 
@@ -19,7 +19,7 @@ if (Sys.info()['sysname'] == "Linux"){
 
 
 
-geoids_to_fetch<-c(54087)
+geoids_to_fetch<-c(1051, 12107, 25001, 31117, 40079, 47081, 55011)
 
 # get geoids ready for grepl search
 geoids_to_fetch<-paste(geoids_to_fetch, collapse = '_|_')
