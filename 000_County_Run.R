@@ -124,7 +124,7 @@ if(identical(Glade, TRUE)){
   # If statement is because otherwise the output to local console is diverted to just the file.
   # create a log file that saves all console outputs
   con <- file(file.path(figs_input_data, paste0("1_", site_name, "_R_console_out.log")))
-  sink(con, split = TRUE) # split is supposed to get error and messages
+  sink(con, split = TRUE, type = c("output", "message")) # split is supposed to get error and messages
 }
 
 tic()
