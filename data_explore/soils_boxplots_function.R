@@ -36,7 +36,7 @@ soils_boxplots<-function(){
     map_df(~fread(.))%>% # read all data
     mutate(order = rep(1:14, length(soil_files)))
   
-  # This same repertoire for ph is used in main model script
+  # This similar repertoire for ph is used in main model script
   tbl_fread<-mutate(tbl_fread, pH = ifelse(pH > 7.5, NA, pH)) # remove pH values greater than 7.5, some are obviously in error
   tbl_fread<-na.locf(tbl_fread) # This sets NA values to the last non-NA value
   

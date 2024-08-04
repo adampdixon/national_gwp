@@ -33,17 +33,7 @@ if (Sys.info()['sysname'] == "Linux"){
 # source(file.path(master_path, 'data_explore', 'climate_input_plots_county.R')) 
 
 # get model data for data visualization
-
-
-
-# First put together csvs of results. These can be used later so each graph doesn't need to put together again
 source(file.path(master_path, 'data_explore', 'get_model_tables.R'))
-
-for (c in c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')) {
-  # write a table of the data
-  fwrite(get_all_models_national_df(crop=c), file.path(national_figs, paste0(c, '_national_results_', date, '.csv')))
-}
-
 
 
 # output line graphs

@@ -100,9 +100,15 @@ soils<-mutate(soils, pH = ifelse(pH > 14, 7, pH),
               pH = ifelse(pH < 2, 2, pH)) # remove pH values greater than 14 or less than 2, some are obviously in error and this was likely throwing
 # and error in LDNDC ([EE] region construction failed)
 
+
 # Stopped doing this because of error in Ks values in saxton_rawls_df
 # soils<-mutate(soils, pH = ifelse(BD < 1, NA, pH)) # remove pH less than 1, less than this hrows an error
-# soils<-mutate(soils, BD = ifelse(BD < .5, 1, pH)) # remove bulk density values less than .5, less than this throws an error
+
+# Changing this after running all but 188 counties. This BD value seems to be throwing an error in Daycent
+soils<-mutate(soils, BD = ifelse(BD > 1.5, 1.4, BD)) # seems like BD > 1.5 is an error, e.g. below, so changing to 1.4
+# Error when BD is not changed
+# Warning: lowering soils.in field capacity 0.38000 below 0.39613 in layer  7 and below to match Bulk density 1.60000
+# ERROR: porosity-fieldc > 0.05f * fieldc for layer 7
 
 # soils<-mutate(soils, SOC = ifelse(SOC < .1, .1, SOC))
 
@@ -112,6 +118,7 @@ soils<-mutate(soils, pH = ifelse(pH > 14, 7, pH),
 # This seems to be the upper threshold, otherwise an error with N2O happens in LDNDC
 # Issue was troubleshooted with geoid 54087
 soils<-mutate(soils, SOC = ifelse(SOC > 50, 50, SOC))
+
 
 # Check if data row has reasonable, bulk density, sand, silt, clay
 # This may be causing errors in the LDNDC model
@@ -130,16 +137,18 @@ check<-soils%>%
   rowwise()%>%
   mutate(check = sum(c_across(Clay:Silt)))%>%
   select(Depth_cm, check)%>%
-  filter(check<30)
+  filter(check<30) # if the sum of all parent material is less than
+
+threshold<-10
 
 # now do the 'check' mutate operation again, and if it is less than 10 each, adjust to 30
 if (nrow(check)>0){
   fix<-soils%>%
     rowwise()%>%
     mutate(check = sum(c_across(Clay:Silt)))%>% # create a column with the sum of sand, silt, and clay
-    mutate(Clay = if_else(check<10, 30, Clay), # if those together are less than .1, something is wrong, so set all the relevant values to .3
-           Sand = if_else(Sand<10, 30, Sand),
-           Silt = if_else(Silt<10, 30, Silt))%>%
+    mutate(Clay = if_else(check<threshold, 30, Clay), # if those together are less than .1, something is wrong, so set all the relevant values to .3
+           Sand = if_else(Sand<threshold, 30, Sand),
+           Silt = if_else(Silt<threshold, 30, Silt))%>%
     as.data.frame()%>%
     select(-check) # remove the check column (not needed anymore)
 
@@ -216,11 +225,6 @@ soils_new<-rbind(soils_1, soils_2_2, soils_3)
 sps_0<-soils_new%>%
   mutate(ParticleSizeClay = Clay, ParticleSizeSilt = Silt, ParticleSizeSand = Sand, Carbon = SOC, PH = pH)
 
-# This was fixed using Zoo library na.conf, so not necessay
-sps_0$pH<-ifelse(sps_0$pH>9, NA, sps_0$pH) # I found a really high pH in the data, which is not possible, so am imputing as a quick fix here
-# TODO need to go into gNATSGO processing and see what it might be
-
-sps_0<-sps_0%>%fill(pH, .direction = "down") # fill from tidyr
 
 sps<-sps_0%>%
   mutate(ParticleSizeClay = Clay, ParticleSizeSilt = Silt, ParticleSizeSand = Sand, Carbon = SOC, PH = pH)

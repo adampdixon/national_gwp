@@ -166,39 +166,40 @@ get_all_models_national_df<-function(crops_to_get='All'){
   
         # # DAYCENT
         # # climate scenario 1
-        # day_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        day_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # climate scenario 2
+        day_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
+
+        # LDNDC
+        # climate scenario 1
+        ld_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # climate scenario 2
+        ld_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
+
+        # Millennial
+        # climate scenario 1
+        m_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # climate scenario 2
+        m_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        
+        # TESTING dir_ls
+        # # DAYCENT
+        # # climate scenario 1
+        # day_1<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
         # # climate scenario 2
-        # day_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        # day_2<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
         # 
         # # LDNDC
         # # climate scenario 1
-        # ld_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # ld_1<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
         # # climate scenario 2
-        # ld_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        # ld_2<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
         # 
         # # Millennial
         # # climate scenario 1
-        # m_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # m_1<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
         # # climate scenario 2
-        # m_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
-        
-        # DAYCENT
-        # climate scenario 1
-        day_1<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
-        # climate scenario 2
-        day_2<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
-  
-        # LDNDC
-        # climate scenario 1
-        ld_1<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
-        # climate scenario 2
-        ld_2<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
-  
-        # Millennial
-        # climate scenario 1
-        m_1<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
-        # climate scenario 2
-        m_2<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        # m_2<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
         
         # model output file lists
         day_list<-c(day_1, day_2); ldndc_list<-c(ld_1, ld_2); mil<-c(m_1, m_2)
@@ -219,17 +220,20 @@ get_all_models_national_df<-function(crops_to_get='All'){
         # colnames(mil_df)
         #put all model data together, they have same column names with Millennial having NAs for parameters it doesn't have
         crop_scenario_df<-rbind(crop_scenario_df, daycent_df, ldndc_df, mil_df)
+        print('created crop_scenario_df.')
         
       } # end of scenario loop
     } # end of crop loop
   } else {
     crop_scenario_df<-fread(data_location)
+    print('crop_scenario_df loaded from file.')
   }
   
   return(crop_scenario_df)
 } # end of function
 
 
+# IS THIS DEPRECATED?
 # Basically the same as above just for specific county
 get_county_models_df<-function(crops_to_get='All', GEOID){
   # crops_to_get is either 'All' or vector of crop names as shown

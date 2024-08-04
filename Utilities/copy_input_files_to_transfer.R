@@ -4,6 +4,8 @@
 # Date: "July 2024"
 # Description: This script helps easily get input climate and soils data to a send folder so that it's easy to transfer from Glade to local machine
 # Script is written to be executed on Casper/Derecho using 'Rscript copy_input_files_to_transfer.R'
+# Note soils data is extremely lightweight, so I realize after I've been using this for a while that it's easier/possible to copy ALL soils data over and then not 
+# have to worry about it again.
 #######################################
 
 
