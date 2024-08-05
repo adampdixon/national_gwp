@@ -137,7 +137,7 @@ get_all_models_national_df<-function(crops_to_get='All'){
   # Data placed here. As written now will need to redo each time code is run on different day
   data_location<-file.path(national_figs, paste0(c, '_national_results_', date, '.csv'))
   print(data_location)
-  if (!file.exists(data_location)){
+  if (identical(file.exists(data_location), FALSE)){
     # crops_to_get is either 'All' or vector of crop names as shown.
     
     # This function puts together all model data using the above functions.
