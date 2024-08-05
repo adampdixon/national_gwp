@@ -28,4 +28,6 @@ c<-c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')
 
 fwrite(get_all_models_national_df(crop=c[args[2]]), file.path(national_figs, paste0(c[args[2]], '_national_results_', date, '.csv')))
 
+fwrite(get_all_models_national_df(crop=c[args[2]]), file.path(national_figs, paste0(c[args[2]], '_national_results_', date, '.csv')))
+
 # fwrite(get_all_models_national_df(crop=c[2], file.path(national_figs, paste0(c, '_national_results_', date, '.csv'))))
