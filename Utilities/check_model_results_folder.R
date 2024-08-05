@@ -79,7 +79,7 @@ for (i in GEOIDS){
 }
 
 
-final<-file.path(national_figs, 'checking_results_data.csv')
+final<-file.path(national_figs, paste0('checking_results_data_', date, '.csv'))
 
 fwrite(results_data, final)
 
