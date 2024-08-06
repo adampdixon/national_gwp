@@ -66,9 +66,7 @@ if (Sys.info()['sysname'] == "Linux"){
 geo_link<-fread(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
   select(zh_geoid, REAL_GEOID)%>%
   as_tibble()%>%
-  filter(REAL_GEOID %in% c(1001,
-                           9003,
-                           29093,
+  filter(REAL_GEOID %in% c(29093,
                            29179,
                            51059,
                            51087,
@@ -79,17 +77,7 @@ geo_link<-fread(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
                            51685,
                            51690,
                            51760,
-                           51775,
-                           55011,
-                           55091,
-                           56031,
-                           56033,
-                           56035,
-                           56037,
-                           56039,
-                           56041,
-                           56043,
-                           56045)) # only use these counties
+                           51775)) # only use these counties
 
 
 
