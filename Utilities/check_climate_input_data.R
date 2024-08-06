@@ -60,6 +60,9 @@ j<-left_join(county_data, v, by = c('GEOID' = 'climate_geoid'))%>%
   group_by(GEOID)%>%
   summarize(ssp585 = sum(ssp585), ssp126 = sum(ssp126), nclim = sum(nclim))
 
+j<-mutate(j, total = ssp585 + ssp126 + nclim,
+          check = ifelse(total == 13, '', 'MISSING DATA'))
+
 output_<-file.path(national_figs, 'check_climate_input_data.csv')
 
 fwrite(j, output_)
