@@ -28,14 +28,23 @@ county_data<-fread(file.path(master_path, 'Data', 'County_start', 'county_centro
 
 s<-strsplit(soils_data, '_')
 
-v<-c()
+v<-data.frame()
 for(i in 1:length(s)){
+  
+  f<-file.size(file.path(soil_data_path, soils_data[i]))
+  
   g<-s[[i]][2]
-  v<-c(v, g)
+
+  v<-rbind(v, c(g, f))
 }
 
-df<-data.frame(soil_geoid = as.integer(v),
-               ID = 1:length(v))
+df<-v%>%
+  mutate(ID = 1:nrow(v))%>%
+  select(ID, 1, 2)
+
+names(df)<-c('ID', 'soil_geoid', 'bytes')
+
+df$soil_geoid<-as.integer(df$soil_geoid)
 
 j<-left_join(county_data, df, by = c('GEOID' = 'soil_geoid'), keep = TRUE)
 

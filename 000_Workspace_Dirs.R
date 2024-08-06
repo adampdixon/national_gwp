@@ -14,7 +14,7 @@ if (Sys.info()['sysname'] == "Linux"){
     results_folder<-'/home/ap/Documents/national_gwp_results'
 
     climate_data_path<-'/home/ap/Scratch'
-    soil_data_path<-'/home/ap/soils'
+    soil_data_path<-'/home/ap/soils_all'
     
     national_figs<-'/home/ap/Documents/national_gwp_figs'
 

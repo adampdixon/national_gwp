@@ -65,7 +65,7 @@ if (identical(Glade, TRUE)){
   soil_data_path<-'/glade/work/apdixon/soils'
   print(paste0('*********soils_data_path is ', soil_data_path, " **************"))
 } else {
-  soil_data_path<-'/home/ap/soils'
+  soil_data_path<-'/home/ap/soils_all'
   print(paste0('*********soils_data_path is ', soil_data_path, " **************"))
 }
 
