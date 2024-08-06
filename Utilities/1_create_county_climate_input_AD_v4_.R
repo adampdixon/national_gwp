@@ -85,13 +85,15 @@ geo_link<-fread(file.path(geo_link_dir, 'county_geoid_link.csv'))%>%
 
 # Open a connection to stderr
 sink(stderr(), type = "message")
-# Print an error message to stderr
-cat(paste0("Starting county ", county_number, "\n"), file = stderr(), append = TRUE)
+
   
 #County GEOID
 # GEOID<-filter(geo_link, zh_geoid==county_number)$REAL_GEOID
 GEOID<-geo_link[county_number,]$REAL_GEOID
 zh_geoid<-geo_link[county_number,]$zh_geoid
+
+# Print an error message to stderr
+cat(paste0("Starting county ", county_number, " ", GEOID, "\n"), file = stderr(), append = TRUE)
 
 # GEOID<-geo_link[1,]$REAL_GEOID
 if(is.na(GEOID)){ # stop if GEOID is NA
