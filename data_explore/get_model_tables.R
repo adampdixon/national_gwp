@@ -163,40 +163,40 @@ get_all_models_national_df<-function(crop_to_get){
   
         # # DAYCENT
         # # climate scenario 1
-        # day_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
-        # # climate scenario 2
-        # day_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
-        # 
-        # # LDNDC
-        # # climate scenario 1
-        # ld_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
-        # # climate scenario 2
-        # ld_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
-        # 
-        # # Millennial
-        # # climate scenario 1
-        # m_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
-        # # climate scenario 2
-        # m_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        day_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # climate scenario 2
+        day_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
+
+        # LDNDC
+        # climate scenario 1
+        ld_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # climate scenario 2
+        ld_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
+
+        # Millennial
+        # climate scenario 1
+        m_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # climate scenario 2
+        m_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
         
         # TESTING dir_ls
         # # DAYCENT
         # climate scenario 1
-        day_1<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
-        # climate scenario 2
-        day_2<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
-
-        # LDNDC
-        # climate scenario 1
-        ld_1<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
-        # climate scenario 2
-        ld_2<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
-
-        # Millennial
-        # climate scenario 1
-        m_1<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
-        # climate scenario 2
-        m_2<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        # day_1<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # # climate scenario 2
+        # day_2<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        # 
+        # # LDNDC
+        # # climate scenario 1
+        # ld_1<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # # climate scenario 2
+        # ld_2<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        # 
+        # # Millennial
+        # # climate scenario 1
+        # m_1<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # # climate scenario 2
+        # m_2<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
         
         # model output file lists
         day_list<-c(day_1, day_2); ldndc_list<-c(ld_1, ld_2); mil<-c(m_1, m_2)

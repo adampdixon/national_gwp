@@ -10,7 +10,7 @@
 ### Specify mail recipient
 #PBS -M apdixon@pm.me
 #PBS -q casper
-#PBS -J 2-5
+#PBS -J 2-3
 #PBS -j oe
 #PBS -r y
 
