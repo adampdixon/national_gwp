@@ -1,3 +1,7 @@
+#!/usr/bin/env Rscript
+
+# for pulling in number to index crop list
+args = commandArgs(trailingOnly=TRUE)
 #######################################
 # File: "run_get_model_tables.R"
 # Author: "Adam Dixon"
@@ -17,17 +21,23 @@ if (Sys.info()['sysname'] == "Linux"){
 
 library(data.table)
 
-# for pulling in number to index crop list
-args <- commandArgs(trailingOnly = TRUE)
+index<-as.numeric(args[2])
+# index<-1
+
+
 
 source(file.path(master_path, 'data_explore', 'get_model_tables.R'))
   
-c<-c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')
+crop_<-c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')
+
+print(paste("arg is", index))
+print(paste("crop is", crop_[index]))
 
 # write out the national results, crop index arg is passed from pbs_array_index from .sh file
 
-fwrite(get_all_models_national_df(crop=c[args[2]]), file.path(national_figs, paste0(c[args[2]], '_national_results_', date, '.csv')))
+output_file<-file.path(national_figs, paste0(crop_[index], '_national_results_', date, '.csv'))
 
-fwrite(get_all_models_national_df(crop=c[args[2]]), file.path(national_figs, paste0(c[args[2]], '_national_results_', date, '.csv')))
+fwrite(get_all_models_national_df(crop=crop_[index]), output_file)
 
-# fwrite(get_all_models_national_df(crop=c[2], file.path(national_figs, paste0(c, '_national_results_', date, '.csv'))))
+print(paste("Wrote out ", output_file))
+

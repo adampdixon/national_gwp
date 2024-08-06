@@ -132,13 +132,13 @@ get_mill_df<-function(file_list, crop, scenario){
 
 
 # This function is for national results
-get_all_models_national_df<-function(crops_to_get='All'){
-  
+get_all_models_national_df<-function(crop_to_get){
+  # crop_to_get='Maize'
   # Data placed here. As written now will need to redo each time code is run on different day
-  data_location<-file.path(national_figs, paste0(c, '_national_results_', date, '.csv'))
+  data_location<-file.path(national_figs, paste0(crop_to_get, '_national_results_', date, '.csv'))
   print(data_location)
   if (identical(file.exists(data_location), FALSE)){
-    # crops_to_get is either 'All' or vector of crop names as shown.
+    # crop_to_get is either 'All' or vector of crop names as shown.
     
     # This function puts together all model data using the above functions.
     
@@ -147,14 +147,11 @@ get_all_models_national_df<-function(crops_to_get='All'){
     # Dir name and full path
     r1<-dir(results_folder, recursive=F, full.names=T, pattern = 'Results_GEOID') # Full names TRUE
     
-    if(identical(crops_to_get, 'All')){
-      # crops to get
-      crops_to_include<-c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation')
-    } else {
-      crops_to_include<-crops_to_get
-    }
+
+    crops_to_include<-crop_to_get
+
     
-    # print(crops_to_get)
+    # print(crop_to_get)
     crop_scenario_df<-data.frame()
     # cr='Rotation'
     for (cr in crops_to_include) { # crop loop # 'Soybean', 'Wheat', 'Cotton', 
@@ -166,40 +163,40 @@ get_all_models_national_df<-function(crops_to_get='All'){
   
         # # DAYCENT
         # # climate scenario 1
-        day_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
-        # climate scenario 2
-        day_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
-
-        # LDNDC
-        # climate scenario 1
-        ld_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
-        # climate scenario 2
-        ld_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
-
-        # Millennial
-        # climate scenario 1
-        m_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
-        # climate scenario 2
-        m_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
-        
-        # TESTING dir_ls
-        # # DAYCENT
-        # # climate scenario 1
-        # day_1<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # day_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
         # # climate scenario 2
-        # day_2<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        # day_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
         # 
         # # LDNDC
         # # climate scenario 1
-        # ld_1<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # ld_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
         # # climate scenario 2
-        # ld_2<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        # ld_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
         # 
         # # Millennial
         # # climate scenario 1
-        # m_1<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # m_1<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
         # # climate scenario 2
-        # m_2<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        # m_2<-list.files(r1, full.names=T, recursive=T, pattern=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
+        
+        # TESTING dir_ls
+        # # DAYCENT
+        # climate scenario 1
+        day_1<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # climate scenario 2
+        day_2<-dir_ls(r1, recurse=T, regexp=paste0('Daycent_annual_results_compilation_2_', s, '_', cr, '.csv'))
+
+        # LDNDC
+        # climate scenario 1
+        ld_1<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # climate scenario 2
+        ld_2<-dir_ls(r1, recurse=T, regexp=paste0('LDNDC_annual_results_compilation_2_', s, '_', cr, '.csv'))
+
+        # Millennial
+        # climate scenario 1
+        m_1<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_1_', s, '_', cr, '.csv'))
+        # climate scenario 2
+        m_2<-dir_ls(r1, recurse=T, regexp=paste0('Millennial_annual_results_compilation_2_', s, '_', cr, '.csv'))
         
         # model output file lists
         day_list<-c(day_1, day_2); ldndc_list<-c(ld_1, ld_2); mil<-c(m_1, m_2)
