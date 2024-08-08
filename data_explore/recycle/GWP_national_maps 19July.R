@@ -44,7 +44,7 @@ print(date)
 national_map_all_scenarios<-function(Year_, Crop_, Output, map_type){
   
   # Function from get_model_tables.R
-  county_df<-get_all_models_national_df(crops_to_get = Crop_)
+  county_df<-get_all_models_national_df(crop_to_get = Crop_)
   
   county_df<-county_df[year == 2050]
 

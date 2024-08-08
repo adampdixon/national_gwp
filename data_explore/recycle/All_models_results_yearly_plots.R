@@ -37,7 +37,7 @@ source(file.path(master_path, 'data_explore', 'get_model_tables.R'), local = TRU
 
 # line plots of crops and scenarios
 # 
-df<-get_all_models_df(crops_to_get = c('Maize', 'Rotation'))
+df<-get_all_models_df(crop_to_get = c('Maize', 'Rotation'))
   
   # nrow(crop_scenario_df)
   # table(crop_scenario_df$GEOID)
