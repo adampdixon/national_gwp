@@ -64,7 +64,7 @@ county_data<-read.csv(file.path(master_path, 'Data', 'County_start', 'county_cen
 # These GEOIDs were the test counties. They are spread around the US. Georgia, Kansas, Nebraska, Pennsylvania, etc.
 if(identical(Test, TRUE)){
   county_data<-county_data%>%
-    filter(GEOID %in% c(42053)) # 1075
+    filter(GEOID %in% c(13103)) # 1075
 }
 
 # GEOIDs that have been used for development
