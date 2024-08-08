@@ -37,8 +37,10 @@ print(date)
 
 national_boxplots_all_scenarios<-function(Crop_){
   
+  print(paste('starting boxplots for', Crop_))
+  
   # Function from get_model_tables.R
-  county_df<-get_all_models_national_df(crops_to_get = Crop_)
+  county_df<-get_all_models_national_df(crop_to_get = Crop_)
   
   text<-function(x){
     ifelse(x==1, "Monocropping", 

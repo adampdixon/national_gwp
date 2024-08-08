@@ -135,7 +135,8 @@ get_mill_df<-function(file_list, crop, scenario){
 get_all_models_national_df<-function(crop_to_get){
   # crop_to_get='Maize'
   # Data placed here. As written now will need to redo each time code is run on different day
-  data_location<-file.path(national_figs, paste0(crop_to_get, '_national_results_', date, '.csv'))
+  # Make sure the correct file is loading!!!!
+  data_location<-list.files(national_figs, pattern = paste0(crop_to_get, '_national_results_'), full.names = T)[1]
   print(data_location)
   if (identical(file.exists(data_location), FALSE)){
     # crop_to_get is either 'All' or vector of crop names as shown.
@@ -148,13 +149,13 @@ get_all_models_national_df<-function(crop_to_get){
     r1<-dir(results_folder, recursive=F, full.names=T, pattern = 'Results_GEOID') # Full names TRUE
     
 
-    crops_to_include<-crop_to_get
+    crop_to_include<-crop_to_get
 
     
     # print(crop_to_get)
     crop_scenario_df<-data.frame()
     # cr='Rotation'
-    for (cr in crops_to_include) { # crop loop # 'Soybean', 'Wheat', 'Cotton', 
+    for (cr in crop_to_include) { # crop loop # 'Soybean', 'Wheat', 'Cotton', 
       
       # print(paste0('Starting ', cr))
       for (s in 1:6){ # scenario loop
@@ -232,7 +233,7 @@ get_all_models_national_df<-function(crop_to_get){
 
 # IS THIS DEPRECATED?
 # Basically the same as above just for specific county
-get_county_models_df<-function(crops_to_get='All', GEOID){
+get_county_models_df<-function(crop_to_get='All', GEOID){
   # crops_to_get is either 'All' or vector of crop names as shown
   
   geoid<-GEOID
@@ -242,14 +243,14 @@ get_county_models_df<-function(crops_to_get='All', GEOID){
   # Dir name and full path
   r1<-dir(results_folder, recursive=F, full.names=T, paste0('Results_GEOID_', geoid, '_'))
   
-  if(identical(crops_to_get, 'All')){
+  if(identical(crop_to_get, 'All')){
     # crops to get
     crops_to_include<-c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation')
   } else {
-    crops_to_include<-crops_to_get
+    crops_to_include<-crop_to_get
   }
   
-  # print(crops_to_get)
+  # print(crop_to_get)
   
   # cr='Rotation'
   for (cr in crops_to_include) { # crop loop # 'Soybean', 'Wheat', 'Cotton', 

@@ -52,7 +52,7 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
   
 
   # Function from get_model_tables.R
-  county_df<-get_all_models_national_df(crops_to_get = Crop_)
+  county_df<-get_all_models_national_df(crop_to_get = Crop_)
   
   # subset to just year 2050
   county_df<-county_df[year == 2050]
@@ -130,12 +130,29 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
   }
  
   ##############################################################################
-  map_out<-function(type, breaks, prac_scen, clim_scen, model){
+  map_out<-function(type, breaks, prac_scen, clim_scen, mod){
     
-    df2<-filter(df, mgmt_scenario_num == prac_scen, 
-                climate_scenario == climate_scenario,
-                model == model)
+    df2<-filter(df, 
+                mgmt_scenario_num == prac_scen, 
+                climate_scenario == clim_scen,
+                model == mod)
     
+    print('********************************************************************')
+    print('Summary stats for model/mgmt/climate')
+    print(paste0('Crop is ', Crop_, 'YldMgha'))
+    print(paste('mgmt scenario is', prac_scen))
+    print(paste('climate scenario is', clim_scen))
+    print(paste('model is', mod))
+    print(paste('map type is', type))
+    
+    df3<-select(df2, contains(type))
+    print(paste('min:', round(min(as.numeric(unlist(df3[,1])), na.rm = T), 2)))
+    print(paste('max:', round(max(as.numeric(unlist(df3[,1])), na.rm = T), 2)))
+    print(paste('mean:', round(mean(as.numeric(unlist(df3[,1])), na.rm = T), 2)))
+    print(paste('std dev:', round(sd(as.numeric(unlist(df3[,1])), na.rm = T), 2)))
+    
+    print('********************************************************************')
+      
     text<-ifelse(df2$mgmt_scenario_num[1]==1, "Monocropping", 
                  ifelse(df2$mgmt_scenario_num[1]==2, "No-till",
                         ifelse(df2$mgmt_scenario_num[1]==3, "Cover crop species mix",
@@ -149,31 +166,31 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
     clim_title<-ifelse(clim_scen=="low", " low clim.", " high clim.")
     
     if(prac_scen<2 & type=='Yld'){
-      yield_title<-paste0(model, ' ', Crop_, " yield (Mg ha yr) - ", Year_, clim_title)
+      yield_title<-paste0(mod, ' ', Crop_, " yield (Mg ha yr) - ", Year_, clim_title)
       print(yield_title)
       
     }
     
     if(prac_scen<2 & type=='SOC'){
-      yield_title<-paste0(model, ' ', Crop_, " SOC (Mg ha yr) - ", clim_title)
+      yield_title<-paste0(mod, ' ', Crop_, " SOC (Mg ha yr) - ", clim_title)
       print(yield_title)
       
     }
     
     if(prac_scen<2 & type=='CH4'){
-      yield_title<-paste0(model, ' ', Crop_, " CH4 (g ha yr) - ", clim_title)
+      yield_title<-paste0(mod, ' ', Crop_, " CH4 (g ha yr) - ", clim_title)
       print(yield_title)
 
     }
     
     if(prac_scen<2 & type=='N2O'){
-      yield_title<-paste0(model, ' ', Crop_, " ", 'N2O (g ha yr) - ', clim_title)
+      yield_title<-paste0(mod, ' ', Crop_, " ", 'N2O (g ha yr) - ', clim_title)
       print(yield_title)
       
     }
     
     if(prac_scen<2 & type=='CO2'){
-      yield_title<-paste0(model, ' ', Crop_, " ", " CO2 (g ha yr) - ", clim_title)
+      yield_title<-paste0(mod, ' ', Crop_, " ", " CO2 (g ha yr) - ", clim_title)
       print(yield_title)
       
     }
@@ -205,19 +222,21 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
   } # end of map function
   ##############################################################################
   
-  scen_d_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, model = 'Daycent')
-  scen_d_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, model = 'Daycent')
-  scen_d_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, model = 'Daycent')
-  scen_d_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, model = 'Daycent')
-  scen_d_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, model = 'Daycent')
-  scen_d_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, model = 'Daycent')
+  # type=map_type; breaks = breaks_; prac_scen = 2; clim_scen = clim_scen; mod = 'LDNDC'
+  
+  scen_d_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, mod = 'Daycent')
+  scen_d_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, mod = 'Daycent')
+  scen_d_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, mod = 'Daycent')
+  scen_d_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, mod = 'Daycent')
+  scen_d_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, mod = 'Daycent')
+  scen_d_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, mod = 'Daycent')
 
-  scen_l_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, model = 'LDNDC')
-  scen_l_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, model = 'LDNDC')
-  scen_l_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, model = 'LDNDC')
-  scen_l_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, model = 'LDNDC')
-  scen_l_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, model = 'LDNDC')
-  scen_l_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, model = 'LDNDC')
+  scen_l_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, mod = 'LDNDC')
+  scen_l_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, mod = 'LDNDC')
+  scen_l_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, mod = 'LDNDC')
+  scen_l_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, mod = 'LDNDC')
+  scen_l_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, mod = 'LDNDC')
+  scen_l_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, mod = 'LDNDC')
   
   crop_out<-file.path(Output, paste0('Maps_', Crop_, "_" ,map_type,"_maps.png"))
   
@@ -236,12 +255,12 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
 
   } else { #Outputs with Millennial
     
-    scen_m_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, model = 'Millennial')
-    scen_m_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, model = 'Millennial')
-    scen_m_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, model = 'Millennial')
-    scen_m_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, model = 'Millennial')
-    scen_m_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, model = 'Millennial')
-    scen_m_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, model = 'Millennial')
+    scen_m_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, mod = 'Millennial')
+    scen_m_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, mod = 'Millennial')
+    scen_m_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, mod = 'Millennial')
+    scen_m_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, mod = 'Millennial')
+    scen_m_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, mod = 'Millennial')
+    scen_m_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, mod = 'Millennial')
     
       out<-arrangeGrob(scen_d_1, scen_l_1, scen_m_1,
                        scen_d_2, scen_l_2, scen_m_2,

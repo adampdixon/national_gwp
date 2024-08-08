@@ -42,7 +42,7 @@ create_national_model_linegraphs<-function(crop){
   cr<-crop # should be in global environment
   
   # Function from get_model_tables.R
-  county_df<-get_all_models_national_df(crops_to_get = cr)
+  county_df<-get_all_models_national_df(crop_to_get = cr)
   
   output_figs<-file.path(national_figs)
   
@@ -164,7 +164,7 @@ create_national_model_linegraphs<-function(crop){
       if(min(a[,1], na.rm = TRUE)>0){
         y_axis_<-c(min(a[,1], na.rm = TRUE), max(a[,1], na.rm = TRUE)) # if result does have positive number make way for plot to work
       } else{
-        y_axis_<-c(0, min(a[,1], na.rm = TRUE)) # seems to always be negative? is that true?
+        y_axis_<-c(min(a[,1], na.rm = TRUE), max(a[,1], na.rm = TRUE)) # seems to always be negative? is that true?
       }
      
       

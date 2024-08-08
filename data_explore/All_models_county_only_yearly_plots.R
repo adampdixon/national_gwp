@@ -40,7 +40,7 @@ create_model_linegraphs<-function(crop){
   cr<-crop # should be in global environment
   
   # Function from get_model_tables.R
-  county_df<-get_county_models_df(crops_to_get = cr, GEOID = county_geoid) # county_geoid in global env
+  county_df<-get_county_models_df(crop_to_get = cr, GEOID = county_geoid) # county_geoid in global env
   
   output_figs<-file.path(results_path, 'data_and_figs')
   

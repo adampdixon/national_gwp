@@ -32,6 +32,9 @@ if (Sys.info()['sysname'] == "Linux"){
 # This script then makes boxplots with the data
 # source(file.path(master_path, 'data_explore', 'climate_input_plots_county.R')) 
 
+
+# Note: run the 'run_get_model_tables.R' first to collate model data on GLADE. Then transfer those files to local environment so that the
+#  'get_model_tables.R' will use the already put together tables instead of re-running getting the data every time there is a call. 
 # get model data for data visualization
 source(file.path(master_path, 'data_explore', 'get_model_tables.R'))
 
