@@ -33,11 +33,13 @@ crop_<-c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')
 print(paste("arg is", index))
 print(paste("crop is", crop_[index]))
 
+
+# test<-get_all_models_national_df(crop=crop_[index], load = FALSE)
 # write out the national results, crop index arg is passed from pbs_array_index from .sh file
 
 output_file<-file.path(national_figs, paste0(crop_[index], '_national_results_', date, '.csv'))
 
-fwrite(get_all_models_national_df(crop=crop_[index]), output_file)
+fwrite(get_all_models_national_df(crop=crop_[index], load=FALSE), output_file)
 
 print(paste("Wrote out ", output_file))
 

@@ -132,13 +132,13 @@ get_mill_df<-function(file_list, crop, scenario){
 
 
 # This function is for national results
-get_all_models_national_df<-function(crop_to_get){
+get_all_models_national_df<-function(crop_to_get, load=TRUE){
   # crop_to_get='Maize'
   # Data placed here. As written now will need to redo each time code is run on different day
   # Make sure the correct file is loading!!!!
   data_location<-list.files(national_figs, pattern = paste0(crop_to_get, '_national_results_'), full.names = T)[1]
   print(data_location)
-  if (identical(file.exists(data_location), FALSE)){
+  if (!file.exists(data_location) | identical(load, FALSE)){
     # crop_to_get is either 'All' or vector of crop names as shown.
     
     # This function puts together all model data using the above functions.
