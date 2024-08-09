@@ -1,7 +1,6 @@
 Notes to data processing
 
 All Connecticut county GEOIDs were changed back to historic county GEOIDs rather than their current planning GEOID.
-
 historic ones used:
 9001
 9003
@@ -23,12 +22,3 @@ Island County, WA -> Kitsap county, WA
 Barnstable County, MA -> Nantucket county, MA
 
 
-e.g.
-f<-list.files("/glade/work/apdixon/climate", pattern = "35035)
-
-for (i in 1:length(f)){
-  print(paste0("copying ", f[i]))
-  newfile<-paste0("/glade/work/apdixon/climate/", substr(basename(f[i]), 1, 4), "_53029_", substr(f[i], nchar(f[i])-8, nchar(f[i])))
-  file.copy(f[i], newfile)
-  print(newfile)
-}

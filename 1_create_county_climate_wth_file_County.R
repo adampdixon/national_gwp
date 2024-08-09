@@ -1,5 +1,5 @@
 #######################################
-# Script: 1_Create_weather_input_files-Daycent_AD_.R
+# Script: 1_Create_county_climate_wth_file_County.R
 # Author: Adam Dixon
 # Date: December 16, 2023
 # Output: .wth file

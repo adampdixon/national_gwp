@@ -1,0 +1,147 @@
+[12108]  LandscapeDNDC 1.36 (revision 11671)  2024-05-29 01:17
+[12108]  Wed Aug 07 23:27:54 CDT 2024
+[12108]  running on host "ap" (192.168.1.84)
+[  ] {0-03-01 00:00:00} ==== project "./GEOID_42053_Pennsylvania_1_2_Soybean.ldndc" ====
+[  ] {0-03-01 00:00:00} running crabmeat library version 0.13.0 (8221)
+[  ] {1850-01-01 00:00:00} clk=1850-01-01-01/24->2051-12-31-01  clock=58375382400  dt=3600
+[II] {LandscapeDNDC ModelCompositor<0> 1850-01-01 00:00:00} seeing 1 models
+[II] {MoBiLE Legacy MasterControlProgram<0> 1850-01-01 00:00:00} Using MoBiLE section "/mobile"
+[II] {MoBiLE Legacy MasterControlProgram<0> 1850-01-01 00:00:00} seeing 11 MoBiLE module(s)
+[II] {1850-01-01 00:00:00} STRATUM (0-0.002m) 1:
+[II] {1850-01-01 00:00:00} Determined soil type of stratum 1: silty loam
+[II] {1850-01-01 00:00:00} Stone fraction of stratum 1 not initialized, estimated value: 0 [m3 m-3]
+[II] {1850-01-01 00:00:00} Iron content of stratum 1 not initialized, estimated value: 0.01 [g g-1]
+[II] {1850-01-01 00:00:00} Total nitrogen content of stratum 1 not initialized, estimated value: 0.0319648 [g g-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 1 not initialized, estimated value (without stones): 79.9285 [%]
+[II] {1850-01-01 00:00:00} van Genuchten parameter n of stratum 1 not initialized, estimated value: 1.41 [-]
+[II] {1850-01-01 00:00:00} van Genuchten parameter alpha of stratum 1 not initialized, estimated value is 2 [m-1]
+[II] {1850-01-01 00:00:00} Maximum water filled pore space of stratum 1 not initialized, estimated value: 0.843573
+[II] {1850-01-01 00:00:00} Minimum water filled pore space of stratum 1 not initialized, estimated value: 0.26358
+[II] {1850-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 1. Minimum water filled pore space changed to: 0.0984595 [m3 m-3]
+[II] {1850-01-01 00:00:00} STRATUM (0.002-0.005m) 2:
+[II] {1850-01-01 00:00:00} Determined soil type of stratum 2: silty loam
+[II] {1850-01-01 00:00:00} Stone fraction of stratum 2 not initialized, estimated value: 0 [m3 m-3]
+[II] {1850-01-01 00:00:00} Iron content of stratum 2 not initialized, estimated value: 0.01 [g g-1]
+[II] {1850-01-01 00:00:00} Total nitrogen content of stratum 2 not initialized, estimated value: 0.0314897 [g g-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 2 not initialized, estimated value (without stones): 69.0759 [%]
+[II] {1850-01-01 00:00:00} van Genuchten parameter n of stratum 2 not initialized, estimated value: 1.41 [-]
+[II] {1850-01-01 00:00:00} van Genuchten parameter alpha of stratum 2 not initialized, estimated value is 2 [m-1]
+[II] {1850-01-01 00:00:00} Maximum water filled pore space of stratum 2 not initialized, estimated value: 0.979016
+[II] {1850-01-01 00:00:00} Minimum water filled pore space of stratum 2 not initialized, estimated value: 0.319536
+[II] {1850-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 2. Minimum water filled pore space changed to: 0.130534 [m3 m-3]
+[II] {1850-01-01 00:00:00} STRATUM (0.005-0.01m) 3:
+[II] {1850-01-01 00:00:00} Determined soil type of stratum 3: loam
+[II] {1850-01-01 00:00:00} Stone fraction of stratum 3 not initialized, estimated value: 0 [m3 m-3]
+[II] {1850-01-01 00:00:00} Iron content of stratum 3 not initialized, estimated value: 0.01 [g g-1]
+[II] {1850-01-01 00:00:00} Total nitrogen content of stratum 3 not initialized, estimated value: 0.00873543 [g g-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 3 not initialized, estimated value (without stones): 50.8091 [%]
+[II] {1850-01-01 00:00:00} van Genuchten parameter n of stratum 3 not initialized, estimated value: 1.56 [-]
+[II] {1850-01-01 00:00:00} van Genuchten parameter alpha of stratum 3 not initialized, estimated value is 3.6 [m-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 3 was smaller than estimated maximum water saturation and was increased from 0.508091 to 0.530421
+[II] {1850-01-01 00:00:00} Maximum water filled pore space of stratum 3 not initialized, estimated value: 1
+[II] {1850-01-01 00:00:00} Minimum water filled pore space of stratum 3 not initialized, estimated value: 0.436108
+[II] {1850-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 3. Minimum water filled pore space changed to: 0.184189 [m3 m-3]
+[II] {1850-01-01 00:00:00} STRATUM (0.01-0.02m) 4:
+[II] {1850-01-01 00:00:00} Determined soil type of stratum 4: loam
+[II] {1850-01-01 00:00:00} Stone fraction of stratum 4 not initialized, estimated value: 0 [m3 m-3]
+[II] {1850-01-01 00:00:00} Iron content of stratum 4 not initialized, estimated value: 0.01 [g g-1]
+[II] {1850-01-01 00:00:00} Total nitrogen content of stratum 4 not initialized, estimated value: 0.00183246 [g g-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 4 not initialized, estimated value (without stones): 49.0726 [%]
+[II] {1850-01-01 00:00:00} van Genuchten parameter n of stratum 4 not initialized, estimated value: 1.56 [-]
+[II] {1850-01-01 00:00:00} van Genuchten parameter alpha of stratum 4 not initialized, estimated value is 3.6 [m-1]
+[II] {1850-01-01 00:00:00} Maximum water filled pore space of stratum 4 not initialized, estimated value: 0.935406
+[II] {1850-01-01 00:00:00} Minimum water filled pore space of stratum 4 not initialized, estimated value: 0.271216
+[II] {1850-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 4. Minimum water filled pore space changed to: 0.201999 [m3 m-3]
+[II] {1850-01-01 00:00:00} STRATUM (0.02-0.04m) 5:
+[II] {1850-01-01 00:00:00} Determined soil type of stratum 5: loam
+[II] {1850-01-01 00:00:00} Stone fraction of stratum 5 not initialized, estimated value: 0 [m3 m-3]
+[II] {1850-01-01 00:00:00} Iron content of stratum 5 not initialized, estimated value: 0.01 [g g-1]
+[II] {1850-01-01 00:00:00} Total nitrogen content of stratum 5 not initialized, estimated value: 0.000533334 [g g-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 5 not initialized, estimated value (without stones): 47.3621 [%]
+[II] {1850-01-01 00:00:00} van Genuchten parameter n of stratum 5 not initialized, estimated value: 1.56 [-]
+[II] {1850-01-01 00:00:00} van Genuchten parameter alpha of stratum 5 not initialized, estimated value is 3.6 [m-1]
+[II] {1850-01-01 00:00:00} Maximum water filled pore space of stratum 5 not initialized, estimated value: 0.91989
+[II] {1850-01-01 00:00:00} Minimum water filled pore space of stratum 5 not initialized, estimated value: 0.262904
+[II] {1850-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 5. Minimum water filled pore space changed to: 0.254171 [m3 m-3]
+[II] {1850-01-01 00:00:00} STRATUM (0.04-0.06m) 6:
+[II] {1850-01-01 00:00:00} Determined soil type of stratum 6: loam
+[II] {1850-01-01 00:00:00} Stone fraction of stratum 6 not initialized, estimated value: 0 [m3 m-3]
+[II] {1850-01-01 00:00:00} Iron content of stratum 6 not initialized, estimated value: 0.01 [g g-1]
+[II] {1850-01-01 00:00:00} Total nitrogen content of stratum 6 not initialized, estimated value: 0.000386377 [g g-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 6 not initialized, estimated value (without stones): 46.6101 [%]
+[II] {1850-01-01 00:00:00} van Genuchten parameter n of stratum 6 not initialized, estimated value: 1.56 [-]
+[II] {1850-01-01 00:00:00} van Genuchten parameter alpha of stratum 6 not initialized, estimated value is 3.6 [m-1]
+[II] {1850-01-01 00:00:00} Maximum water filled pore space of stratum 6 not initialized, estimated value: 0.920731
+[II] {1850-01-01 00:00:00} Minimum water filled pore space of stratum 6 not initialized, estimated value: 0.270296
+[II] {1850-01-01 00:00:00} Minimum water filled pore space exceeded wilting point in stratum 6. Minimum water filled pore space changed to: 0.269623 [m3 m-3]
+[II] {1850-01-01 00:00:00} STRATUM (0.06-0.08m) 7:
+[II] {1850-01-01 00:00:00} Determined soil type of stratum 7: loam
+[II] {1850-01-01 00:00:00} Stone fraction of stratum 7 not initialized, estimated value: 0 [m3 m-3]
+[II] {1850-01-01 00:00:00} Iron content of stratum 7 not initialized, estimated value: 0.01 [g g-1]
+[II] {1850-01-01 00:00:00} Total nitrogen content of stratum 7 not initialized, estimated value: 0.000288046 [g g-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 7 not initialized, estimated value (without stones): 47.4552 [%]
+[II] {1850-01-01 00:00:00} van Genuchten parameter n of stratum 7 not initialized, estimated value: 1.56 [-]
+[II] {1850-01-01 00:00:00} van Genuchten parameter alpha of stratum 7 not initialized, estimated value is 3.6 [m-1]
+[II] {1850-01-01 00:00:00} Maximum water filled pore space of stratum 7 not initialized, estimated value: 0.915085
+[II] {1850-01-01 00:00:00} Minimum water filled pore space of stratum 7 not initialized, estimated value: 0.258803
+[II] {1850-01-01 00:00:00} STRATUM (0.08-0.1m) 8:
+[II] {1850-01-01 00:00:00} Determined soil type of stratum 8: loam
+[II] {1850-01-01 00:00:00} Stone fraction of stratum 8 not initialized, estimated value: 0 [m3 m-3]
+[II] {1850-01-01 00:00:00} Iron content of stratum 8 not initialized, estimated value: 0.01 [g g-1]
+[II] {1850-01-01 00:00:00} Total nitrogen content of stratum 8 not initialized, estimated value: 0.000251356 [g g-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 8 not initialized, estimated value (without stones): 47.505 [%]
+[II] {1850-01-01 00:00:00} van Genuchten parameter n of stratum 8 not initialized, estimated value: 1.56 [-]
+[II] {1850-01-01 00:00:00} van Genuchten parameter alpha of stratum 8 not initialized, estimated value is 3.6 [m-1]
+[II] {1850-01-01 00:00:00} Maximum water filled pore space of stratum 8 not initialized, estimated value: 0.913697
+[II] {1850-01-01 00:00:00} Minimum water filled pore space of stratum 8 not initialized, estimated value: 0.254705
+[II] {1850-01-01 00:00:00} STRATUM (0.1-0.12m) 9:
+[II] {1850-01-01 00:00:00} Determined soil type of stratum 9: loam
+[II] {1850-01-01 00:00:00} Stone fraction of stratum 9 not initialized, estimated value: 0 [m3 m-3]
+[II] {1850-01-01 00:00:00} Iron content of stratum 9 not initialized, estimated value: 0.01 [g g-1]
+[II] {1850-01-01 00:00:00} Total nitrogen content of stratum 9 not initialized, estimated value: 0.000244981 [g g-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 9 not initialized, estimated value (without stones): 47.4948 [%]
+[II] {1850-01-01 00:00:00} van Genuchten parameter n of stratum 9 not initialized, estimated value: 1.56 [-]
+[II] {1850-01-01 00:00:00} van Genuchten parameter alpha of stratum 9 not initialized, estimated value is 3.6 [m-1]
+[II] {1850-01-01 00:00:00} Maximum water filled pore space of stratum 9 not initialized, estimated value: 0.913909
+[II] {1850-01-01 00:00:00} Minimum water filled pore space of stratum 9 not initialized, estimated value: 0.254409
+[II] {1850-01-01 00:00:00} STRATUM (0.12-0.14m) 10:
+[II] {1850-01-01 00:00:00} Determined soil type of stratum 10: loam
+[II] {1850-01-01 00:00:00} Stone fraction of stratum 10 not initialized, estimated value: 0 [m3 m-3]
+[II] {1850-01-01 00:00:00} Iron content of stratum 10 not initialized, estimated value: 0.01 [g g-1]
+[II] {1850-01-01 00:00:00} Total nitrogen content of stratum 10 not initialized, estimated value: 0.000184652 [g g-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 10 not initialized, estimated value (without stones): 44.4538 [%]
+[II] {1850-01-01 00:00:00} van Genuchten parameter n of stratum 10 not initialized, estimated value: 1.56 [-]
+[II] {1850-01-01 00:00:00} van Genuchten parameter alpha of stratum 10 not initialized, estimated value is 3.6 [m-1]
+[II] {1850-01-01 00:00:00} Maximum water filled pore space of stratum 10 not initialized, estimated value: 0.921983
+[II] {1850-01-01 00:00:00} Minimum water filled pore space of stratum 10 not initialized, estimated value: 0.261261
+[II] {1850-01-01 00:00:00} STRATUM (0.14-0.16m) 11:
+[II] {1850-01-01 00:00:00} Determined soil type of stratum 11: loam
+[II] {1850-01-01 00:00:00} Stone fraction of stratum 11 not initialized, estimated value: 0 [m3 m-3]
+[II] {1850-01-01 00:00:00} Iron content of stratum 11 not initialized, estimated value: 0.01 [g g-1]
+[II] {1850-01-01 00:00:00} Total nitrogen content of stratum 11 not initialized, estimated value: 0.000176929 [g g-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 11 not initialized, estimated value (without stones): 44.8287 [%]
+[II] {1850-01-01 00:00:00} van Genuchten parameter n of stratum 11 not initialized, estimated value: 1.56 [-]
+[II] {1850-01-01 00:00:00} van Genuchten parameter alpha of stratum 11 not initialized, estimated value is 3.6 [m-1]
+[II] {1850-01-01 00:00:00} Maximum water filled pore space of stratum 11 not initialized, estimated value: 0.920563
+[II] {1850-01-01 00:00:00} Minimum water filled pore space of stratum 11 not initialized, estimated value: 0.258111
+[II] {1850-01-01 00:00:00} STRATUM (0.16-0.18m) 12:
+[II] {1850-01-01 00:00:00} Determined soil type of stratum 12: silty loam
+[II] {1850-01-01 00:00:00} Stone fraction of stratum 12 not initialized, estimated value: 0 [m3 m-3]
+[II] {1850-01-01 00:00:00} Iron content of stratum 12 not initialized, estimated value: 0.01 [g g-1]
+[II] {1850-01-01 00:00:00} Total nitrogen content of stratum 12 not initialized, estimated value: 0.000123012 [g g-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 12 not initialized, estimated value (without stones): 58.6437 [%]
+[II] {1850-01-01 00:00:00} van Genuchten parameter n of stratum 12 not initialized, estimated value: 1.41 [-]
+[II] {1850-01-01 00:00:00} van Genuchten parameter alpha of stratum 12 not initialized, estimated value is 2 [m-1]
+[II] {1850-01-01 00:00:00} Maximum water filled pore space of stratum 12 not initialized, estimated value: 0.875631
+[II] {1850-01-01 00:00:00} Minimum water filled pore space of stratum 12 not initialized, estimated value: 0.176497
+[II] {1850-01-01 00:00:00} STRATUM (0.18-0.2m) 13:
+[II] {1850-01-01 00:00:00} Determined soil type of stratum 13: silt
+[II] {1850-01-01 00:00:00} Stone fraction of stratum 13 not initialized, estimated value: 0 [m3 m-3]
+[II] {1850-01-01 00:00:00} Iron content of stratum 13 not initialized, estimated value: 0.01 [g g-1]
+[II] {1850-01-01 00:00:00} Total nitrogen content of stratum 13 not initialized, estimated value: 5.24374e-05 [g g-1]
+[II] {1850-01-01 00:00:00} Porosity of stratum 13 not initialized, estimated value (without stones): 83.8544 [%]
+[II] {1850-01-01 00:00:00} van Genuchten parameter n of stratum 13 not initialized, estimated value: 1.37 [-]
+[II] {1850-01-01 00:00:00} van Genuchten parameter alpha of stratum 13 not initialized, estimated value is 1.6 [m-1]
+[II] {1850-01-01 00:00:00} Maximum water filled pore space of stratum 13 not initialized, estimated value: 0.797538
+[II] {1850-01-01 00:00:00} Minimum water filled pore space of stratum 13 not initialized, estimated value: 0.0543389
+node 0: normal termination.

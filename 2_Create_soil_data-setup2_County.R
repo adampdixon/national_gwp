@@ -1,6 +1,6 @@
 #######################################
-# Function: "2_Create_soil_data-setup2_KBS"
-# Author: "Ellen Maas"
+# Function: "2_Create_soil_data-setup_County.R"
+# Author: "Ellen Maas, and then Adam Dixon"
 # Date: "July 11, 2022"
 # Description: Downloads the closest SSURGO soil profile for the site and updates
 # the bulk density and C content with site values. Fills in treatment differences
