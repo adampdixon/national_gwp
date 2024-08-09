@@ -92,7 +92,7 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
   
   # NOW DO SPATIAL JOIN
   
-  map_in_df<-left_join(county_df, counties, by=c("GEOID"="GEOID2"))
+  df<-left_join(county_df, counties, by=c("GEOID"="GEOID2"))
   
   if(map_type=='Yld'){
     breaks_df<-select(df, contains(paste0(Crop_, "Yld")))
@@ -130,26 +130,25 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
   }
  
   ##############################################################################
-  map_out<-function(df, type, breaks, prac_scen, clim_scen, mod){
+  map_out<-function(type, breaks, prac_scen, clim_scen, mod){
     
-    df2<-filter(df, 
-                mgmt_scenario_num == prac_scen, 
-                climate_scenario == clim_scen,
-                model == mod)
+    df2<-df%>%filter(mgmt_scenario_num == prac_scen,
+                     climate_scenario == clim_scen,
+                     model == mod)
     
-    print('********************************************************************')
-    print('Summary stats for model/mgmt/climate')
-    print(paste0('Crop is ', Crop_, 'YldMgha'))
-    print(paste('mgmt scenario is', prac_scen))
-    print(paste('climate scenario is', clim_scen))
-    print(paste('model is', mod))
-    print(paste('map type is', type))
+    # print('********************************************************************')
+    # print('Summary stats for model/mgmt/climate')
+    # print(paste0('Crop is ', Crop_, 'YldMgha'))
+    # print(paste('mgmt scenario is', prac_scen))
+    # print(paste('climate scenario is', clim_scen))
+    # print(paste('model is', mod))
+    # print(paste('map type is', type))
     
-    df3<-select(df2, contains(type))
-    print(paste('min:', round(min(as.numeric(unlist(df3[,1])), na.rm = T), 2)))
-    print(paste('max:', round(max(as.numeric(unlist(df3[,1])), na.rm = T), 2)))
-    print(paste('mean:', round(mean(as.numeric(unlist(df3[,1])), na.rm = T), 2)))
-    print(paste('std dev:', round(sd(as.numeric(unlist(df3[,1])), na.rm = T), 2)))
+    # df3<-select(df2, contains(type))
+    # print(paste('min:', round(min(df3[,1], na.rm = T), 2)))
+    # print(paste('max:', round(max(as.numeric(unlist(df3[,1])), na.rm = T), 2)))
+    # print(paste('mean:', round(mean(as.numeric(unlist(df3[,1])), na.rm = T), 2)))
+    # print(paste('std dev:', round(sd(as.numeric(unlist(df3[,1])), na.rm = T), 2)))
     
     print('********************************************************************')
       
@@ -222,21 +221,21 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
   } # end of map function
   ##############################################################################
   
-  # df = map_in_df; type=map_type; breaks = breaks_; prac_scen = 2; clim_scen = clim_scen; mod = 'LDNDC'
+  # type=map_type; breaks = breaks_; prac_scen = 2; clim_scen = clim_scen; mod = 'LDNDC'
   
-  scen_d_1<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, mod = 'Daycent')
-  scen_d_2<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, mod = 'Daycent')
-  scen_d_3<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, mod = 'Daycent')
-  scen_d_4<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, mod = 'Daycent')
-  scen_d_5<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, mod = 'Daycent')
-  scen_d_6<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, mod = 'Daycent')
+  scen_d_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, mod = 'Daycent')
+  scen_d_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, mod = 'Daycent')
+  scen_d_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, mod = 'Daycent')
+  scen_d_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, mod = 'Daycent')
+  scen_d_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, mod = 'Daycent')
+  scen_d_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, mod = 'Daycent')
 
-  scen_l_1<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, mod = 'LDNDC')
-  scen_l_2<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, mod = 'LDNDC')
-  scen_l_3<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, mod = 'LDNDC')
-  scen_l_4<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, mod = 'LDNDC')
-  scen_l_5<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, mod = 'LDNDC')
-  scen_l_6<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, mod = 'LDNDC')
+  scen_l_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, mod = 'LDNDC')
+  scen_l_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, mod = 'LDNDC')
+  scen_l_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, mod = 'LDNDC')
+  scen_l_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, mod = 'LDNDC')
+  scen_l_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, mod = 'LDNDC')
+  scen_l_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, mod = 'LDNDC')
   
   crop_out<-file.path(Output, paste0('Maps_', Crop_, "_" ,map_type,"_maps.png"))
   
@@ -255,12 +254,12 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
 
   } else { #Outputs with Millennial
     
-    scen_m_1<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, mod = 'Millennial')
-    scen_m_2<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, mod = 'Millennial')
-    scen_m_3<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, mod = 'Millennial')
-    scen_m_4<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, mod = 'Millennial')
-    scen_m_5<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, mod = 'Millennial')
-    scen_m_6<-map_out(df = map_in_df, type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, mod = 'Millennial')
+    scen_m_1<-map_out(type=map_type, breaks = breaks_, prac_scen = 1, clim_scen = clim_scen, mod = 'Millennial')
+    scen_m_2<-map_out(type=map_type, breaks = breaks_, prac_scen = 2, clim_scen = clim_scen, mod = 'Millennial')
+    scen_m_3<-map_out(type=map_type, breaks = breaks_, prac_scen = 3, clim_scen = clim_scen, mod = 'Millennial')
+    scen_m_4<-map_out(type=map_type, breaks = breaks_, prac_scen = 4, clim_scen = clim_scen, mod = 'Millennial')
+    scen_m_5<-map_out(type=map_type, breaks = breaks_, prac_scen = 5, clim_scen = clim_scen, mod = 'Millennial')
+    scen_m_6<-map_out(type=map_type, breaks = breaks_, prac_scen = 6, clim_scen = clim_scen, mod = 'Millennial')
     
       out<-arrangeGrob(scen_d_1, scen_l_1, scen_m_1,
                        scen_d_2, scen_l_2, scen_m_2,
