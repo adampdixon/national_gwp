@@ -38,6 +38,7 @@ soils_boxplots<-function(){
   
   # This similar repertoire for ph is used in main model script
   tbl_fread<-mutate(tbl_fread, pH = ifelse(pH > 7.5, NA, pH)) # remove pH values greater than 7.5, some are obviously in error
+  tbl_fread<-mutate(tbl_fread, pH = ifelse(pH < 2, NA, pH)) # remove pH values greater than 7.5, some are obviously in error
   tbl_fread<-na.locf(tbl_fread) # This sets NA values to the last non-NA value
   
   # tbl_fread_corrected<-mutate(tbl_fread, pH = ifelse(pH > 7.5, NA, pH)) # remove pH values greater than 7.5, some are obviously in error
