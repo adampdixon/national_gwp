@@ -11,9 +11,11 @@
 print("Running get_model_tables.R")
 
 library(data.table)
-library(fs) # for faster list.files
+# library(fs) # for faster list.files (currently not working)
 library(dplyr)
 
+
+# First two functions are 1. Daycent/LDNDC, and then 2. Millennial. 3rd function puts all the data together.
 
 get_daycent_ldndc_df<-function(file_list, model_name, crop, scenario){
   # This function fetches model results for a given crop and scenario for both Daycent and LDNDC since the main output column 

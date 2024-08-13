@@ -90,10 +90,10 @@ Cotton,1,monocrop,0,2022:2051,2022,2051,,fertilize,05-20,,,,28,,,,monocropcotton
 Cotton,1,monocrop,0,2022:2051,2022,2051,,plant,05-21,COTT,120,,,,no,cott,monocropcotton
 Cotton,1,monocrop,0,2022:2051,2022,2051,,harvest,10-17,COTT,,,,0.1,no,cott,monocropcotton
 ,,,,,,,,,,,,,,,,,
-Cotton,1,notill,0,2022:2051,2022,2051,,fertilize,04-28,,,,28,,,,notillcotton
-Cotton,1,notill,0,2022:2051,2022,2051,,till,03-30,,,0,,,,,covermixcotton
-Cotton,1,notill,0,2022:2051,2022,2051,,plant,05-21,COTT,120,,,,no,cott,notillcotton
-Cotton,1,notill,0,2022:2051,2022,2051,,harvest,10-17,COTT,,,,0.1,no,cott,notillcotton
+Cotton,2,notill,0,2022:2051,2022,2051,,fertilize,04-28,,,,28,,,,notillcotton
+Cotton,2,notill,0,2022:2051,2022,2051,,till,03-30,,,0,,,,,covermixcotton
+Cotton,2,notill,0,2022:2051,2022,2051,,plant,05-21,COTT,120,,,,no,cott,notillcotton
+Cotton,2,notill,0,2022:2051,2022,2051,,harvest,10-17,COTT,,,,0.1,no,cott,notillcotton
 ,,,,,,,,,,,,,,,,,
 Cotton,3,cover_mix,0,2022:2022,2022,2022,cover crops need a start up year if planted in fall. To start we’ll plant on Jan 1. Same year plant on Nov 1.,plant,01-01,SRAPE,80,,,,yes,srape,covermixcotton
 Cotton,3,cover_mix,0,2022:2022,2022,2022,,plant,01-01,COWP,80,,,,yes,cowp,covermixcotton

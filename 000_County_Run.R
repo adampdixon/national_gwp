@@ -144,10 +144,10 @@ cat("********************************\n")
 ################################################################################
 # county_numbers<-296:306   #295:3100
 # crops_ <- c('Maize', 'Soybean', 'Wheat', 'Cotton', 'Rotation') # Crops
-crops_ <- c('Soybean') # Crops
+crops_ <- c('Cotton') # Crops
 
 # mgmt_scenario_nums <- 1:1 # Management scenarios
-mgmt_scenario_nums <- 2:5 # 1:6 Management scenarios 1:6
+mgmt_scenario_nums <- 1:2 # 1:6 Management scenarios 1:6
 
 # climate scenarios
 clim_nums <- 1:2 #c(1:2), can be 1:2

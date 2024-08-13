@@ -55,7 +55,7 @@ for (mt in c('Yld', 'SOC', 'CH4', 'N2O', 'CO2')) { #'Yld', 'SOC', 'CH4', 'N2O', 
   print(mt)
   for (i in c('Soybean', 'Wheat', 'Cotton', 'Maize', 'Rotation')){
     print(i)
-    # Year_ = 2050; Crop_ = 'Soybean'; Output = national_figs; map_type = 'Yld'; clim_scen = 'low'
+    # Year_ = 2050; Crop_ = 'Cotton'; Output = national_figs; map_type = 'Yld'; clim_scen = 'low'
     national_map_all_scenarios(Year_ = 2050, Crop_ = i, Output = national_figs, map_type = mt, clim_scen = 'low')
   }
 }

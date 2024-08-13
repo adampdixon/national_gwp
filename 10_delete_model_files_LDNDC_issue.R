@@ -31,7 +31,7 @@ if (Sys.info()['sysname'] == "Linux"){
 
 ld_results_data<-list.files(results_folder, pattern = 'LDNDC', recursive = T, full.names = T)
 # only delete mgmt scenarios 2 to 5 for both clim scenarios
-ld_results_data2<-ld_results_data[grepl("1_2_Soybean|1_3_Soybean|1_4_Soybean|1_5_Soybean|2_2_Soybean|2_3_Soybean|2_4_Soybean|2_5_Soybean", ld_results_data)]
+ld_results_data2<-ld_results_data[grepl("1_1_Cotton|1_2_Cotton|2_1_Cotton|2_2_Cotton", ld_results_data)]
 
 ##################################################
 # CAREFUL WITH THIS

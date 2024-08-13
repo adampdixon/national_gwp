@@ -82,15 +82,15 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
                                  30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48,49,50,51,53,54,55,56))
     
     # lower_48<-18
-    
+  print('Counties spatial data loading') 
   counties<-counties() %>% #tigris function
     filter(STATEFP %in% lower_48)%>%
     st_transform(5070)%>% # EQUAL AREA PROJECTION
     mutate(GEOID2=as.integer(GEOID))%>%
     st_simplify(dTolerance = 2000) # take time now to simplify polygons so drawing several maps later is faster
     # simplified by 2000 meters
-  
-  # NOW DO SPATIAL JOIN
+
+  # NOW join by GEOID
   
   df<-left_join(county_df, counties, by=c("GEOID"="GEOID2"))
   
