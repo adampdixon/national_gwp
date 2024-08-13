@@ -125,7 +125,8 @@ national_map_all_scenarios<-function(Year_, Crop_, Output, map_type, clim_scen){
   if(map_type=='CH4'){
     breaks_df<-select(df, contains("CH4"))
     breaks<-unlist(breaks_df[,1])
-    breaks_<-round(c(min(breaks), mean(breaks), max(breaks)),1)
+    # TODO check why na.rm is necessary here
+    breaks_<-round(c(min(breaks, na.rm = T), mean(breaks, na.rm = T), max(breaks, na.rm = T)),1)
     map_var<-'CH4Emissions_ghayr'
   }
  
