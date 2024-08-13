@@ -21,6 +21,6 @@ conda activate r-4.3
   
 #conda activate casper_2023
 echo "Hello World run_get_model_tables from soybeans"         
-CMD="Rscript /glade/derecho/scratch/apdixon/national_gwp/data_explore/run_get_model_tables.R --args 2"
+CMD="Rscript /glade/derecho/scratch/apdixon/national_gwp/data_explore/run_get_model_tables.R --args 3"
 echo $CMD
 $CMD
