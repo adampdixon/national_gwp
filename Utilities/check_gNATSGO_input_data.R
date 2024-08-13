@@ -48,10 +48,12 @@ df$soil_geoid<-as.integer(df$soil_geoid)
 
 j<-left_join(county_data, df, by = c('GEOID' = 'soil_geoid'), keep = TRUE)
 
+output<-file.path(national_figs, paste0('check_gNATSGO_input_data_', date, '.csv'))
 
-fwrite(j, file.path(national_figs, 'check_gNATSGO_input_data.csv'))
+fwrite(j, output)
 
-yesno<-file.exists(file.path(national_figs, 'check_gNATSGO_input_data.csv'))
+yesno<-file.exists(output)
 
 print('done soils data...')
 print(paste('soils data present:', yesno))
+

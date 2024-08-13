@@ -32,7 +32,7 @@ source(file.path(master_path, 'data_explore', 'climate_input_plots_county.R'))
 # Note: run the 'run_get_model_tables.R' first to collate model data on GLADE. Then transfer those files to local environment so that the
 #  'get_model_tables.R' will use the already put together tables instead of re-running getting the data every time there is a call. 
 # get model data for data visualization
-source(file.path(master_path, 'data_explore', 'get_model_tables.R'))
+# source(file.path(master_path, 'data_explore', 'get_model_tables.R')) # not necessary to run because it loads in below scripts as well
 ###########################
 
 ###########################
@@ -42,6 +42,7 @@ source(file.path(master_path, 'data_explore', 'All_models_national_results_yearl
 
 # This one takes a while to process
 for (c in c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')) {
+  # c <- 'Cotton'
   create_national_model_linegraphs(crop=c)
 }
 
@@ -53,7 +54,8 @@ source(file.path(master_path, 'data_explore', 'GWP_national_maps.R'))
 
 for (mt in c('Yld', 'SOC', 'CH4', 'N2O', 'CO2')) { #'Yld', 'SOC', 'CH4', 'N2O', 'CO2'
   print(mt)
-  for (i in c('Soybean', 'Wheat', 'Cotton', 'Maize', 'Rotation')){
+  # for (i in c('Soybean', 'Wheat', 'Cotton', 'Maize', 'Rotation')){
+  for (i in c('Wheat')){
     print(i)
     # Year_ = 2050; i = 'Wheat'; Output = national_figs; mt = 'CH4'; clim_scen = 'low'
     national_map_all_scenarios(Year_ = 2050, Crop_ = i, Output = national_figs, map_type = mt, clim_scen = 'low')
@@ -67,6 +69,7 @@ for (mt in c('Yld', 'SOC', 'CH4', 'N2O', 'CO2')) { #'Yld', 'SOC', 'CH4', 'N2O', 
 source(file.path(master_path, 'data_explore', 'GWP_national_boxplots.R'))
 # This one takes a while to process
 for (c in c('Maize', 'Soybean', 'Cotton', 'Wheat', 'Rotation')) {
+  # c <- 'Cotton'
   national_boxplots_all_scenarios(Crop_=c)
 }
 

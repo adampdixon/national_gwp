@@ -71,7 +71,7 @@ j<-j%>%
 
 
 
-output_<-file.path(national_figs, 'check_climate_input_data.csv')
+output_<-file.path(national_figs, paste0('check_climate_input_data_', date, '.csv'))
 
 fwrite(j, output_)
 
