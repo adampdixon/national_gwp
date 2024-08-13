@@ -1,10 +1,10 @@
 #!/bin/bash
-#PBS -N Casper_5
+#PBS -N Casper_5_Cotton
 #PBS -A UEMO0003
-#PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/Casper_5.stdout
-#PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/Casper_5.stderr 
+#PBS -o /glade/derecho/scratch/apdixon/national_gwp/sh_sends/Casper_5_cotton.stdout
+#PBS -e /glade/derecho/scratch/apdixon/national_gwp/sh_sends/Casper_5_cotton.stderr 
 #PBS -l select=1:ncpus=1:mem=12GB
-#PBS -l walltime=01:00:00
+#PBS -l walltime=00:030:00
 ### Send email on abort, begin and end
 #PBS -m e
 ### Specify mail recipient
